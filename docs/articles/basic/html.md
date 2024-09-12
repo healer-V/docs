@@ -36,9 +36,9 @@
 
 [![](https://img.shields.io/badge/just_do_it-blue?style=for-the-badge&logo=alipay&logoColor=1677FF&label=%E6%94%AF%E4%BB%98%E5%AE%9D&labelColor=lightgrey)](https://shields.io/badges)
 
-油管链接图标：[Youtube](https://www.youtube.com/)
+<!-- 油管链接图标：[Youtube](https://www.youtube.com/)
 
-B站链接图标：[哔哩哔哩](https://www.bilibili.com/)
+B站链接图标：[哔哩哔哩](https://www.bilibili.com/) -->
 
 <span class="marker-text">这里是重重点</span>
 
