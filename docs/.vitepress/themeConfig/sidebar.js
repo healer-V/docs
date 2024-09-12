@@ -6,7 +6,7 @@ export const sidebar =
         items: [
             {
                 text: '站点介绍',
-                link: '/articles/introduce.md'
+                link: '/articles/'
             },
             {
                 text: '前端基础',

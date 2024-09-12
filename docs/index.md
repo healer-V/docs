@@ -13,7 +13,7 @@ hero:
   actions:
     - theme: brand
       text: 进入主页
-      link: /articles/introduce
+      link: /articles/
 
     - theme: alt
       text: 个人成长
