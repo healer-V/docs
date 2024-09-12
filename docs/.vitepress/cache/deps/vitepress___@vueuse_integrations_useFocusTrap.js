@@ -3,7 +3,7 @@ import {
   toValue,
   tryOnScopeDispose,
   unrefElement
-} from "./chunk-2RAZJGFN.js";
+} from "./chunk-EVHYBK5F.js";
 import {
   computed,
   ref,
@@ -341,15 +341,7 @@ var isFocusable = function isFocusable2(node, options) {
   return isNodeMatchingSelectorFocusable(options, node);
 };
 
-// node_modules/.pnpm/focus-trap@7.6.0/node_modules/focus-trap/dist/focus-trap.esm.js
-function _defineProperty(e, r, t) {
-  return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
-    value: t,
-    enumerable: true,
-    configurable: true,
-    writable: true
-  }) : e[r] = t, e;
-}
+// node_modules/.pnpm/focus-trap@7.5.4/node_modules/focus-trap/dist/focus-trap.esm.js
 function ownKeys(e, r) {
   var t = Object.keys(e);
   if (Object.getOwnPropertySymbols) {
@@ -371,19 +363,33 @@ function _objectSpread2(e) {
   }
   return e;
 }
-function _toPrimitive(t, r) {
-  if ("object" != typeof t || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r || "default");
-    if ("object" != typeof i) return i;
+function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
-  return ("string" === r ? String : Number)(t);
+  return (hint === "string" ? String : Number)(input);
 }
-function _toPropertyKey(t) {
-  var i = _toPrimitive(t, "string");
-  return "symbol" == typeof i ? i : i + "";
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
 }
 var activeFocusTraps = {
   activateTrap: function activateTrap(trapStack, trap) {
@@ -632,25 +638,25 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       throw new Error("At least one node with a positive tabindex was found in one of your focus-trap's multiple containers. Positive tabindexes are only supported in single-container focus-traps.");
     }
   };
-  var _getActiveElement = function getActiveElement(el) {
+  var getActiveElement = function getActiveElement2(el) {
     var activeElement = el.activeElement;
     if (!activeElement) {
       return;
     }
     if (activeElement.shadowRoot && activeElement.shadowRoot.activeElement !== null) {
-      return _getActiveElement(activeElement.shadowRoot);
+      return getActiveElement2(activeElement.shadowRoot);
     }
     return activeElement;
   };
-  var _tryFocus = function tryFocus(node) {
+  var tryFocus = function tryFocus2(node) {
     if (node === false) {
       return;
     }
-    if (node === _getActiveElement(document)) {
+    if (node === getActiveElement(document)) {
       return;
     }
     if (!node || !node.focus) {
-      _tryFocus(getInitialFocusNode());
+      tryFocus2(getInitialFocusNode());
       return;
     }
     node.focus({
@@ -791,9 +797,9 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
         });
       }
       if (nextNode) {
-        _tryFocus(nextNode);
+        tryFocus(nextNode);
       } else {
-        _tryFocus(state.mostRecentlyFocusedNode || getInitialFocusNode());
+        tryFocus(state.mostRecentlyFocusedNode || getInitialFocusNode());
       }
     }
     state.recentNavEvent = void 0;
@@ -809,18 +815,17 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       if (isTabEvent(event)) {
         event.preventDefault();
       }
-      _tryFocus(destinationNode);
+      tryFocus(destinationNode);
     }
   };
-  var checkTabKey = function checkTabKey2(event) {
-    if (config.isKeyForward(event) || config.isKeyBackward(event)) {
-      checkKeyNav(event, config.isKeyBackward(event));
-    }
-  };
-  var checkEscapeKey = function checkEscapeKey2(event) {
+  var checkKey = function checkKey2(event) {
     if (isEscapeEvent(event) && valueOrHandler(config.escapeDeactivates, event) !== false) {
       event.preventDefault();
       trap.deactivate();
+      return;
+    }
+    if (config.isKeyForward(event) || config.isKeyBackward(event)) {
+      checkKeyNav(event, config.isKeyBackward(event));
     }
   };
   var checkClick = function checkClick2(e) {
@@ -843,8 +848,8 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
     }
     activeFocusTraps.activateTrap(trapStack, trap);
     state.delayInitialFocusTimer = config.delayInitialFocus ? delay(function() {
-      _tryFocus(getInitialFocusNode());
-    }) : _tryFocus(getInitialFocusNode());
+      tryFocus(getInitialFocusNode());
+    }) : tryFocus(getInitialFocusNode());
     doc.addEventListener("focusin", checkFocusIn, true);
     doc.addEventListener("mousedown", checkPointerDown, {
       capture: true,
@@ -858,11 +863,10 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       capture: true,
       passive: false
     });
-    doc.addEventListener("keydown", checkTabKey, {
+    doc.addEventListener("keydown", checkKey, {
       capture: true,
       passive: false
     });
-    doc.addEventListener("keydown", checkEscapeKey);
     return trap;
   };
   var removeListeners = function removeListeners2() {
@@ -873,8 +877,7 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
     doc.removeEventListener("mousedown", checkPointerDown, true);
     doc.removeEventListener("touchstart", checkPointerDown, true);
     doc.removeEventListener("click", checkClick, true);
-    doc.removeEventListener("keydown", checkTabKey, true);
-    doc.removeEventListener("keydown", checkEscapeKey);
+    doc.removeEventListener("keydown", checkKey, true);
     return trap;
   };
   var checkDomRemoval = function checkDomRemoval2(mutations) {
@@ -885,7 +888,7 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       });
     });
     if (isFocusedNodeRemoved) {
-      _tryFocus(getInitialFocusNode());
+      tryFocus(getInitialFocusNode());
     }
   };
   var mutationObserver = typeof window !== "undefined" && "MutationObserver" in window ? new MutationObserver(checkDomRemoval) : void 0;
@@ -963,7 +966,7 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
       var finishDeactivation = function finishDeactivation2() {
         delay(function() {
           if (returnFocus) {
-            _tryFocus(getReturnFocusNode(state.nodeFocusedBeforeActivation));
+            tryFocus(getReturnFocusNode(state.nodeFocusedBeforeActivation));
           }
           onPostDeactivate === null || onPostDeactivate === void 0 || onPostDeactivate();
         });
@@ -1018,7 +1021,7 @@ var createFocusTrap = function createFocusTrap2(elements, userOptions) {
   return trap;
 };
 
-// node_modules/.pnpm/@vueuse+integrations@11.0.3_focus-trap@7.6.0_vue@3.5.4/node_modules/@vueuse/integrations/useFocusTrap.mjs
+// node_modules/.pnpm/@vueuse+integrations@11.0.3_focus-trap@7.5.4_vue@3.5.4/node_modules/@vueuse/integrations/useFocusTrap.mjs
 function useFocusTrap(target, options = {}) {
   let trap;
   const { immediate, ...focusTrapOptions } = options;
@@ -1091,7 +1094,7 @@ tabbable/dist/index.esm.js:
 
 focus-trap/dist/focus-trap.esm.js:
   (*!
-  * focus-trap 7.6.0
+  * focus-trap 7.5.4
   * @license MIT, https://github.com/focus-trap/focus-trap/blob/master/LICENSE
   *)
 */

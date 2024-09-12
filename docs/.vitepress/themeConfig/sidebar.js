@@ -30,9 +30,9 @@ export const sidebar =
                 text: '浏览器相关',
                 collapsible: true,
                 items: [
-                    { text: 'Git', link: '/articles/browser/git' },
-                    { text: 'Markdown', link: '/articles/browser/markdown' },
-                    { text: 'VSCode', link: '/articles/browser/vscode' },
+                    { text: '浏览器渲染原理', link: '/articles/browser/render.md' },
+                    { text: '事件循环', link: '/articles/browser/eventloop.md' },
+                    { text: 'V8引擎', link: '/articles/browser/V8.md' },
                 ]
             },
             {
@@ -82,10 +82,10 @@ export const sidebar =
     ],
     '/blog/': [
         {
-            text: 'Blog',
+            text: '博客',
             items: [
                 // This shows `/blog/index.md` page.
-                { text: 'Index', link: '/blog/' }, // /blog/index.md
+                { text: 'vitepress搭建文档', link: '/blog/' }, // /blog/index.md
                 // { text: 'Three', link: '/blog/three' }, // /blog/three.md
                 // { text: 'Four', link: '/blog/four' } // /blog/four.md
             ]

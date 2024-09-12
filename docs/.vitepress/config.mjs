@@ -41,7 +41,7 @@ export default defineConfig({
       },
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/mazy699' }
+      { icon: 'github', link: 'https://github.com/healer-V/docs' }
     ],
     outline: {
       level: [2, 6],
@@ -70,7 +70,8 @@ export default defineConfig({
       next: '下一篇'
     },
     editLink: {
-      repo: 'https://github.com/mazy699/font-docs',
+      repo: 'https://github.com/healer-V/docs',
+      link: 'https://github.com/healer-V/docs/',
       text: '在 GitHub 上编辑此页',
       ariaLabel: '在 GitHub 上编辑此页'
     },
