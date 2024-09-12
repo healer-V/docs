@@ -7,11 +7,14 @@ export default defineConfig({
   description: "学习笔记，经验心得",
   lang: 'zh-CN',
   base: '/font-docs/',
+  head: [
+    ['link',{ rel: 'icon', href: '/logo.png'}],
+  ],
     //启用深色模式
   // appearance:'dark', 
   themeConfig: {
+    logo: '/logo.png',
     // https://vitepress.dev/reference/default-theme-config
-    logo: '/logo.png', // 表示docs/public/logo.png
     markdown: {
       lineNumbers: true
     },

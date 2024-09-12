@@ -7,8 +7,9 @@ hero:
   text: "学习笔记，经验心得"
   tagline: /斜杠青年/人间清醒/工具控/
   image:
-  src: /avatar.png
-  alt: 前端文档
+    src: /developer.gif
+    # src: /avatar.png
+    alt: 头像
   actions:
     - theme: brand
       text: 进入主页
