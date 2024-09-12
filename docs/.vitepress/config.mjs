@@ -7,11 +7,13 @@ export default defineConfig({
   description: "学习笔记，经验心得",
   lang: 'zh-CN',
   base: '/font-docs/',
+    //启用深色模式
+  // appearance:'dark', 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.png', // 表示docs/public/logo.png
     markdown: {
-      lineNumbers: true,
+      lineNumbers: true
     },
     i18nRouting: true,
     nav: nav,
@@ -42,12 +44,18 @@ export default defineConfig({
       level: [2, 6],
       label: '目录'
     },
+    // lastUpdated: {
+    //   text: '最后更新于',
+    //   formatOptions: {
+    //     dateStyle: 'full',
+    //     timeStyle: 'medium'
+    //   }
+    // },
     lastUpdated: {
-      text: '最后更新于',
-      formatOptions: {
-        dateStyle: 'full',
-        timeStyle: 'medium'
-      }
+      text: '更新于',
+      linkToGitHub: true,
+      prefix: '最后更新于',
+      postfix: ''
     },
     darkModeSwitchLabel: '主题',
     lightModeSwitchTitle: '切换到浅色模式',
@@ -58,8 +66,13 @@ export default defineConfig({
       prev: '上一篇',
       next: '下一篇'
     },
+    editLink: {
+      repo: 'https://github.com/mazy699/font-docs',
+      text: '在 GitHub 上编辑此页',
+      ariaLabel: '在 GitHub 上编辑此页'
+    },
     footer: {
-      copyright: 'MIT Licensed | Copyright © 2024-present Mazy'
+      copyright: 'MIT Licensed | Copyright © 2024-present xianling'
     },
   }
 })

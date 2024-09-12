@@ -20,11 +20,11 @@ const { theme, page, frontmatter } = useData()
 ### Theme Data
 <pre>{{ theme }}</pre>
 
-### Page Data
-<pre>{{ page }}</pre>
+<!-- ### Page Data
+<pre>{{ page }}</pre> -->
 
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+<!-- ### Page Frontmatter
+<pre>{{ frontmatter }}</pre> -->
 ```
 
 <script setup>
