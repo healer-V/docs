@@ -6,7 +6,7 @@ export default defineConfig({
   title: "xianling Docs",
   description: "学习笔记，经验心得",
   lang: 'zh-CN',
-  base: '/font-docs/',
+  base: '/docs/',
   head: [
     ['link',{ rel: 'icon', href: '/logo.png'}],
   ],
