@@ -8,12 +8,12 @@ export default defineConfig({
   lang: 'zh-CN',
   base: '/docs/',
   head: [
-    ['link',{ rel: 'icon', href: '/docs/logo.png'}],
+    ['link',{ rel: 'icon', href: '/docs/logo_new.png'}],
   ],
     //启用深色模式
   // appearance:'dark', 
   themeConfig: {
-    logo: '/docs/logo.png',
+    logo: '/docs/logo_new.png',
     // https://vitepress.dev/reference/default-theme-config
     markdown: {
       lineNumbers: true
