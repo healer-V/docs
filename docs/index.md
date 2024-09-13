@@ -23,7 +23,7 @@ features:
   - title: web前端
     icon: 🤹
     #   src: /ext.svg
-    details: 国内某互联网厂搬砖。
+    details: 某互联网厂搬砖。
   - title: 喜欢美学
     icon: 🎨
     #   src: /develop.svg

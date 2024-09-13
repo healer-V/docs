@@ -31,8 +31,12 @@ npm install -g pnpm
 :::
 
 ## 二、安装
-
-### 安装vitepress
+### 创建一个目录
+```sh
+mkdir Docs
+cd ./Docs
+```
+### 安装vitepress依赖
 ::: code-group
 
 ```sh [npm]
@@ -50,10 +54,23 @@ yarn add -D vitepress
 ```
 :::
 ### 初始化向导
-```bash        
-# 使用 pnpm 安装
-pnpm vitepress init
+::: code-group
+```sh [npm]
+# 使用 npm 安装
+npx vitepress init
 ```
+```sh [pnpm]
+# 使用 pnpm 安装
+pnpm run vitepress init
+```
+```sh [yarn]
+# 使用 yarn 安装
+yarn vitepress init
+```
+:::
+
+
+
 ::: details 
 
 如果你直接回车，则是放在了根目录 ./，那你的 脚本命令 也要修改一下    
@@ -114,10 +131,23 @@ dist
 ```
 ## 三、启动项目
 > 本地启动开发环境，来开发你的网站
-```bash
+::: code-group
+```sh [npm]
+# 使用 npm
+npm run docs:dev
+```
+```sh [pnpm]
+# 使用 pnpm
 pnpm run docs:dev
 ```
-生成了一个本地 5173 端口的链接，复制到浏览器打开进行预览
+```sh [yarn]
+# 使用 yarn
+yarn run docs:dev
+```
+:::
+
+> 打开浏览器，输入 `http://localhost:5173/` 访问项目
+
 ```
 D:\vitepress>pnpm run docs:dev
 
@@ -136,20 +166,37 @@ D:\vitepress>pnpm run docs:dev
 
 
 
-## 四、配置
-### 目录结构
-```
+## 四、目录结构
+::: tip 提示
+
+ 生成的目录结构如下，其中 `docs` 目录是默认的，你可以根据自己的需求进行调整。
+:::
+
+```md
 .
+├─ .github                       
+│  └─ workflows                  
+│       └─ deploy.yml            --> 这个文件自建，用于部署脚本
 ├─ docs
 │  ├─ .vitepress
-│  │  └─ config.mts          <-- 配置文件已由ts变成mts
-│  ├─ api-examples.md        <-- 文章1
-│  ├─ markdown-examples.md   <-- 文章2
-│  ├─ guide                  <-- 新增目录
-│  │   └─ index.md           <-- 新增目录的首页
-│  └─ index.md               <-- 首页
+│  │    ├─ components            --> 这个目录自建，用于存放组件
+│  │    │    └─ gitalk.vue       --> 这个文件自建，用于引入gitalk
+│  │    ├─ theme                 --> 这个目录自建，用于存放主题相关文件
+│  │    │    ├─ custom.css       --> 这个文件自建，用于存放自定义样式
+│  │    │    └─ index.ts         --> 这个文件自建，用于引入主题和组件
+│  │    └─ config.mts
+│  ├─ blog                       --> 这个目录自建，用于存放博客内容
+│  ├─ public                     --> 这个目录自建，用来存放公共资源等，引用的时候路径不需要包含public
+│  │    ├─ logo.ico              --> 浏览器图标，自己找图
+│  │    └─ logo.png              --> 首页右侧图片和logo，自己找图
+│  ├─ api-examples.md
+│  ├─ markdown-examples.md
+│  └─ index.md
 └─ package.json
+
 ```
+
+
 生成的 HTML 页面会是这样：
 ```
 api-examples.md         -->    /api-examples.html
@@ -158,123 +205,8 @@ index.md                -->    /index.html (可以通过 / 访问)
 guide/index.md          -->    /guide/index.html (可以通过 /guide/ 访问)
 
 ```
-
-> 展开右侧目录，找到 config.mts
-
-```
-.
-├─ docs
-│  ├─ .vitepress
-│  │  └─ config.mts           <--  配置文件，支持js、ts、mjs、mts
-│  ├─ api-examples.md
-│  ├─ markdown-examples.md
-│  └─ index.md
-└─ package.json
-```
-配置config.mts文件，修改其中的配置项。
-```js
-import { defineConfig } from 'vitepress'
-
-// https://vitepress.dev/reference/site-config
-export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
-  themeConfig: {
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
-
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
-})
-```
-
-## 五、目录结构
-
-```
-.
-├── docs
-│   ├── .vitepress
-│   │   ├── config.js
-│   │   ├── styles
-│   │   │   ├── index.styl
-│   │   ├── components
-│   │   │   ├── MyComponent.vue
-│   ├── index.md
-│   ├── about.md
-│   ├── guide
-│   │   ├── index.md
-│   │   ├── getting-started.md
-│   ├── config.md
-│   ├── cli.md
-│   ├── api.md
-├── package.json
-├── vite.config.js
-```
-
-1. `docs` 目录是你的文档目录，里面包含了所有的markdown文件。
-2. `.vitepress` 目录是vitepress的配置文件目录。
-3. `config.js` 是vitepress的配置文件。
-4. `styles` 目录是vitepress的样式文件目录。
-5. `components` 目录是vitepress的组件目录。
-6. `index.md` 是首页的markdown文件。
-7. `about.md` 是关于页面的markdown文件。
-8. `guide` 目录是指南页面的目录。
-9. `getting-started.md` 是指南页面的markdown文件。
-10. `config.md` 是配置页面的markdown文件。
-11. `cli.md` 是命令行页面的markdown文件。
-12. `api.md` 是API页面的markdown文件。
-13. `package.json` 是npm的配置文件。
-14. `vite.config.js` 是vite的配置文件。
-
-## 六、配置
-
-vitepress的配置文件是`.vitepress/config.js`，它包含了vitepress的所有配置项。
-
-```js
-module.exports = {
-  title: 'My Blog',
-  description: 'My personal blog',
-  base: '/', // 部署到github pages，需要设置'/++yourGithubRepoName++'
-  head: [
-    ['link', { rel: 'icon', href: '/logo.png' }]
-  ],
-  themeConfig: {
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/' },
-      { text: 'Config', link: '/config/' },
-      { text: 'CLI', link: '/cli/' },
-      { text: 'API', link: '/api/' }
-    ],
-    sidebar: [
-      '/',
-      '/guide/',
-      '/config/',
-      '/cli/',
-      '/api/'
-    ]
-  }
-}
-```
-
-## 七、页面
-
-### 站点配置
-#### 元数据
+## 五、页面
+### 元数据
 > 包含了 `lang` `title` `description` 信息
 ```js
 import { defineConfig } from 'vitepress'
@@ -285,8 +217,122 @@ export default defineConfig({
   description: "我的vitpress文档教程",  //站点描述
 })
 ```
-#### 网页标题
-> 包含了 `title` `description` 信息
+### 首页
+
+::: tip 注意
+编辑`./docs/index.md`
+:::
+
+```md 
+<!-- ./docs/index.md -->
+layout: Home
+
+hero:
+  name: "献苓"
+  text: "学习笔记，经验心得"
+  tagline: /斜杠青年/人间清醒/工具控/
+  image:
+    src: /developer.gif
+    # src: /avatar.png
+    alt: 头像
+  actions:
+    - theme: brand
+      text: 进入主页
+      link: /articles/
+
+    - theme: alt
+      text: 个人成长
+      link: /api-examples
+
+features:
+  - title: web前端
+    icon: 🤹
+    #   src: /title1.svg
+    details: 某互联网厂搬砖。
+  - title: 喜欢美学
+    icon: 🎨
+    #   src: /develop.svg
+    details: 热爱美学，喜欢用自定义各类主题，更加个性化。
+  - title: 斜杠青年
+    icon: 🧩
+    #   src: /title2.svg
+    details: 平平无奇但却热爱学习的斜杠青年。
+
+```
+### 主题配置
+::: tip 说明
+编辑`./docs/.vitepress/theme/index.ts`
+引入默认主题
+引入自定义css文件
+参考以下官方链接: [https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css](https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css)
+:::
+```ts
+// ./docs/.vitepress/theme/index.ts
+import DefaultTheme from 'vitepress/theme';
+import './custom.css';
+
+export default {
+  ...DefaultTheme,
+  enhanceApp(ctx) {
+    DefaultTheme.enhanceApp(ctx)
+  },
+};
+```
+> 编辑./docs/.vitepress/theme/custom.css
+```css
+/* ./docs/.vitepress/theme/custom.css */
+/* 自定义样式 */
+/* 整体配色改成绿色 */
+:root {
+    --vp-c-green-1: #52b788;
+    --vp-c-green-2: #52b788;
+    --vp-c-green-3: #52b788;
+    --vp-c-green-soft: rgba(16, 185, 129, 0.16);
+}
+/* 整体配色改成绿色（暗黑模式） */
+.dark {
+    --vp-c-green-1: #52b788;
+    --vp-c-green-2: #52b788;
+    --vp-c-green-3: #52b788;
+    --vp-c-green-soft: rgba(16, 185, 129, 0.16);
+}
+/* 整体配色改成绿色 */
+:root {
+    --vp-c-brand-1: var(--vp-c-green-1);
+    --vp-c-brand-2: var(--vp-c-green-2);
+    --vp-c-brand-3: var(--vp-c-green-3);
+    --vp-c-brand-soft: var(--vp-c-green-soft);
+}
+:root {
+  /* 设置主题字体颜色 */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
+
+  /* 设置右图像渐变 */
+  --vp-home-hero-image-background-image: linear-gradient( -45deg, #6a00f4 30%, #ffffff 70% );
+  --vp-home-hero-image-filter: blur(130px);
+}
+
+/* 引用块配色 */
+.vp-doc blockquote {
+  background-color: #ecf8f3;
+  border-left: solid #42b983 !important;;
+}
+/* 引用块配色（暗黑模式） */
+.dark .vp-doc blockquote {
+  background-color: #4a5f53;
+  border-left: solid #b9eed6 !important;;
+}
+/* 引用块配色（暗黑模式字体） */
+.dark .vp-doc blockquote > p {
+  color: #92cab2;
+}
+```
+
+
+
+### 网页标题
+> 包含了 `title`、`description` 信息
 ```js
 export default defineConfig({
   lang: 'zh-CN',
@@ -297,7 +343,7 @@ export default defineConfig({
   // titleTemplate: false, //关闭标题
 })
 ```
-#### Fav图标
+### Fav图标
 > 路径默认public目录，在 `docs`目录下新建 `public`目录即可
 ```js
 import { defineConfig } from 'vitepress'
@@ -355,7 +401,7 @@ export default defineConfig({
 })
 ```
 :::
-#### 忽略死链
+### 忽略死链
 ::: warning 
 不建议配置，当你的链接指向路径错误，自动忽略会导致问题无法排查
 
@@ -365,7 +411,7 @@ export default defineConfig({
 })
 ```
 :::
-#### Logo
+### Logo
 > 路径默认public目录，在 `docs`目录下新建 `public`目录即可
 
 ```md
@@ -630,8 +676,7 @@ export default defineConfig({
 })
 ```
 
-### 首页
->  Frontmatter ，在 index.md 中进行配置和修改
+
 ### 侧边栏
 ```js
 export default defineConfig({
@@ -722,7 +767,6 @@ export default defineConfig({
 如果你不想开启，将它设为 true ，或者直接不配置
 :::
 
-### 编辑本页
 ### 上次更新
 > 添加页面的更新时间
 ::: details 报错：spawn git EAGAIN
@@ -788,9 +832,95 @@ export default defineConfig({
 
 })
 ```
+### 核心配置
+> 在`./docs/.vitepress/config.mts`文件中配置，具体如下:
 
-## 八、静态部署到 GitHub Pages
-### Base
+```js
+import { defineConfig } from 'vitepress'
+
+export default defineConfig({
+  // 标题（浏览器后缀）
+  title: "Goalonez",
+  // 描述
+  description: "Goalonez Blog",
+  // 语言
+  lang: 'zh-CN',
+  // 根目录，如果需要部署成htpps://github.com/blog/的形式，则设置/blog/
+  base: '/',
+  // 文档最后更新时间展示
+  lastUpdated: true,
+  // 去除浏览器链接中的.html后缀
+  cleanUrls: true,
+  // markdown显示行数
+  markdown: {
+    lineNumbers: true,
+  },
+  // head设置
+  head: [
+    // 浏览器中图标
+    ["link", {rel: "icon", href: "/logo.ico"}],
+    // 添加百度统计代码
+    ['script', {},
+    `
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?自己申请";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    `
+    ]
+  ],
+  // 主题设置
+  themeConfig: {
+    // 左上角logo
+    logo: '/logo.png',
+    // 首页右上角导航栏
+    nav: [
+      { text: 'Home', link: '/' },
+      { text: 'Blog', link: '/aboutme' }
+    ],
+    // 文章左侧导航栏
+    sidebar: [
+      {
+        text: '博客',
+        items: [
+          { text: 'About Me', link: '/aboutme' }
+        ]
+      }
+    ],
+    // 文章底部导航栏的自定义配置，默认是英语
+    docFooter: {
+			prev: '上一篇',
+			next: '下一篇',
+		},
+    // 文章右侧目录展示级别和标题
+    outline: {
+      level: [2, 6],
+      label: '文章目录'
+    },
+    // 文章更新时间的前缀文本
+    lastUpdatedText: '最后更新时间',
+    // 开启本地搜索（左上角）
+    search: {
+      provider: 'local',
+    },
+    // 右上角Github链接
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/Goalonez/goalonez.github.io' }
+    ],
+    // 页脚
+    footer: {
+			copyright: 'Copyright © 2023-present Goalonez',
+		}
+  }
+})
+```
+
+
+## 六、静态部署到 GitHub Pages
+### Base配置
 ::: warning 
 base必须配置，否则打包会丢失css样式！！
 
@@ -801,8 +931,7 @@ base必须配置，否则打包会丢失css样式！！
 
 ```js
 export default defineConfig({
-    base: '/', //网站部署的路径，默认根目录
-    // base: '/vitepress/', //网站部署到github的vitepress这个仓库里
+    base: '/docs/', //网站部署到github的这个仓库名字
 })
 ```
 ::: wanring 
@@ -814,13 +943,15 @@ export default defineConfig({
 
   //fav图标
   head: [
-    ['link',{ rel: 'icon', href: '/vitepress/logo.png'}], //部署到vitepress仓库
+    ['link',{ rel: 'icon', href: '/docs/logo.png'}], //部署到vitepress仓库
   ],
 
 })
 ```
 
 ### 部署
+
+#### 手动打包部署
 ::: code-group
 ```bash [npm]
 npm run docs:build
@@ -834,4 +965,116 @@ yarn docs:build
 :::
 > 构建完成后，将 dist 文件夹里的文件全部上传到 GitHub Pages 仓库的 gh-pages 分支下，然后访问 https://yiov.github.io/vitepress/ 即可访问部署好的网站。
 >
-::: details 如果你需要本地预览，可以使用 `vitepress preview` 命令，它会启动一个本地服务器，并打开浏览器访问 http://localhost:3000/vitepress/ 。
+#### github actions 自动化部署
+
+> 配置文件 `.github/workflows/deploy.yml`
+
+```yaml
+name: docs
+
+on:
+  # 每当 push 到 main 分支时触发部署
+  push:
+    branches: [main]
+  # 手动触发部署
+  workflow_dispatch:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          # 选择要使用的 pnpm 版本
+          version: 9.8.0
+          # 使用 pnpm 安装依赖
+          run_install: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # 选择要使用的 node 版本
+          node-version: 20.17.0
+          # 缓存 pnpm 依赖
+          cache: pnpm
+
+      # 运行构建脚本
+      - name: Build VuePress site
+        run: pnpm docs:build
+
+      # 查看 workflow 的文档来获取更多信息
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          # 部署到 gh-pages 分支
+          target_branch: gh-pages
+          # 部署目录为 VitePress 的默认输出目录
+          build_dir: docs/.vitepress/dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+```
+1. 首先，我们需要在项目根目录下创建一个 `.github/workflows/deploy.yml` 文件，并在其中添加以下内容：
+2. `name: docs` ： 定义工作流程的名称，可以自定义。
+3. `on`: 定义触发工作流程的事件，这里我们选择 push 到 main 分支时触发部署，也可以选择手动触发。
+4. `jobs`: 定义工作流程的步骤，这里我们只定义一个 docs 步骤。
+5. `runs-on`: 定义运行工作流程的机器，这里我们选择 ubuntu-latest。
+6. `steps`: 定义工作流程的步骤，这里我们分为以下几步：
+7. `uses: actions/checkout@v4 `： 克隆仓库，并拉取全部提交记录。
+8. `name: Setup pnpm` ： 安装 pnpm 并缓存依赖。
+9. `name: Setup Node.js` ： 安装 Node.js 并缓存依赖。
+10. `name: Build VuePress site` ： 运行构建脚本。
+11. `name: Deploy to GitHub Pages` ： 部署到 GitHub Pages。
+12. `env`: 定义环境变量，这里我们只定义 GITHUB_TOKEN。
+13. `GITHUB_TOKEN`: 我们需要在 GitHub 项目设置中添加一个 Access Token，并将其添加到 Secrets 中，以便于 GitHub Actions 部署。
+
+::: tip 提示
+如果需要部署到其他分支，比如 gh-pages，则需要修改 target_branch 字段。
+:::
+
+#### 上传代码到远程仓库
+
+::: tip 提示
+如果没有配置远程仓库，则需要先配置远程仓库，然后再上传代码。
+新建GitHub仓库名为`docs`
+将本地代码上传到这个仓库的main分支
+:::
+```bash
+git init
+git add.
+git commit -m "first commit"
+git remote add origin git地址
+git pull origin main
+git push -u  -f origin main
+```
+::: tip 配置GitHub token
+:::
+> - 打开GitHub仓库，点击头像
+> - 点击Settings
+> - 点击Developer settings
+> - 点击Personal access tokens
+> - 点击Generate new token
+> - 勾选repo，点击Generate token
+> - 复制token，点击Done
+> - 回到项目根目录，打开`.github/workflows/deploy.yml`文件
+> - 点击Secrets
+> - 点击New repository secret
+> - 输入Name，Value，点击Add secret
+> - 输入Name为`ACCESS_TOKEN`，Value为GitHub token，点击Add secret
+> - 点击Actions
+> - 点击docs
+> - 点击Run workflow
+> - 点击Actions
+> - 点击deploy-docs
+> - 点击Details
+> - 点击View more actions
+> - 点击deploy-docs
+> - 点击Run workflow
+> - 等待部署完成
