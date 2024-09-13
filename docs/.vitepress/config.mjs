@@ -8,12 +8,12 @@ export default defineConfig({
   lang: 'zh-CN',
   base: '/docs/',
   head: [
-    ['link',{ rel: 'icon', href: '/logo.png'}],
+    ['link',{ rel: 'icon', href: '/docs/logo.png'}],
   ],
     //启用深色模式
   // appearance:'dark', 
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/docs/logo.png',
     // https://vitepress.dev/reference/default-theme-config
     markdown: {
       lineNumbers: true
@@ -47,18 +47,12 @@ export default defineConfig({
       level: [2, 6],
       label: '目录'
     },
-    // lastUpdated: {
-    //   text: '最后更新于',
-    //   formatOptions: {
-    //     dateStyle: 'full',
-    //     timeStyle: 'medium'
-    //   }
-    // },
     lastUpdated: {
-      text: '更新于',
-      linkToGitHub: true,
-      prefix: '最后更新于',
-      postfix: ''
+      text: '最后更新于',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium'
+      }
     },
     darkModeSwitchLabel: '主题',
     lightModeSwitchTitle: '切换到浅色模式',
