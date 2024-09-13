@@ -13,7 +13,7 @@ export default defineConfig({
     //启用深色模式
   // appearance:'dark', 
   themeConfig: {
-    logo: '/docs/logo_new.png',
+    logo: '/logo_new.png',
     // https://vitepress.dev/reference/default-theme-config
     markdown: {
       lineNumbers: true
