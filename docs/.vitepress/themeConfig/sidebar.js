@@ -86,8 +86,30 @@ export const sidebar =
             items: [
                 // This shows `/blog/index.md` page.
                 { text: 'vitepress搭建文档', link: '/blog/' }, // /blog/index.md
-                // { text: 'Three', link: '/blog/three' }, // /blog/three.md
+                // { text: 'Three', link: '/blog/html' }, // /blog/three.md
                 // { text: 'Four', link: '/blog/four' } // /blog/four.md
+            ]
+        }
+    ],
+    '/HarmonyOS/': [
+        {
+            text: '鸿蒙',
+            items: [
+                // This shows `/HarmonyOS/index.md` page.
+                { text: '鸿蒙开发', link: '/HarmonyOS/' }, // /HarmonyOS/index.md
+                // { text: 'Three', link: '/HarmonyOS/html' }, // /HarmonyOS/three.md
+                // { text: 'Four', link: '/HarmonyOS/four' } // /HarmonyOS/four.md
+            ]
+        }
+    ],
+    '/interview/': [
+        {
+            text: '面试题',
+            items: [
+                // This shows `/interview/index.md` page.
+                { text: 'html', link: '/interview/html' }, // /interview/index.md
+                { text: 'css', link: '/interview/' }, // /interview/css.md
+                // { text: 'Four', link: '/interview/four' } // /interview/four.md
             ]
         }
     ]
