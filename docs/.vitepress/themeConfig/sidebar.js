@@ -102,14 +102,47 @@ export const sidebar =
             ]
         }
     ],
+    'project/' : [
+        {
+            text: '🥪 项目要点',
+            items: [
+                // This shows `/project/index.md` page.
+                { text: '移动端项目要点', link: '/project/' }, // /project/index.md
+                { text: 'PC端项目要点', link: '/project/pc' }, // /project/three.md
+                // { text: 'Four', link: '/project/four' } // /project/four.md
+            ]
+        }
+    ],
     '/interview/': [
         {
-            text: '面试题',
+            text: '🍐 面试题',
             items: [
                 // This shows `/interview/index.md` page.
                 { text: 'html', link: '/interview/html' }, // /interview/index.md
                 { text: 'css', link: '/interview/' }, // /interview/css.md
                 // { text: 'Four', link: '/interview/four' } // /interview/four.md
+            ]
+        }
+    ],
+    '/about/': [
+        {
+            text: '🍒 关于',
+            items: [
+                // This shows `/about/index.md` page.
+                { text: '关于我', link: '/about/' }, // /about/index.md
+                { text: '友情链接', link: '/about/links' }, // /about/links.md
+                // { text: 'Four', link: '/about/four' } // /about/four.md
+            ]
+        }
+    ],
+    '/diary/' : [
+        {
+            text:'🍒随记',
+            items: [
+                {text: '2023年', link: '/diary/index.md'},
+                {text: '2024年', link: '/diary/2024'},
+                {text: '2025年', link: '/diary/2025'},
+                // This shows `/diary/index.md` page.
             ]
         }
     ]

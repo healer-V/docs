@@ -1,21 +1,23 @@
 export const nav = [
     { 
-        text: '🏠首页',
-        link: '/articles/',
+        text: '🏠首页',link: '/articles/',
     },
     { 
-        text: '🗃️博客', link: '/blog/'
+        text: '🍠博客', link: '/blog/'
     },
     { 
-        text: '🗃️鸿蒙', link: '/HarmonyOS/'
+        text: '🥣 鸿蒙', link: '/HarmonyOS/'
     },
     { 
-        text: '🐙面试题', link: '/interview/html'
+        text: '🥥 项目要点', link: '/project/'
     },
     { 
-        text: '📬随记', link: '/diary/'
+        text: '🍷 面试题', link: '/interview/html'
     },
     { 
-        text: '🍉关于', link: '/about/'
+        text: '📬随记', link: '/diary/',
+    },
+    { 
+        text: '🍒关于', link: '/about/'
     }
 ]
