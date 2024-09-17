@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.CDeai9Ig.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"HarmonyOS/index.md","filePath":"HarmonyOS/index.md","lastUpdated":1726286961000}'),n={name:"HarmonyOS/index.md"};function r(o,s,d,c,i,m){return a(),t("div")}const f=e(n,[["render",r]]);export{_ as __pageData,f as default};
