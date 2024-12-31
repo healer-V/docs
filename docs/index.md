@@ -13,7 +13,8 @@ hero:
   actions:
     - theme: brand
       text: 进入主页
-      link: /articles/
+      # link: /articles/
+      link: /articles/basic/index.md
 
     - theme: alt
       text: 个人成长
@@ -23,11 +24,11 @@ features:
   - title: web前端
     icon: 🤹
     #   src: /ext.svg
-    details: 某互联网厂搬砖。
+    details: 热衷于前端技术。
   - title: 喜欢美学
     icon: 🎨
     #   src: /develop.svg
-    details: 热爱美学，喜欢用自定义各类主题，更加个性化。
+    details: 热爱美学，喜欢自定义各类主题。
   - title: 斜杠青年
     icon: 🧩
     #   src: /ext-2.svg

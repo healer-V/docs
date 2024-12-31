@@ -2,18 +2,17 @@ export const sidebar =
 {
     '/articles/':[
         {
-        text: '文章',
+        text: '首页',
         items: [
+            // {
+            //     text: '🍇前言',
+            //     link: '/articles/'
+            // },
             {
-                text: '🧀站点介绍',
-                link: '/articles/'
-            },
-            {
-                text: '🥩前端基础',
+                text: '🥔前端基础',
                 // collapsible: true,
                 items: [
-                    { text: 'HTML', link: '/articles/basic/html.md' },
-                    { text: 'CSS', link: '/articles/basic/css.md' },
+                    { text: 'HTML&CSS', link: '/articles/basic/index.md' },
                     { text: 'Javascript', link: '/articles/basic/javascript.md' },
                     { text: 'TypeScript', link: '/articles/basic/typescript.md' },
                 ]
@@ -118,9 +117,9 @@ export const sidebar =
             text: '🍐 面试题',
             items: [
                 // This shows `/interview/index.md` page.
-                { text: 'html', link: '/interview/html' }, // /interview/index.md
-                { text: 'css', link: '/interview/' }, // /interview/css.md
-                // { text: 'Four', link: '/interview/four' } // /interview/four.md
+                { text: 'html', link: '/interview/' }, // /interview/index.md
+                { text: 'css', link: '/interview/css' }, // /interview/css.md
+                { text: 'javascript', link: '/interview/javascript' } // /interview/four.md
             ]
         }
     ],
