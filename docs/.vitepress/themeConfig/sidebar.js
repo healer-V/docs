@@ -15,6 +15,7 @@ export const sidebar =
                     { text: 'HTML&CSS', link: '/articles/basic/index.md' },
                     { text: 'Javascript', link: '/articles/basic/javascript.md' },
                     { text: 'TypeScript', link: '/articles/basic/typescript.md' },
+                    { text: 'Node.js', link: '/articles/basic/nodejs.md' },
                 ]
             },
             {

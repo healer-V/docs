@@ -2,14 +2,14 @@
 
 
 ### 1、html5有哪些新特性
-
-> (1)绘画 `canvas`;
-> (2)用于媒介回放的 video 和 audio 元素;
-> (3)本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失;
-> (4)sessionStorage 的数据在浏览器关闭（回话结束）后自动删除;
-> (5)语意化更好的内容元素，比如 article、footer、header、nav、section;
-> (6)表单控件增强：calendar、date、time、email、url、search;
-> (7)新技术`webworker`, `websocket`, `Geolocation(定位)`;
+>[!tip]新特性
+> 1. 绘画 `canvas`;
+> 2. 用于媒介回放的 `video` 和 `audio` 元素;
+> 3. 本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失;
+> 4. sessionStorage 的数据在浏览器关闭（回话结束）后自动删除;
+> 5. 语义化更好的内容元素，比如 article、footer、header、nav、section;
+> 6. 表单控件增强：color、date、time、email、url、search;
+> 7. 新技术`webworker`, `websocket`, `Geolocation(定位)`;
 
 
 
@@ -23,7 +23,7 @@
 
 > 1. src 属性的作用是 **指定要加载的资源路径**，常出现于 `<script>`、`<img>`、`<audio>`、`<video>` 和 `<iframe>` 等标签中，用于加载 JavaScript 脚本、图像、音频、视频或嵌入的网页文件。
 >
-> 2. href 属性的作用是 **指定超链接的目标地址 **或定义文档与外部资源的关联，主要用在 `<a>`、`<link>`、`<area>` 等标签中
+> 2. href 属性的作用是 **指定超链接的目标地址**或定义文档与外部资源的关联，主要用在 `<a>`、`<link>`、`<area>` 等标签中
 
 #### 2-2.资源加载方式不同
 
