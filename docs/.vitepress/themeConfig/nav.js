@@ -12,7 +12,7 @@ export const nav = [
         text: '🥥项目要点', link: '/project/'
     },
     { 
-        text: '🍓面试题', link: '/interview/html'
+        text: '🍓面试题', link: '/interview/'
     },
     { 
         text: '📬随记', link: '/diary/',

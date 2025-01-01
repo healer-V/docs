@@ -92,7 +92,7 @@ export const sidebar =
     ],
     '/HarmonyOS/': [
         {
-            text: '鸿蒙',
+            text: '🍚HarmonyOS',
             items: [
                 // This shows `/HarmonyOS/index.md` page.
                 { text: '鸿蒙开发', link: '/HarmonyOS/' }, // /HarmonyOS/index.md
@@ -103,7 +103,7 @@ export const sidebar =
     ],
     'project/' : [
         {
-            text: '🥪 项目要点',
+            text: '🥥项目要点',
             items: [
                 // This shows `/project/index.md` page.
                 { text: '移动端项目要点', link: '/project/' }, // /project/index.md
@@ -114,12 +114,23 @@ export const sidebar =
     ],
     '/interview/': [
         {
-            text: '🍐 面试题',
+            text: '🍓面试题',
             items: [
-                // This shows `/interview/index.md` page.
                 { text: 'html', link: '/interview/' }, // /interview/index.md
-                { text: 'css', link: '/interview/css' }, // /interview/css.md
-                { text: 'javascript', link: '/interview/javascript' } // /interview/four.md
+                { text: 'css', link: '/interview/css.md' }, // /interview/css.md
+                { text: 'javascript', link: '/interview/javascript.md' }, // /interview/four.md
+                { text: 'vue', link: '/interview/vue.md' }, // /interview/four.md
+            ]
+        }
+    ],   
+    '/diary/' : [
+        {
+            text:'🍒随记',
+            items: [
+                {text: '2023年', link: '/diary/index.md'},
+                {text: '2024年', link: '/diary/2024'},
+                {text: '2025年', link: '/diary/2025'},
+                // This shows `/diary/index.md` page.
             ]
         }
     ],
@@ -131,17 +142,6 @@ export const sidebar =
                 { text: '关于我', link: '/about/' }, // /about/index.md
                 { text: '友情链接', link: '/about/links' }, // /about/links.md
                 // { text: 'Four', link: '/about/four' } // /about/four.md
-            ]
-        }
-    ],
-    '/diary/' : [
-        {
-            text:'🍒随记',
-            items: [
-                {text: '2023年', link: '/diary/index.md'},
-                {text: '2024年', link: '/diary/2024'},
-                {text: '2025年', link: '/diary/2025'},
-                // This shows `/diary/index.md` page.
             ]
         }
     ]
