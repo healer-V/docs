@@ -19,15 +19,15 @@ export const sidebar =
                 ]
             },
             {
-                text: '🍇网络相关',
+                text: '🍇网络基础',
                 // collapsible: true,
                 items: [
-                    { text: 'HTTP', link: '/articles/network/http.md' },
+                    { text: '网络协议', link: '/articles/network/http.md' },
                     { text: 'UDP/TCP', link: '/articles/network/udp&tcp.md' },
                 ]
             },
             {
-                text: '🥝浏览器相关',
+                text: '🥝浏览器',
                 // collapsible: true,
                 items: [
                     { text: '浏览器渲染原理', link: '/articles/browser/render.md' },
@@ -117,10 +117,12 @@ export const sidebar =
         {
             text: '🍓面试题',
             items: [
-                { text: 'html', link: '/interview/' }, // /interview/index.md
-                { text: 'css', link: '/interview/css.md' }, // /interview/css.md
-                { text: 'javascript', link: '/interview/javascript.md' }, // /interview/four.md
-                { text: 'vue', link: '/interview/vue.md' }, // /interview/four.md
+                { text: '01-html', link: '/interview/' }, // /interview/index.md
+                { text: '02-css', link: '/interview/css.md' }, // /interview/css.md
+                { text: '03-javascript', link: '/interview/javascript.md' }, // /interview/four.md
+                { text: '04-vue', link: '/interview/vue.md' }, // /interview/four.md
+                { text: '05-react', link: '/interview/vue.md' }, // /interview/four.md
+                { text: '06-network', link: '/interview/network.md' }, // /interview/four.md
             ]
         }
     ],   
