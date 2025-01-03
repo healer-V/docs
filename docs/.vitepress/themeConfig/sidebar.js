@@ -12,10 +12,14 @@ export const sidebar =
                 text: '🥔前端基础',
                 // collapsible: true,
                 items: [
-                    { text: 'HTML&CSS', link: '/articles/basic/index.md' },
-                    { text: 'Javascript', link: '/articles/basic/javascript.md' },
-                    { text: 'TypeScript', link: '/articles/basic/typescript.md' },
-                    { text: 'Node.js', link: '/articles/basic/nodejs.md' },
+                    { text: '01-HTML&CSS', link: '/articles/basic/index.md' },
+                    { text: '02-Javascript', link: '/articles/basic/02-javascript.md' },
+                    { text: '03-ES6', link: '/articles/basic/03-ecmascript.md' },
+                    { text: '04-TypeScript', link: '/articles/basic/04-typescript.md' },
+                    { text: '05-Vue2', link: '/articles/basic/05-vue2.md' },
+                    { text: '06-Vue3', link: '/articles/basic/06-vue3.md' },
+                    { text: '07-React', link: '/articles/basic/07-react.md' },
+                    { text: '08-Node.js', link: '/articles/basic/10-nodejs.md' },
                 ]
             },
             {
@@ -32,7 +36,7 @@ export const sidebar =
                 items: [
                     { text: '浏览器渲染原理', link: '/articles/browser/render.md' },
                     { text: '事件循环', link: '/articles/browser/eventloop.md' },
-                    { text: 'V8引擎', link: '/articles/browser/V8.md' },
+                    // { text: 'V8引擎', link: '/articles/browser/V8.md' },
                 ]
             },
             {
@@ -41,10 +45,10 @@ export const sidebar =
                 items: [
                     { text: 'Vue', link: '/articles/frame/Vue.md' },
                     { text: 'React', link: '/articles/frame/React.md' },
-                    { text: 'Angular', link: '/articles/frame/Angular.md' },
                     { text: 'Uniapp', link: '/articles/frame/Uniapp.md' },
                     { text: 'Flutter', link: '/articles/frame/Flutter.md' },
                     { text: 'React Native', link: '/articles/frame/ReactNative.md' },
+                    { text: 'Angular', link: '/articles/frame/Angular.md' },
     
                 ]
             },
@@ -122,7 +126,8 @@ export const sidebar =
                 { text: '03-javascript', link: '/interview/javascript.md' }, // /interview/four.md
                 { text: '04-vue', link: '/interview/vue.md' }, // /interview/four.md
                 { text: '05-react', link: '/interview/vue.md' }, // /interview/four.md
-                { text: '06-network', link: '/interview/network.md' }, // /interview/four.md
+                { text: '06-engineering', link: '/interview/engineering.md' }, // /interview/four.md
+                { text: '07-network', link: '/interview/network.md' }, // /interview/four.md
             ]
         }
     ],   

@@ -4,21 +4,23 @@
 
 ## 1、JavaScript 有哪些数据类型？它们的区别是什么？
 
-> JavaScript 有八种基本数据类型，分为原始类型（Primitive Types）和引用类型（Reference Types）：
+::: danger 注意
+ JavaScript 有八种基本数据类型，分为`原始类型`（Primitive Types）和`引用类型`（Reference Types）
+:::
 
 #### 原始类型
-
-1）Undefined：表示变量未初始化。一个变量声明后但未赋值时，它的默认值是 undefined。 
-2）Null：表示一个空的值或一个不存在的对象。null 是一个特殊的关键字，它代表“无值”。 
-3）Boolean：只有两个值：true 和 false，用于逻辑判断。 
-4）Number：表示双精度 64 位二进制格式的浮点数，可以表示整数和浮点数。特殊值包括 NaN（Not a Number）和 Infinity。 
-5）String：表示字符序列，可以用单引号、双引号或反引号括起来的文本。 
-6）Symbol：用来创建唯一且不可变的值，主要用于对象属性的唯一标识，避免属性名冲突。 
-7）BigInt：用于表示任意精度的大整数，允许操作超过 Number 能表示的范围的整数。
+>[!tip]
+>1. `Undefined`：表示变量未初始化。一个变量声明后但未赋值时，它的默认值是 undefined。 
+>2. `Null`：表示一个空的值或一个不存在的对象。null 是一个特殊的关键字，它代表“无值”。 
+>3. `Boolean`：只有两个值：true 和 false，用于逻辑判断。 
+>4. `Number`：表示双精度 64 位二进制格式的浮点数，可以表示整数和浮点数。特殊值包括 NaN（Not a Number）和 Infinity。 
+>5. `String`：表示字符序列，可以用单引号、双引号或反引号括起来的文本。 
+>6. `Symbol`：用来创建唯一且不可变的值，主要用于对象属性的唯一标识，避免属性名冲突。 
+>7. `BigInt`：用于表示任意精度的大整数，允许操作超过 Number 能表示的范围的整数。
 
 #### 引用类型
 
-Object（包括普通对象、数组、函数等）
+`Object`（包括普通对象Object、数组Array、函数Function等）
 
 #### 两者区别
 
@@ -51,34 +53,49 @@ Object（包括普通对象、数组、函数等）
 
 
 
-##  2、如何判断 JavaScript 变量是数组？
-
-1）使用 **Object.prototype.toString.call()** 做判断 这是一个通用的类型判断方法，适用于判断各种数据类型，Object.prototype.toString.call(obj) 会返回一个类似 [object Array]· 的字符串，通过切片操作获取其中的类型部分并与 'Array' 比较，示例如下：
-
+##  2、如何判断数组类型？
+### 2.1、 `Object.prototype.toString.call`
+:::tip 说明
+这是一个通用的类型判断方法，适用于判断各种数据类型，Object.prototype.toString.call(obj) 会返回一个类似 `[object Array]` 的字符串，通过切片操作获取其中的类型部分并与 'Array' 比较。
+:::
+示例如下：
 ```javascript
 Object.prototype.toString.call(obj).slice(8,-1) === 'Array';
 ```
 
-2）通过原型链做判断 通过检查对象的原型链是否指向 Array.prototype，但是直接访问 **proto** 不推荐，因为它是非标准属性，虽然现在大多数浏览器都支持，示例如下：
+### 2.2、 `Array.prototype`
+:::tip 说明
+通过检查对象的原型链是否指向 Array.prototype，来判断其是否为数组，返回一个布尔值。但是直接访问 `proto` 不推荐，因为它是非标准属性，虽然现在大多数浏览器都支持。
+:::
 
+示例如下：
 ```javascript
 obj.__proto__ === Array.prototype;
 ```
-
-3）使用 ES6 的 **Array.isArray()** 判断 这是 ES6 中新增的方法，专门用于判断一个变量是否为数组，非常简洁且可靠，示例如下：
-
+### 2.3、 `Array.isArray`
+:::tip 说明
+Array.isArray() 是 ES6 新增的方法，用于判断某个变量是否为数组，返回一个布尔值。
+:::
+示例如下：
 ```javascript
   Array.isArray(obj);
 ```
 
-4）使用 **instanceof** 做判断 比较常用的原型链判断方法，示例如下：
-
+### 2.4、 `instanceof` 
+:::tip 说明
+- 用于检测某个对象是否是另一个对象的实例，返回一个布尔值。
+- 语法：`obj instanceof constructor`
+- 参数：
+  - `obj`：待检测的对象。
+  - `constructor`：构造函数，用于创建对象的类型。
+:::
+示例如下：
 ```javascript
 obj instanceof Array
 ```
-
-5）使用 **Array.prototype.isPrototypeOf** 检查 Array.prototype 是否存在于对象的原型链中，示例如下：
-
+### 2.5、 `Array.prototype.isPrototypeOf` 
+- 检查 Array.prototype 是否存在于对象的原型链中，示例如下：
+示例如下：
 ```javascript
 Array.prototype.isPrototypeOf(obj)
 ```
@@ -87,36 +104,38 @@ Array.prototype.isPrototypeOf(obj)
 
 ## 3、null 和 undefined 的区别是什么？
 
-undefined 是 JavaScript 的一种内置数据类型，表示变量声明了但未赋值。null 同样是一种内置数据类型，表示一个空对象引用。
+>[!tip] 区别
+>- `undefined` 表示变量声明了但未赋值。
+>- `null` 表示一个空对象引用。
 
-#### 两者区别
+#### 3.1、两者区别
 
-##### **类型检测** 
-
-1）使用 typeof 检测 undefined 会返回 "undefined"。 
-
-2）使用 typeof 检测 null 会返回 "object"，这是一个历史遗留问题。
-
+##### 3.1.1、类型检测 
+:::tip 
+- 使用 typeof 检测 undefined 会返回 `undefined`。 
+- 使用 typeof 检测 null 会返回 `object`，这是一个历史遗留问题。
+:::
 ```javascript
 console.log(typeof undefined); // 输出: "undefined"
 console.log(typeof null); // 输出: "object"
 ```
 
-##### **比较操作** 
-
-1）undefined 和 null 使用双等号 == 比较时会被认为相等，因为它们都代表“没有值”的概念。 
-
-2）使用严格等号 === 比较时，它们是不相等的，因为它们是不同类型的值。
+##### 3.1.2、比较操作 
+:::tip 
+- `undefined` 和 `null` 使用双等号 `==` 比较时会被认为`相等`，因为它们都代表“没有值”的概念。 
+- 使用严格等号 `===` 比较时，它们是`不相等`的，因为它们是不同类型的值。
+:::
 
 ```javascript
 console.log(undefined == null); // 输出: true
 console.log(undefined === null); // 输出: false
 ```
 
-##### **变量赋值** 
-
-1）undefined 是 JavaScript 引擎自动赋予未赋值变量的值，而 null 是开发者显式赋值以表示变量没有值。
-
+##### 3.1.3、变量赋值 
+:::tip 
+- `undefined` 是 JavaScript 引擎自动赋予未赋值变量的值。
+- `null` 是开发者显式赋值以表示变量没有值。
+:::
 ```javascript
 let x; // 未赋值，默认是 undefined
 let y = null; // 明确赋值为 null
@@ -125,22 +144,20 @@ let y = null; // 明确赋值为 null
 
 
 ## 4、为什么 typeof null 是 "object"？
+#### 4.1、原因分析
+:::tip
+1. JavaScript 在最初设计时，使用了32位系统。为了优化性能，JavaScript 的值被存储为二进制数据，低位用来表示数据的类型。 
+2. 对象的类型标识符是 000，而 null 被认为是一个空指针（即零地址），它的二进制表示全是 0，也即 00000000。 
+3. 由于 null 的二进制表示和对象的类型标识符相同，typeof null 结果就被错误地设置为 "object"。
+4. 尽管这个错误很早就被发现，但为了保持向后兼容性，修复这个错误会导致大量现有代码出错。因此，这个行为被保留下来了。
+:::
 
-1）JavaScript 在最初设计时，使用了32位系统。为了优化性能，JavaScript 的值被存储为二进制数据，低位用来表示数据的类型。 
-
-2）对象的类型标识符是 000，而 null 被认为是一个空指针（即零地址），它的二进制表示全是 0，也即 00000000。 
-
-3）由于 null 的二进制表示和对象的类型标识符相同，typeof null 结果就被错误地设置为 "object"。
-
-4）尽管这个错误很早就被发现，但为了保持向后兼容性，修复这个错误会导致大量现有代码出错。因此，这个行为被保留下来了。
-
-#### 运行示例
-
+#### 4.2、运行示例
 ```javascript
 console.log(typeof null); // 输出: "object
 ```
 
-#### 判断 null 的正确方法
+#### 4.3、判断 null 的正确方法
 
 1）**直接比较** 最简单的方法是直接使用严格相等 === 进行比较，示例如下：
 
