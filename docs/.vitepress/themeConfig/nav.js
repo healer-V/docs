@@ -1,6 +1,6 @@
 export const nav = [
     { 
-        text: '🏠首页',link: '/articles/basic/index.md',
+        text: '🏠首页',link: '/articles/basic/',
     },
     { 
         text: '🍏博客', link: '/blog/'

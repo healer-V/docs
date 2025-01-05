@@ -9,7 +9,7 @@ export const sidebar =
             //     link: '/articles/'
             // },
             {
-                text: '🥔前端基础',
+                text: '🍎前端基础',
                 // collapsible: true,
                 items: [
                     { text: '01-HTML&CSS', link: '/articles/basic/index.md' },
@@ -19,11 +19,11 @@ export const sidebar =
                     { text: '05-Vue2', link: '/articles/basic/05-vue2.md' },
                     { text: '06-Vue3', link: '/articles/basic/06-vue3.md' },
                     { text: '07-React', link: '/articles/basic/07-react.md' },
-                    { text: '08-Node.js', link: '/articles/basic/10-nodejs.md' },
+                    { text: '08-Node.js', link: '/articles/basic/08-nodejs.md' },
                 ]
             },
             {
-                text: '🍇网络基础',
+                text: '🍓网络基础',
                 // collapsible: true,
                 items: [
                     { text: '网络协议', link: '/articles/network/http.md' },
@@ -31,7 +31,7 @@ export const sidebar =
                 ]
             },
             {
-                text: '🥝浏览器',
+                text: '🥝浏览器基础',
                 // collapsible: true,
                 items: [
                     { text: '浏览器渲染原理', link: '/articles/browser/render.md' },
@@ -40,7 +40,7 @@ export const sidebar =
                 ]
             },
             {
-                text: '🍒框架',
+                text: '🍏框架',
                 // collapsible: true,
                 items: [
                     { text: 'Vue', link: '/articles/frame/Vue.md' },
@@ -53,7 +53,7 @@ export const sidebar =
                 ]
             },
             {
-                text: '🥭前端工程化',
+                text: '🍉前端工程化',
                 // collapsible: true,
                 items: [
                     { text: 'Webpack', link: '/articles/engineering/Webpack.md' },
@@ -64,7 +64,7 @@ export const sidebar =
                 ]
             },
             {
-                text: '🥪工具',
+                text: '🍜工具',
                 // collapsible: true,
                 items: [
                     { text: 'Git', link: '/articles/tools/Git.md' },
@@ -74,7 +74,7 @@ export const sidebar =
             },
     
             {
-                text: '🍘关于',
+                text: '🍠关于',
                 // collapsible: true,
                 items: [
                     { text: '关于我', link: '/articles/about/me' },
