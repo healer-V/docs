@@ -20,6 +20,7 @@ export const sidebar =
                     { text: '06-Vue3', link: '/articles/basic/06-vue3.md' },
                     { text: '07-React', link: '/articles/basic/07-react.md' },
                     { text: '08-Node.js', link: '/articles/basic/08-nodejs.md' },
+                    { text: '项目难点', link: '/articles/basic/10-project.md' },
                 ]
             },
             {
