@@ -14,7 +14,7 @@ hero:
     - theme: brand
       text: 进入主页
       # link: /articles/
-      link: /articles/basic/index.md
+      link: /articles/basic/01-html.md
 
     - theme: alt
       text: 个人成长
@@ -36,9 +36,10 @@ features:
   - title: 专注内容
     icon: 📝
     details: 只需使用 Markdown 即可轻松创建精美的文档网站
-  - title: 使用 Vue 进行定制
+  - title: 使用 Vue3 进行定制
     icon: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path fill="#41b883" d="M24.4 3.925H30l-14 24.15L2 3.925h10.71l3.29 5.6 3.22-5.6Z"/><path fill="#41b883" d="m2 3.925 14 24.15 14-24.15h-5.6L16 18.415 7.53 3.925Z"/><path fill="#35495e" d="M7.53 3.925 16 18.485l8.4-14.56h-5.18L16 9.525l-3.29-5.6Z"/></svg>
     details: 直接在 Markdown 中使用 Vue 语法和组件，或使用 Vue 构建自定义主题
+    link: /articles/basic/06-vue3.md
   - title: 快速发布网站
     icon: 🚀
     details: 使用静态 HTML 进行快速初始加载，使用客户端路由进行快速加载后导航
@@ -59,13 +60,28 @@ features:
   #   #   src: /tj.svg
   #   details: 推荐一些对前端开发来说实用的 Chrome 插件。
   #   link: https://juejin.cn/post/7327893130572824611
-  #   linkText: 查看详情  
+  #   linkText: 查看详情
 ---
 
 <!-- 自定义组件 -->
 <script setup>
 // 导入home
-// import Home from './Home.vue'
+import Home from './.vitepress/components/Home.vue'
 </script>
+<!-- 网站统计 -->
+<div class="home-container">
+本站总访问量 <span id="busuanzi_value_site_pv" /> 次
+本站访客数 <span id="busuanzi_value_site_uv" /> 人次
+</div>
+<Home />
 
-<!-- <home /> -->
+<style>
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 16px;
+  color: #999;
+}
+</style>

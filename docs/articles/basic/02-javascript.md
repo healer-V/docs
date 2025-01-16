@@ -23,10 +23,10 @@ JavaScript 中的数值类型有四种：`Number`、`String`、`Boolean`、`BigI
 | 方法名称      | 描述                                                         |
 | ------------- | ---------- |
 | toFixed()     | 返回字符串形式的数值，其中小数点后有指定位数的数字             |
-| toExponential() | 返回字符串形式的数值，其中指数计数法表示的数字                 |
-| toPrecision() | 返回字符串形式的数值，其中数字的精度由参数指定                 |
 | toString()    | 返回字符串形式的数值                                           |
 | valueOf()     | 返回数值本身                                                   |
+<!-- | toExponential() | 返回字符串形式的数值，其中指数计数法表示的数字                 | -->
+<!-- | toPrecision() | 返回字符串形式的数值，其中数字的精度由参数指定                 | -->
 
 ### 1.2、Boolean类型
 #### 1.2.1、定义
@@ -35,7 +35,7 @@ JavaScript 中的布尔类型只有两个值：`true` 和 `false`。
 :::
 
 #### 1.2.2、注意事项
->[!NOTE]
+>[!note]
 >通过布尔运算结果为`false`的值有：
 >1. `undefined`
 >2. `null`
@@ -117,8 +117,8 @@ JavaScript 中的数组类型是一系列按顺序排列的元素组成的序列
 | filter()      | 过滤数组，过滤掉不满足的内容，返回满足条件的新数组           |
 | every()       | 判断数组中**所有元素**是否满足某个条件，全部满足则返回true，有一个不满足就返回false |
 | some()        | 判断数组中**是否存在**,满足某个条件的元素，有一个满足就返回true，全不满足则返回false |
-| find（）      | 查找数组中**满足条件的元素**，找到了就返回对应的**元素**，找不到就返回undefined |
-| findIndex（） | 查找数组中**满足条件的元素**，找到了就返回对应的**下标**，找不到就返回undefined |
+| find（）      | 查找数组中满足条件的元素，找到了就返回对应的**元素**，找不到就返回-1 |
+| findIndex（） | 查找数组中满足条件的元素，找到了就返回对应的**下标**，找不到就返回-1 |
 | reduce（）    | 统计数组，计算叠加后的值  `数组.reduce(function (prev,item,index,arr) {},初始值)` |
 
 
@@ -221,9 +221,36 @@ JavaScript 有以下事件：
 >[!TIP]
 >JavaScript 中的事件分为：
 >1. 鼠标事件：鼠标事件是指鼠标的各种事件，如点击、双击、拖动等。
+>   - onclick 鼠标点击事件
+>   - ondblclick 鼠标双击事件
+>   - onmouseover 鼠标移入事件
+>   - onmouseout 鼠标移出事件
+>   - onmousemove 鼠标移动事件
+>   - onmousedown 鼠标按下事件
+>   - onmouseup 鼠标松开事件
+>   - oncontextmenu 鼠标右键事件
 >2. 键盘事件：键盘事件是指键盘的各种事件，如按下、松开、按住等。
+>   - onkeydown 键盘按下事件
+>   - onkeyup 键盘松开事件
+>   - onkeypress 键盘按下并松开事件。
 >3. 表单事件：表单事件是指表单的各种事件，如输入、提交等。
+>   - oninput 输入事件
+>   - onsubmit 提交事件
+>   - onchange 改变事件
+>   - onfocus 获得焦点事件
+>   - onblur 失去焦点事件
 >4. 文档事件：文档事件是指文档的各种事件，如加载、卸载等。
+>   - onload 文档加载完成事件
+>   - onunload 文档卸载事件
+>5. 窗口事件：窗口事件是指窗口的各种事件，如调整大小、移动等。
+>   - onresize 窗口调整大小事件
+>   - onscroll 窗口滚动事件
+>6. 其他事件：其他事件是指一些特定事件，如加载、错误、输入等。
+>   - onerror 错误事件
+>   - oninput 输入事件
+>   - onsubmit 提交事件
+>   - onfocus 获得焦点事件
+>   - onblur 失去焦点事件
 
 ## 11、DOM
 >[!TIP] DOM 方法

@@ -1,6 +1,8 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
+import { inBrowser } from 'vitepress'
+import busuanzi from 'busuanzi.pure.js'
 import './style.css';
 import './style/index.css';
 // import './custom.css';
@@ -17,5 +19,10 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
+    if (inBrowser) {
+      router.onAfterRouteChanged = () => {
+        busuanzi.fetch()
+      }
+    }
   }
 }

@@ -1,26 +1,29 @@
-## Vscode下载地址
-:::warning 📌看这里 
+# Vscode使用指南
+
+## 下载地址
+:::warning 📌点击这里下载
  [VSCode官网](https://code.visualstudio.com/)
 :::
 ## 1.VSCode主题
-### 推荐主题
-
+### 1.1、推荐主题
+::: tip 📌常用
 - [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)
 - [Night Owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl)
 - [Dracula Official](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula)
 - [GitHub Theme](https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme)
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
 - [Brarded Theme](https://marketplace.visualstudio.com/items?itemName=be5invis.vscode-icontheme-branded)
-
-### 自定义主题
-
+:::
+### 1.2、自定义主题
+:::warning 📌网址
 - [自定义主题](https://code.visualstudio.com/docs/getstarted/themes#_customizing-a-color-theme)
 - [Color Theme Generator](https://marketplace.visualstudio.com/items?itemName=Tyriar.theme-generator)
 - [Color Highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight)
-
+:::
 ## 2.推荐插件
-- [好用 ！Fitten Code](https://marketplace.visualstudio.com/items?itemName=fitnesse.fitnesse-code)
-- [缩进高亮 indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
+::: details 点击查看
+- [Fitten Code-AI编程助手](https://marketplace.visualstudio.com/items?itemName=fitnesse.fitnesse-code)
+- [indent-rainbow-缩进高亮](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
 - [代码检查 ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [格式化 Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [路径自动补全 Path Autocomplete](https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete)
@@ -29,9 +32,9 @@
 - [汉化语言包 Chinese (Simplified) Language Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans)
 - [Markdown预览 Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - [github远程预览](https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub)
-
+:::
 ## 3.常用快捷键
-
+::: details 点击查看
 - `Ctrl + Shift + P` 打开命令面板
 - `Ctrl + P` 快速打开文件
 - `Ctrl + Shift + N` 打开新窗口
@@ -70,26 +73,27 @@
 - `Ctrl + Shift + Alt + P` 显示参数信息
 - `Ctrl + Shift + Alt + Space` 触发代码片段
 - `Ctrl + Shift + K` 删除所有空白字符
+:::
 
+## 4.编程字体
 
-## 4.推荐字体
-
+- [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono)
+- [Hack](https://sourcefoundry.org/hack/)
 - [Fira Code](https://github.com/tonsky/FiraCode)
 - [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+- [Consolas](https://docs.microsoft.com/zh-cn/typography/fonts/consolas)
+::: details 点击查看更多字体
+- [Fira Mono](https://github.com/mozilla/Fira)
 - [Dank Mono](https://dank.sh/)
 - [Input](https://input.fontbureau.com/)
-- [Consolas](https://docs.microsoft.com/zh-cn/typography/fonts/consolas)
-- [Hack](https://sourcefoundry.org/hack/)
 - [Iosevka](https://github.com/be5invis/Iosevka)
 - [Monoid](https://larsenwork.com/monoid/)
 - [Cascadia Code](https://github.com/microsoft/cascadia-code)
 - [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans)
 - [Meslo LG](https://github.com/andreberg/Meslo-Font)
 - [Operator Mono](https://www.typography.com/fonts/operator/overview)
-- [Fira Mono](https://github.com/mozilla/Fira)
 - [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - [Ubuntu Mono](https://design.ubuntu.com/font/)
-- [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono)
 - [IBM Plex Mono](https://github.com/IBM/plex)
 - [CamingoCode](https://github.com/janniks/CamingoCode)
 - [Cousine](https://github.com/google/fonts/tree/main/ofl/cousine)
@@ -97,8 +101,12 @@
 - [D2Coding](https://github.com/naver/d2codingfont)
 - [ProggyClean](https://github.com/jenskutilek/proggyfonts)
 - [FiraGO](https://github.com/bBoxType/FiraGO)
-
+:::
 ## 5.代码片段
+:::danger 📌看这里
+[VSCode 代码片段在线生成网站](https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode)
+:::
+::: details 代码片段
 ```json
 {
 	"vue3": {
@@ -208,3 +216,5 @@
         "description": "typescript代码片段"
     },
 }
+
+:::

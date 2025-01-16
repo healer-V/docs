@@ -12,7 +12,7 @@ export const sidebar =
                 text: '🍎前端基础',
                 // collapsible: true,
                 items: [
-                    { text: '01-HTML&CSS', link: '/articles/basic/index.md' },
+                    { text: '01-HTML&CSS', link: '/articles/basic/01-html.md' },
                     { text: '02-Javascript', link: '/articles/basic/02-javascript.md' },
                     { text: '03-ES6', link: '/articles/basic/03-ecmascript.md' },
                     { text: '04-TypeScript', link: '/articles/basic/04-typescript.md' },
@@ -20,36 +20,35 @@ export const sidebar =
                     { text: '06-Vue3', link: '/articles/basic/06-vue3.md' },
                     { text: '07-React', link: '/articles/basic/07-react.md' },
                     { text: '08-Node.js', link: '/articles/basic/08-nodejs.md' },
-                    { text: '项目难点', link: '/articles/basic/10-project.md' },
+                    { text: '09-Sass', link: '/articles/basic/09-Sass.md' },
                 ]
             },
             {
                 text: '🍓网络基础',
                 // collapsible: true,
                 items: [
-                    { text: '网络协议', link: '/articles/network/http.md' },
-                    { text: 'UDP/TCP', link: '/articles/network/udp&tcp.md' },
+                    { text: '01-HTTP协议', link: '/articles/network/01-http.md' },
+                    { text: '02-TCP/IP协议', link: '/articles/network/02-tcp.md' },
                 ]
             },
             {
                 text: '🥝浏览器基础',
                 // collapsible: true,
                 items: [
-                    { text: '浏览器渲染原理', link: '/articles/browser/render.md' },
-                    { text: '事件循环', link: '/articles/browser/eventloop.md' },
-                    // { text: 'V8引擎', link: '/articles/browser/V8.md' },
+                    { text: '01-浏览器基础', link: '/articles/browser/01-basic.md' },
+                    { text: '02-浏览器渲染原理', link: '/articles/browser/02-render.md' },
+                    { text: '03-事件循环', link: '/articles/browser/03-eventloop.md' },
                 ]
             },
             {
-                text: '🍏框架',
+                text: '🍎混合App开发',
                 // collapsible: true,
                 items: [
-                    { text: 'Vue', link: '/articles/frame/Vue.md' },
-                    { text: 'React', link: '/articles/frame/React.md' },
-                    { text: 'Uniapp', link: '/articles/frame/Uniapp.md' },
-                    { text: 'Flutter', link: '/articles/frame/Flutter.md' },
-                    { text: 'React Native', link: '/articles/frame/ReactNative.md' },
-                    { text: 'Angular', link: '/articles/frame/Angular.md' },
+                    { text: '01-Uniapp', link: '/articles/frame/01-Uniapp.md' },
+                    { text: '02-Flutter', link: '/articles/frame/02-Flutter.md' },
+                    { text: '03-React Native', link: '/articles/frame/03-ReactNative.md' },
+                    { text: '04-HarmonyOS', link: '/articles/frame/04-HarmonyOS.md' },
+                    { text: '05-Electron', link: '/articles/frame/05-Electron.md' },
     
                 ]
             },
@@ -57,25 +56,25 @@ export const sidebar =
                 text: '🍉前端工程化',
                 // collapsible: true,
                 items: [
-                    { text: 'Webpack', link: '/articles/engineering/Webpack.md' },
-                    { text: 'Vite', link: '/articles/engineering/Vite.md' },
-                    { text: 'ESBuild', link: '/articles/engineering/ESBuild.md' },
-                    { text: 'Rollup', link: '/articles/engineering/Rollup.md' },
-                    { text: 'Rolldown', link: '/articles/engineering/Rolldown.md' },
+                    { text: '01-Webpack', link: '/articles/engineering/01-Webpack.md' },
+                    { text: '02-Vite', link: '/articles/engineering/02-Vite.md' },
+                    { text: '03-ESBuild', link: '/articles/engineering/03-ESBuild.md' },
+                    { text: '04-Rollup', link: '/articles/engineering/04-Rollup.md' },
                 ]
             },
             {
                 text: '🍜工具',
                 // collapsible: true,
                 items: [
-                    { text: 'Git', link: '/articles/tools/Git.md' },
-                    { text: 'Markdown', link: '/articles/tools/Markdown.md' },
-                    { text: 'VSCode', link: '/articles/tools/Vscode.md' },
+                    { text: '01-Git', link: '/articles/tools/01-Git.md' },
+                    { text: '02-Markdown', link: '/articles/tools/02-Markdown.md' },
+                    { text: '03-VsCode', link: '/articles/tools/03-Vscode.md' },
+                    { text: '04-HBuilderX', link: '/articles/tools/04-HBuilderX.md' },
                 ]
             },
     
             {
-                text: '🍠关于',
+                text: '🥤关于',
                 // collapsible: true,
                 items: [
                     { text: '关于我', link: '/articles/about/me' },
@@ -90,18 +89,20 @@ export const sidebar =
             text: '博客',
             items: [
                 // This shows `/blog/index.md` page.
-                { text: 'vitepress搭建文档', link: '/blog/' }, // /blog/index.md
-                // { text: 'Three', link: '/blog/html' }, // /blog/three.md
-                // { text: 'Four', link: '/blog/four' } // /blog/four.md
+                { text: '01-vitepress搭建博客', link: '/blog/01-vitepress.md' }, // /blog/index.md
+                { text: '02-vitepress中Md语法', link: '/blog/02-markdown.md' }, 
             ]
         }
     ],
-    '/HarmonyOS/': [
+    '/Practice/': [
         {
-            text: '🍚HarmonyOS',
+            text: '🍚Practice',
             items: [
                 // This shows `/HarmonyOS/index.md` page.
-                { text: '鸿蒙开发', link: '/HarmonyOS/' }, // /HarmonyOS/index.md
+                { text: '01-vue2移动端项目', link: '/Practice/01-vue2.md' }, // /HarmonyOS/index.md
+                { text: '02-vue2PC端项目', link: '/Practice/02-vue2PC.md' }, // /HarmonyOS/index.md
+                { text: '03-vue3移动端项目', link: '/Practice/03-vue3.md' }, // /HarmonyOS/index.md
+                { text: '04-vue3PC端项目', link: '/Practice/04-vue3PC.md' }, // /HarmonyOS/index.md
                 // { text: 'Three', link: '/HarmonyOS/html' }, // /HarmonyOS/three.md
                 // { text: 'Four', link: '/HarmonyOS/four' } // /HarmonyOS/four.md
             ]

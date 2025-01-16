@@ -1,15 +1,15 @@
 export const nav = [
     { 
-        text: '🏠首页',link: '/articles/basic/',
+        text: '🏠首页',link: '/articles/basic/01-html.md',
     },
     { 
-        text: '🍏博客', link: '/blog/'
+        text: '🍏博客', link: '/blog/01-vitepress'
     },
     { 
-        text: '🍚HarmonyOS', link: '/HarmonyOS/'
+        text: '🍚项目实践', link: '/Practice/01-vue2'
     },
     { 
-        text: '🥥项目要点', link: '/project/'
+        text: '🥥项目难点', link: '/project/'
     },
     { 
         text: '🍓面试题', link: '/interview/'
