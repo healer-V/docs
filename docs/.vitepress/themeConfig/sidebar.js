@@ -124,12 +124,14 @@ export const sidebar =
             text: '🍓面试题',
             items: [
                 { text: '01-html', link: '/interview/' }, // /interview/index.md
-                { text: '02-css', link: '/interview/css.md' }, // /interview/css.md
-                { text: '03-javascript', link: '/interview/javascript.md' }, // /interview/four.md
-                { text: '04-vue', link: '/interview/vue.md' }, // /interview/four.md
-                { text: '05-react', link: '/interview/vue.md' }, // /interview/four.md
-                { text: '06-engineering', link: '/interview/engineering.md' }, // /interview/four.md
-                { text: '07-network', link: '/interview/network.md' }, // /interview/four.md
+                { text: '02-css', link: '/interview/02-css.md' }, // /interview/css.md
+                { text: '03-javascript', link: '/interview/03-javascript.md' }, // /interview/four.md
+                { text: '04-ES6', link: '/interview/04-ES6.md' }, // /interview/four.md
+                { text: '05-vue', link: '/interview/05-vue.md' }, // /interview/four.md
+                { text: '06-react', link: '/interview/06-react.md' }, // /interview/four.md
+                { text: '07-engineering', link: '/interview/07-engineering.md' }, // /interview/four.md
+                { text: '08-network', link: '/interview/08-network.md' }, // /interview/four.md
+                { text: '09-typescript', link: '/interview/09-typescript.md' }, // /interview/four.md
             ]
         }
     ],   

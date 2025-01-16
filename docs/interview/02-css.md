@@ -19,8 +19,6 @@
 >   - `transition`、`transform`、`animation`
 >   - `flex`、`grid`、`media query`、`mix-blend-mode`
 
-
-
 ### 2、CSS标准盒模型与怪异盒模型的理解
 >[!tip]
 > - 盒模型范围包括：`margin、border、padding、content`

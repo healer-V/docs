@@ -58,22 +58,15 @@ trim_trailing_whitespace = false # 保留 md 文件末尾的空白
 >[!warning]注
 >vscode需要安装插件 `EditorConfig for VS Code`
 
-
-### 3.2 代码风格检查
-```bash
-# 安装 eslint 插件
-pnpm install -D eslint
-```
-
-### 3.3 代码格式化
+### 3.2、 代码格式化
 >[!tip]
 > Prettier 是一个代码格式化工具，它可以自动化地将代码格式化为符合预设规则的风格。
-#### 3.3.1、 安装 Prettier 插件
+#### 3.2.1、 安装 Prettier 依赖
 ```bash
 # 安装 prettier 插件
 pnpm install -D prettier
 ```
-#### 3.3.2、 配置 Prettier
+#### 3.2.2、 配置 .prettierrc 文件
 >[!tip]
 > - useTabs: 是否使用 tab 进行缩进，默认为 false
 > - tabWidth: tab 缩进的宽度，默认为 2
@@ -99,8 +92,7 @@ pnpm install -D prettier
 }
 ```
 :::
-
-#### 3.3.3、 创建.prettierignore 忽略文件
+#### 3.2.3、 创建.prettierignore 忽略文件
 ::: details 点击查看配置
 ```
 # 根目录下创建.prettierignore 文件
@@ -114,14 +106,83 @@ pnpm install -D prettier
 /public/*
 ```
 :::
-#### 3.3.4、 安装 VSCode 插件 Prettier - Code formatter
+#### 3.2.4、 安装 VSCode扩展 `Prettier - Code formatter`
 >[!tip]
 > - vsocde 首选项-->设置-->formatter on save 选中--> 搜索 editor: Default Formatter 选择 prettier - code formatter
+#### 3.2.5、 VSCode中的配置
+>[!tip]
+> 1. 打开设置面板，搜索 `prettier` 并找到 `Format on Save` 选项，选择 `true` 即可。
+> 2. 打开设置面板，搜索 `prettier` 并找到 `Editor: Default Formatter` 选项，选择 `prettier` 即可。
+
+
+### 3.3 代码规范检查
+#### 3.3.1、 安装 eslint 依赖
+```bash
+# 安装 eslint 插件
+pnpm install -D eslint
+pnpm install -D eslint-plugin-prettier eslint-config-prettier # 保证 eslint 与 prettier 格式化规则一致
+```
+#### 3.2.1、 配置 .eslintrc.js 文件
+::: details 点击查看配置
+```js
+// 根目录下创建.eslintrc.js 文件
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    es2021: true
+  },
+  extends: [
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    '@vue/typescript/recommended',
+    '@vue/prettier',
+    '@vue/prettier/@typescript-eslint',
+    'plugin:prettier/recommended', // 关键配置， 启用 prettier 插件
+
+  ],
+  parserOptions: {
+    ecmaVersion: 2021,
+    parser: '@typescript-eslint/parser',
+    sourceType:'module'
+  },
+  plugins: [
+    'vue'
+  ],
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production'? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production'? 'warn' : 'off'
+  }
+}
+```
+:::
+#### 3.2.2、 安装 eslint 扩展
+>[!tip]
+> - vscode 扩展插件：eslint
+
+
+
 
 ### 3.4、 代码提交规范
+>[!tip]
+> - commitizen/commitlint/husky 三者配合使用，可以有效地规范 git commit 信息。
+> - `commitizen` 是一个用来规范 git commit message 的工具，它会根据指定的格式，提示用户输入符合格式的 commit message。
+> - `commitlint` 是一个用来 lint git commit message 的工具，它会检查提交信息是否符合指定的格式。
+> - `husky` 是一个 git hook 工具，它可以帮助我们在 git commit 之前，对提交信息进行校验。
+#### 3.4.1、 安装依赖
 ```bash
-# 安装 commitlint 插件
-pnpm install -D @commitlint/cli @commitlint/config-conventional
+pnpm install @commitlint/config-conventional @commitlint/cli -D
+```
+##### 3.4.2、配置 commitlint.config.js 文件
+```js
+// 根目录下创建 commitlint.config.js 文件
+module.exports = {
+  extends: ['@commitlint/config-conventional']
+}
+```
+#### 3.4.3、 使用husky生成commit-msg文件，验证commit信息
+```bash
+npx husky add .husky/commit-msg "npx --no-install commitlint --edit $1"
 ```
 
 

@@ -66,22 +66,20 @@ features:
 <!-- 自定义组件 -->
 <script setup>
 // 导入home
-import Home from './.vitepress/components/Home.vue'
 </script>
 <!-- 网站统计 -->
 <div class="home-container">
 本站总访问量 <span id="busuanzi_value_site_pv" /> 次
 本站访客数 <span id="busuanzi_value_site_uv" /> 人次
 </div>
-<Home />
 
 <style>
-.home-container {
+/* .home-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 40px;
   font-size: 16px;
   color: #999;
-}
+} */
 </style>
