@@ -5,10 +5,10 @@
 ## 1、JavaScript 有哪些数据类型？它们的区别是什么？
 
 ::: danger 注意
- JavaScript 有八种基本数据类型，分为`原始类型`（Primitive Types）和`引用类型`（Reference Types）
+ JavaScript 有八种基本数据类型，分为`原始类型`和`引用类型`。
 :::
 
-#### 原始类型
+#### 1.1、原始类型
 >[!tip]
 >1. `Undefined`：表示变量未初始化。一个变量声明后但未赋值时，它的默认值是 undefined。 
 >2. `Null`：表示一个空的值或一个不存在的对象。null 是一个特殊的关键字，它代表“无值”。 
@@ -18,39 +18,56 @@
 >6. `Symbol`：用来创建唯一且不可变的值，主要用于对象属性的唯一标识，避免属性名冲突。 
 >7. `BigInt`：用于表示任意精度的大整数，允许操作超过 Number 能表示的范围的整数。
 
-#### 引用类型
+#### 1.2、引用类型
+>[!tip]
+> `Object`: 表示一个对象，可以包含多个键值对，每个键都是一个字符串，值可以是任意类型。
 
-`Object`（包括普通对象Object、数组Array、函数Function等）
+#### 1.3、两者区别
 
-#### 两者区别
-
-##### **存储区别** 
-
-1）原始类型存储在栈（stack）中，值直接保存在变量访问的位置，由于其大小固定且频繁使用，存储在栈中具有更高的性能。 
-2）引用类型存储在堆（heap）中，占用空间较大且大小不固定，变量保存的是对实际对象的引用（即指针），这些引用存储在栈中。 
-
-##### **赋值方式区别** 
-
-1）原始类型：复制的是值本身。例如，将一个 number 类型的变量赋值给另一个变量，两个变量互不影响。 
-2）引用类型：复制的是引用（指针）。多个变量引用同一个对象时，一个变量的修改会影响其他变量。
-
-#### 扩展知识点
+##### 1.3.1、**存储区别** 
+:::tip 说明
+- 1）原始类型存储在栈（stack）中，值直接保存在变量访问的位置，由于其大小固定且频繁使用，存储在栈中具有更高的性能。 
+- 2）引用类型存储在堆（heap）中，占用空间较大且大小不固定，变量保存的是对实际对象的引用（即指针），这些引用存储在栈中。 
+:::
+##### 1.3.2、**赋值方式区别** 
+:::tip 说明
+- 1）原始类型：复制的是值本身。例如，将一个 number 类型的变量赋值给另一个变量，两个变量互不影响。 
+- 2）引用类型：复制的是引用（指针）。多个变量引用同一个对象时，一个变量的修改会影响其他变量。
+:::
+#### 1.4、扩展知识点
 
 **类型检测** 
-1）使用 typeof 检查原始类型（例如：typeof 123 === "number"）。
+:::tip 说明
+（1）使用 `typeof` 检查原始类型结果
+  - `typeof true` 返回 `boolean`
+  - `typeof 1` 返回 `number`
+  - `typeof "hello"` 返回 `string`
+  - `typeof Symbol()` 返回 `symbol`
+  - `typeof BigInt(100)` 返回 `bigint`
+    <hr>
+  - `typeof null` 返回 `object`
+  - `typeof undefined` 返回 `undefined`
+  <hr>
 
-2）使用 instanceof 检查引用类型（例如：[] instanceof Array === true） 
+  - `{}` 返回 `object`
+  - `[]` 返回 `object`
+  - `function() {}` 返回 `function`
 
-3）null 是一个特殊情况，typeof null 返回 "object"，这是 JavaScript 早期实现中的一个 bug，但被保留了下来。 
+（2）使用 `instanceof` 检查引用类型（例如：[] instanceof Array === true）。<br>
+（3）null 是一个特殊情况，typeof null 返回 "object"，这是 JavaScript 早期实现中的一个 bug，但被保留了下来。<br> 
+:::
 
 **类型转换** 
-1）自动类型转换：如字符串与数字相加时，数字会被转换为字符串。 
-2）显式类型转换：使用 Number()、String()、Boolean() 等函数将值转换为指定类型。 
+:::tip 说明
+ （1）`自动类型转换`：如字符串与数字相加时，数字会被转换为字符串。 <br>
+ （2）`显式类型转换`：使用 Number()、String()、Boolean() 等函数将值转换为指定类型。 <br>
+:::
 
 **堆和栈的区别** 
-1）栈：内存分配效率高，自动管理（由编译器分配和释放）。 
-2）堆：内存分配灵活，但需要由开发者手动管理内存（通过垃圾回收机制）。
-
+:::tip 说明
+ （1）`栈`：内存分配效率高，自动管理（由编译器分配和释放）。 <br>
+ （2）`堆`：内存分配灵活，但需要由开发者手动管理内存（通过垃圾回收机制）。<br>
+:::
 
 
 ##  2、如何判断数组类型？
@@ -102,7 +119,7 @@ Array.prototype.isPrototypeOf(obj)
 
 
 
-## 3、null 和 undefined 的区别是什么？
+## 3、null 和 undefined 的区别
 
 >[!tip] 区别
 >- `undefined` 表示变量声明了但未赋值。
@@ -110,9 +127,9 @@ Array.prototype.isPrototypeOf(obj)
 
 #### 3.1、两者区别
 
-##### 3.1.1、类型检测 
+##### 3.1.1、 类型检测 
 :::tip 
-- 使用 typeof 检测 undefined 会返回 `undefined`。 
+- 使用 typeof 检测 `undefined` 会返回 `undefined`。 
 - 使用 typeof 检测 null 会返回 `object`，这是一个历史遗留问题。
 :::
 ```javascript
@@ -176,29 +193,26 @@ console.log(value == null); // 输出: true
 
 
 ## 5、typeof 和 instanceof 有什么区别？
+>[!tip] 区别
+> - typeof 和 instanceof 是 JavaScript 中用于检查变量类型的两个关键字，但它们的使用场景和功能有所不同。
+> - `typeof` 用于检测变量的类型，返回一个字符串，常见的返回值有：undefined、boolean、number、string、object、function、symbol、bigint。
+> - `instanceof` 用于检测某个对象是否是另一个对象的实例，返回一个布尔值。
 
-typeof 和 instanceof 是 JavaScript 中用于检查变量类型的两个关键字，但它们的使用场景和功能有所不同。
 
-#### typeof
+#### 5.1、typeof
+>[!tip]
+> typeof 操作符用于检测变量的类型，返回一个字符串，表示操作数的数据类型，常见的返回值如下： 
+> - "undefined"：表示值未定义。 
+> - "boolean"：表示布尔值。 
+> - "number"：表示数字。 
+> - "string"：表示字符串。 
+> - "object"：表示对象（包括 null，数组，对象字面量等）。 
+> - "function"：表示函数。 
+> - "symbol"：表示符号（ES6 引入）。 
+> - "bigint"：表示大整数（ES11 引入）。 
 
-typeof 操作符用于检测变量的类型，返回一个字符串，表示操作数的数据类型，常见的返回值如下： 
-
-1）"undefined"：表示值未定义。 
-
-2）"boolean"：表示布尔值。 
-
-3）"number"：表示数字。 
-
-4）"string"：表示字符串。 
-
-5）"object"：表示对象（包括 null，数组，对象字面量等）。 
-
-6）"function"：表示函数。 
-
-7）"symbol"：表示符号（ES6 引入）。 
-
-8）"bigint"：表示大整数（ES11 引入）。 示例如下：
-
+**示例如下**
+::: details 点击查看代码
 ```javascript
 console.log(typeof undefined); // "undefined"
 console.log(typeof true);      // "boolean"
@@ -211,14 +225,17 @@ console.log(typeof function(){}); // "function"
 console.log(typeof Symbol());  // "symbol"
 console.log(typeof 10n);       // "bigint"
 ```
+:::
 
-#### instanceof
+#### 5.2、instanceof
+>[!tip] 检测某个对象是否继承自某个构造函数的原型链。
+> instanceof 操作符用于检测某个对象是否是另一个对象（构造函数）的实例，返回一个布尔值。 
+> 1. 用于检测复杂类型，比如对象、数组、函数等。 
+> 2. 检测某个对象是否继承自某个构造函数的原型链。 
+ 
 
-instanceof 操作符用于检测某个对象是否是另一个对象（构造函数）的实例，返回一个布尔值，一些使用场景如下： 
-
-1）用于检测复杂类型，比如对象、数组、函数等。 
-
-2）检测某个对象是否继承自某个构造函数的原型链。 示例如下：
+**示例如下**
+::: details 点击查看代码
 
 ```javascript
 console.log({} instanceof Object);           // true
@@ -230,17 +247,18 @@ function MyClass() {}
 let myInstance = new MyClass();
 console.log(myInstance instanceof MyClass);  // true
 ```
+:::
 
 #### 两者区别
+::: tip 区别
+1. 检测类型的范围：typeof 主要用于检测基本数据类型（如 number，string，boolean 等）以及函数、未定义类型和 symbol，而 instanceof 主要用于检测对象的具体类型，检查某个对象是否是某个构造函数的实例。 
+2. 检测基本类型和引用类型：typeof 对于基本类型非常有用，但对于复杂引用类型（如数组、对象字面量）只会返回 "object"，而 instanceof 只能用于引用类型，不能用于检测基本数据类型。 
 
-1）检测类型的范围：typeof 主要用于检测基本数据类型（如 number，string，boolean 等）以及函数、未定义类型和 symbol，而 instanceof 主要用于检测对象的具体类型，检查某个对象是否是某个构造函数的实例。 
-
-2）检测基本类型和引用类型：typeof 对于基本类型非常有用，但对于复杂引用类型（如数组、对象字面量）只会返回 "object"，而 instanceof 只能用于引用类型，不能用于检测基本数据类型。 
-
-3）特殊情况：typeof null 返回 "object"，这是一个 JavaScript 语言的历史遗留问题，而 instanceof 可以用来检测自定义对象的类型，通过检查原型链来确认实例关系。
+3. 特殊情况：typeof null 返回 "object"，这是一个 JavaScript 语言的历史遗留问题，而 instanceof 可以用来检测自定义对象的类型，通过检查原型链来确认实例关系。
+:::
 
 #### 示例代码
-
+::: details 点击查看代码
 ```javascript
 let num = 42;
 console.log(typeof num);          // "number"
@@ -252,8 +270,8 @@ console.log(str instanceof String); // true (因为 str 是 String 对象的实�
 
 let arr = [1, 2, 3];
 console.log(typeof arr);          // "object"
-console.log(arr instanceof Array); // true
 ```
+:::
 
 
 
@@ -261,11 +279,13 @@ console.log(arr instanceof Array); // true
 
 在 JavaScript 中，数字是以二进制浮点数表示的。这种表示方式会导致某些十进制小数在二进制下无法精确表示，例如 0.1 和 0.2。它们在二进制中是无限循环的小数，示例如下：
 
-```
+::: details 点击查看代码
+``` sh
 0.1 的二进制表示约为：0.0001100110011001100110011001100110011001100110011001101...
 
 0.2 的二进制表示约为：0.001100110011001100110011001100110011001100110011001101...
 ```
+:::
 
 将这些二进制数相加时，由于精度限制，结果不能完全精确地表示为 0.3，而是一个非常接近的值：0.30000000000000004。
 

@@ -5,8 +5,8 @@
 JavaScript 有七种基本的数据类型：
 >[!TIP]
 >JavaScript 中的数据类型分为：
->1. 基本数据类型：包括`数值`、`字符串`、`布尔值`、`null`、`undefined`。
->2. 复杂数据类型：包括`对象`、`数组`、`函数`、`正则表达式`。
+>1. 基本数据类型：包括`Number`、`String`、`Boolean`、`null`、`undefined`、`Symbol`。
+>2. 复杂数据类型：包括`Object`、`Array`、`Function`。
 >
 >**[注:]**
 > - ES6 新增了 `Symbol` 数据类型。(解决属性名冲突问题,以及实现私有属性和方法)
@@ -14,523 +14,998 @@ JavaScript 有七种基本的数据类型：
 
 ### 1.1、Number类型
 #### 1.1.1、定义
-:::tip 数值类型
-JavaScript 中的数值类型有四种：`Number`、`String`、`Boolean`、`BigInt`。
+:::tip Number类型
+JavaScript中的Number类型用于表示`整数`和`浮点数`，采用IEEE 754标准的双精度浮点数格式存储。
 :::
 
-#### 1.1.2、Number类型方法
+#### 1.1.2、特性
+>[!NOTE]
+>- 整数范围：-2^53到2^53（安全整数）
+>- 浮点数精度问题：0.1 + 0.2 !== 0.3
+>- 特殊值：`Infinity`、`-Infinity`、`NaN`
+>- ES6新增：`Number.isInteger()` (判断是否为整数)、`Number.isSafeInteger()` (判断是否为安全整数)。
+
+#### 1.1.3、Number类型方法
 
 | 方法名称      | 描述                                                         |
-| ------------- | ---------- |
-| toFixed()     | 返回字符串形式的数值，其中小数点后有指定位数的数字             |
-| toString()    | 返回字符串形式的数值                                           |
-| valueOf()     | 返回数值本身                                                   |
-<!-- | toExponential() | 返回字符串形式的数值，其中指数计数法表示的数字                 | -->
-<!-- | toPrecision() | 返回字符串形式的数值，其中数字的精度由参数指定                 | -->
+| ------------- | ------------------------------------------------------------ |
+| `toFixed(n)`    | 返回指定位数小数的字符串表示，会四舍五入(n: 0-20)            |
+| `toString(radix)`| 返回指定基数(radix: 2-36)的字符串表示，默认十进制             |
+| `valueOf()`     | 返回Number对象的原始数值                                      |
+| `toExponential(n)`| 返回指数表示法的字符串形式(n: 小数位数)                      |
+| `toPrecision(n)` | 返回指定位数有效数字的字符串表示(n: 有效数字位数)             |
 
+#### 1.1.4、使用示例
+```javascript
+// 安全整数检查
+Number.isSafeInteger(9007199254740991) // true
+Number.isSafeInteger(9007199254740992) // false
+
+// 浮点数精度问题
+0.1 + 0.2 // 0.30000000000000004
+
+// 方法使用
+(123.456).toFixed(2) // "123.46"
+(10).toString(2) // "1010"
+```
 ### 1.2、Boolean类型
 #### 1.2.1、定义
-:::tip 布尔类型
-JavaScript 中的布尔类型只有两个值：`true` 和 `false`。
+:::tip Boolean类型
+JavaScript中的Boolean类型表示逻辑实体，只有两个值：`true` 和 `false`。常用于条件判断和控制流程。
 :::
 
-#### 1.2.2、注意事项
->[!note]
->通过布尔运算结果为`false`的值有：
->1. `undefined`
->2. `null`
->3. `0`
->4. `NaN`
->5. `''`（空字符串）。
+#### 1.2.2、特性
+>[!NOTE]
+>- 类型转换规则：
+>  - `false`值：`false`、`0`、`""`、`null`、`undefined`、`NaN`
+>  - 其他所有值都会转换为`true`
+>- 严格相等(===)不会进行类型转换
+>- Boolean对象与原始布尔值的区别
 
+#### 1.2.3、常用方法
+| 方法名称      | 描述                                                         |
+| ------------- | ------------------------------------------------------------ |
+| toString()    | 返回布尔值的字符串表示("true"或"false")                      |
+| valueOf()     | 返回布尔值的原始值                                           |
 
+#### 1.2.4、示例
+```javascript
+// 类型转换示例
+Boolean(0) // false
+Boolean("hello") // true
+
+// 严格比较
+false == 0 // true
+false === 0 // false
+
+// Boolean对象
+let boolObj = new Boolean(false)
+if(boolObj) {
+  console.log("This will execute") // 因为对象总是truthy
+}
+```
 
 ### 1.3、String类型
-#### 1.3.2、定义
-:::tip 字符串类型
-JavaScript 中的字符串类型是一系列字符组成的序列，每个字符都用单引号或双引号括起来。
+#### 1.3.1、定义
+:::tip String类型
+JavaScript中的String类型表示文本数据，是不可变的原始值。可以使用单引号(')、双引号(")或反引号(`)创建。
 :::
 
-#### 1.3.3、String类型方法
+#### 1.3.2、特性
+>[!NOTE]
+>- 字符串是不可变的(immutable)
+>- ES6新增模板字符串功能
+>- 字符串长度通过length属性获取
+>- 支持Unicode字符
 
-| 方法名称      | 描述                                                         |
-| ------------- | ---------- |
-| charAt()      | 返回指定位置的字符                                             |
-| charCodeAt()  | 返回指定位置的字符的 Unicode 编码                               |
-| concat()      | 连接两个或多个字符串，并返回连接后的字符串                     |
-| fromCharCode() | 将 Unicode 编码转换成对应的字符                               |
-| indexOf()     | 返回指定字符串在当前字符串中第一次出现的位置，如果不存在则返回-1 |
-| lastIndexOf() | 返回指定字符串在当前字符串中最后一次出现的位置，如果不存在则返回-1 |
-| localeCompare() | 比较两个字符串，并返回一个数字，表示它们的排序关系             |
-| match()       | 用于检索字符串中符合正则表达式的子串，返回一个数组，其中存放匹配的结果 |
-| replace()     | 用于替换字符串中符合正则表达式的子串，返回替换后的字符串         |
-| search()      | 用于检索字符串中符合正则表达式的子串，返回匹配的第一个位置       |
-| slice()       | 用于从字符串中提取子串，并返回子串                             |
-| split()       | 用于分割字符串，将字符串分割成多个子串，并将结果存入数组         |
-| substr()      | 用于从字符串中提取子串，并返回子串                             |
-| substring()   | 用于从字符串中提取子串，并返回子串                             |
-| toLocaleLowerCase() | 将字符串转换成小写，根据本地语言环境                           |
-| toLocaleUpperCase() | 将字符串转换成大写，根据本地语言环境                           |
-| toLowerCase() | 将字符串转换成小写                                           |
-| toUpperCase() | 将字符串转换成大写                                           |
-| trim()        | 用于去除字符串两端的空格                                       |
+#### 1.3.3、常用方法
+| 方法名称          | 描述                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| charAt(index)     | 返回指定位置的字符                                           |
+| charCodeAt(index) | 返回指定位置字符的UTF-16编码                                 |
+| includes(str)     | 判断是否包含指定字符串                                       |
+| endsWith(str)     | 判断是否以指定字符串结尾                                     |
+| indexOf(str)      | 返回指定字符串首次出现的位置                                 |
+| lastIndexOf(str)   | 返回指定字符串最后一次出现的位置                             |
+| match(regexp)     | 使用正则表达式匹配字符串                                     |
+| padEnd(length, str)| 用指定字符串填充到指定长度(从末尾)                          |
+| padStart(length, str)| 用指定字符串填充到指定长度(从开头)                        |
+| repeat(count)     | 重复字符串指定次数                                           |
+| replace(search, replace)| 替换字符串中的内容                                      |
+| slice(start, end) | 提取字符串片段                                               |
+| split(separator)  | 按分隔符分割字符串为数组                                     |
+| startsWith(str)   | 判断是否以指定字符串开头                                     |
+| substring(start, end)| 提取字符串片段(类似slice)                                |
+| toLowerCase()     | 转换为小写                                                   |
+| toUpperCase()     | 转换为大写                                                   |
+| trim()            | 去除两端空白                                                 |
+| trimStart()       | 去除开头空白                                                 |
+| trimEnd()         | 去除末尾空白                                                 |
+
+#### 1.3.4、示例
+```javascript
+// 模板字符串
+let name = "John"
+console.log(`Hello ${name}!`) // Hello John!
+
+// 字符串方法
+let str = "Hello World"
+str.includes("World") // true
+str.repeat(2) // "Hello WorldHello World"
+
+// Unicode支持
+let heart = "❤️"
+heart.length // 2 (某些表情符号占用多个代码单元)
+```
 
 ### 1.4、Array类型
 #### 1.4.1、定义
-:::tip 数组类型
-JavaScript 中的数组类型是一系列按顺序排列的元素组成的序列，每个元素都用方括号括起来。
+:::tip Array类型
+JavaScript中的Array类型是用于存储有序数据集合的高阶对象。可以包含不同类型的元素，长度动态可变。
 :::
 
+#### 1.4.2、特性
+>[!NOTE]
+>- 数组是对象类型
+>- 长度通过length属性获取和设置
+>- 稀疏数组(含有空位)的处理
+>- ES6新增的数组特性：解构赋值、扩展运算符等
 
-#### 1.4.2、核心方法（改变原数组)
+#### 1.4.3、核心方法
+| 方法名称  | 描述                                                         |
+| --------- | ------------------------------------------------------------ |
+| push(...items) | 添加元素到数组末尾，返回新长度                               |
+| pop()     | 移除并返回数组最后一个元素                                   |
+| shift()   | 移除并返回数组第一个元素                                      |
+| unshift(...items)| 添加元素到数组开头，返回新长度                              |
+| splice(start, deleteCount, ...items)| 从指定位置添加/删除元素，返回被删除元素数组         |
+| reverse() | 反转数组元素顺序                                             |
+| sort([compareFunction])| 对数组元素排序                                             |
 
-| 方法名称  | 描述                                                       |
-| :-------- | :--------------------------------------------------------- |
-| push()    | 尾部添加                                                   |
-| pop()     | 尾部删除                                                   |
-| unshift() | 头部添加                                                   |
-| shift()   | 头部删除                                                   |
-| splice()  | **截取**或者**添加**、**删除**数组的元素                   |
-| reverse() | **颠倒数组**中元素的顺序                                   |
-| sort()    | 用于数组排序（涉及到函数知识，在函数一节再进行详细的讲解） |
-
-
-
-####  1.4.3、常规方法（不改变原数组)
-
+#### 1.4.4、迭代方法
 | 方法名称      | 描述                                                         |
 | ------------- | ------------------------------------------------------------ |
-| concat()      | 合并多个数组                                                 |
-| indexOf()     | 根据下标找元素，从前往后查找，返回指定元素的**索引值**，如果不存在返回-1 |
-| lastIndexOf() | 根据下标找元素，从后往前查找，返回指定元素的**索引值**，如果不存在返回-1 |
-| slice()       | 截取数组中的元素                                             |
-| join()        | 将数组转成字符串                                             |
+| forEach(callback) | 对每个元素执行回调函数                                       |
+| map(callback) | 对每个元素执行回调函数，返回新数组                           |
+| filter(callback) | 过滤元素，返回满足条件的元素组成的新数组                     |
+| reduce(callback, initialValue)| 从左到右对每个元素执行回调函数，累计结果                  |
+| reduceRight(callback, initialValue)| 从右到左对每个元素执行回调函数，累计结果                |
+| some(callback) | 测试是否至少有一个元素通过测试                               |
+| every(callback) | 测试是否所有元素都通过测试                                  |
+| find(callback) | 返回第一个满足条件的元素                                     |
+| findIndex(callback) | 返回第一个满足条件的元素的索引                              |
+
+#### 1.4.5、静态方法
+| 方法名称        | 描述                                                         |
+| --------------- | ------------------------------------------------------------ |
+| Array.from(arrayLike) | 从类数组或可迭代对象创建新数组                              |
+| Array.of(...items) | 根据参数创建新数组                                          |
+| Array.isArray(value) | 判断值是否为数组                                           |
+
+#### 1.4.6、示例
+```javascript
+// 数组解构
+let [a, b] = [1, 2] // a=1, b=2
+
+// 扩展运算符
+let arr1 = [1, 2, 3]
+let arr2 = [...arr1, 4, 5] // [1, 2, 3, 4, 5]
+
+// 数组方法
+let numbers = [1, 2, 3, 4, 5]
+numbers.filter(n => n > 3) // [4, 5]
+numbers.reduce((sum, n) => sum + n, 0) // 15
+
+// 类数组转换
+Array.from(document.querySelectorAll('div')) // 将NodeList转为数组
+```
 
 
 
-####  1.4.4、高阶方法
-
-| 方法名称      | 描述                                                         |
-| ------------- | ------------------------------------------------------------ |
-| forEach()     | 遍历数组，没有返回值                                         |
-| map()         | 映射数组，批量加工数组，返回值为加工后的数组                 |
-| filter()      | 过滤数组，过滤掉不满足的内容，返回满足条件的新数组           |
-| every()       | 判断数组中**所有元素**是否满足某个条件，全部满足则返回true，有一个不满足就返回false |
-| some()        | 判断数组中**是否存在**,满足某个条件的元素，有一个满足就返回true，全不满足则返回false |
-| find（）      | 查找数组中满足条件的元素，找到了就返回对应的**元素**，找不到就返回-1 |
-| findIndex（） | 查找数组中满足条件的元素，找到了就返回对应的**下标**，找不到就返回-1 |
-| reduce（）    | 统计数组，计算叠加后的值  `数组.reduce(function (prev,item,index,arr) {},初始值)` |
 
 
 
-####  1.4.5、其他方法
+### 1.5、Object类型
+#### 1.5.1、定义
+:::tip Object类型
+JavaScript中的Object类型是键值对的集合，用于存储复杂数据结构。它是所有对象的基类，几乎所有对象都是Object的实例。
+:::
 
-| 方法名称        | 描述                                                       |
-| --------------- | ---------------------------------------------------------- |
-| includes()      | 判断一个数组是否包含指定的值，返回布尔值                   |
-| valueOf()       | 返回**数组本身**，所有对象都拥有的方法,表示对该对象求值    |
-| Array.from()    | 从`可迭代`或`类数组`对象创建一个新的浅拷贝的数组实例       |
-| Array.isArray() | 判断传递的值是否是一个数组                                 |
-| Array.values()  | 返回一个新的`数组迭代器对象`，该对象迭代数组中每个元素的值 |
+#### 1.5.2、特性
+>[!NOTE]
+>- 对象是引用类型
+>- 属性可以是任意数据类型
+>- 属性名可以是字符串或Symbol
+>- ES6新增特性：属性简写、计算属性名、方法简写等
+>- 原型链机制实现继承
 
+#### 1.5.3、创建方式
+| 方式                | 示例                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| 对象字面量          | `let obj = {name: 'John', age: 30}`                          |
+| new Object()        | `let obj = new Object(); obj.name = 'John'`                  |
+| Object.create()     | `let obj = Object.create(proto)`                             |
+| 构造函数            | `function Person(name) {this.name = name}`                   |
+| ES6类               | `class Person {constructor(name) {this.name = name}}`        |
 
+#### 1.5.4、常用方法
+| 方法名称                | 描述                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| Object.keys(obj)        | 返回对象自身可枚举属性组成的数组                             |
+| Object.values(obj)      | 返回对象自身可枚举属性值组成的数组                           |
+| Object.entries(obj)     | 返回对象自身可枚举键值对组成的数组                           |
+| Object.assign(target, ...sources)| 复制源对象属性到目标对象                                    |
+| Object.freeze(obj)      | 冻结对象，使其不可修改                                       |
+| Object.seal(obj)        | 密封对象，防止添加/删除属性                                  |
+| Object.defineProperty(obj, prop, descriptor)| 定义或修改对象属性                                      |
+| Object.getPrototypeOf(obj)| 返回对象的原型                                              |
+| Object.setPrototypeOf(obj, proto)| 设置对象的原型                                            |
 
+#### 1.5.5、示例
+```javascript
+// 对象创建
+let person = {
+  name: 'John',
+  age: 30,
+  greet() {
+    console.log(`Hello, I'm ${this.name}`);
+  }
+};
 
+// 属性访问
+console.log(person.name); // "John"
+console.log(person['age']); // 30
 
+// 方法调用
+person.greet(); // "Hello, I'm John"
+
+// ES6特性
+let prop = 'age';
+let obj = {
+  [prop]: 30, // 计算属性名
+  greet() {   // 方法简写
+    console.log('Hi');
+  }
+};
+
+// 对象合并
+let defaults = {mode: 'standard'};
+let config = Object.assign({}, defaults, {mode: 'advanced'});
+```
 
 ## 2、运算符
 
->[!TIP]javascript中的运算符分为：
->1. 算术运算符：`+`加、`-`减、`*`乘、`/`除、`%`模、`++`加加、`--`减减
->2. 赋值运算符：`=`、`+=`、`-=`、`*=`、`/=`、`%=`
->3. 关系运算符：`==`、`===`、`!=`、`!==`、`>`、`>=`、`<=`
->4. 逻辑运算符：`&&`与、`||`或、`!`非
->5. 条件运算符：`?:`
->6. 位运算符：`&`、`|`、`^`、`~`、`<<`、`>>`、`>>>`
-
-
-## 4、注释
-
-JavaScript 有以下注释：
->[!TIP]
->JavaScript 中的注释分为：
->1. 单行注释：以两个斜线开头的注释，直到行尾。
->2. 多行注释：以 `/*` 开头，以 `*/` 结尾的注释，可以跨越多行。
-
-## 5、变量
-### 5.1、定义
-:::warning 变量
-用于存储数据的占位符。
+### 2.1、算术运算符
+:::tip 算术运算符
+用于执行数学运算：
+- `+` 加法
+- `-` 减法  
+- `*` 乘法
+- `/` 除法
+- `%` 取模（余数）
+- `++` 自增
+- `--` 自减
+- `**` 指数（ES2016新增）
 :::
 
-### 5.2、变量声明
->[!TIP] 变量声明方式
-> - `var`
-> - `let`
-> - `const`
+ **示例**
+```javascript
+let x = 10, y = 3;
+console.log(x + y);  // 13
+console.log(x % y);  // 1
+console.log(x ** y); // 1000
+```
 
-#### 5.2.1、var声明
->[!TIP] 定义
->   1. 具有函数作用域或全局作用域，可以跨越多个作用域。
->   2. 可以重复声明同一变量。
->   3. 声明变量时可以不赋值。
->   4. 会进行变量提升。
+### 2.2、赋值运算符
+:::tip 赋值运算符
+用于给变量赋值：
+- `=` 简单赋值
+- `+=` 加后赋值
+- `-=` 减后赋值  
+- `*=` 乘后赋值
+- `/=` 除后赋值
+- `%=` 取模后赋值
+:::
 
-#### 5.2.2、let声明
->[!TIP] 定义
->   1. 具有块级作用域
->   2. 不能重复声明同一变量。
->   3. 声明变量时可以不赋值。
->   4. 只能在当前代码块内重复声明，不能跨越多个作用域。
-#### 5.2.2、const声明
->[!TIP] 定义
->   1. 具有块级作用域。
->   2. 不能重复声明同一变量。
->   3. 声明变量时必须赋值。
->   4. 不能修改值，不能跨越多个作用域。
+ **示例**
+```javascript
+let a = 5;
+a += 3; // 等同于 a = a + 3
+console.log(a); // 8
+```
 
-### 5.3、变量命名规范
->[!TIP] JavaScript变量命名规范
->1. 变量的命名必须由 `数字`,`字母`,`下划线`,`$`组成
->2. 不能以数字开头
->3. 不能使用关键字
+### 2.3、比较运算符
+:::tip 比较运算符
+用于比较值的大小：
+- `==` 相等（会类型转换）
+- `===` 严格相等（值和类型都相同）
+- `!=` 不等  
+- `!==` 严格不等
+- `>` 大于
+- `<` 小于
+- `>=` 大于等于
+- `<=` 小于等于
+:::
+
+>[!NOTE]
+>- 推荐使用严格相等(`===`)和严格不等(`!==`)
+>- 比较不同类型的值时，会先进行类型转换
+
+ **示例**
+```javascript
+'5' == 5   // true
+'5' === 5  // false
+null == undefined // true
+null === undefined // false
+```
+
+### 2.4、逻辑运算符
+:::tip 逻辑运算符
+用于逻辑运算：
+- `&&` 逻辑与
+- `||` 逻辑或  
+- `!` 逻辑非
+- `??` 空值合并（ES2020新增）
+:::
+
+ **示例**
+```javascript
+true && false // false
+true || false // true
+!true // false
+
+let name = null;
+console.log(name ?? '匿名'); // '匿名'
+```
+
+### 2.5、位运算符
+:::tip 位运算符
+对二进制位进行操作：
+- `&` 按位与
+- `|` 按位或  
+- `^` 按位异或
+- `~` 按位非
+- `<<` 左移
+- `>>` 右移
+- `>>>` 无符号右移
+:::
+
+ **示例**
+```javascript
+let a = 5;        // 0101
+let b = 3;        // 0011
+console.log(a & b); // 0001 (1)
+console.log(a | b); // 0111 (7)
+```
+
+### 2.6、其他运算符
+:::tip 其他运算符
+- `typeof` 返回变量类型
+- `instanceof` 检查对象类型
+- `?:` 三元条件运算符
+- `,` 逗号运算符
+- `delete` 删除对象属性
+- `in` 检查属性是否存在
+:::
+
+ **示例**
+```javascript
+let age = 20;
+let status = age >= 18 ? '成人' : '未成年';
+
+let obj = {x: 1};
+console.log('x' in obj); // true
+delete obj.x;
+console.log('x' in obj); // false
+```
+
+## 3、注释
+
+### 3.1、单行注释
+:::tip 单行注释
+以`//`开头，直到行尾：
+```javascript
+// 这是单行注释
+let x = 5; // 声明变量x
+```
+:::
+
+### 3.2、多行注释
+:::tip 多行注释
+
+1. 以`/*`开头，以`*/`结尾：
+2. 可跨越多行
+:::
+```javascript
+/*
+这是多行注释
+可以跨越多行
+*/
+let y = 10;
+```
+
+>[!NOTE]
+>- 注释应清晰简洁，说明代码意图而非实现细节
+>- 重要函数应使用JSDoc风格注释
+
+### 3.3、文档注释
+:::tip JSDoc 文档注释
+1. 使用`/**`开头，以`*/`结尾，
+2. 包含函数、类、变量、参数、返回值等信息
+3. 使用`@`作为标记，后跟信息类型，如`@param`、`@returns`等
+:::
+```javascript
+/**
+ * 计算两数之和
+ * @param {number} a 第一个加数
+ * @param {number} b 第二个加数
+ * @returns {number} 两数之和
+ */
+function add(a, b) {
+  return a + b;
+}
+```
+
+## 4、变量
+
+### 4.1、变量定义
+:::tip 变量
+用于存储数据的命名容器：
+- 使用`let`、`const`或`var`声明
+- 命名应具有描述性
+- 区分大小写
+:::
+
+### 4.2、变量声明方式
+
+#### 4.2.1、var
+:::warning var声明
+- 函数作用域或全局作用域
+- 存在变量提升
+- 可重复声明
+- 不推荐在现代代码中使用
+:::
+
+#### 4.2.2、let
+:::tip let声明
+- 块级作用域
+- 不可重复声明
+- 可重新赋值
+- 推荐用于可变变量
+:::
+
+#### 4.2.3、const
+:::tip const声明
+- 块级作用域
+- 不可重复声明
+- 不可重新赋值
+- 必须初始化
+- 推荐用于常量
+:::
+
+>[!NOTE]
+>- 优先使用`const`，需要重新赋值时使用`let`
+>- 避免使用`var`
+
+### 4.3、变量命名规范
+:::tip 命名规则
+1. 可包含：字母、数字、`_`、`$`
+2. 不能以数字开头
+3. 区分大小写
+4. 不能使用保留字
+5. 推荐使用驼峰命名法
+:::
+
+**命名示例**
+```javascript
+// 好的命名
+let userName = 'John';
+const MAX_SIZE = 100;
+
+// 不好的命名
+let a = 10; // 无意义
+let 1stPlace = 'first'; // 数字开头
+```
+
+### 4.4、变量作用域
+:::tip 作用域类型
+1. 全局作用域：在任何地方可访问
+2. 函数作用域：在函数内部可访问
+3. 块级作用域：在代码块`{}`内部可访问
+:::
+
+ **示例**
+```javascript
+let globalVar = '全局'; // 全局作用域
+
+function test() {
+  let functionVar = '函数'; // 函数作用域
+  
+  if (true) {
+    let blockVar = '块级'; // 块级作用域
+    console.log(functionVar); // 可访问
+  }
+  
+  console.log(blockVar); // 报错
+}
+```
+
+### 4.5、变量提升
+:::warning 变量提升
+- `var`声明会被提升到作用域顶部
+- `let`和`const`存在暂时性死区
+- 函数声明也会被提升
+:::
+
+ **示例**
+```javascript
+console.log(x); // undefined (变量提升)
+var x = 5;
+
+console.log(y); // 报错 (暂时性死区)
+let y = 10;
+```
+
+### 4.6、最佳实践
+:::tip 变量使用建议
+1. 始终声明变量（避免隐式全局变量）
+2. 优先使用`const`
+3. 使用有意义的命名
+4. 每个变量单独声明
+5. 初始化时赋值
+:::
 
 
+## 5、作用域
 
-## 7、作用域
-
-JavaScript 有以下作用域：
->[!TIP]
->JavaScript 中的作用域分为：
+>[!TIP] JS作用域分为
 >1. 全局作用域：是指在`函数外部`定义的变量和函数。
 >2. 函数作用域：是指在`函数内部`定义的变量和函数。  
 >3. 块作用域：是指在`代码块中`定义的变量和函数。
 
 
-## 9、严格模式
+## 6、严格模式
 
-JavaScript 有两种严格模式：
->[!TIP]
->JavaScript 有两种严格模式：
->1. 非严格模式：非严格模式是默认的运行模式，它不要求函数的参数必须使用命名参数。
->2. 严格模式：严格模式是一种特殊的运行模式，它要求函数的参数`必须使用命名参数`。
-
-## 10、事件
-
-JavaScript 有以下事件：
->[!TIP]
->JavaScript 中的事件分为：
->1. 鼠标事件：鼠标事件是指鼠标的各种事件，如点击、双击、拖动等。
->   - onclick 鼠标点击事件
->   - ondblclick 鼠标双击事件
->   - onmouseover 鼠标移入事件
->   - onmouseout 鼠标移出事件
->   - onmousemove 鼠标移动事件
->   - onmousedown 鼠标按下事件
->   - onmouseup 鼠标松开事件
->   - oncontextmenu 鼠标右键事件
->2. 键盘事件：键盘事件是指键盘的各种事件，如按下、松开、按住等。
->   - onkeydown 键盘按下事件
->   - onkeyup 键盘松开事件
->   - onkeypress 键盘按下并松开事件。
->3. 表单事件：表单事件是指表单的各种事件，如输入、提交等。
->   - oninput 输入事件
->   - onsubmit 提交事件
->   - onchange 改变事件
->   - onfocus 获得焦点事件
->   - onblur 失去焦点事件
->4. 文档事件：文档事件是指文档的各种事件，如加载、卸载等。
->   - onload 文档加载完成事件
->   - onunload 文档卸载事件
->5. 窗口事件：窗口事件是指窗口的各种事件，如调整大小、移动等。
->   - onresize 窗口调整大小事件
->   - onscroll 窗口滚动事件
->6. 其他事件：其他事件是指一些特定事件，如加载、错误、输入等。
->   - onerror 错误事件
->   - oninput 输入事件
->   - onsubmit 提交事件
->   - onfocus 获得焦点事件
->   - onblur 失去焦点事件
-
-## 11、DOM
->[!TIP] DOM 方法
->1. 获取元素：`getElementById()`、`getElementByTagName()`、`getElementByClassName()`、`querySelector()`、`querySelectorAll()`。
->2. 创建元素：`createElement()`、`createTextNode()`、`createDocumentFragment()`。
->3. 操作元素：`appendChild()`、`insertBefore()`、`removeChild()`、`replaceChild()`、`cloneNode()`。
->4. 操作样式：`getComputedStyle()`、`style.property`、`classList.add()`、`classList.remove()`、`classList.toggle()`。
->5. 操作属性：`getAttribute()`、`setAttribute()`、`removeAttribute()`。
->6. 操作文本：`textContent`、`innerText`、`innerHTML`。
->7. 操作表单：`value`、`checked`、`selected`。
->8. 操作位置：`offsetTop`、`offsetLeft`、`offsetWidth`、`offsetHeight`、`scrollLeft`、`scrollTop`。
->9. 操作事件：`addEventListener()`、`removeEventListener()`、`dispatchEvent()`。
-
-## 12、BOM
-
-JavaScript 有以下：
->[!TIP] BOM 方法
->JavaScript 中的 BOM 方法分为：
->1. 屏幕：`screen.width`、`screen.height`、`screen.colorDepth`。
->2. 历史：`history.length`、`history.back()`、`history.forward()`、`history.go()`。
->3. 窗口：`window.open()`、`window.close()`、`window.moveTo()`、`window.resizeTo()`、`window.scrollBy()`、`window.scrollTo()`。
->4. 导航：`navigator.appName`、`navigator.appVersion`、`navigator.userAgent`。
->5. 客户端：`clientInformation.language`、`clientInformation.platform`。
-
-## 13、JSON
-
-JavaScript 有以下 JSON 方法：
->[!TIP]
->JavaScript 中的 JSON 方法分为：
->1. 解析：`JSON.parse()`。
->2. 字符串化：`JSON.stringify()`。
-
-## 14、正则表达式
-
-JavaScript 有以下正则表达式方法：
->[!TIP]
->JavaScript 中的正则表达式方法分为：
->1. 创建正则表达式：`RegExp()`。
->2. 匹配字符串：`test()`。
->3. 全局匹配字符串：`exec()`。
->4. 替换字符串：`replace()`。
->5. 捕获组：`match()`。
-
-## 15、其他
-
-JavaScript 有以下其他方法：
->[!TIP]
->JavaScript 中的其他方法分为：
->1. 定时器：`setTimeout()`、`clearTimeout()`、`setInterval()`、`clearInterval()`。
->2. 错误处理：`try...catch`、`throw`、`Error()`。
->3. 编码转换：`encodeURI()`、`decodeURI()`、`encodeURIComponent()`、`decodeURIComponent()`。
->4. 数学方法：`Math.abs()`、`Math.ceil()`、`Math.floor()`、`Math.round()`、`Math.max()`、`Math.min()`、`Math.random()`。
->5. 日期方法：`Date()`、`Date.now()`、`Date.parse()`、`Date.UTC()`。
->6. 全局对象：`globalThis`。
->7. 其他：`eval()`、`arguments`、`Intl`、`Proxy`、`Symbol`。    
-
-
-
-
-
-## 5、Date类型
-### 5.1、定义
-:::tip 日期类型
-JavaScript 中的日期类型是用来表示日期和时间的对象，它提供了一些方法来操作日期和时间。
+### 6.1、严格模式概述
+:::tip 严格模式
+严格模式是ES5引入的一种限制性更强的JavaScript变体，它通过抛出错误来消除一些静默错误，并修复了一些导致JavaScript引擎难以优化的缺陷。
 :::
 
-### 5.2、Date类型方法
+#### 启用方式
+```javascript
+// 整个脚本文件启用
+'use strict';
 
-| 方法名称      | 描述                                                         |
-| ------------- | ---------- |
-| Date()        | 创建一个日期对象                                               |
-| getDate()     | 获取日期中的天（1-31）                                       |
-| getDay()      | 获取日期中的星期（0-6），0 表示星期日                          |
-| getFullYear() | 获取四位数的年份                                              |
-| getHours()    | 获取日期中的小时（0-23）                                      |
-| getMilliseconds() | 获取日期中的毫秒（0-999）                                    |
-| getMinutes()  | 获取日期中的分钟（0-59）                                      |
-| getMonth()    | 获取日期中的月份（0-11）                                      |
-| getSeconds()  | 获取日期中的秒（0-59）                                        |
-| getTime()     | 获取日期的毫秒表示                                            |
-| getTimezoneOffset() | 获取本地时间与格林威治标准时间的时差（分钟）                   |
-| getUTCDate()  | 获取日期（UTC 时间）中的天（1-31）                            |
-| getUTCDay()   | 获取日期（UTC 时间）中的星期（0-6），0 表示星期日              |
-| getUTCFullYear() | 获取日期（UTC 时间）中的年份                                  |
-| getUTCHours() | 获取日期（UTC 时间）中的小时（0-23）                           |
-| getUTCMilliseconds() | 获取日期（UTC 时间）中的毫秒（0-999）                         |
-| getUTCMinutes() | 获取日期（UTC 时间）中的分钟（0-59）                           |
-| getUTCMonth() | 获取日期（UTC 时间）中的月份（0-11）                           |
-| getUTCSeconds() | 获取日期（UTC 时间）中的秒（0-59）                             |
-| getYear()     | 获取日期的年份（2-3 位）                                      |
-| parse()       | 将一个字符串解析为日期对象                                     |
-| setDate()     | 设置日期中的天（1-31）                                       |
-| setFullYear() | 设置日期中的年份                                              |
-| setHours()    | 设置日期中的小时（0-23）                                      |
-| setMilliseconds() | 设置日期中的毫秒（0-999）                                    |
-| setMinutes()  | 设置日期中的分钟（0-59）                                      |
-| setMonth()    | 设置日期中的月份（0-11）                                      |
-| setSeconds()  | 设置日期中的秒（0-59）                                        |
-| setTime()     | 设置日期的毫秒表示                                            |
-| setUTCDate()  | 设置日期（UTC 时间）中的天（1-31）                            |
-| setUTCFullYear() | 设置日期（UTC 时间）中的年份                                  |
-| setUTCHours() | 设置日期（UTC 时间）中的小时（0-23）                           |
-| setUTCMilliseconds() | 设置日期（UTC 时间）中的毫秒（0-999）                         |
-| setUTCMinutes() | 设置日期（UTC 时间）中的分钟（0-59）                           |
-| setUTCMonth() | 设置日期（UTC 时间）中的月份（0-11）                           |
-| setUTCSeconds() | 设置日期（UTC 时间）中的秒（0-59）                             |
-| setYear()     | 设置日期的年份（2-3 位）                                      |
-| toDateString() | 返回日期的字符串表示（日期部分）                               |
-| toGMTString() | 返回日期的字符串表示（日期部分），使用 GMT 时间                  |
-| toISOString() | 返回日期的字符串表示（日期部分），使用 ISO 8601 格式            |
-| toJSON()      | 返回日期的字符串表示（日期部分），使用 JSON 序列化              |
-| toLocaleDateString() | 返回日期的字符串表示（日期部分），根据本地语言环境               |
-| toLocaleString() | 返回日期的字符串表示（日期部分），根据本地语言环境               |
-| toLocaleTimeString() | 返回日期的字符串表示（时间部分），根据本地语言环境               |
-| toTimeString() | 返回日期的字符串表示（时间部分）                               |
-| toUTCString() | 返回日期的字符串表示（日期部分），使用 UTC 时间                  |
+// 函数内部启用
+function strictFunc() {
+  'use strict';
+  // 函数体
+}
+```
 
-## 6、Math类型
-### 6.1、定义
-:::tip 数学类型
-JavaScript 中的数学类型提供了一些常用的数学函数。
+### 6.2、严格模式的主要变化
+>[!NOTE]
+>- 变量必须声明后才能使用
+>- 禁止删除不可删除的属性
+>- 函数参数名不能重复
+>- 禁止使用`with`语句
+>- 禁止使用`arguments.callee`
+>- `this`在全局作用域中为`undefined`而非`window`
+>- 禁止八进制字面量(如010)
+
+#### 示例
+```javascript
+'use strict';
+
+// 变量必须声明
+x = 10; // ReferenceError
+
+// 参数名不能重复
+function dupParam(a, a) {} // SyntaxError
+
+// 删除不可删除属性
+delete Object.prototype; // TypeError
+```
+
+### 6.3、严格模式的优势
+:::tip 使用严格模式的好处
+1. 使代码更安全，避免意外创建全局变量
+2. 消除一些静默错误，转为显式抛出错误
+3. 禁止使用一些可能在未来版本中定义的语法
+4. 提高编译器效率，帮助JavaScript引擎优化代码
+::>
+
+## 7、事件
+
+### 7.1、事件概述
+:::tip JavaScript事件
+事件是文档或浏览器窗口中发生的特定交互瞬间，JavaScript可以通过事件处理器对这些交互做出响应。
 :::
 
-### 6.2、Math类型方法
+### 7.2、事件类型分类
 
-| 方法名称      | 描述                                                         |
-| ------------- | ---------- |
-| abs()         | 返回数字的绝对值                                               |
-| acos()        | 返回数字的反余弦值                                             |
-| asin()        | 返回数字的反正弦值                                             |
-| atan()        | 返回数字的反正切值                                             |
-| atan2()       | 返回两个坐标之间的反正切值                                     |
-| ceil()        | 返回大于或等于该数字的最小的整数                               |
-| cos()         | 返回数字的余弦值                                               |
-| exp()         | 返回 e 的指数值                                                |
-| floor()       | 返回小于或等于该数字的最大的整数                               |
-| log()         | 返回数字的自然对数                                             |
-| max()         | 返回给定参数中的最大值                                         |
-| min()         | 返回给定参数中的最小值                                         |
-| pow()         | 返回第一个参数的第二个参数的幂值                               |
-| random()      | 返回 0 到 1 之间的随机数                                       |
-| round()       | 返回数字的四舍五入值                                           |
-| sin()         | 返回数字的正弦值                                               |
-| sqrt()        | 返回数字的平方根                                               |
-| tan()         | 返回数字的正切值                                               |
+#### 7.2.1、鼠标事件
+| 事件类型 | 描述 |
+|---------|------|
+| click | 单击事件 |
+| dblclick | 双击事件 |
+| mousedown | 鼠标按下 |
+| mouseup | 鼠标释放 |
+| mousemove | 鼠标移动 |
+| mouseover | 鼠标移入元素 |
+| mouseout | 鼠标移出元素 |
+| contextmenu | 右键菜单 |
 
-## 7、RegExp类型
-### 7.1、定义
-:::tip 正则表达式类型
-JavaScript 中的正则表达式类型是用来表示正则表达式的对象，它提供了一些方法来操作正则表达式。
+#### 7.2.2、键盘事件
+| 事件类型 | 描述 |
+|---------|------|
+| keydown | 按键按下 |
+| keyup | 按键释放 |
+| keypress | 按键按下并释放 |
+
+#### 7.2.3、表单事件
+| 事件类型 | 描述 |
+|---------|------|
+| submit | 表单提交 |
+| change | 表单值改变 |
+| input | 输入事件 |
+| focus | 获取焦点 |
+| blur | 失去焦点 |
+
+#### 7.2.4、窗口事件
+| 事件类型 | 描述 |
+|---------|------|
+| load | 页面加载完成 |
+| unload | 页面卸载 |
+| resize | 窗口大小改变 |
+| scroll | 滚动事件 |
+
+### 7.3、事件处理方式
+:::tip 事件处理
+1. HTML属性：`<button onclick="handleClick()">`
+2. DOM属性：`element.onclick = function() {}`
+3. 事件监听：`element.addEventListener('click', handler)`
 :::
 
-### 7.2、RegExp类型方法
+#### 示例
+```javascript
+// 推荐使用addEventListener
+document.getElementById('btn').addEventListener('click', function(e) {
+  console.log('按钮被点击', e);
+});
 
-| 方法名称      | 描述                                                         |
-| ------------- | ---------- |
-| exec()        | 用于检索字符串中符合正则表达式的子串，返回一个数组，其中存放匹配的结果 |
-| test()        | 用于检测字符串是否符合正则表达式，返回 true 或 false。      |
-| toString()    | 返回正则表达式的字符串形式。                                 |
+// 事件对象包含有用信息
+document.addEventListener('mousemove', function(e) {
+  console.log(`鼠标位置: X=${e.clientX}, Y=${e.clientY}`);
+});
+```
 
-## 8、JSON类型
-### 8.1、定义
-:::tip JSON类型
-JavaScript 中的 JSON 类型是用来表示 JSON 对象的对象，它提供了一些方法来操作 JSON 对象。
+## 8、函数高级特性
+
+### 8.1、函数作用域
+:::tip 函数作用域
+函数内部声明的变量在函数外部不可访问，形成独立作用域：
+```javascript
+function test() {
+  var innerVar = '内部变量';
+}
+console.log(innerVar); // ReferenceError
+```
 :::
 
-### 8.2、JSON类型方法
-
-| 方法名称      | 描述                                                         |
-| ------------- | ---------- |
-| parse()       | 将一个 JSON 字符串转换为一个 JavaScript 对象。               |
-| stringify()   | 将一个 JavaScript 对象转换为一个 JSON 字符串。               |    
-## 9、全局对象
-### 9.1、定义
-:::tip 全局对象
-JavaScript 中的全局对象是一些预定义的对象，它们在任何地方都可以访问。
+### 8.2、闭包
+:::tip 闭包
+函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行：
+```javascript
+function createCounter() {
+  let count = 0;
+  return function() {
+    return ++count;
+  };
+}
+const counter = createCounter();
+counter(); // 1
+counter(); // 2
+```
 :::
 
-### 9.2、全局对象
+### 8.3、arguments对象
+:::tip arguments
+函数内部可用的类数组对象，包含所有传入参数：
+```javascript
+function sum() {
+  let total = 0;
+  for(let i = 0; i < arguments.length; i++) {
+    total += arguments[i];
+  }
+  return total;
+}
+sum(1, 2, 3); // 6
+```
+:::
 
-| 对象名称      | 描述                                                         |
-| ------------- | ---------- |
-| Object        | 用于处理对象及其原型的构造函数。                             |
-| Function      | 用于创建函数的构造函数。                                       |
-| Boolean       | 用于处理布尔值的构造函数。                                     |
-| Symbol        | 用于创建唯一的标识符的构造函数。                               |
-| Error         | 用于创建错误对象的构造函数。                                   |
-| EvalError     | 用于创建 EvalError 对象的构造函数。                             |
-| RangeError    | 用于创建 RangeError 对象的构造函数。                            |
-| ReferenceError | 用于创建 ReferenceError 对象的构造函数。                         |
-| SyntaxError   | 用于创建 SyntaxError 对象的构造函数。                           |
-| TypeError     | 用于创建 TypeError 对象的构造函数。                             |
-| URIError      | 用于创建 URIError 对象的构造函数。                              |
-| Number        | 用于处理数字值的构造函数。                                     |
-| Math          | 用于处理数学计算的对象。                                       |
-| Date          | 用于处理日期和时间的构造函数。                                 |
-| String        | 用于处理字符串的构造函数。                                     |
-| RegExp        | 用于处理正则表达式的构造函数。                                 |
-| Array         | 用于处理数组的构造函数。                                       |
-| Map           | 用于处理 Map 数据结构的构造函数。                               |
-| Set           | 用于处理 Set 数据结构的构造函数。                               |
-| WeakMap       | 用于处理弱 Map 数据结构的构造函数。                             |
-| WeakSet       | 用于处理弱 Set 数据结构的构造函数。                             |
-| JSON          | 用于处理 JSON 对象及其字符串的构造函数。                       |
-| console       | 用于提供控制台输出的对象。                                     |
-| window        | 全局对象，表示当前的浏览器窗口。                               |
-| document      | 全局对象，表示当前的 HTML 文档。                              |
-| localStorage  | 用于存储本地数据（浏览器关闭后将被清除）的对象。                 |
-| sessionStorage | 用于存储会话数据（页面关闭后将被清除）的对象。                 |
+### 8.4、IIFE模式
+:::tip 立即执行函数
+定义后立即执行的函数表达式，用于创建独立作用域：
+```javascript
+(function() {
+  var privateVar = '私有变量';
+})();
+```
+
+## 9、面向对象
+
+### 9.1、构造函数
+:::tip 构造函数
+用于创建对象的特殊函数，通常首字母大写：
+```javascript
+function Person(name) {
+  this.name = name;
+  this.sayHi = function() {
+    console.log('Hi, I am ' + this.name);
+  };
+}
+const john = new Person('John');
+```
+:::
+
+### 9.2、原型链
+:::tip 原型继承
+每个对象都有原型对象，形成原型链用于属性查找：
+```javascript
+Person.prototype.greet = function() {
+  console.log('Hello from prototype');
+};
+john.greet(); // 调用原型方法
+```
+:::
+
+### 9.3、继承实现
+:::tip 组合继承
+结合构造函数和原型链的继承方式：
+```javascript
+function Student(name, grade) {
+  Person.call(this, name);
+  this.grade = grade;
+}
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+```
+
+## 10、this绑定
+
+### 10.1、默认绑定
+:::tip 独立函数调用
+非严格模式下指向全局对象，严格模式为undefined：
+```javascript
+function showThis() {
+  console.log(this);
+}
+showThis(); // window/undefined
+```
+:::
+
+### 10.2、隐式绑定
+:::tip 方法调用
+指向调用该方法的对象：
+```javascript
+obj.method(); // this指向obj
+```
+:::
+
+### 10.3、显式绑定
+:::tip call/apply/bind
+强制指定this指向：
+```javascript
+func.call(obj, arg1, arg2);
+func.apply(obj, [arg1, arg2]);
+const boundFunc = func.bind(obj);
+```
+:::
+
+### 10.4、new绑定
+:::tip 构造函数调用
+指向新创建的对象：
+```javascript
+const obj = new Constructor();
+```
+:::
+
+## 11、错误处理
+
+### 11.1、try-catch-finally
+:::tip 定义
+-  用于`捕获和处理`代码块中发生的`异常`
+
+:::
+```javascript
+try {
+  // 可能抛出错误的代码
+  throw new Error('这是一个自定义错误');
+} catch (error) {
+  // 错误发生时执行
+  console.error('捕获到错误:', error.message);
+} finally {
+  // 无论是否有错误都会执行
+  console.log('finally 代码块始终执行');
+}
+```
+
+### 11.2、Error类型
+:::tip ES5 内置了 6 种错误类型,都继承自Error对象
+1. `Error`: 基础错误类型
+2. `SyntaxError`: 语法错误
+3. `TypeError`: 类型错误
+4. `ReferenceError`: 引用错误
+5. `RangeError`: 数值范围错误
+6. `URIError`: URI 编码 / 解码错误
+:::
+
+### 11.3、自定义错误
+:::tip 自定义错误
+- 继承自Error对象
+- 包含自定义信息
+- 通过构造函数创建自定义错误类型
+:::
+
+::: details 自定义错误示例
+```js
+function ValidationError(message) {
+  this.name = 'ValidationError';
+  this.message = message || '验证失败';
+  this.stack = (new Error()).stack; // 可选：捕获堆栈信息
+}
+ValidationError.prototype = Object.create(Error.prototype);
+ValidationError.prototype.constructor = ValidationError;
+
+// 使用自定义错误
+try {
+  throw new ValidationError('用户名不能为空');
+} catch (error) {
+  console.error(error.name + ': ' + error.message);
+}
+```
+:::
+
+### 11.4、异步错误处理
+>[!tip]
+> - 异步代码中，错误处理需要单独处理，不能使用try-catch。
+> - 在 ES5 的回调函数中，错误通常作为第一个参数传递给回调函数。
+> - 在 ES6 的 Promise 中，错误通过 Promise 的 reject() 方法传递。
+> - 在 ES7 的 async/await 中，错误通过 try...catch 捕获。
 
 
 
 
-
-## 3、字符串的常用方法
-
-
-| 方法名        | 描述                                                         |
-| ------------- | ------------------------------------------------------------ |
-| charAt()      | 根据下标找字符串                                             |
-| charCodeAt()  | 根据下标找字符串的编码                                       |
-| toUpperCase() | 将字符串中的字母转换成大写                                   |
-| toLowerCase() | 将字符串中的字母转换成小写                                   |
-| slice()       | 截取字符串，方法返回的子串**包括开始处的字符**，但**不包括结束处的字符** `slice(start,end)` |
-| substr()      | 截取字符串，方法返回的子串**包括开始处的字符** 且规定**截取长度**`substr(start,length)` |
-| substring()   | 截取字符串中位于两个指定下标之间的字符 `substring(from, to)` |
-| trim()        | 去除字符串`两边`的空格                                         |
-| trimStart()   | 去除字符串`开头`的空格                                         |
-| trimEnd()     | 去除字符串`结尾`的空格                                         |
-| trimLeft()    | 去除字符串`左边`的空格                                         |
-| trimRight()   | 去除字符串`右边`的空格                                         |
-| replace()     | 用一些字符替换另一些字符，或替换一个与`正则表达式`匹配的子串 |
-| replaceAll()  | `批量替换`字符串                                               |
-| startsWith()  | 判断字符串是否`以某某开头`                                     |
-| endsWidth()   | 判断字符串是否`以某某结尾`                                     |
-| split()       | 将字符串转成`数组`                                             |
-| includes()    | 判断字符串是否`包含`某一个字符                                 |
-| concat()      | `合并`字符串                                                   |
-| indexOf()     | 根据字符串找`下标`,从`前`往后找                                  |
-| lastIndexOf() | 根据字符串找`下标`,从`后`往前找                                  |
+### 11.5、注意事项
+:::tip 注意事项
+1. **不要捕获所有错误**：避免在全局范围使用try-catch掩盖真正的问题。
+2. **异步代码需单独处理**：try-catch无法捕获异步回调中的错误。
+3. **自定义错误继承**：确保自定义错误继承自Error以保留其特性。
+:::
 
 
+## 12、JSON处理
+
+### 12.1、JSON.stringify
+:::tip 对象序列化
+将JavaScript对象转换为JSON字符串：
+```javascript
+JSON.stringify({name: 'John', age: 30});
+```
+:::
+
+### 12.2、JSON.parse
+:::tip JSON解析
+将JSON字符串转换为JavaScript对象：
+```javascript
+JSON.parse('{"name":"John","age":30}');
+```
+:::
 
 
+## 13、DOM
 
-## 3、函数方法
+### 13.1、DOM概述
+:::tip 文档对象模型(DOM)
+DOM是HTML和XML文档的编程接口，它将文档表示为节点树，允许JavaScript动态访问和更新文档内容、结构和样式。
+:::
 
-| 方法名称            | 描述                                                         |
-| ------------------- | ------------------------------------------------------------ |
-| Function.apply()    | 以给定的 `this` 值和作为数组（或`类数组对象`)提供的 `arguments` 调用该函数。 |
-| Function.bind()     | 创建一个新函数，当调用该新函数时，它会调用原始函数并将其 `this` 关键字设置为给定的值，同时，还可以传入一系列指定的参数，这些参数会插入到调用新函数时传入的参数的前面。 |
-| Function.call()     | 以给定的 `this` 值和逐个提供的参数调用该函数。               |
-| Function.toString() | 返回一个表示该函数源码的字符串。                             |
+### 13.2、DOM核心方法
 
+#### 13.2.1、节点查询
+| 方法 | 描述 |
+|------|------|
+| getElementById() | 通过ID获取元素 |
+| getElementsByClassName() | 通过类名获取元素集合 |
+| getElementsByTagName() | 通过标签名获取元素集合 |
+| querySelector() | 通过CSS选择器获取第一个匹配元素 |
+| querySelectorAll() | 通过CSS选择器获取所有匹配元素 |
 
+#### 13.2.2、节点操作
+| 方法 | 描述 |
+|------|------|
+| createElement() | 创建元素节点 |
+| createTextNode() | 创建文本节点 |
+| appendChild() | 添加子节点 |
+| removeChild() | 移除子节点 |
+| replaceChild() | 替换子节点 |
+| cloneNode() | 克隆节点 |
 
+#### 13.2.3、属性操作
+| 方法 | 描述 |
+|------|------|
+| getAttribute() | 获取属性值 |
+| setAttribute() | 设置属性值 |
+| removeAttribute() | 移除属性 |
+| hasAttribute() | 检查属性是否存在 |
 
+### 13.3、DOM示例
+```javascript
+// 创建并添加元素
+const div = document.createElement('div');
+div.textContent = '新创建的div';
+document.body.appendChild(div);
 
-## 4、对象方法
-| 方法名称                  | 描述                                                         |
-| ------------------------- | ------------------------------------------------------------ |
-| Object.assign()           | 将一个或者多个*源对象*中所有`可枚举`的`自有属性`复制到**目标对象**，并返回修改后的目标对象。 |
-| Object.create()           | 以一个现有对象作为原型，创建一个新对象                       |
-| `Object.defineProperty()` | 数据劫持，直接在一个对象上定义一个新属性，或修改其现有属性，并返回此对象。 |
-| Object.entries()          | 返回一个数组，包含给定对象自有的可枚举字符串键属性的键值对。 |
-| Object.hasOwn()           | 如果指定的对象**自身**有指定的属性，则返回 true。如果属性是**继承**的或者**不存在**，该方法返回 false。 |
-| Object.is()               | 确定两个值是否为**相同值**。                                 |
-| Object.keys()             | 返回一个由给定对象自身的可枚举的字符串键`属性名`组成的数组。 |
-| Object.values()           | 返回一个给定对象的自有可枚举字符串键`属性值`组成的数组       |
-| Object.valueOf()          | 将 `this` 值转换成对象。该方法旨在被派生对象重写，以实现自定义类型转换逻辑。 |
-| Object.setPrototypeOf()   | 可以将一个指定对象的原型（即内部的 `[[Prototype]]` 属性）设置为另一个对象或者 [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/null)。 |
+// 修改样式
+const box = document.getElementById('box');
+box.style.backgroundColor = 'red';
+box.classList.add('active');
 
-## 5、正则表达式方法
+// 事件委托
+document.getElementById('list').addEventListener('click', function(e) {
+  if(e.target.tagName === 'LI') {
+    console.log('点击了:', e.target.textContent);
+  }
+});
+```
 
-| 方法名称                  | 描述                                                         |
-| ------------------------- | ---------- |
-| RegExp.prototype.exec()   | 用于检索字符串中符合正则表达式的子串，返回一个数组，其中存放匹配的结果。 |
-| RegExp.prototype.test()   | 用于检测字符串是否符合正则表达式，返回 true 或 false。      |
-| RegExp.prototype.toString() | 返回正则表达式的字符串形式。                                 |
-| String.prototype.match()   | 用于检索字符串中符合正则表达式的子串，返回一个数组，其中存放匹配的结果。 |
-| String.prototype.replace() | 用于替换字符串中符合正则表达式的子串，返回替换后的字符串。     |
-| String.prototype.search()  | 用于检索字符串中符合正则表达式的子串，返回匹配的第一个位置。  |
-| String.prototype.split()   | 用于分割字符串，将字符串分割成多个子串，并将结果存入数组。      |    
+## 14、BOM
+
+### 14.1、BOM概述
+:::tip 浏览器对象模型(BOM)
+BOM提供了与浏览器窗口交互的对象，包括window、navigator、screen、history、location等。
+:::
+
+### 14.2、BOM核心对象
+
+#### 14.2.1、window对象
+| 属性/方法 | 描述 |
+|----------|------|
+| innerWidth/innerHeight | 窗口内部宽高 |
+| open()/close() | 打开/关闭窗口 |
+| setTimeout()/setInterval() | 定时器 |
+| alert()/confirm()/prompt() | 对话框 |
+
+#### 14.2.2、location对象
+| 属性/方法 | 描述 |
+|----------|------|
+| href | 完整URL |
+| protocol | 协议 |
+| host | 主机名和端口 |
+| pathname | 路径部分 |
+| search | 查询字符串 |
+| reload() | 重新加载页面 |
+
+#### 14.2.3、history对象
+| 属性/方法 | 描述 |
+|----------|------|
+| length | 历史记录数 |
+| back()/forward() | 后退/前进 |
+| go() | 跳转到指定历史记录 |
+| pushState()/replaceState() | 修改历史记录(HTML5) |
+
+### 14.3、BOM示例
+```javascript
+// 获取浏览器信息
+console.log('用户代理:', navigator.userAgent);
+console.log('屏幕尺寸:', screen.width, 'x', screen.height);
+
+// 操作URL
+if(location.search.includes('debug=true')) {
+  console.log('调试模式');
+}
+
+// 添加历史记录
+history.pushState({page: 1}, 'Page 1', '?page=1');
+```

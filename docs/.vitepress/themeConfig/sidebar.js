@@ -12,7 +12,8 @@ export const sidebar =
                 text: '🍎前端基础',
                 // collapsible: true,
                 items: [
-                    { text: '01-HTML&CSS', link: '/articles/basic/01-html.md' },
+                    { text: '01-HTML', link: '/articles/basic/01-html.md' },
+                    { text: '02-CSS', link: '/articles/basic/02-css.md' },
                     { text: '02-Javascript', link: '/articles/basic/02-javascript.md' },
                     { text: '03-ES6', link: '/articles/basic/03-ecmascript.md' },
                     { text: '04-TypeScript', link: '/articles/basic/04-typescript.md' },
@@ -94,15 +95,15 @@ export const sidebar =
             ]
         }
     ],
-    '/Practice/': [
+    '/practice/': [
         {
-            text: '🍚Practice',
+            text: '🍚项目',
             items: [
                 // This shows `/HarmonyOS/index.md` page.
-                { text: '01-vue2移动端项目', link: '/Practice/01-vue2.md' }, // /HarmonyOS/index.md
-                { text: '02-vue2PC端项目', link: '/Practice/02-vue2PC.md' }, // /HarmonyOS/index.md
-                { text: '03-vue3移动端项目', link: '/Practice/03-vue3.md' }, // /HarmonyOS/index.md
-                { text: '04-vue3PC端项目', link: '/Practice/04-vue3PC.md' }, // /HarmonyOS/index.md
+                { text: '01-vue2移动端项目', link: '/practice/01-vue2.md' }, // /HarmonyOS/index.md
+                { text: '02-vue2PC端项目', link: '/practice/02-vue2PC.md' }, // /HarmonyOS/index.md
+                { text: '03-vue3移动端项目', link: '/practice/03-vue3.md' }, // /HarmonyOS/index.md
+                { text: '04-vue3PC端项目', link: '/practice/04-vue3PC.md' }, // /HarmonyOS/index.md
                 // { text: 'Three', link: '/HarmonyOS/html' }, // /HarmonyOS/three.md
                 // { text: 'Four', link: '/HarmonyOS/four' } // /HarmonyOS/four.md
             ]

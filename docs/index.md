@@ -8,14 +8,11 @@ hero:
   tagline: /斜杠青年/人间清醒/工具控/
   image:
     src: /developer.gif
-    # src: /avatar.png
     alt: 头像
   actions:
     - theme: brand
       text: 进入主页
-      # link: /articles/
       link: /articles/basic/01-html.md
-
     - theme: alt
       text: 个人成长
       link: /api-examples
@@ -23,15 +20,12 @@ hero:
 features:
   - title: web前端
     icon: 🤹
-    #   src: /ext.svg
     details: 热衷于前端技术。
   - title: 喜欢美学
     icon: 🎨
-    #   src: /develop.svg
     details: 热爱美学，喜欢自定义各类主题。
   - title: 斜杠青年
     icon: 🧩
-    #   src: /ext-2.svg
     details: 平平无奇但却热爱学习的斜杠青年。
   - title: 专注内容
     icon: 📝
@@ -43,43 +37,4 @@ features:
   - title: 快速发布网站
     icon: 🚀
     details: 使用静态 HTML 进行快速初始加载，使用客户端路由进行快速加载后导航
-  # - title: Vue 开发插件
-  #   icon:📝
-  #   #   src: /vue.svg
-  #   details: 是一个使用 Vue.js 框架开发的 Chrome 插件，旨在为开发者展示如何使用 Vue.js 构建强大的浏览器扩展。
-  #   link: https://juejin.cn/post/7330227149177028617
-  #   linkText: 查看详情
-  # - title: React 开发插件
-  #   # icon:
-  #   #   src: /react.svg
-  #   details: 是一个使用 React.js 框架开发的 Chrome 插件，旨在为开发者展示如何使用 React.js 构建强大的浏览器扩展。
-  #   link: https://juejin.cn/post/7349936384512213027
-  #   linkText: 查看详情
-  # - title: 实用插件推荐
-  #   # icon:
-  #   #   src: /tj.svg
-  #   details: 推荐一些对前端开发来说实用的 Chrome 插件。
-  #   link: https://juejin.cn/post/7327893130572824611
-  #   linkText: 查看详情
 ---
-
-<!-- 自定义组件 -->
-<script setup>
-// 导入home
-</script>
-<!-- 网站统计 -->
-<div class="home-container">
-本站总访问量 <span id="busuanzi_value_site_pv" /> 次
-本站访客数 <span id="busuanzi_value_site_uv" /> 人次
-</div>
-
-<style>
-/* .home-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-  font-size: 16px;
-  color: #999;
-} */
-</style>
