@@ -1,6 +1,6 @@
-## Vue面试题
+# Vue面试题
 
-### 1. Vue的生命周期有哪些？
+## 1. Vue的生命周期有哪些？
 :::tip Vue2.x生命周期
 - `beforeCreate` ：(实例刚被创建，数据观测和事件配置之前)
 - `created` ：(实例创建完成，数据观测和事件配置之后)
@@ -25,39 +25,122 @@
 - `onActivated` ：(keep-alive 组件激活时)
 - `onDeactivated` ：(keep-alive 组件停用时)
 :::
-### 2. Vue的双向数据绑定原理是什么？
+## 2. Vue的双向数据绑定原理是什么？
+::: tip 原理
+1. **数据劫持**：Vue通过`Object.defineProperty()`（Vue 2.x）或 `Proxy`（Vue 3.x）方法来劫持各个属性的读取和设置，在数据发生变动时通知依赖于它的视图更新。
+2. **发布订阅模式**：Vue通过**发布者-订阅者模式**来实现数据与视图的双向绑定。
 
-- 数据劫持：Vue通过Object.defineProperty()方法来劫持各个属性的读取和设置，在数据发生变动时通知依赖于它的视图更新。
-- 发布订阅模式：Vue通过发布者-订阅者模式来实现数据与视图的双向绑定。
-
-### 3. Vue的模板语法？
-:::tip
-- 插值：{{ }}
-- 指令：v-if、v-else、v-else-if、v-for、v-on、v-bind、v-model
-- 过滤器：{{ message | capitalize }}
-- 缩写：v-bind:class="['active', 'text-danger']"
 :::
-### 4. Vue的路由模式？
-:::tip
-- hash：使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时页面不会重新加载。
-- history：使用 HTML5 History API 来完成 URL 跳转，页面会重新加载。
-- abstract：在不同路由模式之间切换。
-:::
-### 5. Vue2.x的组件通信方式？
 
+
+## 3. Vue的模板语法？
 :::tip
-- `props`：父组件向子组件传递数据。
-- `events`：子组件触发事件，父组件监听事件。
-- `$emit`：父组件触发事件，子组件监听事件。
+- 插值表达式
+- 指令：`v-if、v-else、v-else-if、v-for、v-on、v-bind、v-model`
+- 过滤器
+- 缩写：`v-bind:class="['active', 'text-danger']"`
+:::
+
+## 4. Vue的路由模式？
+:::tip 两种路由模式
+1. `hash`：使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时页面不会重新加载。
+2. `history`：使用 HTML5 History API 来完成 URL 跳转，页面会重新加载。
+- `abstract`：在不同路由模式之间切换。
+:::
+
+## 5. Vue的组件通信方式？
+
+:::tip Vue2.x组件通信方式
+- `props`：父组件 → 子组件传递数据（单向数据流）。
+- `$emit`：子组件 → 父组件，子组件触发事件，父组件监听事件。
+- `provide / inject`（跨层级）：祖先组件向下传递数据，子孙组件接收数据。
+- `Vuex`：集中式状态管理，可实现跨组件数据共享。
 - `$parent`：访问父组件。
 - `$children`：访问子组件。
 - `$refs`：访问子组件的 DOM 元素。
-- `provide`/`inject`：祖先组件向下传递数据，子孙组件接收数据。
-- `lisener`/`$emit`：父组件向子组件传递数据，子组件触发事件，父组件监听事件。
+:::
+::: details Vue2.x组件通信示例
+```js
+/*********** 父子组件通信    ***********/
+//  父组件
+    <child :msg="msg"></child>
+//  子组件
+    props: ['msg'],
+    template: '<div>{{ msg }}</div>'
+
+/*********** 祖孙组件通信    ***********/
+//  祖先组件
+    provide: {
+        msg: 'hello'
+    }
+//  子孙组件
+    inject: ['msg'],
+    template: '<div>{{ msg }}</div>'
+
+/*********** 跨层级组件通信    ***********/
+//  祖先组件
+    provide: {
+        msg: 'hello'
+    }
+//  中间组件
+    inject: ['msg'],
+    template: '<div><son></son></div>'
+//  子孙组件
+    inject: ['msg'],
+    template: '<div>{{ msg }}</div>'
+
+/*********** 父子组件通信（Vuex）    ***********/
+//  父组件
+    <child :msg="this.$store.state.msg"></child>
+//  子组件
+    props: ['msg'],
+    template: '<div>{{ msg }}</div>'
+//  父组件
+    this.$store.commit('updateMsg', 'newMsg')
+//  子组件
+    watch: {
+        msg(newVal) {
+            this.$emit('update:msg', newVal)
+        }
+    }
+
+/*********** 父子组件通信（$parent/$children/$refs）    ***********/
+//  父组件
+    <child ref="child"></child>
+    this.$refs.child.doSomething()
+//  子组件
+    methods: {
+        doSomething() {
+            console.log(this.$parent.$el) // 父组件的DOM元素
+            console.log(this.$children[0].$el) // 子组件的DOM元素
+        }
+    }
+/*********** 父子组件通信（$parent/$children/$refs）    ***********/
+
+
+
+
+```
 :::
 
-### 6. Vue的性能优化
-#### 6-1. 代码层面的优化
+
+
+:::tip Vue3.x组件通信方式
+- `defineProps/defineEmits`: 定义组件的属性和事件，父组件可以向子组件传递数据，子组件可以触发事件。
+- `provide/inject`: 祖先组件向下传递数据，子孙组件接收数据。
+- `ref`: 获取组件实例或子组件实例的引用。
+- `toRefs`: 将响应式对象转换为普通对象。
+- `watch`: 监听数据的变化。
+- `emit`: 触发事件。
+- `on`: 监听事件。
+:::
+
+
+
+
+
+## 6. Vue性能优化
+### 6-1. 代码层面的优化
 :::tip
 1. 减少 DOM 操作：尽量减少 DOM 的操作，比如不要用 v-if 切换元素，用 CSS 动画或过渡效果代替。
 2. 长列表性能优化：使用虚拟滚动，只渲染可视区域内的元素。 使用 `Object.freeze()冻结数据`，避免数据被修改。
@@ -70,7 +153,7 @@
 9. 事件的及时销毁：Vue 组件销毁时，会自动清理它与其它实例的连接，解绑它的全部指令及事件监听器，但是仅限于组件本身的事件。 如果有一些全局的事件监听器，需要在组件销毁时移除。
 10. 事件节流：使用防抖和节流函数，减少函数的执行频率。
 :::
-#### 6-2. 工具层面的优化
+### 6-2. 工具层面的优化
 :::tip
 1. 开启生产模式：生产模式下，Vue 会进行更精简的打包，移除警告信息，提高运行效率。
 2. 使用 Webpack 进行代码分割：Webpack 能够将代码分割成多个 bundle，使得初始加载更快。
@@ -89,7 +172,7 @@
 5. 压缩传输：压缩传输内容，减少传输时间。
 :::
 
-### 7. Vue 如何封装组件？
+## 7. Vue 如何封装组件？
 
 #### 7-1. 确认动机
 :::tip
@@ -125,7 +208,7 @@
 - 功能更新
 :::
 
-### 8. 为什么要有虚拟DOM？
+## 8. 为什么要有虚拟DOM？
 >[!tip]
 > 一个dom上面的属性是非常多的,所以直接操作DOM非常浪费性能。
 >

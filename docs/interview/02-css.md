@@ -1,155 +1,43 @@
-### 1、CSS3新增了哪些新特性？
->[!tip]
-> 1. 新增选择器：
->   - 属性选择器,伪类选择器,伪元素选择器,多列布局,媒体查询,混合模式
-> 2. 新增样式：
->   - 三个边框属性：border-radius、box-shadow、border-image（使用图片来绘制边框）
->   - 设置元素阴影：水平阴影、垂直阴影、模糊距离(虚实）、阴影尺寸、阴影颜色、内外阴影
->   - 背景的属性，分别是background-clip、background-origin、background-size、background-break
->   - 文字：word-wrap、text-overflow、text-shadow、text-decoration
->   - 颜色：`rgba`、`hsla`
->   - transition 过渡
->   - transform 转换
->   - animation 动画
->   - 渐变
->   - 布局：flex、Grid、多列布局、媒体查询、混合模式
-> 3. 新增属性：
->   - `rgba`、`hsla`、`gradient`
->   - `word-wrap`、`text-overflow`、`text-shadow`、`text-decoration`
->   - `transition`、`transform`、`animation`
->   - `flex`、`grid`、`media query`、`mix-blend-mode`
+# CSS面试题
+## 1、CSS3新特性
+>[!important]
+> 1. **盒模型**：包括`box-sizing`属性等，控制元素尺寸和边框。
+> 2. **背景与边框**：多重背景图片边框图片等。
+> 3. **文本效果**：包括文本阴影`text-shadow`和换行等。
+> 4. **变形(transform) 和过渡**：使元素动态改变样式。
+> 5. **动画（animation）**：使用`@keyframes`规则定义动画效果。
+> 6. **多列布局**：使文本内容多列显示。
+> 7. **媒体查询**：`@media`规则，使网页设计可以相应不同的设备。
+> 8. **Flexbox和Grid布局**：提供更灵活的布局方式。
+> 9. **伪类和伪元素**：更精确的选择和操作元素。
 
-### 2、CSS标准盒模型与怪异盒模型的理解
->[!tip]
-> 1. 盒模型范围包括：`margin、border、padding、content`
-> 2. 在网页中，一个元素占有空间的大小由几个部分构成，
+## 2、CSS盒模型
 
-#### 2.1、标准盒模型
->[!tip] 
-> **width**指`content`的宽度
+>[!tip] 标准盒模型
+> **width**:`content`的宽度
 
-#### 2.2、怪异盒模型
->[!tip] 
-> **width**指`content + border +padding`的宽度
+>[!tip] 怪异盒模型
+> **width**:`content + border +padding`的宽度
 
 
 
-### 3、em/px/rem/vh/vw的区别
 
-#### 3-1.详解
->[!tip] 
->在`css`单位中，可以分为**长度单位**、**绝对单位**
+## 3、隐藏页面元素的方式
+>[!tip] 方式
+> 1. `display:none`
+> 2. `visibility:hidden`
+> 3. `opacity:0`
+> 4. `width:0;height:0`
+> 5. `position:absolute`
+> 6. `clip-path`
 
-| CSS单位      |                                        |
-| ------------ | -------------------------------------- |
-| 相对长度单位 | em、ex、ch、rem、vw、vh、vmin、vmax、% |
-| 绝对长度单位 | cm、mm、in、px、pt、pc                 |
-
-```js
-px:表示像素,每个像素点都是大小等同的
-em:相对于浏览器的默认字体尺寸（1em = 16px）
-rem:相对的只是HTML根元素font-size的值
-vw ，就是根据窗口的宽度，分成100等份，100vw就表示满宽，50vw就表示一半宽。（vw 始终是针对窗口的宽），同理，vh则为窗口的高度
-```
-
-
-
-### 3、隐藏页面元素的方式有哪些？
->[!tip]
-> 1. display:none
-> 2. visibility:hidden
-> 3. opacity:0
-> 4. 设置height、width模型属性为0
-> 5. position:absolute
-> 6. clip-path
-
-#### 3-1.display:none
->[!tip]
-> 元素不可见，不占据空间，无法响应点击事件
-
-
- ```css
- .hide {
-  display:none;
- }
- ```
-
-
-
-#### 3-2.visibility:hidden
->[!tip]
-> 元素不可见，占据页面空间，无法响应点击事件
->
- ```css
- .hidden{
-  visibility:hidden
- }
- ```
-
-
-
-#### 3-3.opacity:0
->[!tip]
-> 改变元素透明度，元素不可见，占据页面空间，可以响应点击事件
->
- ```css
- .transparent {
-  opacity:0;
- }
- ```
-
-
-
-#### 3-4.设置height、width属性为0
->[!tip]
-> 元素不可见，不占据页面空间，无法响应点击事件
->
- ```css
- .hiddenBox {
-  margin:0;     
-  border:0;
-  padding:0;
-  height:0;
-  width:0;
-  overflow:hidden;
- }
- ```
-
-
-
-#### 3-5.position:absolute将元素移出可视区域
->[!tip]
-> 元素不可见，不影响页面布局
->
- ```css
- .hide {
- position: absolute;
- top: -9999px;
- left: -9999px;
- }
- ```
-
-
-
-#### 3-6.clip-path裁剪
->[!tip]
-> 元素不可见，占据页面空间，无法响应点击事件
->
- ```css
- .hide {
- clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);
- }
- ```
-
-
-
-#### 区别
+### 3.1、区别
 
 |                        | `display: none` | `visibility: hidden` | `opacity: 0` |
 | :--------------------- | :------------ | ------------------ | -------------- |
-| 页面中                 | 不存在        | 存在               | 存在           |
-| 重排                   | 会           | 不会               | 不会           |
-| 重绘                   | 会           | 会                | 不一定          |
+| 是否在页面中                 | 不存在        | 存在               | 存在           |
+| 是否发生重排                   | 会           | 不会               | 不会           |
+| 是否发生重绘                   | 会           | 会                | 不一定          |
 | 自身绑定事件            | 不触发        | 不触发             | 可触发          |
 | transition            | 不支持        | 支持               | 支持           |
 | 子元素可复原            | 不能          | 能                | 不能           |
@@ -157,47 +45,41 @@ vw ，就是根据窗口的宽度，分成100等份，100vw就表示满宽，50v
 
 
 
-### 4、BFC的理解
+## 4、BFC的理解
 >[!tip] Block Formatting Context(块级格式化上下文)
+> 1. `BFC`是页面中的一块**渲染区域**,并且有一套属于自己的渲染规则，它决定了子元素如何布局，以及和其他元素的关系和相互作用。
+> 2. `BFC`目的是形成一个相对于外界完全独立的空间，让内部的子元素不会影响到外部的元素。
+> 3. `BFC`内部的盒子会在垂直方向上一个接一个的放置。
+> 4. 计算BFC的高度时，浮动子元素也参与计算。
+> 5. 每个元素的左外边距与包含块的左边界相接触（从左到右），即使浮动元素也是如此。
+> 6. BFC的区域不会与float的元素区域重叠。
+> 7. 计算BFC的高度时，浮动子元素也参与计算。
 
 
-#### 4-1.概念
->[!tip]
-> - `BFC`是页面中的一块**渲染区域**,并且有一套属于自己的渲染规则，它决定了子元素如何布局，以及和其他元素的关系和相互作用。
-> - `BFC`目的是形成一个相对于外界完全独立的空间，让内部的子元素不会影响到外部的元素。
-> - 内部的盒子会在垂直方向上一个接一个的放置。
-> - 计算BFC的高度时，浮动子元素也参与计算
-> - 每个元素的左外边距与包含块的左边界相接触（从左到右），即使浮动元素也是如此
-> - BFC的区域不会与float的元素区域重叠
-> - 计算BFC的高度时，浮动子元素也参与计算
-
-
-#### 4-2.BFC解决什么问题
->[!important]
+>[!important] BFC解决什么问题
 >1. 开启BFC其子元素不会不再有margin塌陷问题。
 >2. 开启BFC就算子元素浮动，自身高度也不会塌陷。
 >2. 开启BFC,自身不会被其他浮动元素覆盖。
 
 
-#### 4-2.触发条件
->[!tip]
-> 1. `根元素`，即HTML元素
-> 2. `浮动元素`：float值为left、right
-> 3. `overflow值`不为 visible，为 auto、scroll、hidden  **(非visible)**
-> 4. 行内块元素：display值为inline-block、inline-table、inline-flex、inline-grid
-> 5. `position的值`为absolute或fixed   `（非relative）`
-> 6. 多列容器（设置column-count或column-width属性）
+>[!caution] 触发条件
+> 1. **根元素**，即HTML元素
+> 2. **浮动元素**：`float`值为left、right
+> 3. **overflow** : 值不为 visible，为 auto、scroll、hidden  **(非visible)**
+> 4. **行内块元素**：display值为inline-block、inline-table、inline-flex、inline-grid
+> 5. **position** : 值为absolute或fixed `（非relative）`
+> 6. **多列容器**（设置column-count或column-width属性）
 > 7. 表格元素
-> 8. 设置display:flow-root的元素
-#### 4-3.应用场景
+> 8. 设置`display:flow-root`的元素
+### 4-1、应用场景
 >[!note]
 > 1. `margin`重合
 > 2. `margin`塌陷
 > 3. 高度塌陷
 
-### 5、元素水平垂直居中的方法？
+## 5、元素水平垂直居中的方法？
 
-#### 5-1.`定位+`margin:auto`
+### 5-1、定位+`margin:auto`
 ::: details 点击查看代码
 ```html
 <style>
@@ -226,7 +108,7 @@ vw ，就是根据窗口的宽度，分成100等份，100vw就表示满宽，50v
 :::
 
 
-#### 5-2.利用定位+margin:负值
+### 5-2、利用定位+margin:负值
 ::: details 点击查看代码
 ```html
 <style>
@@ -254,7 +136,7 @@ vw ，就是根据窗口的宽度，分成100等份，100vw就表示满宽，50v
 :::
 
 
-#### 5-3.定位+transform
+### 5-3、定位+transform
 ::: details 点击查看代码
 ```css
 <style>
@@ -281,7 +163,7 @@ vw ，就是根据窗口的宽度，分成100等份，100vw就表示满宽，50v
 :::
 
 
-#### 5-4.table布局
+### 5-4、table布局
 ::: details 点击查看代码
 ```html
 <style>
@@ -307,7 +189,7 @@ vw ，就是根据窗口的宽度，分成100等份，100vw就表示满宽，50v
 :::
 
 
-#### 5-5.flex弹性布局
+### 5-5、flex弹性布局
 ::: details 点击查看代码
 ```html
 <style>
@@ -332,7 +214,7 @@ vw ，就是根据窗口的宽度，分成100等份，100vw就表示满宽，50v
 :::
 
 
-#### 5-6.grid网格布局
+### 5-6、grid网格布局
 ::: details 点击查看代码
 ```html
 <style>
@@ -354,5 +236,51 @@ vw ，就是根据窗口的宽度，分成100等份，100vw就表示满宽，50v
 <div class="father">
     <div class="son"></div>
 </div>
+```
+:::
+
+
+## 6、`transition`与`animation`的区别
+>[!tip] transition
+>1. 只能从一种状态**过渡**到另一种状态。
+>2. 一次性设置，不会保留中间状态。
+>3. 需要一个**触发条件**来启动，比如鼠标悬停等。
+>4. 简单且适合属性变化较少的动画。
+
+>[!tip] animation
+>1. 可以设置多个状态，可以保留**中间状态**。
+>2. 不需要触发条件即可启动。
+>3. 更加灵活适用于**复杂动画** 
+
+::: details transition 示例
+```css
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  transition: width 2s, height 2s, background-color 2s;
+}
+
+.box:hover {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}
+```
+:::
+
+::: details animation 示例
+```css
+@keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  animation: example 5s infinite;
+}
 ```
 :::

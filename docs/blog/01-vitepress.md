@@ -920,38 +920,35 @@ export default defineConfig({
 
 
 ## 六、静态部署到 GitHub Pages
-### Base配置
+### 1、Base配置
 ::: warning 
-base必须配置，否则打包会丢失css样式！！
-
-根目录配置 /，那么对应 https://yiov.github.io/
-
-仓库 vitepress 配置 /vitepress/ ，那么对应 https://yiov.github.io/vitepress
+1. **base必须配置**，否则打包会丢失css样式！！
+2. 根目录配置`/`，那么对应 `https://yiov.github.io/`
+3. 仓库 `vitepress` 配置 `/vitepress/` ，那么对应 `https://yiov.github.io/vitepress`
+4. 部署到非根目录，`Fav`图标路径 也要变动一下
 :::
 
+
+::: details 查看Base配置
+
 ```js
+// 在`./docs/.vitepress/config.ts`文件中配置
+import { defineConfig } from 'vitepress'
 export default defineConfig({
     base: '/docs/', //网站部署到github的这个仓库名字
+    //fav图标
+    head: [
+      ['link',{ rel: 'icon', href: '/docs/logo.png'}], //部署到vitepress仓库
+    ],
 })
 ```
-::: wanring 
-另一个要注意的点，部署到非根目录，你的 Fav图标路径 也要变动一下
 :::
 
-```js
-export default defineConfig({
 
-  //fav图标
-  head: [
-    ['link',{ rel: 'icon', href: '/docs/logo.png'}], //部署到vitepress仓库
-  ],
+### 2、部署
 
-})
-```
-
-### 部署
-
-#### 手动打包部署
+#### 2.1、手动打包部署
+::: details 手动打包命令
 ::: code-group
 ```bash [npm]
 npm run docs:build
@@ -963,12 +960,15 @@ pnpm run docs:build
 yarn docs:build
 ```
 :::
-> 构建完成后，将 dist 文件夹里的文件全部上传到 GitHub Pages 仓库的 gh-pages 分支下，然后访问 https://yiov.github.io/vitepress/ 即可访问部署好的网站。
+>[!tip] 提示
+>1. 构建完成后，将 dist 文件夹里的文件全部上传到 GitHub Pages 仓库的 gh-pages 分支下;tt
+>2. 访问 https://yiov.github.io/vitepress/ 即可访问部署好的网站。
 >
 #### github actions 自动化部署
 
 > 配置文件 `.github/workflows/deploy.yml`
 
+::: details deploy.yml文件
 ```yaml
 name: docs
 
@@ -1021,6 +1021,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
 ```
+:::
+
+::: tip 提示
 1. 首先，我们需要在项目根目录下创建一个 `.github/workflows/deploy.yml` 文件，并在其中添加以下内容：
 2. `name: docs` ： 定义工作流程的名称，可以自定义。
 3. `on`: 定义触发工作流程的事件，这里我们选择 push 到 main 分支时触发部署，也可以选择手动触发。
@@ -1034,18 +1037,22 @@ jobs:
 11. `name: Deploy to GitHub Pages` ： 部署到 GitHub Pages。
 12. `env`: 定义环境变量，这里我们只定义 GITHUB_TOKEN。
 13. `GITHUB_TOKEN`: 我们需要在 GitHub 项目设置中添加一个 Access Token，并将其添加到 Secrets 中，以便于 GitHub Actions 部署。
+:::
 
-::: tip 提示
-如果需要部署到其他分支，比如 gh-pages，则需要修改 target_branch 字段。
+
+::: warning 注意
+如果需要部署到其他分支，比如 `gh-pages`，则需要修改 `target_branch` 字段。
 :::
 
 #### 上传代码到远程仓库
 
-::: tip 提示
-如果没有配置远程仓库，则需要先配置远程仓库，然后再上传代码。
-新建GitHub仓库名为`docs`
-将本地代码上传到这个仓库的main分支
-:::
+>[!note]提示
+> - 如果没有配置远程仓库，则需要先配置远程仓库，然后再上传代码。
+> - 新建GitHub仓库名为`docs`
+> - 将本地代码上传到这个仓库的main分支
+
+
+
 ```bash
 git init
 git add.
@@ -1055,26 +1062,26 @@ git pull origin main
 git push -u  -f origin main
 ```
 ::: tip 配置GitHub token
+ - 打开GitHub仓库，点击头像
+ - 点击Settings
+ - 点击Developer settings
+ - 点击Personal access tokens
+ - 点击Generate new token
+ - 勾选repo，点击Generate token
+ - 复制token，点击Done
+ - 回到项目根目录，打开`.github/workflows/deploy.yml`文件
+ - 点击Secrets
+ - 点击New repository secret
+ - 输入Name，Value，点击Add secret
+ - 输入Name为`ACCESS_TOKEN`，Value为GitHub token，点击Add secret
+ - 点击Actions
+ - 点击docs
+ - 点击Run workflow
+ - 点击Actions
+ - 点击deploy-docs
+ - 点击Details
+ - 点击View more actions
+ - 点击deploy-docs
+ - 点击Run workflow
+ - 等待部署完成
 :::
-> - 打开GitHub仓库，点击头像
-> - 点击Settings
-> - 点击Developer settings
-> - 点击Personal access tokens
-> - 点击Generate new token
-> - 勾选repo，点击Generate token
-> - 复制token，点击Done
-> - 回到项目根目录，打开`.github/workflows/deploy.yml`文件
-> - 点击Secrets
-> - 点击New repository secret
-> - 输入Name，Value，点击Add secret
-> - 输入Name为`ACCESS_TOKEN`，Value为GitHub token，点击Add secret
-> - 点击Actions
-> - 点击docs
-> - 点击Run workflow
-> - 点击Actions
-> - 点击deploy-docs
-> - 点击Details
-> - 点击View more actions
-> - 点击deploy-docs
-> - 点击Run workflow
-> - 等待部署完成
