@@ -25,6 +25,8 @@
 - `onActivated` ：(keep-alive 组件激活时)
 - `onDeactivated` ：(keep-alive 组件停用时)
 :::
+
+
 ## 2. Vue的双向数据绑定原理是什么？
 ::: tip 原理
 1. **数据劫持**：Vue通过`Object.defineProperty()`（Vue 2.x）或 `Proxy`（Vue 3.x）方法来劫持各个属性的读取和设置，在数据发生变动时通知依赖于它的视图更新。

@@ -5,24 +5,24 @@
 JavaScript 有七种基本的数据类型：
 >[!TIP]
 >JavaScript 中的数据类型分为：
->1. 基本数据类型：包括`Number`、`String`、`Boolean`、`null`、`undefined`、`Symbol`。
+>1. 基本数据类型：包括`Number`、`String`、`Boolean`、`null`、`undefined`、`Symbol`、`BigInt`。
 >2. 复杂数据类型：包括`Object`、`Array`、`Function`。
 >
->**[注:]**
-> - ES6 新增了 `Symbol` 数据类型。(解决属性名冲突问题,以及实现私有属性和方法)
-> - ES11 新增了 `BigInt` 数据类型。(解决 Number类型的安全整数范围有限的问题)
+>- 基本数据类型新增：`Symbol`、`BigInt`。
+> - `ES6` 新增了 `Symbol` 数据类型。(解决属性名冲突问题,以及实现私有属性和方法)
+> - `ES11` 新增了 `BigInt` 数据类型。(解决 Number类型的安全整数范围有限的问题)
 
 ### 1.1、Number类型
 #### 1.1.1、定义
 :::tip Number类型
-JavaScript中的Number类型用于表示`整数`和`浮点数`，采用IEEE 754标准的双精度浮点数格式存储。
+JS 中的 Number 类型用于表示`整数`和`浮点数`，采用IEEE 754 标准的 **双精度浮点数** 格式存储。
 :::
 
 #### 1.1.2、特性
 >[!NOTE]
->- 整数范围：-2^53到2^53（安全整数）
->- 浮点数精度问题：0.1 + 0.2 !== 0.3
+>- 整数范围：`-2^53`到`2^53`（安全整数）
 >- 特殊值：`Infinity`、`-Infinity`、`NaN`
+>- 浮点数精度问题：例：0.1 + 0.2 !== 0.3
 >- ES6新增：`Number.isInteger()` (判断是否为整数)、`Number.isSafeInteger()` (判断是否为安全整数)。
 
 #### 1.1.3、Number类型方法
@@ -51,24 +51,19 @@ Number.isSafeInteger(9007199254740992) // false
 ### 1.2、Boolean类型
 #### 1.2.1、定义
 :::tip Boolean类型
-JavaScript中的Boolean类型表示逻辑实体，只有两个值：`true` 和 `false`。常用于条件判断和控制流程。
+JS 中的 Boolean 类型表示逻辑实体，只有两个值：`true` 和 `false`。常用于条件判断和控制流程。
 :::
 
 #### 1.2.2、特性
 >[!NOTE]
 >- 类型转换规则：
 >  - `false`值：`false`、`0`、`""`、`null`、`undefined`、`NaN`
->  - 其他所有值都会转换为`true`
->- 严格相等(===)不会进行类型转换
+>  - **其他所有值** 都会转换为`true`
+>- 严格相等 (`===`) 不会进行类型转换
 >- Boolean对象与原始布尔值的区别
 
-#### 1.2.3、常用方法
-| 方法名称      | 描述                                                         |
-| ------------- | ------------------------------------------------------------ |
-| toString()    | 返回布尔值的字符串表示("true"或"false")                      |
-| valueOf()     | 返回布尔值的原始值                                           |
 
-#### 1.2.4、示例
+#### 1.2.3、示例
 ```javascript
 // 类型转换示例
 Boolean(0) // false
@@ -88,7 +83,7 @@ if(boolObj) {
 ### 1.3、String类型
 #### 1.3.1、定义
 :::tip String类型
-JavaScript中的String类型表示文本数据，是不可变的原始值。可以使用单引号(')、双引号(")或反引号(`)创建。
+JS 中的 String 类型表示文本数据，是不可变的原始值。可以使用单引号(')、双引号(")或反引号(`)创建。
 :::
 
 #### 1.3.2、特性
@@ -141,7 +136,7 @@ heart.length // 2 (某些表情符号占用多个代码单元)
 ### 1.4、Array类型
 #### 1.4.1、定义
 :::tip Array类型
-JavaScript中的Array类型是用于存储有序数据集合的高阶对象。可以包含不同类型的元素，长度动态可变。
+JS 中的 Array 类型是用于存储有序数据集合的高阶对象。可以包含不同类型的元素，长度动态可变。
 :::
 
 #### 1.4.2、特性
@@ -169,11 +164,11 @@ JavaScript中的Array类型是用于存储有序数据集合的高阶对象。�
 | map(callback) | 对每个元素执行回调函数，返回新数组                           |
 | filter(callback) | 过滤元素，返回满足条件的元素组成的新数组                     |
 | reduce(callback, initialValue)| 从左到右对每个元素执行回调函数，累计结果                  |
-| reduceRight(callback, initialValue)| 从右到左对每个元素执行回调函数，累计结果                |
 | some(callback) | 测试是否至少有一个元素通过测试                               |
 | every(callback) | 测试是否所有元素都通过测试                                  |
 | find(callback) | 返回第一个满足条件的元素                                     |
 | findIndex(callback) | 返回第一个满足条件的元素的索引                              |
+<!-- | reduceRight(callback, initialValue)| 从右到左对每个元素执行回调函数，累计结果                | -->
 
 #### 1.4.5、静态方法
 | 方法名称        | 描述                                                         |
@@ -566,12 +561,12 @@ let y = 10;
 
 ## 6、严格模式
 
-### 6.1、严格模式概述
+### 6.1、概述
 :::tip 严格模式
-严格模式是ES5引入的一种限制性更强的JavaScript变体，它通过抛出错误来消除一些静默错误，并修复了一些导致JavaScript引擎难以优化的缺陷。
+严格模式是 ES5 引入的一种限制性更强的 JS 变体，它通过抛出错误来消除一些静默错误，并修复了一些导致 JS 引擎难以优化的缺陷。
 :::
 
-#### 启用方式
+**启用方式**
 ```javascript
 // 整个脚本文件启用
 'use strict';
@@ -583,7 +578,7 @@ function strictFunc() {
 }
 ```
 
-### 6.2、严格模式的主要变化
+### 6.2、主要变化
 >[!NOTE]
 >- 变量必须声明后才能使用
 >- 禁止删除不可删除的属性
@@ -593,7 +588,7 @@ function strictFunc() {
 >- `this`在全局作用域中为`undefined`而非`window`
 >- 禁止八进制字面量(如010)
 
-#### 示例
+**示例**
 ```javascript
 'use strict';
 
@@ -607,17 +602,17 @@ function dupParam(a, a) {} // SyntaxError
 delete Object.prototype; // TypeError
 ```
 
-### 6.3、严格模式的优势
+### 6.3、优势
 :::tip 使用严格模式的好处
 1. 使代码更安全，避免意外创建全局变量
 2. 消除一些静默错误，转为显式抛出错误
 3. 禁止使用一些可能在未来版本中定义的语法
 4. 提高编译器效率，帮助JavaScript引擎优化代码
-::>
+:::
 
 ## 7、事件
 
-### 7.1、事件概述
+### 7.1、概述
 :::tip JavaScript事件
 事件是文档或浏览器窗口中发生的特定交互瞬间，JavaScript可以通过事件处理器对这些交互做出响应。
 :::
@@ -667,7 +662,7 @@ delete Object.prototype; // TypeError
 3. 事件监听：`element.addEventListener('click', handler)`
 :::
 
-#### 示例
+ **示例**
 ```javascript
 // 推荐使用addEventListener
 document.getElementById('btn').addEventListener('click', function(e) {
@@ -682,62 +677,184 @@ document.addEventListener('mousemove', function(e) {
 
 ## 8、函数高级特性
 
-### 8.1、函数作用域
-:::tip 函数作用域
-函数内部声明的变量在函数外部不可访问，形成独立作用域：
+### 8.1、高阶函数
+:::tip Higher-Order Functions
+- 可以接受其他函数作为参数或返回函数的函数
+:::
+
+::: details 高阶函数示例
 ```javascript
-function test() {
-  var innerVar = '内部变量';
+// 接受函数作为参数
+function mapArray(arr, fn) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(fn(arr[i]));
+  }
+  return result;
 }
-console.log(innerVar); // ReferenceError
+
+const numbers = [1, 2, 3];
+const doubled = mapArray(numbers, x => x * 2); // [2, 4, 6]
+
+// 返回函数
+function createMultiplier(multiplier) {
+  return function(x) {
+    return x * multiplier;
+  };
+}
+
+const triple = createMultiplier(3);
+console.log(triple(5)); // 15
 ```
 :::
 
+
 ### 8.2、闭包
-:::tip 闭包
-函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行：
+:::tip Closures
+函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行的。
+:::
+
+::: details 闭包示例
 ```javascript
 function createCounter() {
   let count = 0;
-  return function() {
-    return ++count;
+  return {
+    increment: function() {
+      count++;
+      return count;
+    },
+    decrement: function() {
+      count--;
+      return count;
+    },
+    getCount: function() {
+      return count;
+    }
   };
 }
+
 const counter = createCounter();
-counter(); // 1
-counter(); // 2
+console.log(counter.increment()); // 1
+console.log(counter.increment()); // 2
+console.log(counter.decrement()); // 1
 ```
 :::
 
-### 8.3、arguments对象
-:::tip arguments
-函数内部可用的类数组对象，包含所有传入参数：
+### 8.3、函数柯里化
+:::tip Currying
+- 将多参数函数转换为一系列单参数函数的技术。
+:::
+
+::: details 函数柯里化示例
 ```javascript
-function sum() {
-  let total = 0;
-  for(let i = 0; i < arguments.length; i++) {
-    total += arguments[i];
-  }
-  return total;
+// 普通函数
+function add(a, b, c) {
+  return a + b + c;
 }
-sum(1, 2, 3); // 6
+
+// 柯里化版本
+function curryAdd(a) {
+  return function(b) {
+    return function(c) {
+      return a + b + c;
+    };
+  };
+}
+
+console.log(add(1, 2, 3)); // 6
+console.log(curryAdd(1)(2)(3)); // 6
+
+// 自动柯里化工具函数
+function curry(fn) {
+  return function curried(...args) {
+    if (args.length >= fn.length) {
+      return fn.apply(this, args);
+    } else {
+      return function(...args2) {
+        return curried.apply(this, args.concat(args2));
+      };
+    }
+  };
+}
+
+const curriedAdd = curry(add);
+console.log(curriedAdd(1)(2)(3)); // 6
+console.log(curriedAdd(1, 2)(3)); // 6
 ```
 :::
+
 
 ### 8.4、IIFE模式
 :::tip 立即执行函数
-定义后立即执行的函数表达式，用于创建独立作用域：
+- 定义后立即执行的函数表达式，用于创建独立作用域。
+:::
+
+::: details IIFE模式示例
 ```javascript
 (function() {
   var privateVar = '私有变量';
 })();
 ```
+:::
+
+### 8.5、函数组合
+:::tip Function Composition
+- 将多个函数组合成一个新函数。
+:::
+
+::: details 函数组合示例
+```js
+function compose(...fns) {
+  return function(x) {
+    return fns.reduceRight((acc, fn) => fn(acc), x);
+  };
+}
+
+const add5 = x => x + 5;
+const multiplyBy2 = x => x * 2;
+const subtract10 = x => x - 10;
+
+const composedFn = compose(subtract10, multiplyBy2, add5);
+console.log(composedFn(10)); // (10 + 5) * 2 - 10 = 20
+```
+:::
+
+### 8.6、递归函数
+::: tip Recursion
+- 一个函数调用自身的技术。
+:::
+
+::: details 递归函数示例
+```javascript
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+function fibonacci(n) {
+  if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2);
+  }
+}
+```
+:::
+
+
+
 
 ## 9、面向对象
 
 ### 9.1、构造函数
 :::tip 构造函数
 用于创建对象的特殊函数，通常首字母大写：
+:::
 ```javascript
 function Person(name) {
   this.name = name;
@@ -752,17 +869,19 @@ const john = new Person('John');
 ### 9.2、原型链
 :::tip 原型继承
 每个对象都有原型对象，形成原型链用于属性查找：
+:::
 ```javascript
 Person.prototype.greet = function() {
   console.log('Hello from prototype');
 };
 john.greet(); // 调用原型方法
 ```
-:::
 
 ### 9.3、继承实现
 :::tip 组合继承
 结合构造函数和原型链的继承方式：
+:::
+
 ```javascript
 function Student(name, grade) {
   Person.call(this, name);
@@ -772,44 +891,59 @@ Student.prototype = Object.create(Person.prototype);
 Student.prototype.constructor = Student;
 ```
 
-## 10、this绑定
+## 10、Call、Apply、Bind
+<!-- > [!TIP]
+> - `call()`方法在调用函数时，将一个指定的对象和若干个参数作为第一个参数传入。
+> - `apply()`方法与`call()`方法类似，也是将一个指定的对象和若干个参数作为第一个参数传入。
+> - `bind()`方法创建一个新的函数，在调用这个函数时，将其this绑定到一个指定的对象。 -->
 
-### 10.1、默认绑定
-:::tip 独立函数调用
-非严格模式下指向全局对象，严格模式为undefined：
+### 10.1、call()
+:::tip call()
+- 调用一个函数，将`this`绑定到指定的对象。
+- 接受一个 **参数列表**，这些参数将作为函数的入参。
+:::
+
+### 10.2、apply()
+:::tip apply()
+- 调用一个函数，将`this`绑定到指定的对象。
+- 接受一个 **参数数组**，这些参数将作为函数的入参。
+:::
+
+### 10.3、bind()
+:::tip bind()
+- 创建一个新的函数，在调用这个函数时，将其`this`绑定到指定的对象。
+- 接受一个 **参数列表**，这些参数将作为函数的入参。
+- 返回一个新的函数，这个函数可以作为原函数的替代品。
+- 不会立即执行，需要手动调用。
+:::
+
+
+::: details 示例
 ```javascript
-function showThis() {
-  console.log(this);
+function greet(greeting) {
+  console.log(greeting + ', '
+    + this.name + '!');
 }
-showThis(); // window/undefined
+
+const john = {name: 'John'};
+const mary = {name: 'Mary'};
+
+// 调用greet函数，this绑定到john对象
+greet.call(john, 'Hello'); // Hello, John!
+
+// 调用greet函数，this绑定到mary对象
+greet.apply(mary, ['Hi']); // Hi, Mary!
+
+  // 创建绑定到john对象上的函数
+const boundGreet = greet.bind(john);
+boundGreet('Hello'); // Hello, John!
 ```
 :::
 
-### 10.2、隐式绑定
-:::tip 方法调用
-指向调用该方法的对象：
-```javascript
-obj.method(); // this指向obj
-```
-:::
 
-### 10.3、显式绑定
-:::tip call/apply/bind
-强制指定this指向：
-```javascript
-func.call(obj, arg1, arg2);
-func.apply(obj, [arg1, arg2]);
-const boundFunc = func.bind(obj);
-```
-:::
 
-### 10.4、new绑定
-:::tip 构造函数调用
-指向新创建的对象：
-```javascript
-const obj = new Constructor();
-```
-:::
+
+
 
 ## 11、错误处理
 

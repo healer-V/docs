@@ -8,6 +8,11 @@
 
 **输入：**
 ```
+
+::: info
+This is an info box.
+:::
+
 ::: tip 提示
 这是一个提示
 :::
@@ -18,6 +23,10 @@
 
 ::: danger 危险
 这是一个危险警告
+:::
+
+::: details
+This is a details block.
 :::
 
 ```
@@ -32,6 +41,14 @@
 
 ::: danger 危险
 这是一个危险警告
+:::
+
+::: info
+This is an info box.
+:::
+
+::: details
+This is a details block.
 :::
 
 ### Github风格容器

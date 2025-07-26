@@ -6,7 +6,7 @@ export const nav = [
         text: '🍓面试题', link: '/interview/'
     },
     { 
-        text: '🍏博客', link: '/blog/01-vitepress'
+        text: '🥤实践技巧', link: '/skill/01-Vue组件封装'
     },
     { 
         text: '🍚项目实践', link: '/practice/01-vue2'
