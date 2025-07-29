@@ -18,25 +18,25 @@ vitepress是一个基于vitepress和vuepress的静态网站生成器，它使用
 - [vuepress站点配置](https://vitepress.qzxdp.cn/reference/site-config.html)
 
 ### 前期准备
-- 必须安装Node.js [Node.js下载地址](https://nodejs.org/zh-cn/)
-- 建议安装vscode编辑器 [vscode下载地址](https://code.visualstudio.com/)
-- 安装git [git下载地址](https://git-scm.com/downloads)
+::: tip 提示
+1. 必须安装`Node.js` ： [Node.js下载地址](https://nodejs.org/zh-cn/)
+2. 安装`vscode`编辑器 ： [vscode下载地址](https://code.visualstudio.com/)
+3. 安装`git` ：[git下载地址](https://git-scm.com/downloads)
+4. 安装`pnpm` ：[pnpm下载地址](https://pnpm.io/installation) ， node终端运行：`npm install -g pnpm`
+:::
 
-
-::: details 
 ```sh [npm]
 # 使用 npm 安装
 npm install -g pnpm
 ```
-:::
 
 ## 二、安装
-### 创建一个目录
+### 2.1 创建一个目录
 ```sh
-mkdir Docs
-cd ./Docs
+mkdir Docs  # 创建一个目录Docs
+cd ./Docs  # 进入目录
 ```
-### 安装vitepress依赖
+### 2.2 安装 vitepress 依赖
 ::: code-group
 
 ```sh [npm]
@@ -53,7 +53,8 @@ pnpm install -D vitepress
 yarn add -D vitepress
 ```
 :::
-### 初始化向导
+
+### 2.3 初始化向导
 ::: code-group
 ```sh [npm]
 # 使用 npm 安装
@@ -69,12 +70,8 @@ yarn vitepress init
 ```
 :::
 
-
-
-::: details 
-
-如果你直接回车，则是放在了根目录 ./，那你的 脚本命令 也要修改一下    
-:::
+>[!danger] 注意
+>- 如果你直接回车，则是放在了根目录 ./，那你的脚本命令 也要修改一下    
 
 ```bash
 T   Welcome to VitePress!
@@ -101,11 +98,12 @@ o  Add VitePress npm scripts to package.json?
 |
 —  Done! Now run npm run docs:dev and start writing.
 ```
-### 脚本命令
-> 默认不用改，在 package.json 中可以查看
 
-::: warning 注意
-如果你在初始化的时候选择了 ./ ，而不是 ./doc，这里就需要修改
+### 2.4 脚本命令
+
+:::danger 注意
+- 默认不用改，在 package.json 中可以查看
+- 如果你在初始化的时候选择了 `./` ，而不是 `./doc`，这里就需要修改
 :::
 
 ```js
@@ -122,7 +120,8 @@ o  Add VitePress npm scripts to package.json?
 }
 ```
 
-### gitignore文件
+### 2.5 gitignore文件
+>[!tip] 忽略文件
 > 添加 `.gitignore` 文件，主要用于上传到gitee/github时，忽略这些文件不上传
 ```bash
 node_modules
@@ -130,7 +129,12 @@ dist
 .vitepress/dist
 ```
 ## 三、启动项目
-> 本地启动开发环境，来开发你的网站
+>[!tip]
+> 1. 本地启动项目，命令行运行 `pnpm run docs:dev`
+> 2. 发布项目，命令行运行 `pnpm run docs:build`
+> 3. 预览项目，命令行运行 `pnpm run docs:preview`
+> 4. 访问项目，浏览器输入 `http://localhost:5173/`
+> 5. 退出项目运行，终端中 按`ctrl+c`
 ::: code-group
 ```sh [npm]
 # 使用 npm
@@ -146,7 +150,6 @@ yarn run docs:dev
 ```
 :::
 
-> 打开浏览器，输入 `http://localhost:5173/` 访问项目
 
 ```
 D:\vitepress>pnpm run docs:dev
@@ -161,15 +164,11 @@ D:\vitepress>pnpm run docs:dev
   ➜  Network: use --host to expose
   ➜  press h to show help
 ```
-> 按 `Ctrl+C`键 即可退出开发模式
-
-
 
 
 ## 四、目录结构
 ::: tip 提示
-
- 生成的目录结构如下，其中 `docs` 目录是默认的，你可以根据自己的需求进行调整。
+- 生成的目录结构如下，其中 `docs` 目录是默认的，你可以根据自己的需求进行调整。
 :::
 
 ```md
@@ -207,7 +206,6 @@ guide/index.md          -->    /guide/index.html (可以通过 /guide/ 访问)
 ```
 ## 五、页面
 ### 元数据
-> 包含了 `lang` `title` `description` 信息
 ```js
 import { defineConfig } from 'vitepress'
 
@@ -218,10 +216,6 @@ export default defineConfig({
 })
 ```
 ### 首页
-
-::: tip 注意
-编辑`./docs/index.md`
-:::
 
 ```md 
 <!-- ./docs/index.md -->
@@ -261,10 +255,10 @@ features:
 ```
 ### 主题配置
 ::: tip 说明
-编辑`./docs/.vitepress/theme/index.ts`
-引入默认主题
-引入自定义css文件
-参考以下官方链接: [https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css](https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css)
+1. 编辑`./docs/.vitepress/theme/index.ts`
+2. 引入默认主题
+3. 引入自定义css文件
+4. 参考链接 :  [VitePress官方github 链接](https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css)
 :::
 ```ts
 // ./docs/.vitepress/theme/index.ts
@@ -278,7 +272,7 @@ export default {
   },
 };
 ```
-> 编辑./docs/.vitepress/theme/custom.css
+
 ```css
 /* ./docs/.vitepress/theme/custom.css */
 /* 自定义样式 */
@@ -332,7 +326,6 @@ export default {
 
 
 ### 网页标题
-> 包含了 `title`、`description` 信息
 ```js
 export default defineConfig({
   lang: 'zh-CN',
@@ -344,7 +337,8 @@ export default defineConfig({
 })
 ```
 ### Fav图标
-> 路径默认public目录，在 `docs`目录下新建 `public`目录即可
+>[!tip]
+>- 路径默认public目录，在 `docs`目录下新建 `public`目录即可
 ```js
 import { defineConfig } from 'vitepress'
 export default defineConfig({
@@ -356,9 +350,8 @@ export default defineConfig({
 })
 ```
 ::: danger 注意
-如果你使用路径 /logo.png 无反应，可尝试先用相对路径 ../public/logo.png
-
-另：如果你的 Base 设置非根目录，fav图标路径也要做出改变
+1. 如果你使用路径 /logo.png 无反应，可尝试先用相对路径 `../public/logo.png`
+2. 如果你的 `Base` 设置非根目录，fav 图标路径也要做出改变。
 :::
 
 
@@ -403,15 +396,16 @@ export default defineConfig({
 :::
 ### 忽略死链
 ::: warning 
-不建议配置，当你的链接指向路径错误，自动忽略会导致问题无法排查
+- 不建议配置，当你的链接指向路径错误，自动忽略会导致问题无法排查
+:::
 
 ```js
 export default defineConfig({
   ignoreDeadLinks: false //关闭忽略死链，不配置即可，非常不建议设置为true
 })
 ```
-:::
 ### Logo
+>[!tip]
 > 路径默认public目录，在 `docs`目录下新建 `public`目录即可
 
 ```md
@@ -424,8 +418,8 @@ export default defineConfig({
 │  └─ index.md
 └─ package.json
 ```
-config.mts文件中配置logo
 ```js
+// config.mts文件中配置logo
 import { defineConfig } from 'vitepress'
 export default defineConfig({
   //logo
@@ -434,9 +428,8 @@ export default defineConfig({
 ```
 ### 导航栏
 ::: tip 说明
-text是导航中显示的文本
-
-link为链接或者实际文件的路径，不带 .md 前缀，并始终以 / 开头
+- `text`是导航中显示的文本
+- `link`为链接或者实际文件的路径，不带 .md 前缀，并始终以 / 开头
 :::
 
 ```js
@@ -561,6 +554,7 @@ export default defineConfig({
 
 
 ### 社交链接
+>[!tip]
 > 可以自行添加，支持SVG
 ```js
 export default defineConfig({
@@ -576,7 +570,7 @@ export default defineConfig({
 
 })
 ```
-> 自带的社交图标有以下这些
+自带的社交图标有以下这些:
 ```js
 /* node_modules\vitepress\types\default-theme.d.ts */
 export type SocialLinkIcon =
@@ -592,8 +586,8 @@ export type SocialLinkIcon =
     | 'youtube'
     | { svg: string }
 ```
-> 自定义图标
 ```js
+// 自定义图标
 export default defineConfig({
 
   themeConfig: {
@@ -613,6 +607,7 @@ export default defineConfig({
 })
 ```
 ### 深浅模式文字
+>[!tip]
 > 手机端默认显示 Appearance ，你也可以自定义显示文字
 ```js
 export default defineConfig({
@@ -626,9 +621,11 @@ export default defineConfig({
 ```
 
 ### 搜索框
+>[!tip]
 > 本地的 minisearch 和 Algolia DocSearch 都是全局搜索都好用
 
 #### 本地搜索
+>[!tip]
 >  得益于 minisearch，VitePress 支持使用浏览器内索引进行模糊全文搜索
 ```js
 export default defineConfig({
@@ -768,23 +765,31 @@ export default defineConfig({
 :::
 
 ### 上次更新
+>[!tip]
 > 添加页面的更新时间
+
 ::: details 报错：spawn git EAGAIN
-原因：没有 安装git ，配置 lastUpdated 必须安装
+- 原因：没有 安装git ，配置 lastUpdated 必须安装
+- 相关：打开项目时，也会提示 未找到 Git。请安装 Git，或在 "git.path" 设置中配置
+- 解决：安装好git后，打开VScode - 文件 - 首选项 - 设置 - 搜索 git.path - 点击 在 settings.json 中编辑，添加正确的 git.path 安装路径
+:::
 
-相关：打开项目时，也会提示 未找到 Git。请安装 Git，或在 "git.path" 设置中配置
 
-解决：安装好git后，打开VScode - 文件 - 首选项 - 设置 - 搜索 git.path - 点击 在 settings.json 中编辑，添加正确的 git.path 安装路径
+### 代码 Diff 展示
+>[!tip]
+>- 代码行`-` ：// [!code --]
+>- 代码行`+` ：// [!code ++]
+
+
 ```json
 {
     "[vue]": {
-        "editor.defaultFormatter": "Vue.volar"
+        "editor.defaultFormatter": "Vue.volar" 
     },
     "git.path": "D:\Program Files\Git\bin\git.exe", // Windows默认反斜杠是错的 // [!code --]
     "git.path": "D:/Program Files/Git/bin/git.exe", // 请使用正确Linux的斜杠 // [!code ++]
 }
 ```
-:::
 
 ### 上下页
 ```js
@@ -802,6 +807,7 @@ export default defineConfig({
 ```
 
 ### 广告
+>[!tip]
 > VitePress 内置了对 Carbon 广告 的原生支持
 
 ```js
@@ -833,6 +839,7 @@ export default defineConfig({
 })
 ```
 ### 核心配置
+>[!tip]
 > 在`./docs/.vitepress/config.mts`文件中配置，具体如下:
 
 ```js
