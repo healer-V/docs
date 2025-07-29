@@ -40,6 +40,7 @@ export default defineConfig({
         },
       },
     },
+    ignoreDeadLinks: true,
     socialLinks: [
       { icon: 'github', link: 'https://github.com/healer-V/docs' }
     ],
