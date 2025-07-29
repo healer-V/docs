@@ -201,7 +201,7 @@ export const useNewBieData = () => {
 
 // 显示时间
 import { useNewBieData } from "@/hooks/newBieBox.ts"
-<div >{{ newBieData.dateTime }}</div>
+{/* <div >{{ newBieData.dateTime }}</div>  */}
 const newBieData = useNewBieData()
 
 
@@ -209,7 +209,6 @@ const newBieData = useNewBieData()
 import { NewBieServeic, useNewBieData } from "@/hooks/newBieBox.ts"
 const newBieData = useNewBieData()
 NewBieServeic.startTime(60) // 60秒倒计时
-
 
 ```
 :::
@@ -283,8 +282,8 @@ const onTouchend = (event: TouchEvent) => {
 
 ```
 
-```js
-// 使用
+```html
+<!-- 使用 -->
   <Gesture @gesture="handleGesture"><View></View></Gesture>
 
 ```
@@ -296,7 +295,7 @@ const onTouchend = (event: TouchEvent) => {
 
 ::: details Vue3 拖动进度条
 
-```vue
+```html
 <template>
     <div class="progress-container">
         <div class="time-display" v-if="showTime">
@@ -538,10 +537,299 @@ const formatTime = (seconds: number): string =>{
 }
 </style>
 ```
-```vue
+```html
  <!-- 使用 -->
  <DraggableProgress :progress="record.progress" :video-ref="record.videoRef"
     @onDragStart="handleDragStart" @onDragEnd="handleDragEnd" />
+
+```
+:::
+
+
+## 封装动画效果弹窗组件
+
+::: details Vue3 动画效果弹窗组件
+
+```html
+<script setup lang="ts">
+import { useLanguageStore } from '@/stores/languageStore'
+import { useUserStore } from '@/stores/userStore'
+import { profileApi } from '@/api/profile'
+import { LanguageMap } from '@/utils/language'
+import { useI18n } from 'vue-i18n'
+import { CdnBaseUrl } from '@/utils/getImage'
+
+
+
+const { locale, t } = useI18n()
+const { modelValue, isdetails } = defineProps<{
+  modelValue: boolean
+  isdetails: boolean
+}>()
+const emit = defineEmits(['update:modelValue', 'ToggleLanguage', 'sendData'])
+
+
+const languageStore = useLanguageStore()
+const userStore = useUserStore()
+const handleClose = () => {
+  emit('update:modelValue', false)
+}
+
+const languageResCode = ref(0)
+const languageList = [
+  { name: 'en', text: 'English' },
+  { name: 'ru', text: 'Русский' }, // 俄语
+  { name: 'zh', text: '繁體中文' }, // 繁体中文
+  { name: 'id', text: 'Bahasa Indonesia' }, // 印尼语
+  { name: 'ja', text: '日本語' }, // 日语
+  { name: 'de', text: 'Deutsch' }, // 德语
+  { name: 'fr', text: 'Français' }, // 法语
+  { name: 'ko', text: '한국어' }, // 韩语
+  { name: 'vi', text: 'Tiếng Việt' }, // 越南语
+  { name: 'es', text: 'Español' }, // 西班牙语
+  { name: 'pt', text: 'Português' }, // 葡萄牙语
+  { name: 'fil', text: 'Filipino' }, // 菲律宾语
+  { name: 'th', text: 'ภาษาไทย' }, // 泰语
+];
+
+// 发送切换语言请求
+const sendLanguage = async (lan_code: number) => {
+  const res = await profileApi.setLanguage(lan_code);
+  // console.log('----发送切换语言请求----',res.lan_code);
+  languageResCode.value = res.lan_code;
+  userStore.lan_code = res.lan_code;
+
+}
+
+const getTextByName = (name: string): string | undefined => {
+  return languageList.find(lang => lang.name === name)?.text;
+};
+const getKeyByValue = (value: string): number => {
+  return Number(Object.entries(LanguageMap).find(([key, val]) => val === value)?.[0]);
+};
+
+
+
+// 触发自定义事件并传递数据
+const sendDataToParent = () => {
+  const data = '这是从子组件传递过来的数据';
+  emit('sendData', data);
+};
+const selectedLanguage = ref(getTextByName(LanguageMap[languageStore.lan_code]) || 'English');
+const ToggleLanguage = (item: any) => {
+  // 对应项的active状态
+  selectedLanguage.value = item.text; // 文本
+
+  sendLanguage(getKeyByValue(item.name)); // 发送请求
+  languageStore.setLanguage(getKeyByValue(item.name)); // 切换语言
+  // userStore.lan_code = getKeyByValue(item.name); // 切换用户语言
+  locale.value = item.name;
+  handleClose()
+}
+
+
+
+onMounted(() => {
+})
+</script>
+
+<template>
+  <Teleport to="body">
+    <Transition name="mask-fade">
+      <div class="languagePop_msk" @touchmove.prevent v-if="modelValue" @click="handleClose"></div>
+    </Transition>
+    <Transition name="sheet-slide">
+      <div class="sheet_content" @touchmove.prevent v-if="modelValue">
+        <div class="language-popup">
+          <img :src="CdnBaseUrl(`close_icon`)" alt="" class="close_icon" @click="handleClose" />
+          <!-- 语言 -->
+          <div class="lang_title" >{{ t(`Selecting your preferred language can enhance the accuracy of the content displayed on the homepage`) }}</div>
+          <div class="language_box">
+            <div :class="['lang_item', selectedLanguage === item.text ? 'active' : '']"
+              v-for="(item, index) in languageList" :key="index" @click="ToggleLanguage(item)">
+              <img v-if="selectedLanguage === item.text" class="check_icon" :src="CdnBaseUrl(`select_icon`)">
+              {{ item.text }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
+</template>
+
+<style scoped lang="less">
+.languagePop_msk {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(15, 15, 15, 0.8);
+  overflow: hidden;
+  z-index: 99;
+}
+
+.sheet_content {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+  background: #1E1F23;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  // padding: 16px;
+
+}
+
+.language-popup {
+  padding: 16px;
+  position: relative;
+  height: 538px;
+
+  .lang_title {
+    font-family: Figtree;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 2%;
+    text-align: center;
+    color: @third-text-color;
+    text-align: center;
+    margin-top: 38px;
+
+  }
+
+  .close_icon {
+    position: absolute;
+    top: 24px;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .language_box {
+    padding-top: 28px;
+    padding-bottom: 8px;
+    height: 410px;
+    overflow-y: scroll;
+
+    .lang_item {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      margin-bottom: 16px;
+      height: 37px;
+      padding-left: 32px;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .check_icon {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 24px;
+        height: 24px;
+
+      }
+    }
+
+    .avtive {
+      color: #E6E6E6;
+      font-weight: 600;
+
+      &::after {
+        background: #E6E6E6;
+      }
+    }
+  }
+}
+
+/* 动画 */
+.mask-fade-enter-active,
+.mask-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.mask-fade-enter-from,
+.mask-fade-leave-to {
+  opacity: 0;
+}
+
+.sheet-slide-enter-active,
+.sheet-slide-leave-active {
+  transition: transform 0.3s ease-out;
+}
+
+.sheet-slide-enter-from,
+.sheet-slide-leave-to {
+  transform: translateY(100%);
+}
+</style>
+
+
+```
+:::
+
+
+
+## 发布订阅类
+
+::: details Vue3 发布订阅类
+
+```ts
+// 定义消息订阅器类
+class EventEmitter {
+  private events: { [eventName: string]: Array<(...args: any[]) => void> } = {};
+
+  // 订阅事件，一个消息只能绑定一个回调
+  on(eventName: string, callback: (...args: any[]) => void): void {
+    // 先清除该事件已有的回调
+    if (this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+    this.events[eventName] = [callback];
+  }
+
+  // 发布事件
+  emit(eventName: string, ...args: any[]): void {
+    console.log('xxxxs - ',this.events)
+    if (this.events[eventName]) {
+      this.events[eventName].forEach(callback => {
+        callback(...args);
+      });
+    }
+  }
+
+  // 取消订阅事件
+  off(eventName: string, callback: (...args: any[]) => void): void {
+    if (this.events[eventName]) {
+      this.events[eventName] = this.events[eventName].filter(cb => cb!== callback);
+    }
+  }
+
+  // 只绑定一次事件
+  once(eventName: string, callback: (...args: any[]) => void): void {
+    const onceCallback = (...args: any[]) => {
+      callback(...args);
+      this.off(eventName, onceCallback);
+    };
+    this.on(eventName, onceCallback);
+  }
+}
+
+// 创建一个全局的消息订阅器实例
+const eventEmitter = new EventEmitter();
+
+export default eventEmitter;
 
 ```
 :::
