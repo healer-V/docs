@@ -1,5 +1,29 @@
 # HTTP/HTTPS协议
 
+>[!danger] 网络学习路线
+>1. 五层网络模型
+>2. TCP/IP协议族
+>3. HTTP协议
+>4. Postman/Apifox
+>5. Ajax
+>6. 跨域以及解决方案
+>7. JWT
+>8. cookie
+>9. session
+>10. 文件上传
+>11. 文件下载
+>12. 缓存协议
+>13. CSRF
+>14. XSS
+>15. 网络性能优化
+>16. 分片传输
+>17. 域名与DNS
+>18. SSL/TLS/HTTPS
+>19. HTTP2
+>20. WebSocket
+
+
+
 ## 一、HTTP协议
 >[!tip] HTTP 超文本传输协议
 >- 是一种用于从 **服务器** 传输超文本到本地 **浏览器** 的 **应用层** 协议。
