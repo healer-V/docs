@@ -123,7 +123,7 @@ export const sidebar =
     ],
     '/interview/': [
         {
-            text: '🍓面试题',
+            text: '📖 面试题',
             items: [
                 { text: '01-Html', link: '/interview/' }, // /interview/index.md
                 { text: '02-Css', link: '/interview/02-css.md' }, // /interview/css.md

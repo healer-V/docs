@@ -3,7 +3,7 @@ export const nav = [
         text: '🏠首页',link: '/articles/basic/01-html.md',
     },  
     { 
-        text: '🍓面试题', link: '/interview/'
+        text: '📖面试题', link: '/interview/'
     },
     { 
         text: '🥤实践技巧', link: '/skill/01-Vue组件封装'

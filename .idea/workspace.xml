@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="069c0849-4fe4-4293-9748-b7178083d1b0" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/.vitepress/themeConfig/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vitepress/themeConfig/nav.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/.vitepress/themeConfig/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vitepress/themeConfig/sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/articles/basic/01-html.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/01-html.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/articles/basic/03-ecmascript.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/03-ecmascript.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/basic/04-typescript.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/04-typescript.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/blog/02-markdown.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/blog/02-markdown.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +18,21 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;healer-V&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/healer-V/docs.git&quot;,
+    &quot;accountId&quot;: &quot;feb5934f-6dfc-489c-843f-c355457c3d75&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -24,15 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\Chorme\\WebStorm\\WebStorm 2024.2.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "D:\\Chorme\\WebStorm\\WebStorm 2024.2.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -50,10 +74,25 @@
       <updated>1744299118732</updated>
       <workItem from="1744299125538" duration="264000" />
       <workItem from="1745142095786" duration="34000" />
+      <workItem from="1754058047782" duration="647000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
