@@ -400,7 +400,19 @@ let john: FullPerson = {
 ```
 ::: 
 
-## 14、实用工具类型
+
+## 14、常用类型工具
+>[!tip] 常用类型工具
+>- 1. `Parameters<T>`：获取函数类型T的参数类型。
+>- 2. `ConstructorParameters<T>`：获取构造函数类型T的参数类型。
+>- 3. `ReturnType<T>`：获取函数类型T的返回类型。
+>- 4. `InstanceType<T>`：获取构造函数类型T的实例类型。
+>- 5. `typeof`：获取变量的类型。
+>- 6. `keyof`：获取对象类型的所有属性的名称。
+   
+
+
+## 15、实用工具类型
 
 >[!tip] 实用工具类型
 > - 实用工具类型是指TypeScript提供的一些内置类型，可以帮助我们更方便地使用TypeScript。

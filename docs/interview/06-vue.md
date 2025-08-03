@@ -1,7 +1,29 @@
 # Vue面试题
 
-## 1. Vue的生命周期
-:::tip Vue2.x生命周期
+## Vue3 与Vue2 的区别
+:::tip Vue3 与Vue2 的区别
+1. **性能提升**：Vue3 引入新的虚DOM 算法，使渲染效率更高。
+    - 1. vue2 Diff : 双端Diff算法,头尾比较，中间用全量比较。
+    - 2. vue3 Diff : 新算法，只比较变更的部分，减少比较次数。
+2. **Composition API**：使得逻辑复用和组织更加灵活，取代了Vue2的Options API。
+    - 1. Vue2 Options API：面向对象编程思想。
+    - 2. Vue3 Composition API：函数式编程思想。
+3. **TypeScript支持**：Vue3 对 TypeScript的原生支持更加完善，提供了更好的类型推断和开发体验。
+4. **更小的体积**：Vue3 体积更小，压缩后只有 20% 左右，同时提高了运行时的性能。
+5. **Fragments 和 Teleport**：允许多个根节点和跨DOM节点传送组件内容。
+:::
+
+## Vue3 与 TypeScript的结合优势
+:::tip Vue3 与 TypeScript的结合优势
+1. **类型安全**：保证组件和属性的类型安全，避免潜在的类型错误。
+2. **自动推导**：TS 对 Vue3的Composition API 提供了自动类型推导，减少了手动声明类型的负担。
+4. **更好的 开发体验**：TS 提供自动补全和类型检查增强了开发效率和代码和维护性。
+
+:::
+
+
+## 1. Vue 生命周期
+:::tip Vue2 生命周期
 - `beforeCreate` ：(实例刚被创建，数据观测和事件配置之前)
 - `created` ：(实例创建完成，数据观测和事件配置之后)
 - `beforeMount` ：(实例挂载开始)
@@ -14,7 +36,7 @@
 - `destroyed` ：(实例销毁完成)
 :::
 
-:::tip Vue3.x生命周期
+:::tip Vue3 生命周期
 - `setup` ：(组件实例被创建)
 - `onBeforeMount` ：(组件挂载开始)
 - `onMounted` ：(组件挂载完成)

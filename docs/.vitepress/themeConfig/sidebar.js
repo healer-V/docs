@@ -28,9 +28,9 @@ export const sidebar =
                 text: '🥝浏览器基础',
                 // collapsible: true,
                 items: [
-                    { text: '01-浏览器基础', link: '/articles/browser/01-basic.md' },
-                    { text: '02-浏览器渲染原理', link: '/articles/browser/02-render.md' },
-                    { text: '03-事件循环', link: '/articles/browser/03-eventloop.md' },
+                    { text: '01-线程与进程', link: '/articles/browser/01-basic.md' },
+                    { text: '02-机制与引擎', link: '/articles/browser/02-render.md' },
+                    // { text: '03-事件循环', link: '/articles/browser/03-eventloop.md' },
                 ]
             },
             {
