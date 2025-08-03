@@ -37,8 +37,9 @@ export const sidebar =
                 text: '🍓网络基础',
                 // collapsible: true,
                 items: [
-                    { text: '01-HTTP协议', link: '/articles/network/01-http.md' },
-                    { text: '02-TCP/IP协议', link: '/articles/network/02-tcp.md' },
+                    { text: '01-网络协议', link: '/articles/network/01-http.md' },
+                    { text: '02-文件传输', link: '/articles/network/02-FileTransfer.md' },
+                    { text: '03-WebSocket', link: '/articles/network/03-WebSocket.md' },
                 ]
             },
          
@@ -79,8 +80,8 @@ export const sidebar =
                 text: '🍏博客',
                 // collapsible: true,
                 items: [
-                    { text: '01-搭建博客', link: '/articles/blog/01-vitepress' },
-                    { text: '02-VP中Md语法', link: '/articles/blog/02-markdown.md' },
+                    { text: '01-VitePress搭建博客', link: '/articles/blog/01-vitepress' },
+                    { text: '02-VitePress中Md语法', link: '/articles/blog/02-markdown.md' },
                 ]
             },
         ]
@@ -129,11 +130,12 @@ export const sidebar =
                 { text: '02-Css', link: '/interview/02-css.md' }, // /interview/css.md
                 { text: '03-JS', link: '/interview/03-javascript.md' }, // /interview/four.md
                 { text: '04-ES6', link: '/interview/04-ES6.md' }, // /interview/four.md
-                { text: '05-TS', link: '/interview/09-typescript.md' }, // /interview/four.md
-                { text: '06-Vue', link: '/interview/05-vue.md' }, // /interview/four.md
-                { text: '07-React', link: '/interview/06-react.md' }, // /interview/four.md
-                { text: '08-Engineer', link: '/interview/07-engineering.md' }, // /interview/four.md
-                { text: '09-Network', link: '/interview/08-network.md' }, // /interview/four.md
+                { text: '05-TS', link: '/interview/05-typescript.md' }, // /interview/four.md
+                { text: '06-Vue', link: '/interview/06-vue.md' }, // /interview/four.md
+                { text: '07-React', link: '/interview/07-react.md' }, // /interview/four.md
+                { text: '08-工程化', link: '/interview/08-engineering.md' }, // /interview/four.md
+                { text: '09-网络', link: '/interview/09-network.md' }, // /interview/four.md
+                { text: '10-手写题', link: '/interview/10-Handwriting.md' }, // /interview/four.md
             ]
         }
     ],   

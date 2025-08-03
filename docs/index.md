@@ -21,7 +21,7 @@ features:
   - title: 博客文章
     icon: 📝
     details: 记录技术心得
-    link: /blog/01-vitepress
+    link: /articles/blog/01-vitepress
   - title: 项目实践
     icon: 🎨
     details: 实际项目训练。
