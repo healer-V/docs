@@ -1,10 +1,6 @@
 # Vscode使用指南
 
-## 下载地址
-:::warning 📌点击这里下载
- [VSCode官网](https://code.visualstudio.com/)
-:::
-## 1.VSCode主题
+## 1、VSCode主题
 ### 1.1、推荐主题
 ::: tip 📌常用
 - [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)
@@ -20,7 +16,8 @@
 - [Color Theme Generator](https://marketplace.visualstudio.com/items?itemName=Tyriar.theme-generator)
 - [Color Highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight)
 :::
-## 2.推荐插件
+- 
+## 2、 VSCode 推荐插件
 ::: details 点击查看
 - [Fitten Code-AI编程助手](https://marketplace.visualstudio.com/items?itemName=fitnesse.fitnesse-code)
 - [indent-rainbow-缩进高亮](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
@@ -33,16 +30,9 @@
 - [Markdown预览 Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - [github远程预览](https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub)
 :::
-## 3.常用快捷键
-::: details 点击查看
-- `Ctrl + Shift + P` 打开命令面板
-- `Ctrl + P` 快速打开文件
-- `Ctrl + Shift + N` 打开新窗口
-- `Ctrl + W` 关闭窗口
-- `Ctrl + Shift + T` 重新打开上次关闭的窗口
-- `Ctrl + K + B` 切换侧边栏
-- `Ctrl + Shift + E` 显示最近打开的文件
-- `Ctrl + Shift + F` 全局搜索
+## 3、VSCode 快捷键
+::: tip VSCode 快捷键
+- `Ctrl + d` : 选中相同的文本
 - `Ctrl + Shift + H` 替换
 - `Ctrl + Shift + D` 复制行
 - `Ctrl + Shift + L` 选择所有相同的字符
@@ -51,35 +41,30 @@
 - `Ctrl + Shift + ]` 向右缩进
 - `Ctrl + Shift + [` 向左缩进
 - `Ctrl + Shift + K` 删除行
-- `Ctrl + Shift + J` 合并行
-- `Ctrl + /` 注释行
-- `Ctrl + Shift + A` 选择所有
-- `Ctrl + F2` 跳转到下一个引用
-- `Ctrl + Shift + F2` 跳转到上一个引用
-- `F8` 跳转到下一个错误或警告
-- `Shift + F8` 跳转到上一个错误或警告
-- `Alt + Shift + F` 格式化文档
-- `Ctrl + K + U` 转换为大写
-- `Ctrl + K + L` 转换为小写
-- `Ctrl + K + C` 复制当前行到下一行
-- `Ctrl + K + X` 剪切当前行到下一行
-- `Ctrl + Enter` 在下一行插入新行
-- `Shift + Alt + F` 自动完成
-- `Ctrl + Shift + V` 粘贴并格式化
-- `Ctrl + Shift + \` 按需显示/隐藏侧边栏
-- `Ctrl + Shift + B` 跳转到声明
-- `Ctrl + Alt + F12` 显示所有引用
-- `Ctrl + Shift + Alt + F12` 显示所有引用
-- `Ctrl + Shift + Alt + P` 显示参数信息
-- `Ctrl + Shift + Alt + Space` 触发代码片段
-- `Ctrl + Shift + K` 删除所有空白字符
+:::
+- 
+## 4、WebStorm 快捷键
+::: tip 📌 WebStorm 快捷键
+- `Alt + J` : 选中相同的文本
+- `Alt + →` ：切换下一个标签页
+- `Alt + ←` ：切换上一个标签页
+- `Alt + F3`: 选中所有相同的文本
+- `Ctrl + Tab` ：调出切换器
+- `Ctrl + Shift + ↑` : 移动行上
+- `Ctrl + Shift + ↓` : 移动行下
+- `Ctrl + x` : 删除行
+- `Ctrl + d` : 复制行
+- `Ctrl + j` : 选择标签内容
+- `Ctrl + g` : 跳转到指定行
+- `Ctrl + Shift + /` : 当前位置插入注释
 :::
 
-## 4.编程字体
 
+## 5、常用编程字体
+**等宽字体**
 - [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono)
 - [Hack](https://sourcefoundry.org/hack/)
-- [Fira Code](https://github.com/tonsky/FiraCode)
+- [FiraCode](https://github.com/tonsky/FiraCode)
 - [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 - [Consolas](https://docs.microsoft.com/zh-cn/typography/fonts/consolas)
 ::: details 点击查看更多字体
@@ -102,10 +87,12 @@
 - [ProggyClean](https://github.com/jenskutilek/proggyfonts)
 - [FiraGO](https://github.com/bBoxType/FiraGO)
 :::
-## 5.代码片段
-:::danger 📌看这里
+
+## 6、VSCode 代码片段
+::: tip 看这里
 [VSCode 代码片段在线生成网站](https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode)
 :::
+
 ::: details 代码片段
 ```json
 {

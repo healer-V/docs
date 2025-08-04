@@ -1,7 +1,7 @@
 # HTML面试题
 
 ## 1、html5有哪些新特性
->[!important]html5新特性
+>[!tip]html5新特性
 >1. 文档声明：`<!DOCTYPE>`
 >2. 语义化标签：结构更清晰，利于SEO。
 >3. 多媒体支持：`video` 和 `audio` 元素。

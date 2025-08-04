@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="069c0849-4fe4-4293-9748-b7178083d1b0" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/.vitepress/themeConfig/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vitepress/themeConfig/nav.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/.vitepress/themeConfig/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vitepress/themeConfig/sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/articles/basic/04-typescript.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/04-typescript.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/articles/blog/02-markdown.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/blog/02-markdown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/tools/03-Vscode.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/tools/03-Vscode.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/02-css.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/02-css.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/03-javascript.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/03-javascript.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/04-ES6.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/04-ES6.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/06-vue.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/06-vue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/07-react.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/07-react.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/10-Handwriting.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/11-Handwriting.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/index.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/10-Project/02-Docs/docs",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -75,6 +81,7 @@
       <workItem from="1744299125538" duration="264000" />
       <workItem from="1745142095786" duration="34000" />
       <workItem from="1754058047782" duration="647000" />
+      <workItem from="1754302475151" duration="13806000" />
     </task>
     <servers />
   </component>

@@ -10,7 +10,7 @@ export const sidebar =
             // },
             {
                 text: '🍎前端基础',
-                // collapsible: true,
+                // collapsible: true, // 侧边栏可折叠
                 items: [
                     { text: '01-HTML', link: '/articles/basic/01-html.md' },
                     { text: '02-CSS', link: '/articles/basic/02-css.md' },
@@ -26,16 +26,13 @@ export const sidebar =
             },
                {
                 text: '🥝浏览器基础',
-                // collapsible: true,
                 items: [
                     { text: '01-线程与进程', link: '/articles/browser/01-basic.md' },
                     { text: '02-机制与引擎', link: '/articles/browser/02-render.md' },
-                    // { text: '03-事件循环', link: '/articles/browser/03-eventloop.md' },
                 ]
             },
             {
                 text: '🍓网络基础',
-                // collapsible: true,
                 items: [
                     { text: '01-网络协议', link: '/articles/network/01-http.md' },
                     { text: '02-文件传输', link: '/articles/network/02-FileTransfer.md' },
@@ -45,7 +42,6 @@ export const sidebar =
          
             {
                 text: '🍎混合App开发',
-                // collapsible: true,
                 items: [
                     { text: '01-Uniapp', link: '/articles/frame/01-Uniapp.md' },
                     { text: '02-Flutter', link: '/articles/frame/02-Flutter.md' },
@@ -57,7 +53,6 @@ export const sidebar =
             },
             {
                 text: '🍉前端工程化',
-                // collapsible: true,
                 items: [
                     { text: '01-Webpack', link: '/articles/engineering/01-Webpack.md' },
                     { text: '02-Vite', link: '/articles/engineering/02-Vite.md' },
@@ -78,10 +73,9 @@ export const sidebar =
     
             {
                 text: '🍏博客',
-                // collapsible: true,
                 items: [
-                    { text: '01-VitePress搭建博客', link: '/articles/blog/01-vitepress' },
-                    { text: '02-VitePress中Md语法', link: '/articles/blog/02-markdown.md' },
+                    { text: '01-搭建博客', link: '/articles/blog/01-vitepress.md' },
+                    { text: '02-Markdown语法', link: '/articles/blog/02-markdown.md' },
                 ]
             },
         ]
@@ -91,8 +85,7 @@ export const sidebar =
         {
             text: '🥤实践技巧',
             items: [
-                // This shows `/blog/index.md` page.
-                { text: '01-Vue组件封装', link: '/skill/01-Vue组件封装.md' }, // /blog/index.md
+                { text: '01-Vue组件封装', link: '/skill/01-Vue组件封装.md' },
                 { text: '02-React组件封装', link: '/skill/02-React组件封装.md' }, 
             ]
         }
@@ -101,13 +94,11 @@ export const sidebar =
         {
             text: '🍚项目',
             items: [
-                // This shows `/HarmonyOS/index.md` page.
-                { text: '01-vue2移动端项目', link: '/practice/01-vue2.md' }, // /HarmonyOS/index.md
-                { text: '02-vue2PC端项目', link: '/practice/02-vue2PC.md' }, // /HarmonyOS/index.md
-                { text: '03-vue3移动端项目', link: '/practice/03-vue3.md' }, // /HarmonyOS/index.md
-                { text: '04-vue3PC端项目', link: '/practice/04-vue3PC.md' }, // /HarmonyOS/index.md
-                // { text: 'Three', link: '/HarmonyOS/html' }, // /HarmonyOS/three.md
-                // { text: 'Four', link: '/HarmonyOS/four' } // /HarmonyOS/four.md
+                { text: '01-vue2移动端项目', link: '/practice/01-vue2.md' },
+                { text: '02-vue2PC端项目', link: '/practice/02-vue2PC.md' },
+                { text: '03-vue3移动端项目', link: '/practice/03-vue3.md' },
+                { text: '04-vue3PC端项目', link: '/practice/04-vue3PC.md' },
+
             ]
         }
     ],
@@ -115,10 +106,8 @@ export const sidebar =
         {
             text: '🥥项目要点',
             items: [
-                // This shows `/project/index.md` page.
                 { text: '移动端项目要点', link: '/project/' }, // /project/index.md
-                { text: 'PC端项目要点', link: '/project/pc' }, // /project/three.md
-                // { text: 'Four', link: '/project/four' } // /project/four.md
+                { text: 'PC端项目要点', link: '/project/pc' },
             ]
         }
     ],
@@ -127,15 +116,16 @@ export const sidebar =
             text: '📖 面试题',
             items: [
                 { text: '01-Html', link: '/interview/' }, // /interview/index.md
-                { text: '02-Css', link: '/interview/02-css.md' }, // /interview/css.md
-                { text: '03-JS', link: '/interview/03-javascript.md' }, // /interview/four.md
-                { text: '04-ES6', link: '/interview/04-ES6.md' }, // /interview/four.md
-                { text: '05-TS', link: '/interview/05-typescript.md' }, // /interview/four.md
-                { text: '06-Vue', link: '/interview/06-vue.md' }, // /interview/four.md
-                { text: '07-React', link: '/interview/07-react.md' }, // /interview/four.md
-                { text: '08-工程化', link: '/interview/08-engineering.md' }, // /interview/four.md
-                { text: '09-网络', link: '/interview/09-network.md' }, // /interview/four.md
-                { text: '10-手写题', link: '/interview/10-Handwriting.md' }, // /interview/four.md
+                { text: '02-Css', link: '/interview/02-css.md' },
+                { text: '03-JS', link: '/interview/03-javascript.md' },
+                { text: '04-ES6', link: '/interview/04-ES6.md' },
+                { text: '05-TS', link: '/interview/05-typescript.md' },
+                { text: '06-Vue', link: '/interview/06-vue.md' },
+                { text: '07-React', link: '/interview/07-react.md' },
+                { text: '08-工程化', link: '/interview/08-engineering.md' },
+                { text: '09-网络', link: '/interview/09-network.md' },
+                { text: '10-Browser', link: '/interview/10-Browser.md' },
+                { text: '11-手写题', link: '/interview/11-Handwriting.md' },
             ]
         }
     ],   
@@ -146,7 +136,6 @@ export const sidebar =
                 {text: '2023年', link: '/diary/index.md'},
                 {text: '2024年', link: '/diary/2024'},
                 {text: '2025年', link: '/diary/2025'},
-                // This shows `/diary/index.md` page.
             ]
         }
     ],
@@ -154,10 +143,8 @@ export const sidebar =
         {
             text: '🍒 关于',
             items: [
-                // This shows `/about/index.md` page.
-                { text: '关于我', link: '/about/' }, // /about/index.md
-                { text: '友情链接', link: '/about/links' }, // /about/links.md
-                // { text: 'Four', link: '/about/four' } // /about/four.md
+                { text: '关于我', link: '/about/' },
+                { text: '友情链接', link: '/about/links' },
             ]
         }
     ]
