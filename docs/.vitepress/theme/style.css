@@ -86,10 +86,10 @@
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
 }
 table{
-  font-family: 'Roboto Mono',"monospace";
+  font-family: 'Roboto Mono','Menlo','Monaco',"monospace";
 }
 code{
-  font-family: 'Roboto Mono',"monospace";
+  font-family: 'Roboto Mono','Menlo','Monaco',"monospace";
   color: #db3d33 !important;
   font-size: 1em !important;
 }
