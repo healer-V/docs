@@ -124,8 +124,9 @@ export const sidebar =
                 { text: '07-React', link: '/interview/07-react.md' },
                 { text: '08-工程化', link: '/interview/08-engineering.md' },
                 { text: '09-网络', link: '/interview/09-network.md' },
-                { text: '10-Browser', link: '/interview/10-Browser.md' },
+                { text: '10-浏览器', link: '/interview/10-Browser.md' },
                 { text: '11-手写题', link: '/interview/11-Handwriting.md' },
+                { text: '12-项目常考', link: '/interview/12-Optimize.md' },
             ]
         }
     ],   

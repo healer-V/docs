@@ -1,5 +1,27 @@
 # 一、Javascript基础
 
+::: details 目录
+1. this指向
+2. 面向对象：封装、继承、多态
+3. 原型、原型链
+4. 作用域、作用域链
+5. 闭包
+6. 垃圾回收
+7. 高阶函数
+8. 运算符规则、表达式、类型转换
+9. 属性描述符
+10. 代理和反射
+11. Promise实现
+12. 剩余参数、默认参数、展开运算符
+13. 解构
+14. ESModule
+15. 箭头函数
+16. 类
+17. 生成器、迭代器、迭代协议
+18. 符号
+19. 集合类型
+20. 类型化数组
+    :::
 ## 1、数据类型
 
 JavaScript 有七种基本的数据类型：
@@ -27,13 +49,13 @@ JS 中的 Number 类型用于表示`整数`和`浮点数`，采用IEEE 754 标�
 
 #### 1.1.3、Number类型方法
 
-| 方法名称      | 描述                                                         |
-| ------------- | ------------------------------------------------------------ |
-| `toFixed(n)`    | 返回指定位数小数的字符串表示，会四舍五入(n: 0-20)            |
-| `toString(radix)`| 返回指定基数(radix: 2-36)的字符串表示，默认十进制             |
-| `valueOf()`     | 返回Number对象的原始数值                                      |
-| `toExponential(n)`| 返回指数表示法的字符串形式(n: 小数位数)                      |
-| `toPrecision(n)` | 返回指定位数有效数字的字符串表示(n: 有效数字位数)             |
+| 方法名称               | 描述                              |
+|--------------------|---------------------------------|
+| `toFixed(n)`       | 返回指定位数小数的字符串表示，会四舍五入(n: 0-20)   |
+| `toString(radix)`  | 返回指定基数(radix: 2-36)的字符串表示，默认十进制 |
+| `valueOf()`        | 返回Number对象的原始数值                 |
+| `toExponential(n)` | 返回指数表示法的字符串形式(n: 小数位数)          |
+| `toPrecision(n)`   | 返回指定位数有效数字的字符串表示(n: 有效数字位数)     |
 
 #### 1.1.4、使用示例
 ```javascript
@@ -94,28 +116,28 @@ JS 中的 String 类型表示文本数据，是不可变的原始值。可以使
 >- 支持Unicode字符
 
 #### 1.3.3、常用方法
-| 方法名称          | 描述                                                         |
-| ----------------- | ------------------------------------------------------------ |
-| charAt(index)     | 返回指定位置的字符                                           |
-| charCodeAt(index) | 返回指定位置字符的UTF-16编码                                 |
-| includes(str)     | 判断是否包含指定字符串                                       |
-| endsWith(str)     | 判断是否以指定字符串结尾                                     |
-| indexOf(str)      | 返回指定字符串首次出现的位置                                 |
-| lastIndexOf(str)   | 返回指定字符串最后一次出现的位置                             |
-| match(regexp)     | 使用正则表达式匹配字符串                                     |
-| padEnd(length, str)| 用指定字符串填充到指定长度(从末尾)                          |
-| padStart(length, str)| 用指定字符串填充到指定长度(从开头)                        |
-| repeat(count)     | 重复字符串指定次数                                           |
-| replace(search, replace)| 替换字符串中的内容                                      |
-| slice(start, end) | 提取字符串片段                                               |
-| split(separator)  | 按分隔符分割字符串为数组                                     |
-| startsWith(str)   | 判断是否以指定字符串开头                                     |
-| substring(start, end)| 提取字符串片段(类似slice)                                |
-| toLowerCase()     | 转换为小写                                                   |
-| toUpperCase()     | 转换为大写                                                   |
-| trim()            | 去除两端空白                                                 |
-| trimStart()       | 去除开头空白                                                 |
-| trimEnd()         | 去除末尾空白                                                 |
+| 方法名称                     | 描述                 |
+|--------------------------|--------------------|
+| charAt(index)            | 返回指定位置的字符          |
+| charCodeAt(index)        | 返回指定位置字符的UTF-16编码  |
+| includes(str)            | 判断是否包含指定字符串        |
+| endsWith(str)            | 判断是否以指定字符串结尾       |
+| indexOf(str)             | 返回指定字符串首次出现的位置     |
+| lastIndexOf(str)         | 返回指定字符串最后一次出现的位置   |
+| match(regexp)            | 使用正则表达式匹配字符串       |
+| padEnd(length, str)      | 用指定字符串填充到指定长度(从末尾) |
+| padStart(length, str)    | 用指定字符串填充到指定长度(从开头) |
+| repeat(count)            | 重复字符串指定次数          |
+| replace(search, replace) | 替换字符串中的内容          |
+| slice(start, end)        | 提取字符串片段            |
+| split(separator)         | 按分隔符分割字符串为数组       |
+| startsWith(str)          | 判断是否以指定字符串开头       |
+| substring(start, end)    | 提取字符串片段(类似slice)   |
+| toLowerCase()            | 转换为小写              |
+| toUpperCase()            | 转换为大写              |
+| trim()                   | 去除两端空白             |
+| trimStart()              | 去除开头空白             |
+| trimEnd()                | 去除末尾空白             |
 
 #### 1.3.4、示例
 ```javascript
@@ -147,35 +169,35 @@ JS 中的 Array 类型是用于存储有序数据集合的高阶对象。可以�
 >- ES6新增的数组特性：解构赋值、扩展运算符等
 
 #### 1.4.3、核心方法
-| 方法名称  | 描述                                                         |
-| --------- | ------------------------------------------------------------ |
-| push(...items) | 添加元素到数组末尾，返回新长度                               |
-| pop()     | 移除并返回数组最后一个元素                                   |
-| shift()   | 移除并返回数组第一个元素                                      |
-| unshift(...items)| 添加元素到数组开头，返回新长度                              |
-| splice(start, deleteCount, ...items)| 从指定位置添加/删除元素，返回被删除元素数组         |
-| reverse() | 反转数组元素顺序                                             |
-| sort([compareFunction])| 对数组元素排序                                             |
+| 方法名称                                 | 描述                     |
+|--------------------------------------|------------------------|
+| push(...items)                       | 添加元素到数组末尾，返回新长度        |
+| pop()                                | 移除并返回数组最后一个元素          |
+| shift()                              | 移除并返回数组第一个元素           |
+| unshift(...items)                    | 添加元素到数组开头，返回新长度        |
+| splice(start, deleteCount, ...items) | 从指定位置添加/删除元素，返回被删除元素数组 |
+| reverse()                            | 反转数组元素顺序               |
+| sort([compareFunction])              | 对数组元素排序                |
 
 #### 1.4.4、迭代方法
-| 方法名称      | 描述                                                         |
-| ------------- | ------------------------------------------------------------ |
-| forEach(callback) | 对每个元素执行回调函数                                       |
-| map(callback) | 对每个元素执行回调函数，返回新数组                           |
-| filter(callback) | 过滤元素，返回满足条件的元素组成的新数组                     |
-| reduce(callback, initialValue)| 从左到右对每个元素执行回调函数，累计结果                  |
-| some(callback) | 测试是否至少有一个元素通过测试                               |
-| every(callback) | 测试是否所有元素都通过测试                                  |
-| find(callback) | 返回第一个满足条件的元素                                     |
-| findIndex(callback) | 返回第一个满足条件的元素的索引                              |
-<!-- | reduceRight(callback, initialValue)| 从右到左对每个元素执行回调函数，累计结果                | -->
+| 方法名称                           | 描述                                  |
+|--------------------------------|-------------------------------------|
+| forEach(callback)              | 对每个元素执行回调函数                         |
+| map(callback)                  | 对每个元素执行回调函数，返回新数组                   |
+| filter(callback)               | 过滤元素，返回满足条件的元素组成的新数组                |
+| reduce(callback, initialValue) | 从左到右对每个元素执行回调函数，累计结果                |
+| some(callback)                 | 测试是否至少有一个元素通过测试                     |
+| every(callback)                | 测试是否所有元素都通过测试                       |
+| find(callback)                 | 返回第一个满足条件的元素                        |
+| findIndex(callback)            | 返回第一个满足条件的元素的索引                     |
+| <!--                           | reduceRight(callback, initialValue) | 从右到左对每个元素执行回调函数，累计结果                | -->
 
 #### 1.4.5、静态方法
-| 方法名称        | 描述                                                         |
-| --------------- | ------------------------------------------------------------ |
-| Array.from(arrayLike) | 从类数组或可迭代对象创建新数组                              |
-| Array.of(...items) | 根据参数创建新数组                                          |
-| Array.isArray(value) | 判断值是否为数组                                           |
+| 方法名称                  | 描述              |
+|-----------------------|-----------------|
+| Array.from(arrayLike) | 从类数组或可迭代对象创建新数组 |
+| Array.of(...items)    | 根据参数创建新数组       |
+| Array.isArray(value)  | 判断值是否为数组        |
 
 #### 1.4.6、示例
 ```javascript
@@ -215,26 +237,26 @@ JavaScript中的Object类型是键值对的集合，用于存储复杂数据结�
 >- 原型链机制实现继承
 
 #### 1.5.3、创建方式
-| 方式                | 示例                                                         |
-| ------------------- | ------------------------------------------------------------ |
-| 对象字面量          | `let obj = {name: 'John', age: 30}`                          |
-| new Object()        | `let obj = new Object(); obj.name = 'John'`                  |
-| Object.create()     | `let obj = Object.create(proto)`                             |
-| 构造函数            | `function Person(name) {this.name = name}`                   |
-| ES6类               | `class Person {constructor(name) {this.name = name}}`        |
+| 方式              | 示例                                                    |
+|-----------------|-------------------------------------------------------|
+| 对象字面量           | `let obj = {name: 'John', age: 30}`                   |
+| new Object()    | `let obj = new Object(); obj.name = 'John'`           |
+| Object.create() | `let obj = Object.create(proto)`                      |
+| 构造函数            | `function Person(name) {this.name = name}`            |
+| ES6类            | `class Person {constructor(name) {this.name = name}}` |
 
 #### 1.5.4、常用方法
-| 方法名称                | 描述                                                         |
-| ----------------------- | ------------------------------------------------------------ |
-| Object.keys(obj)        | 返回对象自身可枚举属性组成的数组                             |
-| Object.values(obj)      | 返回对象自身可枚举属性值组成的数组                           |
-| Object.entries(obj)     | 返回对象自身可枚举键值对组成的数组                           |
-| Object.assign(target, ...sources)| 复制源对象属性到目标对象                                    |
-| Object.freeze(obj)      | 冻结对象，使其不可修改                                       |
-| Object.seal(obj)        | 密封对象，防止添加/删除属性                                  |
-| Object.defineProperty(obj, prop, descriptor)| 定义或修改对象属性                                      |
-| Object.getPrototypeOf(obj)| 返回对象的原型                                              |
-| Object.setPrototypeOf(obj, proto)| 设置对象的原型                                            |
+| 方法名称                                         | 描述                |
+|----------------------------------------------|-------------------|
+| Object.keys(obj)                             | 返回对象自身可枚举属性组成的数组  |
+| Object.values(obj)                           | 返回对象自身可枚举属性值组成的数组 |
+| Object.entries(obj)                          | 返回对象自身可枚举键值对组成的数组 |
+| Object.assign(target, ...sources)            | 复制源对象属性到目标对象      |
+| Object.freeze(obj)                           | 冻结对象，使其不可修改       |
+| Object.seal(obj)                             | 密封对象，防止添加/删除属性    |
+| Object.defineProperty(obj, prop, descriptor) | 定义或修改对象属性         |
+| Object.getPrototypeOf(obj)                   | 返回对象的原型           |
+| Object.setPrototypeOf(obj, proto)            | 设置对象的原型           |
 
 #### 1.5.5、示例
 ```javascript
@@ -620,40 +642,40 @@ delete Object.prototype; // TypeError
 ### 7.2、事件类型分类
 
 #### 7.2.1、鼠标事件
-| 事件类型 | 描述 |
-|---------|------|
-| click | 单击事件 |
-| dblclick | 双击事件 |
-| mousedown | 鼠标按下 |
-| mouseup | 鼠标释放 |
-| mousemove | 鼠标移动 |
-| mouseover | 鼠标移入元素 |
-| mouseout | 鼠标移出元素 |
-| contextmenu | 右键菜单 |
+| 事件类型        | 描述     |
+|-------------|--------|
+| click       | 单击事件   |
+| dblclick    | 双击事件   |
+| mousedown   | 鼠标按下   |
+| mouseup     | 鼠标释放   |
+| mousemove   | 鼠标移动   |
+| mouseover   | 鼠标移入元素 |
+| mouseout    | 鼠标移出元素 |
+| contextmenu | 右键菜单   |
 
 #### 7.2.2、键盘事件
-| 事件类型 | 描述 |
-|---------|------|
-| keydown | 按键按下 |
-| keyup | 按键释放 |
+| 事件类型     | 描述      |
+|----------|---------|
+| keydown  | 按键按下    |
+| keyup    | 按键释放    |
 | keypress | 按键按下并释放 |
 
 #### 7.2.3、表单事件
-| 事件类型 | 描述 |
-|---------|------|
-| submit | 表单提交 |
+| 事件类型   | 描述    |
+|--------|-------|
+| submit | 表单提交  |
 | change | 表单值改变 |
-| input | 输入事件 |
-| focus | 获取焦点 |
-| blur | 失去焦点 |
+| input  | 输入事件  |
+| focus  | 获取焦点  |
+| blur   | 失去焦点  |
 
 #### 7.2.4、窗口事件
-| 事件类型 | 描述 |
-|---------|------|
-| load | 页面加载完成 |
-| unload | 页面卸载 |
+| 事件类型   | 描述     |
+|--------|--------|
+| load   | 页面加载完成 |
+| unload | 页面卸载   |
 | resize | 窗口大小改变 |
-| scroll | 滚动事件 |
+| scroll | 滚动事件   |
 
 ### 7.3、事件处理方式
 :::tip 事件处理
@@ -1048,31 +1070,31 @@ DOM是HTML和XML文档的编程接口，它将文档表示为节点树，允许J
 ### 13.2、DOM核心方法
 
 #### 13.2.1、节点查询
-| 方法 | 描述 |
-|------|------|
-| getElementById() | 通过ID获取元素 |
-| getElementsByClassName() | 通过类名获取元素集合 |
-| getElementsByTagName() | 通过标签名获取元素集合 |
-| querySelector() | 通过CSS选择器获取第一个匹配元素 |
-| querySelectorAll() | 通过CSS选择器获取所有匹配元素 |
+| 方法                       | 描述                |
+|--------------------------|-------------------|
+| getElementById()         | 通过ID获取元素          |
+| getElementsByClassName() | 通过类名获取元素集合        |
+| getElementsByTagName()   | 通过标签名获取元素集合       |
+| querySelector()          | 通过CSS选择器获取第一个匹配元素 |
+| querySelectorAll()       | 通过CSS选择器获取所有匹配元素  |
 
 #### 13.2.2、节点操作
-| 方法 | 描述 |
-|------|------|
-| createElement() | 创建元素节点 |
+| 方法               | 描述     |
+|------------------|--------|
+| createElement()  | 创建元素节点 |
 | createTextNode() | 创建文本节点 |
-| appendChild() | 添加子节点 |
-| removeChild() | 移除子节点 |
-| replaceChild() | 替换子节点 |
-| cloneNode() | 克隆节点 |
+| appendChild()    | 添加子节点  |
+| removeChild()    | 移除子节点  |
+| replaceChild()   | 替换子节点  |
+| cloneNode()      | 克隆节点   |
 
 #### 13.2.3、属性操作
-| 方法 | 描述 |
-|------|------|
-| getAttribute() | 获取属性值 |
-| setAttribute() | 设置属性值 |
-| removeAttribute() | 移除属性 |
-| hasAttribute() | 检查属性是否存在 |
+| 方法                | 描述       |
+|-------------------|----------|
+| getAttribute()    | 获取属性值    |
+| setAttribute()    | 设置属性值    |
+| removeAttribute() | 移除属性     |
+| hasAttribute()    | 检查属性是否存在 |
 
 ### 13.3、DOM示例
 ```javascript
@@ -1104,29 +1126,29 @@ BOM提供了与浏览器窗口交互的对象，包括window、navigator、scree
 ### 14.2、BOM核心对象
 
 #### 14.2.1、window对象
-| 属性/方法 | 描述 |
-|----------|------|
-| innerWidth/innerHeight | 窗口内部宽高 |
-| open()/close() | 打开/关闭窗口 |
-| setTimeout()/setInterval() | 定时器 |
-| alert()/confirm()/prompt() | 对话框 |
+| 属性/方法                      | 描述      |
+|----------------------------|---------|
+| innerWidth/innerHeight     | 窗口内部宽高  |
+| open()/close()             | 打开/关闭窗口 |
+| setTimeout()/setInterval() | 定时器     |
+| alert()/confirm()/prompt() | 对话框     |
 
 #### 14.2.2、location对象
-| 属性/方法 | 描述 |
-|----------|------|
-| href | 完整URL |
-| protocol | 协议 |
-| host | 主机名和端口 |
-| pathname | 路径部分 |
-| search | 查询字符串 |
+| 属性/方法    | 描述     |
+|----------|--------|
+| href     | 完整URL  |
+| protocol | 协议     |
+| host     | 主机名和端口 |
+| pathname | 路径部分   |
+| search   | 查询字符串  |
 | reload() | 重新加载页面 |
 
 #### 14.2.3、history对象
-| 属性/方法 | 描述 |
-|----------|------|
-| length | 历史记录数 |
-| back()/forward() | 后退/前进 |
-| go() | 跳转到指定历史记录 |
+| 属性/方法                      | 描述            |
+|----------------------------|---------------|
+| length                     | 历史记录数         |
+| back()/forward()           | 后退/前进         |
+| go()                       | 跳转到指定历史记录     |
 | pushState()/replaceState() | 修改历史记录(HTML5) |
 
 ### 14.3、BOM示例
