@@ -4,10 +4,6 @@ export const sidebar =
         {
         text: '首页',
         items: [
-            // {
-            //     text: '🍇前言',
-            //     link: '/articles/'
-            // },
             {
                 text: '🍎前端基础',
                 // collapsible: true, // 侧边栏可折叠
@@ -62,12 +58,11 @@ export const sidebar =
             },
             {
                 text: '🍜工具',
-                // collapsible: true,
                 items: [
                     { text: '01-Git', link: '/articles/tools/01-Git.md' },
                     { text: '02-Markdown', link: '/articles/tools/02-Markdown.md' },
-                    { text: '03-VsCode', link: '/articles/tools/03-Vscode.md' },
-                    { text: '04-HBuilderX', link: '/articles/tools/04-HBuilderX.md' },
+                    { text: '03-IDE工具', link: '/articles/tools/03-IDE.md' },
+                    // { text: '04-HBuilderX', link: '/articles/tools/04-HBuilderX.md' },
                 ]
             },
     

@@ -46,17 +46,6 @@ nav {
     
     li {
       display: inline-block;
-      
-      a {
-        display: block;
-        padding: 6px 12px;
-        text-decoration: none;
-        
-        &:hover {
-          color: #fff;
-          background: #333;
-        }
-      }
     }
   }
 }
@@ -76,17 +65,16 @@ nav {
 
 ::: details Sass Mixin示例
 ```scss
-@mixin border-radius($radius: 5px) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+// 定义
+@mixin flex($direction,$jusify = center,$align = center){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $jusify;
+  align-items: $align;
 }
-
-.button {
-  @include border-radius(10px);
-  background: #4CAF50;
-  color: white;
+// 调用
+.container {
+  @include flex(row,center,center);
 }
 ```
 :::
@@ -109,7 +97,7 @@ nav {
   padding: 10px;
   color: #333;
 }
-
+// 继承
 .success {
   @extend .message;
   border-color: green;
@@ -122,27 +110,36 @@ nav {
 ```
 :::
 
-## 五、运算
->[!tip] Operations
-> 1. **概念**: Sass支持基本的数学运算。
-> 2. **类型**: 包括数字、颜色、字符串等运算。
-> 3. **单位**: 注意单位兼容性，如px与em不能直接运算。
+## 五、循环
+>[!tip] Loops
+> 1. **概念**: Sass提供`for`循环和`each`循环。
+> 2. **for循环**: 使用`from...through`或`to...through`生成序列。
+> 3. **each循环**: 遍历 **列表** 或 **Map**。
 
 >[!important] 注意事项
-> 1. 除法需要使用括号或变量，如`($width/2)`。
-> 2. 颜色运算是对RGB通道分别计算。
-> 3. 字符串运算使用`+`连接。
+> 1. 循环适合生成相同样式的元素。
+> 2. 避免过度使用，影响性能。
 
-::: details Sass运算示例
+::: details Sass循环示例
 ```scss
-.container {
-  width: 100% - 20px;
-  height: (600px / 2);
-  margin-left: 10px + 5px;
-  color: #010203 + #040506; // #050709
+// for循环
+@for $i from 1 through 3 {
+  .col-#{$i} {
+     width: 100% / 3 * $i;
+   }
+}
+
+// each循环
+$colors: red, green, blue;
+@each $color in $colors {
+  .#{$color}-bg {
+     background-color: $color;
+   }
 }
 ```
 :::
+
+
 ## 六、函数
 >[!tip] Functions
 > 1. **概念**: Sass提供内置函数，也允许自定义函数。
@@ -163,7 +160,7 @@ $light-color: lighten(#336699, 20%);
 @function em($px, $base: 16px) {
   @return ($px / $base) * 1em;
 }
-
+// 调用
 body {
   font-size: em(32px); // 2em
   color: $light-color;
@@ -173,44 +170,38 @@ body {
 
 ## 七、控制指令
 >[!tip] Control Directives
-> 1. **概念**: 提供流程控制功能，包括条件判断和循环。
+> 1. **概念**: 提供流程控制功能，包括**条件判断**、和**循环**。
 > 2. **指令**: `@if`, `@else`, `@for`, `@each`, `@while`。
 > 3. **应用**: 动态生成样式，减少重复代码。
 
 >[!important] 注意事项
 > 1. 合理使用控制指令，避免过度复杂。
-> 2. `@each`适合遍历列表或Map。
-> 3. `@for`适合生成序列样式。
+> 2. `@if`适合做简单逻辑判断。
+> 3. `@while`适合做循环逻辑判断。
 
-::: details Sass控制指令示例
+::: details Sass 循环 条件判断 示例
 ```scss
 // 条件判断
-@mixin text-style($size, $bold: false) {
-  font-size: $size;
-  @if $bold {
-    font-weight: bold;
-  }
+@if $width > 100px {
+  .container {
+     width: $width;
+   }
+} @else {
+  .container {
+     width: 100px;
+   }
 }
 
-// 循环
-$sizes: 40px, 50px, 80px;
-@each $size in $sizes {
-  .icon-#{$size} {
-    width: $size;
-    height: $size;
-  }
-}
-
-// 生成网格系统
-@for $i from 1 through 12 {
-  .col-#{$i} {
-    width: 100% / 12 * $i;
-  }
+@while $i < 10 {
+  .item-#{$i} {
+     width: 100% / 10 * $i;
+   }
+   $i: $i + 1;
 }
 ```
 :::
 
-## 八、导入与模块化
+## 八、模块化
 >[!tip] Import/Module
 > 1. **概念**: 将样式分割为多个文件，提高可维护性。
 > 2. **导入**: 使用`@use`或`@import`(已废弃)。
@@ -218,8 +209,8 @@ $sizes: 40px, 50px, 80px;
 
 >[!important] 注意事项
 > 1. 优先使用`@use`替代`@import`。
-> 2. 使用命名空间避免冲突。
-> 3. 合理组织文件结构。
+> 2. 使用 **命名空间** 避免冲突，使用`as`关键字给模块命名。
+> 3. `@forward` 转发模块内容，避免模块间的循环依赖。
 
 ::: details Sass模块化示例
 ```scss
@@ -228,7 +219,6 @@ $primary-color: #336699;
 
 // main.scss
 @use 'variables' as vars;
-
 body {
   color: vars.$primary-color;
 }
@@ -259,4 +249,45 @@ $radius: 10px;
 ```
 :::
 
+## 十、运算
+>[!tip] Operations
+> 1. **概念**: Sass支持基本的数学运算。
+> 2. **类型**: 包括数字、颜色、字符串等运算。
+> 3. **单位**: 注意单位兼容性，如px与em不能直接运算。
 
+>[!important] 注意事项
+> 1. 除法需要使用括号或变量，如`($width/2)`。
+> 2. 颜色运算是对RGB通道分别计算。
+> 3. 字符串运算使用`+`连接。
+
+::: details Sass运算示例
+```scss
+.container {
+  width: 100% - 20px;
+  height: (600px / 2);
+  margin-left: 10px + 5px;
+  color: #010203 + #040506; // #050709
+}
+```
+:::
+
+## 十一、注释
+>[!tip] Comment
+> 1. **概念**: Sass允许使用`//`或`/* */`注释。
+> 2. **应用**: 方便代码阅读和维护。
+
+>[!important] 注意事项
+> 1. 注释不会被编译到CSS中。
+> 2. 建议使用`//`注释单行代码，`/* */`注释多行代码。
+
+::: details Sass注释示例
+```scss
+// 单行注释
+.container {
+  // 多行注释
+  width: 100%;
+  height: 100%;
+  /* 多行注释 */
+}
+```
+:::

@@ -1,32 +1,27 @@
 # Node.js
 
->[!tip] 简介
->1. Node.js 是一个基于 `Chrome V8` 引擎的 JavaScript 运行环境。
+>[!tip] 概念
+>1. Node.js 是一个基于 `Chrome V8 JavaScript` 引擎的 JavaScript 运行时环境。
 >2. Node.js 使用了一个**事件驱动**、**非阻塞式** `I/O` 的模型，使其轻量又高效。
 >3. **擅长处理**`IO密集型`应用,**不适合**`CPU密集型`应用 (图像、音频处理等需要大量数据结构 + 算法)
->4. Node.js 依靠 `libuv` 有很强的处理能力，而 CPU 因为 Node.js 单线程原因，容易造成 CPU 占用率高，如果非要做 CPU 密集型应用，可以使用 C++ 插件编写 或者 nodejs 提供的 `cluster`。
+
 
 
 >[!warning] 注意事项
 >1. Node.js 没有`BOM`（浏览器对象模型），没有`DOM`（文档对象模型），没有浏览器的内置对象。
 
-
->[!important] 参考资料
->1. [Node.js 官网](https://nodejs.org/)
->2. [Node.js 文档](https://nodejs.org/zh-cn/docs/)
-
 ## 一、Node.js 机制
-### 1、单线程
+### 1、单线程事件循环
 >[!tip] 定义
->- Node.js 是单线程的，这意味着它只允许一个线程执行代码。
->- 好处：操作系统完全不在有线程创建、销毁的时间开销。
->- 坏处：单线程意味着只能同时执行一个任务，其他任务必须排队等待。
+>- Node.js 使用单线程的事件循环模型。
+>- 通过事件驱动和回调函数处理并发请求。
+>- 避免传统多线程编程中的线程切换开销。
+>
 
-### 2、异步 I/O
+### 2、非阻塞 I/O
 >[!tip] 定义
->- Node.js 使用异步 I/O，这意味着它不会等待一个操作完成，而是继续执行下一个操作。
->- 好处：可以处理大量并发请求，不会造成线程阻塞。
->- 坏处：需要编写异步代码，并且在错误处理上需要格外小心。
+>- 所有 I/O 操作（网络请求、文件读写等）都采用非阻塞模式。
+>- 不会等待 I/O 操作完成，而是继续执行后续代码。
 
 ### 3、事件驱动
 >[!tip] 定义
@@ -44,7 +39,7 @@
 >
 >[!warning] 注意事项
 >- 使用 `npm init` 初始化项目
->- 区分 `dependencies` 和 `devDependencies`
+>- 区分 `dependencies`(生产依赖) 和 `devDependencies`（开发依赖）
 >- 使用 `npm install` 安装依赖
 
 
@@ -119,42 +114,319 @@
 >- 引入模块 import 必须写在头部，否则会报错
 
 
+## 四、全局对象
+>[!tip] 
+> 真正的全局对象：
+>- `global` ：全局作用域
+>- `__filename` ：当前模块的文件名
+>- `__dirname` ：当前模块的文件夹路径
+>- `module` ：当前模块的引用，包含模块信息
+>- `exports` ：当前模块的导出对象
+>- `require()` ：用于导入模块的函数
+>- `process` ：进程对象，提供属性和方法用于控制 Node.js 进程
+>- 模块全局变量：
+>- `Buffer`: 用于操作二进制数据
+>- `console`: 用于打印日志
+>- `setTimeout/setInterval/clearTimeout/clearInterval`: 定时器函数
+>- `queueMicrotask`: 用于将微任务推入事件队列
+>- `TextEncoder/TextDecoder`: 用于操作文本编码
+>- 其他全局对象：
+>- `URL`: 用于解析和构造 URL 对象
+>- `URLSearchParams`: 用于操作 URL 查询字符串
+>- `WebAssembly`: 用于操作 WebAssembly 模块
+
+## 五、fs 文件系统
+>[!tip] 
+>- Node.js 提供了 `fs` 模块，用于操作文件系统。
+>- `fs` 模块提供了文件读写、目录操作、文件类型判断等功能。
+>- `fs` 模块的异步接口都采用回调函数的形式。
+>- `fs` 模块的同步接口都采用阻塞的方式。
+
+### 4.1、文件写入
+>[!tip] 
+>- `fs.writeFile(file, data, [options], callback)`：异步写入文件
+>- `fs.writeFileSync(file, data, [options])`：同步写入文件
+
+::: details 示例
+```js
+const fs = require('fs');
+
+fs.writeFile('message.txt', 'Hello Node.js', (err) => {
+  if (err) throw err;
+  console.log('数据写入成功');
+});
+
+fs.writeFileSync('message.txt', 'Hello Node.js');
+console.log('数据写入成功');
+```
+:::
+### 4.2、文件读取
+>[!tip] 
+>- `fs.readFile(file, [options], callback)`：异步读取文件
+>- `fs.readFileSync(file, [options])`：同步读取文件
+
+::: details 示例
+```js
+const fs = require('fs');
+
+fs.readFile('message.txt', (err, data) => {
+  if (err) throw err;
+  console.log(data.toString());
+});
+
+const data = fs.readFileSync('message.txt');
+console.log(data.toString());
+```
+:::
+
+### 4.3、文件追加
+>[!tip] 
+>- `fs.appendFile(file, data, [options], callback)`：异步追加文件
+>- `fs.appendFileSync(file, data, [options])`：同步追加文件
+
+::: details 示例
+```js
+const fs = require('fs');
+
+fs.appendFile('message.txt', 'Hello Node.js', (err) => {
+  if (err) throw err;
+  console.log('数据追加成功');
+});
+
+fs.appendFileSync('message.txt', 'Hello Node.js');
+console.log('数据追加成功');
+```
+:::
+### 4.4、文件流
+>[!tip] 
+>- `fs.createReadStream(path, [options])`：创建可读流
+>- `fs.createWriteStream(path, [options])`：创建可写流
+
+::: details 示例
+```js
+const fs = require('fs');
+
+// 创建可读流
+const readStream = fs.createReadStream('message.txt');
+
+// 创建可写流
+const writeStream = fs.createWriteStream('output.txt');
+
+// 管道读写
+readStream.pipe(writeStream);
+```
+:::
+
+### 4.5、文件删除
+>[!tip] 
+>- `fs.unlink(path, [options], callback)`：异步删除文件
+>- `fs.unlinkSync(path, [options])`：同步删除文件
+
+::: details 示例
+```js
+const fs = require('fs');
+
+fs.unlink('message.txt', (err) => {
+  if (err) throw err;
+  console.log('文件删除成功');
+});
+
+fs.unlinkSync('message.txt');
+console.log('文件删除成功');
+```
+:::
+
+### 4.6、文件重命名
+>[!tip] 
+>- `fs.rename(oldPath, newPath, [options], callback)`：异步重命名文件
+>- `fs.renameSync(oldPath, newPath, [options])`：同步重命名文件
+
+::: details 示例
+```js
+const fs = require('fs');
+
+fs.rename('message.txt', 'newMessage.txt', (err) => {
+  if (err) throw err;
+  console.log('文件重命名成功');
+});
+
+fs.renameSync('message.txt', 'newMessage.txt');
+console.log('文件重命名成功');
+```
+:::
+
+### 4.7、文件复制
+>[!tip] 
+>- `fs.copyFile(src, dest, [flags], callback)`：异步复制文件
+>- `fs.copyFileSync(src, dest, [flags])`：同步复制文件
+
+::: details 示例
+```js
+const fs = require('fs');
+
+fs.copyFile('message.txt', 'newMessage.txt', (err) => {
+  if (err) throw err;
+  console.log('文件复制成功');
+});
+
+fs.copyFileSync('message.txt', 'newMessage.txt');
+console.log('文件复制成功');
+```
+:::
+
+### 4.8、文件监视
+>[!tip] 
+>- `fs.watch(filename, [options], listener)`：监视文件变化
+
+
+### 4.9、目录操作
+>[!tip] 
+>- `fs.mkdir(path, [options], callback)`：异步创建目录
+>- `fs.mkdirSync(path, [options])`：同步创建目录
+>- `fs.rmdir(path, [options], callback)`：异步删除目录
+>- `fs.rmdirSync(path, [options])`：同步删除目录
+>- `fs.readdir(path, [options], callback)`：异步读取目录
+>- `fs.readdirSync(path, [options])`：同步读取目录
+
+::: details 示例
+```js
+const fs = require('fs');
+
+// 创建目录
+fs.mkdir('test', (err) => {
+  if (err) throw err;
+  console.log('目录创建成功');
+});
+
+fs.mkdirSync('test');
+console.log('目录创建成功');
+
+// 删除目录
+fs.rmdir('test', (err) => {
+  if (err) throw err;
+  console.log('目录删除成功');
+});
+
+fs.rmdirSync('test');
+console.log('目录删除成功');
+
+// 读取目录
+fs.readdir('test', (err, files) => {
+  if (err) throw err;
+  console.log(files);
+});
+
+const files = fs.readdirSync('test');
+console.log(files);
+```
+:::
+### 4.10、文件类型判断
+>[!tip] 
+>- `fs.stat(path, [options], callback)`：异步获取文件状态
+>- `fs.statSync(path, [options])`：同步获取文件状态
+>- `fs.lstat(path, [options], callback)`：异步获取符号链接文件状态
+>- `fs.lstatSync(path, [options])`：同步获取符号链接文件状态
+>- `fs.fstat(fd, [options], callback)`：异步获取文件描述符状态
+>- `fs.fstatSync(fd, [options])`：同步获取文件描述符状态
+
+::: details 示例
+```js
+const fs = require('fs');
+
+// 获取文件状态
+fs.stat('message.txt', (err, stats) => {
+  if (err) throw err;
+  console.log(stats);
+});
+
+const stats = fs.statSync('message.txt');
+console.log(stats);
+
+// 获取符号链接文件状态
+fs.lstat('message.txt', (err, stats) => {
+  if (err) throw err;
+  console.log(stats);
+});
+
+const stats = fs.lstatSync('message.txt');
+console.log(stats);
+
+// 获取文件描述符状态
+const fd = fs.openSync('message.txt', 'r');
+fs.fstat(fd, (err, stats) => {
+  if (err) throw err;
+  console.log(stats);
+});
+
+const stats = fs.fstatSync(fd);
+console.log(stats);
+```
+::: 
+
+
+
+## 六、path 路径模块
+>[!tip] 
+>- Node.js 提供了 `path` 模块，用于处理文件和目录路径。
+>- `path` 模块提供了文件路径处理、文件扩展名判断等功能。
+
+### 6.1、路径拼接
+>[!tip] 
+>- `path.join([...paths])`：拼接路径
+
+::: details 示例
+```js
+const path = require('path');
+
+console.log(path.join('foo', 'bar', 'baz'));
+// 输出：foo/bar/baz
+```
+:::
+
+### 6.2、路径解析
+>[!tip] 
+>- `path.parse(path)`：解析路径
+
+::: details 示例
+```js
+const path = require('path');
+
+console.log(path.parse('foo/bar/baz.txt'));
+// 输出：{ root: '', dir: 'foo/bar', base: 'baz.txt', ext: '.txt', name: 'baz' }
+```
+:::
+
+### 6.3、路径分隔符
+>[!tip] 
+>- `path.sep`：路径分隔符
+
+### 6.4、文件扩展名
+>[!tip] 
+>- `path.extname(path)`：获取文件扩展名
+
+## 七、OS 操作系统模块
+>[!tip] 
+> Node.js 提供了 `os` 模块，用于获取操作系统信息。
+
+### 7.1、系统信息
+>[!tip] 
+>- `os.arch()`：获取 CPU 架构
+>- `os.platform()`：获取操作系统平台
+>- `os.release()`：获取操作系统版本
+>- `os.type()`：获取操作系统名称
+
+### 7.2、CPU 信息
+>[!tip] 
+>- `os.cpus()`：获取 CPU 信息
+
+## 八、http 模块
+>[!tip] 
+> Node.js 提供了 `http` 模块，用于创建 HTTP 服务器。
+
+### 8.1、创建 HTTP 服务器
+>[!tip] 
+>- `http.createServer([requestListener])`：创建 HTTP 服务器
 
 
 
 
-
-##  核心模块
->[!tip] 常用核心模块
->- `fs`: 文件系统操作
->- `http`: 创建HTTP服务器/客户端
->- `path`: 处理文件路径
->- `events`: 事件触发器
->- `stream`: 流处理
->- `child_process`: 子进程管理
-
-
-## 四、事件循环
->[!tip] 机制
->- Node.js 使用事件循环处理异步操作
->- 包含6个阶段：timers、pending callbacks、idle/prepare、poll、check、close callbacks
->- 理解事件循环有助于编写高效代码
-
-## 五、错误处理
->[!tip] 最佳实践
->- 使用 `try/catch` 处理同步错误
->- 回调函数第一个参数为错误对象
->- Promise 使用 `.catch()` 处理错误
->- Async/Await 结合 try/catch
->
->[!warning] 注意事项
->- 未捕获的异常会导致进程退出
->- 使用 `process.on('uncaughtException')` 捕获全局异常
-
-## 六、性能优化
->[!tip] 技巧
->- 使用流处理大文件
->- 避免阻塞事件循环
->- 使用集群(cluster)利用多核CPU
->- 合理使用缓存
->- 监控内存使用

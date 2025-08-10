@@ -1,26 +1,12 @@
 # React 面试题
 
-## React 常用Hook
-::: tip 
-1. useState
-2. useEffect
-3. useContext
-4. useReducer
-5. useCallback
-6. useMemo
-7. useRef
-8. useImperativeHandle
-9. useLayoutEffect
-10. useDebugValue
-:::
-### useState
+## 一、Hooks
+
+### 1、useState
 ::: tip
-- useState 可以在函数组件中保存一个状态，并返回一个数组，数组的第一个元素是当前状态，第二个元素是更新状态的函数。
-- useState 可以接收一个初始状态，如果没有提供初始状态，则默认为 undefined。
-- useState 可以在函数组件中保存多个状态，返回的数组会包含多个状态和更新状态的函数。
-- useState 可以接收一个函数作为参数，函数会在状态更新时执行。
+- 状态管理，可在函数组件中存储状态，并返回一个数组。
+- 数组的第一个元素是当前状态，第二个元素是更新状态的函数。
 :::
-示例：
 ::: details useState 示例
 ```jsx
 import React, { useState } from'react';
@@ -40,12 +26,18 @@ function Example() {
 ```
 :::
 
-### useEffect
+### 2、useEffect
 ::: tip
-- useEffect 可以在函数组件中执行副作用操作，包括获取数据、设置订阅和手动修改 DOM。
-- useEffect 可以接收两个参数，第一个参数是一个函数，函数会在组件渲染后执行，第二个参数是一个数组，数组中的值发生变化时，useEffect 会重新执行。
-- useEffect 可以接收一个对象作为参数，对象中可以包含 componentDidMount、componentDidUpdate 和 componentWillUnmount 三个函数，分别在组件挂载、更新和卸载时执行。
-- useEffect 可以返回一个函数，函数会在 useEffect 组件卸载时执行。
+- 可在函数组件中执行副作用。包括获取数据、设置订阅和手动修改 DOM。
+- 接收两个参数：
+  - 第一个参数是一个函数，函数会在组件渲染后执行。
+  - 第二个参数是一个数组，依赖项数组，数组中的值发生变化时，useEffect 会重新执行。
+- 返回一个函数，函数会在 useEffect 组件卸载时执行。
+- 第二个参数依赖项数组：
+    - 如果不传，useEffect 等价于 componentDidMount 和 componentDidUpdate。
+    - 如果传空数组，useEffect 等价于 componentDidMount，仅在组件挂载（首次渲染）后执行一次。
+    - 如果传空数组和函数，首次渲染后执行，当依赖项 a或 b的值变化时重新执行。useEffect 等价于 componentDidMount 和 componentDidUpdate。
+
 :::
 示例：
 ::: details useEffect 示例
@@ -71,77 +63,71 @@ function Example() {
 ```
 :::
 
-### useContext
-::: tip
-- useContext 可以在函数组件中获取 context 对象。
-- useContext 需要一个 context 对象作为参数，该对象必须是 React.createContext 的返回值。
-- useContext 返回的数组的第一个元素是当前 context 的值，第二个元素是 context 对象。
+### 3、useContext
+:::tip useContext
+- 作用：获取上下文，可在函数组件中获取上下文。
+- 语法：const value = useContext(MyContext);
+- 唯一参数：上下文对象。
+- 返回值：当前上下文的 value。
+- useContext 常用场景：
+    - 跨组件通信
+    - 共享状态
+    - 自定义 hooks
 :::
-示例：
 ::: details useContext 示例
 ```jsx
-import React, { createContext, useState, useEffect } from 'react';
-
-const ThemeContext = createContext({
-  theme: 'light',
-  toggleTheme: () => {}
-});
+import React, { createContext, useState, useEffect } from "react";
+const MyContext = createContext();
 
 function Example() {
-  const [theme, setTheme] = useState('light');
+  const [count, setCount] = useState(0);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+  const value = { count, setCount };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <MyContext.Provider value={value}>
       <div>
-        <p>Current theme: {theme}</p>
-        <button onClick={toggleTheme}>Toggle theme</button>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>Click me</button>
       </div>
-    </ThemeContext.Provider>
+    </MyContext.Provider>
   );
 }
 
 function App() {
+  const { count, setCount } = useContext(MyContext);
+
   return (
     <div>
-      <Example />
-      <ThemeContext.Consumer>
-        {({ theme, toggleTheme }) => (
-          <div>
-            <p>Current theme: {theme}</p>
-            <button onClick={toggleTheme}>Toggle theme</button>
-          </div>
-        )}
-      </ThemeContext.Consumer>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
 ```
 :::
 
-### useReducer
-::: tip
-- useReducer 可以在函数组件中管理状态，它接收一个 reducer 函数和初始状态作为参数，返回一个数组，数组的第一个元素是当前状态，第二个元素是更新状态的函数。
-- useReducer 可以接收一个初始状态，如果没有提供初始状态，则默认为 undefined。
-- useReducer 可以接收一个函数作为参数，函数会在状态更新时执行。
+### 4、useReducer
+:::tip useReducer
+- 作用：管理状态，可在函数组件中管理状态。
+- 语法：const [state, dispatch] = useReducer(reducer, initialArg, init);
+- 第一个参数：reducer 函数，接收两个参数，第一个参数是 state，第二个参数是 action，返回新的 state。
+- 第二个参数：初始状态，如果没有提供，则默认为 reducer 函数的第一个参数。
+- 第三个参数：初始化函数，可选，返回初始状态。
+- 返回值：一个包含 state 和 dispatch 函数的数组。
+- useReducer 常用场景：
+    - 复杂的状态逻辑
+    - 异步操作
 :::
-示例：
 ::: details useReducer 示例
 ```jsx
-import React, { useReducer } from 'react';
+import React, { useReducer } from "react";
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'increment':
+    case "increment":
       return { count: state.count + 1 };
-    case 'decrement':
+    case "decrement":
       return { count: state.count - 1 };
     default:
       throw new Error();
@@ -154,176 +140,172 @@ function Example() {
   return (
     <div>
       <p>Count: {state.count}</p>
-      <button onClick={() => dispatch({ type: 'increment' })}>
-        +
-      </button>
-      <button onClick={() => dispatch({ type: 'decrement' })}>
-        -
-      </button>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
     </div>
   );
 }
 ```
 :::
 
-### useCallback
-::: tip
-- useCallback 可以在函数组件中创建一个 memoized 回调函数。
-- useCallback 接收一个函数和依赖数组作为参数，返回一个 memoized 回调函数。
-- useCallback 可以避免在每渲染时都创建一个新的回调函数，可以提高组件的性能。
+### 5、useCallback
+:::tip useCallback
+- 作用：创建可变回调函数，可在函数组件中创建可变回调函数。
+- 语法：const memoizedCallback = useCallback(callback, dependencies);
+- 第一个参数：回调函数。
+- 第二个参数：依赖项数组，只在数组中的值发生变化时，useCallback 才会重新创建回调函数。
+- 返回值：一个 memoized 回调函数。
+- useCallback 常用场景：
+    - 优化性能
+    - 避免闭包陷阱
 :::
-示例：
 ::: details useCallback 示例
 ```jsx
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback } from "react";
 
 function Example() {
   const [count, setCount] = useState(0);
 
-  const handleClick = useCallback(() => {
+  const handleIncrement = useCallback(() => {
     setCount(count + 1);
   }, [count]);
 
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={handleClick}>
-        Click me
-      </button>
+      <button onClick={handleIncrement}>Click me</button>
     </div>
   );
 }
 ```
 :::
 
-### useMemo
-::: tip
-- useMemo 可以在函数组件中缓存计算结果，避免重复计算。
-- useMemo 接收一个函数和依赖数组作为参数，返回一个 memoized 值。
-- useMemo 可以避免在每渲染时都重新计算值，可以提高组件的性能。
+### 6、useMemo
+:::tip useMemo
+- 作用：创建 memoized 值，可在函数组件中创建 memoized 值。
+- 语法：const memoizedValue = useMemo(createMemoizedValue, dependencies);
+- 第一个参数：创建 memoized 值的函数。
+- 第二个参数：依赖项数组，只在数组中的值发生变化时，useMemo 才会重新计算 memoized 值。
+- 返回值：一个 memoized 值。
+- useMemo 常用场景：
+    - 优化性能
+    - 避免重复渲染
 :::
-示例：
 ::: details useMemo 示例
 ```jsx
-import React, { useState, useMemo } from 'react';
-
-function fibonacci(n) {
-  if (n <= 1) {
-    return n;
-  }
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-function Example() {
-  const [n, setN] = useState(0);
-  const [result, setResult] = useState(0);
-
-  const fib = useMemo(() => fibonacci(n), [n]);
-
-  useEffect(() => {
-    setResult(fib);
-  }, [fib]);
-
-  return (
-    <div>
-      <p>Fibonacci of {n}: {result}</p>
-      <input type="number" value={n} onChange={(e) => setN(Number(e.target.value))} />
-    </div>
-  );
-}
-```
-:::
-
-### useRef
-::: tip
-- useRef 可以在函数组件中保存一个可变的 ref 对象。
-- useRef 返回的数组的第一个元素是 ref 对象，第二个元素是 ref 对象当前的值。
-- useRef 可以保存任何可变值，包括函数、对象等。
-:::
-示例：
-::: details useRef 示例
-```jsx
-import React, { useRef, useState } from 'react';
+import React, { useState, useMemo } from "react";
 
 function Example() {
   const [count, setCount] = useState(0);
-  const inputRef = useRef(null);
+
+  const expensiveValue = useMemo(() => {
+    console.log("Calculating expensive value...");
+    return count * 2;
+  }, [count]);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <p>Expensive value: {expensiveValue}</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+:::
+
+### 7、useRef
+:::tip useRef
+- 作用：获取 DOM 节点或自定义类的实例，可在函数组件中获取 DOM 节点或自定义类的实例。
+- 语法：const refContainer = useRef(initialValue);
+- 唯一参数：可选，初始值。
+- 返回值：一个包含 current 属性的对象。
+- useRef 常用场景：
+    - 获取 DOM 节点
+    - 存储数据
+    - 触发动画
+:::
+::: details useRef 示例
+```jsx
+import React, { useRef } from "react";
+
+function Example() {
+  const inputRef = useRef();
 
   const handleClick = () => {
-    setCount(count + 1);
     inputRef.current.focus();
   };
 
   return (
     <div>
-      <p>You clicked {count} times</p>
       <input type="text" ref={inputRef} />
-      <button onClick={handleClick}>
-        Click me
-      </button>
+      <button onClick={handleClick}>Focus input</button>
     </div>
   );
 }
 ```
 :::
 
-### useImperativeHandle
-::: tip
-- useImperativeHandle 可以在函数组件中暴露给父组件的函数。
-- useImperativeHandle 接收两个参数，第一个参数是一个函数，第二个参数是一个对象，对象中可以包含将暴露给父组件的函数。
-- useImperativeHandle 可以在函数组件中暴露给父组件的函数，父组件可以通过 ref 获取到该函数，并调用该函数。
+### 8、useImperativeHandle
+:::tip useImperativeHandle
+- 作用：给父组件设置 ref，可在函数组件中给父组件设置 ref。
+- 语法：useImperativeHandle(ref, createHandle, [deps]);
+- 第一个参数：ref 对象。
+- 第二个参数：回调函数，接收组件实例作为参数，返回一个用于暴露给父组件的实例。
+- 第三个参数：依赖项数组，只在数组中的值发生变化时，useImperativeHandle 才会重新创建回调函数。
+- useImperativeHandle 常用场景：
+    - 自定义组件的 ref
+    - 跨组件通信
 :::
-示例：
 ::: details useImperativeHandle 示例
 ```jsx
-import React, { useRef, useState, useImperativeHandle } from 'react';
+import React, { forwardRef, useState, useImperativeHandle } from "react";
 
 function Example(props, ref) {
   const [count, setCount] = useState(0);
 
   useImperativeHandle(ref, () => ({
-    increase: () => {
-      setCount(count + 1);
-    }
+    increment: () => setCount(count + 1),
+    decrement: () => setCount(count - 1),
   }));
 
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
 
-const ExampleWithRef = React.forwardRef(Example);
+const FancyButton = forwardRef(Example);
 
 function App() {
-  const exampleRef = useRef(null);
+  const fancyButtonRef = useRef();
 
   return (
     <div>
-      <ExampleWithRef ref={exampleRef} />
-      <button onClick={() => exampleRef.current.increase()}>
-        Increase count
-      </button>
+      <FancyButton ref={fancyButtonRef} />
+      <button onClick={() => fancyButtonRef.current.increment()}>+</button>
+      <button onClick={() => fancyButtonRef.current.decrement()}>-</button>
     </div>
   );
 }
 ```
 :::
 
-### useLayoutEffect
-::: tip
-- useLayoutEffect 和 useEffect 类似，但是它会在所有的 DOM 变更之后同步执行，而 useEffect 则在 DOM 更新后才执行。
-- useLayoutEffect 可以读取 DOM 节点的布局并同步执行副作用，可以避免闪烁。
-- useLayoutEffect 接收一个函数和依赖数组作为参数，返回一个函数，该函数会在组件卸载时执行。
+### 9、useLayoutEffect
+:::tip useLayoutEffect
+- 作用：与 useEffect 类似，但它会在所有的 DOM 变更之后同步执行。
+- 语法：useLayoutEffect(create, [deps]);
+- 第一个参数：回调函数，接收组件实例作为参数，返回一个用于执行副作用的函数。
+- 第二个参数：依赖项数组，只在数组中的值发生变化时，useLayoutEffect 才会重新执行。
+- useLayoutEffect 常用场景：
+    - 读取 DOM 布局并同步触发动画
+    - 同步修改状态
 :::
-示例：
 ::: details useLayoutEffect 示例
 ```jsx
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from "react";
 
 function Example() {
   const [count, setCount] = useState(0);
@@ -335,139 +317,115 @@ function Example() {
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
 ```
 :::
 
-### useDebugValue
-::: tip
-- useDebugValue 可以在 React DevTools 中显示自定义 hook 的标签。
-- useDebugValue 接收一个字符串作为参数，该字符串会显示在 React DevTools 中。
-- useDebugValue 可以帮助开发者更好地理解自定义 hook。
+### 10、useDebugValue
+:::tip useDebugValue
+- 作用：在 React 开发者工具中显示自定义 hook 的标签。
+- 语法：useDebugValue(value);
+- 唯一参数：自定义 hook 的标签。
+- useDebugValue 常用场景：
+    - 自定义 hooks 调试
 :::
-示例：
 ::: details useDebugValue 示例
 ```jsx
-import React, { useState, useDebugValue } from 'react';
+import React, { useState, useDebugValue } from "react";
 
-function Example() {
-  const [count, setCount] = useState(0);
+function useCounter(initialCount) {
+  const [count, setCount] = useState(initialCount);
 
-  useDebugValue(`Count: ${count}`);
+  useDebugValue(count);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  return { count, increment, decrement };
+}   
+
+function App() {
+  const { count, increment, decrement } = useCounter(0);
 
   return (
     <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <h1>{count}</h1>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
     </div>
   );
 }
 ```
 :::
 
-## React 生命周期
-::: tip
-1. componentDidMount
-2. componentDidUpdate
-3. componentWillUnmount
-4. shouldComponentUpdate
-5. getDerivedStateFromProps
-6. getSnapshotBeforeUpdate
+## 二、生命周期
+
+
+:::tip 生命周期
+1. **挂载阶段** :
+    - constructor()： 构造函数，在组件实例化时调用一次,唯一可直接修改 this.state 的地方。
+    - static getDerivedStateFromProps(props, state)：从 props 更新 state。
+    - render()：渲染组件，返回 JSX 元素。
+    - componentDidMount()：组件挂载后执行（DOM 已生成）可发起网络请求、绑定事件等。
+
+2. **更新阶段** :
+    - static getDerivedStateFromProps(props, state)：props/state 变化时触发，返回新的 state。
+    - shouldComponentUpdate(nextProps, nextState)：判断组件是否需要更新，返回 true 或 false。（性能优化关键）
+    - render()：重新渲染组件。
+    - getSnapshotBeforeUpdate(prevProps, prevState)：在组件更新之前调用，可以获取 DOM 快照。
+    - componentDidUpdate(prevProps, prevState)：在组件更新之后调用，可以进行 DOM 操作。
+
+3. **卸载阶段** :
+    - componentWillUnmount()：在组件卸载之前调用，可清理事件监听、取消定时器等。
+4. **错误边界** :
+    - static getDerivedStateFromError(error)：后代组件抛出错误后触发，返回 state 更新用于渲染降级 UI。
+    - componentDidCatch(error, info)：在渲染期间、生命周期方法中发生错误时触发，不会捕获事件处理器、异步代码中的错误。
 :::
 
-### componentDidMount
-::: tip
-- componentDidMount 在组件挂载后执行，在该函数中可以进行一些初始化操作，如设置定时器、添加事件监听器等。
-- componentDidMount 不会在服务端渲染中被调用。
-:::
+## 三、数据通信
 
-### componentDidUpdate
-::: tip
-- componentDidUpdate 在组件更新后执行，在该函数中可以进行一些更新操作，如重新设置定时器、更新事件监听器等。
-- componentDidUpdate 不会在首次渲染时被调用。
-- componentDidUpdate 会在 shouldComponentUpdate 返回 false 时不执行。
-:::
 
-### componentWillUnmount
+### 1、props 父传子
 ::: tip
-- componentWillUnmount 在组件卸载前执行，在该函数中可以进行一些清理操作，如清除定时器、移除事件监听器等。
-- componentWillUnmount 不会在服务端渲染中被调用。
-:::
-
-### shouldComponentUpdate
-::: tip
-- shouldComponentUpdate 是一个函数，在组件更新前被调用，可以返回 false 来阻止组件的更新。
-- shouldComponentUpdate 会在 componentDidUpdate 之前执行。
-- shouldComponentUpdate 默认返回 true，组件总会被更新。
-:::
-
-### getDerivedStateFromProps
-::: tip
-- getDerivedStateFromProps 是一个静态函数，在组件初始化和更新时被调用，可以返回一个对象来更新 state。
-- getDerivedStateFromProps 不会在首次渲染时被调用。
-- getDerivedStateFromProps 不会在 shouldComponentUpdate 返回 false 时被调用。
-:::
-
-### getSnapshotBeforeUpdate
-::: tip
-- getSnapshotBeforeUpdate 是一个函数，在组件更新前被调用，可以返回一个值，该值会作为参数传递给 componentDidUpdate。
-- getSnapshotBeforeUpdate 会在 componentDidUpdate 之前执行。
-- getSnapshotBeforeUpdate 不会在 shouldComponentUpdate 返回 false 时被调用。
-:::
-
-## React 数据通信
-::: tip
-1. props
-2. context
-3. ref
-4. state
-5. reducer
-6. event
-7. callback
-8. effect
-9. hook
-10. contextType
-11. forwardRef
-12. memo
-13. useCallback
-14. useMemo
-15. useReducer
-16. useRef
-17. useState
-18. custom hook
-:::
-
-### props
-::: tip
-- props 是父组件向子组件传递数据的方式之一，子组件通过 props 接收父组件的数据。
+- 通过 `props` 向子组件传递数据，子组件通过回调函数向父组件传递数据。
 - props 是只读的，不能被修改。
 - 通过 JSX 的形式传递，也可以通过 this.props 访问。
 - 通过 children 接收子组件。
 :::
-
-### context
+### 2、子传父
 ::: tip
-- context 是一种全局变量，可以跨越组件层级进行数据共享。
-- 通过 React.createContext 创建，可以包含多个值。
-- 通过 useContext 进行消费。
-- 通过 Provider 进行提供。
+1. 通过 **回调函数** 向父组件传递数据。
+2. 类组件中：
+   - 通过 `ref` 获取子组件实例，通过 `ref` 向父组件传递数据。
+   - 通过 `this.props.callback` 调用父组件的方法。
+   - 通过 `this.props.children` 接收子组件。
+   :::
+### 3、兄弟组件通信
+::: tip
+- 通过状态提升，将共享状态提升到最近共同的祖先组件，使得各个子组件可以直接访问共享状态。
 :::
-
-
-## React 状态管理库
+### 4、跨级组件通信 
+::: tip context
+- `context` 是一种全局变量，可以跨越组件层级进行数据共享。
+- 通过 `React.createContext` 创建，可以包含多个值。
+- 通过 `useContext` 进行消费。
+- 通过 `Provider` 进行提供。
+:::
+## 四、状态管理库
 ::: tip
-- Redux
+- Redux-toolkit
 - MobX
 :::
 
-### Redux使用
+### Redux 使用
 ::: tip
 - Redux 是一个状态管理库，它提供一个全局的 store，可以保存应用的状态。
 - Redux 中有三种数据流：actions、reducers、store。
@@ -610,4 +568,25 @@ function App() {
 // render
 ReactDOM.render(<App />, document.getElementById("root"));
 ```
+:::
+
+## 五、性能优化
+::: tip
+1. 代码层面：
+    - 避免不必要的渲染：使用 shouldComponentUpdate 优化，减少不必要的渲染。
+    - 避免过多的渲染：使用 useMemo 优化，缓存计算结果。
+    - 避免过多的组件：使用 React.memo 优化，只渲染变化的组件。
+    - 避免不必要的更新：使用 React.PureComponent 优化，只渲染 props 变化的组件。
+    - useMemo 缓存计算结果。
+    - useCallback 缓存回调函数
+2. 工具层面：
+    - 代码分割：使用 webpack 按需加载，减少 bundle 大小。
+    - 异步加载：使用 Suspense 组件，实现异步加载。
+    - 按需加载：使用 React.lazy 实现按需加载。
+    - 缓存：使用缓存库，如 Redux-persist 实现缓存。
+    - 服务器端渲染：使用服务端渲染框架，如 Next.js 实现 SSR。
+3. 网络层面：
+    - 减少请求数量：使用缓存，减少请求数量。
+    - 压缩传输：使用 gzip 压缩传输。
+    - 减少请求延迟：使用 CDN 缓存，减少请求延迟。
 :::

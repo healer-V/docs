@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="069c0849-4fe4-4293-9748-b7178083d1b0" name="更改" comment="2025-08-07 修改面试题：浏览器相关">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/.vitepress/themeConfig/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vitepress/themeConfig/sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/basic/07-react.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/07-react.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/basic/08-nodejs.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/08-nodejs.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/basic/09-Sass.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/09-Sass.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/tools/03-Vscode.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/tools/03-IDE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/07-react.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/07-react.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,16 +50,34 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/10-Project/02-Docs/docs&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/04-Learning_xianling/02-JavaScript/code/31-管理系统/project&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.docs:dev.executor&quot;: &quot;Run&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\Chorme\\WebStorm\\WebStorm 2024.2.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="docs:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="docs:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.docs:dev" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -76,6 +100,11 @@
       <workItem from="1754328629115" duration="217000" />
       <workItem from="1754383037493" duration="12392000" />
       <workItem from="1754462204941" duration="20202000" />
+      <workItem from="1754499997084" duration="294000" />
+      <workItem from="1754621567668" duration="33000" />
+      <workItem from="1754659215217" duration="6394000" />
+      <workItem from="1754813439180" duration="1487000" />
+      <workItem from="1754814939985" duration="11327000" />
     </task>
     <task id="LOCAL-00001" summary="2025-08-05 提交React">
       <option name="closed" value="true" />
@@ -109,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754499592481</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2025-08-07 修改面试题：浏览器相关">
+      <option name="closed" value="true" />
+      <created>1754500274296</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1754500274296</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,5 +169,16 @@
     <MESSAGE value="2025-08-06 修改浏览器相关" />
     <MESSAGE value="2025-08-07 修改面试题：浏览器相关" />
     <option name="LAST_COMMIT_MESSAGE" value="2025-08-07 修改面试题：浏览器相关" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/docs/.vitepress/themeConfig/sidebar.js</url>
+          <line>60</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
