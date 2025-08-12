@@ -431,78 +431,75 @@ export default api;
 
 
 ### 4-1. 页面级权限
-::: details 路由配置
-```ts
-// 路由结构定义
-interface RouteMeta {
-  requiresAuth?: boolean;
-  roles?: string[];
-  permissions?: string[];
-}
-
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/dashboard',
-    component: Dashboard,
-    meta: { requiresAuth: true, roles: ['admin', 'manager'] }
-  },
-  {
-    path: '/user/:id',
-    component: UserProfile,
-    meta: { 
-      requiresAuth: true,
-      permissions: ['user:read'] 
+- 目标：控制用户是否可以访问某些页面（路由）。
+- 实现：
+  1. 在路由配置中标记每个路由需要的权限，添加 **元信息**`requiresAuth`和`permissions`字段。
+  2. 在路由守卫中，根据当前用户的权限，判断是否有访问该路由的权限。
+  3. 若无权限，则重定向到无权限页面或者错误页面。
+- 
+::: details 路由配置实现
+```js
+// 路由配置
+const routes = [
+    {
+        path: '/dashboard',
+        component: Dashboard,
+        meta: { requiresAuth: true, permissions: ['DASHBOARD_VIEW'] }
+    },
+    {
+        path: '/admin',
+        component: AdminPanel,
+        meta: { requiresAuth: true, permissions: ['ADMIN_ACCESS'] }
     }
-  },
-  {
-    path: '/settings',
-    component: Settings,
-    meta: { requiresAuth: true, roles: ['admin'] }
-  }
 ];
-```
-:::
 
-
-::: details 路由守卫实现
-```ts
+// 路由守卫
 router.beforeEach((to, from, next) => {
-    const authStore = useAuthStore();
+    const userPermissions = store.getters.userPermissions;
 
-    // 1. 检查是否需要认证
-    if (to.meta.requiresAuth && !authStore.isAuthenticated) {
-        return next({ path: '/login', query: { redirect: to.fullPath } });
+    // 需要登录
+    if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+        return next('/login');
     }
 
-    // 2. 角色权限检查
-    if (to.meta.roles && !hasRequiredRoles(to.meta.roles)) {
-        return next({ path: '/403' }); // 无权限页面
-    }
+    // 权限校验
+    if (to.meta.permissions) {
+        const hasPermission = to.meta.permissions.some(perm =>
+            userPermissions.includes(perm)
+        );
 
-    // 3. 细粒度权限检查
-    if (to.meta.permissions && !hasPermissions(to.meta.permissions)) {
-        return next({ path: '/403' });
+        if (!hasPermission) {
+            return next('/403'); // 无权限页面
+        }
     }
 
     next();
 });
 
-// 角色检查函数
-const hasRequiredRoles = (requiredRoles: string[]): boolean => {
-    const userRoles = authStore.user.roles;
-    return requiredRoles.some(role => userRoles.includes(role));
-};
+// 动态添加路由
+function generateRoutes(permissions) {
+    const dynamicRoutes = [];
 
-// 权限检查函数
-const hasPermissions = (requiredPermissions: string[]): boolean => {
-    const userPermissions = authStore.user.permissions;
-    return requiredPermissions.every(perm => userPermissions.includes(perm));
-};
+    if (permissions.includes('REPORT_VIEW')) {
+        dynamicRoutes.push({
+            path: '/reports',
+            component: Reports,
+            meta: { permissions: ['REPORT_VIEW'] }
+        });
+    }
 
+    router.addRoutes(dynamicRoutes);
+}
 ```
 :::
 
+
 ### 4-2. 按钮级权限
+- 目标：控制用户是否可以看到或操作某些按钮（或者组件）。
+- 实现：
+  1. 获取当前用户的权限列表。
+  2. 在组件中根据权限列表，控制按钮（组件）是否显示或禁用。
+  3. 可以通过自定义指令（`v-permission`）或封装权限判断组件来实现。
 ::: details 权限指令实现
 ```ts
 // 全局权限指令 v-permission
@@ -532,79 +529,124 @@ app.directive('permission', {
 ::: details 权限组件实现
 ```vue
 <template>
-  <slot v-if="checkPermission"></slot>
-  <template v-else>
-    <slot name="no-permission" v-if="$slots['no-permission']"></slot>
-    <span v-else class="no-permission-hint">无操作权限</span>
-  </template>
+  <div>
+    <!-- 自定义权限指令 -->
+    <button v-permission="'USER_DELETE'">删除用户</button>
+
+    <!-- 权限组件封装 -->
+    <Permission :value="'USER_EDIT'">
+      <button>编辑用户</button>
+    </Permission>
+
+    <!-- 函数式判断 -->
+    <button v-if="checkPermission('USER_CREATE')">创建用户</button>
+  </div>
 </template>
 
 <script>
-export default {
-  props: {
-    permission: {
-      type: [String, Array],
-      required: true
-    }
-  },
-  computed: {
-    checkPermission() {
-      const authStore = useAuthStore();
-      if (Array.isArray(this.permission)) {
-        return this.permission.every(perm => authStore.hasPermission(perm));
+  // 权限指令
+  Vue.directive('permission', {
+    inserted(el, binding) {
+      const permissions = store.getters.userPermissions;
+      if (!permissions.includes(binding.value)) {
+        el.parentNode.removeChild(el);
       }
-      return authStore.hasPermission(this.permission);
     }
-  }
-};
-</script>
+  });
 
-<!-- 使用示例 -->
-<template>
-  <PermissionGuard permission="user:edit">
-    <button>编辑用户</button>
-    <template #no-permission>
-      <Tooltip content="您无编辑权限">
-        <button disabled>编辑用户</button>
-      </Tooltip>
-    </template>
-  </PermissionGuard>
-</template>
+  // 权限组件
+  const Permission = {
+    functional: true,
+    props: ['value'],
+    render(createElement, context) {
+      const permissions = store.getters.userPermissions;
+      return permissions.includes(context.props.value)
+          ? context.children
+          : null;
+    }
+  };
+
+  // 权限检查函数
+  export function checkPermission(permission) {
+    return store.getters.userPermissions.includes(permission);
+  }
+</script>
 ```
 :::
 
 ### 4-3. 数据级权限
+- 目标：控制用户可以查看的数据范围或者字段。
+- 实现：
+  1. 在请求数据时，将当前用户的权限列表通过请求头`X-User-Permissions`或者**参数**传递给后端。
+  2. 后端根据权限列表返回响应的数据。
+  3. 前端也可以根据权限对已收获的数据过滤（推荐后端过滤）。
 ::: details 数据权限实现
-```ts
-// 数据脱敏处理器
-const dataMasking = (data: any, userPermissions: string[]) => {
-  const maskedData = { ...data };
-  
-  // 手机号脱敏
-  if (!userPermissions.includes('sensitive:phone') && maskedData.phone) {
-    maskedData.phone = maskedData.phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
-  }
-  
-  // 身份证脱敏
-  if (!userPermissions.includes('sensitive:idcard') && maskedData.idCard) {
-    maskedData.idCard = maskedData.idCard.replace(/(\d{4})\d{10}(\w{4})/, '$1**********$2');
-  }
-  
-  // 邮箱脱敏
-  if (!userPermissions.includes('sensitive:email') && maskedData.email) {
-    const [name, domain] = maskedData.email.split('@');
-    maskedData.email = `${name[0]}****${name.slice(-1)}@${domain}`;
-  }
-  
-  return maskedData;
-};
+```vue
+<template>
+    <div>
+        <table>
+            <tr v-for="user in filteredUsers" :key="user.id">
+    <td>{{ user.name }}</td>
+<!-- 敏感数据权限控制 -->
+<td v-if="hasDataPermission('VIEW_SALARY')">
+    {{ user.salary }}
+</td>
+<td v-if="hasDataPermission('VIEW_CONTACT')">
+    {{ user.phone }}
+</td>
+</tr>
+</table>
+</div>
+</template>
 
-// 在API响应拦截器中使用
-api.interceptors.response.use(response => {
-  const authStore = useAuthStore();
-  response.data = dataMasking(response.data, authStore.user.permissions);
-  return response;
-});
+<script>
+export default {
+    data() {
+        return {
+            users: [],
+            dataPermissions: ['VIEW_SALARY', 'VIEW_CONTACT'] // 从后端获取
+        }
+    },
+
+    computed: {
+        // 前端数据过滤
+        filteredUsers() {
+            return this.users.map(user => {
+                // 根据权限移除敏感字段
+                if (!this.hasDataPermission('VIEW_SALARY')) {
+                    delete user.salary;
+                }
+                if (!this.hasDataPermission('VIEW_CONTACT')) {
+                    delete user.phone;
+                }
+                return user;
+            });
+        }
+    },
+
+    methods: {
+        hasDataPermission(permission) {
+            return this.dataPermissions.includes(permission);
+        },
+
+        async fetchData() {
+            // 请求时携带权限信息
+            const response = await axios.get('/api/users', {
+                headers: {
+                    'X-User-Permissions': store.getters.userPermissions.join(',')
+                }
+            });
+
+            // 后端返回已过滤的数据
+            this.users = response.data;
+        }
+    },
+
+    mounted() {
+        this.fetchData();
+    }
+}
+</script>
 ```
 :::
 
@@ -733,3 +775,4 @@ const sendVerificationCode = async () => {
 ```
 :::
 
+## 

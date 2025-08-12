@@ -1,6 +1,6 @@
 # HTTP/HTTPS协议
-
->[!danger] 网络学习路线
+::: details 网络学习路线
+>[!danger] 
 >1. 五层网络模型
 >2. TCP/IP协议族
 >3. HTTP协议
@@ -21,7 +21,7 @@
 >18. SSL/TLS/HTTPS
 >19. HTTP2
 >20. WebSocket
-
+:::
 
 
 ## 一、HTTP协议

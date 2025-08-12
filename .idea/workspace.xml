@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="069c0849-4fe4-4293-9748-b7178083d1b0" name="更改" comment="2025-08-07 修改面试题：浏览器相关">
+    <list default="true" id="069c0849-4fe4-4293-9748-b7178083d1b0" name="更改" comment="2025-08-11 修改 react 相关">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/.vitepress/themeConfig/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/.vitepress/themeConfig/sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/articles/basic/07-react.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/07-react.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/articles/basic/08-nodejs.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/08-nodejs.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/articles/basic/09-Sass.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/09-Sass.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/articles/tools/03-Vscode.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/tools/03-IDE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/interview/07-react.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/07-react.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/basic/02-javascript.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/02-javascript.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/basic/06-vue3.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/basic/06-vue3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/browser/03-eventloop.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/browser/03-eventloop.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/network/01-http.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/network/01-http.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/articles/network/03-WebSocket.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/articles/network/03-WebSocket.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/09-network.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/09-network.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/interview/12-Optimize.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/interview/12-Optimize.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +106,10 @@
       <workItem from="1754659215217" duration="6394000" />
       <workItem from="1754813439180" duration="1487000" />
       <workItem from="1754814939985" duration="11327000" />
+      <workItem from="1754842313089" duration="73000" />
+      <workItem from="1754842586490" duration="1118000" />
+      <workItem from="1754913913089" duration="5007000" />
+      <workItem from="1754968063800" duration="3022000" />
     </task>
     <task id="LOCAL-00001" summary="2025-08-05 提交React">
       <option name="closed" value="true" />
@@ -146,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754500274296</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="2025-08-11 修改 react 相关">
+      <option name="closed" value="true" />
+      <created>1754842342012</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1754842342012</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +181,8 @@
     <MESSAGE value="Brower" />
     <MESSAGE value="2025-08-06 修改浏览器相关" />
     <MESSAGE value="2025-08-07 修改面试题：浏览器相关" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-08-07 修改面试题：浏览器相关" />
+    <MESSAGE value="2025-08-11 修改 react 相关" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-08-11 修改 react 相关" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
