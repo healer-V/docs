@@ -8,18 +8,18 @@
 3. Dracula Official
 4. GitHub Theme
 5. Material Icon Theme
-6. Brarded Theme
+6. Bearded Theme
 :::
 
 ### 1.2、推荐插件
 ::: details VSCode 推荐插件
 1. AI编程助手: Fitten Code
-2. 缩进高亮:indent-rainbow
+2. 缩进高亮: indent-rainbow
 3. 代码检查: ESLint
 4. 格式化: Prettier
 5. 路径自动补全: Path Autocomplete
 6. 标注: TODO Highlight
-7. Gitk可视化: GitLens 
+7. Git可视化: GitLens 
 8. 汉化语言包: Chinese 
 9. Markdown预览:  Markdown All in One
 10. github远程预览: remote repositories
