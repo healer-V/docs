@@ -3,7 +3,7 @@
     <div class="login-box">
       <div class="login-header">
         <div class="logo">
-          <img src="/docs/logo_new.png" alt="Logo" />
+          <img src="../../public/logo_new.png" alt="Logo" />
         </div>
         <h1 class="title">xianling Docs</h1>
         <p class="subtitle">学习笔记，经验心得</p>
