@@ -5,6 +5,7 @@ import { inBrowser } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
 import Login from '../components/Login.vue'
 import LogoutButton from '../components/LogoutButton.vue'
+import ImageViewer from '../components/ImageViewer.vue'
 import BlogList from '../components/BlogList.vue'
 import BusuanziStats from '../components/BusuanziStats.vue'
 import ArticleMeta from '../components/ArticleMeta.vue'
@@ -72,6 +73,7 @@ export default {
     app.component('BusuanziStats', BusuanziStats)
     app.component('ArticleMeta', ArticleMeta)
     app.component('Wlink', Wlink)
+    app.component('ImageViewer', ImageViewer)
     
     // 确保busuanzi在浏览器环境中可用
     if (inBrowser) {

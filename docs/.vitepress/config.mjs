@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { nav } from '../.vitepress/themeConfig/nav.js'
 import { sidebar } from '../.vitepress/themeConfig/sidebar.js'
-// https://vitepress.dev/reference/site-config
+
 export default defineConfig({
   title: "xianling Docs",
   description: "学习笔记，经验心得",
@@ -11,10 +11,9 @@ export default defineConfig({
     ['link',{ rel: 'icon', href: '/docs/logo_new.png'}],
   ],
     //启用深色模式
-  // appearance:'dark', 
+  appearance:'dark', 
   themeConfig: {
     logo: '/logo_new.png',
-    // https://vitepress.dev/reference/default-theme-config
     markdown: {
       lineNumbers: true
     },
@@ -41,9 +40,9 @@ export default defineConfig({
       },
     },
     ignoreDeadLinks: true,
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/healer-V/docs' }
-    ],
+    // socialLinks: [
+    //   { icon: 'github', link: 'https://github.com/healer-V/docs' }
+    // ],
     outline: {
       level: [2, 6],
       label: '目录'
@@ -64,12 +63,12 @@ export default defineConfig({
       prev: '上一篇',
       next: '下一篇'
     },
-    editLink: {
-      repo: 'https://github.com/healer-V/docs',
-      link: 'https://github.com/healer-V/docs/',
-      text: '在 GitHub 上编辑此页',
-      ariaLabel: '在 GitHub 上编辑此页'
-    },
+    // editLink: {
+    //   repo: 'https://github.com/healer-V/docs',
+    //   link: 'https://github.com/healer-V/docs/',
+    //   text: '在 GitHub 上编辑此页',
+    //   ariaLabel: '在 GitHub 上编辑此页'
+    // },
     footer: {
       copyright: 'MIT Licensed | Copyright © 2024-present xianling'
     },

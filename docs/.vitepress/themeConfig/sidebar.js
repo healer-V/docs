@@ -6,7 +6,6 @@ export const sidebar =
                 items: [
                     {
                         text: '🍎前端基础',
-                        // collapsible: true, // 侧边栏可折叠
                         collapsed: true, // 侧边栏可折叠
                         items: [
                             {text: '01-HTML', link: '/articles/basic/01-html.md'},
@@ -142,18 +141,83 @@ export const sidebar =
             {
                 text: '📖 面试题',
                 items: [
-                    {text: '01-Html', link: '/interview/'}, // /interview/index.md
-                    {text: '02-Css', link: '/interview/02-css.md'},
-                    {text: '03-JS', link: '/interview/03-javascript.md'},
-                    {text: '04-ES6', link: '/interview/04-ES6.md'},
-                    {text: '05-TS', link: '/interview/05-typescript.md'},
-                    {text: '06-Vue', link: '/interview/06-vue.md'},
-                    {text: '07-React', link: '/interview/08-react16.md'},
-                    {text: '08-工程化', link: '/interview/08-engineering.md'},
-                    {text: '09-网络', link: '/interview/09-network.md'},
-                    {text: '10-浏览器', link: '/interview/10-Browser.md'},
-                    {text: '11-手写题', link: '/interview/11-Handwriting.md'},
-                    {text: '12-项目常考', link: '/interview/12-Optimize.md'},
+                    {
+                        text: '01-基础',
+                        collapsed: true, // 侧边栏可折叠
+                        items: [
+                            {text: '01-Html', link: '/interview/'}, // /interview/index.md
+                            {text: '02-Css', link: '/interview/02-css.md'},
+                            {text: '03-JS', link: '/interview/03-javascript.md'},
+                            {text: '04-ES6', link: '/interview/04-ES6.md'},
+                        ]
+                    },
+                    {
+                        text: '02-框架',
+                        collapsed: true, // 侧边栏可折叠
+                        items: [
+                            {text: '05-TS', link: '/interview/05-typescript.md'},
+                            {text: '06-Vue', link: '/interview/06-vue.md'},
+                            {text: '07-React', link: '/interview/08-react16.md'},
+                        ]
+                    },
+                    {
+                        text: '03-工程化',
+                        collapsed: true, // 侧边栏可折叠
+                        items: [
+                            {text: '08-工程化', link: '/interview/08-engineering.md'},
+                        ]
+                    },
+                    {
+                        text: '04-跨端',
+                        collapsed: true, // 侧边栏可折叠
+                        items: [
+                            {text: '09-UniApp', link: '/interview/09-UniApp.md'},
+                            {text: '10-React Native', link: '/interview/10-ReactNative.md'},
+                            {text: '11-Flutter', link: '/interview/11-Flutter.md'},
+                            {text: '12-Harmony OS', link: '/interview/12-HarmonyOS.md'},
+                            {text: '13-Elctron', link: '/interview/13-Elctron.md'},
+                        ]
+                    },
+                    {
+                        text: '05-网络',
+                        collapsed: true, // 侧边栏可折叠
+                        items: [
+                            {text: '09-网络', link: '/interview/09-network.md'},
+                        ]
+                    },
+                    {
+                        text: '06-浏览器',
+                        collapsed: true, // 侧边栏可折叠
+                        items: [
+                            {text: '10-浏览器', link: '/interview/10-Browser.md'},
+                        ]
+                    },
+                    {
+                        text: '07-手写题',
+                        collapsed: true, // 侧边栏可折叠
+                        items: [
+                            {text: '11-手写题', link: '/interview/11-Handwriting.md'},
+                        ]
+                    },
+                    {
+                        text: '08-项目常考',
+                        collapsed: true, // 侧边栏可折叠
+                        items: [
+                            {text: '12-项目常考', link: '/interview/12-Optimize.md'},
+                        ]
+                    },
+                    // {text: '01-Html', link: '/interview/'}, // /interview/index.md
+                    // {text: '02-Css', link: '/interview/02-css.md'},
+                    // {text: '03-JS', link: '/interview/03-javascript.md'},
+                    // {text: '04-ES6', link: '/interview/04-ES6.md'},
+                    // {text: '05-TS', link: '/interview/05-typescript.md'},
+                    // {text: '06-Vue', link: '/interview/06-vue.md'},
+                    // {text: '07-React', link: '/interview/08-react16.md'},
+                    // {text: '08-工程化', link: '/interview/08-engineering.md'},
+                    // {text: '09-网络', link: '/interview/09-network.md'},
+                    // {text: '10-浏览器', link: '/interview/10-Browser.md'},
+                    // {text: '11-手写题', link: '/interview/11-Handwriting.md'},
+                    // {text: '12-项目常考', link: '/interview/12-Optimize.md'},
                 ]
             }
         ],
@@ -176,39 +240,57 @@ export const sidebar =
             }
         ],
 
-         '/frontend/01-javascript/': [
+         '/frontend/03-javascript/': [
             {
                 text: 'javascript',
                 items: [
-                    {text: 'javascript', link: '/frontend/01-javascript/01-javascript.md'},
-                    // {text: '数据类型', link: '/frontend/01-javascript/02-datatype.md'},
-                    // {text: '流程控制', link: '/frontend/01-javascript/03-controlflow.md'},
-                    // {text: '函数', link: '/frontend/01-javascript/04-function.md'},
-                    // {text: '对象', link: '/frontend/01-javascript/05-object.md'},
-                    // {text: '数组', link: '/frontend/01-javascript/06-array.md'},
-                    // {text: '正则', link: '/frontend/01-javascript/07-regex.md'},
-                    // {text: 'DOM', link: '/frontend/01-javascript/08-dom.md'},
-                    // {text: 'BOM', link: '/frontend/01-javascript/09-bom.md'},
-                    // {text: '事件', link: '/frontend/01-javascript/10-event.md'},
-                    // {text: '异步编程', link: '/frontend/01-javascript/11-async.md'},
-                    // {text: '模块化', link: '/frontend/01-javascript/12-module.md'},
-                    // {text: '设计模式', link: '/frontend/01-javascript/13-designpattern.md'},
+                    {text: '01-数据类型', link: '/frontend/03-javascript/01-dataType.md'},
+                    {text: '02-内存', link: '/frontend/03-javascript/02-memory.md'},
+                    {text: '03-流程控制', link: '/frontend/03-javascript/03-controlflow.md'},
+                    {text: '04-number', link: '/frontend/03-javascript/04-number.md'},
+                    {text: '05-字符串', link: '/frontend/03-javascript/05-string.md'},
+                    {text: '06-布尔值', link: '/frontend/03-javascript/06-boolean.md'},
+                    {text: '07-空值', link: '/frontend/03-javascript/07-undefined.md'},
+                    {text: '08-函数', link: '/frontend/03-javascript/08-function.md'},
+                    {text: '09-对象', link: '/frontend/03-javascript/09-object.md'},
+                    {text: '10-数组', link: '/frontend/03-javascript/10-array.md'},
+                    {text: '11-正则', link: '/frontend/03-javascript/11-regex.md'},
+                    {text: '14-DOM', link: '/frontend/03-javascript/14-dom.md'},
+                    {text: '15-BOM', link: '/frontend/03-javascript/15-bom.md'},
+                    {text: '16-事件', link: '/frontend/03-javascript/16-event.md'},
+                    {text: '17-异步编程', link: '/frontend/03-javascript/17-async.md'},
+                    {text: '18-模块化', link: '/frontend/03-javascript/18-module.md'},
+                    {text: '19-设计模式', link: '/frontend/03-javascript/19-designpattern.md'},
                 ]
             }
         ],
-         '/frontend/02-ecmascript/': [
+         '/frontend/04-ecmascript/': [
             {
                 text: 'ecmascript',
                 items: [
-                    {text: 'ecmascript', link: '/frontend/02-ecmascript/01-ecmascript.md'},
+                    {text: '01-变量扩展', link: '/frontend/04-ecmascript/01-variable.md'},
+                    {text: '02-基本类型扩展', link: '/frontend/04-ecmascript/02-basicTypeExtension.md'},
+                    {text: '03-引用类型扩展', link: '/frontend/04-ecmascript/03-referenceTypeExtension.md'},
+                    {text: '04-Symbol', link: '/frontend/04-ecmascript/04-symbol.md'},
+                    {text: '05-Set/Map', link: '/frontend/04-ecmascript/05-container.md'},
+                    {text: '06-Proxy', link: '/frontend/04-ecmascript/06-proxy.md'},
+                    {text: '07-Reflect', link: '/frontend/04-ecmascript/07-reflect.md'},
+                    {text: '08-Promise', link: '/frontend/04-ecmascript/08-promise.md'},
+                    {text: '09-Iterator', link: '/frontend/04-ecmascript/09-iterator.md'},
+                    {text: '10-Generator', link: '/frontend/04-ecmascript/10-generator.md'},
+                    {text: '11-Decorator', link: '/frontend/04-ecmascript/11-decorator.md'},
+                    {text: '12-Async/Await', link: '/frontend/04-ecmascript/12-asyncawait.md'},
+                    {text: '13-模块', link: '/frontend/04-ecmascript/13-module.md'},
+                    {text: '14-类', link: '/frontend/04-ecmascript/14-class.md'},
+                    {text: '15-异步遍历器', link: '/frontend/04-ecmascript/15-asynciterator.md'},
                 ]
             }
         ],
-         '/frontend/03-typescript/': [
+         '/frontend/05-typescript/': [
             {
                 text: 'typescript',
                 items: [
-                    {text: 'typescript', link: '/frontend/03-typescript/01-typescript.md'},
+                    {text: 'typescript', link: '/frontend/05-typescript/01-typescript.md'},
                 ]
             }
         ],

@@ -1,3 +1,5 @@
 node_modules
 cache
 dist
+# 忽略.vitepress/cache目录
+.vitepress/cache

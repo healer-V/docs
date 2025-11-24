@@ -6,3 +6,41 @@
     background-color: var(--vp-c-gray-soft);
     border-left: 6px solid var(--vp-c-green-2);
 }
+.vp-doc h5 {
+    margin: 18px 0 10px 0;
+    font-size: 16px;
+}
+
+/* 目录容器样式 - 增加目录宽度 */
+.aside-container {
+    width: fit-content !important;
+    min-width: 350px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+/* 目录大纲样式 */
+.VPDocAsideOutline {
+    width: 100%;
+    padding: 10px 0;
+}
+
+/* 目录项样式 */
+.VPDocOutlineItem {
+    width: 100%;
+    padding: 4px 8px;
+    margin: 2px 0;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.2s ease;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .aside-container {
+        width: 280px !important;
+        min-width: 280px;
+    }
+}

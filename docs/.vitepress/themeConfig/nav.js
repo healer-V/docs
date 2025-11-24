@@ -18,11 +18,11 @@ export const nav = [
           { text: "css", link: "/frontend/02-css/index.md" },
           {
             text: "javascript",
-            link: "/frontend/03-javascript/01-javascript.md",
+            link: "/frontend/03-javascript/01-dataType.md",
           },
           {
             text: "ecmascript",
-            link: "/frontend/04-ecmascript/01-ecmascript.md",
+            link: "/frontend/04-ecmascript/01-variable.md",
           },
           {
             text: "typescript",
@@ -142,6 +142,11 @@ export const nav = [
         ],
       },
     ],
+  },
+  {
+    text: "🥃Interview",
+    link: "/interview/index.md",
+
   },
   {
     text: "🍚workflow",

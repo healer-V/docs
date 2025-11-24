@@ -4,14 +4,14 @@ layout: home
 
 hero:
   name: "Xianling"
-  text: "this is the home page of my blog"
-  tagline: Front-End Developer
+  text: ""
+  tagline: 日拱一卒，功不唐捐。
   image:
     src: /developer.gif
     alt: 头像
   actions:
     - theme: brand
-      text: Start
+      text: 快速开始
       link: /articles/basic/01-html.md
     - theme: alt
       text: Interview
