@@ -1,393 +1,557 @@
-export const sidebar =
+export const sidebar = {
+  "/articles/": [
     {
-        '/articles/': [
+      text: "首页",
+      items: [
+        {
+          text: "🍎前端基础",
+          collapsed: true, // 侧边栏可折叠
+          items: [
+            { text: "01-HTML", link: "/articles/basic/01-html.md" },
+            { text: "02-CSS", link: "/articles/basic/02-css.md" },
+            { text: "03-JS", link: "/articles/basic/03-javascript.md" },
+            { text: "04-ES6", link: "/articles/basic/04-ecmascript.md" },
+            { text: "05-TS", link: "/articles/basic/05-typescript.md" },
+            { text: "06-Vue2", link: "/articles/basic/06-vue2.md" },
+            { text: "07-Vue3", link: "/articles/basic/07-vue3.md" },
+            { text: "08-React16", link: "/articles/basic/08-react16.md" },
+            { text: "09-React18", link: "/articles/basic/09-react18.md" },
+            { text: "10-Node.js", link: "/articles/basic/10-nodejs.md" },
+            { text: "11-Sass", link: "/articles/basic/11-Sass.md" },
+          ],
+        },
+        {
+          text: "🍑服务端",
+          collapsed: true,
+          items: [
+            { text: "01-Node.js", link: "/articles/server/01-NodeJs.md" },
+            { text: "02-Express", link: "/articles/server/02-Express.md" },
+            { text: "03-Nest.js", link: "/articles/server/03-NestJs.md" },
+          ],
+        },
+        {
+          text: "🥝浏览器基础",
+          collapsed: true,
+          items: [
+            { text: "01-线程与进程", link: "/articles/browser/01-basic.md" },
+            { text: "02-机制与引擎", link: "/articles/browser/02-render.md" },
+          ],
+        },
+        {
+          text: "🍓网络基础",
+          collapsed: true,
+          items: [
+            { text: "01-网络协议", link: "/articles/network/01-http.md" },
             {
-                text: '首页',
-                items: [
-                    {
-                        text: '🍎前端基础',
-                        collapsed: true, // 侧边栏可折叠
-                        items: [
-                            {text: '01-HTML', link: '/articles/basic/01-html.md'},
-                            {text: '02-CSS', link: '/articles/basic/02-css.md'},
-                            {text: '03-JS', link: '/articles/basic/03-javascript.md'},
-                            {text: '04-ES6', link: '/articles/basic/04-ecmascript.md'},
-                            {text: '05-TS', link: '/articles/basic/05-typescript.md'},
-                            {text: '06-Vue2', link: '/articles/basic/06-vue2.md'},
-                            {text: '07-Vue3', link: '/articles/basic/07-vue3.md'},
-                            {text: '08-React16', link: '/articles/basic/08-react16.md'},
-                            {text: '09-React18', link: '/articles/basic/09-react18.md'},
-                            {text: '10-Node.js', link: '/articles/basic/10-nodejs.md'},
-                            {text: '11-Sass', link: '/articles/basic/11-Sass.md'},
-                        ]
-                    },
-                    {
-                        text: '🍑服务端',
-                        collapsed: true, 
-                        items: [
-                            {text: '01-Node.js', link: '/articles/server/01-NodeJs.md'},
-                            {text: '02-Express', link: '/articles/server/02-Express.md'},
-                            {text: '03-Nest.js', link: '/articles/server/03-NestJs.md'},
-                        ]
-                    },
-                    {
-                        text: '🥝浏览器基础',
-                        collapsed: true, 
-                        items: [
-                            {text: '01-线程与进程', link: '/articles/browser/01-basic.md'},
-                            {text: '02-机制与引擎', link: '/articles/browser/02-render.md'},
-                        ]
-                    },
-                    {
-                        text: '🍓网络基础',
-                        collapsed: true, 
-                        items: [
-                            {text: '01-网络协议', link: '/articles/network/01-http.md'},
-                            {text: '02-文件传输', link: '/articles/network/02-FileTransfer.md'},
-                            {text: '03-WebSocket', link: '/articles/network/03-WebSocket.md'},
-                        ]
-                    },
+              text: "02-文件传输",
+              link: "/articles/network/02-FileTransfer.md",
+            },
+            { text: "03-WebSocket", link: "/articles/network/03-WebSocket.md" },
+          ],
+        },
 
-                    {
-                        text: '🍎混合App开发',
-                        collapsed: true, 
-                        items: [
-                            {text: '01-Uniapp', link: '/articles/frame/01-Uniapp.md'},
-                            {text: '02-Flutter', link: '/articles/frame/02-Flutter.md'},
-                            {text: '03-React Native', link: '/articles/frame/03-ReactNative.md'},
-                            {text: '04-HarmonyOS', link: '/articles/frame/04-HarmonyOS.md'},
-                            {text: '05-Electron', link: '/articles/frame/05-Electron.md'},
+        {
+          text: "🍎混合App开发",
+          collapsed: true,
+          items: [
+            { text: "01-Uniapp", link: "/articles/frame/01-Uniapp.md" },
+            { text: "02-Flutter", link: "/articles/frame/02-Flutter.md" },
+            {
+              text: "03-React Native",
+              link: "/articles/frame/03-ReactNative.md",
+            },
+            { text: "04-HarmonyOS", link: "/articles/frame/04-HarmonyOS.md" },
+            { text: "05-Electron", link: "/articles/frame/05-Electron.md" },
+          ],
+        },
+        {
+          text: "🍉前端工程化",
+          collapsed: true,
+          items: [
+            { text: "01-Webpack", link: "/articles/engineering/01-Webpack.md" },
+            { text: "02-Vite", link: "/articles/engineering/02-Vite.md" },
+            { text: "03-ESBuild", link: "/articles/engineering/03-ESBuild.md" },
+            { text: "04-Rollup", link: "/articles/engineering/04-Rollup.md" },
+          ],
+        },
+        {
+          text: "🍜工具",
+          collapsed: true,
+          items: [
+            { text: "01-Git", link: "/articles/tools/01-Git.md" },
+            { text: "02-Markdown", link: "/articles/tools/02-Markdown.md" },
+            { text: "03-IDE工具", link: "/articles/tools/03-IDE.md" },
+          ],
+        },
 
-                        ]
-                    },
-                    {
-                        text: '🍉前端工程化',
-                        collapsed: true, 
-                        items: [
-                            {text: '01-Webpack', link: '/articles/engineering/01-Webpack.md'},
-                            {text: '02-Vite', link: '/articles/engineering/02-Vite.md'},
-                            {text: '03-ESBuild', link: '/articles/engineering/03-ESBuild.md'},
-                            {text: '04-Rollup', link: '/articles/engineering/04-Rollup.md'},
-                        ]
-                    },
-                    {
-                        text: '🍜工具',
-                        collapsed: true, 
-                        items: [
-                            {text: '01-Git', link: '/articles/tools/01-Git.md'},
-                            {text: '02-Markdown', link: '/articles/tools/02-Markdown.md'},
-                            {text: '03-IDE工具', link: '/articles/tools/03-IDE.md'},
-                        ]
-                    },
-
-                    {
-                        text: '🍏博客',
-                        collapsed: true, 
-                        items: [
-                            {text: '01-搭建博客', link: '/articles/blog/01-vitepress.md'},
-                            {text: '02-Markdown语法', link: '/articles/blog/02-markdown.md'},
-                        ]
-                    },
-                ]
-            }
-        ],
-        '/skill/': [
-            {
-                text: '🥤实践技巧',
-                items: [
-                    {text: '01-Vue组件封装', link: '/skill/01-Vue组件封装.md'},
-                    {text: '02-React组件封装', link: '/skill/02-React组件封装.md'},
-                ]
-                // items: [
-                //     {
-                //         text: '🥝前端项目技巧',
-                //         items: [
-                //             {text: '01-Vue组件封装', link: '/skill/01-Vue组件封装.md'},
-                //             {text: '02-React组件封装', link: '/skill/02-React组件封装.md'},
-                //         ]
-                //     },
-                //     {
-                //         text: '🥝后端项目技巧',
-                //         items: [
-                //             {text: '01-Vue组件封装', link: '/skill/01-Vue组件封装.md'},
-                //             {text: '02-React组件封装', link: '/skill/02-React组件封装.md'},
-                //         ]
-                //     }
-                // ]
-            }
-        ],
-        '/practice/': [
-            {
-                text: '🍚项目',
-                items: [
-                    {text: '01-vue2移动端项目', link: '/practice/01-vue2.md'},
-                    {text: '02-vue2PC端项目', link: '/practice/02-vue2PC.md'},
-                    {text: '03-vue3移动端项目', link: '/practice/03-vue3.md'},
-                    {text: '04-vue3PC端项目', link: '/practice/04-vue3PC.md'},
-
-                ]
-            }
-        ],
-        '/project/': [
-            {
-                text: '🥥项目要点',
-                items: [
-                    {text: '移动端项目要点', link: '/project/'}, // /project/index.md
-                    {text: 'PC端项目要点', link: '/project/pc'},
-                ]
-            }
-        ],
-        '/interview/': [
-            {
-                text: '📖 面试题',
-                items: [
-                    {
-                        text: '01-基础',
-                        collapsed: true, // 侧边栏可折叠
-                        items: [
-                            {text: '01-Html', link: '/interview/'}, // /interview/index.md
-                            {text: '02-Css', link: '/interview/02-css.md'},
-                            {text: '03-JS', link: '/interview/03-javascript.md'},
-                            {text: '04-ES6', link: '/interview/04-ES6.md'},
-                        ]
-                    },
-                    {
-                        text: '02-框架',
-                        collapsed: true, // 侧边栏可折叠
-                        items: [
-                            {text: '05-TS', link: '/interview/05-typescript.md'},
-                            {text: '06-Vue', link: '/interview/06-vue.md'},
-                            {text: '07-React', link: '/interview/08-react16.md'},
-                        ]
-                    },
-                    {
-                        text: '03-工程化',
-                        collapsed: true, // 侧边栏可折叠
-                        items: [
-                            {text: '08-工程化', link: '/interview/08-engineering.md'},
-                        ]
-                    },
-                    {
-                        text: '04-跨端',
-                        collapsed: true, // 侧边栏可折叠
-                        items: [
-                            {text: '09-UniApp', link: '/interview/09-UniApp.md'},
-                            {text: '10-React Native', link: '/interview/10-ReactNative.md'},
-                            {text: '11-Flutter', link: '/interview/11-Flutter.md'},
-                            {text: '12-Harmony OS', link: '/interview/12-HarmonyOS.md'},
-                            {text: '13-Elctron', link: '/interview/13-Elctron.md'},
-                        ]
-                    },
-                    {
-                        text: '05-网络',
-                        collapsed: true, // 侧边栏可折叠
-                        items: [
-                            {text: '09-网络', link: '/interview/09-network.md'},
-                        ]
-                    },
-                    {
-                        text: '06-浏览器',
-                        collapsed: true, // 侧边栏可折叠
-                        items: [
-                            {text: '10-浏览器', link: '/interview/10-Browser.md'},
-                        ]
-                    },
-                    {
-                        text: '07-手写题',
-                        collapsed: true, // 侧边栏可折叠
-                        items: [
-                            {text: '11-手写题', link: '/interview/11-Handwriting.md'},
-                        ]
-                    },
-                    {
-                        text: '08-项目常考',
-                        collapsed: true, // 侧边栏可折叠
-                        items: [
-                            {text: '12-项目常考', link: '/interview/12-Optimize.md'},
-                        ]
-                    },
-                    // {text: '01-Html', link: '/interview/'}, // /interview/index.md
-                    // {text: '02-Css', link: '/interview/02-css.md'},
-                    // {text: '03-JS', link: '/interview/03-javascript.md'},
-                    // {text: '04-ES6', link: '/interview/04-ES6.md'},
-                    // {text: '05-TS', link: '/interview/05-typescript.md'},
-                    // {text: '06-Vue', link: '/interview/06-vue.md'},
-                    // {text: '07-React', link: '/interview/08-react16.md'},
-                    // {text: '08-工程化', link: '/interview/08-engineering.md'},
-                    // {text: '09-网络', link: '/interview/09-network.md'},
-                    // {text: '10-浏览器', link: '/interview/10-Browser.md'},
-                    // {text: '11-手写题', link: '/interview/11-Handwriting.md'},
-                    // {text: '12-项目常考', link: '/interview/12-Optimize.md'},
-                ]
-            }
-        ],
-        '/diary/': [
-            {
-                text: '🍒随记',
-                items: [
-                    {text: '2023年', link: '/diary/index.md'},
-                    {text: '2024年', link: '/diary/2024'},
-                    {text: '2025年', link: '/diary/2025'},
-                ]
-            }
-        ],
-        '/about/': [
-            {
-                text: '🍒 关于',
-                items: [
-                    {text: '关于我', link: '/about/'},
-                ]
-            }
-        ],
-
-         '/frontend/03-javascript/': [
-            {
-                text: 'javascript',
-                items: [
-                    {text: '01-数据类型', link: '/frontend/03-javascript/01-dataType.md'},
-                    {text: '02-内存', link: '/frontend/03-javascript/02-memory.md'},
-                    {text: '03-流程控制', link: '/frontend/03-javascript/03-controlflow.md'},
-                    {text: '04-number', link: '/frontend/03-javascript/04-number.md'},
-                    {text: '05-字符串', link: '/frontend/03-javascript/05-string.md'},
-                    {text: '06-布尔值', link: '/frontend/03-javascript/06-boolean.md'},
-                    {text: '07-空值', link: '/frontend/03-javascript/07-undefined.md'},
-                    {text: '08-函数', link: '/frontend/03-javascript/08-function.md'},
-                    {text: '09-对象', link: '/frontend/03-javascript/09-object.md'},
-                    {text: '10-数组', link: '/frontend/03-javascript/10-array.md'},
-                    {text: '11-正则', link: '/frontend/03-javascript/11-regex.md'},
-                    {text: '14-DOM', link: '/frontend/03-javascript/14-dom.md'},
-                    {text: '15-BOM', link: '/frontend/03-javascript/15-bom.md'},
-                    {text: '16-事件', link: '/frontend/03-javascript/16-event.md'},
-                    {text: '17-异步编程', link: '/frontend/03-javascript/17-async.md'},
-                    {text: '18-模块化', link: '/frontend/03-javascript/18-module.md'},
-                    {text: '19-设计模式', link: '/frontend/03-javascript/19-designpattern.md'},
-                ]
-            }
-        ],
-         '/frontend/04-ecmascript/': [
-            {
-                text: 'ecmascript',
-                items: [
-                    {text: '01-变量扩展', link: '/frontend/04-ecmascript/01-variable.md'},
-                    {text: '02-基本类型扩展', link: '/frontend/04-ecmascript/02-basicTypeExtension.md'},
-                    {text: '03-引用类型扩展', link: '/frontend/04-ecmascript/03-referenceTypeExtension.md'},
-                    {text: '04-Symbol', link: '/frontend/04-ecmascript/04-symbol.md'},
-                    {text: '05-Set/Map', link: '/frontend/04-ecmascript/05-container.md'},
-                    {text: '06-Proxy', link: '/frontend/04-ecmascript/06-proxy.md'},
-                    {text: '07-Reflect', link: '/frontend/04-ecmascript/07-reflect.md'},
-                    {text: '08-Promise', link: '/frontend/04-ecmascript/08-promise.md'},
-                    {text: '09-Iterator', link: '/frontend/04-ecmascript/09-iterator.md'},
-                    {text: '10-Generator', link: '/frontend/04-ecmascript/10-generator.md'},
-                    {text: '11-Decorator', link: '/frontend/04-ecmascript/11-decorator.md'},
-                    {text: '12-Async/Await', link: '/frontend/04-ecmascript/12-asyncawait.md'},
-                    {text: '13-模块', link: '/frontend/04-ecmascript/13-module.md'},
-                    {text: '14-类', link: '/frontend/04-ecmascript/14-class.md'},
-                    {text: '15-异步遍历器', link: '/frontend/04-ecmascript/15-asynciterator.md'},
-                ]
-            }
-        ],
-         '/frontend/05-typescript/': [
-            {
-                text: 'typescript',
-                items: [
-                    {text: 'typescript', link: '/frontend/05-typescript/01-typescript.md'},
-                ]
-            }
-        ],
-         '/frontend/04-vue2/': [
-            {
-                text: 'vue2',
-                items: [
-                    {text: 'vue2', link: '/frontend/04-vue2/01-vue2.md'},
-                ]
-            }
-        ],
-         '/frontend/05-vue3/': [
-            {
-                text: 'vue3',
-                items: [
-                    {text: 'vue3', link: '/frontend/05-vue3/01-vue3.md'},
-                ]
-            }
-        ],
-         '/frontend/06-react16/': [
-            {
-                text: 'React 16 学习指南',
-                items: [
-                    {text: '01-概述', link: '/frontend/06-react16/01-overview.md'},
-                    {text: '02-核心概念', link: '/frontend/06-react16/02-core-concepts.md'},
-                    {text: '03-组件开发', link: '/frontend/06-react16/02-component.md'},
-                    {text: '04-生命周期', link: '/frontend/06-react16/03-lifecycle.md'},
-                    {text: '05-Hooks', link: '/frontend/06-react16/04-hooks.md'},
-                    {text: '06-性能优化', link: '/frontend/06-react16/05-performance.md'},
-                    {text: '07-新特性', link: '/frontend/06-react16/06-new-features.md'},
-                    {text: '08-完整指南', link: '/frontend/06-react16/01-react16.md'},
-                ]
-            }
-        ],
-         '/frontend/07-react18/': [
-            {
-                text: 'react18',
-                items: [
-                    {text: 'react18', link: '/frontend/07-react18/01-react18.md'},
-                ]
-            }
-        ],
-         '/backend/01-nodejs/': [
-            {
-                text: '前端基础',
-                items: [
-                    {text: 'nodejs', link: '/backend/01-nodejs/01-nodejs.md'},
-                ]
-            }
-        ],
-         '/backend/02-express/': [
-            {
-                text: '前端基础',
-                items: [
-                    {text: 'express', link: '/backend/02-express/01-express.md'},
-                ]
-            }
-        ],
-         '/backend/03-nestjs/': [
-            {
-                text: '前端基础',
-                items: [
-                    {text: 'nestjs', link: '/backend/03-nestjs/01-nestjs.md'},
-                ]
-            }
-        ],
-        //  '/webpack/': [
-        //     {
-        //         text: '前端基础',
-        //         items: [
-        //             {text: 'webpack', link: '/frontend/11-webpack/01-webpack.md'},
-        //         ]
-        //     }
-        // ],
-        //  '/vite/': [
-        //     {
-        //         text: '前端基础',
-        //         items: [
-        //             {text: 'vite', link: '/frontend/12-vite/01-vite.md'},
-        //         ]
-        //     }
-        // ],
-        //  '/esbuild/': [
-        //     {
-        //         text: '前端基础',
-        //         items: [
-        //             {text: 'esbuild', link: '/frontend/13-esbuild/01-esbuild.md'},
-        //         ]
-        //     }
-        // ],
-        //  '/rollup/': [
-        //     {
-        //         text: '前端基础',
-        //         items: [
-        //             {text: 'rollup', link: '/frontend/14-rollup/01-rollup.md'},
-        //         ]
-        //     }
-        // ],
-
+        {
+          text: "🍏博客",
+          collapsed: true,
+          items: [
+            { text: "01-搭建博客", link: "/articles/blog/01-vitepress.md" },
+            { text: "02-Markdown语法", link: "/articles/blog/02-markdown.md" },
+          ],
+        },
+      ],
+    },
+  ],
+  "/skill/": [
+    {
+      text: "🥤实践技巧",
+      items: [
+        { text: "01-Vue组件封装", link: "/skill/01-Vue组件封装.md" },
+        { text: "02-React组件封装", link: "/skill/02-React组件封装.md" },
+      ],
+      // items: [
+      //     {
+      //         text: '🥝前端项目技巧',
+      //         items: [
+      //             {text: '01-Vue组件封装', link: '/skill/01-Vue组件封装.md'},
+      //             {text: '02-React组件封装', link: '/skill/02-React组件封装.md'},
+      //         ]
+      //     },
+      //     {
+      //         text: '🥝后端项目技巧',
+      //         items: [
+      //             {text: '01-Vue组件封装', link: '/skill/01-Vue组件封装.md'},
+      //             {text: '02-React组件封装', link: '/skill/02-React组件封装.md'},
+      //         ]
+      //     }
+      // ]
+    },
+  ],
+  "/practice/": [
+    {
+      text: "🍚项目",
+      items: [
+        { text: "01-vue2移动端项目", link: "/practice/01-vue2.md" },
+        { text: "02-vue2PC端项目", link: "/practice/02-vue2PC.md" },
+        { text: "03-vue3移动端项目", link: "/practice/03-vue3.md" },
+        { text: "04-vue3PC端项目", link: "/practice/04-vue3PC.md" },
+      ],
+    },
+  ],
+  "/project/": [
+    {
+      text: "🥥项目要点",
+      items: [
+        { text: "移动端项目要点", link: "/project/" }, // /project/index.md
+        { text: "PC端项目要点", link: "/project/pc" },
+      ],
+    },
+  ],
+  "/interview/": [
+    {
+      text: "📖 面试题",
+      items: [
+        {
+          text: "01-基础",
+          collapsed: true, // 侧边栏可折叠
+          items: [
+            { text: "01-Html", link: "/interview/" }, // /interview/index.md
+            { text: "02-Css", link: "/interview/02-css.md" },
+            { text: "03-JS", link: "/interview/03-javascript.md" },
+            { text: "04-ES6", link: "/interview/04-ES6.md" },
+          ],
+        },
+        {
+          text: "02-框架",
+          collapsed: true, // 侧边栏可折叠
+          items: [
+            { text: "05-TS", link: "/interview/05-typescript.md" },
+            { text: "06-Vue", link: "/interview/06-vue.md" },
+            { text: "07-React", link: "/interview/08-react16.md" },
+          ],
+        },
+        {
+          text: "03-工程化",
+          collapsed: true, // 侧边栏可折叠
+          items: [{ text: "08-工程化", link: "/interview/08-engineering.md" }],
+        },
+        {
+          text: "04-跨端",
+          collapsed: true, // 侧边栏可折叠
+          items: [
+            { text: "09-UniApp", link: "/interview/09-UniApp.md" },
+            { text: "10-React Native", link: "/interview/10-ReactNative.md" },
+            { text: "11-Flutter", link: "/interview/11-Flutter.md" },
+            { text: "12-Harmony OS", link: "/interview/12-HarmonyOS.md" },
+            { text: "13-Elctron", link: "/interview/13-Elctron.md" },
+          ],
+        },
+        {
+          text: "05-网络",
+          collapsed: true, // 侧边栏可折叠
+          items: [{ text: "09-网络", link: "/interview/09-network.md" }],
+        },
+        {
+          text: "06-浏览器",
+          collapsed: true, // 侧边栏可折叠
+          items: [{ text: "10-浏览器", link: "/interview/10-Browser.md" }],
+        },
+        {
+          text: "07-手写题",
+          collapsed: true, // 侧边栏可折叠
+          items: [{ text: "11-手写题", link: "/interview/11-Handwriting.md" }],
+        },
+        {
+          text: "08-项目常考",
+          collapsed: true, // 侧边栏可折叠
+          items: [{ text: "12-项目常考", link: "/interview/12-Optimize.md" }],
+        },
+        // {text: '01-Html', link: '/interview/'}, // /interview/index.md
+        // {text: '02-Css', link: '/interview/02-css.md'},
+        // {text: '03-JS', link: '/interview/03-javascript.md'},
+        // {text: '04-ES6', link: '/interview/04-ES6.md'},
+        // {text: '05-TS', link: '/interview/05-typescript.md'},
+        // {text: '06-Vue', link: '/interview/06-vue.md'},
+        // {text: '07-React', link: '/interview/08-react16.md'},
+        // {text: '08-工程化', link: '/interview/08-engineering.md'},
+        // {text: '09-网络', link: '/interview/09-network.md'},
+        // {text: '10-浏览器', link: '/interview/10-Browser.md'},
+        // {text: '11-手写题', link: '/interview/11-Handwriting.md'},
+        // {text: '12-项目常考', link: '/interview/12-Optimize.md'},
+      ],
+    },
+  ],
+  "/diary/": [
+    {
+      text: "🍒随记",
+      items: [
+        { text: "2023年", link: "/diary/index.md" },
+        { text: "2024年", link: "/diary/2024" },
+        { text: "2025年", link: "/diary/2025" },
+      ],
+    },
+  ],
+  "/about/": [
+    {
+      text: "🍒 关于",
+      items: [{ text: "关于我", link: "/about/" }],
+    },
+  ],
+  "/frontend/01-html/": [
+    {
+      text: "html",
+      items: [
+        { text: "01-概述", link: "/frontend/02-html/01-overview.md" },
+        { text: "02-标签", link: "/frontend/02-html/02-tag.md" },
+        { text: "03-属性", link: "/frontend/02-html/03-attribute.md" },
+        { text: "04-实体", link: "/frontend/02-html/04-entity.md" },
+        { text: "05-注释", link: "/frontend/02-html/05-comment.md" },
+        { text: "06-文档类型", link: "/frontend/02-html/06-doctype.md" },
+        { text: "07-字符编码", link: "/frontend/02-html/07-characterEncoding.md" },
+      ],
+    },
+  ],
+  "/fornted/02-css/":[
+    {
+        text: "css",
+        items: [
+            { text: "01-概述", link: "/frontend/02-css/01-overview.md" },
+            
+        ]
     }
+  ],
+  "/frontend/03-javascript/": [
+    {
+      text: "javascript",
+      items: [
+        { text: "01-数据类型", link: "/frontend/03-javascript/01-dataType.md" },
+        { text: "02-内存", link: "/frontend/03-javascript/02-memory.md" },
+        {
+          text: "03-流程控制",
+          link: "/frontend/03-javascript/03-controlflow.md",
+        },
+        { text: "04-number", link: "/frontend/03-javascript/04-number.md" },
+        { text: "05-字符串", link: "/frontend/03-javascript/05-string.md" },
+        { text: "06-布尔值", link: "/frontend/03-javascript/06-boolean.md" },
+        { text: "07-空值", link: "/frontend/03-javascript/07-undefined.md" },
+        { text: "08-函数", link: "/frontend/03-javascript/08-function.md" },
+        { text: "09-对象", link: "/frontend/03-javascript/09-object.md" },
+        { text: "10-数组", link: "/frontend/03-javascript/10-array.md" },
+        { text: "11-正则", link: "/frontend/03-javascript/11-regex.md" },
+        { text: "12-模块化", link: "/frontend/03-javascript/12-module.md" },
+        {
+          text: "13-设计模式",
+          link: "/frontend/03-javascript/13-designpattern.md",
+        },
+        { text: "14-DOM", link: "/frontend/03-javascript/14-dom.md" },
+        { text: "15-BOM", link: "/frontend/03-javascript/15-bom.md" },
+        { text: "16-事件", link: "/frontend/03-javascript/16-event.md" },
+        { text: "17-异步编程", link: "/frontend/03-javascript/17-async.md" },
+        { text: "18-模块化", link: "/frontend/03-javascript/18-module.md" },
+        {
+          text: "19-设计模式",
+          link: "/frontend/03-javascript/19-designpattern.md",
+        },
+      ],
+    },
+  ],
+  "/frontend/04-ecmascript/": [
+    {
+      text: "ecmascript",
+      items: [
+        { text: "01-变量扩展", link: "/frontend/04-ecmascript/01-variable.md" },
+        {
+          text: "02-基本类型扩展",
+          link: "/frontend/04-ecmascript/02-basicTypeExtension.md",
+        },
+        {
+          text: "03-引用类型扩展",
+          link: "/frontend/04-ecmascript/03-referenceTypeExtension.md",
+        },
+        { text: "04-Symbol", link: "/frontend/04-ecmascript/04-symbol.md" },
+        { text: "05-Set/Map", link: "/frontend/04-ecmascript/05-container.md" },
+        { text: "06-Proxy", link: "/frontend/04-ecmascript/06-proxy.md" },
+        { text: "07-Reflect", link: "/frontend/04-ecmascript/07-reflect.md" },
+        { text: "08-Promise", link: "/frontend/04-ecmascript/08-promise.md" },
+        { text: "09-Iterator", link: "/frontend/04-ecmascript/09-iterator.md" },
+        {
+          text: "10-Generator",
+          link: "/frontend/04-ecmascript/10-generator.md",
+        },
+        {
+          text: "11-Decorator",
+          link: "/frontend/04-ecmascript/11-decorator.md",
+        },
+        {
+          text: "12-Async/Await",
+          link: "/frontend/04-ecmascript/12-asyncawait.md",
+        },
+        { text: "13-模块", link: "/frontend/04-ecmascript/13-module.md" },
+        { text: "14-类", link: "/frontend/04-ecmascript/14-class.md" },
+        {
+          text: "15-异步遍历器",
+          link: "/frontend/04-ecmascript/15-asynciterator.md",
+        },
+      ],
+    },
+  ],
+  "/frontend/05-typescript/": [
+    {
+      text: "typescript",
+      items: [
+        {
+          text: "01-TypeScript概述",
+          link: "/frontend/05-typescript/01-typescript.md",
+        },
+        {
+          text: "02-基本语法",
+          link: "/frontend/05-typescript/02-basic-syntax.md",
+        },
+        {
+          text: "03-类型系统",
+          link: "/frontend/05-typescript/03-type-system.md",
+        },
+        {
+          text: "04-接口与类型",
+          link: "/frontend/05-typescript/04-interfaces.md",
+        },
+        { text: "05-类与继承", link: "/frontend/05-typescript/05-classes.md" },
+        { text: "06-泛型", link: "/frontend/05-typescript/06-generics.md" },
+        {
+          text: "07-高级类型",
+          link: "/frontend/05-typescript/07-advanced-types.md",
+        },
+        { text: "08-模块", link: "/frontend/05-typescript/08-module.md" },
+        { text: "09-装饰器", link: "/frontend/05-typescript/09-decorators.md" },
+        { text: "10-项目实战", link: "/frontend/05-typescript/10-project.md" },
+      ],
+    },
+  ],
+  "/frontend/06-vue2/": [
+    {
+      text: "vue2",
+      items: [
+        { text: "01-Vue2概述", link: "/frontend/06-vue2/01-vue2.md" },
+        { text: "02-Hello World", link: "/frontend/06-vue2/02-hello-world.md" },
+        { text: "03-组件系统", link: "/frontend/06-vue2/03-components.md" },
+        {
+          text: "04-Props与事件",
+          link: "/frontend/06-vue2/04-props-events.md",
+        },
+        { text: "05-指令系统", link: "/frontend/06-vue2/05-directives.md" },
+        { text: "06-生命周期", link: "/frontend/06-vue2/06-lifecycle.md" },
+        { text: "07-路由", link: "/frontend/06-vue2/07-router.md" },
+        {
+          text: "08-状态管理",
+          link: "/frontend/06-vue2/08-state-management.md",
+        },
+        { text: "09-高级特性", link: "/frontend/06-vue2/09-advanced.md" },
+      ],
+    },
+  ],
+  "/frontend/07-vue3/": [
+    {
+      text: "vue3",
+      items: [
+        { text: "01-Vue3概述", link: "/frontend/07-vue3/01-vue3.md" },
+        {
+          text: "02-Composition API",
+          link: "/frontend/07-vue3/02-composition-api.md",
+        },
+        { text: "03-响应式系统", link: "/frontend/07-vue3/03-reactivity.md" },
+        { text: "04-组件系统", link: "/frontend/07-vue3/04-components.md" },
+        { text: "05-插槽", link: "/frontend/07-vue3/05-slots.md" },
+        { text: "06-指令系统", link: "/frontend/07-vue3/06-directives.md" },
+        { text: "07-路由", link: "/frontend/07-vue3/07-router.md" },
+        {
+          text: "08-状态管理",
+          link: "/frontend/07-vue3/08-state-management.md",
+        },
+        { text: "09-高级特性", link: "/frontend/07-vue3/09-advanced.md" },
+      ],
+    },
+  ],
+  "/frontend/08-react16/": [
+    {
+      text: "React 16",
+      items: [
+        { text: "01-React16概述", link: "/frontend/08-react16/01-react16.md" },
+        { text: "02-组件开发", link: "/frontend/08-react16/02-components.md" },
+        { text: "03-JSX语法", link: "/frontend/08-react16/03-jsx.md" },
+        { text: "04-生命周期", link: "/frontend/08-react16/04-lifecycle.md" },
+        { text: "05-Hooks", link: "/frontend/08-react16/05-hooks.md" },
+        { text: "06-路由配置", link: "/frontend/08-react16/06-router.md" },
+        {
+          text: "07-状态管理",
+          link: "/frontend/08-react16/07-state-management.md",
+        },
+        { text: "08-项目实战", link: "/frontend/08-react16/08-project.md" },
+      ],
+    },
+  ],
+  "/frontend/09-react18/": [
+    {
+      text: "react18",
+      items: [
+        { text: "01-React18概述", link: "/frontend/07-react18/01-react18.md" },
+        { text: "02-并发特性", link: "/frontend/07-react18/02-concurrent.md" },
+        {
+          text: "03-Automatic Batching",
+          link: "/frontend/07-react18/03-automatic-batching.md",
+        },
+        {
+          text: "04-Transitions",
+          link: "/frontend/07-react18/04-transitions.md",
+        },
+        {
+          text: "05-Suspense新特性",
+          link: "/frontend/07-react18/05-suspense.md",
+        },
+        {
+          text: "06-Server Components",
+          link: "/frontend/07-react18/06-server-components.md",
+        },
+        {
+          text: "07-客户端与服务端",
+          link: "/frontend/07-react18/07-client-server.md",
+        },
+        { text: "08-性能优化", link: "/frontend/07-react18/08-performance.md" },
+        { text: "09-项目实战", link: "/frontend/07-react18/09-project.md" },
+      ],
+    },
+  ],
+  "/backend/01-nodejs/": [
+    {
+      text: "Node.js",
+      items: [
+        { text: "01-Node.js概述", link: "/backend/01-nodejs/01-nodejs.md" },
+        { text: "02-模块系统", link: "/backend/01-nodejs/02-modules.md" },
+        { text: "03-文件系统", link: "/backend/01-nodejs/03-fs.md" },
+        { text: "04-事件循环", link: "/backend/01-nodejs/04-event-loop.md" },
+        { text: "05-异步编程", link: "/backend/01-nodejs/05-async.md" },
+        { text: "06-流", link: "/backend/01-nodejs/06-streams.md" },
+        { text: "07-网络编程", link: "/backend/01-nodejs/07-network.md" },
+        { text: "08-数据库操作", link: "/backend/01-nodejs/08-database.md" },
+        { text: "09-性能优化", link: "/backend/01-nodejs/09-performance.md" },
+        { text: "10-项目实战", link: "/backend/01-nodejs/10-project.md" },
+      ],
+    },
+  ],
+  "/backend/02-express/": [
+    {
+      text: "Express",
+      items: [
+        { text: "01-Express概述", link: "/backend/02-express/01-express.md" },
+        { text: "02-路由系统", link: "/backend/02-express/02-routing.md" },
+        { text: "03-中间件", link: "/backend/02-express/03-middleware.md" },
+        { text: "04-请求处理", link: "/backend/02-express/04-request.md" },
+        { text: "05-响应处理", link: "/backend/02-express/05-response.md" },
+        { text: "06-模板引擎", link: "/backend/02-express/06-template.md" },
+        { text: "07-数据库集成", link: "/backend/02-express/07-database.md" },
+        {
+          text: "08-身份认证",
+          link: "/backend/02-express/08-authentication.md",
+        },
+        {
+          text: "09-错误处理",
+          link: "/backend/02-express/09-error-handling.md",
+        },
+        {
+          text: "10-API开发",
+          link: "/backend/02-express/10-api-development.md",
+        },
+      ],
+    },
+  ],
+  "/backend/03-nestjs/": [
+    {
+      text: "NestJS",
+      items: [
+        { text: "01-NestJS概述", link: "/backend/03-nestjs/01-nestjs.md" },
+        { text: "02-模块系统", link: "/backend/03-nestjs/02-modules.md" },
+        { text: "03-控制器", link: "/backend/03-nestjs/03-controllers.md" },
+        { text: "04-提供者", link: "/backend/03-nestjs/04-providers.md" },
+        { text: "05-中间件", link: "/backend/03-nestjs/05-middleware.md" },
+        {
+          text: "06-异常过滤器",
+          link: "/backend/03-nestjs/06-exception-filters.md",
+        },
+        { text: "07-Pipes管道", link: "/backend/03-nestjs/07-pipes.md" },
+        { text: "08-Guards守卫", link: "/backend/03-nestjs/08-guards.md" },
+        { text: "09-拦截器", link: "/backend/03-nestjs/09-interceptors.md" },
+        { text: "10-数据库集成", link: "/backend/03-nestjs/10-database.md" },
+        {
+          text: "11-身份认证",
+          link: "/backend/03-nestjs/11-authentication.md",
+        },
+        { text: "12-API文档", link: "/backend/03-nestjs/12-api-docs.md" },
+        { text: "13-微服务", link: "/backend/03-nestjs/13-microservices.md" },
+      ],
+    },
+  ],
+  //  '/webpack/': [
+  //     {
+  //         text: '前端基础',
+  //         items: [
+  //             {text: 'webpack', link: '/frontend/11-webpack/01-webpack.md'},
+  //         ]
+  //     }
+  // ],
+  //  '/vite/': [
+  //     {
+  //         text: '前端基础',
+  //         items: [
+  //             {text: 'vite', link: '/frontend/12-vite/01-vite.md'},
+  //         ]
+  //     }
+  // ],
+  //  '/esbuild/': [
+  //     {
+  //         text: '前端基础',
+  //         items: [
+  //             {text: 'esbuild', link: '/frontend/13-esbuild/01-esbuild.md'},
+  //         ]
+  //     }
+  // ],
+  //  '/rollup/': [
+  //     {
+  //         text: '前端基础',
+  //         items: [
+  //             {text: 'rollup', link: '/frontend/14-rollup/01-rollup.md'},
+  //         ]
+  //     }
+  // ],
+};

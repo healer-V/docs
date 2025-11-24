@@ -7,12 +7,12 @@ links:
 - title: 鸣谢
   desc: 建站中学习和使用了以下博客/网站的技术和分享，特别鸣谢！🫡
   list:
-    - name: VitePress
-      link: https://vitepress.dev/zh/
-      avatar: https://vitepress.dev/vitepress-logo-mini.svg
+    - name: 二丫讲梵
+      link: https://wiki.eryajf.net/
+      avatar: https://wiki.eryajf.net/img/logo.png
       irregular: true
-      descr: 由 Vite 和 Vue 驱动的静态站点生成器
-    - name: VitePress 快速上手教程
+      descr: 运维观止，迎刃而解
+    - name: VitePress 部署教程
       link: https://vitepress.yiov.top/
       avatar: https://vitepress.dev/vitepress-logo-mini.svg
       irregular: true

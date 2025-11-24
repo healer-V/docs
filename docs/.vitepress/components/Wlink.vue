@@ -86,13 +86,15 @@ const getGridClass = (title: string) => {
 /* 页面标题区域 */
 .page-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   padding: 2rem 0;
 }
 
 .page-title {
   font-size: 2.5rem;
   font-weight: 700;
+  height: 4rem;
+  line-height: 4rem;
   color: var(--vp-c-text-1);
   margin: 0 0 1rem 0;
   background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
