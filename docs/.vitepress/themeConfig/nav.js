@@ -144,17 +144,17 @@ export const nav = [
       { text: "03-hardhat", link: "/engineering/01-Webpack/01-Webpack.md" },
     ],
   },
-  {
-    // 手撕源码
-    text: "🥥源码解读",
-    collapsed: false,
-    items: [
-      { text: "01-vue2源码", link: "/skill/01-Vue组件封装" },
-      { text: "02-vue3源码", link: "/skill/02-Vue组件封装" },
-      { text: "03-react16源码", link: "/skill/03-React组件封装" },
-      { text: "04-react18源码", link: "/skill/04-React组件封装" },
-    ],
-  },
+  // {
+  //   // 手撕源码
+  //   text: "🥥源码解读",
+  //   collapsed: false,
+  //   items: [
+  //     { text: "01-vue2源码", link: "/skill/01-Vue组件封装" },
+  //     { text: "02-vue3源码", link: "/skill/02-Vue组件封装" },
+  //     { text: "03-react16源码", link: "/skill/03-React组件封装" },
+  //     { text: "04-react18源码", link: "/skill/04-React组件封装" },
+  //   ],
+  // },
   {
     text: "🥃Interview",
     link: "/interview/index.md",
