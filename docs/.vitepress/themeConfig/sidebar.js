@@ -102,22 +102,6 @@ export const sidebar = {
         { text: "01-Vue组件封装", link: "/skill/01-Vue组件封装.md" },
         { text: "02-React组件封装", link: "/skill/02-React组件封装.md" },
       ],
-      // items: [
-      //     {
-      //         text: '🥝前端项目技巧',
-      //         items: [
-      //             {text: '01-Vue组件封装', link: '/skill/01-Vue组件封装.md'},
-      //             {text: '02-React组件封装', link: '/skill/02-React组件封装.md'},
-      //         ]
-      //     },
-      //     {
-      //         text: '🥝后端项目技巧',
-      //         items: [
-      //             {text: '01-Vue组件封装', link: '/skill/01-Vue组件封装.md'},
-      //             {text: '02-React组件封装', link: '/skill/02-React组件封装.md'},
-      //         ]
-      //     }
-      // ]
     },
   ],
   "/practice/": [
@@ -135,7 +119,7 @@ export const sidebar = {
     {
       text: "🥥项目要点",
       items: [
-        { text: "移动端项目要点", link: "/project/" }, // /project/index.md
+        { text: "移动端项目要点", link: "/project/" },
         { text: "PC端项目要点", link: "/project/pc" },
       ],
     },
@@ -148,7 +132,7 @@ export const sidebar = {
           text: "01-基础",
           collapsed: true, // 侧边栏可折叠
           items: [
-            { text: "01-Html", link: "/interview/" }, // /interview/index.md
+            { text: "01-Html", link: "/interview/" },
             { text: "02-Css", link: "/interview/02-css.md" },
             { text: "03-JS", link: "/interview/03-javascript.md" },
             { text: "04-ES6", link: "/interview/04-ES6.md" },
@@ -199,18 +183,6 @@ export const sidebar = {
           collapsed: true, // 侧边栏可折叠
           items: [{ text: "12-项目常考", link: "/interview/12-Optimize.md" }],
         },
-        // {text: '01-Html', link: '/interview/'}, // /interview/index.md
-        // {text: '02-Css', link: '/interview/02-css.md'},
-        // {text: '03-JS', link: '/interview/03-javascript.md'},
-        // {text: '04-ES6', link: '/interview/04-ES6.md'},
-        // {text: '05-TS', link: '/interview/05-typescript.md'},
-        // {text: '06-Vue', link: '/interview/06-vue.md'},
-        // {text: '07-React', link: '/interview/08-react16.md'},
-        // {text: '08-工程化', link: '/interview/08-engineering.md'},
-        // {text: '09-网络', link: '/interview/09-network.md'},
-        // {text: '10-浏览器', link: '/interview/10-Browser.md'},
-        // {text: '11-手写题', link: '/interview/11-Handwriting.md'},
-        // {text: '12-项目常考', link: '/interview/12-Optimize.md'},
       ],
     },
   ],
@@ -234,23 +206,28 @@ export const sidebar = {
     {
       text: "html",
       items: [
-        { text: "01-概述", link: "/frontend/02-html/01-overview.md" },
-        { text: "02-标签", link: "/frontend/02-html/02-tag.md" },
-        { text: "03-属性", link: "/frontend/02-html/03-attribute.md" },
-        { text: "04-实体", link: "/frontend/02-html/04-entity.md" },
-        { text: "05-注释", link: "/frontend/02-html/05-comment.md" },
-        { text: "06-文档类型", link: "/frontend/02-html/06-doctype.md" },
-        { text: "07-字符编码", link: "/frontend/02-html/07-characterEncoding.md" },
+        { text: "01-概述", link: "/frontend/01-html/01-overview.md" },
+        { text: "02-标签", link: "/frontend/01-html/02-tag.md" },
+        { text: "03-属性", link: "/frontend/01-html/03-attributes.md" },
+        { text: "04-语义化", link: "/frontend/01-html/04-semanticElement.md" },
+        { text: "05-注释", link: "/frontend/01-html/05-form.md" },
+        { text: "06-文档类型", link: "/frontend/01-html/06-table.md" },
+        { text: "07-语义化扩展", link: "/frontend/01-html/07-semantic.md" },
       ],
     },
   ],
-  "/fornted/02-css/":[
+  "/frontend/02-css/": [
     {
-        text: "css",
-        items: [
-            { text: "01-概述", link: "/frontend/02-css/01-overview.md" },
-            
-        ]
+      text: "css",
+      items: [
+        { text: "01-概述", link: "/frontend/02-css/01-overview.md" },
+        { text: "02-选择器", link: "/frontend/02-css/02-selector.md" },
+        { text: "03-盒模型", link: "/frontend/02-css/03-box-model.md" },
+        { text: "04-布局", link: "/frontend/02-css/04-layout.md" },
+        { text: "05-动画", link: "/frontend/02-css/05-animation.md" },
+        { text: "06-响应式", link: "/frontend/02-css/06-responsive.md" },
+        { text: "07-预处理器", link: "/frontend/02-css/07-preprocessor.md" }
+      ]
     }
   ],
   "/frontend/03-javascript/": [
@@ -522,36 +499,172 @@ export const sidebar = {
       ],
     },
   ],
-  //  '/webpack/': [
-  //     {
-  //         text: '前端基础',
-  //         items: [
-  //             {text: 'webpack', link: '/frontend/11-webpack/01-webpack.md'},
-  //         ]
-  //     }
-  // ],
-  //  '/vite/': [
-  //     {
-  //         text: '前端基础',
-  //         items: [
-  //             {text: 'vite', link: '/frontend/12-vite/01-vite.md'},
-  //         ]
-  //     }
-  // ],
-  //  '/esbuild/': [
-  //     {
-  //         text: '前端基础',
-  //         items: [
-  //             {text: 'esbuild', link: '/frontend/13-esbuild/01-esbuild.md'},
-  //         ]
-  //     }
-  // ],
-  //  '/rollup/': [
-  //     {
-  //         text: '前端基础',
-  //         items: [
-  //             {text: 'rollup', link: '/frontend/14-rollup/01-rollup.md'},
-  //         ]
-  //     }
-  // ],
+  // ========== Web3 开发 ==========
+  // 学习路径：Web3.js -> Solidity -> Ethereum
+  "/web3/01-web3.js/": [
+    {
+      text: "Web3.js - 前端与区块链交互",
+      items: [
+        { text: "01-概述", link: "/web3/01-web3.js/01-overview.md" },
+        { text: "02-环境搭建", link: "/web3/01-web3.js/02-setup.md" },
+        { text: "03-连接区块链", link: "/web3/01-web3.js/03-connection.md" },
+        { text: "04-账户管理", link: "/web3/01-web3.js/04-accounts.md" },
+        { text: "05-查询余额", link: "/web3/01-web3.js/05-balance.md" },
+        { text: "06-发送交易", link: "/web3/01-web3.js/06-transactions.md" },
+        { text: "07-合约交互", link: "/web3/01-web3.js/07-contracts.md" },
+        { text: "08-事件监听", link: "/web3/01-web3.js/08-events.md" },
+        { text: "09-错误处理", link: "/web3/01-web3.js/09-error-handling.md" },
+        { text: "10-最佳实践", link: "/web3/01-web3.js/10-best-practices.md" },
+      ],
+    },
+  ],
+  "/web3/02-solidity/": [
+    {
+      text: "Solidity - 智能合约开发",
+      items: [
+        // 基础篇
+        { text: "01-概述", link: "/web3/02-solidity/01-overview.md" },
+        { text: "02-开发环境", link: "/web3/02-solidity/02-environment.md" },
+        { text: "03-第一个合约", link: "/web3/02-solidity/03-first-contract.md" },
+        // 数据类型篇
+        { text: "04-值类型", link: "/web3/02-solidity/16-value-types.md" },
+        { text: "05-引用类型", link: "/web3/02-solidity/17-reference-types.md" },
+        { text: "06-地址类型", link: "/web3/02-solidity/15-address.md" },
+        { text: "07-数组", link: "/web3/02-solidity/13-arrays.md" },
+        { text: "08-映射", link: "/web3/02-solidity/12-mappings.md" },
+        { text: "09-字符串", link: "/web3/02-solidity/14-strings.md" },
+        { text: "10-结构体", link: "/web3/02-solidity/10-structs.md" },
+        { text: "11-枚举", link: "/web3/02-solidity/11-enums.md" },
+        { text: "12-类型转换", link: "/web3/02-solidity/18-type-conversion.md" },
+        // 语法篇
+        { text: "13-变量", link: "/web3/02-solidity/03-variables.md" },
+        { text: "14-运算符", link: "/web3/02-solidity/19-operators.md" },
+        { text: "15-控制结构", link: "/web3/02-solidity/20-control-structures.md" },
+        { text: "16-循环", link: "/web3/02-solidity/21-loops.md" },
+        // 函数与合约篇
+        { text: "17-函数", link: "/web3/02-solidity/04-functions.md" },
+        { text: "18-合约", link: "/web3/02-solidity/06-contracts.md" },
+        { text: "19-继承", link: "/web3/02-solidity/07-inheritance.md" },
+        { text: "20-接口", link: "/web3/02-solidity/08-interfaces.md" },
+        { text: "21-库", link: "/web3/02-solidity/09-libraries.md" },
+        { text: "22-事件", link: "/web3/02-solidity/05-events.md" },
+      ],
+    },
+  ],
+  "/web3/03-ethereum/": [
+    {
+      text: "Ethereum - 以太坊生态",
+      items: [
+        // 基础概念
+        { text: "01-概述", link: "/web3/03-ethereum/01-overview.md" },
+        { text: "02-账户系统", link: "/web3/03-ethereum/02-accounts.md" },
+        { text: "03-交易机制", link: "/web3/03-ethereum/03-transactions.md" },
+        { text: "04-交易确认", link: "/web3/03-ethereum/07-transaction-confirmation.md" },
+        // 合约开发
+        { text: "05-合约基础", link: "/web3/03-ethereum/04-contracts.md" },
+        { text: "06-ABI接口", link: "/web3/03-ethereum/05-abi.md" },
+        { text: "07-合约部署", link: "/web3/03-ethereum/09-contract-deployment.md" },
+        { text: "08-合约调用", link: "/web3/03-ethereum/10-contract-calls.md" },
+        { text: "09-合约交互", link: "/web3/03-ethereum/08-contract-interaction.md" },
+        // 事件与状态
+        { text: "10-事件系统", link: "/web3/03-ethereum/06-events.md" },
+        { text: "11-合约事件", link: "/web3/03-ethereum/11-contract-events.md" },
+        { text: "12-合约状态", link: "/web3/03-ethereum/12-contract-state.md" },
+        { text: "13-合约存储", link: "/web3/03-ethereum/13-contract-storage.md" },
+      ],
+    },
+  ],
+  // ========== 微前端 ==========
+  
+  "/microfrontend/01-qiankun/": [
+    {
+      text: "qiankun - 微前端框架",
+      items: [
+        // 基础篇
+        { text: "01-概述", link: "/microfrontend/01-qiankun/01-overview.md" },
+        { text: "02-快速开始", link: "/microfrontend/01-qiankun/02-quick-start.md" },
+        // 核心概念
+        { text: "03-主应用配置", link: "/microfrontend/01-qiankun/03-main-app.md" },
+        { text: "04-微应用配置", link: "/microfrontend/01-qiankun/04-micro-app.md" },
+        { text: "05-路由系统", link: "/microfrontend/01-qiankun/05-routing.md" },
+        { text: "06-主应用路由", link: "/microfrontend/01-qiankun/06-main-app-routing.md" },
+        { text: "07-微应用路由", link: "/microfrontend/01-qiankun/07-micro-app-routing.md" },
+        // 进阶特性
+        { text: "08-应用通信", link: "/microfrontend/01-qiankun/08-communication.md" },
+        { text: "09-样式隔离", link: "/microfrontend/01-qiankun/09-style-isolation.md" },
+        { text: "10-沙箱机制", link: "/microfrontend/01-qiankun/10-sandbox.md" },
+        { text: "11-资源加载", link: "/microfrontend/01-qiankun/11-resource-loading.md" },
+        { text: "12-生命周期", link: "/microfrontend/01-qiankun/12-micro-app-lifecycle.md" },
+        { text: "13-状态管理", link: "/microfrontend/01-qiankun/13-micro-app-state-management.md" },
+      ],
+    },
+  ],
+  // ========== 跨端开发 ==========
+  // 学习路径：概述 -> 环境搭建 -> 核心概念 -> 进阶特性 -> 实践部署
+  "/crossend/01-reactnative/": [
+    {
+      text: "React Native - 跨平台移动开发",
+      items: [
+        { text: "01-概述", link: "/crossend/01-reactnative/index.md" },
+        { text: "02-环境搭建", link: "/crossend/01-reactnative/01-getting-started.md" },
+        { text: "03-组件系统", link: "/crossend/01-reactnative/02-basic-components.md" },
+        { text: "04-样式和布局", link: "/crossend/01-reactnative/03-styling-and-layout.md" },
+        { text: "05-导航系统", link: "/crossend/01-reactnative/04-navigation.md" },
+        { text: "06-状态管理", link: "/crossend/01-reactnative/05-state-management.md" },
+        { text: "07-网络请求", link: "/crossend/01-reactnative/06-networking.md" },
+        { text: "08-Native模块", link: "/crossend/01-reactnative/07-native-modules.md" },
+        { text: "09-性能优化", link: "/crossend/01-reactnative/08-performance-optimization.md" },
+        { text: "10-打包部署", link: "/crossend/01-reactnative/09-deployment.md" },
+        { text: "11-学习资源", link: "/crossend/01-reactnative/10-learning-resources.md" },
+      ],
+    },
+  ],
+  "/crossend/02-flutter/": [
+    {
+      text: "Flutter - 跨平台UI框架",
+      items: [
+        { text: "01-概述", link: "/crossend/02-flutter/index.md" },
+        { text: "02-环境搭建", link: "/crossend/02-flutter/01-getting-started.md" },
+        { text: "03-Widget系统", link: "/crossend/02-flutter/02-widgets.md" },
+        { text: "04-布局系统", link: "/crossend/02-flutter/03-layout.md" },
+        { text: "05-状态管理", link: "/crossend/02-flutter/04-state-management.md" },
+        { text: "06-导航系统", link: "/crossend/02-flutter/05-navigation.md" },
+        { text: "07-网络请求", link: "/crossend/02-flutter/06-networking.md" },
+        { text: "08-动画系统", link: "/crossend/02-flutter/07-animation.md" },
+        { text: "09-性能优化", link: "/crossend/02-flutter/08-performance-optimization.md" },
+        { text: "10-打包部署", link: "/crossend/02-flutter/09-deployment.md" },
+        { text: "11-学习资源", link: "/crossend/02-flutter/10-learning-resources.md" },
+      ],
+    },
+  ],
+  "/crossend/03-harmonyOs/": [
+    {
+      text: "HarmonyOS - 鸿蒙应用开发",
+      items: [
+        { text: "01-概述", link: "/crossend/03-harmonyOs/index.md" },
+        { text: "02-环境搭建", link: "/crossend/03-harmonyOs/01-getting-started.md" },
+        { text: "03-ArkUI框架", link: "/crossend/03-harmonyOs/02-arkui-framework.md" },
+        { text: "04-布局系统", link: "/crossend/03-harmonyOs/03-layout.md" },
+        { text: "05-状态管理", link: "/crossend/03-harmonyOs/03-state-management.md" },
+        { text: "06-页面路由", link: "/crossend/03-harmonyOs/04-page-routing.md" },
+        { text: "07-网络请求", link: "/crossend/03-harmonyOs/05-networking.md" },
+        { text: "08-权限管理", link: "/crossend/03-harmonyOs/06-permission-management.md" },
+        { text: "09-性能优化", link: "/crossend/03-harmonyOs/07-performance-optimization.md" },
+      ],
+    },
+  ],
+  "/crossend/04-elctron/": [
+    {
+      text: "Electron - 桌面应用开发",
+      items: [
+        { text: "01-概述", link: "/crossend/04-elctron/index.md" },
+        { text: "02-环境搭建", link: "/crossend/04-elctron/02-setup.md" },
+        { text: "03-主进程与渲染进程", link: "/crossend/04-elctron/03-processes.md" },
+        { text: "04-窗口管理", link: "/crossend/04-elctron/04-windows.md" },
+        { text: "05-进程通信", link: "/crossend/04-elctron/05-ipc.md" },
+        { text: "06-原生模块", link: "/crossend/04-elctron/06-native-modules.md" },
+        { text: "07-打包发布", link: "/crossend/04-elctron/07-packaging.md" },
+      ],
+    },
+  ],
 };
