@@ -478,7 +478,7 @@ const styles = StyleSheet.create({
 1. 在模拟器或真机上运行应用
 2. 启用调试模式（摇一摇设备或使用快捷键）
 3. 选择 "Debug" 选项
-4. 在 Chrome 中打开 http://localhost:8081/debugger-ui/
+4. 在 Chrome 中打开 `http://localhost:8081/debugger-ui/`
 
 #### 2. 使用 React Native Debugger
 
