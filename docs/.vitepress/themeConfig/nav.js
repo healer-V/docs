@@ -15,7 +15,7 @@ export const nav = [
         collapsed: false,
         items: [
           { text: "html", link: "/frontend/01-html/01-overview.md" },
-          { text: "css", link: "/frontend/02-css/index.md" },
+          { text: "css", link: "/frontend/02-css/01-overview.md" },
           {
             text: "javascript",
             link: "/frontend/03-javascript/01-dataType.md",
@@ -31,7 +31,7 @@ export const nav = [
         ],
       },
       {
-        text: "02-框架学习",
+        text: "02-前端框架",
         collapsed: false,
         items: [
           { text: "vue2", link: "/frontend/06-vue2/01-vue2.md" },
@@ -59,8 +59,8 @@ export const nav = [
         text: "05-前端工程化",
         collapsed: false,
         items: [
-          { text: "webpack", link: "/engineering/01-Webpack/01-Webpack.md" },
-          { text: "vite", link: "/engineering/01-Vite/01-Vite.md" },
+          { text: "webpack", link: "/engineering/01-webpack/" },
+          { text: "vite", link: "/engineering/02-vite/01-vite.md" },
         ],
       },
 
@@ -93,7 +93,7 @@ export const nav = [
         collapsed: false,
         items: [
           { text: "mysql", link: "/backend/01-html/01-html.md" },
-          { text: "postgresql", link: "/backend/01-html/01-html.md" },
+          { text: "postgreSQL", link: "/backend/01-html/01-html.md" },
           { text: "redis", link: "/backend/01-html/01-html.md" },
         ],
       },
@@ -103,63 +103,27 @@ export const nav = [
     text: "🍨运维",
     items: [
       {
-        text: "01-shell",
-        items: [
-          { text: "01-基础命令", link: "/tools/01-shell/index.md" },
-        ],
+        text: "01-Shell脚本",
+        link: "/operation/01-shell/index.md",
       },
       {
-        text: "02-jenkins",
-        items: [
-          { text: "01-基础概念", link: "/tools/02-docker/index.md" },
-        ],
+        text: "02-Docker容器",
+        link: "/operation/05-docker/index.md",
       },
       {
-        text: "03-cicd",
-        items: [
-          { text: "01-基础概念", link: "/tools/02-docker/index.md" },
-        ],
+        text: "03-Kubernetes",
+        link: "/operation/04-k8s/index.md",
       },
-      {
-        text: "04-k8s",
-        items: [
-          { text: "01-基础概念", link: "/tools/02-docker/index.md" },
-        ],
-      },
-      {
-        text: "05-docker",
-        items: [
-          { text: "01-基础概念", link: "/tools/02-docker/index.md" },
-        ],
-      },
+      { text: "04-Jenkins", link: "/operation/02-jenkins/index.md" },
+      { text: "05-CI/CD实践", link: "/operation/03-cicd/index.md" },
     ],
   },
-  {
-    // web3.0
-    text: "🍓web3.0",
-    collapsed: false,
-    items: [
-      { text: "01-solidity", link: "/engineering/01-Webpack/01-Webpack.md" },
-      { text: "02-web3.js", link: "/engineering/01-Webpack/01-Webpack.md" },
-      { text: "03-hardhat", link: "/engineering/01-Webpack/01-Webpack.md" },
-    ],
-  },
-  // {
-  //   // 手撕源码
-  //   text: "🥥源码解读",
-  //   collapsed: false,
-  //   items: [
-  //     { text: "01-vue2源码", link: "/skill/01-Vue组件封装" },
-  //     { text: "02-vue3源码", link: "/skill/02-Vue组件封装" },
-  //     { text: "03-react16源码", link: "/skill/03-React组件封装" },
-  //     { text: "04-react18源码", link: "/skill/04-React组件封装" },
-  //   ],
-  // },
-  {
-    text: "🥃Interview",
-    link: "/interview/index.md",
-
-  },
+  { text: "🍓web3.0", items:[
+    { text: "01-web3.0", link: "/web3/01-web3.0/01-overview.md" },
+    { text: "02-solidity", link: "/web3/02-solidity/01-overview.md" },
+    { text: "03-ethereum", link: "/web3/03-ethereum/01-overview.md" },
+  ]},
+  { text: "🥃Interview", link: "/interview/index.md" },
   {
     text: "🍚workflow",
     items: [
@@ -167,7 +131,7 @@ export const nav = [
         text: "Training",
         items: [
           { text: "01-组件封装", link: "/skill/01-Vue组件封装" },
-          { text: "02-项目实践", link: "/practice/02-vue2PC.md" },
+          { text: "02-项目实践", link: "/practices/" },
           { text: "03-项目难点", link: "/project/index.md" },
         ]
       },

@@ -42,11 +42,8 @@ export const sidebar = {
           collapsed: true,
           items: [
             { text: "01-网络协议", link: "/articles/network/01-http.md" },
-            {
-              text: "02-文件传输",
-              link: "/articles/network/02-FileTransfer.md",
-            },
-            { text: "03-WebSocket", link: "/articles/network/03-WebSocket.md" },
+            { text: "02-WebSocket", link: "/articles/network/02-WebSocket.md" },
+            { text: "03-niginx", link: "/articles/network/03-niginx.md" },
           ],
         },
 
@@ -70,8 +67,7 @@ export const sidebar = {
           items: [
             { text: "01-Webpack", link: "/articles/engineering/01-Webpack.md" },
             { text: "02-Vite", link: "/articles/engineering/02-Vite.md" },
-            { text: "03-ESBuild", link: "/articles/engineering/03-ESBuild.md" },
-            { text: "04-Rollup", link: "/articles/engineering/04-Rollup.md" },
+            { text: "03-Rollup", link: "/articles/engineering/03-Rollup.md" },
           ],
         },
         {
@@ -79,8 +75,8 @@ export const sidebar = {
           collapsed: true,
           items: [
             { text: "01-Git", link: "/articles/tools/01-Git.md" },
-            { text: "02-Markdown", link: "/articles/tools/02-Markdown.md" },
-            { text: "03-IDE工具", link: "/articles/tools/03-IDE.md" },
+            { text: "02-Markdown语法", link: "/articles/tools/02-Markdown.md" },
+            { text: "03-IDE使用技巧", link: "/articles/tools/03-IDE.md" },
           ],
         },
 
@@ -104,14 +100,18 @@ export const sidebar = {
       ],
     },
   ],
-  "/practice/": [
+  "/practices/": [
     {
       text: "🍚项目",
       items: [
-        { text: "01-vue2移动端项目", link: "/practice/01-vue2.md" },
-        { text: "02-vue2PC端项目", link: "/practice/02-vue2PC.md" },
-        { text: "03-vue3移动端项目", link: "/practice/03-vue3.md" },
-        { text: "04-vue3PC端项目", link: "/practice/04-vue3PC.md" },
+        { text: "01-vue2移动端项目", link: "/practices/01-vue2.md" },
+        { text: "02-vue2PC端项目", link: "/practices/02-vue2PC.md" },
+        { text: "03-vue3移动端项目", link: "/practices/03-vue3.md" },
+        { text: "04-vue3PC端项目", link: "/practices/04-vue3PC.md" },
+        { text: "05-react16移动端项目", link: "/practices/05-react16_mobile.md" },
+        { text: "06-react16PC端项目", link: "/practices/06-react16PC.md" },
+        { text: "07-react18移动端项目", link: "/practices/07-react18_mobile.md" },
+        { text: "08-react18PC端项目", link: "/practices/08-react18PC.md" },
       ],
     },
   ],
@@ -383,50 +383,40 @@ export const sidebar = {
   ],
   "/frontend/08-react16/": [
     {
-      text: "React 16",
+      text: "React 16 - 从零开始学习",
       items: [
+        // 基础篇
         { text: "01-React16概述", link: "/frontend/08-react16/01-react16.md" },
-        { text: "02-组件开发", link: "/frontend/08-react16/02-components.md" },
-        { text: "03-JSX语法", link: "/frontend/08-react16/03-jsx.md" },
+        { text: "02-JSX语法", link: "/frontend/08-react16/03-jsx.md" },
+        { text: "03-组件开发", link: "/frontend/08-react16/02-components.md" },
+        // 核心概念
         { text: "04-生命周期", link: "/frontend/08-react16/04-lifecycle.md" },
-        { text: "05-Hooks", link: "/frontend/08-react16/05-hooks.md" },
+        { text: "05-Hooks基础", link: "/frontend/08-react16/05-hooks.md" },
+        // 进阶应用
         { text: "06-路由配置", link: "/frontend/08-react16/06-router.md" },
-        {
-          text: "07-状态管理",
-          link: "/frontend/08-react16/07-state-management.md",
-        },
+        { text: "07-状态管理", link: "/frontend/08-react16/07-state-management.md" },
+        // 实战
         { text: "08-项目实战", link: "/frontend/08-react16/08-project.md" },
       ],
     },
   ],
   "/frontend/09-react18/": [
     {
-      text: "react18",
+      text: "React 18 - 新特性与最佳实践",
       items: [
-        { text: "01-React18概述", link: "/frontend/07-react18/01-react18.md" },
-        { text: "02-并发特性", link: "/frontend/07-react18/02-concurrent.md" },
-        {
-          text: "03-Automatic Batching",
-          link: "/frontend/07-react18/03-automatic-batching.md",
-        },
-        {
-          text: "04-Transitions",
-          link: "/frontend/07-react18/04-transitions.md",
-        },
-        {
-          text: "05-Suspense新特性",
-          link: "/frontend/07-react18/05-suspense.md",
-        },
-        {
-          text: "06-Server Components",
-          link: "/frontend/07-react18/06-server-components.md",
-        },
-        {
-          text: "07-客户端与服务端",
-          link: "/frontend/07-react18/07-client-server.md",
-        },
-        { text: "08-性能优化", link: "/frontend/07-react18/08-performance.md" },
-        { text: "09-项目实战", link: "/frontend/07-react18/09-project.md" },
+        // 基础篇
+        { text: "01-React18概述", link: "/frontend/09-react18/01-react18.md" },
+        { text: "02-并发特性", link: "/frontend/09-react18/02-concurrent-features.md" },
+        // 核心新特性
+        { text: "03-Automatic Batching", link: "/frontend/09-react18/03-automatic-batching.md" },
+        { text: "04-Transitions", link: "/frontend/09-react18/04-transitions.md" },
+        { text: "05-Suspense新特性", link: "/frontend/09-react18/05-suspense.md" },
+        { text: "06-新Hooks", link: "/frontend/09-react18/06-new-hooks.md" },
+        // 进阶应用
+        { text: "07-路由配置", link: "/frontend/09-react18/07-router.md" },
+        { text: "08-状态管理", link: "/frontend/09-react18/08-state-management.md" },
+        // 实战
+        { text: "09-项目实战", link: "/frontend/09-react18/09-project.md" },
       ],
     },
   ],
@@ -499,9 +489,7 @@ export const sidebar = {
       ],
     },
   ],
-  // ========== Web3 开发 ==========
-  // 学习路径：Web3.js -> Solidity -> Ethereum
-  "/web3/01-web3.js/": [
+  "/web3/01-web3.0/": [
     {
       text: "Web3.js - 前端与区块链交互",
       items: [
@@ -574,8 +562,6 @@ export const sidebar = {
       ],
     },
   ],
-  // ========== 微前端 ==========
-  
   "/microfrontend/01-qiankun/": [
     {
       text: "qiankun - 微前端框架",
@@ -599,8 +585,6 @@ export const sidebar = {
       ],
     },
   ],
-  // ========== 跨端开发 ==========
-  // 学习路径：概述 -> 环境搭建 -> 核心概念 -> 进阶特性 -> 实践部署
   "/crossend/01-reactnative/": [
     {
       text: "React Native - 跨平台移动开发",
@@ -664,6 +648,109 @@ export const sidebar = {
         { text: "05-进程通信", link: "/crossend/04-elctron/05-ipc.md" },
         { text: "06-原生模块", link: "/crossend/04-elctron/06-native-modules.md" },
         { text: "07-打包发布", link: "/crossend/04-elctron/07-packaging.md" },
+      ],
+    },
+  ],
+  "/operation/01-shell/": [
+    {
+      text: "Shell脚本 - Linux自动化基础",
+      items: [
+        { text: "01-Shell概述", link: "/operation/01-shell/01-overview.md" },
+        { text: "02-基础语法", link: "/operation/01-shell/02-basic-syntax.md" },
+        { text: "03-变量与参数", link: "/operation/01-shell/03-variables.md" },
+        { text: "04-流程控制", link: "/operation/01-shell/04-control-flow.md" },
+        { text: "05-函数", link: "/operation/01-shell/05-functions.md" },
+        { text: "06-文件操作", link: "/operation/01-shell/06-file-operations.md" },
+        { text: "07-文本处理", link: "/operation/01-shell/07-text-processing.md" },
+        { text: "08-实战脚本", link: "/operation/01-shell/08-practical-scripts.md" },
+      ],
+    },
+  ],
+  "/operation/05-docker/": [
+    {
+      text: "Docker容器 - 应用容器化技术",
+      items: [
+        { text: "01-Docker概述", link: "/operation/05-docker/01-overview.md" },
+        { text: "02-安装配置", link: "/operation/05-docker/02-installation.md" },
+        { text: "03-镜像管理", link: "/operation/05-docker/03-images.md" },
+        { text: "04-容器管理", link: "/operation/05-docker/04-containers.md" },
+        { text: "05-Dockerfile", link: "/operation/05-docker/05-dockerfile.md" },
+        { text: "06-Docker Compose", link: "/operation/05-docker/06-compose.md" },
+        { text: "07-网络与存储", link: "/operation/05-docker/07-network-storage.md" },
+        { text: "08-实战部署", link: "/operation/05-docker/08-deployment.md" },
+      ],
+    },
+  ],
+  "/operation/04-k8s/": [
+    {
+      text: "Kubernetes - 容器编排平台",
+      items: [
+        { text: "01-K8s概述", link: "/operation/04-k8s/01-overview.md" },
+        { text: "02-集群搭建", link: "/operation/04-k8s/02-cluster-setup.md" },
+        { text: "03-Pod与容器", link: "/operation/04-k8s/03-pods-containers.md" },
+        { text: "04-Service与Ingress", link: "/operation/04-k8s/04-service-ingress.md" },
+        { text: "05-ConfigMap与Secret", link: "/operation/04-k8s/05-config-secret.md" },
+        { text: "06-Deployment与StatefulSet", link: "/operation/04-k8s/06-deployment.md" },
+        { text: "07-存储管理", link: "/operation/04-k8s/07-storage.md" },
+        { text: "08-监控与日志", link: "/operation/04-k8s/08-monitoring.md" },
+      ],
+    },
+  ],
+  "/operation/02-jenkins/": [
+    {
+      text: "Jenkins - 持续集成工具",
+      items: [
+        { text: "01-Jenkins概述", link: "/operation/02-jenkins/01-overview.md" },
+        { text: "02-安装配置", link: "/operation/02-jenkins/02-installation.md" },
+        { text: "03-Pipeline语法", link: "/operation/02-jenkins/03-pipeline.md" },
+        { text: "04-插件使用", link: "/operation/02-jenkins/04-plugins.md" },
+        { text: "05-构建任务", link: "/operation/02-jenkins/05-build-jobs.md" },
+        { text: "06-集成Git", link: "/operation/02-jenkins/06-git-integration.md" },
+        { text: "07-集成Docker", link: "/operation/02-jenkins/07-docker-integration.md" },
+        { text: "08-实战案例", link: "/operation/02-jenkins/08-practical-cases.md" },
+      ],
+    },
+  ],
+  "/operation/03-cicd/": [
+    {
+      text: "CI/CD实践 - 持续集成与部署",
+      items: [
+        { text: "01-CI/CD概述", link: "/operation/03-cicd/01-overview.md" },
+        { text: "02-GitLab CI/CD", link: "/operation/03-cicd/02-gitlab-ci.md" },
+        { text: "03-GitHub Actions", link: "/operation/03-cicd/03-github-actions.md" },
+        { text: "04-自动化测试", link: "/operation/03-cicd/04-automated-testing.md" },
+        { text: "05-自动化部署", link: "/operation/03-cicd/05-automated-deployment.md" },
+        { text: "06-最佳实践", link: "/operation/03-cicd/06-best-practices.md" },
+        { text: "07-实战案例", link: "/operation/03-cicd/07-practical-cases.md" },
+      ],
+    },
+  ],
+  "/operation/05-niginx": [
+    {
+      text: "Nginx - 反向代理服务器",
+      items: [
+      ],
+    },
+  ],
+  "/engineering/01-webpack/": [
+    {
+      text: "Webpack - 前端构建工具",
+      items: [
+
+      ],
+    },
+  ],
+  "/engineering/02-vite/": [
+    {
+      text: "Vite - 前端构建工具",
+      items: [
+        {text: "拆掉vite外壳，原理剖析", link: "/engineering/02-vite/01-vite.md"},
+        {text: "企业级脚手架落地", link: "/engineering/02-vite/02-脚手架.md"},
+        {text: "全体系插件实战+自定义插件开发", link: "/engineering/02-vite/03-插件实战.md"},
+        {text: "企业级项目打包优化全链路", link: "/engineering/02-vite/04-打包优化.md"},
+        {text: "vue/react双项目实战", link: "/engineering/02-vite/05-双项目实战.md"},
+        {text: "部署上线+CI/CD自动化", link: "/engineering/02-vite/06-部署上线.md"},
+        {text: "阿里云完整部署流程（企业级SOP）", link: "/engineering/02-vite/07-阿里云部署.md"},
       ],
     },
   ],
