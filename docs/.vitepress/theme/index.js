@@ -20,6 +20,7 @@ import './style/index.css';
 
 export default {
   extends: DefaultTheme,
+  // ignoreDeadLinks: true,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
