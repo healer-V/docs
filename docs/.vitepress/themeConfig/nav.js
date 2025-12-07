@@ -8,7 +8,7 @@ export const nav = [
     link: "/blog-list",
   },
   {
-    text: "🥤前端体系",
+    text: "🥤前端",
     items: [
       {
         text: "01-前端基础",
@@ -34,7 +34,7 @@ export const nav = [
         text: "02-前端框架",
         collapsed: false,
         items: [
-          { text: "vue2", link: "/frontend/06-vue2/01-vue2.md" },
+          { text: "vue2", link: "/frontend/06-vue2/01-01-introduction.md" },
           { text: "vue3", link: "/frontend/07-vue3/01-vue3.md" },
           { text: "react16", link: "/frontend/08-react16/01-react16.md" },
           { text: "react18", link: "/frontend/09-react18/01-react18.md" },
@@ -68,7 +68,7 @@ export const nav = [
   },
 
   {
-    text: "🍚后端体系",
+    text: "🍚后端",
     items: [
       {
         text: "01-nodejs",
@@ -118,7 +118,7 @@ export const nav = [
       { text: "05-CI/CD实践", link: "/operation/03-cicd/index.md" },
     ],
   },
-  { text: "🍓web3.0", items:[
+  { text: "🍓web3", items:[
     { text: "01-web3.0", link: "/web3/01-web3.0/01-overview.md" },
     { text: "02-solidity", link: "/web3/02-solidity/01-overview.md" },
     { text: "03-ethereum", link: "/web3/03-ethereum/01-overview.md" },

@@ -41,6 +41,24 @@ links:
       avatar: https://note.weizwz.com/logo.png
       irregular: true
       descr: 探索知识的无限可能
+
+    - name: Vue2源码
+      link: https://vue-js.com/learn-vue/
+      avatar: https://vitepress.dev/vitepress-logo-mini.svg
+      irregular: true
+      descr: 探索知识的无限可能
+
+    - name: Vue3源码
+      link: https://wangzhenhao.github.io/vue3-analysis/start/preface.html
+      avatar: https://vitepress.dev/vitepress-logo-mini.svg
+      irregular: true
+      descr: 探索知识的无限可能
+
+    - name: 手写Vue源码
+      link: https://cccdk.github.io/my-vue/
+      avatar: https://cccdk.github.io/assets/image/logo.png
+      irregular: true
+      descr: 探索知识的无限可能
 - title: 传送门
   desc: 聚集众多优秀独立博客，随机传送 🚀
   list:
