@@ -1,172 +1,8 @@
 # 生命周期
 
-## 一、创建 Vue 实例
-
-::: tip Vue 实例
-1. 每个 Vue 应用都是通过创建一个新的 Vue 实例开始的。
-2. Vue 实例是 Vue 应用的根，它连接了数据层和视图层，负责管理应用的状态和行为。
-3. 通过 `new Vue()` 构造函数创建实例，Vue 会遍历选项对象，初始化数据、方法、计算属性等。
-4. 通常使用 `vm`（ViewModel 的缩写）来命名 Vue 实例。
-5. 一个页面通常只有一个根 Vue 实例，但可以创建多个子实例。
-:::
-
-**基本语法：**
-
-```javascript
-var vm = new Vue({
-  // 选项对象，包含数据、方法、生命周期钩子等
-})
-```
-
-::: tip 要点
-- 必须通过 `new` 关键字创建
-- 创建后可通过 `vm.$data`、`vm.$el` 等属性访问实例的内部状态
-- 实例的所有属性和方法都可以通过 `this` 在选项对象中访问
-:::
-
-## 二、Vue 实例选项
-
-### 1、el（挂载点）
-
-#### 1.1、定义
-
-`el` 选项用于指定 Vue 实例要挂载的 DOM 元素，Vue 会将模板渲染到该元素内部。
-
-::: tip 说明
-- **作用**：告诉 Vue 实例应该将编译后的模板挂载到哪个 DOM 元素上
-- **类型**：可以是字符串（CSS 选择器）或 DOM 元素对象
-- **限制**：挂载的元素会被 Vue 完全控制，挂载后该元素内的所有内容都会被 Vue 模板替换
-- **替代方案**：如果不提供 `el`，可以通过 `vm.$mount('#app')` 手动挂载
-:::
-
-#### 1.2、示例
-
-```javascript
-// 方式一：在选项中直接指定
-new Vue({
-  el: '#app'
-})
-
-// 方式二：使用 $mount 方法手动挂载
-var vm = new Vue({
-  // 选项
-})
-vm.$mount('#app')
-
-// 方式三：挂载到 DOM 元素对象
-var app = document.getElementById('app')
-new Vue({
-  el: app
-})
-```
-
-::: warning 注意事项
-
-- 挂载的元素不能是 `<html>` 或 `<body>` 标签
-- 一个 Vue 实例只能挂载到一个元素上
-- 挂载后，该元素成为 Vue 实例的根元素，可以通过 `this.$el` 访问
-:::
-### 2、data（数据）
-
-#### 2.1、定义
-:::tip
-1. **解释**：`data` 选项用于定义 Vue 实例的响应式数据对象。
-2. **响应式原理**：Vue 使用 `Object.defineProperty` 将 `data` 中的属性转换为响应式属性。
-    - Vue 会递归地将 `data` 中的所有属性转换为 getter/setter，从而实现数据的响应式更新。
-3. **数据访问**：在模板和实例方法中，可以通过 `this.propertyName` 访问 `data` 中的属性
-4. **数据修改**：直接修改 `data` 中的属性会触发视图更新
-5. **对象限制**：`data` 必须是一个函数（组件中）或对象（根实例中）
-:::
-
-#### 2.2、示例
-
-```javascript
-// 根实例中使用对象
-new Vue({
-  data: {
-    message: 'Hello Vue!',
-    count: 0,
-    user: {
-      name: '张三',
-      age: 25
-    }
-  }
-})
-
-// 组件中必须使用函数（避免多个组件实例共享同一数据对象）
-export default {
-  data() {
-    return {
-      message: 'Hello Vue!',
-      count: 0
-    }
-  }
-}
-```
-
-::: warning 注意事项
-1. 只有 `data` 中的属性才是响应式的，后续添加的属性需要使用 `Vue.set()` 或 `this.$set()`。
-2. `data` 中的属性名不能以 `$` 或 `_` 开头（是 Vue 内部属性的保留前缀）。
-3. 组件中，`data` 必须是返回对象的函数，确保每个组件实例都有独立的数据副本。
-:::
-
-### 3、methods（方法）
-
-#### 3.1、定义
-:::tip
-1. **解释**:`methods` 选项用于定义 Vue 实例的方法。
-2. 这些方法可以在模板中通过事件绑定调用，也可以在实例的其他方法中通过 `this` 访问。
-- **方法绑定**：`methods` 中的方法会自动绑定到 Vue 实例，`this` 始终指向当前实例。
-- **调用方式**：在模板中使用 `@click="methodName"` 或 `v-on:click="methodName"` 调用。
-- **无缓存**：与计算属性不同，`methods` 中的方法每次调用都会执行，不会缓存结果。
-- **事件处理**：常用于处理用户交互事件，如点击、输入等。
-:::
-
-#### 3.2、示例
-
-::: details 查看示例
-```javascript
-new Vue({
-  data: {
-    count: 0,
-    message: 'Hello'
-  },
-  methods: {
-    // 传统函数定义
-    greet: function() {
-      alert('Hello!')
-    },
-    // ES6 简写
-    increment() {
-      this.count++
-    },
-    // 带参数的方法
-    sayHello(name) {
-      alert(`Hello, ${name}!`)
-    },
-    // 访问 data 中的数据
-    updateMessage() {
-      this.message = 'Updated!'
-    }
-  }
-})
-```
-在模板中使用
-```html
-<button @click="increment">增加</button>
-<button @click="sayHello('Vue')">打招呼</button>
-```
-:::
 
 
-::: warning 注意事项
-- `methods` 中的方法不要使用箭头函数，否则 `this` 不会指向 Vue 实例
-- 如果方法只是用于计算并返回一个值，考虑使用 `computed` 计算属性以获得更好的性能
-- 方法可以访问 `data`、`computed` 和其他 `methods` 中的属性和方法
-:::
-
-
-## 三、生命周期钩子
+## 一、生命周期钩子
 
 ### 概述
 
@@ -953,7 +789,7 @@ new Vue({
 ```
 :::
 
-## 四、生命周期使用场景
+## 二、生命周期使用场景
 
 **使用场景：**
 | 生命周期 | 使用场景 | 说明 |
@@ -1067,9 +903,9 @@ export default {
 }
 ```
 
-## 五、总结
+## 三、总结
 
-### 5.1、核心要点
+### 1、核心要点
 
 ::: tip 核心要点
 - **Vue 实例**：Vue 应用的根，通过 `new Vue()` 创建，连接数据层和视图层
@@ -1078,7 +914,7 @@ export default {
 - **合理使用**：正确使用生命周期钩子可以优化应用性能和用户体验，防止内存泄漏
 :::
 
-### 5.2、重要原则
+### 2、重要原则
 
 ::: tip 重要原则
 1. **数据请求在 `created`**：尽早获取数据，不依赖 DOM
@@ -1088,7 +924,7 @@ export default {
 5. **keep-alive 组件使用 `activated` 和 `deactivated`**：管理缓存组件的激活和停用状态
 :::
 
-### 5.3、最佳实践
+### 3、最佳实践
 
 ::: tip 最佳实践
 - ✅ 在 `created` 中发起 API 请求

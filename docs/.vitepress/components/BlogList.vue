@@ -2,8 +2,8 @@
   <div class="blog-container">
 
     <!-- 搜索和筛选 -->
-    <div class="blog-filters">
-      <div class="search-container">
+    <!-- <div class="blog-filters"> -->
+      <!-- <div class="search-container">
         <input
           v-model="searchKeyword"
           type="text"
@@ -13,10 +13,10 @@
         />
         <div v-if="searchKeyword" class="search-results-info">
           找到 {{ filteredArticles.length }} 篇相关文章
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
       
-      <div class="category-filters">
+      <!-- <div class="category-filters">
         <button
           v-for="category in categories"
           :key="category.name"
@@ -26,17 +26,17 @@
           {{ category.name }}
           <span class="count">({{ category.count }})</span>
         </button>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
 
     <!-- 文章统计 -->
-    <div class="blog-stats">
+    <!-- <div class="blog-stats">
       <span class="stats-text">
         共找到 <strong>{{ filteredArticles.length }}</strong> 篇文章
         <span v-if="selectedCategory !== 'all'">，分类：{{ selectedCategory }}</span>
         <span v-if="searchKeyword">，关键词：{{ searchKeyword }}</span>
       </span>
-    </div>
+    </div> -->
 
     <!-- 主要内容区域 -->
     <div class="main-content">

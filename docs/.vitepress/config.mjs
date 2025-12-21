@@ -12,11 +12,10 @@ export default defineConfig({
   ],
     //启用深色模式
   appearance:'dark', 
-  ignoreDeadLinks: true,
   themeConfig: {
     logo: '/logo_new.png',
     markdown: {
-      lineNumbers: true,
+      lineNumbers: true
     },
     i18nRouting: true,
     nav: nav,

@@ -8,6 +8,13 @@
     /* box-shadow: 0 10px 30px 0 rgb(0 0 0 / 40%); */
     z-index: 1;
 }
+.vp-doc div[class*=language-] .lang{
+    color: #000 !important;
+    font-size: 1.4em !important;
+    font-family: 'Roboto Mono','Menlo','Monaco',"monospace";
+    font-weight: 800;
+    z-index: 2;
+}
 
 /* 无行号：添加 macOS 风格的小圆点 */
 .vp-doc div[class*=language-]::before {

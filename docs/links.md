@@ -11,7 +11,7 @@ links:
       link: https://wiki.eryajf.net/
       avatar: https://wiki.eryajf.net/img/logo.png
       irregular: true
-      descr: 运维观止，迎刃而解
+      descr: 博客导引、学习周刊、运维最佳实践
     - name: VitePress 部署教程
       link: https://vitepress.yiov.top/
       avatar: https://vitepress.dev/vitepress-logo-mini.svg
@@ -42,23 +42,43 @@ links:
       irregular: true
       descr: 探索知识的无限可能
 
-    - name: Vue2源码
+    - name: Vue2源码解读
       link: https://vue-js.com/learn-vue/
       avatar: https://vitepress.dev/vitepress-logo-mini.svg
       irregular: true
-      descr: 探索知识的无限可能
+      descr: 生命周期阶段剖析
 
-    - name: Vue3源码
+    - name: Vue3源码解析
       link: https://wangzhenhao.github.io/vue3-analysis/start/preface.html
       avatar: https://vitepress.dev/vitepress-logo-mini.svg
       irregular: true
-      descr: 探索知识的无限可能
+      descr: api解读
 
-    - name: 手写Vue源码
+    - name: DK 酱React源码
       link: https://cccdk.github.io/my-vue/
       avatar: https://cccdk.github.io/assets/image/logo.png
       irregular: true
       descr: 探索知识的无限可能
+
+    - name: ExplainThis
+      link: https://www.explainthis.io/zh-hans/swe/read
+      avatar: https://www.explainthis.io/img/logo.svg
+      irregular: true
+      descr: 前端工程化、面试详解、CICD、devops
+      
+    - name: 小鹤
+      link: https://geekdaxue.co/books/qingyubailou@gygiq6/
+      avatar: https://geekdaxue.co/static/images/logo_platypus.png
+      irregular: true
+      descr: 大厂面经、必备修养
+
+    - name: 劝学录
+      link: https://vitepress.yiov.top/
+      avatar: https://p6-passport.byteacctimg.com/img/user-avatar/80b7e110b2bb0c48424e9afe7ffebb18~200x200.awebp
+
+      irregular: true
+      descr: VitePress 快速上手中文教程
+
 - title: 传送门
   desc: 聚集众多优秀独立博客，随机传送 🚀
   list:
@@ -72,4 +92,9 @@ links:
       link: https://webteleporter.top/
       avatar: https://webteleporter.top/img/logo.png
       descr: 独立博客传送门
+
+    - name: Teek 主题
+      link: https://vp.teek.top/
+      avatar: https://p9-passport.byteacctimg.com/img/user-avatar/5b2df4c2a154e153086184bc222cbd1a~180x180.awebp
+      descr: VitePress 简洁轻量主题
 ---

@@ -79,3 +79,38 @@
 
 
 }
+.VPNavBar.has-sidebar .content{
+    padding-left: calc(var(--vp-sidebar-width) / 1.5) !important;
+}
+.VPNavBar.has-sidebar .content .title{
+    width: fit-content !important;
+}
+.VPNavBarTitle{
+    width: fit-content !important;
+} 
+.content-body{
+    justify-content: center !important;
+}
+.VPNavBarSearch{
+    padding-left:0px !important;
+    width: fit-content !important;
+}
+.VPSidebar{
+    padding-right: 0px !important;
+}
+.VPSidebar .group{
+    width: calc(var(--vp-sidebar-width) - 84px) !important;
+}
+@media (min-width: 1440px){
+    .VPSidebar{
+        width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px) !important;
+    }
+}
+@media (min-width: 960px){
+    .VPSidebar{
+        width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px) !important;
+    }
+}
+.VPContent{
+    
+}

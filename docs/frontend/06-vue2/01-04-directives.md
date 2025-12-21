@@ -1,8 +1,8 @@
 # 指令系统
-
+:::tip
 - Vue 使用了基于 HTML 的模板语法，允许开发者声明式地将 DOM 绑定到底层 Vue 实例的数据。
 - 所有指令都以 `v-` 开头，用于在模板中实现数据绑定、条件渲染、列表渲染等功能。
-
+:::
 ## 一、插值
 
 ### 1、文本插值
@@ -1276,60 +1276,45 @@ export default {
 ```
 
 ### 2、原理说明
-
+:::tip
 `v-model` 是 Vue 提供的语法糖，它实际上是 `v-bind` 和 `v-on` 的组合。不同表单元素的实现方式不同：
+:::
 
 **1. 文本输入框（input、textarea）**
 
 ```vue
 <!-- v-model 写法 -->
-<input v-model="message">
-
-<!-- 等价于 -->
-<input 
-  :value="message" 
-  @input="message = $event.target.value"
->
+<input v-model="message" />
+<input  :value="message" @input="message = $event.target.value"/>
 ```
+
 
 **2. 复选框（checkbox）**
 
 ```vue
 <!-- 单个复选框 -->
-<input type="checkbox" v-model="checked">
+<input type="checkbox" v-model="checked" />
 
 <!-- 等价于 -->
-<input 
-  type="checkbox"
-  :checked="checked"
-  @change="checked = $event.target.checked"
->
+<input type="checkbox" :checked="checked" @change="checked = $event.target.checked" />
 
 <!-- 多个复选框（数组） -->
-<input type="checkbox" value="苹果" v-model="fruits">
+<input type="checkbox" value="苹果" v-model="fruits" />
 
 <!-- 等价于 -->
-<input 
-  type="checkbox"
-  value="苹果"
-  :checked="fruits.includes('苹果')"
-  @change="handleFruitChange($event)"
->
+<input type="checkbox" value="苹果" :checked="fruits.includes('苹果')" @change="handleFruitChange($event)" />
 ```
-
 **3. 单选按钮（radio）**
 
 ```vue
 <!-- v-model 写法 -->
-<input type="radio" value="选项1" v-model="picked">
+<input type="radio" value="选项1" v-model="picked"/>
 
 <!-- 等价于 -->
 <input 
   type="radio"
   value="选项1"
-  :checked="picked === '选项1'"
-  @change="picked = $event.target.value"
->
+  :checked="picked === '选项1'" @change="picked = $event.target.value" />
 ```
 
 **4. 选择框（select）**
@@ -1342,9 +1327,7 @@ export default {
 
 <!-- 等价于 -->
 <select 
-  :value="selected"
-  @change="selected = $event.target.value"
->
+  :value="selected" @change="selected = $event.target.value">
   <option value="A">选项A</option>
 </select>
 ```
@@ -1357,10 +1340,11 @@ export default {
 
 <!-- 等价于 -->
 <custom-input 
-  :value="message"
-  @input="message = $event"
-></custom-input>
+  :value="message" @input="message = $event"></custom-input>
+
 ```
+
+::: details 
 
 ```vue
 <!-- 子组件需要接收 value prop 并触发 input 事件 -->
@@ -1378,6 +1362,7 @@ export default {
 </script>
 ```
 
+:::
 
 **工作原理总结：**
 

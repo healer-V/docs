@@ -2,32 +2,30 @@
 
 ## 一、CSS基础概念
 
-### 1.1 CSS简介
+### 1、 CSS简介
 >[!TIP]
 > CSS（Cascading Style Sheets）层叠样式表：
 > - 用于控制网页的表现和布局
 > - 实现内容与样式的分离
 > - 支持响应式设计和动画效果
 
-### 1.2 CSS发展历史
->[!TIP]
+>[!TIP] CSS发展历史
 > - 1996年：CSS1发布（字体、颜色等基础样式）
 > - 1998年：CSS2发布（定位、媒体查询等）
 > - 2009年：CSS3发布（动画、渐变、阴影等现代特性）
 
-### 1.3 CSS基本语法
->[!TIP]
+>[!TIP] CSS基本语法
 > CSS规则由选择器和声明块组成：
 > - `选择器`：指定样式应用的元素
 > - `声明块`：包含一组用{}包裹的样式声明
 > - `声明`：由属性和值组成，以分号结尾
 
-#### 常用CSS属性分类：
-1. **布局属性**：display, position, float, clear等
-2. **盒模型属性**：width, height, padding, margin, border等
-3. **文本属性**：color, font-size, line-height, text-align等
-4. **背景属性**：background-color, background-image等
-5. **动画属性**：transition, animation, transform等
+>[!note]常用CSS属性分类
+>1. **布局属性**：display, position, float, clear等
+>2. **盒模型属性**：width, height, padding, margin, border等
+>3. **文本属性**：color, font-size, line-height, text-align等
+>4. **背景属性**：background-color, background-image等
+>5. **动画属性**：transition, animation, transform等
 
 :::details 详细属性示例
 ```css
@@ -57,10 +55,12 @@ selector {
 }
 ```
 :::
+
 ## 二、CSS核心模块
 
-### 2.1 选择器系统
-#### 2.1.1 基础选择器
+### 1、选择器系统
+
+#### 1.1、类型 & 优先级
 
 ::: tip 选择器优先
  - ID选择器: 100
@@ -75,7 +75,8 @@ selector {
  - 相邻兄弟选择器: 0
 ::: 
 
-#### 2.1.2 选择器语法
+#### 1.2、选择器语法
+
 :::details 详细选择器示例
 ```css
 /* 元素选择器 - 选择所有<p>元素 */
@@ -108,8 +109,17 @@ p {
 ```
 :::
 
-#### 2.1.2 组合选择器
-:::details 代码示例
+#### 1.3、组合
+>[!note] 组合方式
+>1. 后代 : `空格`
+>2. 子元素 : `>`
+>3. 相邻兄弟 : `+`
+>4. 通用兄弟 ：`~`
+>5. 列组合器 ： `||`
+>6. 分组选择器 ：`,`
+>7. 层叠组合 ：`@layer`
+
+::: details 选择器示例
 ```css
 /* 后代选择器 */
 div p { color: green; }
@@ -119,10 +129,31 @@ div > p { font-weight: bold; }
 
 /* 相邻兄弟选择器 */
 h1 + p { margin-top: 0; }
+
+/* 通用兄弟选择器： h1 后面所有的 p 兄弟元素 */
+h1 ~ p { color: green; }
+
+/* 列组合选择器：选择属于 "selected" 列的单元格 */
+col.selected || td {
+  background: lightblue;
+}
+
+
+/* 分组选择器：h1、h2、h3 都应用相同的样式 */
+h1, h2, h3 {
+  font-family: Arial;
+}
+
+
+/* 复合选择器 同时具有 class1 和 class2 的元素 */
+.class1.class2 {
+  background: yellow;
+}
+
 ```
 :::
 
-#### 2.1.3 伪类与伪元素
+#### 1.3 伪类与伪元素
 >[!tip]核心差异
 > - `伪类`：是选择处于特定状态的元素，其本质是已有元素的特殊状态。如：hover、active、focus、nth-child等
 > - `伪元素`：用于创建文档树里不存在的虚拟元素，如：::before、::after、::first-line（元素的首行）等
@@ -159,7 +190,7 @@ p::first-line {
 ```
 :::
 
-### 2.2 盒模型
+### 2、盒模型
 >[!TIP] 定义
 > 每个元素都是一个矩形盒子，包含：
 > - `content（内容）`: width, height
@@ -239,8 +270,8 @@ p::first-line {
 ```
 :::
 
-### 2.3 布局系统
-#### 2.3.1 传统布局
+### 3、布局系统
+#### 3.1、传统布局
 >[!TIP] 两种方式
 > - 浮动布局：通过float属性实现
 > - 定位布局：通过position属性实现
@@ -259,7 +290,7 @@ p::first-line {
 ```
 :::
 
-#### 2.3.2 Flex布局
+#### 3.2、Flex布局
 >[!TIP] 定义
 >1. 意为：**弹性布局**
 >2. 用来为盒状模型提供最大的灵活性
@@ -276,7 +307,7 @@ p::first-line {
 ```
 :::
 
-##### 2.3.2.1 容器属性
+##### 3.2.1、容器属性
 1. **display**: 
 ::: tip 值
    - `flex`: 启用flex布局
@@ -328,7 +359,7 @@ p::first-line {
    - `gap`: 简写形式
 :::
 
-##### 2.3.2.2 项目属性
+##### 3.2.2、项目属性
 1. **order**: 排列顺序
 ::: tip 值
    - 数值越小，排列越靠前，默认为0
@@ -391,10 +422,19 @@ p::first-line {
 ```
 :::
 
-#### 2.3.3 Grid布局
+#### 3.3、Grid布局
 >[!TIP] Grid属性详解
 
-##### 2.3.3.1 容器属性
+|    |属性名|属性值|取值范围|
+|----|----|----|---|
+|容器属性|`display`|设置布局方式|`grid` `inline-grid`|
+|容器属性|`grid-template-columns`|定义列轨道|`100px`, `1fr`, `minmax(100px, 1fr)` `repeat(12, 1fr)`|
+|容器属性|属性|属性||
+|----|----|----|---|
+|项目属性|属性|属性||
+
+
+##### 3.3.1、容器属性
 1. **display**: 
 ::: tip 值
    - `grid`: 启用grid布局
@@ -439,23 +479,23 @@ p::first-line {
 :::
 10. **align-content**: 网格垂直对齐
 ::: tip 值
-    - 同justify-content
+ - `同justify-content`
 :::
 11. **grid-auto-columns**: 隐式列轨道大小
 ::: tip 值
-    - 长度值: `100px`, `1fr`等
+  - 长度值: `100px`, `1fr`等
 :::
 
 12. **grid-auto-rows**: 隐式行轨道大小
 ::: tip 值
-    - 同grid-auto-columns
+  - 同grid-auto-columns
 :::
 
 13. **grid-auto-flow**: 自动放置算法
 ::: tip 值
-    - `row` (默认) | `column` | `row dense` | `column dense`
+  - `row` (默认) | `column` | `row dense` | `column dense`
 :::
-##### 2.3.3.2 项目属性
+##### 3.3.2、项目属性
 1. **grid-column**: 列位置
 ::: tip 值
    - `grid-column-start`: 起始列线
@@ -559,21 +599,25 @@ p::first-line {
 
 
 
-### 2.4 响应式设计
->[!TIP] 响应式设计详解
+### 4、响应式设计
 
 #### 2.4.1 核心概念
-1. **定义**：响应式网页设计(RWD)是一种网页设计方法，使网站能够自动适应不同设备的屏幕尺寸
-2. **三大技术支柱**：
-   - 流体网格(Fluid Grids)
-   - 弹性图片(Flexible Images)
-   - 媒体查询(Media Queries)
-3. **设计原则**：
-   - 移动优先(Mobile First)
-   - 渐进增强(Progressive Enhancement)
+>[!note] 概念
+>1. **定义**：响应式网页设计(RWD)是一种网页设计方法，使网站能够自动适应不同设备的屏幕尺寸
+>2. **三大技术支柱**：
+>   - 流体网格(Fluid Grids)
+>   - 弹性图片(Flexible Images)
+>   - 媒体查询(Media Queries)
+>3. **设计原则**：
+>   - 移动优先(Mobile First)
+>   - 渐进增强(Progressive Enhancement)
 
 #### 2.4.2 媒体查询详解
->[!NOTE] 媒体查询语法
+>[!NOTE] 媒体查询
+> - 允许内容呈现适应不同的设备或屏幕尺寸，从而提供更好的用户体验。
+> - 媒体查询可以针对不同的媒体类型（如屏幕、打印）和不同的设备特性（如视口宽度、高度、方向等）应用不同的样式规则。
+
+
 ```css
 @media [媒体类型] and (媒体特性) {
   /* CSS规则 */
@@ -581,12 +625,15 @@ p::first-line {
 ```
 
 ##### 媒体类型
+:::tip
 - `all` (默认): 所有设备
 - `screen`: 电脑屏幕、平板、手机等
 - `print`: 打印机和打印预览
 - `speech`: 屏幕阅读器
+:::
 
 ##### 常用媒体特性
+:::tip
 1. **宽度相关**:
    - `width`: 视口宽度
    - `min-width`: 最小宽度
@@ -601,6 +648,7 @@ p::first-line {
    - `resolution`: 设备分辨率
    - `min-resolution`: 最小分辨率
    - `max-resolution`: 最大分辨率
+:::
 
 ##### 常见断点设置
 
@@ -758,11 +806,9 @@ body {
 
 ## 三、CSS高级特性
 
-### 3.1 动画与过渡
-#### 3.1.1 过渡效果
->[!TIP] 过渡效果详解
+### 1、过渡
 
-##### 过渡属性详解
+#### 1.1、过渡属性
 1. **transition-property**: 
 ::: tip 指定应用过渡效果的CSS属性
    - 值: `none` | `all` | `property-name` (如`width`, `opacity`)
@@ -796,7 +842,7 @@ body {
 - `transition: property duration timing-function delay;`
 :::
 
-##### 过渡效果示例
+#### 1.2、效果示例
 ::: details 过渡效果示例
 ```css
 
@@ -820,7 +866,7 @@ body {
 ```
 :::
 
-##### 过渡性能优化
+#### 1.3、性能优化
 1. 优先使用`opacity`和`transform`属性，它们不会触发重排
 2. 避免过渡`height`、`width`等会触发重排的属性
 3. 使用`will-change`提示浏览器优化
@@ -830,10 +876,9 @@ body {
 }
 ```
 
-#### 3.1.2 关键帧动画
->[!TIP] 关键帧动画详解
+### 2、动画
 
-##### @keyframes规则
+#### 2.1、@keyframes规则
 ```css
 @keyframes animation-name {
   from { /* 起始状态 */ }
@@ -845,7 +890,7 @@ body {
 }
 ```
 
-##### 动画属性详解
+#### 2.2、动画属性详解
 1. **animation-name**: 
 ::: tip 指定@keyframes动画名称
    - 默认值: `none`
@@ -901,7 +946,7 @@ body {
 - `animation: name duration timing-function delay iteration-count direction fill-mode;`
 :::
 
-##### 动画示例
+#### 2.3、动画示例
 ::: details 点击展开查看动画示例
 ```css
 /* 简写语法 */
@@ -925,11 +970,13 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 }
 ```
 :::
-### 3.2 视觉效果
-#### 3.2.1 渐变背景
+
+### 3、视觉效果
+
+#### 3.1、渐变背景
 >[!TIP] 渐变背景详解
 
-##### 线性渐变(linear-gradient)
+##### 1、线性渐变
 ::: tip 线性渐变取值
 - direction: 
   - 角度: `to right`, `to bottom right`, `45deg`
@@ -943,7 +990,7 @@ background: linear-gradient(direction, color-stop1, color-stop2, ...);
 ```
 :::
 
-##### 径向渐变(radial-gradient)
+##### 2、径向渐变
 ::: tip 径向渐变取值
 - shape: `ellipse`(默认) | `circle`
 - size: `closest-side` | `farthest-corner` | 具体尺寸
@@ -956,7 +1003,8 @@ background: radial-gradient(shape size at position, color-stop1, color-stop2, ..
 ```
 :::
 
-##### 渐变示例
+##### 3、渐变示例
+
 ::: details 点击展开查看渐变示例
 ```css
 /* 线性渐变 */
@@ -978,12 +1026,11 @@ background: radial-gradient(shape size at position, color-stop1, color-stop2, ..
 ```
 :::
 
-#### 3.2.2 阴影效果
->[!TIP] 阴影效果详解
+#### 3.2、阴影效果
 
-##### box-shadow属性
+##### 1、box-shadow
 
-::: tip box-shadow取值
+::: tip box-shadow 取值
 - `h-shadow`（必需）：水平阴影的位置。正值表示阴影在元素右侧，负值表示在左侧。
 - `v-shadow`（必需）：垂直阴影的位置。正值表示阴影在元素下方，负值表示在上方。
 - `blur`（可选）：阴影的模糊半径。值越大，阴影越模糊。默认值为 0，表示没有模糊效果。
@@ -1026,12 +1073,12 @@ box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5),
 ```
 :::
 
-##### text-shadow属性
+##### 2、text-shadow
 **基本语法结构**
 ```css
 text-shadow: h-shadow v-shadow blur-radius color;
 ```
-::: tip text-shadow取值
+::: tip text-shadow 取值
 
 - `h-shadow`（必需）：水平阴影的位置。正值表示阴影在文本右侧，负值表示在左侧。
 - `v-shadow`（必需）：垂直阴影的位置。正值表示阴影在文本下方，负值表示在上方。
@@ -1086,12 +1133,10 @@ text-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb;
 :::
 
 
-
-
-### 3.3 现代CSS特性
-#### 3.3.1 自定义属性
+### 4、现代CSS特性
+#### 4.1、CSS变量
 >[!TIP] 概念
-> - 自定义属性以 `--` 开头，通常定义在 `:root 选择器`中（全局作用域）。
+> - CSS变量以 `--` 开头，通常定义在 `:root 选择器`中（全局作用域）。
 > - 也可以定义在特定元素中（局部作用域）
 
 ##### 定义变量 
@@ -1116,7 +1161,7 @@ text-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb;
 
 ##### 使用变量
 >[!tip] 使用变量方式
-> 使用 `var()` 函数引用自定义属性
+> 使用 `var()` 函数引用CSS变量
 
 
 ::: details 使用变量示例
@@ -1127,6 +1172,71 @@ text-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb;
   font-size: var(--font-size);
 }
 ``` 
+:::
+
+
+##### 回退值
+>[!tip]
+> - 如果被使用的CSS变量未定义时，则使用回退值（备用值）。
+
+:::tip
+```css
+/* 使用回退值 */
+.element {
+  /* 如果 --custom-color 未定义，则使用 #ccc */
+  color: var(--custom-color, #ccc);
+  
+  /* 多个回退值 */
+  background: var(--custom-background, 
+               var(--fallback-background, 
+               linear-gradient(white, #f0f0f0)));
+}
+
+/* 嵌套回退 */
+.element {
+  font-size: var(--custom-size, var(--default-size, 16px));
+}
+```
+:::
+
+##### 动态修改变量
+
+**1、使用Javascript修改**
+
+```js
+// 获取根元素
+const root = document.documentElement;
+
+// 设置变量
+root.style.setProperty('--primary-color', '#ff0000');
+
+// 获取变量值
+const primaryColor = getComputedStyle(root)
+  .getPropertyValue('--primary-color');
+
+// 移除变量
+root.style.removeProperty('--primary-color');
+```
+**2、响应式修改**
+:::tip
+```js
+// 根据窗口大小动态修改变量
+function updateSpacing() {
+  const width = window.innerWidth;
+  const root = document.documentElement;
+  
+  if (width < 768) {
+    root.style.setProperty('--spacing-unit', '8px');
+  } else if (width < 1024) {
+    root.style.setProperty('--spacing-unit', '16px');
+  } else {
+    root.style.setProperty('--spacing-unit', '24px');
+  }
+}
+
+window.addEventListener('resize', updateSpacing);
+updateSpacing(); // 初始化
+```
 :::
 
 ##### 变量特性

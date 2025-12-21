@@ -53,7 +53,7 @@ export const nav = [
       {
         text: "04-微前端",
         collapsed: false,
-        items: [{ text: "qiankun", link: "/micfrontend/01-qiankun/index.md" }],
+        items: [{ text: "qiankun", link: "/micfrontend/01-qiankun/01-overview.md" }],
       },
       {
         text: "05-前端工程化",
@@ -116,6 +116,8 @@ export const nav = [
       },
       { text: "04-Jenkins", link: "/operation/02-jenkins/index.md" },
       { text: "05-CI/CD实践", link: "/operation/03-cicd/index.md" },
+      { text: "06-Nginx", link: "/operation/06-nginx/index.md" },
+      { text: "07-Prometheus", link: "/operation/07-prometheus/index.md" },
     ],
   },
   { text: "🍓web3", items:[
@@ -149,7 +151,7 @@ export const nav = [
   {
     text: "🍒关于",
     items: [
-      { text: "关于我", link: "/about/" },
+      { text: "学习文档", link: "/about/" },
       { text: "友情链接", link: "/links" },
     ],
   },

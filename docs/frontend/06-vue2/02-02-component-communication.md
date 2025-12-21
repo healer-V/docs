@@ -1,13 +1,15 @@
-# 2.2 组件通信
+# 组件通信
 
 Vue 组件之间的通信有多种方式，根据不同的场景选择合适的方法。
 
-## 2.2.1 父组件 → 子组件（Props）
+## 1、父组件 → 子组件（Props）
+>[!tip]
+>1. 父组件中在子组件的标签中绑定属性，即传递数据
+>2. 子组件中使用`props`接受数据
 
-### 2.2.1.1 基本用法
-
+### 1.1、基本用法
+:::details 父组件
 ```vue
-<!-- 父组件 -->
 <template>
   <div>
     <ChildComponent :message="parentMessage" />
@@ -29,9 +31,10 @@ export default {
 }
 </script>
 ```
+:::
 
+:::details 子组件
 ```vue
-<!-- 子组件 -->
 <template>
   <div>
     <p>{{ message }}</p>
@@ -46,9 +49,11 @@ export default {
 }
 </script>
 ```
+:::
 
-### 2.2.1.2 Props 验证
 
+### 1.2、字段校验
+:::details Props传值 字段校验
 ```vue
 <script>
 export default {
@@ -89,13 +94,16 @@ export default {
 }
 </script>
 ```
-
-### 2.2.1.3 单向数据流
-
-::: tip 单向数据流
-Props 是单向的，子组件不应该直接修改 props。应该通过 `$emit` 通知父组件更新。
 :::
 
+### 1.3、单向数据流
+
+::: tip 单向数据流
+- Props 是单向的，子组件不应该直接修改 props。
+- 应该通过 `$emit` 通知父组件更新。
+:::
+
+::: details 错误示例
 ```vue
 <!-- ❌ 错误做法 -->
 <script>
@@ -109,7 +117,9 @@ export default {
 }
 </script>
 ```
+:::
 
+:::details 正确示例
 ```vue
 <!-- ✅ 正确做法 -->
 <script>
@@ -129,11 +139,11 @@ export default {
 }
 </script>
 ```
+:::
+## 2、子组件 → 父组件（$emit）
 
-## 2.2.2 子组件 → 父组件（$emit）
-
-### 2.2.2.1 基本用法
-
+### 2.1、基本用法
+:::details 子组件
 ```vue
 <!-- 子组件 -->
 <template>
@@ -152,7 +162,8 @@ export default {
 }
 </script>
 ```
-
+:::
+:::details 父组件
 ```vue
 <!-- 父组件 -->
 <template>
@@ -182,9 +193,19 @@ export default {
 }
 </script>
 ```
+:::
 
-### 2.2.2.2 .sync 修饰符（双向绑定）
+### 2.2、.sync 修饰符（双向绑定）
 
+:::tip
+1. Vue 2 提供的一个语法糖，简化了父子组件之间双向绑定数据的操作。
+2. Vue 会自动为这个 `prop` 添加一个更新事件监听，事件名称为 `update:propName`。
+3. 在父组件中，使用 .sync 修饰符来绑定一个数据到子组件的 prop 上。
+4. 在子组件中，需要修改这个 prop 时，触发一个 `update:propName` 事件，并传递新值。
+:::
+
+单个`prop`使用`.sync`
+::: details 父组件
 ```vue
 <!-- 父组件 -->
 <template>
@@ -204,7 +225,9 @@ export default {
 }
 </script>
 ```
+:::
 
+:::details 子组件
 ```vue
 <!-- 子组件 -->
 <template>
@@ -224,10 +247,54 @@ export default {
 }
 </script>
 ```
+:::
 
-## 2.2.3 兄弟组件通信
+多个 `prop` 使用 `.sync`
+:::details 父组件中多prop
+```vue
+<template>
+  <child-component 
+    :name.sync="user.name"
+    :age.sync="user.age"
+  ></child-component>
+</template>
 
-### 2.2.3.1 方式1：通过父组件中转
+<script>
+export default {
+  data() {
+    return {
+      user: {
+        name: '张三',
+        age: 20
+      }
+    }
+  }
+}
+</script>
+```
+:::
+
+:::details 子组件中多prop
+```vue
+<template>
+  <div>
+    <input :value="name" @input="$emit('update:name', $event.target.value)">
+    <input type="number" :value="age" @input="$emit('update:age', $event.target.value)">
+  </div>
+</template>
+
+<script>
+export default {
+  props: ['name', 'age']
+}
+</script>
+```
+:::
+
+
+## 3、兄弟组件通信
+
+### 3.1、方式1：通过父组件中转
 
 ```vue
 <!-- 父组件 -->
@@ -254,7 +321,7 @@ export default {
 </script>
 ```
 
-### 2.2.3.2 方式2：使用事件总线
+### 3.2、方式2：使用事件总线
 
 ```javascript
 // eventBus.js
@@ -295,7 +362,7 @@ export default {
 </script>
 ```
 
-### 2.2.3.3 方式3：使用 Vuex（状态管理）
+### 3.3、方式3：使用 Vuex
 
 ```javascript
 // store.js
@@ -346,9 +413,9 @@ export default {
 </script>
 ```
 
-## 2.2.4 跨级组件通信
+## 4、跨级组件通信
 
-### 2.2.4.1 provide / inject
+### 4.1、provide / inject
 
 ```vue
 <!-- 祖先组件 -->
@@ -380,129 +447,8 @@ export default {
 </script>
 ```
 
-## 2.2.5 实际应用示例
 
-### 2.2.5.1 示例：表单组件
-
-```vue
-<!-- Form.vue 父组件 -->
-<template>
-  <div>
-    <FormInput 
-      v-model="username" 
-      label="用户名" 
-      :rules="usernameRules"
-    />
-    <FormInput 
-      v-model="email" 
-      label="邮箱" 
-      type="email"
-      :rules="emailRules"
-    />
-    <button @click="submit">提交</button>
-  </div>
-</template>
-
-<script>
-import FormInput from './FormInput.vue'
-
-export default {
-  components: {
-    FormInput
-  },
-  data() {
-    return {
-      username: '',
-      email: '',
-      usernameRules: [
-        { required: true, message: '用户名不能为空' }
-      ],
-      emailRules: [
-        { required: true, message: '邮箱不能为空' },
-        { type: 'email', message: '邮箱格式不正确' }
-      ]
-    }
-  },
-  methods: {
-    submit() {
-      console.log('提交:', {
-        username: this.username,
-        email: this.email
-      })
-    }
-  }
-}
-</script>
-```
-
-```vue
-<!-- FormInput.vue 子组件 -->
-<template>
-  <div class="form-input">
-    <label>{{ label }}</label>
-    <input 
-      :type="type" 
-      :value="value"
-      @input="$emit('input', $event.target.value)"
-      @blur="validate"
-    />
-    <span v-if="error" class="error">{{ error }}</span>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'FormInput',
-  props: {
-    value: String,
-    label: String,
-    type: {
-      type: String,
-      default: 'text'
-    },
-    rules: Array
-  },
-  data() {
-    return {
-      error: ''
-    }
-  },
-  methods: {
-    validate() {
-      if (!this.rules) return
-      
-      for (let rule of this.rules) {
-        if (rule.required && !this.value) {
-          this.error = rule.message
-          return
-        }
-        if (rule.type === 'email' && !this.isValidEmail(this.value)) {
-          this.error = rule.message
-          return
-        }
-      }
-      this.error = ''
-    },
-    isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-    }
-  }
-}
-</script>
-
-<style scoped>
-.form-input {
-  margin-bottom: 16px;
-}
-
-.error {
-  color: red;
-  font-size: 12px;
-}
-</style>
-```
-
-## 2.2.6 通信方式总结
+## 5、通信方式总结
 
 | 通信方式 | 适用场景 | 优点 | 缺点 |
 |---------|---------|------|------|
@@ -511,12 +457,3 @@ export default {
 | **事件总线** | 任意组件 | 灵活 | 难以追踪，不推荐 |
 | **Vuex** | 复杂应用 | 集中管理，可追踪 | 增加复杂度 |
 | **provide/inject** | 跨级组件 | 避免逐层传递 | 耦合度高 |
-
-## 2.2.7 总结
-
-::: tip 总结
-- **父子组件**：使用 Props 和 $emit
-- **兄弟组件**：通过父组件中转或使用 Vuex
-- **跨级组件**：使用 provide/inject 或 Vuex
-- **复杂应用**：推荐使用 Vuex 进行状态管理
-:::

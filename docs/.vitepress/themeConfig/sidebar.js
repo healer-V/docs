@@ -199,7 +199,7 @@ export const sidebar = {
   "/about/": [
     {
       text: "🍒 关于",
-      items: [{ text: "关于我", link: "/about/" }],
+      items: [{ text: "学习文档", link: "/about/" }],
     },
   ],
   "/frontend/01-html/": [
@@ -235,12 +235,10 @@ export const sidebar = {
       text: "javascript",
       items: [
         { text: "01-数据类型", link: "/frontend/03-javascript/01-dataType.md" },
-        { text: "02-内存", link: "/frontend/03-javascript/02-memory.md" },
-        {
-          text: "03-流程控制",
-          link: "/frontend/03-javascript/03-controlflow.md",
-        },
-        { text: "04-number", link: "/frontend/03-javascript/04-number.md" },
+        // { text: "02-内存", link: "/frontend/03-javascript/02-memory.md" },
+        { text: "02-运算符", link: "/frontend/03-javascript/02-operator.md" },
+        { text: "03-流程控制", link: "/frontend/03-javascript/03-controlflow.md" },
+        { text: "04-数值", link: "/frontend/03-javascript/04-number.md" },
         { text: "05-字符串", link: "/frontend/03-javascript/05-string.md" },
         { text: "06-布尔值", link: "/frontend/03-javascript/06-boolean.md" },
         { text: "07-空值", link: "/frontend/03-javascript/07-undefined.md" },
@@ -343,7 +341,7 @@ export const sidebar = {
       // collapsed: false,
       items: [
         {
-          text: "第1章：Vue 2 基础",
+          text: "第1章：Vue 2 基础理解",
           collapsed: true,
           items: [
             { text: "1.1 设计理念", link: "/frontend/06-vue2/01-01-introduction.md" },
@@ -351,29 +349,29 @@ export const sidebar = {
             { text: "1.3 生命周期", link: "/frontend/06-vue2/01-03-lifecycle.md" },
             { text: "1.4 指令系统", link: "/frontend/06-vue2/01-04-directives.md" },
             { text: "1.5 选项式API", link: "/frontend/06-vue2/01-05-options-api.md" },
-            { text: "1.6 组件通信", link: "/frontend/06-vue2/01-06-communication.md" },
+            // { text: "1.6 组件通信", link: "/frontend/06-vue2/01-06-communication.md" },
           ],
         },
         {
           text: "第2章：Vue 2 组件系统",
           collapsed: true,
           items: [
-            { text: "2.1 组件基础与注册方式", link: "/frontend/06-vue2/02-01-component-basics.md" },
+            { text: "2.1 组件基础", link: "/frontend/06-vue2/02-01-component-basics.md" },
             { text: "2.2 组件通信", link: "/frontend/06-vue2/02-02-component-communication.md" },
-            { text: "2.3 插槽（Slot）使用", link: "/frontend/06-vue2/02-03-slots.md" },
-            { text: "2.4 动态组件与异步组件", link: "/frontend/06-vue2/02-04-dynamic-async-components.md" },
-            { text: "2.5 组件生命周期深入理解", link: "/frontend/06-vue2/02-05-component-lifecycle.md" },
-            { text: "2.6 混入（Mixin）与自定义指令", link: "/frontend/06-vue2/02-06-mixins-directives.md" },
+            { text: "2.3 插槽使用", link: "/frontend/06-vue2/02-03-slots.md" },
+            { text: "2.4 动态组件", link: "/frontend/06-vue2/02-04-dynamic-async-components.md" },
+            { text: "2.5 组件生命周期", link: "/frontend/06-vue2/02-05-component-lifecycle.md" },
+            // { text: "2.6 混入与自定义指令", link: "/frontend/06-vue2/02-06-mixins-directives.md" },
           ],
         },
         {
           text: "第3章：Vue 2 进阶特性",
           collapsed: true,
           items: [
-            { text: "3.1 响应式原理深入", link: "/frontend/06-vue2/03-01-reactivity-principle.md" },
+            { text: "3.1 响应式原理", link: "/frontend/06-vue2/03-01-reactivity-principle.md" },
             { text: "3.2 事件处理与表单绑定", link: "/frontend/06-vue2/03-02-events-forms.md" },
             { text: "3.3 过渡与动画", link: "/frontend/06-vue2/03-03-transitions-animations.md" },
-            { text: "3.4 过滤器与自定义过滤器", link: "/frontend/06-vue2/03-04-filters.md" },
+            { text: "3.4 过滤器", link: "/frontend/06-vue2/03-04-filters.md" },
             { text: "3.5 渲染函数与JSX", link: "/frontend/06-vue2/03-05-render-functions-jsx.md" },
             { text: "3.6 插件开发", link: "/frontend/06-vue2/03-06-plugin-development.md" },
           ],
@@ -382,7 +380,7 @@ export const sidebar = {
           text: "第4章：Vue Router",
           collapsed: true,
           items: [
-            { text: "4.1 路由基础与配置", link: "/frontend/06-vue2/04-01-router-basics.md" },
+            { text: "4.1 路由基础", link: "/frontend/06-vue2/04-01-router-basics.md" },
             { text: "4.2 动态路由与嵌套路由", link: "/frontend/06-vue2/04-02-dynamic-nested-routes.md" },
             { text: "4.3 编程式导航与命名路由", link: "/frontend/06-vue2/04-03-programmatic-navigation.md" },
             { text: "4.4 路由守卫", link: "/frontend/06-vue2/04-04-navigation-guards.md" },
@@ -428,11 +426,11 @@ export const sidebar = {
           text: "第1章：Vue 3 新特性与升级",
           collapsed: true,
           items: [
-            { text: "1.1 Vue 3 设计理念与优势", link: "/frontend/07-vue3/01-01-design-philosophy.md" },
-            { text: "1.2 Composition API 简介", link: "/frontend/07-vue3/01-02-composition-api-intro.md" },
-            { text: "1.3 响应式系统重构", link: "/frontend/07-vue3/01-03-reactivity-refactor.md" },
-            { text: "1.4 性能优化与Tree-shaking", link: "/frontend/07-vue3/01-04-performance-tree-shaking.md" },
-            { text: "1.5 从Vue 2迁移到Vue 3", link: "/frontend/07-vue3/01-05-migration-guide.md" },
+            { text: "1.1 Vue 3 设计理念与优势", link: "/frontend/07-vue3/01-design-philosophy.md" },
+            { text: "1.2 Composition API 简介", link: "/frontend/07-vue3/02-composition-api-intro.md" },
+            { text: "1.3 响应式系统重构", link: "/frontend/07-vue3/03-reactivity-refactor.md" },
+            { text: "1.4 性能优化", link: "/frontend/07-vue3/04-performance-tree-shaking.md" },
+            { text: "1.5 从Vue 2迁移到Vue 3", link: "/frontend/07-vue3/05-migration-guide.md" },
           ],
         },
         {
@@ -859,13 +857,13 @@ export const sidebar = {
     {
       text: "Vite - 前端构建工具",
       items: [
-        {text: "拆掉vite外壳，原理剖析", link: "/engineering/02-vite/01-vite.md"},
-        {text: "企业级脚手架落地", link: "/engineering/02-vite/02-脚手架.md"},
-        {text: "全体系插件实战+自定义插件开发", link: "/engineering/02-vite/03-插件实战.md"},
-        {text: "企业级项目打包优化全链路", link: "/engineering/02-vite/04-打包优化.md"},
-        {text: "vue/react双项目实战", link: "/engineering/02-vite/05-双项目实战.md"},
-        {text: "部署上线+CI/CD自动化", link: "/engineering/02-vite/06-部署上线.md"},
-        {text: "阿里云完整部署流程（企业级SOP）", link: "/engineering/02-vite/07-阿里云部署.md"},
+        { text: "拆掉vite外壳，原理剖析", link: "/engineering/02-vite/01-vite.md" },
+        { text: "企业级脚手架落地", link: "/engineering/02-vite/02-脚手架.md" },
+        { text: "全体系插件实战+自定义插件开发", link: "/engineering/02-vite/03-插件实战.md" },
+        { text: "企业级项目打包优化全链路", link: "/engineering/02-vite/04-打包优化.md" },
+        { text: "vue/react双项目实战", link: "/engineering/02-vite/05-双项目实战.md" },
+        { text: "部署上线+CI/CD自动化", link: "/engineering/02-vite/06-部署上线.md" },
+        { text: "阿里云完整部署流程（企业级SOP）", link: "/engineering/02-vite/07-阿里云部署.md" },
       ],
     },
   ],
