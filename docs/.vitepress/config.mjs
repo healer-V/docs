@@ -7,6 +7,7 @@ export default defineConfig({
   description: "学习笔记，经验心得",
   lang: 'zh-CN',
   base: '/docs/',
+  ignoreDeadLinks: true,
   head: [
     ['link',{ rel: 'icon', href: '/docs/logo_new.png'}],
   ],
@@ -39,7 +40,6 @@ export default defineConfig({
         },
       },
     },
-    ignoreDeadLinks: true,
     // socialLinks: [
     //   { icon: 'github', link: 'https://github.com/healer-V/docs' }
     // ],

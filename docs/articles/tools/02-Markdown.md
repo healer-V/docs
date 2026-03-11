@@ -433,9 +433,9 @@ echo "Hello, World!"
 #### 2.1、基本图片
 
 ```markdown
-![图片替代文字](图片地址)
+<!-- ![图片替代文字](图片地址) -->
 
-![示例图片](https://example.com/image.png)
+<!-- ![示例图片](https://example.com/image.png) -->
 ```
 
 ::: info 替代文字
@@ -447,7 +447,7 @@ echo "Hello, World!"
 ```markdown
 ![图片替代文字](图片地址 "图片标题")
 
-![示例图片](https://example.com/image.png "这是一张示例图片")
+<!-- ![示例图片](https://example.com/image.png "这是一张示例图片") -->
 ```
 
 #### 2.3、引用式图片
@@ -455,7 +455,7 @@ echo "Hello, World!"
 ```markdown
 ![图片替代文字][图片标识]
 
-[图片标识]: https://example.com/image.png "可选标题"
+<!-- [图片标识]: https://example.com/image.png "可选标题" -->
 ```
 
 #### 2.4、图片链接
@@ -463,12 +463,12 @@ echo "Hello, World!"
 ```markdown
 [![图片替代文字](图片地址)](链接地址)
 
-[![GitHub](https://github.com/favicon.ico)](https://github.com)
+<!-- [![GitHub](https://github.com/favicon.ico)](https://github.com) -->
 ```
 
 **效果：**
 
-[![GitHub](https://github.com/favicon.ico)](https://github.com)
+<!-- [![GitHub](https://github.com/favicon.ico)](https://github.com) -->
 
 ### 3、链接到标题
 
@@ -538,7 +538,7 @@ echo "Hello, World!"
 | 粗体 | `**文字**` | **粗体** |
 | 斜体 | `*文字*` | *斜体* |
 | 代码 | `` `代码` `` | `代码` |
-| 链接 | `[文字](链接)` | [链接](https://example.com) |
+<!-- | 链接 | `[文字](链接)` | [链接](https://example.com) | -->
 ```
 
 **效果：**
@@ -548,7 +548,7 @@ echo "Hello, World!"
 | 粗体 | `**文字**` | **粗体** |
 | 斜体 | `*文字*` | *斜体* |
 | 代码 | `` `代码` `` | `代码` |
-| 链接 | `[文字](链接)` | [链接](https://example.com) |
+<!-- | 链接 | `[文字](链接)` | [链接](https://example.com) | -->
 
 ::: warning 注意事项
 - 冒号 `:` 两侧需要**至少一个空格**，否则会被识别为任务列表
