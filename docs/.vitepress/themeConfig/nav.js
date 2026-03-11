@@ -1,158 +1,93 @@
 export const nav = [
+  { text: '首页', link: '/' },
+  { text: '博客', link: '/blog-list/' },
   {
-    text: "🏠首页",
-    link: "/articles/basic/01-html",
-  },
-  {
-    text: "📖博客",
-    link: "/blog-list",
-  },
-  {
-    text: "🥤前端",
+    text: '前端',
     items: [
       {
-        text: "01-前端基础",
-        collapsed: false,
+        text: '基础',
         items: [
-          { text: "html", link: "/frontend/01-html/01-overview.md" },
-          { text: "css", link: "/frontend/02-css/01-overview.md" },
-          {
-            text: "javascript",
-            link: "/frontend/03-javascript/01-dataType.md",
-          },
-          {
-            text: "ecmascript",
-            link: "/frontend/04-ecmascript/01-variable.md",
-          },
-          {
-            text: "typescript",
-            link: "/frontend/05-typescript/01-typescript.md",
-          },
+          { text: 'HTML', link: '/frontend/01-html/01-overview' },
+          { text: 'CSS', link: '/frontend/02-css/01-overview' },
+          { text: 'JavaScript', link: '/frontend/03-javascript/01-dataType' },
+          { text: 'ECMAScript', link: '/frontend/04-ecmascript/01-variable' },
+          { text: 'TypeScript', link: '/frontend/05-typescript/01-typescript' },
         ],
       },
       {
-        text: "02-前端框架",
-        collapsed: false,
+        text: '框架',
         items: [
-          { text: "vue2", link: "/frontend/06-vue2/01-01-introduction.md" },
-          { text: "vue3", link: "/frontend/07-vue3/01-vue3.md" },
-          { text: "react16", link: "/frontend/08-react16/01-react16.md" },
-          { text: "react18", link: "/frontend/09-react18/01-react18.md" },
+          { text: 'Vue 2', link: '/frontend/06-vue2/01-01-introduction' },
+          { text: 'Vue 3', link: '/frontend/07-vue3/01-design-philosophy' },
+          { text: 'React 16', link: '/frontend/08-react16/01-react16' },
+          { text: 'React 18', link: '/frontend/09-react18/01-react18' },
         ],
       },
       {
-        text: "03-跨端技术",
-        collapsed: false,
+        text: '工程化',
         items: [
-          { text: "react native", link: "/crossend/01-reactnative/index.md" },
-          { text: "flutter", link: "/crossend/02-flutter/index.md" },
-          { text: "harmony os", link: "/crossend/03-harmonyOs/index.md" },
-          { text: "elctron", link: "/crossend/04-elctron/index.md" },
+          { text: 'Vite', link: '/engineering/02-vite/01-vite' },
         ],
       },
       {
-        text: "04-微前端",
-        collapsed: false,
-        items: [{ text: "qiankun", link: "/micfrontend/01-qiankun/01-overview.md" }],
-      },
-      {
-        text: "05-前端工程化",
-        collapsed: false,
+        text: '微前端',
         items: [
-          { text: "webpack", link: "/engineering/01-webpack/" },
-          { text: "vite", link: "/engineering/02-vite/01-vite.md" },
-        ],
-      },
-
-    ],
-  },
-
-  {
-    text: "🍚后端",
-    items: [
-      {
-        text: "01-nodejs",
-        collapsed: false,
-        items: [
-          { text: "nodejs", link: "/backend/01-nodejs/index.md" },
-          { text: "express", link: "/backend/02-express/index.md" },
-          { text: "nest.js", link: "/backend/03-nestjs/index.md" },
-        ],
-      },
-      {
-        text: "02-java",
-        collapsed: false,
-        items: [
-          { text: "java", link: "/backend/01-html/01-html.md" },
-          { text: "spring", link: "/backend/01-html/01-html.md" },
-          { text: "spring boot", link: "/backend/01-html/01-html.md" },
-        ],
-      },
-      {
-        text: "02-数据库",
-        collapsed: false,
-        items: [
-          { text: "mysql", link: "/backend/01-html/01-html.md" },
-          { text: "postgreSQL", link: "/backend/01-html/01-html.md" },
-          { text: "redis", link: "/backend/01-html/01-html.md" },
+          { text: 'Qiankun', link: '/microfrontend/01-qiankun/01-overview' },
         ],
       },
     ],
   },
   {
-    text: "🍨运维",
+    text: '后端',
     items: [
-      {
-        text: "01-Shell脚本",
-        link: "/operation/01-shell/index.md",
-      },
-      {
-        text: "02-Docker容器",
-        link: "/operation/05-docker/index.md",
-      },
-      {
-        text: "03-Kubernetes",
-        link: "/operation/04-k8s/index.md",
-      },
-      { text: "04-Jenkins", link: "/operation/02-jenkins/index.md" },
-      { text: "05-CI/CD实践", link: "/operation/03-cicd/index.md" },
-      { text: "06-Nginx", link: "/operation/06-nginx/index.md" },
-      { text: "07-Prometheus", link: "/operation/07-prometheus/index.md" },
-    ],
-  },
-  { text: "🍓web3", items:[
-    { text: "01-web3.0", link: "/web3/01-web3.0/01-overview.md" },
-    { text: "02-solidity", link: "/web3/02-solidity/01-overview.md" },
-    { text: "03-ethereum", link: "/web3/03-ethereum/01-overview.md" },
-  ]},
-  { text: "🥃Interview", link: "/interview/index.md" },
-  {
-    text: "🍚workflow",
-    items: [
-      {
-        text: "Training",
-        items: [
-          { text: "01-组件封装", link: "/skill/01-Vue组件封装" },
-          { text: "02-项目实践", link: "/practices/" },
-          { text: "03-项目难点", link: "/project/index.md" },
-        ]
-      },
-      {
-        text: "源码解读",
-        items: [
-          { text: "01-vue2源码", link: "/skill/01-Vue组件封装" },
-          { text: "02-vue3源码", link: "/skill/02-Vue组件封装" },
-          { text: "03-react16源码", link: "/skill/03-React组件封装" },
-          { text: "04-react18源码", link: "/skill/04-React组件封装" },
-        ]
-      },
+      { text: 'Node.js', link: '/backend/01-nodejs/01-nodejs' },
+      { text: 'Express', link: '/backend/02-express/01-express' },
+      { text: 'NestJS', link: '/backend/03-nestjs/01-nestjs' },
     ],
   },
   {
-    text: "🍒关于",
+    text: '跨端',
     items: [
-      { text: "学习文档", link: "/about/" },
-      { text: "友情链接", link: "/links" },
+      { text: 'React Native', link: '/crossend/01-reactnative/index' },
+      { text: 'Flutter', link: '/crossend/02-flutter/index' },
+      { text: 'HarmonyOS', link: '/crossend/03-harmonyos/index' },
+      { text: 'Electron', link: '/crossend/04-electron/index' },
     ],
   },
-];
+  {
+    text: '运维',
+    items: [
+      { text: 'Shell', link: '/operation/01-shell/index' },
+      { text: 'Docker', link: '/operation/05-docker/index' },
+      { text: 'Kubernetes', link: '/operation/04-k8s/index' },
+      { text: 'Jenkins', link: '/operation/02-jenkins/index' },
+      { text: 'CI/CD', link: '/operation/03-cicd/index' },
+      { text: 'Nginx', link: '/operation/06-nginx/01-overview' },
+    ],
+  },
+  {
+    text: 'Web3',
+    items: [
+      { text: 'Web3.js', link: '/web3/01-web3.0/01-overview' },
+      { text: 'Solidity', link: '/web3/02-solidity/01-overview' },
+      { text: 'Ethereum', link: '/web3/03-ethereum/01-overview' },
+    ],
+  },
+  { text: '面试题', link: '/interview/index' },
+  {
+    text: '实践',
+    items: [
+      { text: '组件封装', link: '/skill/01-Vue组件封装' },
+      { text: '项目实践', link: '/practices/index' },
+      { text: '项目难点', link: '/project/index' },
+    ],
+  },
+  {
+    text: '关于',
+    items: [
+      { text: '学习文档', link: '/about/' },
+      { text: '友情链接', link: '/links' },
+      { text: '随记', link: '/diary/index' },
+    ],
+  },
+]

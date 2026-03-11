@@ -10,8 +10,8 @@
 }
 .vp-doc div[class*=language-] .lang{
     color: #000 !important;
-    font-size: 1.4em !important;
-    font-family: 'Roboto Mono','Menlo','Monaco',"monospace";
+    font-size: 0.9em !important;
+    font-family: 'Roboto Mono', 'Menlo', monospace;
     font-weight: 800;
     z-index: 2;
 }

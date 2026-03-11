@@ -1,96 +1,4 @@
 export const sidebar = {
-  "/articles/": [
-    {
-      text: "首页",
-      items: [
-        {
-          text: "🍎前端基础",
-          collapsed: true, // 侧边栏可折叠
-          items: [
-            { text: "01-HTML", link: "/articles/basic/01-html.md" },
-            { text: "02-CSS", link: "/articles/basic/02-css.md" },
-            { text: "03-JS", link: "/articles/basic/03-javascript.md" },
-            { text: "04-ES6", link: "/articles/basic/04-ecmascript.md" },
-            { text: "05-TS", link: "/articles/basic/05-typescript.md" },
-            { text: "06-Vue2", link: "/articles/basic/06-vue2.md" },
-            { text: "07-Vue3", link: "/articles/basic/07-vue3.md" },
-            { text: "08-React16", link: "/articles/basic/08-react16.md" },
-            { text: "09-React18", link: "/articles/basic/09-react18.md" },
-            { text: "10-Node.js", link: "/articles/basic/10-nodejs.md" },
-            { text: "11-Sass", link: "/articles/basic/11-Sass.md" },
-          ],
-        },
-        {
-          text: "🍑服务端",
-          collapsed: true,
-          items: [
-            { text: "01-Node.js", link: "/articles/server/01-NodeJs.md" },
-            { text: "02-Express", link: "/articles/server/02-Express.md" },
-            { text: "03-Nest.js", link: "/articles/server/03-NestJs.md" },
-          ],
-        },
-        {
-          text: "🥝浏览器基础",
-          collapsed: true,
-          items: [
-            { text: "01-线程与进程", link: "/articles/browser/01-basic.md" },
-            { text: "02-机制与引擎", link: "/articles/browser/02-render.md" },
-          ],
-        },
-        {
-          text: "🍓网络基础",
-          collapsed: true,
-          items: [
-            { text: "01-网络协议", link: "/articles/network/01-http.md" },
-            { text: "02-WebSocket", link: "/articles/network/02-WebSocket.md" },
-            { text: "03-niginx", link: "/articles/network/03-niginx.md" },
-          ],
-        },
-
-        {
-          text: "🍎混合App开发",
-          collapsed: true,
-          items: [
-            { text: "01-Uniapp", link: "/articles/frame/01-Uniapp.md" },
-            { text: "02-Flutter", link: "/articles/frame/02-Flutter.md" },
-            {
-              text: "03-React Native",
-              link: "/articles/frame/03-ReactNative.md",
-            },
-            { text: "04-HarmonyOS", link: "/articles/frame/04-HarmonyOS.md" },
-            { text: "05-Electron", link: "/articles/frame/05-Electron.md" },
-          ],
-        },
-        {
-          text: "🍉前端工程化",
-          collapsed: true,
-          items: [
-            { text: "01-Webpack", link: "/articles/engineering/01-Webpack.md" },
-            { text: "02-Vite", link: "/articles/engineering/02-Vite.md" },
-            { text: "03-Rollup", link: "/articles/engineering/03-Rollup.md" },
-          ],
-        },
-        {
-          text: "🍜工具",
-          collapsed: true,
-          items: [
-            { text: "01-Git", link: "/articles/tools/01-Git.md" },
-            { text: "02-Markdown语法", link: "/articles/tools/02-Markdown.md" },
-            { text: "03-IDE使用技巧", link: "/articles/tools/03-IDE.md" },
-          ],
-        },
-
-        {
-          text: "🍏博客",
-          collapsed: true,
-          items: [
-            { text: "01-搭建博客", link: "/articles/blog/01-vitepress.md" },
-            { text: "02-Markdown语法", link: "/articles/blog/02-markdown.md" },
-          ],
-        },
-      ],
-    },
-  ],
   "/skill/": [
     {
       text: "🥤实践技巧",
@@ -255,11 +163,6 @@ export const sidebar = {
         { text: "15-BOM", link: "/frontend/03-javascript/15-bom.md" },
         { text: "16-事件", link: "/frontend/03-javascript/16-event.md" },
         { text: "17-异步编程", link: "/frontend/03-javascript/17-async.md" },
-        { text: "18-模块化", link: "/frontend/03-javascript/18-module.md" },
-        {
-          text: "19-设计模式",
-          link: "/frontend/03-javascript/19-designpattern.md",
-        },
       ],
     },
   ],
@@ -734,33 +637,33 @@ export const sidebar = {
       ],
     },
   ],
-  "/crossend/03-harmonyOs/": [
+  "/crossend/03-harmonyos/": [
     {
       text: "HarmonyOS - 鸿蒙应用开发",
       items: [
-        { text: "01-概述", link: "/crossend/03-harmonyOs/index.md" },
-        { text: "02-环境搭建", link: "/crossend/03-harmonyOs/01-getting-started.md" },
-        { text: "03-ArkUI框架", link: "/crossend/03-harmonyOs/02-arkui-framework.md" },
-        { text: "04-布局系统", link: "/crossend/03-harmonyOs/03-layout.md" },
-        { text: "05-状态管理", link: "/crossend/03-harmonyOs/03-state-management.md" },
-        { text: "06-页面路由", link: "/crossend/03-harmonyOs/04-page-routing.md" },
-        { text: "07-网络请求", link: "/crossend/03-harmonyOs/05-networking.md" },
-        { text: "08-权限管理", link: "/crossend/03-harmonyOs/06-permission-management.md" },
-        { text: "09-性能优化", link: "/crossend/03-harmonyOs/07-performance-optimization.md" },
+        { text: "01-概述", link: "/crossend/03-harmonyos/index.md" },
+        { text: "02-环境搭建", link: "/crossend/03-harmonyos/01-getting-started.md" },
+        { text: "03-ArkUI框架", link: "/crossend/03-harmonyos/02-arkui-framework.md" },
+        { text: "04-布局系统", link: "/crossend/03-harmonyos/03-layout.md" },
+        { text: "05-状态管理", link: "/crossend/03-harmonyos/03-state-management.md" },
+        { text: "06-页面路由", link: "/crossend/03-harmonyos/04-page-routing.md" },
+        { text: "07-网络请求", link: "/crossend/03-harmonyos/05-networking.md" },
+        { text: "08-权限管理", link: "/crossend/03-harmonyos/06-permission-management.md" },
+        { text: "09-性能优化", link: "/crossend/03-harmonyos/07-performance-optimization.md" },
       ],
     },
   ],
-  "/crossend/04-elctron/": [
+  "/crossend/04-electron/": [
     {
       text: "Electron - 桌面应用开发",
       items: [
-        { text: "01-概述", link: "/crossend/04-elctron/index.md" },
-        { text: "02-环境搭建", link: "/crossend/04-elctron/02-setup.md" },
-        { text: "03-主进程与渲染进程", link: "/crossend/04-elctron/03-processes.md" },
-        { text: "04-窗口管理", link: "/crossend/04-elctron/04-windows.md" },
-        { text: "05-进程通信", link: "/crossend/04-elctron/05-ipc.md" },
-        { text: "06-原生模块", link: "/crossend/04-elctron/06-native-modules.md" },
-        { text: "07-打包发布", link: "/crossend/04-elctron/07-packaging.md" },
+        { text: "01-概述", link: "/crossend/04-electron/index.md" },
+        { text: "02-环境搭建", link: "/crossend/04-electron/02-setup.md" },
+        { text: "03-主进程与渲染进程", link: "/crossend/04-electron/03-processes.md" },
+        { text: "04-窗口管理", link: "/crossend/04-electron/04-windows.md" },
+        { text: "05-进程通信", link: "/crossend/04-electron/05-ipc.md" },
+        { text: "06-原生模块", link: "/crossend/04-electron/06-native-modules.md" },
+        { text: "07-打包发布", link: "/crossend/04-electron/07-packaging.md" },
       ],
     },
   ],
@@ -838,7 +741,7 @@ export const sidebar = {
       ],
     },
   ],
-  "/operation/05-niginx": [
+  "/operation/06-nginx/": [
     {
       text: "Nginx - 反向代理服务器",
       items: [

@@ -1,43 +1,6 @@
 <template>
   <div class="blog-container">
 
-    <!-- 搜索和筛选 -->
-    <!-- <div class="blog-filters"> -->
-      <!-- <div class="search-container">
-        <input
-          v-model="searchKeyword"
-          type="text"
-          placeholder="搜索文章..."
-          class="search-input"
-          @input="handleSearch"
-        />
-        <div v-if="searchKeyword" class="search-results-info">
-          找到 {{ filteredArticles.length }} 篇相关文章
-        </div> -->
-      <!-- </div> -->
-      
-      <!-- <div class="category-filters">
-        <button
-          v-for="category in categories"
-          :key="category.name"
-          :class="['category-btn', { active: selectedCategory === category.name }]"
-          @click="filterByCategory(category.name)"
-        >
-          {{ category.name }}
-          <span class="count">({{ category.count }})</span>
-        </button>
-      </div> -->
-    <!-- </div> -->
-
-    <!-- 文章统计 -->
-    <!-- <div class="blog-stats">
-      <span class="stats-text">
-        共找到 <strong>{{ filteredArticles.length }}</strong> 篇文章
-        <span v-if="selectedCategory !== 'all'">，分类：{{ selectedCategory }}</span>
-        <span v-if="searchKeyword">，关键词：{{ searchKeyword }}</span>
-      </span>
-    </div> -->
-
     <!-- 主要内容区域 -->
     <div class="main-content">
       <!-- 文章列表 -->
@@ -108,49 +71,6 @@
         <!-- Busuanzi访问统计 -->
         <BusuanziStats />
 
-        <!-- GitHub评论系统 -->
-        <div class="comments-section">
-          <h4 class="comments-title">💬 评论交流</h4>
-          <div class="comments-content">
-            <p class="comments-description">
-              欢迎在GitHub上参与讨论，分享您的想法和建议！
-            </p>
-            <div class="comments-actions">
-              <a 
-                href="https://github.com/your-username/your-repo/discussions" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="github-discussions-btn"
-              >
-                <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                GitHub Discussions
-              </a>
-              <a 
-                href="https://github.com/your-username/your-repo/issues" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="github-issues-btn"
-              >
-                <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                GitHub Issues
-              </a>
-            </div>
-            <div class="comments-stats">
-              <div class="comment-stat-item">
-                <span class="comment-stat-number">{{ discussionCount }}</span>
-                <span class="comment-stat-label">讨论</span>
-              </div>
-              <div class="comment-stat-item">
-                <span class="comment-stat-number">{{ issueCount }}</span>
-                <span class="comment-stat-label">问题</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -208,10 +128,6 @@ const searchKeyword = ref('')
 const selectedCategory = ref('all')
 const currentPage = ref(1)
 const articlesPerPage = 12
-
-// GitHub评论系统数据
-const discussionCount = ref(0)
-const issueCount = ref(0)
 
 // 计算属性
 const categories = computed(() => {
@@ -349,13 +265,6 @@ const featuredArticles = computed(() => {
 
 
 
-// 初始化GitHub数据
-const initGitHubData = () => {
-  // 模拟GitHub API数据，实际项目中可以调用GitHub API
-  discussionCount.value = Math.floor(Math.random() * 20) + 5
-  issueCount.value = Math.floor(Math.random() * 15) + 3
-}
-
 // 方法
 const handleSearch = () => {
   currentPage.value = 1
@@ -402,136 +311,22 @@ onMounted(() => {
   articles.value = getAllArticles()
   
   
-  // 初始化GitHub数据
-  initGitHubData()
 
 })
 </script>
 
 <style scoped>
 .blog-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem 5rem;
   min-height: 100vh;
-  background: var(--vp-c-bg);
-}
-
-/* 页面头部 */
-.blog-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.blog-title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin: 0 0 0.5rem 0;
-  line-height: 1.2;
-}
-
-.blog-subtitle {
-  color: var(--vp-c-text-2);
-  font-size: 1rem;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* 搜索和筛选 */
-.blog-filters {
-  margin-bottom: 1.5rem;
-}
-
-.search-container {
-  margin-bottom: 1rem;
-}
-
-.search-input {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
-  font-size: 13px;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-  transition: all 0.2s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--vp-c-brand-1);
-  background: var(--vp-c-bg);
-}
-
-.search-input::placeholder {
-  color: var(--vp-c-text-3);
-}
-
-.search-results-info {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-  text-align: center;
-}
-
-.category-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.category-btn {
-  padding: 4px 8px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-2);
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.category-btn:hover {
-  border-color: var(--vp-c-brand-1);
-  color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-soft);
-}
-
-.category-btn.active {
-  background: var(--vp-c-brand-1);
-  color: white;
-  border-color: var(--vp-c-brand-1);
-}
-
-.count {
-  margin-left: 2px;
-  opacity: 0.8;
-  font-size: 10px;
-}
-
-/* 文章统计 */
-.blog-stats {
-  margin-bottom: 1.5rem;
-  padding: 0.8rem;
-  background: var(--vp-c-bg-soft);
-  border-radius: 4px;
-  border-left: 2px solid var(--vp-c-brand-1);
-}
-
-.stats-text {
-  color: var(--vp-c-text-2);
-  font-size: 13px;
-  font-weight: 500;
 }
 
 /* 主要内容区域 */
 .main-content {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: flex-start;
 }
 
@@ -540,58 +335,55 @@ onMounted(() => {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   margin-bottom: 3rem;
 }
 
 .article-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem 0;
-  padding: 1rem;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--vp-c-divider);
   cursor: pointer;
-  border-radius: .5rem;
   transition: all 0.2s ease;
   position: relative;
+  padding-left: 0;
 }
 
-.article-item:hover {
-  /* background: var(--vp-c-bg-soft); */
-  border-radius: .5rem;
-  padding: 1rem;
-  transform: translateY(-2px);
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+.article-item::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 2px;
+  height: 60%;
+  background: var(--accent, #e8a045);
+  transition: transform 0.2s ease;
+  transform-origin: center;
 }
 
-.article-item:last-child {
-  border-bottom: none;
-}
-
-.article-content {
-  flex: 1;
-  min-width: 0;
-}
+.article-item:hover::before { transform: translateY(-50%) scaleY(1); }
+.article-item:hover { padding-left: 0.5rem; }
+.article-item:last-child { border-bottom: none; }
+.article-content { flex: 1; min-width: 0; }
 
 .article-title {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 400;
   color: var(--vp-c-text-1);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.4rem 0;
   line-height: 1.4;
+  letter-spacing: -0.01em;
   transition: color 0.2s ease;
 }
 
-.article-item:hover .article-title {
-  color: var(--vp-c-brand-1);
-}
+.article-item:hover .article-title { color: var(--accent, #e8a045); }
 
 .article-excerpt {
   color: var(--vp-c-text-2);
-  line-height: 1.5;
-  margin: 0 0 0.5rem 0;
-  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0 0 0.6rem 0;
+  font-size: 0.82rem;
+  font-weight: 300;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -602,542 +394,213 @@ onMounted(() => {
 .article-meta {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  font-size: 0.75rem;
+  gap: 0.75rem;
+  font-size: 0.72rem;
   color: var(--vp-c-text-3);
   flex-wrap: wrap;
 }
 
-.article-author {
-  font-weight: 500;
-  color: var(--vp-c-text-2);
-}
+.article-author { font-weight: 500; color: var(--vp-c-text-2); }
 
 .article-category {
-  background: var(--vp-c-brand-soft);
-  color: var(--vp-c-brand-1);
-  padding: 1px 4px;
+  background: var(--accent-soft, rgba(232,160,69,0.1));
+  color: var(--accent, #e8a045);
+  padding: 1px 6px;
   border-radius: 2px;
-  font-weight: 500;
-  font-size: 0.7rem;
-}
-
-.article-thumbnail {
-  flex-shrink: 0;
-  width: 60px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.thumbnail-placeholder {
-  width: 100%;
-  height: 100%;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.article-item:hover .thumbnail-placeholder {
-  background: var(--vp-c-brand-soft);
-  border-color: var(--vp-c-brand-1);
-}
-
-.thumbnail-icon {
-  font-size: 1.2rem;
-  color: var(--vp-c-text-3);
-  transition: color 0.2s ease;
-}
-
-.article-item:hover .thumbnail-icon {
-  color: var(--vp-c-brand-1);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
 }
 
 /* 侧边栏 */
 .sidebar {
   flex-shrink: 0;
-  width: 280px;
+  width: 260px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  position: sticky;
+  top: 5rem;
 }
 
-/* 用户信息 */
 .user-info {
-  background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 1.5rem;
   text-align: center;
 }
 
-.avatar {
-  margin-bottom: 1rem;
-}
+.avatar { margin-bottom: 0.75rem; }
 
 .avatar-placeholder {
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: var(--vp-c-bg-soft);
-  border: 2px solid var(--vp-c-divider);
+  border: 1px solid var(--vp-c-divider);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
   margin: 0 auto;
+  overflow: hidden;
 }
-.avatar-img{
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
+
+.avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
 .username {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--vp-c-text-1);
   margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
 }
 
-.user-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-}
+.user-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; }
+.stat-item { display: flex; flex-direction: column; align-items: center; }
+.stat-number { font-size: 1.1rem; font-weight: 500; color: var(--accent, #e8a045); line-height: 1; }
+.stat-label { font-size: 0.68rem; color: var(--vp-c-text-3); margin-top: 0.2rem; }
 
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--vp-c-brand-1);
-  line-height: 1;
-  word-break: break-all;
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-3);
-  margin-top: 0.25rem;
-}
-
-/* 精选文章 */
 .featured-articles {
-  background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1.5rem;
+  border-radius: 6px;
+  padding: 1.25rem;
 }
 
 .featured-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
   margin: 0 0 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
-.featured-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
+.featured-list { display: flex; flex-direction: column; }
 
 .featured-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.8rem;
+  gap: 0.75rem;
   cursor: pointer;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--vp-c-divider);
   transition: all 0.2s ease;
-  padding: 0.5rem;
-  border-radius: 4px;
 }
 
-.featured-item:hover {
-  background: var(--vp-c-bg-soft);
-}
+.featured-item:last-child { border-bottom: none; }
+.featured-item:hover .featured-article-title { color: var(--accent, #e8a045); }
 
 .featured-number {
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--vp-c-brand-1);
-  color: white;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 600;
-  line-height: 1;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--vp-c-text-3);
+  margin-top: 1px;
 }
 
-.featured-content {
-  flex: 1;
-  min-width: 0;
-}
+.featured-content { flex: 1; min-width: 0; }
 
 .featured-article-title {
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 400;
   color: var(--vp-c-text-1);
-  margin: 0 0 0.25rem 0;
-  line-height: 1.3;
+  margin: 0 0 0.2rem 0;
+  line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: color 0.2s;
 }
 
-.featured-date {
-  font-size: 0.7rem;
-  color: var(--vp-c-text-3);
-}
-
-/* GitHub评论系统 */
-.comments-section {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1.5rem;
-}
-
-.comments-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin: 0 0 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.comments-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.comments-description {
-  font-size: 0.85rem;
-  color: var(--vp-c-text-2);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.comments-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.github-discussions-btn,
-.github-issues-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.github-discussions-btn:hover,
-.github-issues-btn:hover {
-  background: var(--vp-c-brand-soft);
-  border-color: var(--vp-c-brand-1);
-  color: var(--vp-c-brand-1);
-  transform: translateY(-1px);
-}
-
-.github-icon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
-
-.comments-stats {
-  display: flex;
-  justify-content: space-around;
-  gap: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--vp-c-divider);
-}
-
-.comment-stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.comment-stat-number {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--vp-c-brand-1);
-  line-height: 1;
-}
-
-.comment-stat-label {
-  font-size: 0.7rem;
-  color: var(--vp-c-text-3);
-  margin-top: 0.25rem;
-}
+.featured-date { font-size: 0.68rem; color: var(--vp-c-text-3); }
 
 /* 分页 */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-top: 3rem;
-  padding: 1rem;
 }
 
 .page-btn {
-  padding: 8px 16px;
+  padding: 6px 14px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--vp-c-text-2);
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
 
-.page-btn:hover:not(:disabled) {
-  background: var(--vp-c-brand-1);
-  color: white;
-  border-color: var(--vp-c-brand-1);
-}
-
-.page-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.page-numbers {
-  display: flex;
-  gap: 4px;
-}
+.page-btn:hover:not(:disabled) { border-color: var(--accent, #e8a045); color: var(--accent, #e8a045); }
+.page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.page-numbers { display: flex; gap: 3px; }
 
 .page-number {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--vp-c-text-2);
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
 }
 
-.page-number:hover {
-  background: var(--vp-c-brand-soft);
-  border-color: var(--vp-c-brand-1);
-  color: var(--vp-c-brand-1);
-}
-
-.page-number.active {
-  background: var(--vp-c-brand-1);
-  color: white;
-  border-color: var(--vp-c-brand-1);
-}
+.page-number:hover { border-color: var(--accent, #e8a045); color: var(--accent, #e8a045); }
+.page-number.active { background: var(--accent, #e8a045); color: #fff; border-color: var(--accent, #e8a045); }
 
 /* 空状态 */
-.empty-state {
-  text-align: center;
-  padding: 3rem 2rem;
-  color: var(--vp-c-text-3);
-  background: var(--vp-c-bg-soft);
-  border-radius: 12px;
-  border: 1px solid var(--vp-c-divider);
-}
-
-.empty-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
+.empty-state { text-align: center; padding: 4rem 2rem; color: var(--vp-c-text-3); }
+.empty-icon { font-size: 2rem; margin-bottom: 1rem; opacity: 0.4; }
 .empty-state h3 {
   margin: 0 0 0.5rem 0;
   color: var(--vp-c-text-2);
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
 }
+.empty-state p { margin: 0; font-size: 0.85rem; font-weight: 300; }
 
-.empty-state p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-/* 响应式设计 */
+/* 响应式 */
 @media (max-width: 1024px) {
-  .main-content {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .sidebar {
-    width: 100%;
-    flex-direction: row;
-    gap: 1rem;
-  }
-  
-  .user-info {
-    flex: 1;
-  }
-  
-  .featured-articles {
-    flex: 1;
-  }
-  
-  .comments-section {
-    flex: 1;
-  }
+  .main-content { flex-direction: column; gap: 2rem; }
+  .sidebar { width: 100%; position: static; flex-direction: row; }
+  .user-info { flex: 1; }
+  .featured-articles { flex: 1; }
 }
 
 @media (max-width: 768px) {
-  .blog-container {
-    padding: 1rem;
-  }
-  
-  .blog-title {
-    font-size: 1.8rem;
-  }
-  
-  .blog-subtitle {
-    font-size: 0.9rem;
-  }
-  
-  .search-input {
-    font-size: 14px;
-  }
-  
-  .main-content {
-    gap: 1rem;
-  }
-  
-  .sidebar {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .article-item {
-    flex-direction: column;
-    gap: 0.8rem;
-    padding: 0.8rem 0;
-  }
-  
-  .article-item:hover {
-    padding: 0.8rem;
-    margin: 0 -0.8rem;
-  }
-  
-  .article-thumbnail {
-    width: 100%;
-    height: 60px;
-    align-self: center;
-  }
-  
-  .article-title {
-    font-size: 1rem;
-  }
-  
-  .category-filters {
-    gap: 4px;
-  }
-  
-  .category-btn {
-    padding: 3px 6px;
-    font-size: 11px;
-  }
-  
-  .pagination {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .page-numbers {
-    order: -1;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-  
-  .page-btn {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-  }
-  
-  .page-number {
-    width: 28px;
-    height: 28px;
-    font-size: 0.8rem;
-  }
+  .blog-container { padding: 1.5rem 1rem 3rem; }
+  .sidebar { flex-direction: column; }
+  .article-item:hover { padding-left: 0; }
+  .article-item::before { display: none; }
+  .pagination { flex-wrap: wrap; gap: 0.4rem; }
+  .page-numbers { order: -1; width: 100%; justify-content: center; margin-bottom: 0.5rem; }
 }
 
 @media (max-width: 480px) {
-  .blog-container {
-    padding: 1rem;
-  }
-  
-  .blog-title {
-    font-size: 1.6rem;
-  }
-  
-  .blog-subtitle {
-    font-size: 0.85rem;
-  }
-  
-  .article-item {
-    padding: 0.6rem;
-  }
-  
-  .article-item:hover {
-    padding: 0.6rem;
-    margin: 0 -0.6rem;
-  }
-  
-  .article-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.3rem;
-  }
-  
-  .category-filters {
-    gap: 3px;
-  }
-  
-  .category-btn {
-    padding: 2px 4px;
-    font-size: 10px;
-  }
-  
-  .pagination {
-    padding: 0.5rem;
-  }
+  .article-meta { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .blog-container { padding: 1rem 0.75rem 2.5rem; }
+  .article-title { font-size: 0.95rem; }
+  .user-stats { grid-template-columns: 1fr 1fr 1fr; gap: 0.25rem; }
+  .stat-number { font-size: 0.95rem; }
+  .pagination { gap: 0.25rem; }
+  .page-btn { padding: 5px 10px; font-size: 0.75rem; }
+  .page-number { width: 26px; height: 26px; font-size: 0.75rem; }
 }
 </style>

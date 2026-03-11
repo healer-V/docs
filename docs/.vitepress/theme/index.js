@@ -1,5 +1,5 @@
 // https://vitepress.dev/guide/custom-theme
-import { h, ref } from 'vue'
+import { h, ref, defineComponent } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { inBrowser } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
@@ -10,62 +10,47 @@ import BlogList from '../components/BlogList.vue'
 import BusuanziStats from '../components/BusuanziStats.vue'
 import ArticleMeta from '../components/ArticleMeta.vue'
 import Wlink from '../components/Wlink.vue'
+import GuideNav from '../components/GuideNav.vue'
 import { authManager } from '../utils/auth.js'
 import './style.css';
 import './style/index.css';
 // import './custom.css';
 
+// 登录守卫组件，响应式状态在组件内部管理
+const LoginGuard = defineComponent({
+  setup() {
+    const showLogin = ref(inBrowser ? !authManager.isAuthenticated() : false)
+    const handleLoginSuccess = () => {
+      showLogin.value = false
+    }
+    return () => showLogin.value
+      ? h(Login, { onLoginSuccess: handleLoginSuccess })
+      : null
+  }
+})
+
+// 导航栏登出按钮组件
+const NavLogout = defineComponent({
+  setup() {
+    const isAuthenticated = ref(inBrowser ? authManager.isAuthenticated() : false)
+    return () => isAuthenticated.value
+      ? h(LogoutButton, {
+          onLogoutSuccess: () => {
+            if (inBrowser) window.location.reload()
+          }
+        })
+      : null
+  }
+})
 
 /** @type {import('vitepress').Theme} */
 
 export default {
   extends: DefaultTheme,
-  // ignoreDeadLinks: true,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-      'layout-top': () => {
-        const isAuthenticated = ref(false)
-        const showLogin = ref(true)
-
-        const handleLoginSuccess = () => {
-          isAuthenticated.value = true
-          showLogin.value = false
-        }
-
-        // 在浏览器环境中检查登录状态
-        if (inBrowser) {
-          isAuthenticated.value = authManager.isAuthenticated()
-          showLogin.value = !isAuthenticated.value
-        }
-
-        if (showLogin.value) {
-          return h(Login, {
-            onLoginSuccess: handleLoginSuccess
-          })
-        }
-        return null
-      },
-      'nav-bar-content-after': () => {
-        const isAuthenticated = ref(false)
-
-        // 在浏览器环境中检查登录状态
-        if (inBrowser) {
-          isAuthenticated.value = authManager.isAuthenticated()
-        }
-
-        if (isAuthenticated.value) {
-          return h(LogoutButton, {
-            onLogoutSuccess: () => {
-              // 重新加载页面以更新登录状态
-              if (inBrowser) {
-                window.location.reload()
-              }
-            }
-          })
-        }
-        return null
-      }
+      'layout-top': () => h(LoginGuard),
+      'nav-bar-content-after': () => h(NavLogout),
     })
   },
   enhanceApp({ app, router, siteData }) {
@@ -75,6 +60,7 @@ export default {
     app.component('ArticleMeta', ArticleMeta)
     app.component('Wlink', Wlink)
     app.component('ImageViewer', ImageViewer)
+    app.component('GuideNav', GuideNav)
     
     // 确保busuanzi在浏览器环境中可用
     if (inBrowser) {
