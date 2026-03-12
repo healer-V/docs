@@ -1,5 +1,5 @@
 export const nav = [
-  { text: '首页', link: '/' },
+  // { text: '首页', link: '/' },
   { text: '博客', link: '/blog-list/' },
   {
     text: '前端',
@@ -40,9 +40,27 @@ export const nav = [
   {
     text: '后端',
     items: [
-      { text: 'Node.js', link: '/backend/01-nodejs/01-nodejs' },
-      { text: 'Express', link: '/backend/02-express/01-express' },
-      { text: 'NestJS', link: '/backend/03-nestjs/01-nestjs' },
+      // 框架
+      {
+        text: '框架',
+        items: [
+          { text: 'Node.js', link: '/backend/01-nodejs/01-nodejs' },
+          { text: 'Express', link: '/backend/02-express/01-express' },
+          { text: 'NestJS', link: '/backend/03-nestjs/01-nestjs' },
+          { text: 'Django', link: '/backend/04-django/01-django' },
+        ],
+      },
+      // 数据库
+      {
+        text: '数据库',
+        items: [
+          { text: 'MySQL', link: '/backend/05-mysql/01-mysql' },
+          { text: 'Redis', link: '/backend/06-redis/01-redis' },
+          { text: 'MongoDB', link: '/backend/07-mongodb/01-mongodb' },
+          { text: 'PostgreSQL', link: '/backend/08-postgresql/01-postgresql' },
+        ],
+      }
+     
     ],
   },
   {
@@ -57,6 +75,7 @@ export const nav = [
   {
     text: '运维',
     items: [
+      { text: 'Linux', link: '/operation/00-linux/index' },
       { text: 'Shell', link: '/operation/01-shell/index' },
       { text: 'Docker', link: '/operation/05-docker/index' },
       { text: 'Kubernetes', link: '/operation/04-k8s/index' },

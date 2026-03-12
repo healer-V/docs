@@ -40,7 +40,7 @@
           <h2 class="interview-title">面试题库</h2>
           <p class="interview-desc">涵盖基础、框架、工程化、跨端、网络、浏览器、手写题等高频考点</p>
         </div>
-        <a href="/interview/" class="interview-btn">进入题库 →</a>
+        <a href="/docs/interview/" class="interview-btn">进入题库 →</a>
       </div>
     </div>
 
@@ -53,69 +53,69 @@ const sections = [
     icon: '🧱',
     title: '前端基础',
     items: [
-      { tag: 'HTML', title: 'HTML', desc: '页面结构与语义化标签', link: '/frontend/01-html/01-overview' },
-      { tag: 'CSS', title: 'CSS', desc: '选择器、布局、动画、响应式', link: '/frontend/02-css/01-overview' },
-      { tag: 'JS', title: 'JavaScript', desc: '数据类型、函数、异步、DOM', link: '/frontend/03-javascript/01-dataType' },
-      { tag: 'ES6+', title: 'ECMAScript', desc: 'ES6+ 新特性全覆盖', link: '/frontend/04-ecmascript/01-variable' },
-      { tag: 'TS', title: 'TypeScript', desc: '类型系统、泛型、装饰器', link: '/frontend/05-typescript/01-typescript' },
+      { tag: 'HTML', title: 'HTML', desc: '页面结构与语义化标签', link: '/docs/frontend/01-html/01-overview' },
+      { tag: 'CSS', title: 'CSS', desc: '选择器、布局、动画、响应式', link: '/docs/frontend/02-css/01-overview' },
+      { tag: 'JS', title: 'JavaScript', desc: '数据类型、函数、异步、DOM', link: '/docs/frontend/03-javascript/01-dataType' },
+      { tag: 'ES6+', title: 'ECMAScript', desc: 'ES6+ 新特性全覆盖', link: '/docs/frontend/04-ecmascript/01-variable' },
+      { tag: 'TS', title: 'TypeScript', desc: '类型系统、泛型、装饰器', link: '/docs/frontend/05-typescript/01-typescript' },
     ]
   },
   {
     icon: '⚡',
     title: '主流框架',
     items: [
-      { tag: 'Vue 2', title: 'Vue 2', desc: '选项式 API、Vuex、Vue Router', link: '/frontend/06-vue2/01-01-introduction' },
-      { tag: 'Vue 3', title: 'Vue 3', desc: 'Composition API、Pinia、Vite', link: '/frontend/07-vue3/01-design-philosophy' },
-      { tag: 'React 16', title: 'React 16', desc: 'JSX、生命周期、Hooks 基础', link: '/frontend/08-react16/01-react16' },
-      { tag: 'React 18', title: 'React 18', desc: '并发特性、Suspense、新 Hooks', link: '/frontend/09-react18/01-react18' },
+      { tag: 'Vue 2', title: 'Vue 2', desc: '选项式 API、Vuex、Vue Router', link: '/docs/frontend/06-vue2/01-01-introduction' },
+      { tag: 'Vue 3', title: 'Vue 3', desc: 'Composition API、Pinia、Vite', link: '/docs/frontend/07-vue3/01-design-philosophy' },
+      { tag: 'React 16', title: 'React 16', desc: 'JSX、生命周期、Hooks 基础', link: '/docs/frontend/08-react16/01-react16' },
+      { tag: 'React 18', title: 'React 18', desc: '并发特性、Suspense、新 Hooks', link: '/docs/frontend/09-react18/01-react18' },
     ]
   },
   {
     icon: '🔧',
     title: '工程化 & 微前端',
     items: [
-      { tag: 'Vite', title: 'Vite', desc: '原理剖析、插件开发、打包优化', link: '/engineering/02-vite/01-vite' },
-      { tag: 'Qiankun', title: 'Qiankun', desc: '主应用配置、沙箱机制、应用通信', link: '/microfrontend/01-qiankun/01-overview' },
+      { tag: 'Vite', title: 'Vite', desc: '原理剖析、插件开发、打包优化', link: '/docs/engineering/02-vite/01-vite' },
+      { tag: 'Qiankun', title: 'Qiankun', desc: '主应用配置、沙箱机制、应用通信', link: '/docs/microfrontend/01-qiankun/01-overview' },
     ]
   },
   {
     icon: '📱',
     title: '跨端开发',
     items: [
-      { tag: 'RN', title: 'React Native', desc: '组件系统、导航、原生模块', link: '/crossend/01-reactnative/index' },
-      { tag: 'Flutter', title: 'Flutter', desc: 'Widget、布局、动画、状态管理', link: '/crossend/02-flutter/index' },
-      { tag: 'HarmonyOS', title: 'HarmonyOS', desc: 'ArkUI、页面路由、权限管理', link: '/crossend/03-harmonyos/index' },
-      { tag: 'Electron', title: 'Electron', desc: '主进程、IPC、打包发布', link: '/crossend/04-electron/index' },
+      { tag: 'RN', title: 'React Native', desc: '组件系统、导航、原生模块', link: '/docs/crossend/01-reactnative/index' },
+      { tag: 'Flutter', title: 'Flutter', desc: 'Widget、布局、动画、状态管理', link: '/docs/crossend/02-flutter/index' },
+      { tag: 'HarmonyOS', title: 'HarmonyOS', desc: 'ArkUI、页面路由、权限管理', link: '/docs/crossend/03-harmonyos/index' },
+      { tag: 'Electron', title: 'Electron', desc: '主进程、IPC、打包发布', link: '/docs/crossend/04-electron/index' },
     ]
   },
   {
     icon: '🖥️',
     title: '后端 & Node',
     items: [
-      { tag: 'Node.js', title: 'Node.js', desc: '模块系统、事件循环、异步编程', link: '/backend/01-nodejs/01-nodejs' },
-      { tag: 'Express', title: 'Express', desc: '路由、中间件、API 开发', link: '/backend/02-express/01-express' },
-      { tag: 'NestJS', title: 'NestJS', desc: '模块、控制器、守卫、微服务', link: '/backend/03-nestjs/01-nestjs' },
+      { tag: 'Node.js', title: 'Node.js', desc: '模块系统、事件循环、异步编程', link: '/docs/backend/01-nodejs/01-nodejs' },
+      { tag: 'Express', title: 'Express', desc: '路由、中间件、API 开发', link: '/docs/backend/02-express/01-express' },
+      { tag: 'NestJS', title: 'NestJS', desc: '模块、控制器、守卫、微服务', link: '/docs/backend/03-nestjs/01-nestjs' },
     ]
   },
   {
     icon: '🚀',
     title: '运维 & DevOps',
     items: [
-      { tag: 'Shell', title: 'Shell', desc: '脚本基础、流程控制、文本处理', link: '/operation/01-shell/01-overview' },
-      { tag: 'Docker', title: 'Docker', desc: '镜像、容器、Compose', link: '/operation/05-docker/01-overview' },
-      { tag: 'K8s', title: 'Kubernetes', desc: 'Pod、Service、Deployment', link: '/operation/04-k8s/01-overview' },
-      { tag: 'Jenkins', title: 'Jenkins', desc: 'Pipeline、插件、集成 Git', link: '/operation/02-jenkins/01-overview' },
-      { tag: 'CI/CD', title: 'CI/CD', desc: 'GitLab CI、GitHub Actions', link: '/operation/03-cicd/01-overview' },
-      { tag: 'Nginx', title: 'Nginx', desc: '反向代理、负载均衡', link: '/operation/06-nginx/01-overview' },
+      { tag: 'Shell', title: 'Shell', desc: '脚本基础、流程控制、文本处理', link: '/docs/operation/01-shell/01-overview' },
+      { tag: 'Docker', title: 'Docker', desc: '镜像、容器、Compose', link: '/docs/operation/05-docker/01-overview' },
+      { tag: 'K8s', title: 'Kubernetes', desc: 'Pod、Service、Deployment', link: '/docs/operation/04-k8s/01-overview' },
+      { tag: 'Jenkins', title: 'Jenkins', desc: 'Pipeline、插件、集成 Git', link: '/docs/operation/02-jenkins/01-overview' },
+      { tag: 'CI/CD', title: 'CI/CD', desc: 'GitLab CI、GitHub Actions', link: '/docs/operation/03-cicd/01-overview' },
+      { tag: 'Nginx', title: 'Nginx', desc: '反向代理、负载均衡', link: '/docs/operation/06-nginx/01-overview' },
     ]
   },
   {
     icon: '⛓️',
     title: 'Web3',
     items: [
-      { tag: 'Web3.js', title: 'Web3.js', desc: '连接区块链、账户、合约交互', link: '/web3/01-web3.0/01-overview' },
-      { tag: 'Solidity', title: 'Solidity', desc: '智能合约开发、数据类型、函数', link: '/web3/02-solidity/01-overview' },
-      { tag: 'Ethereum', title: 'Ethereum', desc: '账户系统、交易、合约部署', link: '/web3/03-ethereum/01-overview' },
+      { tag: 'Web3.js', title: 'Web3.js', desc: '连接区块链、账户、合约交互', link: '/docs/web3/01-web3.0/01-overview' },
+      { tag: 'Solidity', title: 'Solidity', desc: '智能合约开发、数据类型、函数', link: '/docs/web3/02-solidity/01-overview' },
+      { tag: 'Ethereum', title: 'Ethereum', desc: '账户系统、交易、合约部署', link: '/docs/web3/03-ethereum/01-overview' },
     ]
   },
 ]

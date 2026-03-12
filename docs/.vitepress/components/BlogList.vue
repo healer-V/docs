@@ -595,12 +595,5 @@ onMounted(() => {
 
 @media (max-width: 480px) {
   .article-meta { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
-  .blog-container { padding: 1rem 0.75rem 2.5rem; }
-  .article-title { font-size: 0.95rem; }
-  .user-stats { grid-template-columns: 1fr 1fr 1fr; gap: 0.25rem; }
-  .stat-number { font-size: 0.95rem; }
-  .pagination { gap: 0.25rem; }
-  .page-btn { padding: 5px 10px; font-size: 0.75rem; }
-  .page-number { width: 26px; height: 26px; font-size: 0.75rem; }
 }
 </style>

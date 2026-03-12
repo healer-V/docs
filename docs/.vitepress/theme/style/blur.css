@@ -79,10 +79,8 @@
 
 
 }
-@media (min-width: 960px) {
-    .VPNavBar.has-sidebar .content{
-        padding-left: calc(var(--vp-sidebar-width) / 1.5) !important;
-    }
+.VPNavBar.has-sidebar .content{
+    padding-left: calc(var(--vp-sidebar-width) / 1.5) !important;
 }
 .VPNavBar.has-sidebar .content .title{
     width: fit-content !important;
@@ -94,7 +92,7 @@
     justify-content: center !important;
 }
 .VPNavBarSearch{
-    padding-left: 16px !important;
+    padding-left:0px !important;
     width: fit-content !important;
 }
 .VPSidebar{

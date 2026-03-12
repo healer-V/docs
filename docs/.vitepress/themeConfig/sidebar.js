@@ -667,6 +667,70 @@ export const sidebar = {
       ],
     },
   ],
+  "/operation/00-linux/": [
+    {
+      text: "Linux 系统学习指南",
+      items: [
+        { text: "学习路线总览", link: "/operation/00-linux/index.md" },
+        {
+          text: "第1章：认识 Linux",
+          collapsed: false,
+          items: [
+            { text: "1.1 Linux 的前世今生", link: "/operation/00-linux/01-intro.md" },
+            { text: "1.2 安装与环境搭建", link: "/operation/00-linux/02-installation.md" },
+            { text: "1.3 初识 Shell 与终端", link: "/operation/00-linux/03-terminal.md" },
+          ],
+        },
+        {
+          text: "第2章：文件系统",
+          collapsed: true,
+          items: [
+            { text: "2.1 目录结构详解", link: "/operation/00-linux/04-filesystem.md" },
+            { text: "2.2 文件与目录操作", link: "/operation/00-linux/05-file-operations.md" },
+            { text: "2.3 文件查找与搜索", link: "/operation/00-linux/06-find-search.md" },
+          ],
+        },
+        {
+          text: "第3章：权限与用户管理",
+          collapsed: true,
+          items: [
+            { text: "3.1 用户与用户组", link: "/operation/00-linux/07-users.md" },
+            { text: "3.2 文件权限详解", link: "/operation/00-linux/08-permissions.md" },
+          ],
+        },
+        {
+          text: "第4章：文本处理",
+          collapsed: true,
+          items: [
+            { text: "4.1 Vim 编辑器", link: "/operation/00-linux/09-vim.md" },
+            { text: "4.2 grep / sed / awk", link: "/operation/00-linux/10-text-processing.md" },
+          ],
+        },
+        {
+          text: "第5章：进程与系统管理",
+          collapsed: true,
+          items: [
+            { text: "5.1 进程管理", link: "/operation/00-linux/11-process.md" },
+            { text: "5.2 系统资源监控", link: "/operation/00-linux/12-monitor.md" },
+          ],
+        },
+        {
+          text: "第6章：网络管理",
+          collapsed: true,
+          items: [
+            { text: "6.1 网络管理与诊断", link: "/operation/00-linux/13-network.md" },
+          ],
+        },
+        {
+          text: "第7章：软件包管理",
+          collapsed: true,
+          items: [
+            { text: "7.1 APT / YUM / DNF", link: "/operation/00-linux/14-package-manager.md" },
+          ],
+        },
+      ],
+    },
+  ],
   "/operation/01-shell/": [
     {
       text: "Shell脚本 - Linux自动化基础",
