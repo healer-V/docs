@@ -171,55 +171,42 @@ watch(() => frontmatter.value, (newFrontmatter) => {
   align-items: center;
   gap: 1rem;
   margin: 1rem 0 2rem 0;
-  padding: 1rem;
+  padding: 0.85rem 1rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  border-left: 4px solid var(--vp-c-brand-1);
+  border-radius: 10px;
+  border-left: 3px solid var(--accent, #10b981);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 3px solid var(--accent, #10b981);
 }
 
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   color: var(--vp-c-text-2);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 500;
 }
 
 .meta-icon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .meta-text {
   white-space: nowrap;
 }
 
-/* 响应式设计 */
 @media (max-width: 768px) {
   .article-meta {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
-  
   .meta-item {
-    font-size: 0.85rem;
-  }
-}
-
-/* 深色模式适配 */
-@media (prefers-color-scheme: dark) {
-  .article-meta {
-    background: var(--vp-c-bg-alt);
-  }
-}
-
-/* 高对比度模式 */
-@media (prefers-contrast: high) {
-  .article-meta {
-    border: 1px solid var(--vp-c-divider);
+    font-size: 0.8rem;
   }
 }
 </style>

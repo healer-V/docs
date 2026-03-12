@@ -1,20 +1,22 @@
 /* ============================================================
-   Design System — Refined Minimalism
+   Design System — Obsidian Jade
+   A crisp, tech-editorial aesthetic with emerald accents
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Brand — warm slate with amber accent */
-  --vp-c-brand-1: #1a1a2e;
-  --vp-c-brand-2: #2d2d4e;
-  --vp-c-brand-3: #3d3d6b;
-  --vp-c-brand-soft: rgba(26, 26, 46, 0.08);
+  /* Brand — deep ink with emerald accent */
+  --vp-c-brand-1: #059669;
+  --vp-c-brand-2: #10b981;
+  --vp-c-brand-3: #34d399;
+  --vp-c-brand-soft: rgba(16, 185, 129, 0.08);
 
   /* Accent */
-  --accent: #e8a045;
-  --accent-soft: rgba(232, 160, 69, 0.12);
-  --accent-hover: #d4903a;
+  --accent: #10b981;
+  --accent-soft: rgba(16, 185, 129, 0.1);
+  --accent-hover: #059669;
+  --accent-glow: rgba(16, 185, 129, 0.25);
 
   /* Tip / Warning / Danger */
   --vp-c-tip-1: var(--vp-c-brand-1);
@@ -31,32 +33,35 @@
   --vp-c-danger-soft: var(--vp-c-red-soft);
 
   /* Typography */
-  --vp-font-family-base: 'DM Sans', -apple-system, sans-serif;
-  --vp-font-family-mono: 'DM Mono', 'Menlo', monospace;
-  --vp-font-family-prose: 'Lora', Georgia, serif;
+  --vp-font-family-base: 'Outfit', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
 
   /* Hero */
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(135deg, #1a1a2e 0%, #3d3d6b 50%, #e8a045 100%);
-  --vp-home-hero-image-background-image: radial-gradient(ellipse at center, rgba(232,160,69,0.15) 0%, transparent 70%);
+  --vp-home-hero-name-background: linear-gradient(135deg, #059669 0%, #10b981 40%, #6ee7b7 100%);
+  --vp-home-hero-image-background-image: radial-gradient(ellipse at center, rgba(16,185,129,0.12) 0%, transparent 70%);
   --vp-home-hero-image-filter: blur(48px);
 
   /* Button */
   --vp-button-brand-border: transparent;
   --vp-button-brand-text: #fff;
-  --vp-button-brand-bg: var(--vp-c-brand-1);
+  --vp-button-brand-bg: #059669;
   --vp-button-brand-hover-border: transparent;
   --vp-button-brand-hover-text: #fff;
-  --vp-button-brand-hover-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-bg: #10b981;
   --vp-button-brand-active-border: transparent;
   --vp-button-brand-active-text: #fff;
-  --vp-button-brand-active-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-bg: #047857;
 
   /* Custom block */
   --vp-custom-block-tip-border: transparent;
   --vp-custom-block-tip-text: var(--vp-c-text-1);
   --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+
+  /* Surfaces */
+  --surface-glass: rgba(255, 255, 255, 0.6);
+  --surface-border: rgba(0, 0, 0, 0.06);
 }
 
 @media (min-width: 640px) {
@@ -70,26 +75,31 @@
    Dark mode overrides
    ============================================================ */
 .dark {
-  --vp-c-brand-1: #c9a96e;
-  --vp-c-brand-2: #b8935a;
-  --vp-c-brand-3: #a07d48;
-  --vp-c-brand-soft: rgba(201, 169, 110, 0.1);
-  --accent: #c9a96e;
-  --accent-soft: rgba(201, 169, 110, 0.12);
-  --accent-hover: #b8935a;
-  --vp-home-hero-name-background: linear-gradient(135deg, #c9a96e 0%, #e8c99a 60%, #fff 100%);
-  --vp-home-hero-image-background-image: radial-gradient(ellipse at center, rgba(201,169,110,0.2) 0%, transparent 70%);
-  --vp-button-brand-bg: #c9a96e;
-  --vp-button-brand-hover-bg: #b8935a;
+  --vp-c-brand-1: #34d399;
+  --vp-c-brand-2: #10b981;
+  --vp-c-brand-3: #059669;
+  --vp-c-brand-soft: rgba(52, 211, 153, 0.08);
+  --accent: #34d399;
+  --accent-soft: rgba(52, 211, 153, 0.08);
+  --accent-hover: #6ee7b7;
+  --accent-glow: rgba(52, 211, 153, 0.15);
+  --vp-home-hero-name-background: linear-gradient(135deg, #6ee7b7 0%, #34d399 50%, #10b981 100%);
+  --vp-home-hero-image-background-image: radial-gradient(ellipse at center, rgba(52,211,153,0.1) 0%, transparent 70%);
+  --vp-button-brand-bg: #10b981;
+  --vp-button-brand-hover-bg: #34d399;
 
-  /* 暖灰暗色背景 */
-  --vp-c-bg: #1c1917;
-  --vp-c-bg-soft: #242220;
-  --vp-c-bg-mute: #2a2825;
-  --vp-c-text-1: #e8e3dc;
-  --vp-c-text-2: #b8b0a6;
-  --vp-c-text-3: #7a7068;
-  --vp-c-divider: rgba(255,255,255,0.08);
+  /* Deep obsidian background */
+  --vp-c-bg: #0f1117;
+  --vp-c-bg-soft: #161820;
+  --vp-c-bg-mute: #1c1e28;
+  --vp-c-text-1: #e4e6ee;
+  --vp-c-text-2: #9ca0b0;
+  --vp-c-text-3: #5c6178;
+  --vp-c-divider: rgba(255, 255, 255, 0.06);
+
+  /* Surfaces */
+  --surface-glass: rgba(22, 24, 32, 0.7);
+  --surface-border: rgba(255, 255, 255, 0.06);
 }
 
 /* ============================================================
@@ -97,14 +107,15 @@
    ============================================================ */
 body {
   font-family: var(--vp-font-family-base);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3 {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-weight: 400;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
@@ -113,108 +124,313 @@ code, pre, table {
 }
 
 code {
-  color: #c0392b !important;
-  font-size: 1em !important;
+  color: #059669 !important;
+  font-size: 0.9em !important;
+  background: var(--accent-soft) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
 }
 
 /* ============================================================
    Nav refinements
    ============================================================ */
 .VPNav {
-  border-bottom: 1px solid var(--vp-c-divider) !important;
-  backdrop-filter: blur(12px);
+  border-bottom: none !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.VPNavBar {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.VPNavBar:not(.home.top) {
+  box-shadow: 0 1px 0 0 var(--vp-c-divider),
+              0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+.dark .VPNavBar:not(.home.top) {
+  box-shadow: 0 1px 0 0 var(--vp-c-divider),
+              0 4px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 .VPNavBar .title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.1rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
+}
+
+/* Nav menu item hover */
+.VPNavBarMenu .VPNavBarMenuLink {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink:hover {
+  color: var(--accent) !important;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink.active {
+  color: var(--accent) !important;
+}
+
+/* Nav menu group hover effect */
+.VPNavBarMenuGroup .text {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
+/* Flyout menu */
+.VPFlyout .VPMenu {
+  border-radius: 12px !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  overflow: hidden;
+}
+
+.dark .VPFlyout .VPMenu {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.VPFlyout .VPMenuLink a {
+  transition: color 0.2s ease, background-color 0.2s ease !important;
+  border-radius: 6px !important;
+}
+
+.VPFlyout .VPMenuLink a:hover {
+  color: var(--accent) !important;
+  background-color: var(--accent-soft) !important;
+}
+
+/* Social links in nav */
+.VPNavBarSocialLinks .VPSocialLink:hover {
+  color: var(--accent) !important;
+  transition: color 0.2s ease;
 }
 
 /* ============================================================
    Home hero refinements
    ============================================================ */
-.VPHero .name {
-  font-family: 'DM Serif Display', serif !important;
-  font-size: clamp(2.4rem, 6vw, 4rem) !important;
-  line-height: 1.1 !important;
-  letter-spacing: -0.03em !important;
+
+/* ── Animated background: gradient orbs + dot grid ── */
+.VPHome {
+  position: relative;
 }
 
+.VPHome::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 80vh;
+  background:
+    radial-gradient(600px circle at 30% 20%, rgba(16, 185, 129, 0.10), transparent 50%),
+    radial-gradient(500px circle at 70% 40%, rgba(59, 130, 246, 0.06), transparent 50%),
+    radial-gradient(400px circle at 50% 70%, rgba(139, 92, 246, 0.04), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat 20s ease-in-out infinite alternate;
+}
+
+.dark .VPHome::before {
+  background:
+    radial-gradient(600px circle at 30% 20%, rgba(52, 211, 153, 0.07), transparent 50%),
+    radial-gradient(500px circle at 70% 40%, rgba(59, 130, 246, 0.04), transparent 50%),
+    radial-gradient(400px circle at 50% 70%, rgba(139, 92, 246, 0.03), transparent 50%);
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, -20px); }
+}
+
+/* Dot grid overlay */
+.VPHome::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80vh;
+  background-image: radial-gradient(circle, var(--vp-c-text-3) 0.5px, transparent 0.5px);
+  background-size: 28px 28px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: linear-gradient(to bottom, black 30%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 80%);
+}
+
+.dark .VPHome::after {
+  opacity: 0.08;
+}
+
+/* ── Hero layout ── */
+.VPHero {
+  padding-top: 100px !important;
+  padding-bottom: 60px !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Hero name — gradient text ── */
+.VPHero .name {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: clamp(2.6rem, 6vw, 4.2rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.04em !important;
+  font-weight: 700 !important;
+}
+
+/* ── Hero subtitle ── */
+.VPHero .text {
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.3 !important;
+  color: var(--vp-c-text-1) !important;
+}
+
+/* ── Tagline ── */
 .VPHero .tagline {
   font-size: 1.05rem !important;
-  font-weight: 300 !important;
+  font-weight: 400 !important;
   color: var(--vp-c-text-2) !important;
   max-width: 480px;
   line-height: 1.7;
+  letter-spacing: 0.04em;
+  position: relative;
 }
 
+/* Tagline decorative dash */
+.VPHero .tagline::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+/* ── Action buttons ── */
 .VPHero .actions {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  gap: 14px;
 }
 
+/* ── Hero image: decorative ring ── */
+.VPHero .image-container {
+  position: relative;
+}
+
+.VPHero .image-container::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2px dashed rgba(16, 185, 129, 0.2);
+  animation: heroRingSpin 30s linear infinite;
+  pointer-events: none;
+}
+
+.dark .VPHero .image-container::before {
+  border-color: rgba(52, 211, 153, 0.12);
+}
+
+@keyframes heroRingSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hero image glow */
+.VPHero .image-container .image-bg {
+  animation: heroGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.06); }
+}
+
+/* ── Buttons ── */
 .VPButton.medium {
-  border-radius: 4px !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.03em !important;
+  border-radius: 10px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
   font-size: 0.875rem !important;
-  padding: 10px 24px !important;
-  transition: all 0.2s ease !important;
+  padding: 11px 28px !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer;
 }
 
 .VPButton.brand {
-  background: var(--vp-c-brand-1) !important;
-  border: 1px solid var(--vp-c-brand-1) !important;
+  background: var(--vp-button-brand-bg) !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 2px 12px rgba(5, 150, 105, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer sweep on brand button */
+.VPButton.brand::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: none;
+  animation: btnShimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes btnShimmer {
+  0%, 70%, 100% { left: -100%; }
+  85% { left: 150%; }
 }
 
 .VPButton.brand:hover {
-  background: var(--vp-c-brand-3) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(26,26,46,0.15);
+  background: var(--vp-button-brand-hover-bg) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(5, 150, 105, 0.35);
 }
 
 .VPButton.alt {
   border: 1px solid var(--vp-c-divider) !important;
-  background: transparent !important;
+  background: var(--surface-glass) !important;
   color: var(--vp-c-text-1) !important;
+  backdrop-filter: blur(8px);
 }
 
 .VPButton.alt:hover {
-  border-color: var(--vp-c-brand-1) !important;
-  color: var(--vp-c-brand-1) !important;
-  transform: translateY(-1px);
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--accent-glow);
 }
 
 /* ============================================================
-   Home features cards
+   Hero → Bento gradient divider
    ============================================================ */
-.VPFeatures .VPFeature {
-  border: 1px solid var(--vp-c-divider) !important;
-  border-radius: 8px !important;
-  background: var(--vp-c-bg) !important;
-  transition: all 0.25s ease !important;
-  padding: 1.5rem !important;
+.VPHome .vp-doc {
+  position: relative;
+  z-index: 1;
 }
 
-.VPFeatures .VPFeature:hover {
-  border-color: var(--accent) !important;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-}
-
-.VPFeature .title {
-  font-family: 'DM Sans', sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 0.95rem !important;
-  letter-spacing: 0.01em;
-}
-
-.VPFeature .details {
-  font-size: 0.82rem !important;
-  font-weight: 300 !important;
-  line-height: 1.6 !important;
-  color: var(--vp-c-text-2) !important;
-  margin-top: 0.4rem !important;
+.VPHome .vp-doc::before {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 0 auto 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.4;
 }
 
 /* ============================================================
@@ -222,17 +438,18 @@ code {
    ============================================================ */
 .VPSidebar {
   border-right: 1px solid var(--vp-c-divider) !important;
-  padding-top: 1.5rem !important;
+  padding-top: calc(var(--vp-nav-height) + 1rem) !important;
 }
 
 .VPSidebarItem .text {
   font-size: 0.875rem !important;
-  font-weight: 300 !important;
+  font-weight: 400 !important;
+  transition: color 0.2s ease;
 }
 
 .VPSidebarItem.is-active > .item .text {
   color: var(--accent) !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }
 
 .VPSidebarItem.is-active > .item .indicator {
@@ -243,34 +460,37 @@ code {
    Content area
    ============================================================ */
 .VPDoc .content-container {
-  max-width: 720px !important;
+  max-width: 740px !important;
 }
 
 .vp-doc h1 {
   font-size: 2rem !important;
   margin-bottom: 0.5rem !important;
   line-height: 1.2 !important;
+  font-weight: 700 !important;
 }
 
 .vp-doc h2 {
-  font-size: 1.35rem !important;
+  font-size: 1.4rem !important;
   border-top: 1px solid var(--vp-c-divider) !important;
   padding-top: 1.5rem !important;
   margin-top: 2.5rem !important;
+  font-weight: 600 !important;
 }
 
 .vp-doc h3 {
-  font-size: 1.05rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
 }
 
-/* 正文使用 Lora 衬线字体，提升阅读舒适度 */
+/* Body text — optimized for Chinese readability */
 .vp-doc p,
 .vp-doc li,
 .vp-doc blockquote p {
-  font-family: 'Lora', Georgia, serif;
-  font-size: 17px;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.9;
+  line-height: 1.85;
   color: var(--vp-c-text-1);
 }
 
@@ -286,7 +506,8 @@ code {
   color: var(--accent) !important;
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
 .vp-doc a:hover {
@@ -298,23 +519,26 @@ code {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.875rem;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .vp-doc th {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--vp-c-text-2);
-  border-bottom: 1px solid var(--vp-c-divider);
-  padding: 0.6rem 1rem;
+  border-bottom: 2px solid var(--vp-c-divider);
+  padding: 0.7rem 1rem;
   text-align: left;
+  background: var(--vp-c-bg-soft);
 }
 
 .vp-doc td {
   padding: 0.7rem 1rem;
   border-bottom: 1px solid var(--vp-c-divider);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .vp-doc tr:last-child td {
@@ -322,12 +546,87 @@ code {
 }
 
 .vp-doc tr:hover td {
-  background: var(--vp-c-bg-soft);
+  background: var(--accent-soft);
 }
 
 /* ============================================================
-   Algolia
+   Scrollbar
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-text-3);
+}
+
+/* ============================================================
+   Selection
+   ============================================================ */
+::selection {
+  background: var(--accent-glow);
+  color: var(--vp-c-text-1);
+}
+
+/* ============================================================
+   Algolia / Local Search
    ============================================================ */
 .DocSearch {
   --docsearch-primary-color: var(--accent) !important;
 }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.VPFooter {
+  border-top: none !important;
+  position: relative;
+  padding-top: 2rem !important;
+}
+
+/* Gradient top line */
+.VPFooter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.35;
+}
+
+.VPFooter .message,
+.VPFooter .copyright {
+  font-size: 0.78rem !important;
+  color: var(--vp-c-text-3) !important;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   Mobile nav hamburger
+   ============================================================ */
+.VPNavBarHamburger .container .top,
+.VPNavBarHamburger .container .middle,
+.VPNavBarHamburger .container .bottom {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ============================================================
+   Page transition
+   ============================================================ */
+.VPContent {
+  transition: opacity 0.15s ease;
+}
+
+/* ============================================================
+   Home page specific tweaks
+   ============================================================ */

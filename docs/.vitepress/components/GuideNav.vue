@@ -1,19 +1,20 @@
 <template>
   <div class="guide-nav">
 
-    <!-- 页头 -->
+    <!-- Header -->
     <div class="guide-header">
-      <p class="guide-label">KNOWLEDGE MAP</p>
+      <div class="header-badge">KNOWLEDGE MAP</div>
       <h1 class="guide-title">选择你的学习方向</h1>
       <p class="guide-desc">从基础到进阶，系统化的前端全栈知识体系</p>
+      <div class="header-line"></div>
     </div>
 
-    <!-- 各模块 -->
+    <!-- Sections -->
     <div v-for="section in sections" :key="section.title" class="guide-section">
       <div class="section-header">
         <span class="section-icon">{{ section.icon }}</span>
         <h2 class="section-title">{{ section.title }}</h2>
-        <span class="section-count">{{ section.items.length }} 个模块</span>
+        <span class="section-count">{{ section.items.length }}</span>
       </div>
       <div class="section-grid">
         <a
@@ -22,25 +23,37 @@
           :href="item.link"
           class="guide-card"
         >
-          <div class="card-top">
+          <div class="card-inner">
             <span class="card-tag">{{ item.tag }}</span>
+            <h3 class="card-title">{{ item.title }}</h3>
+            <p class="card-desc">{{ item.desc }}</p>
+            <div class="card-footer">
+              <span class="card-arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
           </div>
-          <h3 class="card-title">{{ item.title }}</h3>
-          <p class="card-desc">{{ item.desc }}</p>
-          <div class="card-arrow">→</div>
         </a>
       </div>
     </div>
 
-    <!-- 面试题入口 -->
+    <!-- Interview CTA -->
     <div class="guide-interview">
+      <div class="interview-glow"></div>
       <div class="interview-inner">
         <div class="interview-text">
-          <p class="interview-label">INTERVIEW</p>
+          <div class="interview-badge">INTERVIEW</div>
           <h2 class="interview-title">面试题库</h2>
           <p class="interview-desc">涵盖基础、框架、工程化、跨端、网络、浏览器、手写题等高频考点</p>
         </div>
-        <a href="/docs/interview/" class="interview-btn">进入题库 →</a>
+        <a href="/docs/interview/" class="interview-btn">
+          <span>进入题库</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
     </div>
 
@@ -122,32 +135,36 @@ const sections = [
 </script>
 
 <style scoped>
-/* ── 容器 ── */
+/* ── Container ── */
 .guide-nav {
-  max-width: 960px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 4rem 2rem 6rem;
 }
 
-/* ── 页头 ── */
+/* ── Header ── */
 .guide-header {
   margin-bottom: 4rem;
-  border-left: 2px solid var(--accent, #e8a045);
-  padding-left: 1.5rem;
+  text-align: center;
 }
 
-.guide-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  color: var(--accent, #e8a045);
-  font-weight: 500;
-  margin: 0 0 0.75rem;
+.header-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--accent, #10b981);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 4px 14px;
+  background: var(--accent-soft, rgba(16, 185, 129, 0.1));
+  border-radius: 20px;
+  border: 1px solid rgba(16, 185, 129, 0.15);
 }
 
 .guide-title {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 400;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
   letter-spacing: -0.03em;
   margin: 0 0 0.75rem;
   color: var(--vp-c-text-1);
@@ -155,45 +172,62 @@ const sections = [
 }
 
 .guide-desc {
-  font-size: 0.95rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--vp-c-text-2);
-  margin: 0;
+  margin: 0 auto;
   line-height: 1.6;
+  max-width: 420px;
+}
+
+.header-line {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent, #10b981), transparent);
+  border-radius: 2px;
+  margin: 2rem auto 0;
 }
 
 /* ── Section ── */
 .guide-section {
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
 }
 
 .section-header {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1.25rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .section-icon {
   font-size: 1rem;
+  line-height: 1;
 }
 
 .section-title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin: 0;
   color: var(--vp-c-text-1);
 }
 
 .section-count {
   margin-left: auto;
-  font-size: 0.72rem;
-  color: var(--vp-c-text-3);
-  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent, #10b981);
+  background: var(--accent-soft, rgba(16, 185, 129, 0.1));
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
 }
 
 /* ── Grid ── */
@@ -205,127 +239,141 @@ const sections = [
 
 /* ── Card ── */
 .guide-card {
-  display: flex;
-  flex-direction: column;
-  padding: 1.1rem 1.25rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
-  background: var(--vp-c-bg);
+  display: block;
   text-decoration: none !important;
   color: inherit;
-  transition: all 0.2s ease;
+  border-radius: 10px;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
-.guide-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  background: var(--vp-c-bg);
   height: 100%;
-  background: var(--accent, #e8a045);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.2s ease;
+  transition: border-color 0.3s ease;
 }
 
 .guide-card:hover {
-  border-color: var(--accent, #e8a045);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
 }
 
-.guide-card:hover::before {
-  transform: scaleY(1);
-}
-
-.card-top {
-  margin-bottom: 0.5rem;
+.guide-card:hover .card-inner {
+  border-color: var(--accent, #10b981);
 }
 
 .card-tag {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  align-self: flex-start;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent, #e8a045);
-  background: var(--accent-soft, rgba(232,160,69,0.1));
-  padding: 2px 6px;
-  border-radius: 2px;
+  color: var(--accent, #10b981);
+  background: var(--accent-soft, rgba(16, 185, 129, 0.1));
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
 }
 
 .card-title {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 0.95rem;
-  font-weight: 500;
-  margin: 0 0 0.35rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
   color: var(--vp-c-text-1);
   letter-spacing: -0.01em;
 }
 
 .card-desc {
   font-size: 0.78rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--vp-c-text-2);
   margin: 0;
   line-height: 1.5;
   flex: 1;
 }
 
+.card-footer {
+  margin-top: 0.6rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .card-arrow {
-  margin-top: 0.75rem;
-  font-size: 0.8rem;
   color: var(--vp-c-text-3);
-  transition: all 0.2s ease;
   opacity: 0;
-  transform: translateX(-4px);
+  transform: translateX(-6px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
 }
 
 .guide-card:hover .card-arrow {
   opacity: 1;
   transform: translateX(0);
-  color: var(--accent, #e8a045);
+  color: var(--accent, #10b981);
 }
 
-/* ── 面试题入口 ── */
+/* ── Interview CTA ── */
 .guide-interview {
   margin-top: 4rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 14px;
   overflow: hidden;
+  position: relative;
   background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.interview-glow {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--accent-glow, rgba(16,185,129,0.15)) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .interview-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 2.5rem;
+  padding: 2.5rem 2.5rem;
   gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-.interview-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  color: var(--accent, #e8a045);
-  font-weight: 500;
-  margin: 0 0 0.5rem;
+.interview-badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--accent, #10b981);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding: 3px 10px;
+  background: var(--accent-soft);
+  border-radius: 4px;
 }
 
 .interview-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin: 0 0 0.5rem;
   color: var(--vp-c-text-1);
 }
 
 .interview-desc {
-  font-size: 0.85rem;
-  font-weight: 300;
+  font-size: 0.88rem;
+  font-weight: 400;
   color: var(--vp-c-text-2);
   margin: 0;
   line-height: 1.6;
@@ -334,31 +382,42 @@ const sections = [
 
 .interview-btn {
   flex-shrink: 0;
-  display: inline-block;
-  padding: 10px 24px;
-  background: var(--vp-c-brand-1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--accent, #10b981);
   color: #fff !important;
   text-decoration: none !important;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  transition: all 0.2s ease;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
 }
 
 .interview-btn:hover {
-  background: var(--vp-c-brand-3);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(26,26,46,0.15);
+  background: var(--accent-hover, #059669);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--accent-glow, rgba(16,185,129,0.25));
 }
 
-/* ── 响应式 ── */
+.interview-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.interview-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Responsive ── */
 @media (max-width: 640px) {
   .guide-nav { padding: 2rem 1.25rem 4rem; }
+  .guide-header { margin-bottom: 3rem; }
   .section-grid { grid-template-columns: 1fr 1fr; }
   .interview-inner { flex-direction: column; align-items: flex-start; }
-  .interview-btn { width: 100%; text-align: center; }
+  .interview-btn { width: 100%; text-align: center; justify-content: center; }
 }
 
 @media (max-width: 400px) {

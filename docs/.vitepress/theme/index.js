@@ -11,6 +11,8 @@ import BusuanziStats from '../components/BusuanziStats.vue'
 import ArticleMeta from '../components/ArticleMeta.vue'
 import Wlink from '../components/Wlink.vue'
 import GuideNav from '../components/GuideNav.vue'
+import HomeBento from '../components/HomeBento.vue'
+import AboutPage from '../components/AboutPage.vue'
 import { authManager } from '../utils/auth.js'
 import './style.css';
 import './style/index.css';
@@ -61,6 +63,8 @@ export default {
     app.component('Wlink', Wlink)
     app.component('ImageViewer', ImageViewer)
     app.component('GuideNav', GuideNav)
+    app.component('HomeBento', HomeBento)
+    app.component('AboutPage', AboutPage)
     
     // 确保busuanzi在浏览器环境中可用
     if (inBrowser) {

@@ -1,116 +1,159 @@
 /* .vitepress/theme/style/blur.css */
+/* ── Nav glass morphism ── */
+
 :root {
 
-    /* 首页导航 */
     .VPNavBar {
-        background-color: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.72) !important;
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
     }
 
-    /* 文档页导航两侧 */
+    .VPNavBar.home.top {
+        background-color: rgba(255, 255, 255, 0) !important;
+    }
+
     .VPNavBar:not(.home) {
-        background-color: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.72) !important;
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
     }
 
     @media (min-width: 960px) {
-
-        /* 文档页导航两侧 */
         .VPNavBar:not(.home) {
-            background-color: rgba(255, 255, 255, 0);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.72) !important;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
         }
 
-        /* 首页下滑后导航两侧 */
         .VPNavBar:not(.has-sidebar):not(.home.top) {
-            background-color: rgba(255, 255, 255, 0);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.72) !important;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
         }
     }
 
     @media (min-width: 960px) {
-
-        /* 文档页导航中间 */
         .VPNavBar:not(.home.top) .content-body {
-            background-color: rgba(255, 255, 255, 0);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0) !important;
         }
 
-        /* 首页下滑后导航中间 */
         .VPNavBar:not(.has-sidebar):not(.home.top) .content-body {
-            background-color: rgba(255, 255, 255, 0);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0) !important;
         }
     }
-
-
-    /* 分割线 */
 
     @media (min-width: 960px) {
-
-        /* 文档页分割线 */
         .VPNavBar:not(.home.top) .divider-line {
-            background-color: rgba(255, 255, 255, 0);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0) !important;
         }
 
-        /* 首页分割线 */
         .VPNavBar:not(.has-sidebar):not(.home.top) .divider {
-            background-color: rgba(255, 255, 255, 0);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0) !important;
         }
     }
 
-    /* 搜索框 VPNavBarSearchButton.vue */
     .DocSearch-Button {
-        background-color: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(10px);
+        background-color: var(--vp-c-bg-soft) !important;
+        border: 1px solid var(--vp-c-divider) !important;
+        border-radius: 8px !important;
+        transition: all 0.2s ease;
     }
 
+    .DocSearch-Button:hover {
+        border-color: var(--accent) !important;
+    }
 
-    /* 移动端大纲栏 */
     .VPLocalNav {
-        background-color: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(10px);
-        /* 隐藏分割线 */
-        /* border-bottom: 5px solid var(--vp-c-gutter); */
+        background-color: rgba(255, 255, 255, 0.72) !important;
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
         border-bottom: 0px;
     }
-
-
 }
-.VPNavBar.has-sidebar .content{
-    padding-left: calc(var(--vp-sidebar-width) / 1.5) !important;
+
+/* Dark mode nav glass */
+.dark {
+    .VPNavBar {
+        background-color: rgba(15, 17, 23, 0.78) !important;
+    }
+
+    .VPNavBar.home.top {
+        background-color: rgba(15, 17, 23, 0) !important;
+    }
+
+    .VPNavBar:not(.home) {
+        background-color: rgba(15, 17, 23, 0.78) !important;
+    }
+
+    @media (min-width: 960px) {
+        .VPNavBar:not(.home),
+        .VPNavBar:not(.has-sidebar):not(.home.top) {
+            background-color: rgba(15, 17, 23, 0.78) !important;
+        }
+    }
+
+    .VPLocalNav {
+        background-color: rgba(15, 17, 23, 0.78) !important;
+    }
 }
-.VPNavBar.has-sidebar .content .title{
+
+.VPNavBar.has-sidebar .content {
+    padding-left: var(--vp-sidebar-width) !important;
+}
+
+.VPNavBar.has-sidebar .content .title {
     width: fit-content !important;
 }
-.VPNavBarTitle{
+
+.VPNavBarTitle {
     width: fit-content !important;
-} 
-.content-body{
+}
+
+.content-body {
     justify-content: center !important;
 }
-.VPNavBarSearch{
-    padding-left:0px !important;
+
+.VPNavBarSearch {
+    padding-left: 16px !important;
     width: fit-content !important;
+    flex-shrink: 0;
 }
-.VPSidebar{
+
+/* Local search button refinement */
+.VPNavBarSearch .local-search-btn {
+    border-radius: 8px !important;
+    border: 1px solid var(--vp-c-divider) !important;
+    background: var(--vp-c-bg-soft) !important;
+    transition: all 0.2s ease !important;
+}
+
+.VPNavBarSearch .local-search-btn:hover {
+    border-color: var(--accent) !important;
+}
+
+/* Prevent menu items from being squeezed by search */
+.VPNavBarMenu {
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.VPSidebar {
     padding-right: 0px !important;
 }
-.VPSidebar .group{
+
+.VPSidebar .group {
     width: calc(var(--vp-sidebar-width) - 84px) !important;
 }
-@media (min-width: 1440px){
-    .VPSidebar{
+
+@media (min-width: 1440px) {
+    .VPSidebar {
         width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px) !important;
     }
 }
-@media (min-width: 960px){
-    .VPSidebar{
+
+@media (min-width: 960px) {
+    .VPSidebar {
         width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px) !important;
     }
-}
-.VPContent{
-    
 }

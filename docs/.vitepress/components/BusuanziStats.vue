@@ -1,13 +1,17 @@
 <template>
   <div class="busuanzi-stats">
     <div class="stats-header">
-      <h4 class="stats-title">📊 访问统计</h4>
+      <h4 class="stats-title">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        访问统计
+      </h4>
     </div>
-    
+
     <div class="stats-content">
-      <!-- 站点访问量 -->
       <div class="stat-item">
-        <div class="stat-icon">👁️</div>
+        <div class="stat-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
         <div class="stat-info">
           <span class="stat-label">站点访问量</span>
           <span class="stat-value" :class="{ 'loading': isLoading, 'error': hasError }">
@@ -15,10 +19,11 @@
           </span>
         </div>
       </div>
-      
-      <!-- 站点访客数 -->
+
       <div class="stat-item">
-        <div class="stat-icon">👥</div>
+        <div class="stat-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <div class="stat-info">
           <span class="stat-label">站点访客数</span>
           <span class="stat-value" :class="{ 'loading': isLoading, 'error': hasError }">
@@ -26,10 +31,11 @@
           </span>
         </div>
       </div>
-      
-      <!-- 页面访问量 -->
+
       <div class="stat-item">
-        <div class="stat-icon">📄</div>
+        <div class="stat-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
         <div class="stat-info">
           <span class="stat-label">页面访问量</span>
           <span class="stat-value" :class="{ 'loading': isLoading, 'error': hasError }">
@@ -37,10 +43,11 @@
           </span>
         </div>
       </div>
-      
-      <!-- 在线人数 -->
+
       <div class="stat-item">
-        <div class="stat-icon">🟢</div>
+        <div class="stat-icon online">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/></svg>
+        </div>
         <div class="stat-info">
           <span class="stat-label">在线人数</span>
           <span class="stat-value" :class="{ 'loading': isLoading, 'error': hasError }">
@@ -49,8 +56,7 @@
         </div>
       </div>
     </div>
-    
-    <!-- 统计说明 -->
+
     <div class="stats-footer">
       <p class="stats-note">
         数据由 <a href="https://busuanzi.ibruce.info/" target="_blank" rel="noopener noreferrer">不蒜子</a> 提供
@@ -62,13 +68,14 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import { inBrowser } from 'vitepress'
-import { 
-  initBusuanzi, 
-  cleanupBusuanzi, 
-  getBusuanziStats, 
+import {
+  initBusuanzi,
+  cleanupBusuanzi,
+  getBusuanziStats,
   formatNumber,
   waitForBusuanzi,
   onBusuanziUpdate,
+  isBusuanziAvailable,
   busuanziConfig
 } from '../utils/busuanzi.js'
 

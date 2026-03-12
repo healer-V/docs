@@ -1,359 +1,280 @@
 <template>
-  <div class="links-container">
-    <!-- 页面标题 -->
-    <div class="page-header">
-      <h1 class="page-title">我的友链</h1>
-      <p class="page-subtitle">与志同道合的朋友们分享精彩内容</p>
+  <div class="links-page">
+    <!-- Header -->
+    <header class="links-header">
+      <div class="hdr-orb hdr-orb--1"></div>
+      <div class="hdr-orb hdr-orb--2"></div>
+      <div class="hdr-inner">
+        <span class="hdr-tag">FRIENDS</span>
+        <h1 class="hdr-title">友情链接</h1>
+        <p class="hdr-desc">与志同道合的朋友们分享精彩内容</p>
+      </div>
+    </header>
+
+    <!-- Sections -->
+    <div class="links-sections">
+      <section v-for="(item, index) of linksData" :key="index" class="link-section">
+        <div class="sec-header">
+          <svg v-if="index === 0" class="sec-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg v-else class="sec-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <h2 class="sec-title">{{ item.title }}</h2>
+          <span class="sec-count">{{ item.list.length }}</span>
+          <span class="sec-line"></span>
+        </div>
+        <p class="sec-desc">{{ item.desc }}</p>
+        <div class="links-grid">
+          <LinkSite v-for="link in item.list" :key="link.link" :data="link" />
+        </div>
+      </section>
     </div>
 
-    <!-- 友链内容区域 -->
-    <div class="links-content">
-      <div class="link-section" v-for="(item, index) of linksData" :key="index">
-        <!-- 章节标题 -->
-        <div class="section-header">
-          <h2 class="section-title">{{ item.title }}</h2>
-          <div class="section-divider"></div>
+    <!-- Apply -->
+    <section class="apply-box">
+      <div class="apply-glow"></div>
+      <div class="apply-inner">
+        <div class="apply-text">
+          <span class="apply-badge">APPLY</span>
+          <h2 class="apply-title">申请友链</h2>
+          <p class="apply-desc">欢迎志同道合的朋友申请友链，一起分享更多精彩内容</p>
         </div>
-        
-        <!-- 章节描述 -->
-        <p class="section-description">{{ item.desc }}</p>
-        
-        <!-- 友链网格 -->
-        <div class="links-grid" :class="getGridClass(item.title)">
-          <LinkSite 
-            v-for="link in item.list" 
-            :key="link.link" 
-            :data="link" 
-            class="link-item"
-          />
+        <div class="apply-format">
+          <div class="fmt-row"><span class="fmt-key">网站名称</span><span class="fmt-val">您的网站名称</span></div>
+          <div class="fmt-row"><span class="fmt-key">网站链接</span><span class="fmt-val">https://your-website.com</span></div>
+          <div class="fmt-row"><span class="fmt-key">网站描述</span><span class="fmt-val">您的网站简介</span></div>
+          <div class="fmt-row"><span class="fmt-key">头像链接</span><span class="fmt-val">https://your-avatar.com/avatar.png</span></div>
         </div>
       </div>
-    </div>
-
-    <!-- 申请友链区域 -->
-    <div class="apply-section">
-      <div class="apply-header">
-        <h2 class="apply-title">申请友链</h2>
-        <div class="section-divider"></div>
-      </div>
-      <p class="apply-description">欢迎志同道合的朋友申请友链，让我们一起分享更多精彩内容 💞</p>
-      <div class="apply-card">
-        <div class="apply-info">
-          <p>请按照以下格式留言申请友链：</p>
-          <div class="format-example">
-            <code>
-              网站名称：您的网站名称<br>
-              网站链接：https://your-website.com<br>
-              网站描述：您的网站简介<br>
-              头像链接：https://your-avatar.com/avatar.png
-            </code>
-          </div>
-        </div>
-        <div class="comment-area">
-          <Twikoo />
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
 </template>
 
 <script setup lang='ts'>
 import { useData } from 'vitepress'
 import LinkSite from './LinkSite.vue'
-// import Twikoo from '../WTwikoo/index.vue'
 
 const { frontmatter: fm } = useData()
-console.log('fm.value.links', fm.value.links)
 const linksData = fm.value.links
-
-// 根据章节标题返回不同的网格类名
-const getGridClass = (title: string) => {
-  if (title === '传送门') {
-    return 'grid-3-cols'
-  }
-  return 'grid-4-cols'
-}
 </script>
 
 <style scoped>
-.links-container {
-  max-width: 1200px;
+.links-page {
+  max-width: 1060px;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  min-height: 100vh;
+  padding: 0 1.5rem 5rem;
 }
 
-/* 页面标题区域 */
-.page-header {
+/* ── Header ── */
+.links-header {
+  position: relative;
   text-align: center;
-  margin-bottom: 1rem;
-  padding: 2rem 0;
+  padding: 2.6rem 0 2.5rem;
+  overflow: hidden;
 }
 
-.page-title {
-  font-size: 2.5rem;
+.hdr-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+}
+.hdr-orb--1 {
+  width: 280px; height: 280px;
+  top: -60px; left: 10%;
+  background: rgba(16, 185, 129, 0.07);
+}
+.hdr-orb--2 {
+  width: 200px; height: 200px;
+  bottom: -30px; right: 15%;
+  background: rgba(139, 92, 246, 0.04);
+}
+
+.hdr-inner { position: relative; }
+
+.hdr-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
   font-weight: 700;
-  height: 4rem;
-  line-height: 4rem;
-  color: var(--vp-c-text-1);
-  margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
+  color: var(--accent, #10b981);
+  background: var(--accent-soft, rgba(16, 185, 129, 0.08));
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  padding: 3px 14px;
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+}
+
+.hdr-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  margin: 0 0 0.4rem;
+  background: linear-gradient(135deg, var(--vp-c-text-1) 40%, var(--accent, #10b981));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 2.6rem;
 }
 
-.page-subtitle {
-  font-size: 1.1rem;
+.hdr-desc {
+  font-size: 0.92rem;
   color: var(--vp-c-text-2);
   margin: 0;
-  opacity: 0.8;
 }
 
-/* 友链内容区域 */
-.links-content {
-  margin-bottom: 4rem;
+/* ── Section ── */
+.link-section { margin-bottom: 2.5rem; }
+
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.5rem;
 }
 
-.link-section {
-  margin-bottom: 4rem;
-}
+.sec-icon { color: var(--accent, #10b981); flex-shrink: 0; }
 
-/* 章节标题 */
-.section-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-.section-title {
-  font-size: 1.8rem;
+.sec-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
   font-weight: 600;
+  margin: 0;
   color: var(--vp-c-text-1);
-  margin: 0 0 1rem 0;
-  position: relative;
-  display: inline-block;
 }
 
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
-  border-radius: 2px;
+.sec-count {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--accent, #10b981);
+  background: var(--accent-soft, rgba(16, 185, 129, 0.1));
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
 }
 
-.section-divider {
-  width: 100px;
+.sec-line {
+  flex: 1;
   height: 1px;
   background: var(--vp-c-divider);
-  margin: 1.5rem auto 0;
+  margin-left: 0.4rem;
 }
 
-/* 章节描述 */
-.section-description {
-  text-align: center;
-  font-size: 1rem;
+.sec-desc {
+  font-size: 0.84rem;
   color: var(--vp-c-text-2);
-  margin: 0 0 2.5rem 0;
+  margin: 0 0 1.25rem;
   line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* 友链网格 */
+/* ── Grid ── */
 .links-grid {
   display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
-.grid-4-cols {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.grid-3-cols {
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-}
-
-.link-item {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.link-item:hover {
-  transform: translateY(-4px);
-}
-
-/* 申请友链区域 */
-.apply-section {
+/* ── Apply ── */
+.apply-box {
+  margin-top: 1.5rem;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
   background: var(--vp-c-bg-soft);
-  border-radius: 16px;
-  padding: 3rem 2rem;
-  margin-top: 4rem;
   border: 1px solid var(--vp-c-divider);
 }
 
-.apply-header {
-  text-align: center;
-  margin-bottom: 2rem;
+.apply-glow {
+  position: absolute;
+  top: -50%;
+  right: -15%;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.apply-inner {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 2rem;
+}
+
+.apply-badge {
+  display: inline-block;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: var(--accent, #10b981);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  padding: 2px 10px;
+  background: var(--accent-soft);
+  border-radius: 4px;
 }
 
 .apply-title {
-  font-size: 1.8rem;
-  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.4rem;
   color: var(--vp-c-text-1);
-  margin: 0 0 1rem 0;
-  position: relative;
-  display: inline-block;
 }
 
-.apply-title::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
-  border-radius: 2px;
-}
-
-.apply-description {
-  text-align: center;
-  font-size: 1rem;
+.apply-desc {
+  font-size: 0.84rem;
   color: var(--vp-c-text-2);
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.25rem;
   line-height: 1.6;
 }
 
-.apply-card {
+.apply-format {
   background: var(--vp-c-bg);
-  border-radius: 12px;
-  padding: 2rem;
   border: 1px solid var(--vp-c-divider);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
-.apply-info {
-  margin-bottom: 2rem;
+.fmt-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  font-family: var(--vp-font-family-mono);
 }
 
-.apply-info p {
-  margin: 0 0 1rem 0;
-  color: var(--vp-c-text-1);
-  font-weight: 500;
+.fmt-key {
+  color: var(--accent, #10b981);
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 56px;
 }
 
-.format-example {
-  background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  padding: 1rem;
-  border-left: 4px solid var(--vp-c-brand-1);
+.fmt-key::after {
+  content: ':';
+  color: var(--vp-c-text-3);
+  margin-left: 2px;
 }
 
-.format-example code {
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--vp-c-text-1);
-  background: none;
-  padding: 0;
+.fmt-val { color: var(--vp-c-text-2); }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .links-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.comment-area {
-  margin-top: 1.5rem;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .links-container {
-    padding: 1rem 0.5rem;
-  }
-  
-  .page-title {
-    font-size: 2rem;
-  }
-  
-  .section-title,
-  .apply-title {
-    font-size: 1.5rem;
-  }
-  
-  .grid-4-cols,
-  .grid-3-cols {
-    grid-template-columns: 1fr;
-  }
-  
-  .apply-section {
-    padding: 2rem 1rem;
-  }
-  
-  .apply-card {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .page-title {
-    font-size: 1.8rem;
-  }
-  
-  .section-title,
-  .apply-title {
-    font-size: 1.3rem;
-  }
-  
-  .links-grid {
-    gap: 1rem;
-  }
-}
-
-/* 深色模式适配 */
-.dark .apply-section {
-  background: var(--vp-c-bg-soft);
-  border-color: var(--vp-c-divider);
-}
-
-.dark .apply-card {
-  background: var(--vp-c-bg);
-  border-color: var(--vp-c-divider);
-}
-
-.dark .format-example {
-  background: var(--vp-c-bg-soft);
-}
-
-/* 动画效果 */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.link-section {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.link-section:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.link-section:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.apply-section {
-  animation: fadeInUp 0.6s ease-out 0.3s both;
+@media (max-width: 520px) {
+  .links-page { padding: 0 1rem 3rem; }
+  .links-header { padding: 3rem 0 1.5rem; }
+  .hdr-title { font-size: 1.6rem; }
+  .links-grid { grid-template-columns: 1fr; }
+  .apply-inner { padding: 1.25rem; }
+  .fmt-row { flex-direction: column; gap: 0.1rem; }
+  .fmt-key::after { content: ''; }
 }
 </style>
