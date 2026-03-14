@@ -1,74 +1,329 @@
 /* .vitepress/theme/style/vp-code.css */
+/* ── Midnight Terminal — immersive code blocks ── */
 
-/* Code block base */
+/* ============================================================
+   CSS Variable overrides
+   ============================================================ */
+:root {
+    --vp-code-block-bg: #f6f8fa;
+    --vp-code-block-color: #24292f;
+    --vp-code-block-divider-color: rgba(0, 0, 0, 0.05);
+    --vp-code-line-highlight-color: rgba(14, 165, 233, 0.06);
+    --vp-code-line-number-color: #b0b8c4;
+    --vp-code-copy-code-border-color: rgba(0, 0, 0, 0.08);
+    --vp-code-copy-code-bg: rgba(0, 0, 0, 0.03);
+    --vp-code-copy-code-hover-bg: rgba(14, 165, 233, 0.08);
+    --vp-code-copy-code-hover-border-color: rgba(14, 165, 233, 0.25);
+    --vp-code-tab-bg: #f0f2f5;
+    --vp-code-tab-active-bar-color: var(--accent, #0ea5e9);
+    --code-header-bg: #f0f2f5;
+    --code-dot-red: #ff5f57;
+    --code-dot-yellow: #febc2e;
+    --code-dot-green: #28c840;
+
+    /* Override copy icon with a visible stroke color */
+    --vp-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgba(100,110,130,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3C/svg%3E");
+    --vp-icon-copied: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgba(16,185,129,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3Cpath d='m9 14 2 2 4-4'/%3E%3C/svg%3E");
+}
+
+.dark {
+    --vp-code-block-bg: #0c0e17;
+    --vp-code-block-color: #c9d1d9;
+    --vp-code-block-divider-color: rgba(255, 255, 255, 0.04);
+    --vp-code-line-highlight-color: rgba(34, 211, 238, 0.06);
+    --vp-code-line-number-color: #2e3348;
+    --vp-code-copy-code-border-color: rgba(255, 255, 255, 0.06);
+    --vp-code-copy-code-bg: rgba(255, 255, 255, 0.04);
+    --vp-code-copy-code-hover-bg: rgba(34, 211, 238, 0.08);
+    --vp-code-copy-code-hover-border-color: rgba(34, 211, 238, 0.25);
+    --vp-code-tab-bg: #0a0c14;
+    --code-header-bg: #10121e;
+    --code-dot-red: #ff5f5780;
+    --code-dot-yellow: #febc2e80;
+    --code-dot-green: #28c84080;
+
+    /* Bright icon for dark mode */
+    --vp-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgba(180,190,210,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3C/svg%3E");
+    --vp-icon-copied: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgba(34,211,238,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3Cpath d='m9 14 2 2 4-4'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   Code block container — with title bar
+   ============================================================ */
 .vp-doc div[class*=language-] {
     position: relative;
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--vp-c-divider);
     z-index: 1;
+    margin: 1.2em 0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.vp-doc div[class*=language-] .lang {
-    color: var(--vp-c-text-3) !important;
-    font-size: 0.75em !important;
-    font-family: 'JetBrains Mono', 'Menlo', 'Monaco', monospace;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    z-index: 2;
+.vp-doc div[class*=language-]:hover {
+    border-color: var(--glow-border, rgba(14, 165, 233, 0.12));
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
 }
 
-/* macOS dots — no line numbers */
+.dark .vp-doc div[class*=language-]:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================================
+   Title bar — macOS window chrome
+   ============================================================ */
 .vp-doc div[class*=language-]::before {
     content: "";
     display: block;
-    position: relative;
-    top: 12px;
-    left: 14px;
-    width: 10px;
-    height: 10px;
-    background-color: #ff5f57;
-    border-radius: 50%;
-    box-shadow: 16px 0 0 #febc2e, 32px 0 0 #28c840;
-    z-index: 1;
+    width: 100%;
+    height: 32px;
+    background: var(--code-header-bg);
+    border-bottom: 1px solid var(--vp-code-block-divider-color);
+    box-sizing: border-box;
 }
 
-/* Code block with line numbers */
+/* macOS traffic lights */
+.vp-doc div[class*=language-]::after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 12px;
+    width: 8px;
+    height: 8px;
+    background: var(--code-dot-red);
+    border-radius: 50%;
+    box-shadow:
+        16px 0 0 var(--code-dot-yellow),
+        32px 0 0 var(--code-dot-green);
+    z-index: 3;
+}
+
+/* ============================================================
+   Language label — in title bar
+   ============================================================ */
+.vp-doc div[class*=language-] .lang {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px !important;
+    color: var(--vp-code-line-number-color) !important;
+    font-size: 0.65rem !important;
+    font-family: 'JetBrains Mono', 'Menlo', monospace;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    z-index: 4;
+    background: transparent;
+    user-select: none;
+}
+
+/* ============================================================
+   Pre / Code — the actual code area
+   ============================================================ */
+.vp-doc div[class*=language-] > pre {
+    margin: 0 !important;
+    padding: 16px 18px 14px !important;
+    background: var(--vp-code-block-bg) !important;
+    border-radius: 0 !important;
+}
+
+/* Reset inline code styles within code blocks */
+.vp-doc div[class*=language-] pre code {
+    color: var(--vp-code-block-color) !important;
+    font-size: 0.82rem !important;
+    font-family: 'JetBrains Mono', 'Menlo', 'Monaco', 'Consolas', monospace !important;
+    font-weight: 400 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    line-height: 1.7;
+    tab-size: 2;
+}
+
+/* ============================================================
+   Line numbers mode
+   ============================================================ */
 div[class*="language-"].vp-adaptive-theme.line-numbers-mode {
     position: relative;
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--vp-c-divider);
 }
 
-/* macOS dots — with line numbers */
-.vp-doc div[class*="language-"].line-numbers-mode::before {
-    content: "";
-    display: block;
-    position: relative;
-    top: 12px;
-    left: -22px;
-    width: 10px;
-    height: 10px;
-    background-color: #ff5f57;
-    border-radius: 50%;
-    box-shadow: 16px 0 0 #febc2e, 32px 0 0 #28c840;
-    z-index: 1;
+/* Override dots position for line-numbers mode */
+.vp-doc div[class*="language-"].line-numbers-mode::after {
+    left: 12px;
 }
 
-/* Line numbers alignment */
 .vp-doc .line-numbers-wrapper {
-    padding-top: 32px;
+    padding-top: 48px;
     border-right: none;
+    color: var(--vp-code-line-number-color);
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    width: 36px !important;
+    text-align: right;
 }
 
-/* Line numbers right border */
+/* Subtle divider between line numbers and code */
 .vp-doc .line-numbers-wrapper::after {
     content: "";
     position: absolute;
-    top: 38px;
+    top: 40px;
     right: 0;
-    border-right: 1px solid var(--vp-code-block-divider-color);
-    height: calc(100% - 66px);
+    width: 1px;
+    height: calc(100% - 48px);
+    background: var(--vp-code-block-divider-color);
+}
+
+/* Adjust code padding when line numbers are shown */
+.vp-doc div[class*="language-"].line-numbers-mode > pre {
+    padding-left: 8px !important;
+}
+
+/* ============================================================
+   Copy button
+   ============================================================ */
+.vp-doc [class*='language-'] > button.copy {
+    top: 38px !important;
+    right: 8px !important;
+    width: 36px !important;
+    height: 28px !important;
+    border-radius: 6px !important;
+    background-color: var(--vp-code-copy-code-bg) !important;
+    background-size: 16px !important;
+    border: 1px solid var(--vp-code-copy-code-border-color) !important;
+    opacity: 0;
+    transform: translateY(2px);
+    transition: all 0.25s ease !important;
+    z-index: 5;
+}
+
+.vp-doc div[class*='language-']:hover > button.copy,
+.vp-doc [class*='language-'] > button.copy:focus {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.vp-doc [class*='language-'] > button.copy:hover {
+    background-color: var(--vp-code-copy-code-hover-bg) !important;
+    border-color: var(--vp-code-copy-code-hover-border-color) !important;
+}
+
+.vp-doc [class*='language-'] > button.copy.copied {
+    background-color: rgba(16, 185, 129, 0.08) !important;
+    border-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+/* ============================================================
+   Highlighted lines
+   ============================================================ */
+.vp-doc [class*='language-'] .has-highlighted-lines .line.highlighted {
+    background-color: var(--vp-code-line-highlight-color);
+    border-left: 2px solid var(--accent, #0ea5e9);
+    padding-left: 14px;
+    margin-left: -16px;
+    margin-right: -18px;
+    padding-right: 18px;
+}
+
+/* Diff lines */
+.vp-doc [class*='language-'] .line.diff.add {
+    background-color: rgba(16, 185, 129, 0.08);
+}
+
+.vp-doc [class*='language-'] .line.diff.remove {
+    background-color: rgba(239, 68, 68, 0.08);
+}
+
+/* ============================================================
+   Code groups — tabbed interface
+   ============================================================ */
+.vp-code-group {
+    margin: 1.2em 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--vp-c-divider);
+}
+
+.vp-code-group .tabs {
+    background: var(--code-header-bg);
+    border-bottom: 1px solid var(--vp-code-block-divider-color);
+    border-radius: 0;
+    padding: 0 8px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.vp-code-group .tabs label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+    padding: 0 10px;
+    height: 36px;
+    line-height: 36px;
+    color: var(--vp-c-text-3);
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.vp-code-group .tabs label:hover {
+    color: var(--vp-c-text-1);
+}
+
+.vp-code-group .tabs label.active {
+    color: var(--accent, #0ea5e9) !important;
+    border-bottom-color: var(--accent, #0ea5e9);
+}
+
+.vp-code-group div[class*='language-'] {
+    border: none;
+    border-radius: 0;
+    margin: 0;
+}
+
+.vp-code-group div[class*='language-']::before {
+    display: none;
+}
+
+.vp-code-group div[class*='language-']::after {
+    display: none;
+}
+
+/* ============================================================
+   Mobile adjustments
+   ============================================================ */
+@media (max-width: 640px) {
+    .vp-doc div[class*=language-] {
+        border-radius: 6px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .vp-doc div[class*=language-] > pre {
+        padding: 12px 14px 10px !important;
+    }
+
+    .vp-doc div[class*=language-] pre code {
+        font-size: 0.76rem !important;
+    }
+
+    .vp-doc [class*='language-'] > button.copy {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+
+    .vp-doc div[class*=language-]:hover {
+        box-shadow: none;
+    }
+
+    .vp-code-group {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }

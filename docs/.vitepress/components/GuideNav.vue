@@ -2,7 +2,7 @@
   <div class="guide-nav">
 
     <!-- Header -->
-    <div class="guide-header">
+    <div class="guide-header" ref="headerRef">
       <div class="header-badge">KNOWLEDGE MAP</div>
       <h1 class="guide-title">选择你的学习方向</h1>
       <p class="guide-desc">从基础到进阶，系统化的前端全栈知识体系</p>
@@ -10,7 +10,14 @@
     </div>
 
     <!-- Sections -->
-    <div v-for="section in sections" :key="section.title" class="guide-section">
+    <div
+      v-for="(section, si) in sections"
+      :key="section.title"
+      class="guide-section"
+      :ref="el => sectionEls[si] = el"
+      :class="{ 'section-visible': visibleSections[si] }"
+      :style="{ '--section-delay': si * 100 + 'ms' }"
+    >
       <div class="section-header">
         <span class="section-icon">{{ section.icon }}</span>
         <h2 class="section-title">{{ section.title }}</h2>
@@ -18,16 +25,18 @@
       </div>
       <div class="section-grid">
         <a
-          v-for="item in section.items"
+          v-for="(item, ii) in section.items"
           :key="item.title"
           :href="item.link"
           class="guide-card"
+          :style="{ '--card-delay': (si * 100 + ii * 60) + 'ms' }"
         >
           <div class="card-inner">
             <span class="card-tag">{{ item.tag }}</span>
             <h3 class="card-title">{{ item.title }}</h3>
             <p class="card-desc">{{ item.desc }}</p>
             <div class="card-footer">
+              <span class="card-link-text">开始学习</span>
               <span class="card-arrow">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -40,7 +49,7 @@
     </div>
 
     <!-- Interview CTA -->
-    <div class="guide-interview">
+    <div class="guide-interview" ref="interviewRef" :class="{ 'interview-visible': interviewVisible }">
       <div class="interview-glow"></div>
       <div class="interview-inner">
         <div class="interview-text">
@@ -61,6 +70,41 @@
 </template>
 
 <script setup>
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
+
+const sectionEls = reactive({})
+const visibleSections = reactive({})
+const interviewRef = ref(null)
+const interviewVisible = ref(false)
+const headerRef = ref(null)
+let observer = null
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Check sections
+          const idx = Object.values(sectionEls).indexOf(entry.target)
+          if (idx !== -1) visibleSections[idx] = true
+          // Check interview
+          if (entry.target === interviewRef.value) interviewVisible.value = true
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  Object.values(sectionEls).forEach((el) => {
+    if (el) observer.observe(el)
+  })
+  if (interviewRef.value) observer.observe(interviewRef.value)
+})
+
+onUnmounted(() => {
+  if (observer) observer.disconnect()
+})
+
 const sections = [
   {
     icon: '🧱',
@@ -146,6 +190,12 @@ const sections = [
 .guide-header {
   margin-bottom: 4rem;
   text-align: center;
+  animation: fadeSlideUp 0.6s ease-out;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .header-badge {
@@ -162,9 +212,9 @@ const sections = [
 }
 
 .guide-title {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.03em;
   margin: 0 0 0.75rem;
   color: var(--vp-c-text-1);
@@ -191,6 +241,15 @@ const sections = [
 /* ── Section ── */
 .guide-section {
   margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: var(--section-delay, 0ms);
+}
+
+.guide-section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-header {
@@ -208,9 +267,9 @@ const sections = [
 }
 
 .section-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
   margin: 0;
   color: var(--vp-c-text-1);
@@ -219,7 +278,7 @@ const sections = [
 .section-count {
   margin-left: auto;
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent, #10b981);
   background: var(--accent-soft, rgba(16, 185, 129, 0.1));
   width: 22px;
@@ -242,7 +301,7 @@ const sections = [
   display: block;
   text-decoration: none !important;
   color: inherit;
-  border-radius: 10px;
+  border-radius: 12px;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
@@ -253,25 +312,30 @@ const sections = [
   flex-direction: column;
   padding: 1.1rem 1.2rem;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--vp-c-bg);
   height: 100%;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
 
 .guide-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.dark .guide-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
 .guide-card:hover .card-inner {
   border-color: var(--accent, #10b981);
+  background: var(--accent-soft);
 }
 
 .card-tag {
   align-self: flex-start;
   font-size: 0.62rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent, #10b981);
@@ -282,12 +346,17 @@ const sections = [
 }
 
 .card-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0 0 0.3rem;
   color: var(--vp-c-text-1);
   letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+
+.guide-card:hover .card-title {
+  color: var(--accent);
 }
 
 .card-desc {
@@ -303,6 +372,23 @@ const sections = [
   margin-top: 0.6rem;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-link-text {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--vp-c-text-3);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.guide-card:hover .card-link-text {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--accent);
 }
 
 .card-arrow {
@@ -323,11 +409,23 @@ const sections = [
 /* ── Interview CTA ── */
 .guide-interview {
   margin-top: 4rem;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease;
+}
+
+.guide-interview.interview-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.guide-interview:hover {
+  border-color: rgba(16, 185, 129, 0.2);
 }
 
 .interview-glow {
@@ -338,6 +436,12 @@ const sections = [
   height: 300px;
   background: radial-gradient(circle, var(--accent-glow, rgba(16,185,129,0.15)) 0%, transparent 70%);
   pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.1); }
 }
 
 .interview-inner {
@@ -355,7 +459,7 @@ const sections = [
   font-size: 0.62rem;
   letter-spacing: 0.2em;
   color: var(--accent, #10b981);
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 0.5rem;
   padding: 3px 10px;
   background: var(--accent-soft);
@@ -363,9 +467,9 @@ const sections = [
 }
 
 .interview-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0 0 0.5rem;
   color: var(--vp-c-text-1);
@@ -395,6 +499,26 @@ const sections = [
   letter-spacing: 0.01em;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer effect on CTA button */
+.interview-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: ctaShimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ctaShimmer {
+  0%, 60%, 100% { left: -100%; }
+  80% { left: 150%; }
 }
 
 .interview-btn:hover {
@@ -412,15 +536,39 @@ const sections = [
 }
 
 /* ── Responsive ── */
-@media (max-width: 640px) {
-  .guide-nav { padding: 2rem 1.25rem 4rem; }
+@media (max-width: 960px) {
+  .guide-nav { padding: 3rem 1.5rem 5rem; }
   .guide-header { margin-bottom: 3rem; }
-  .section-grid { grid-template-columns: 1fr 1fr; }
-  .interview-inner { flex-direction: column; align-items: flex-start; }
-  .interview-btn { width: 100%; text-align: center; justify-content: center; }
+  .interview-inner { padding: 2rem; }
+  .interview-title { font-size: 1.3rem; }
 }
 
-@media (max-width: 400px) {
-  .section-grid { grid-template-columns: 1fr; }
+@media (max-width: 640px) {
+  .guide-nav { padding: 2rem 1rem 4rem; }
+  .guide-header { margin-bottom: 2rem; }
+  .guide-title { font-size: 1.6rem; }
+  .guide-desc { font-size: 0.88rem; }
+  .header-line { margin-top: 1.5rem; }
+  .section-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .card-inner { padding: 0.9rem 1rem; }
+  .card-tag { font-size: 0.58rem; margin-bottom: 0.4rem; }
+  .card-title { font-size: 0.85rem; }
+  .card-desc { font-size: 0.72rem; line-height: 1.45; }
+  .card-footer { display: none; }
+  .section-header { margin-bottom: 0.75rem; }
+  .section-title { font-size: 0.92rem; }
+  .guide-section { margin-bottom: 2rem; }
+  .interview-inner { flex-direction: column; align-items: flex-start; padding: 1.5rem; gap: 1.2rem; }
+  .interview-title { font-size: 1.2rem; }
+  .interview-desc { font-size: 0.82rem; }
+  .interview-btn { width: 100%; text-align: center; justify-content: center; padding: 11px 20px; }
+  .interview-glow { width: 200px; height: 200px; }
+  .guide-card:hover { transform: none; }
+}
+
+@media (max-width: 360px) {
+  .guide-nav { padding: 1.5rem 0.75rem 3rem; }
+  .section-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+  .guide-title { font-size: 1.4rem; }
 }
 </style>

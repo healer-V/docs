@@ -10,6 +10,7 @@ export default defineConfig({
   ignoreDeadLinks: true,
   head: [
     ['link',{ rel: 'icon', href: '/docs/logo_new.png'}],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover' }],
   ],
     //启用深色模式
   appearance:'dark', 

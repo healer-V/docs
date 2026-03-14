@@ -140,12 +140,12 @@ const sections = [
 }
 
 .ab-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.04em;
   margin: 0 0 0.4rem;
-  background: linear-gradient(135deg, var(--vp-c-text-1) 40%, var(--accent, #10b981));
+  background: linear-gradient(135deg, var(--vp-c-text-1) 30%, #06b6d4, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -170,7 +170,7 @@ const sections = [
 .sec-svg { color: var(--accent, #10b981); flex-shrink: 0; }
 
 .sec-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0;
@@ -250,7 +250,7 @@ const sections = [
 .res-emoji {
   font-size: 0.85rem;
   font-weight: 700;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
   color: var(--accent, #10b981);
 }
 
@@ -262,7 +262,7 @@ const sections = [
 }
 
 .res-name {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--vp-c-text-1);
@@ -295,10 +295,32 @@ const sections = [
 }
 
 /* ── Responsive ── */
+@media (max-width: 960px) {
+  .about-page { max-width: 100%; }
+  .sec-grid { gap: 8px; }
+}
+
 @media (max-width: 640px) {
   .about-page { padding: 0 1rem 3rem; }
-  .about-header { padding: 3rem 0 1.5rem; }
+  .about-header { padding: 2rem 0 1.5rem; }
   .ab-title { font-size: 1.6rem; }
+  .ab-orb--1 { width: 160px; height: 160px; }
+  .ab-orb--2 { width: 120px; height: 120px; }
   .sec-grid { grid-template-columns: 1fr; }
+  .res-card { padding: 0.75rem 0.85rem; gap: 0.65rem; }
+  .res-icon { width: 32px; height: 32px; }
+  .res-emoji { font-size: 0.78rem; }
+  .res-name { font-size: 0.82rem; }
+  .res-desc { font-size: 0.68rem; }
+  .res-arrow { display: none; }
+  .res-card:hover { transform: none; }
+  .sec-title { font-size: 1rem; }
+  .sec-desc { font-size: 0.8rem; }
+}
+
+@media (max-width: 360px) {
+  .about-page { padding: 0 0.75rem 2rem; }
+  .ab-title { font-size: 1.3rem; }
+  .res-card { padding: 0.65rem 0.75rem; }
 }
 </style>

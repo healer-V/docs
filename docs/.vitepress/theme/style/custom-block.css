@@ -4,8 +4,8 @@
     --custom-block-info-left: #9ca3af;
     --custom-block-info-bg: #f8f9fa;
 
-    --custom-block-tip-left: #10b981;
-    --custom-block-tip-bg: #ecfdf5;
+    --custom-block-tip-left: #0ea5e9;
+    --custom-block-tip-bg: #f0f9ff;
 
     --custom-block-warning-left: #f59e0b;
     --custom-block-warning-bg: #fffbeb;
@@ -24,8 +24,8 @@
     --custom-block-info-left: #6b7280;
     --custom-block-info-bg: rgba(107, 114, 128, 0.1);
 
-    --custom-block-tip-left: #34d399;
-    --custom-block-tip-bg: rgba(52, 211, 153, 0.08);
+    --custom-block-tip-left: #22d3ee;
+    --custom-block-tip-bg: rgba(34, 211, 238, 0.08);
 
     --custom-block-warning-left: #fbbf24;
     --custom-block-warning-bg: rgba(251, 191, 36, 0.08);
@@ -42,8 +42,17 @@
 
 /* Shared block styles */
 .custom-block {
-    border-radius: 10px;
-    transition: border-color 0.2s ease;
+    border-radius: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin: 1.2rem 0;
+}
+
+.custom-block:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.dark .custom-block:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 .custom-block-title {

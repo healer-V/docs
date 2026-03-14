@@ -2,6 +2,7 @@
   <div class="blog-page">
     <!-- Hero -->
     <header class="blog-header">
+      <div class="header-mesh"></div>
       <div class="header-orb header-orb--1"></div>
       <div class="header-orb header-orb--2"></div>
       <div class="header-inner">
@@ -15,56 +16,66 @@
     <div class="blog-body">
       <!-- Articles -->
       <main class="article-feed">
-        <article
-          v-for="(article, i) in paginatedArticles"
-          :key="article.path"
-          class="card"
-          @click="navigateToArticle(article.path)"
-        >
-          <div class="card-accent"></div>
-          <div class="card-body">
-            <div class="card-top">
-              <span v-if="article.category" class="card-cat">{{ article.category }}</span>
-              <time class="card-date">{{ formatDate(article.date) }}</time>
+        <TransitionGroup name="card-list" tag="div" class="article-list">
+          <article
+            v-for="(article, i) in paginatedArticles"
+            :key="article.path"
+            class="card"
+            :style="{ '--card-i': i }"
+            @click="navigateToArticle(article.path)"
+          >
+            <div class="card-glow"></div>
+            <div class="card-body">
+              <div class="card-top">
+                <span v-if="article.category" class="card-cat">{{ article.category }}</span>
+                <time class="card-date">{{ formatDate(article.date) }}</time>
+                <span class="card-reading-time" v-if="article.excerpt">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  {{ estimateReadingTime(article.excerpt) }} min
+                </span>
+              </div>
+              <h2 class="card-title">{{ article.title }}</h2>
+              <p class="card-excerpt">{{ article.excerpt }}</p>
+              <div class="card-footer">
+                <div class="card-tags" v-if="article.tags && article.tags.length">
+                  <span class="card-tag" v-for="tag in article.tags.slice(0, 3)" :key="tag">{{ tag }}</span>
+                </div>
+                <span class="card-more">
+                  阅读全文
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </div>
             </div>
-            <h2 class="card-title">{{ article.title }}</h2>
-            <p class="card-excerpt">{{ article.excerpt }}</p>
-            <div class="card-bottom">
-              <span class="card-author">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
-                xianling
-              </span>
-              <span class="card-more">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </span>
-            </div>
-          </div>
-        </article>
+          </article>
+        </TransitionGroup>
       </main>
 
       <!-- Sidebar -->
       <aside class="sidebar">
         <!-- Profile -->
         <div class="sb-card sb-profile">
-          <div class="profile-avatar">
-            <img src="/avatar.png" alt="avatar" />
-          </div>
-          <h3 class="profile-name">xianling</h3>
-          <p class="profile-bio">日拱一卒，功不唐捐</p>
-          <div class="profile-stats">
-            <div class="ps-item">
-              <strong>{{ articles.length }}</strong>
-              <span>文章</span>
+          <div class="profile-banner"></div>
+          <div class="profile-main">
+            <div class="profile-avatar">
+              <img src="/avatar.png" alt="avatar" />
             </div>
-            <div class="ps-sep"></div>
-            <div class="ps-item">
-              <strong>7+</strong>
-              <span>方向</span>
-            </div>
-            <div class="ps-sep"></div>
-            <div class="ps-item">
-              <strong>200+</strong>
-              <span>篇幅</span>
+            <h3 class="profile-name">xianling</h3>
+            <p class="profile-bio">日拱一卒，功不唐捐</p>
+            <div class="profile-stats">
+              <div class="ps-item">
+                <strong>{{ articles.length }}</strong>
+                <span>文章</span>
+              </div>
+              <div class="ps-sep"></div>
+              <div class="ps-item">
+                <strong>7+</strong>
+                <span>方向</span>
+              </div>
+              <div class="ps-sep"></div>
+              <div class="ps-item">
+                <strong>200+</strong>
+                <span>篇幅</span>
+              </div>
             </div>
           </div>
         </div>
@@ -135,6 +146,12 @@ const searchKeyword = ref('')
 const selectedCategory = ref('all')
 const currentPage = ref(1)
 const articlesPerPage = 12
+
+const estimateReadingTime = (text) => {
+  if (!text) return 1
+  const chars = text.length
+  return Math.max(1, Math.ceil(chars / 400))
+}
 
 const categories = computed(() => {
   const categoryMap = new Map()
@@ -286,6 +303,17 @@ onMounted(() => {
   overflow: hidden;
 }
 
+/* Subtle mesh pattern */
+.header-mesh {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 75% 30%, rgba(6, 182, 212, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+
 .header-orb {
   position: absolute;
   border-radius: 50%;
@@ -296,11 +324,18 @@ onMounted(() => {
   width: 320px; height: 320px;
   top: -80px; left: -60px;
   background: rgba(16, 185, 129, 0.08);
+  animation: orbDrift 12s ease-in-out infinite alternate;
 }
 .header-orb--2 {
   width: 240px; height: 240px;
   bottom: -40px; right: -40px;
   background: rgba(59, 130, 246, 0.05);
+  animation: orbDrift 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orbDrift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, -15px); }
 }
 
 .header-inner { position: relative; }
@@ -319,13 +354,13 @@ onMounted(() => {
 }
 
 .header-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
   font-size: 2.4rem;
   line-height: 3.6rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.04em;
   margin: 0 0 0.4rem;
-  background: linear-gradient(135deg, var(--vp-c-text-1) 40%, var(--accent, #10b981));
+  background: linear-gradient(135deg, var(--vp-c-text-1) 30%, #06b6d4, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -345,48 +380,74 @@ onMounted(() => {
   align-items: start;
 }
 
-/* ── Article card ── */
-.article-feed {
+/* ── Article list ── */
+.article-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* Card list transition */
+.card-list-enter-active {
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc(var(--card-i, 0) * 50ms);
+}
+.card-list-leave-active {
+  transition: all 0.25s ease;
+}
+.card-list-enter-from {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.card-list-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+/* ── Article card ── */
+.article-feed {
+  display: flex;
+  flex-direction: column;
+}
+
 .card {
   position: relative;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--vp-c-bg);
   cursor: pointer;
   overflow: hidden;
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .card:hover {
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 4px 24px rgba(16, 185, 129, 0.06);
-  transform: translateY(-2px);
+  border-color: rgba(16, 185, 129, 0.25);
+  box-shadow:
+    0 4px 16px rgba(16, 185, 129, 0.06),
+    0 12px 32px rgba(0, 0, 0, 0.04);
+  transform: translateY(-3px);
 }
 
 .dark .card:hover {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 4px 16px rgba(16, 185, 129, 0.04),
+    0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
-.card-accent {
+/* Aurora glow on hover — top edge */
+.card-glow {
   position: absolute;
-  left: 0;
   top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--accent, #10b981);
-  transform: scaleY(0);
-  transform-origin: center;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 0 2px 2px 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #10b981, #06b6d4, #8b5cf6);
+  opacity: 0;
+  transition: opacity 0.35s;
 }
 
-.card:hover .card-accent {
-  transform: scaleY(1);
+.card:hover .card-glow {
+  opacity: 1;
 }
 
 .card-body {
@@ -408,6 +469,11 @@ onMounted(() => {
   background: var(--accent-soft, rgba(16, 185, 129, 0.08));
   padding: 2px 8px;
   border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card:hover .card-cat {
+  background: rgba(16, 185, 129, 0.12);
 }
 
 .card-date {
@@ -415,10 +481,19 @@ onMounted(() => {
   color: var(--vp-c-text-3);
 }
 
+.card-reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.68rem;
+  color: var(--vp-c-text-3);
+  margin-left: auto;
+}
+
 .card-title {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--vp-c-text-1);
   margin: 0 0 0.35rem;
@@ -432,7 +507,7 @@ onMounted(() => {
   font-size: 0.82rem;
   color: var(--vp-c-text-2);
   line-height: 1.7;
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.7rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -440,27 +515,47 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.card-bottom {
+/* Footer: tags + read more */
+.card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 
-.card-author {
-  display: inline-flex;
-  align-items: center;
+.card-tags {
+  display: flex;
   gap: 5px;
-  font-size: 0.72rem;
-  color: var(--vp-c-text-3);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.card-tag {
+  font-size: 0.62rem;
   font-weight: 500;
+  color: var(--vp-c-text-3);
+  background: var(--vp-c-bg-soft);
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+
+.card:hover .card-tag {
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-elv);
 }
 
 .card-more {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 500;
   color: var(--vp-c-text-3);
+  flex-shrink: 0;
   opacity: 0;
-  transform: translateX(-6px);
+  transform: translateX(-8px);
   transition: opacity 0.25s, transform 0.25s, color 0.25s;
 }
 
@@ -468,6 +563,15 @@ onMounted(() => {
   opacity: 1;
   transform: translateX(0);
   color: var(--accent, #10b981);
+}
+
+.card:hover .card-more svg {
+  animation: arrowBounce 0.6s ease-in-out;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
 }
 
 /* ── Sidebar ── */
@@ -481,30 +585,56 @@ onMounted(() => {
 
 .sb-card {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 1.25rem;
+  border-radius: 14px;
   background: var(--vp-c-bg);
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s, border-color 0.3s;
+  overflow: hidden;
 }
 
 .sb-card:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+  border-color: rgba(16, 185, 129, 0.15);
 }
 
 .dark .sb-card:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* Profile */
+/* Profile — with banner */
 .sb-profile { text-align: center; }
+
+.profile-banner {
+  height: 52px;
+  background: linear-gradient(135deg,
+    rgba(16, 185, 129, 0.1),
+    rgba(6, 182, 212, 0.08),
+    rgba(139, 92, 246, 0.06));
+}
+
+.dark .profile-banner {
+  background: linear-gradient(135deg,
+    rgba(16, 185, 129, 0.07),
+    rgba(6, 182, 212, 0.05),
+    rgba(139, 92, 246, 0.04));
+}
+
+.profile-main {
+  padding: 0 1.25rem 1.25rem;
+  margin-top: -28px;
+}
 
 .profile-avatar {
   width: 56px;
   height: 56px;
-  margin: 0 auto 0.6rem;
+  margin: 0 auto 0.5rem;
   border-radius: 50%;
-  padding: 2px;
-  background: linear-gradient(135deg, var(--accent, #10b981), #6ee7b7);
+  padding: 2.5px;
+  background: linear-gradient(135deg, #10b981, #06b6d4, #8b5cf6);
+  transition: transform 0.3s ease;
+}
+
+.sb-profile:hover .profile-avatar {
+  transform: scale(1.05) rotate(3deg);
 }
 
 .profile-avatar img {
@@ -512,15 +642,15 @@ onMounted(() => {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--vp-c-bg);
+  border: 2.5px solid var(--vp-c-bg);
 }
 
 .profile-name {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--vp-c-text-1);
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.15rem;
 }
 
 .profile-bio {
@@ -534,18 +664,22 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
 .ps-item { display: flex; flex-direction: column; align-items: center; }
-.ps-item strong { font-size: 1.05rem; font-weight: 700; color: var(--accent, #10b981); line-height: 1.2; }
+.ps-item strong { font-size: 1.05rem; font-weight: 800; color: var(--accent, #10b981); line-height: 1.2; }
 .ps-item span { font-size: 0.65rem; color: var(--vp-c-text-3); margin-top: 2px; }
 .ps-sep { width: 1px; height: 20px; background: var(--vp-c-divider); }
 
 /* Hot articles */
+.sb-hot { padding: 1.25rem; }
+
 .sb-heading {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--vp-c-text-1);
   margin: 0 0 0.6rem;
   padding-bottom: 0.6rem;
@@ -567,7 +701,7 @@ onMounted(() => {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  padding: 0.5rem 0;
+  padding: 0.45rem 0;
   cursor: pointer;
   transition: background 0.15s;
   border-radius: 6px;
@@ -581,9 +715,9 @@ onMounted(() => {
 
 .hot-rank {
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -651,6 +785,7 @@ onMounted(() => {
 .pager-num:hover:not(:disabled):not(.dots) {
   border-color: var(--accent, #10b981);
   color: var(--accent, #10b981);
+  transform: translateY(-1px);
 }
 
 .pager-btn:disabled { opacity: 0.3; cursor: not-allowed; }
@@ -660,6 +795,7 @@ onMounted(() => {
   background: var(--accent, #10b981);
   border-color: var(--accent, #10b981);
   color: #fff;
+  box-shadow: 0 2px 8px var(--accent-glow);
 }
 
 /* ── Empty ── */
@@ -681,16 +817,39 @@ onMounted(() => {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .sb-card { flex: 1; min-width: 240px; }
+  .sb-card { flex: 1; min-width: 200px; }
 }
 
 @media (max-width: 640px) {
   .blog-page { padding: 0 1rem 3rem; }
-  .blog-header { padding: 3rem 0 1.5rem; }
-  .header-title { font-size: 1.7rem; }
+  .blog-header { padding: 2rem 0 1.5rem; }
+  .header-title { font-size: 1.7rem; line-height: 1.2; }
+  .header-orb--1 { width: 180px; height: 180px; top: -40px; left: -30px; }
+  .header-orb--2 { width: 140px; height: 140px; }
   .sidebar { flex-direction: column; }
   .sb-card { min-width: 0; }
   .card-body { padding: 1rem; }
   .card-more { display: none; }
+  .card-reading-time { display: none; }
+  .card-title { font-size: 0.95rem; }
+  .card-excerpt { font-size: 0.8rem; -webkit-line-clamp: 2; }
+  .card:hover { transform: none; }
+  .card-tags { display: none; }
+  /* Profile */
+  .profile-avatar { width: 50px; height: 50px; }
+  .profile-name { font-size: 0.92rem; }
+  /* Pagination */
+  .pager { gap: 4px; }
+  .pager-btn { width: 32px; height: 32px; }
+  .pager-num { width: 28px; height: 28px; font-size: 0.75rem; }
+}
+
+@media (max-width: 360px) {
+  .blog-page { padding: 0 0.75rem 2rem; }
+  .header-title { font-size: 1.4rem; }
+  .card-body { padding: 0.85rem; }
+  .card-top { flex-wrap: wrap; gap: 0.3rem; }
+  .card-title { font-size: 0.88rem; }
+  .sb-card { padding: 1rem; }
 }
 </style>

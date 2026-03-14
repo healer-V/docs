@@ -1,12 +1,12 @@
 /* .vitepress/theme/style/blur.css */
-/* ── Nav glass morphism ── */
+/* ── Nav glass morphism — Midnight Aurora ── */
 
 :root {
 
     .VPNavBar {
-        background-color: rgba(255, 255, 255, 0.72) !important;
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        background-color: rgba(255, 255, 255, 0.75) !important;
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
     }
 
     .VPNavBar.home.top {
@@ -14,22 +14,22 @@
     }
 
     .VPNavBar:not(.home) {
-        background-color: rgba(255, 255, 255, 0.72) !important;
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        background-color: rgba(255, 255, 255, 0.75) !important;
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
     }
 
     @media (min-width: 960px) {
         .VPNavBar:not(.home) {
-            background-color: rgba(255, 255, 255, 0.72) !important;
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75) !important;
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
         }
 
         .VPNavBar:not(.has-sidebar):not(.home.top) {
-            background-color: rgba(255, 255, 255, 0.72) !important;
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75) !important;
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
         }
     }
 
@@ -55,51 +55,73 @@
 
     .DocSearch-Button {
         background-color: var(--vp-c-bg-soft) !important;
-        border: 1px solid var(--vp-c-divider) !important;
-        border-radius: 8px !important;
+        border: 1px solid var(--glow-border, var(--vp-c-divider)) !important;
+        border-radius: 10px !important;
         transition: all 0.2s ease;
     }
 
     .DocSearch-Button:hover {
         border-color: var(--accent) !important;
+        box-shadow: 0 0 12px var(--accent-glow) !important;
     }
 
     .VPLocalNav {
-        background-color: rgba(255, 255, 255, 0.72) !important;
+        background-color: rgba(255, 255, 255, 0.75) !important;
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 0px;
+    }
+
+    /* Mobile nav screen (hamburger menu overlay) */
+    .VPNavScreen {
+        background-color: rgba(255, 255, 255, 0.92) !important;
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
-        border-bottom: 0px;
+    }
+
+    .VPNavScreenMenu .VPNavScreenMenuLink {
+        font-size: 0.95rem;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--vp-c-divider);
     }
 }
 
-/* Dark mode nav glass */
+/* Dark mode — deep midnight glass */
 .dark {
     .VPNavBar {
-        background-color: rgba(15, 17, 23, 0.78) !important;
+        background-color: rgba(11, 13, 20, 0.82) !important;
     }
 
     .VPNavBar.home.top {
-        background-color: rgba(15, 17, 23, 0) !important;
+        background-color: rgba(11, 13, 20, 0) !important;
     }
 
     .VPNavBar:not(.home) {
-        background-color: rgba(15, 17, 23, 0.78) !important;
+        background-color: rgba(11, 13, 20, 0.82) !important;
     }
 
     @media (min-width: 960px) {
         .VPNavBar:not(.home),
         .VPNavBar:not(.has-sidebar):not(.home.top) {
-            background-color: rgba(15, 17, 23, 0.78) !important;
+            background-color: rgba(11, 13, 20, 0.82) !important;
         }
     }
 
     .VPLocalNav {
-        background-color: rgba(15, 17, 23, 0.78) !important;
+        background-color: rgba(11, 13, 20, 0.82) !important;
+    }
+
+    .VPNavScreen {
+        background-color: rgba(11, 13, 20, 0.95) !important;
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
     }
 }
 
-.VPNavBar.has-sidebar .content {
-    padding-left: var(--vp-sidebar-width) !important;
+@media (min-width: 960px) {
+    .VPNavBar.has-sidebar .content {
+        padding-left: var(--vp-sidebar-width) !important;
+    }
 }
 
 .VPNavBar.has-sidebar .content .title {
@@ -120,19 +142,19 @@
     flex-shrink: 0;
 }
 
-/* Local search button refinement */
+/* Local search button */
 .VPNavBarSearch .local-search-btn {
-    border-radius: 8px !important;
-    border: 1px solid var(--vp-c-divider) !important;
+    border-radius: 10px !important;
+    border: 1px solid var(--glow-border, var(--vp-c-divider)) !important;
     background: var(--vp-c-bg-soft) !important;
-    transition: all 0.2s ease !important;
+    transition: all 0.25s ease !important;
 }
 
 .VPNavBarSearch .local-search-btn:hover {
     border-color: var(--accent) !important;
+    box-shadow: 0 0 12px var(--accent-glow) !important;
 }
 
-/* Prevent menu items from being squeezed by search */
 .VPNavBarMenu {
     flex-shrink: 1;
     min-width: 0;

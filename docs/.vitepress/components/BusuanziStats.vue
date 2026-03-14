@@ -1,5 +1,12 @@
 <template>
   <div class="busuanzi-stats">
+    <!-- busuanzi 会把 container 的 display 改成 inline，所以用外层 div 强制隐藏 -->
+    <div class="busuanzi-hidden">
+      <span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span></span>
+      <span id="busuanzi_container_site_uv"><span id="busuanzi_value_site_uv"></span></span>
+      <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </div>
+
     <div class="stats-header">
       <h4 class="stats-title">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
@@ -14,7 +21,7 @@
         </div>
         <div class="stat-info">
           <span class="stat-label">站点访问量</span>
-          <span class="stat-value" :class="{ 'loading': isLoading, 'error': hasError }">
+          <span class="stat-value" :class="{ 'loading': isLoading }">
             {{ stats.sitePv }}
           </span>
         </div>
@@ -26,7 +33,7 @@
         </div>
         <div class="stat-info">
           <span class="stat-label">站点访客数</span>
-          <span class="stat-value" :class="{ 'loading': isLoading, 'error': hasError }">
+          <span class="stat-value" :class="{ 'loading': isLoading }">
             {{ stats.siteUv }}
           </span>
         </div>
@@ -38,20 +45,8 @@
         </div>
         <div class="stat-info">
           <span class="stat-label">页面访问量</span>
-          <span class="stat-value" :class="{ 'loading': isLoading, 'error': hasError }">
+          <span class="stat-value" :class="{ 'loading': isLoading }">
             {{ stats.pagePv }}
-          </span>
-        </div>
-      </div>
-
-      <div class="stat-item">
-        <div class="stat-icon online">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/></svg>
-        </div>
-        <div class="stat-info">
-          <span class="stat-label">在线人数</span>
-          <span class="stat-value" :class="{ 'loading': isLoading, 'error': hasError }">
-            {{ stats.siteOnline }}
           </span>
         </div>
       </div>
@@ -66,99 +61,115 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, nextTick } from 'vue'
 import { inBrowser } from 'vitepress'
-import {
-  initBusuanzi,
-  cleanupBusuanzi,
-  getBusuanziStats,
-  formatNumber,
-  waitForBusuanzi,
-  onBusuanziUpdate,
-  isBusuanziAvailable,
-  busuanziConfig
-} from '../utils/busuanzi.js'
 
-// 响应式数据
 const stats = ref({
   sitePv: '加载中...',
   siteUv: '加载中...',
-  pagePv: '加载中...',
-  siteOnline: '加载中...'
+  pagePv: '加载中...'
 })
 
 const isLoading = ref(true)
-const hasError = ref(false)
 
-// 更新统计数据
-const updateStats = () => {
-  const newStats = getBusuanziStats()
-  if (newStats) {
-    stats.value = {
-      sitePv: formatNumber(newStats.sitePv) || '0',
-      siteUv: formatNumber(newStats.siteUv) || '0',
-      pagePv: formatNumber(newStats.pagePv) || '0',
-      siteOnline: formatNumber(newStats.siteOnline) || '0'
-    }
-    isLoading.value = false
-    hasError.value = false
-  }
+let observer = null
+let pollTimer = null
+
+const formatNumber = (num) => {
+  if (!num || num === '0') return '0'
+  const number = parseInt(String(num).replace(/,/g, ''), 10)
+  if (isNaN(number)) return num
+  if (number >= 1000000) return (number / 1000000).toFixed(1) + 'M'
+  if (number >= 1000) return (number / 1000).toFixed(1) + 'K'
+  return number.toString()
 }
 
-// 初始化busuanzi统计
-const initStats = async () => {
+const readStats = () => {
+  const pvEl = document.getElementById('busuanzi_value_site_pv')
+  const uvEl = document.getElementById('busuanzi_value_site_uv')
+  const pagePvEl = document.getElementById('busuanzi_value_page_pv')
+
+  const pv = pvEl?.innerHTML?.trim()
+  const uv = uvEl?.innerHTML?.trim()
+  const pagePv = pagePvEl?.innerHTML?.trim()
+
+  if (pv || uv || pagePv) {
+    stats.value = {
+      sitePv: pv ? formatNumber(pv) : '0',
+      siteUv: uv ? formatNumber(uv) : '0',
+      pagePv: pagePv ? formatNumber(pagePv) : '0'
+    }
+    isLoading.value = false
+    return true
+  }
+  return false
+}
+
+onMounted(async () => {
   if (!inBrowser) return
-  
-  try {
-    // 首先检查busuanzi是否已经可用
-    if (isBusuanziAvailable()) {
-      // 如果已经可用，直接初始化
-      const success = initBusuanzi()
-      if (success) {
-        onBusuanziUpdate(updateStats)
-        setTimeout(updateStats, 1000)
-        return
+
+  // 等待 DOM 完全渲染（确保隐藏的 busuanzi span 已在 DOM 中）
+  await nextTick()
+
+  // busuanzi.pure.js 在 import 时已经自动 fetch 过一次，
+  // 但那时 DOM 中可能还没有目标元素，所以需要重新 fetch
+  if (window.busuanzi && typeof window.busuanzi.fetch === 'function') {
+    window.busuanzi.fetch()
+  }
+
+  // 先尝试直接读取（可能 import 时的 fetch 已经写入了）
+  if (readStats()) return
+
+  // 用 MutationObserver 监听 busuanzi 写入数据
+  observer = new MutationObserver(() => {
+    if (readStats()) {
+      observer?.disconnect()
+      if (pollTimer) {
+        clearInterval(pollTimer)
+        pollTimer = null
       }
     }
-    
-    // 如果不可用，等待加载（缩短超时时间）
-    await waitForBusuanzi(3000)
-    
-    // 初始化busuanzi
-    const success = initBusuanzi()
-    if (success) {
-      // 监听数据更新
-      onBusuanziUpdate(updateStats)
-      
-      // 初始更新
-      setTimeout(updateStats, 1000)
-    } else {
-      throw new Error('Failed to initialize busuanzi')
-    }
-  } catch (error) {
-    console.warn('Busuanzi initialization failed, using fallback:', error.message)
-    hasError.value = false // 不显示错误状态，而是显示fallback数据
-    isLoading.value = false
-    
-    // 设置fallback值（模拟数据）
-    stats.value = {
-      sitePv: '1.2K',
-      siteUv: '856',
-      pagePv: '45',
-      siteOnline: '3'
-    }
-  }
-}
+  })
 
-// 组件挂载时初始化
-onMounted(() => {
-  // 延迟初始化，确保DOM已渲染
-  setTimeout(initStats, 100)
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    characterData: true
+  })
+
+  // 轮询兜底（某些情况 MutationObserver 可能捕获不到）
+  pollTimer = setInterval(() => {
+    if (readStats()) {
+      clearInterval(pollTimer)
+      pollTimer = null
+      observer?.disconnect()
+    }
+  }, 2000)
+
+  // 15 秒超时
+  setTimeout(() => {
+    if (isLoading.value) {
+      isLoading.value = false
+      stats.value = {
+        sitePv: '-',
+        siteUv: '-',
+        pagePv: '-'
+      }
+    }
+    if (pollTimer) {
+      clearInterval(pollTimer)
+      pollTimer = null
+    }
+    observer?.disconnect()
+  }, 15000)
 })
 
-// 组件卸载时清理
 onUnmounted(() => {
-  cleanupBusuanzi()
+  observer?.disconnect()
+  if (pollTimer) {
+    clearInterval(pollTimer)
+    pollTimer = null
+  }
 })
 </script>
 
@@ -166,56 +177,72 @@ onUnmounted(() => {
 .busuanzi-stats {
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  border-radius: 14px;
+  padding: 1.25rem;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.busuanzi-stats:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+  border-color: var(--glow-border, rgba(14, 165, 233, 0.15));
+}
+
+.dark .busuanzi-stats:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
 
 .stats-header {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .stats-title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--vp-c-text-1);
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 6px;
+}
+
+.stats-title svg {
+  color: var(--accent, #0ea5e9);
 }
 
 .stats-content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 8px;
 }
 
 .stat-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
+  gap: 0.6rem;
+  padding: 0.55rem 0.65rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 6px;
+  border-radius: 10px;
   transition: all 0.2s ease;
 }
 
 .stat-item:hover {
-  background: var(--vp-c-bg-alt);
-  transform: translateY(-1px);
+  background: var(--accent-soft, rgba(14, 165, 233, 0.06));
+  transform: translateX(2px);
 }
 
 .stat-icon {
-  font-size: 1.2rem;
-  width: 2rem;
-  height: 2rem;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--vp-c-brand-soft);
-  border-radius: 50%;
+  background: var(--accent-soft, rgba(14, 165, 233, 0.08));
+  border-radius: 8px;
   flex-shrink: 0;
+  color: var(--accent, #0ea5e9);
 }
 
 .stat-info {
@@ -226,104 +253,71 @@ onUnmounted(() => {
 }
 
 .stat-label {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 0.25rem;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-3);
+  margin-bottom: 2px;
 }
 
 .stat-value {
-  font-size: 1.1rem;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--vp-c-brand-1);
-  line-height: 1;
+  color: var(--accent, #0ea5e9);
+  line-height: 1.2;
 }
 
 .loading {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--vp-c-text-3);
   font-weight: 400;
   animation: pulse 1.5s ease-in-out infinite;
 }
 
-.error {
-  color: var(--vp-c-danger-1);
-  font-weight: 400;
-}
-
 @keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 .stats-footer {
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
   border-top: 1px solid var(--vp-c-divider);
 }
 
 .stats-note {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--vp-c-text-3);
   margin: 0;
   text-align: center;
 }
 
 .stats-note a {
-  color: var(--vp-c-brand-1);
+  color: var(--accent, #0ea5e9);
   text-decoration: none;
-  transition: color 0.2s ease;
 }
 
 .stats-note a:hover {
-  color: var(--vp-c-brand-2);
   text-decoration: underline;
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .busuanzi-stats {
-    padding: 1rem;
-  }
-  
-  .stat-item {
-    padding: 0.5rem;
-    gap: 0.5rem;
-  }
-  
-  .stat-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1rem;
-  }
-  
-  .stat-label {
-    font-size: 0.75rem;
-  }
-  
-  .stat-value {
-    font-size: 1rem;
-  }
+/* busuanzi 会把内部 container 改成 display:inline，用外层强制隐藏 */
+.busuanzi-hidden {
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
-/* 深色模式适配 */
-@media (prefers-color-scheme: dark) {
-  .stat-item:hover {
-    background: var(--vp-c-bg-soft);
-  }
-}
-
-/* 高对比度模式 */
-@media (prefers-contrast: high) {
-  .stat-item {
-    border: 1px solid var(--vp-c-divider);
-  }
-  
-  .stat-icon {
-    border: 1px solid var(--vp-c-brand-1);
-  }
+@media (max-width: 640px) {
+  .busuanzi-stats { padding: 1rem; border-radius: 10px; }
+  .stat-item { padding: 0.45rem 0.55rem; gap: 0.45rem; border-radius: 8px; }
+  .stat-icon { width: 24px; height: 24px; border-radius: 6px; }
+  .stat-icon svg { width: 12px; height: 12px; }
+  .stat-label { font-size: 0.65rem; }
+  .stat-value { font-size: 0.85rem; }
+  .stats-title { font-size: 0.78rem; }
+  .stats-note { font-size: 0.6rem; }
 }
 </style>

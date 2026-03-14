@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /e/10-Project/02-Docs/docs/docs/.vitepress -maxdepth 2 -type f \\\\\\( -name \"*.ts\" -o -name \"*.js\" -o -name \"*.css\" -o -name \"*.vue\" \\\\\\) 2>/dev/null | sort)",
+      "Bash(tree -L 2 /e/10-Project/02-Docs/docs/docs/.vitepress -I 'cache|dist' 2>/dev/null || find /e/10-Project/02-Docs/docs/docs/.vitepress -maxdepth 2 -not -path '*/cache/*' -not -path '*/dist/*' -type d | head -30)",
+      "Bash(cd /e/10-Project/02-Docs/docs && npx vitepress build docs 2>&1 | tail -20)",
+      "Bash(cd /e/10-Project/02-Docs/docs && npx vitepress build docs 2>&1 | tail -15)",
+      "Bash(cd /e/10-Project/02-Docs/docs && npx vitepress build docs 2>&1 | tail -8)",
+      "Bash(cd /e/10-Project/02-Docs/docs && node -e \"const b = require\\('busuanzi.pure.js'\\); console.log\\('type:', typeof b\\); console.log\\('keys:', Object.keys\\(b\\)\\); console.log\\('fetch:', typeof b.fetch\\);\")",
+      "Bash(cd /e/10-Project/02-Docs/docs && npx vitepress build docs 2>&1 | tail -5)",
+      "Bash(find /e/10-Project/02-Docs/docs/node_modules/vitepress -type f -name \"*.css\" 2>/dev/null | head -20)",
+      "Bash(find /e/10-Project/02-Docs/docs/node_modules/vitepress/dist -type f -name \"*.css\" 2>/dev/null | grep -i code | head -20)",
+      "Bash(cd /e/10-Project/02-Docs/docs && npm run docs:build 2>&1 | tail -20)",
+      "Bash(cd /e/10-Project/02-Docs/docs && npm run docs:build 2>&1 | tail -10)"
+    ]
+  }
+}

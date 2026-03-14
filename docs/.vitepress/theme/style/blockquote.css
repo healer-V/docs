@@ -1,11 +1,12 @@
 /* .vitepress/theme/style/blockquote.css */
 
 .vp-doc blockquote {
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 18px 20px 20px 16px;
     position: relative;
     background-color: var(--vp-c-bg-soft);
-    border-left: 4px solid var(--accent, #10b981);
+    border-left: 4px solid;
+    border-image: var(--aurora, linear-gradient(135deg, #10b981, #06b6d4, #8b5cf6)) 1;
 }
 
 .vp-doc h5 {
@@ -29,7 +30,7 @@
     width: 100%;
     padding: 4px 8px;
     margin: 2px 0;
-    border-radius: 6px;
+    border-radius: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

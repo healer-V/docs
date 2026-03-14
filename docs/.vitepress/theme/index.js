@@ -1,5 +1,5 @@
 // https://vitepress.dev/guide/custom-theme
-import { h, ref, defineComponent } from 'vue'
+import { h, ref, defineComponent, provide, inject, onMounted } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { inBrowser } from 'vitepress'
 import busuanzi from 'busuanzi.pure.js'
@@ -13,19 +13,23 @@ import Wlink from '../components/Wlink.vue'
 import GuideNav from '../components/GuideNav.vue'
 import HomeBento from '../components/HomeBento.vue'
 import AboutPage from '../components/AboutPage.vue'
+import ReadingProgress from '../components/ReadingProgress.vue'
 import { authManager } from '../utils/auth.js'
 import './style.css';
 import './style/index.css';
 // import './custom.css';
 
-// 登录守卫组件，响应式状态在组件内部管理
+// 共享的登录状态 — 使用 provide/inject 保持同步
+const AUTH_KEY = Symbol('auth')
+
+// 登录守卫组件
 const LoginGuard = defineComponent({
   setup() {
-    const showLogin = ref(inBrowser ? !authManager.isAuthenticated() : false)
+    const authState = inject(AUTH_KEY)
     const handleLoginSuccess = () => {
-      showLogin.value = false
+      authState.value = true
     }
-    return () => showLogin.value
+    return () => !authState.value
       ? h(Login, { onLoginSuccess: handleLoginSuccess })
       : null
   }
@@ -34,8 +38,8 @@ const LoginGuard = defineComponent({
 // 导航栏登出按钮组件
 const NavLogout = defineComponent({
   setup() {
-    const isAuthenticated = ref(inBrowser ? authManager.isAuthenticated() : false)
-    return () => isAuthenticated.value
+    const authState = inject(AUTH_KEY)
+    return () => authState.value
       ? h(LogoutButton, {
           onLogoutSuccess: () => {
             if (inBrowser) window.location.reload()
@@ -47,14 +51,22 @@ const NavLogout = defineComponent({
 
 /** @type {import('vitepress').Theme} */
 
-export default {
-  extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      'layout-top': () => h(LoginGuard),
+// 包装 Layout，提供共享的认证状态
+const AuthLayout = defineComponent({
+  setup() {
+    const authState = ref(inBrowser ? authManager.isAuthenticated() : false)
+    provide(AUTH_KEY, authState)
+
+    return () => h(DefaultTheme.Layout, null, {
+      'layout-top': () => [h(LoginGuard), h(ReadingProgress)],
       'nav-bar-content-after': () => h(NavLogout),
     })
-  },
+  }
+})
+
+export default {
+  extends: DefaultTheme,
+  Layout: AuthLayout,
   enhanceApp({ app, router, siteData }) {
     // 注册全局组件
     app.component('BlogList', BlogList)
@@ -65,12 +77,12 @@ export default {
     app.component('GuideNav', GuideNav)
     app.component('HomeBento', HomeBento)
     app.component('AboutPage', AboutPage)
-    
+
     // 确保busuanzi在浏览器环境中可用
     if (inBrowser) {
       // 将busuanzi挂载到window对象
       window.busuanzi = busuanzi
-      
+
       router.onAfterRouteChanged = () => {
         if (window.busuanzi) {
           window.busuanzi.fetch()
