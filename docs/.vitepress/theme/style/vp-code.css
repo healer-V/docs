@@ -250,13 +250,15 @@ div[class*="language-"].vp-adaptive-theme.line-numbers-mode {
 }
 
 .vp-code-group .tabs {
+    position: relative;
     background: var(--code-header-bg);
     border-bottom: 1px solid var(--vp-code-block-divider-color);
     border-radius: 0;
     padding: 0 8px;
-    height: 36px;
+    padding-top: 30px;
+    min-height: 36px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
 }
 
 .vp-code-group .tabs label {

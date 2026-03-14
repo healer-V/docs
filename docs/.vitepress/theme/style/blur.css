@@ -58,6 +58,8 @@
         border: 1px solid var(--glow-border, var(--vp-c-divider)) !important;
         border-radius: 10px !important;
         transition: all 0.2s ease;
+        height: 40px !important;
+        width: 40px !important;
     }
 
     .DocSearch-Button:hover {

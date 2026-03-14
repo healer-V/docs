@@ -709,6 +709,15 @@ html {
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5) !important;
 }
 
+/* Mobile: tame the search button height */
+@media (max-width: 768px) {
+  .VPNavBarSearch .local-search-btn {
+    height: 32px !important;
+    padding: 0 10px !important;
+    font-size: 0.75rem !important;
+  }
+}
+
 /* ============================================================
    Footer — aurora line
    ============================================================ */

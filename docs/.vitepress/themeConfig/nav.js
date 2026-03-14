@@ -40,13 +40,23 @@ export const nav = [
   {
     text: '后端',
     items: [
+      // 基础
+      {
+        text: '语言',
+        items: [
+          { text: 'Node.js', link: '/backend/01-nodejs/01-nodejs' },
+          { text: 'Java', link: '/backend/02-express/01-express' },
+          { text: 'Python', link: '/backend/03-nestjs/01-nestjs' },
+          { text: 'Golang', link: '/backend/04-django/01-django' },
+        ],
+      },   
       // 框架
       {
         text: '框架',
         items: [
-          { text: 'Node.js', link: '/backend/01-nodejs/01-nodejs' },
           { text: 'Express', link: '/backend/02-express/01-express' },
           { text: 'NestJS', link: '/backend/03-nestjs/01-nestjs' },
+          { text: 'Spring Boot', link: '/backend/04-springboot/01-spring-boot' },
           { text: 'Django', link: '/backend/04-django/01-django' },
         ],
       },
