@@ -1,3 +1,11 @@
+---
+title: "Suspense 新特性"
+category: "前端 · React 18"
+tags:
+  - React
+excerpt: "Suspense 是 React 18 中改进的特性，它允许组件在等待某些内容加载时\"暂停\"渲染，并显示一个 fallback UI。 可以在组件中直接使用数据获取 自动处理加载状态 更好的用户体验 支持服务器端 Suspense 渐进式内..."
+---
+
 # Suspense 新特性
 
 ## 一、Suspense 概述

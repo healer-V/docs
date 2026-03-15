@@ -1,3 +1,12 @@
+---
+title: "JavaScript 设计模式"
+category: "前端 · JavaScript"
+tags:
+  - JavaScript
+  - Java
+excerpt: "设计模式是解决软件开发中常见问题的可复用方案，有助于提高代码的可维护性和灵活性。"
+---
+
 # JavaScript 设计模式
 
 ## 概述

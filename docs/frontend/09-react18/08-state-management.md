@@ -1,3 +1,11 @@
+---
+title: "状态管理"
+category: "前端 · React 18"
+tags:
+  - React
+excerpt: "React 18 的状态管理方案与 React 16 基本相同，但可以更好地利用并发特性和新的 Hooks。 React 18 的状态管理可以更好地利用并发特性，通过 useTransition 和 useDeferredValue 优化状..."
+---
+
 # 状态管理
 
 ## 一、React 18 中的状态管理

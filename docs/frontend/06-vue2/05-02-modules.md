@@ -1,3 +1,11 @@
+---
+title: "5.2 模块化状态管理"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "当应用变得复杂时，可以将 store 分割成模块。 使用 namespaced: true 启用命名空间 模块化可以更好地组织大型应用的状态 通过命名空间访问模块的 state、getters、mutations、actions"
+---
+
 # 5.2 模块化状态管理
 
 当应用变得复杂时，可以将 store 分割成模块。

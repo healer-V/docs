@@ -1,3 +1,9 @@
+---
+title: "工程化面试题"
+category: "面试题"
+excerpt: "Vite Webpack 1. 底层架构 ： 开发模式 ：基于打包器的架构，每次启动或修改代码时，Webpack 需要递归分析依赖关系，构建完整的依赖图，并将所有模块打包成一个或多个 Bundle（即使只改了一个文件）。 webpack基于..."
+---
+
 # 工程化面试题
 
 ## 1. vite为什么比webpack快？

@@ -505,76 +505,207 @@ export const sidebar = {
       ],
     },
   ],
-  "/web3/01-web3.0/": [
+  "/backend/04-java/": [
     {
-      text: "Web3.js - 前端与区块链交互",
+      text: "Java",
       items: [
-        { text: "01-概述", link: "/web3/01-web3.js/01-overview.md" },
-        { text: "02-环境搭建", link: "/web3/01-web3.js/02-setup.md" },
-        { text: "03-连接区块链", link: "/web3/01-web3.js/03-connection.md" },
-        { text: "04-账户管理", link: "/web3/01-web3.js/04-accounts.md" },
-        { text: "05-查询余额", link: "/web3/01-web3.js/05-balance.md" },
-        { text: "06-发送交易", link: "/web3/01-web3.js/06-transactions.md" },
-        { text: "07-合约交互", link: "/web3/01-web3.js/07-contracts.md" },
-        { text: "08-事件监听", link: "/web3/01-web3.js/08-events.md" },
-        { text: "09-错误处理", link: "/web3/01-web3.js/09-error-handling.md" },
-        { text: "10-最佳实践", link: "/web3/01-web3.js/10-best-practices.md" },
+        { text: "01-Java概述", link: "/backend/04-java/01-java.md" },
+      ],
+    },
+  ],
+  "/backend/05-python/": [
+    {
+      text: "Python",
+      items: [
+        { text: "01-Python概述", link: "/backend/05-python/01-python.md" },
+      ],
+    },
+  ],
+  "/backend/06-golang/": [
+    {
+      text: "Golang",
+      items: [
+        { text: "01-Golang概述", link: "/backend/06-golang/01-golang.md" },
+      ],
+    },
+  ],
+  "/backend/07-springboot/": [
+    {
+      text: "Spring Boot",
+      items: [
+        { text: "01-Spring Boot概述", link: "/backend/07-springboot/01-spring-boot.md" },
+      ],
+    },
+  ],
+  "/backend/08-django/": [
+    {
+      text: "Django",
+      items: [
+        { text: "01-Django概述", link: "/backend/08-django/01-django.md" },
+      ],
+    },
+  ],
+  "/backend/09-mysql/": [
+    {
+      text: "MySQL",
+      items: [
+        { text: "01-MySQL概述", link: "/backend/09-mysql/01-mysql.md" },
+      ],
+    },
+  ],
+  "/backend/10-redis/": [
+    {
+      text: "Redis",
+      items: [
+        { text: "01-Redis概述", link: "/backend/10-redis/01-redis.md" },
+      ],
+    },
+  ],
+  "/backend/11-postgresql/": [
+    {
+      text: "PostgreSQL",
+      items: [
+        { text: "01-PostgreSQL概述", link: "/backend/11-postgresql/01-postgresql.md" },
+      ],
+    },
+  ],
+  "/ai/01-fundamentals/": [
+    {
+      text: "AI 基础",
+      items: [
+        { text: "01-概述", link: "/ai/01-fundamentals/index.md" },
+        { text: "02-机器学习基础", link: "/ai/01-fundamentals/01-ml-basics.md" },
+        { text: "03-深度学习基础", link: "/ai/01-fundamentals/02-deep-learning.md" },
+        { text: "04-Transformer架构", link: "/ai/01-fundamentals/03-transformer.md" },
+      ],
+    },
+  ],
+  "/ai/02-prompt/": [
+    {
+      text: "Prompt 工程",
+      items: [
+        { text: "01-概述", link: "/ai/02-prompt/index.md" },
+        { text: "02-Prompt基础", link: "/ai/02-prompt/01-prompt-basics.md" },
+        { text: "03-高级Prompt技巧", link: "/ai/02-prompt/02-advanced-prompt.md" },
+      ],
+    },
+  ],
+  "/ai/03-langchain/": [
+    {
+      text: "LangChain",
+      items: [
+        { text: "01-概述", link: "/ai/03-langchain/index.md" },
+        { text: "02-LangChain入门", link: "/ai/03-langchain/01-overview.md" },
+        { text: "03-RAG检索增强生成", link: "/ai/03-langchain/02-rag.md" },
+      ],
+    },
+  ],
+  "/ai/04-llm-api/": [
+    {
+      text: "LLM API 开发",
+      items: [
+        { text: "01-概述", link: "/ai/04-llm-api/index.md" },
+        { text: "02-OpenAI API", link: "/ai/04-llm-api/01-openai-api.md" },
+        { text: "03-Claude API", link: "/ai/04-llm-api/02-claude-api.md" },
+      ],
+    },
+  ],
+  "/ai/05-agent/": [
+    {
+      text: "AI Agent",
+      items: [
+        { text: "01-概述", link: "/ai/05-agent/index.md" },
+        { text: "02-Agent基础", link: "/ai/05-agent/01-agent-basics.md" },
+      ],
+    },
+  ],
+  "/ai/06-mcp/": [
+    {
+      text: "MCP 协议",
+      items: [
+        { text: "01-概述", link: "/ai/06-mcp/index.md" },
+        { text: "02-MCP入门", link: "/ai/06-mcp/01-mcp-overview.md" },
+      ],
+    },
+  ],
+  "/ai/07-local-deploy/": [
+    {
+      text: "本地部署",
+      items: [
+        { text: "01-概述", link: "/ai/07-local-deploy/index.md" },
+        { text: "02-Ollama本地部署", link: "/ai/07-local-deploy/01-ollama.md" },
+      ],
+    },
+  ],
+  "/web3/01-blockchain/": [
+    {
+      text: "区块链基础",
+      items: [
+        { text: "01-概述", link: "/web3/01-blockchain/index.md" },
+        { text: "02-区块链核心概念", link: "/web3/01-blockchain/01-concepts.md" },
+        { text: "03-以太坊基础", link: "/web3/01-blockchain/02-ethereum.md" },
+        { text: "04-钱包与账户", link: "/web3/01-blockchain/03-wallet.md" },
+        { text: "05-Gas与交易机制", link: "/web3/01-blockchain/04-gas-transaction.md" },
       ],
     },
   ],
   "/web3/02-solidity/": [
     {
-      text: "Solidity - 智能合约开发",
+      text: "Solidity 智能合约",
       items: [
-        // 基础篇
-        { text: "01-概述", link: "/web3/02-solidity/01-overview.md" },
-        { text: "02-开发环境", link: "/web3/02-solidity/02-environment.md" },
-        { text: "03-第一个合约", link: "/web3/02-solidity/03-first-contract.md" },
-        // 数据类型篇
-        { text: "04-值类型", link: "/web3/02-solidity/16-value-types.md" },
-        { text: "05-引用类型", link: "/web3/02-solidity/17-reference-types.md" },
-        { text: "06-地址类型", link: "/web3/02-solidity/15-address.md" },
-        { text: "07-数组", link: "/web3/02-solidity/13-arrays.md" },
-        { text: "08-映射", link: "/web3/02-solidity/12-mappings.md" },
-        { text: "09-字符串", link: "/web3/02-solidity/14-strings.md" },
-        { text: "10-结构体", link: "/web3/02-solidity/10-structs.md" },
-        { text: "11-枚举", link: "/web3/02-solidity/11-enums.md" },
-        { text: "12-类型转换", link: "/web3/02-solidity/18-type-conversion.md" },
-        // 语法篇
-        { text: "13-变量", link: "/web3/02-solidity/03-variables.md" },
-        { text: "14-运算符", link: "/web3/02-solidity/19-operators.md" },
-        { text: "15-控制结构", link: "/web3/02-solidity/20-control-structures.md" },
-        { text: "16-循环", link: "/web3/02-solidity/21-loops.md" },
-        // 函数与合约篇
-        { text: "17-函数", link: "/web3/02-solidity/04-functions.md" },
-        { text: "18-合约", link: "/web3/02-solidity/06-contracts.md" },
-        { text: "19-继承", link: "/web3/02-solidity/07-inheritance.md" },
-        { text: "20-接口", link: "/web3/02-solidity/08-interfaces.md" },
-        { text: "21-库", link: "/web3/02-solidity/09-libraries.md" },
-        { text: "22-事件", link: "/web3/02-solidity/05-events.md" },
+        { text: "01-概述", link: "/web3/02-solidity/index.md" },
+        { text: "02-开发环境搭建", link: "/web3/02-solidity/01-environment.md" },
+        { text: "03-基本语法与数据类型", link: "/web3/02-solidity/02-syntax.md" },
+        { text: "04-函数与修饰器", link: "/web3/02-solidity/03-functions.md" },
+        { text: "05-合约继承与接口", link: "/web3/02-solidity/04-inheritance.md" },
+        { text: "06-事件与日志", link: "/web3/02-solidity/05-events.md" },
+        { text: "07-安全最佳实践", link: "/web3/02-solidity/06-security.md" },
       ],
     },
   ],
-  "/web3/03-ethereum/": [
+  "/web3/03-web3js/": [
     {
-      text: "Ethereum - 以太坊生态",
+      text: "Web3.js 前端交互",
       items: [
-        // 基础概念
-        { text: "01-概述", link: "/web3/03-ethereum/01-overview.md" },
-        { text: "02-账户系统", link: "/web3/03-ethereum/02-accounts.md" },
-        { text: "03-交易机制", link: "/web3/03-ethereum/03-transactions.md" },
-        { text: "04-交易确认", link: "/web3/03-ethereum/07-transaction-confirmation.md" },
-        // 合约开发
-        { text: "05-合约基础", link: "/web3/03-ethereum/04-contracts.md" },
-        { text: "06-ABI接口", link: "/web3/03-ethereum/05-abi.md" },
-        { text: "07-合约部署", link: "/web3/03-ethereum/09-contract-deployment.md" },
-        { text: "08-合约调用", link: "/web3/03-ethereum/10-contract-calls.md" },
-        { text: "09-合约交互", link: "/web3/03-ethereum/08-contract-interaction.md" },
-        // 事件与状态
-        { text: "10-事件系统", link: "/web3/03-ethereum/06-events.md" },
-        { text: "11-合约事件", link: "/web3/03-ethereum/11-contract-events.md" },
-        { text: "12-合约状态", link: "/web3/03-ethereum/12-contract-state.md" },
-        { text: "13-合约存储", link: "/web3/03-ethereum/13-contract-storage.md" },
+        { text: "01-概述", link: "/web3/03-web3js/index.md" },
+        { text: "02-Web3.js入门", link: "/web3/03-web3js/01-getting-started.md" },
+        { text: "03-连接区块链与读取数据", link: "/web3/03-web3js/02-connect-read.md" },
+        { text: "04-发送交易与合约调用", link: "/web3/03-web3js/03-transactions.md" },
+        { text: "05-事件监听与过滤", link: "/web3/03-web3js/04-events.md" },
+      ],
+    },
+  ],
+  "/web3/04-ethersjs/": [
+    {
+      text: "Ethers.js 实战",
+      items: [
+        { text: "01-概述", link: "/web3/04-ethersjs/index.md" },
+        { text: "02-Ethers.js入门", link: "/web3/04-ethersjs/01-getting-started.md" },
+        { text: "03-Provider与Signer", link: "/web3/04-ethersjs/02-provider-signer.md" },
+        { text: "04-合约交互", link: "/web3/04-ethersjs/03-contract-interaction.md" },
+      ],
+    },
+  ],
+  "/web3/05-dapp/": [
+    {
+      text: "DApp 开发实战",
+      items: [
+        { text: "01-概述", link: "/web3/05-dapp/index.md" },
+        { text: "02-Hardhat开发框架", link: "/web3/05-dapp/01-hardhat.md" },
+        { text: "03-ERC-20代币开发", link: "/web3/05-dapp/02-erc20.md" },
+        { text: "04-ERC-721 NFT开发", link: "/web3/05-dapp/03-erc721.md" },
+        { text: "05-DApp前端集成", link: "/web3/05-dapp/04-frontend.md" },
+      ],
+    },
+  ],
+  "/web3/06-advanced/": [
+    {
+      text: "进阶主题",
+      items: [
+        { text: "01-概述", link: "/web3/06-advanced/index.md" },
+        { text: "02-DeFi核心概念", link: "/web3/06-advanced/01-defi.md" },
+        { text: "03-合约升级模式", link: "/web3/06-advanced/02-upgradeable.md" },
+        { text: "04-The Graph数据索引", link: "/web3/06-advanced/03-thegraph.md" },
       ],
     },
   ],
@@ -809,6 +940,16 @@ export const sidebar = {
     {
       text: "Nginx - 反向代理服务器",
       items: [
+        { text: "01-概述", link: "/operation/06-nginx/index.md" },
+        { text: "02-安装与配置", link: "/operation/06-nginx/01-installation.md" },
+        { text: "03-配置文件详解", link: "/operation/06-nginx/02-config.md" },
+        { text: "04-静态资源服务", link: "/operation/06-nginx/03-static.md" },
+        { text: "05-反向代理", link: "/operation/06-nginx/04-reverse-proxy.md" },
+        { text: "06-负载均衡", link: "/operation/06-nginx/05-load-balance.md" },
+        { text: "07-HTTPS配置", link: "/operation/06-nginx/06-https.md" },
+        { text: "08-性能优化", link: "/operation/06-nginx/07-performance.md" },
+        { text: "09-日志管理", link: "/operation/06-nginx/08-logging.md" },
+        { text: "10-实战案例", link: "/operation/06-nginx/09-practice.md" },
       ],
     },
   ],

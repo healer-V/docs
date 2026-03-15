@@ -1,3 +1,11 @@
+---
+title: "网络请求"
+category: "跨端 · HarmonyOS"
+tags:
+  - HarmonyOS
+excerpt: "在 HarmonyOS 应用开发中，网络请求是实现与服务器通信、获取远程数据的核心功能。HarmonyOS 提供了多种网络请求 API 和框架，支持 HTTP、HTTPS 等协议，以及各种网络操作场景。本章节将详细介绍 HarmonyOS ..."
+---
+
 # 网络请求
 
 在 HarmonyOS 应用开发中，网络请求是实现与服务器通信、获取远程数据的核心功能。HarmonyOS 提供了多种网络请求 API 和框架，支持 HTTP、HTTPS 等协议，以及各种网络操作场景。本章节将详细介绍 HarmonyOS 中的网络请求机制，包括基本 API 的使用、高级功能实现以及最佳实践。

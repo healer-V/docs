@@ -1,3 +1,12 @@
+---
+title: "3.1 响应式原理深入"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+  - React
+excerpt: "Vue 2 的响应式系统基于 Object.defineProperty 实现，理解其原理有助于更好地使用 Vue。 Object.defineProperty 可以定义或修改对象的属性描述符： Vue 2 通过 Object.define..."
+---
+
 # 3.1 响应式原理深入
 
 Vue 2 的响应式系统基于 `Object.defineProperty` 实现，理解其原理有助于更好地使用 Vue。

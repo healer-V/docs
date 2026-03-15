@@ -1,3 +1,11 @@
+---
+title: "项目实战-vue3PC"
+category: "项目实践"
+tags:
+  - Vue
+excerpt: "本项目基于vue3.0+typescript+element-plus开发。 主要功能为PC端后台管理系统，主要实现网站的前后端分离，实现等功能。 vite官网示例 EditorConfig 是一个跨平台的文本编辑器配置定义文件，它帮助开发..."
+---
+
 # 项目实战-vue3PC
 
 ## 一、项目背景

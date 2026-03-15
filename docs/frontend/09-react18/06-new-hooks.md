@@ -1,3 +1,11 @@
+---
+title: "新 Hooks"
+category: "前端 · React 18"
+tags:
+  - React
+excerpt: "React 18 引入了多个新的 Hooks，用于支持并发渲染、性能优化和新的功能。 注意：useId 生成的 ID 包含 :，不适用于 HTML 属性，需要处理： 使用场景： 动态插入样式 CSS-in-JS 库 在 DOM 更新前执行 ..."
+---
+
 # 新 Hooks
 
 ## 一、React 18 新增 Hooks

@@ -1,3 +1,11 @@
+---
+title: "1.2 安装与环境搭建"
+category: "运维 · Linux"
+tags:
+  - Linux
+excerpt: "学 Linux 最重要的是有一个可以随意折腾的环境。以下是三种主流方案，按推荐程度排序。 WSL（Windows Subsystem for Linux）是微软官方推出的 Linux 兼容层，可以在 Windows 上直接运行真实的 Lin..."
+---
+
 # 1.2 安装与环境搭建
 
 学 Linux 最重要的是有一个**可以随意折腾的环境**。以下是三种主流方案，按推荐程度排序。

@@ -1,3 +1,11 @@
+---
+title: "Transitions"
+category: "前端 · React 18"
+tags:
+  - React
+excerpt: "Transitions 是 React 18 的新特性，它允许你标记某些更新为\"非紧急\"的，让 React 保持 UI 的响应性，同时处理这些非紧急更新。 问题： 搜索时 UI 无响应 用户输入卡顿 体验差 优势： UI 保持响应 用户体验..."
+---
+
 # Transitions
 
 ## 一、什么是 Transitions？

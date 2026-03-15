@@ -1,3 +1,11 @@
+---
+title: "5.1 Vuex核心概念"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "Vuex 是 Vue 的状态管理库，用于集中管理应用的状态。 存储应用的状态： 从 state 派生的状态： 同步修改 state： 异步操作，提交 mutations： State：存储状态 Getters：派生状态 Mutations：..."
+---
+
 # 5.1 Vuex核心概念
 
 Vuex 是 Vue 的状态管理库，用于集中管理应用的状态。

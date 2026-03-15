@@ -1,3 +1,11 @@
+---
+title: "项目创建"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "选择 Manually select features 可以自定义配置。 创建完成后，项目结构如下： 使用 Vue CLI 创建的项目，启动开发服务器： 打开浏览器访问 http://localhost:8080 查看应用。 构建后的文件默..."
+---
+
 # 项目创建
 
 ## 一、安装方式

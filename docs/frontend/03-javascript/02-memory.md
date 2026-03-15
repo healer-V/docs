@@ -1,3 +1,12 @@
+---
+title: "内存"
+category: "前端 · JavaScript"
+tags:
+  - JavaScript
+  - Java
+excerpt: "JavaScript中的数据类型不仅在语法上有区别，在内存分配机制上也有显著差异。了解这些差异对于编写高效代码和避免内存问题至关重要。 存储基本数据类型：Number、String、Boolean、Null、Undefined、Symbol..."
+---
+
 # 内存
 
 ## 一、内存分配区别：栈与堆

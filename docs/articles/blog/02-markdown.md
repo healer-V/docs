@@ -1,3 +1,11 @@
+---
+title: "vitepess中的markdown 语法"
+category: "博客相关"
+tags:
+  - Vite
+excerpt: "自定义容器使用了markdown-it-container插件，markdown-it-container插件可以自定义容器，比如： 输入： 输出： 这是一个提示 这是一个警告 这是一个危险警告 This is an info box. T..."
+---
+
 # vitepess中的markdown 语法
 
 ## 一、vitepess中

@@ -1,3 +1,11 @@
+---
+title: "React 16 学习笔记"
+category: "基础知识"
+tags:
+  - React
+excerpt: "React 是一个用于构建用户界面的 JavaScript 库 由 Facebook 开发并维护，用于构建大型、复杂的 Web 应用 React 只关注视图层，采用组件化开发模式 核心特点：声明式、组件化、一次学习，随处编写 JSX：Jav..."
+---
+
 # React 16 学习笔记
 
 ## 一、React 基础入门

@@ -1,3 +1,11 @@
+---
+title: "Automatic Batching"
+category: "前端 · React 18"
+tags:
+  - React
+excerpt: "自动批处理是 React 18 的新特性，它会自动将多个状态更新合并为一次重新渲染，从而减少不必要的渲染次数，提升性能。 减少 DOM 操作 减少计算开销 提升用户体验 使用场景： 需要立即读取 DOM 需要同步更新 特殊情况下的性能优化 ..."
+---
+
 # Automatic Batching
 
 ## 一、什么是自动批处理？

@@ -1,3 +1,11 @@
+---
+title: "7.1 软件包管理"
+category: "运维 · Linux"
+tags:
+  - Linux
+excerpt: "Linux 通过包管理器来安装、更新、卸载软件，不同发行版使用不同的包管理器。 APT（Advanced Package Tool）是 Debian 系发行版的包管理工具。 CentOS 7 及以下使用 yum CentOS 8+、RHEL..."
+---
+
 # 7.1 软件包管理
 
 Linux 通过**包管理器**来安装、更新、卸载软件，不同发行版使用不同的包管理器。

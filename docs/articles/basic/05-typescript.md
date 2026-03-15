@@ -1,4 +1,14 @@
+---
+title: "TypeScript 基础"
+category: "基础知识"
+tags:
+  - TypeScript
+excerpt: "为什么需要 TypeScript TypeScript 是 JavaScript 的一个超集，强类型的定义。 增加类型安全性：TypeScript 编译器可以检查代码中的类型错误，提高代码的可靠性和可维护性。 提高开发效率：TypeScri..."
+---
+
 # TypeScript 基础
+
+## 一、TypeScript 概要
 >[!tip] 为什么需要 TypeScript
 > - TypeScript 是 JavaScript 的一个超集，强类型的定义。
 > 1. **增加类型安全性**：TypeScript 编译器可以检查代码中的类型错误，提高代码的可靠性和可维护性。
@@ -47,8 +57,8 @@
 > - 编译 TypeScript 文件：`tsc hello.ts`
 > - 执行编译后的 JS 文件：`node hello.js`
 
-
-## 6、TS 基础类型
+## 二、TypeScript语法
+## 1、TS 基础类型
 >[!tip] 基础类型
 >- 1. `Boolean`: 布尔类型，`true` 或 `false`。
 >- 2. `Number`: 数值类型，整数或浮点数（支持二进制、八进制、十进制、十六进制字面量）。
@@ -130,7 +140,7 @@ function error(message: string): never {
 
 
 
-## 7、类型断言
+## 2、类型断言
 >[!tip] 类型断言
 > - 一种强制类型转换，它允许你告诉编译器，你相信的类型是正确的。
 >   - 方式 一：使用尖括号语法，`<类型>值`
@@ -150,7 +160,7 @@ let strLength2: number = (someValue as string).length;
 
 
 
-## 8、接口
+## 3、接口
 >[!tip] 接口
 > - 接口是一种抽象类型，它定义了对象的形状或行为。
 > - 接口可以用来定义函数、类、变量的形状，可以包含属性、方法、构造函数等。
@@ -283,7 +293,7 @@ let circle: Circle = {
 ```
 :::
 
-## 9、字面量类型
+## 4、字面量类型
 >[!tip] 字面量类型
 > - 字面量类型是指通过字面量来定义类型。
 > - 字面量类型可以用来指定一个值的类型，如字符串字面量类型。
@@ -313,7 +323,7 @@ enum Color {Red, Green, Blue}
 ::: 
 
 
-## 10、泛型
+## 5、泛型
 >[!tip] 泛型
 > - 泛型是指在定义函数、接口或类时，不预先指定具体的类型，而是在使用时再指定类型的一种特性。
 > - 泛型可以让代码更加灵活、可重用、可读性更好。
@@ -329,7 +339,7 @@ let output2 = identity<number>(123);
 ```
 ::: 
 
-## 11、类型别名
+## 6、类型别名
 >[!tip] 类型别名
 > - 类型别名是给一个类型定义一个新的名称。
 > - 类型别名可以用来给复杂的类型定义一个简单的名字，使代码更易读。
@@ -352,7 +362,7 @@ let john: Person = {
 ```
 ::: 
 
-## 12、联合类型
+## 7、联合类型
 >[!tip] 联合类型
 > - 联合类型是指可以是多种类型中的一种的类型。
 > - 联合类型可以用来表示一个值的类型可以是多种类型中的一种。
@@ -372,7 +382,7 @@ console.log(greet(123)); // Hi, 123
 ```
 ::: 
 
-## 13、交叉类型
+## 8、交叉类型
 >[!tip] 交叉类型
 > - 交叉类型是指将多个类型合并为一个类型。
 > - 交叉类型可以用来表示一个值的类型可以是多个类型中的多个类型。
@@ -401,7 +411,8 @@ let john: FullPerson = {
 ::: 
 
 
-## 14、常用类型工具
+## 三、TypeScript 扩充
+## 1、常用类型工具
 >[!tip] 常用类型工具
 >- 1. `Parameters<T>`：获取函数类型T的参数类型。
 >- 2. `ConstructorParameters<T>`：获取构造函数类型T的参数类型。
@@ -412,7 +423,7 @@ let john: FullPerson = {
    
 
 
-## 15、实用工具类型
+## 2、实用工具类型
 
 >[!tip] 实用工具类型
 > - 实用工具类型是指TypeScript提供的一些内置类型，可以帮助我们更方便地使用TypeScript。
@@ -774,3 +785,10 @@ type Capitalized = Capitalize<"hello world">; // "Hello world"
 :::
 
 
+## 四、文档学习
+
+>[!note]
+> - [TypeScript 手册](https://bosens-china.github.io/Typescript-manual/download/zh/reference/utility-types.html#%E7%9B%AE%E5%BD%95)
+> - [中文手册](https://typescript.bootcss.com/)
+> - [TypeScript 使用指南](https://typescript.toycms.com/PREFACE.html)
+> - [Typescript入门](https://ts.xcatliu.com/introduction/what-is-typescript.html)

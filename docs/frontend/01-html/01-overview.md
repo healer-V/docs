@@ -1,3 +1,11 @@
+---
+title: "HTML概述"
+category: "前端 · HTML"
+tags:
+  - HTML
+excerpt: "HyperText Markup Language：超文本标记语言 Web页面的结构基础：定义网页的结构和内容 非编程语言：是一种标记语言，不是编程语言 与CSS和JavaScript协作：共同构成现代Web开发的基础 HTML 1.0：1..."
+---
+
 # HTML概述
 
 ## 一、HTML的基本概念

@@ -40,37 +40,32 @@ export const nav = [
   {
     text: '后端',
     items: [
-      // 基础
       {
         text: '语言',
         items: [
           { text: 'Node.js', link: '/backend/01-nodejs/01-nodejs' },
-          { text: 'Java', link: '/backend/02-express/01-express' },
-          { text: 'Python', link: '/backend/03-nestjs/01-nestjs' },
-          { text: 'Golang', link: '/backend/04-django/01-django' },
+          { text: 'Java', link: '/backend/04-java/01-java' },
+          { text: 'Python', link: '/backend/05-python/01-python' },
+          { text: 'Golang', link: '/backend/06-golang/01-golang' },
         ],
-      },   
-      // 框架
+      },
       {
         text: '框架',
         items: [
           { text: 'Express', link: '/backend/02-express/01-express' },
           { text: 'NestJS', link: '/backend/03-nestjs/01-nestjs' },
-          { text: 'Spring Boot', link: '/backend/04-springboot/01-spring-boot' },
-          { text: 'Django', link: '/backend/04-django/01-django' },
+          { text: 'Spring Boot', link: '/backend/07-springboot/01-spring-boot' },
+          { text: 'Django', link: '/backend/08-django/01-django' },
         ],
       },
-      // 数据库
       {
         text: '数据库',
         items: [
-          { text: 'MySQL', link: '/backend/05-mysql/01-mysql' },
-          { text: 'Redis', link: '/backend/06-redis/01-redis' },
-          { text: 'MongoDB', link: '/backend/07-mongodb/01-mongodb' },
-          { text: 'PostgreSQL', link: '/backend/08-postgresql/01-postgresql' },
+          { text: 'MySQL', link: '/backend/09-mysql/01-mysql' },
+          { text: 'Redis', link: '/backend/10-redis/01-redis' },
+          { text: 'PostgreSQL', link: '/backend/11-postgresql/01-postgresql' },
         ],
-      }
-     
+      },
     ],
   },
   {
@@ -91,15 +86,30 @@ export const nav = [
       { text: 'Kubernetes', link: '/operation/04-k8s/index' },
       { text: 'Jenkins', link: '/operation/02-jenkins/index' },
       { text: 'CI/CD', link: '/operation/03-cicd/index' },
-      { text: 'Nginx', link: '/operation/06-nginx/01-overview' },
+      { text: 'Nginx', link: '/operation/06-nginx/index' },
     ],
   },
   {
     text: 'Web3',
     items: [
-      { text: 'Web3.js', link: '/web3/01-web3.0/01-overview' },
-      { text: 'Solidity', link: '/web3/02-solidity/01-overview' },
-      { text: 'Ethereum', link: '/web3/03-ethereum/01-overview' },
+      { text: '区块链基础', link: '/web3/01-blockchain/index' },
+      { text: 'Solidity', link: '/web3/02-solidity/index' },
+      { text: 'Web3.js', link: '/web3/03-web3js/index' },
+      { text: 'Ethers.js', link: '/web3/04-ethersjs/index' },
+      { text: 'DApp 开发', link: '/web3/05-dapp/index' },
+      { text: '进阶主题', link: '/web3/06-advanced/index' },
+    ],
+  },
+  {
+    text: 'AI',
+    items: [
+      { text: 'AI 基础', link: '/ai/01-fundamentals/index' },
+      { text: 'Prompt 工程', link: '/ai/02-prompt/index' },
+      { text: 'LangChain', link: '/ai/03-langchain/index' },
+      { text: 'LLM API', link: '/ai/04-llm-api/index' },
+      { text: 'AI Agent', link: '/ai/05-agent/index' },
+      { text: 'MCP', link: '/ai/06-mcp/index' },
+      { text: '本地部署', link: '/ai/07-local-deploy/index' },
     ],
   },
   { text: '面试题', link: '/interview/index' },

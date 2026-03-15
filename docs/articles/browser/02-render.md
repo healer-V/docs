@@ -1,3 +1,9 @@
+---
+title: "浏览器原理"
+category: "浏览器"
+excerpt: "是指浏览器将 HTML、CSS、JavaScript 代码转换为可视化页面的过程。 渲染原理可以分为以下步骤： 解析 HTML 代码：浏览器将 HTML 代码解析为 DOM 树。 解析 CSS 代码：浏览器将 CSS 代码解析为 CSSOM..."
+---
+
 # 浏览器原理
 
 ## 一、浏览器渲染原理

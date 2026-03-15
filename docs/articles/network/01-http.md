@@ -1,3 +1,9 @@
+---
+title: "HTTP/HTTPS协议"
+category: "网络协议"
+excerpt: "五层网络模型 TCP/IP协议族 HTTP协议 Postman/Apifox Ajax 跨域以及解决方案 JWT cookie session 文件上传 文件下载 缓存协议 CSRF XSS 网络性能优化 分片传输 域名与DNS SSL/T..."
+---
+
 # HTTP/HTTPS协议
 ::: details 网络学习路线
 >[!danger] 

@@ -1,3 +1,11 @@
+---
+title: "导航"
+category: "跨端 · React Native"
+tags:
+  - React
+excerpt: "在React Native应用开发中，导航是连接不同屏幕和组件的关键部分。本章节将介绍React Navigation库，这是React Native中最流行的导航解决方案，帮助你实现流畅的用户导航体验。 React Navigation是..."
+---
+
 # 导航
 
 在React Native应用开发中，导航是连接不同屏幕和组件的关键部分。本章节将介绍React Navigation库，这是React Native中最流行的导航解决方案，帮助你实现流畅的用户导航体验。

@@ -1,3 +1,11 @@
+---
+title: "React 18 概述"
+category: "前端 · React 18"
+tags:
+  - React
+excerpt: "React 18 是 React 的最新主要版本，引入了并发渲染、自动批处理、Suspense 改进等新特性，为 React 应用的性能和用户体验带来了显著提升。 可中断的渲染过程 优先级调度 更好的用户体验 自动合并多个状态更新 减少不必..."
+---
+
 # React 18 概述
 
 ## 一、React 18 简介

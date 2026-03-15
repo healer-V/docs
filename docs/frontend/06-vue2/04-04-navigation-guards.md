@@ -1,3 +1,11 @@
+---
+title: "4.4 路由守卫"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "路由守卫用于在导航过程中进行控制，可以在路由跳转前后执行逻辑。 全局守卫：beforeEach、afterEach 路由独享：beforeEnter 组件内：beforeRouteEnter、beforeRouteUpdate、before..."
+---
+
 # 4.4 路由守卫
 
 路由守卫用于在导航过程中进行控制，可以在路由跳转前后执行逻辑。

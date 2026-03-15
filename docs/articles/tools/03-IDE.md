@@ -1,3 +1,9 @@
+---
+title: "IDE 配置指南"
+category: "开发工具"
+excerpt: "IDE（Integrated Development Environment，集成开发环境）是一种用于软件开发的应用软件，集成了代码编辑器、编译器、调试器等多种工具，提供一站式的开发体验。 | IDE | 特点 | 适用场景 | |----..."
+---
+
 # IDE 配置指南
 
 ## 一、IDE 概述

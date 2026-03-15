@@ -1,3 +1,11 @@
+---
+title: "CSS预处理器"
+category: "前端 · CSS"
+tags:
+  - CSS
+excerpt: "CSS预处理器（CSS Preprocessor）是一种编程语言，它扩展了CSS的功能，提供了变量、函数、嵌套、继承等高级特性，使CSS的编写更加高效、可维护和可扩展。CSS预处理器编写的代码需要通过编译器转换为标准的CSS代码，然后才能被..."
+---
+
 # CSS预处理器
 
 ## 一、CSS预处理器概述

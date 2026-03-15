@@ -1,3 +1,11 @@
+---
+title: "Node.js"
+category: "基础知识"
+tags:
+  - Node
+excerpt: "概念 Node.js 是一个基于 Chrome V8 JavaScript 引擎的 JavaScript 运行时环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。 擅长处理IO密集型应用,不适合CPU密集..."
+---
+
 # Node.js
 
 >[!tip] 概念

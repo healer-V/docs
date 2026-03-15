@@ -1,3 +1,11 @@
+---
+title: "5.5 Vuex最佳实践"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "使用常量作为 mutation 类型： 使用模块化：大型应用使用模块组织状态 使用命名空间：避免命名冲突 异步操作使用 Actions：不要在 Mutations 中执行异步操作 使用辅助函数：简化组件代码 合理使用 Getters：缓存派..."
+---
+
 # 5.5 Vuex最佳实践
 
 ## 5.5.1 命名规范

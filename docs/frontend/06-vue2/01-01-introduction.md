@@ -1,3 +1,11 @@
+---
+title: "设计理念"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "Vuejs是一套用于构建用户界面的 渐进式 JavaScript 框架。 Vuejs 被设计为可以自底向上、逐层应用。 Vue2 是Vuejs的第二个版本。 Vue 的核心库只关注视图层 易于上手，也便于与第三方库或既有项目整合 可以根据项..."
+---
+
 # 设计理念
 
 ## 一、 Vue 2 是什么

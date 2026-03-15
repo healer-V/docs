@@ -1,3 +1,11 @@
+---
+title: "路由配置"
+category: "前端 · React 18"
+tags:
+  - React
+excerpt: "React 18 的路由配置与 React 16 基本相同，但可以更好地利用并发特性和 Suspense。 React 18 的路由配置可以更好地利用 Suspense 和 useTransition，提供更流畅的路由切换体验和更好的加载状..."
+---
+
 # 路由配置
 
 ## 一、React 18 中的路由

@@ -1,3 +1,11 @@
+---
+title: "React 16 概述"
+category: "前端 · React 16"
+tags:
+  - React
+excerpt: "React 是由 Facebook（现 Meta）开发的一个用于构建用户界面的 JavaScript 库。它采用组件化开发模式，让开发者可以构建可复用的 UI 组件。 函数组件：使用函数定义的组件，简洁高效 类组件：使用 ES6 类定义的组..."
+---
+
 # React 16 概述
 
 ## 一、什么是 React？

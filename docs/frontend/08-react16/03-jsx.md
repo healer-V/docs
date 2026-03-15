@@ -1,3 +1,11 @@
+---
+title: "JSX 语法"
+category: "前端 · React 16"
+tags:
+  - React
+excerpt: "JSX（JavaScript XML）是 React 的语法扩展，它允许我们在 JavaScript 中写类似 HTML 的代码。JSX 会被编译成 React.createElement() 调用。 在 JSX 中，不能使用 class ..."
+---
+
 # JSX 语法
 
 ## 一、什么是 JSX？

@@ -1,3 +1,11 @@
+---
+title: "Hooks 基础"
+category: "前端 · React 16"
+tags:
+  - React
+excerpt: "Hooks 是 React 16.8 引入的新特性，它允许你在函数组件中使用 state 和其他 React 特性，而无需编写类组件。 复杂的生命周期逻辑：相关逻辑分散在不同生命周期方法中 难以复用状态逻辑：需要使用 HOC 或 Rende..."
+---
+
 # Hooks 基础
 
 ## 一、什么是 Hooks？

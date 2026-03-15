@@ -1,3 +1,11 @@
+---
+title: "5.2 系统资源监控"
+category: "运维 · Linux"
+tags:
+  - Linux
+excerpt: "负载的含义： 负载 = 正在运行的进程数 + 等待 CPU 的进程数 经验法则：负载值不超过 CPU 核心数，就是健康的 us（user）：用户程序使用的 CPU sy（system）：内核使用的 CPU id（idle）：空闲 CPU，越..."
+---
+
 # 5.2 系统资源监控
 
 ## CPU 监控

@@ -52,14 +52,20 @@
             background-color: rgba(255, 255, 255, 0) !important;
         }
     }
+    @media (max-width: 768px) {
+        .DocSearch-Button {
+            height: 40px !important;
+            width: 40px !important;
+        }
+    }
 
     .DocSearch-Button {
         background-color: var(--vp-c-bg-soft) !important;
         border: 1px solid var(--glow-border, var(--vp-c-divider)) !important;
         border-radius: 10px !important;
         transition: all 0.2s ease;
-        height: 40px !important;
-        width: 40px !important;
+        /* height: 40px !important;
+        width: 40px !important; */
     }
 
     .DocSearch-Button:hover {

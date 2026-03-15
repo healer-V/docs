@@ -1,3 +1,11 @@
+---
+title: "1.1 认识 Linux"
+category: "运维 · Linux"
+tags:
+  - Linux
+excerpt: "Linux 严格来说只是一个内核（Kernel），由 Linus Torvalds 在 1991 年作为个人项目发布。它负责管理硬件资源（CPU、内存、磁盘、网络），并为上层应用程序提供统一的接口。 我们日常所说的\"Linux 系统\"，准确..."
+---
+
 # 1.1 认识 Linux
 
 ## Linux 是什么？

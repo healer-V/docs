@@ -1,3 +1,11 @@
+---
+title: "Flutter Widget 系统"
+category: "跨端 · Flutter"
+tags:
+  - Flutter
+excerpt: "在 Flutter 中，Widget 是构建用户界面的基本单位。Flutter 的核心设计理念是：一切皆为 Widget。从简单的文本、按钮到复杂的布局和导航结构，所有 UI 元素都是 Widget。本章节将深入探讨 Flutter 的 W..."
+---
+
 # Flutter Widget 系统
 
 在 Flutter 中，Widget 是构建用户界面的基本单位。Flutter 的核心设计理念是：**一切皆为 Widget**。从简单的文本、按钮到复杂的布局和导航结构，所有 UI 元素都是 Widget。本章节将深入探讨 Flutter 的 Widget 系统，帮助你理解如何使用 Widget 构建美观、响应式的用户界面。

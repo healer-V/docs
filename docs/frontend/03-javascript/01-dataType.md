@@ -1,3 +1,12 @@
+---
+title: "JavaScript 数据类型"
+category: "前端 · JavaScript"
+tags:
+  - JavaScript
+  - Java
+excerpt: "基本数据类型 数字（Number）：用于表示数值，包括整数和浮点数。 字符串（String）：用于表示文本，由字符组成。 布尔值（Boolean）：用于表示真或假。 空值（Null）：表示空对象引用。 未定义（Undefined）：表示变量..."
+---
+
 # JavaScript 数据类型
 
 

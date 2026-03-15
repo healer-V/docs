@@ -1,3 +1,12 @@
+---
+title: "函数"
+category: "前端 · JavaScript"
+tags:
+  - JavaScript
+  - Java
+excerpt: "函数是JavaScript中的基础构建块，它允许你封装可重用的代码块。 自包含代码块：函数是一组执行特定任务的语句 可重用性：定义一次，可以在多处调用 参数传递：可以接收输入数据 返回值：可以产生输出结果 一等公民：在JavaScript中..."
+---
+
 # 函数
 
 ## 一、概述

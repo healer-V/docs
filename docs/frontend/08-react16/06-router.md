@@ -1,3 +1,11 @@
+---
+title: "路由配置"
+category: "前端 · React 16"
+tags:
+  - React
+excerpt: "路由是单页应用（SPA）中实现页面导航的机制。React Router 是 React 最流行的路由库。 使用 useParams Hook 可以获取 URL 中的动态参数。 使用路由守卫可以保护需要认证的页面，未登录用户会被重定向到登录页..."
+---
+
 # 路由配置
 
 ## 一、什么是路由？

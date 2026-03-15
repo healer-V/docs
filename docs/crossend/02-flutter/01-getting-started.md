@@ -1,3 +1,11 @@
+---
+title: "Flutter 入门指南"
+category: "跨端 · Flutter"
+tags:
+  - Flutter
+excerpt: "Flutter 是 Google 开发的一款开源 UI 工具包，用于使用单一代码库构建美观、原生编译的跨平台应用程序。本章节将帮助你快速上手 Flutter 开发，从环境搭建到创建第一个 Flutter 应用。 在开始安装 Flutter ..."
+---
+
 # Flutter 入门指南
 
 Flutter 是 Google 开发的一款开源 UI 工具包，用于使用单一代码库构建美观、原生编译的跨平台应用程序。本章节将帮助你快速上手 Flutter 开发，从环境搭建到创建第一个 Flutter 应用。

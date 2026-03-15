@@ -1,3 +1,10 @@
+---
+title: "Vue组件封装"
+category: "实践技巧"
+tags:
+  - Vue
+---
+
 # Vue组件封装
 
 ## 命令式弹窗组件

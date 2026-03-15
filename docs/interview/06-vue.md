@@ -1,3 +1,11 @@
+---
+title: "Vue面试题"
+category: "面试题"
+tags:
+  - Vue
+excerpt: "核心区别： Vue：将模板与逻辑解耦。 React：主张JS与UI融合 （JSX语法）。 灵活性： Vue：受限，需要指令支持。 React：更加灵活，可任意嵌入JS逻辑。 响应式原理： Vue：自动依赖收集，实现响应式。 React：手动..."
+---
+
 # Vue面试题
 ## 原理篇
 ### 1. Vue与React的区别

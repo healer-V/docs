@@ -328,4 +328,9 @@ div[class*="language-"].vp-adaptive-theme.line-numbers-mode {
         margin-left: 0;
         margin-right: 0;
     }
+
+    .vp-code-group .tabs {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }

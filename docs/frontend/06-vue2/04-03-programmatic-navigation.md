@@ -1,3 +1,11 @@
+---
+title: "4.3 编程式导航与命名路由"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "使用 this.$router 进行编程式导航： 使用 this.$router.push() 进行导航 命名路由提供更灵活的导航方式 支持路径参数和查询参数 使用 replace 替换当前历史记录"
+---
+
 # 4.3 编程式导航与命名路由
 
 ## 4.3.1 编程式导航

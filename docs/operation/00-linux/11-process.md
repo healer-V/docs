@@ -1,3 +1,11 @@
+---
+title: "5.1 进程管理"
+category: "运维 · Linux"
+tags:
+  - Linux
+excerpt: "进程（Process）：程序的一次运行实例。每个进程都有唯一的 PID（Process ID）。 top 内的快捷键： | 键 | 作用 | |----|------| | q | 退出 | | k | 杀死进程（输入 PID） | | M..."
+---
+
 # 5.1 进程管理
 
 ## 进程基础概念

@@ -1,3 +1,11 @@
+---
+title: "4.1 路由基础与配置"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "Vue Router 是 Vue.js 官方的路由管理器，用于构建单页应用。 Vue Router 用于构建单页应用 配置路由表，使用 router-view 和 router-link 支持 hash 和 history 模式 提供丰富的..."
+---
+
 # 4.1 路由基础与配置
 
 Vue Router 是 Vue.js 官方的路由管理器，用于构建单页应用。

@@ -1,3 +1,11 @@
+---
+title: "状态管理"
+category: "跨端 · React Native"
+tags:
+  - React
+excerpt: "在React Native应用开发中，状态管理是一个核心概念，它决定了如何存储、更新和共享应用数据。随着应用规模的增长，有效的状态管理变得越来越重要。本章将介绍React Native中的状态管理方案，从基础的React Hooks到流行的..."
+---
+
 # 状态管理
 
 在React Native应用开发中，状态管理是一个核心概念，它决定了如何存储、更新和共享应用数据。随着应用规模的增长，有效的状态管理变得越来越重要。本章将介绍React Native中的状态管理方案，从基础的React Hooks到流行的状态管理库。

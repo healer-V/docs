@@ -1,3 +1,11 @@
+---
+title: "vitepress建站教程"
+category: "博客相关"
+tags:
+  - Vite
+excerpt: "欢迎来到vitepress建站教程！ vitepress是一个基于vitepress和vuepress的静态网站生成器，它使用Vue组件来开发文档，并使用markdown文件来编写文档内容。它可以让你专注于内容创作，而不用担心网站的构建和部..."
+---
+
 # vitepress建站教程
 
 ::: tip 提示 :bulb:

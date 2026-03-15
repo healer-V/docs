@@ -1,3 +1,9 @@
+---
+title: "12-Optimize"
+category: "面试题"
+excerpt: "加载性能优化 资源压缩与最小化 Terser 压缩 JS 文件 CSSNano 压缩 CSS 文件 Gzip 压缩 HTML、JS、CSS 文件 图片优化 压缩图片 使用 WebP 格式 图片懒加载 图片延迟加载 资源加载策略 关键资源预加..."
+---
+
 ## 项目面试题
 
 ## 1. 前端性能优化的方法

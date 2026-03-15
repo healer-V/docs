@@ -1,3 +1,11 @@
+---
+title: "HarmonyOS 快速入门"
+category: "跨端 · HarmonyOS"
+tags:
+  - HarmonyOS
+excerpt: "本章节将引导您快速上手 HarmonyOS 应用开发，包括环境搭建、创建第一个应用以及基本开发流程。 | 操作系统 | 版本要求 | |---------|----------| | Windows | Windows 10 64位（版本 ..."
+---
+
 # HarmonyOS 快速入门
 
 本章节将引导您快速上手 HarmonyOS 应用开发，包括环境搭建、创建第一个应用以及基本开发流程。

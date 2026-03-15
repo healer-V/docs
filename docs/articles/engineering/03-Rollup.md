@@ -1,3 +1,11 @@
+---
+title: "Rollup"
+category: "工程化"
+tags:
+  - Rollup
+excerpt: "Rollup是一个JavaScript打包工具，它可以将小模块聚合成一个文件，减少HTTP请求，提高加载速度。 合并：Rollup 可以将多个 JavaScript 脚本合并成一个脚本，供浏览器使用。 减少 HTTP 请求：Rollup 可..."
+---
+
 # Rollup
 
 ## 一、什么是Rollup

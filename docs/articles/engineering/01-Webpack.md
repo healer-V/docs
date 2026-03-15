@@ -1,3 +1,11 @@
+---
+title: "Webpack"
+category: "工程化"
+tags:
+  - Webpack
+excerpt: "介绍 Webpack是一个模块打包器。它可以将许多模块按照依赖关系和规则打包成一个文件。 Webpack可以将各种类型的资源，例如JS、CSS、图片等进行处理，并将它们转换和打包为合适的格式供浏览器使用。 自动化构建：Webpack可以自动..."
+---
+
 # Webpack
 ## 一、Webpack基础
 ### 1.1、 Webpack介绍

@@ -1,3 +1,12 @@
+---
+title: "一、Javascript基础"
+category: "基础知识"
+tags:
+  - JavaScript
+  - Java
+excerpt: "this指向 面向对象：封装、继承、多态 原型、原型链 作用域、作用域链 闭包 垃圾回收 高阶函数 运算符规则、表达式、类型转换 属性描述符 代理和反射 Promise实现 剩余参数、默认参数、展开运算符 解构 ESModule 箭头函数 ..."
+---
+
 # 一、Javascript基础
 
 ::: details 目录

@@ -1,3 +1,9 @@
+---
+title: "变量扩展"
+category: "前端 · ECMAScript"
+excerpt: "ECMAScript 2015 (ES6) 引入了变量声明和操作的新特性，极大地增强了JavaScript的变量处理能力。 块级作用域：通过let和const引入了真正的块级作用域 声明方式：新增let和const关键字，与var形成三种声..."
+---
+
 # 变量扩展
 
 ## 一、概述

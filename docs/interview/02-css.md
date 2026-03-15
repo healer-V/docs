@@ -1,3 +1,11 @@
+---
+title: "CSS面试题"
+category: "面试题"
+tags:
+  - CSS
+excerpt: "盒模型与布局： 布局：新增flexbox、grid布局、多列布局。 怪异盒模型：盒模型控制：box-sizing：border-box。 视觉效果： 圆角与阴影： 渐变背景：线性渐变、径向渐变、多重背景。 透明度与混合模式：opacity元..."
+---
+
 # CSS面试题
 ## 1、CSS3新特性
 >[!note]
@@ -15,7 +23,7 @@
 >     - 自定义字体：`@font-face`规则定义字体。
 >     - 文本效果：文本溢出、长单词换行、添加连字符。
 >     - 文本装饰：`text-shadow`文本阴影。
-> 4**响应式设计**：
+> 4. **响应式设计**：
 >     - 媒体查询：`@media`规则，使网页设计可以相应不同的设备。
 >     - 视口单位：vw、vh（视口宽度和高度的百分比）、vmin、vmax（视口最小或最大尺寸的百分比）。
 > 5. **其他特性**：
@@ -60,12 +68,12 @@
 ### 4-2、BFC 触发条件
 >[!caution] 触发条件
 > 1. **根元素**，即HTML元素
-> 2. **浮动元素**：`float`值为left、right
-> 3. **overflow** : 值不为 visible，为 auto、scroll、hidden  **(非visible)**
-> 4. **行内块元素**：display值为inline-block、inline-table、inline-flex、inline-grid
+> 2. **浮动元素**：`float`值为`left`、`right`
+> 3. **overflow** : 值不为 `visible`，为 `auto`、`scroll`、`hidden`  **(非visible)**
+> 4. **行内块元素**：display值为`inline-block`、`inline-table`、`inline-flex`、`inline-grid`
 > 5. **position** : 值为absolute或fixed `（非relative）`
-> 6. **多列容器**（设置column-count或column-width属性）
-> 7. 表格元素
+> 6. **多列容器**（设置`column-count`或`column-width`属性）
+> 7. **表格元素**
 > 8. 设置`display:flow-root`的元素
 
 ### 4-3、BFC 应用场景

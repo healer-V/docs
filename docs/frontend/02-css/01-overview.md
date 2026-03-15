@@ -1,3 +1,11 @@
+---
+title: "CSS概述"
+category: "前端 · CSS"
+tags:
+  - CSS
+excerpt: "CSS（Cascading Style Sheets，层叠样式表）是一种用于描述HTML或XML（包括如SVG、MathML等XML分支语言）文档呈现的样式的语言。CSS描述了在屏幕、纸质、音频等媒体上元素应该如何被渲染的问题。 CSS的主..."
+---
+
 # CSS概述
 
 ## 一、什么是CSS

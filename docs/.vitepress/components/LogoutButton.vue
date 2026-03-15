@@ -66,7 +66,7 @@ const handleLogout = () => {
     font-size: 0.7rem;
     margin-left: 4px;
     border-radius: 6px;
-    background: #f6f6f7;
+    background: var(--vp-c-bg-soft);
     border: 1px solid var(--glow-border, var(--vp-c-divider)) !important;
     display: inline-flex;
     align-items: center;

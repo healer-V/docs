@@ -1,3 +1,11 @@
+---
+title: "样式与布局"
+category: "跨端 · React Native"
+tags:
+  - React
+excerpt: "在React Native中，样式和布局是构建美观用户界面的核心。本章节将介绍React Native的样式系统和布局方法，帮助你创建精美的移动应用界面。 React Native使用JavaScript对象来定义样式，类似于CSS，但有一..."
+---
+
 # 样式与布局
 
 在React Native中，样式和布局是构建美观用户界面的核心。本章节将介绍React Native的样式系统和布局方法，帮助你创建精美的移动应用界面。

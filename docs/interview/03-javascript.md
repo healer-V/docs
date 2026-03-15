@@ -1,3 +1,12 @@
+---
+title: "Javascript面试题"
+category: "面试题"
+tags:
+  - JavaScript
+  - Java
+excerpt: "原型 用来 实现面向对象，标注对象的类型，原型的存在避免了类型丢失。 每一个函数都由一个属性：prototype,它的值是一个对象。 prototype属性中有一个属性：constructor，它的值是原本的这个函数。 所有对象都有原型，原..."
+---
+
 # Javascript面试题
 
 ## 深度篇

@@ -1,3 +1,11 @@
+---
+title: "02-CSS 基础"
+category: "基础知识"
+tags:
+  - CSS
+excerpt: "CSS（Cascading Style Sheets）层叠样式表： 用于控制网页的表现和布局 实现内容与样式的分离 支持响应式设计和动画效果 CSS发展历史 1996年：CSS1发布（字体、颜色等基础样式） 1998年：CSS2发布（定位、..."
+---
+
 # 02-CSS 基础
 
 ## 一、CSS基础概念

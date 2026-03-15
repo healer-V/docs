@@ -1,3 +1,11 @@
+---
+title: "原生模块"
+category: "跨端 · React Native"
+tags:
+  - React
+excerpt: "在React Native开发中，虽然JavaScript可以处理大部分应用逻辑，但有时我们需要访问平台特定的功能，如摄像头、GPS、蓝牙等。这时，原生模块(Native Modules)就成为了连接React Native和原生平台(iO..."
+---
+
 # 原生模块
 
 在React Native开发中，虽然JavaScript可以处理大部分应用逻辑，但有时我们需要访问平台特定的功能，如摄像头、GPS、蓝牙等。这时，原生模块(Native Modules)就成为了连接React Native和原生平台(iOS和Android)的桥梁。本章将详细介绍如何创建和使用原生模块，以便在React Native应用中访问原生功能。

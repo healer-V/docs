@@ -1,3 +1,11 @@
+---
+title: "入门指南"
+category: "跨端 · React Native"
+tags:
+  - React
+excerpt: "本指南将帮助你快速上手 React Native 开发，从环境搭建到创建第一个应用，循序渐进地介绍 React Native 的核心概念和开发流程。 React Native 提供了两种主要的开发方式： Expo：官方推荐的快速开始方式，无..."
+---
+
 # 入门指南
 
 本指南将帮助你快速上手 React Native 开发，从环境搭建到创建第一个应用，循序渐进地介绍 React Native 的核心概念和开发流程。

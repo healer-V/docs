@@ -12,6 +12,26 @@
       </div>
     </header>
 
+    <!-- Search -->
+    <div class="search-bar">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input
+          v-model="searchKeyword"
+          type="text"
+          class="search-input"
+          placeholder="搜索文章标题、标签、分类..."
+          @input="currentPage = 1"
+        />
+        <button v-if="searchKeyword" class="search-clear" @click="searchKeyword = ''; currentPage = 1">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <span v-if="searchKeyword" class="search-result-count">
+        找到 {{ filteredArticles.length }} 篇文章
+      </span>
+    </div>
+
     <!-- Body -->
     <div class="blog-body">
       <!-- Articles -->
@@ -31,7 +51,7 @@
                 <time class="card-date">{{ formatDate(article.date) }}</time>
                 <span class="card-reading-time" v-if="article.excerpt">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                  {{ estimateReadingTime(article.excerpt) }} min
+                  {{ estimateReadingTime(article) }} min
                 </span>
               </div>
               <h2 class="card-title">{{ article.title }}</h2>
@@ -48,6 +68,29 @@
             </div>
           </article>
         </TransitionGroup>
+
+        <!-- Pagination -->
+        <nav v-if="totalPages > 1" class="pager">
+          <button :disabled="currentPage === 1" class="pager-btn" @click="goToPage(currentPage - 1)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button
+            v-for="p in visiblePages"
+            :key="p"
+            :class="['pager-num', { active: p === currentPage, dots: p === '...' }]"
+            :disabled="p === '...'"
+            @click="p !== '...' && goToPage(p)"
+          >{{ p }}</button>
+          <button :disabled="currentPage === totalPages" class="pager-btn" @click="goToPage(currentPage + 1)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </nav>
+
+        <!-- Empty -->
+        <div v-if="filteredArticles.length === 0" class="empty">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/></svg>
+          <p>暂无文章</p>
+        </div>
       </main>
 
       <!-- Sidebar -->
@@ -107,50 +150,27 @@
       </aside>
     </div>
 
-    <!-- Pagination -->
-    <nav v-if="totalPages > 1" class="pager">
-      <button :disabled="currentPage === 1" class="pager-btn" @click="goToPage(currentPage - 1)">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </button>
-      <button
-        v-for="p in visiblePages"
-        :key="p"
-        :class="['pager-num', { active: p === currentPage, dots: p === '...' }]"
-        :disabled="p === '...'"
-        @click="p !== '...' && goToPage(p)"
-      >{{ p }}</button>
-      <button :disabled="currentPage === totalPages" class="pager-btn" @click="goToPage(currentPage + 1)">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-      </button>
-    </nav>
-
-    <!-- Empty -->
-    <div v-if="filteredArticles.length === 0" class="empty">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/></svg>
-      <p>暂无文章</p>
-    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vitepress'
-import { generateArticleData, getAllArticles } from '../utils/articleCollector.js'
-import { blogDataManager } from '../utils/blogData.js'
+import { data as allArticles } from '../utils/articles.data.mjs'
 import BusuanziStats from './BusuanziStats.vue'
 
 const router = useRouter()
 
-const articles = ref([])
+const articles = ref(allArticles)
 const searchKeyword = ref('')
 const selectedCategory = ref('all')
 const currentPage = ref(1)
 const articlesPerPage = 12
 
-const estimateReadingTime = (text) => {
-  if (!text) return 1
-  const chars = text.length
-  return Math.max(1, Math.ceil(chars / 400))
+const estimateReadingTime = (article) => {
+  if (article.readingTime) return article.readingTime
+  if (!article.excerpt) return 1
+  return Math.max(1, Math.ceil(article.excerpt.length / 400))
 }
 
 const categories = computed(() => {
@@ -263,7 +283,9 @@ const goToPage = (page) => {
 }
 
 const formatDate = (dateString) => {
+  if (!dateString) return ''
   const date = new Date(dateString)
+  if (isNaN(date.getTime())) return ''
   return date.toLocaleDateString('zh-CN', {
     year: 'numeric',
     month: 'long',
@@ -276,15 +298,6 @@ const navigateToArticle = (path) => {
   router.go(cleanPath)
 }
 
-onMounted(() => {
-  const existingArticles = getAllArticles()
-  if (existingArticles.length === 0) {
-    generateArticleData()
-  } else {
-    blogDataManager.removeDuplicates()
-  }
-  articles.value = getAllArticles()
-})
 </script>
 
 <style scoped>
@@ -800,12 +813,97 @@ onMounted(() => {
 
 /* ── Empty ── */
 .empty {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 5rem 2rem;
   color: var(--vp-c-text-3);
 }
 .empty svg { margin-bottom: 0.75rem; opacity: 0.3; }
 .empty p { margin: 0; font-size: 0.88rem; }
+
+/* ── Search bar ── */
+.search-bar {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-input-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--vp-c-text-3);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.search-input-wrap:focus-within .search-icon {
+  color: var(--accent, #10b981);
+}
+
+.search-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 40px 0 40px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 0.88rem;
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.search-input::placeholder {
+  color: var(--vp-c-text-3);
+  font-size: 0.82rem;
+}
+
+.search-input:focus {
+  border-color: var(--accent, #10b981);
+  box-shadow: 0 0 0 3px var(--accent-soft, rgba(16, 185, 129, 0.1));
+}
+
+.search-clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-3);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.search-clear:hover {
+  background: var(--vp-c-bg-elv);
+  color: var(--vp-c-text-1);
+}
+
+.search-result-count {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  letter-spacing: 0.02em;
+}
 
 /* ── Responsive ── */
 @media (max-width: 960px) {
@@ -828,6 +926,8 @@ onMounted(() => {
   .header-orb--2 { width: 140px; height: 140px; }
   .sidebar { flex-direction: column; }
   .sb-card { min-width: 0; }
+  .search-input-wrap { max-width: 100%; }
+  .search-input { height: 38px; font-size: 0.82rem; border-radius: 10px; }
   .card-body { padding: 1rem; }
   .card-more { display: none; }
   .card-reading-time { display: none; }

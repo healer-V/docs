@@ -1,3 +1,11 @@
+---
+title: "Git 版本控制工具"
+category: "开发工具"
+tags:
+  - Git
+excerpt: "Git 是一个分布式版本控制系统，用于跟踪文件的变化，协调多人协作开发，并管理项目的版本历史。它是目前最流行的版本控制工具。 工作区（Working Directory）：你正在编辑的文件 暂存区（Staging Area）：准备提交的文件..."
+---
+
 # Git 版本控制工具
 
 ## 一、Git 概述

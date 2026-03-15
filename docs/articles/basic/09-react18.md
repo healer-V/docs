@@ -1,3 +1,11 @@
+---
+title: "React 18 学习笔记"
+category: "基础知识"
+tags:
+  - React
+excerpt: "React 18 是 React 的最新主要版本，于 2022 年 3 月发布。这个版本带来了许多新特性和改进，重点是提升用户体验和开发者体验。React 18 引入了并发渲染（Concurrent Rendering）机制，这是自 Rea..."
+---
+
 # React 18 学习笔记
 
 ## 一、React 18 简介

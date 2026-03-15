@@ -1,3 +1,11 @@
+---
+title: "5.3 Vuex辅助函数"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "Vuex 提供了辅助函数，简化在组件中使用 store 的代码。 mapState、mapGetters、mapMutations、mapActions 简化代码 支持数组和对象两种形式 使用 createNamespacedHelpers..."
+---
+
 # 5.3 Vuex辅助函数
 
 Vuex 提供了辅助函数，简化在组件中使用 store 的代码。

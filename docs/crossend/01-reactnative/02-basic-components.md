@@ -1,3 +1,11 @@
+---
+title: "基础组件"
+category: "跨端 · React Native"
+tags:
+  - React
+excerpt: "React Native提供了一系列内置的基础组件，这些组件是构建React Native应用用户界面的基石。本章节将介绍最常用的基础组件及其用法。 View是React Native中最基础的容器组件，类似于HTML中的div元素。它用于..."
+---
+
 # 基础组件
 
 React Native提供了一系列内置的基础组件，这些组件是构建React Native应用用户界面的基石。本章节将介绍最常用的基础组件及其用法。

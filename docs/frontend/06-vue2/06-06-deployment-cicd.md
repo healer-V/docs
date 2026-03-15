@@ -1,3 +1,12 @@
+---
+title: "6.6 部署与CI/CD"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+  - CI/CD
+excerpt: "构建后的文件在 dist/ 目录，包含： index.html：入口 HTML 文件 js/：JavaScript 文件 css/：样式文件 img/：图片资源 将 dist/ 目录的内容部署到静态服务器，如 Nginx、Apache 等。..."
+---
+
 # 6.6 部署与CI/CD
 
 ## 6.6.1 构建生产版本

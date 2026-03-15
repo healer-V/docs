@@ -1,3 +1,11 @@
+---
+title: "ArkUI 开发框架"
+category: "跨端 · HarmonyOS"
+tags:
+  - HarmonyOS
+excerpt: "ArkUI 是 HarmonyOS 推荐的应用开发框架，提供了声明式 UI 开发能力，让开发者能够更高效地构建跨设备的应用界面。本章节将详细介绍 ArkUI 开发框架的核心概念、组件系统、布局能力和开发范式。 ArkUI 是 Harmony..."
+---
+
 # ArkUI 开发框架
 
 ArkUI 是 HarmonyOS 推荐的应用开发框架，提供了声明式 UI 开发能力，让开发者能够更高效地构建跨设备的应用界面。本章节将详细介绍 ArkUI 开发框架的核心概念、组件系统、布局能力和开发范式。

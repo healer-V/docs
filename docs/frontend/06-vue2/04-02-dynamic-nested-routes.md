@@ -1,3 +1,11 @@
+---
+title: "4.2 动态路由与嵌套路由"
+category: "前端 · Vue 2"
+tags:
+  - Vue
+excerpt: "动态路由使用 :param 定义参数 通过 $route.params 访问参数 嵌套路由使用 children 配置 在父组件中使用  显示子路由"
+---
+
 # 4.2 动态路由与嵌套路由
 
 ## 4.2.1 动态路由

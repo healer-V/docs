@@ -1,3 +1,11 @@
+---
+title: "React18 + Umi3 + Ant Design PC端后台管理系统"
+category: "项目实践"
+tags:
+  - React
+excerpt: "本教程将带你从零开始搭建一个完整的 React18 + Umi3 + Ant Design PC端后台管理系统，涵盖项目初始化、路由配置、状态管理、权限控制等核心功能。 React 18：最新版本的 React，支持并发渲染 Umi 3：企..."
+---
+
 # React18 + Umi3 + Ant Design PC端后台管理系统
 
 ## 一、项目概述
