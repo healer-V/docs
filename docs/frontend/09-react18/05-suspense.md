@@ -1,369 +1,366 @@
 ---
-title: "Suspense 新特性"
+title: "Suspense 增强"
 category: "前端 · React 18"
 tags:
   - React
-excerpt: "Suspense 是 React 18 中改进的特性，它允许组件在等待某些内容加载时\"暂停\"渲染，并显示一个 fallback UI。 可以在组件中直接使用数据获取 自动处理加载状态 更好的用户体验 支持服务器端 Suspense 渐进式内..."
+excerpt: "React 18 对 Suspense 进行了重要增强：在并发模式下支持数据获取、改进了服务端流式渲染，并新增了 SuspenseList 组件用于协调多个异步组件的显示顺序，让加载体验更加流畅可控。"
+date: 2026-03-17
 ---
 
-# Suspense 新特性
+# Suspense 增强
 
-## 一、Suspense 概述
+## 一、Suspense 的演进
 
-::: tip Suspense 定义
-Suspense 是 React 18 中改进的特性，它允许组件在等待某些内容加载时"暂停"渲染，并显示一个 fallback UI。
+`<Suspense>` 在 React 16.6 中首次引入，当时仅支持**代码分割**（`React.lazy`）场景。在 React 18 中，Suspense 得到了全面增强：
+
+| 版本 | Suspense 能力 |
+|------|--------------|
+| React 16.6 | 仅支持 `React.lazy` 懒加载 |
+| React 18 | 支持数据获取、SSR 流式渲染、并发渲染协作 |
+
+::: tip Suspense 的本质
+`<Suspense>` 是一个**加载边界**——当其子树中的某个组件"挂起"（抛出 Promise）时，Suspense 捕获这个信号，显示 `fallback`，等 Promise resolve 后再渲染实际内容。
 :::
 
-## 二、React 18 中 Suspense 的改进
+## 二、基础用法：代码分割
 
-### 1、支持数据获取
-- 可以在组件中直接使用数据获取
-- 自动处理加载状态
-- 更好的用户体验
+代码分割是 Suspense 最常见的用途，配合 `React.lazy` 实现按需加载组件：
 
-### 2、流式服务器渲染
-- 支持服务器端 Suspense
-- 渐进式内容加载
-- 更快的首屏渲染
+::: details 路由级别的代码分割
 
-### 3、并发渲染集成
-- 与并发渲染完美配合
-- 可中断的数据获取
-- 优先级调度
-
-## 三、基本使用
-
-### 1、代码分割
-
-```jsx
-import { Suspense, lazy } from 'react';
-
-const LazyComponent = lazy(() => import('./LazyComponent'));
-
-function App() {
-  return (
-    <Suspense fallback={<div>加载中...</div>}>
-      <LazyComponent />
-    </Suspense>
-  );
-}
-```
-
-### 2、数据获取（实验性）
-
-```jsx
-import { Suspense, use } from 'react';
-
-// 数据获取函数
-function fetchUser(id) {
-  return fetch(`/api/users/${id}`).then(r => r.json());
-}
-
-function UserProfile({ userId }) {
-  // use Hook 会触发 Suspense
-  const user = use(fetchUser(userId));
-  
-  return (
-    <div>
-      <h1>{user.name}</h1>
-      <p>{user.email}</p>
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <Suspense fallback={<div>加载用户信息...</div>}>
-      <UserProfile userId={1} />
-    </Suspense>
-  );
-}
-```
-
-## 四、use Hook（实验性）
-
-### 1、基本使用
-
-```jsx
-import { use } from 'react';
-
-function DataComponent({ dataPromise }) {
-  // use Hook 会等待 Promise 解决
-  const data = use(dataPromise);
-  return <div>{data}</div>;
-}
-
-function App() {
-  const dataPromise = fetch('/api/data').then(r => r.json());
-  
-  return (
-    <Suspense fallback={<div>加载中...</div>}>
-      <DataComponent dataPromise={dataPromise} />
-    </Suspense>
-  );
-}
-```
-
-### 2、处理 Context
-
-```jsx
-import { createContext, use } from 'react';
-
-const ThemeContext = createContext();
-
-function ThemedButton() {
-  // use Hook 可以读取 Context
-  const theme = use(ThemeContext);
-  return <button className={theme}>Button</button>;
-}
-```
-
-## 五、嵌套 Suspense
-
-### 1、多级加载
-
-```jsx
-function App() {
-  return (
-    <Suspense fallback={<div>加载应用...</div>}>
-      <Header />
-      <Suspense fallback={<div>加载内容...</div>}>
-        <MainContent />
-      </Suspense>
-      <Suspense fallback={<div>加载侧边栏...</div>}>
-        <Sidebar />
-      </Suspense>
-    </Suspense>
-  );
-}
-```
-
-### 2、渐进式加载
-
-```jsx
-function Page() {
-  return (
-    <div>
-      <Suspense fallback={<HeaderSkeleton />}>
-        <Header />
-      </Suspense>
-      <Suspense fallback={<ContentSkeleton />}>
-        <MainContent />
-      </Suspense>
-      <Suspense fallback={<FooterSkeleton />}>
-        <Footer />
-      </Suspense>
-    </div>
-  );
-}
-```
-
-## 六、实际应用示例
-
-### 1、路由懒加载
-
-```jsx
+```jsx{3-6,14-20}
+// src/App.jsx
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
-const Contact = lazy(() => import('./pages/Contact'));
+// 懒加载页面组件，不会在初始 bundle 中包含这些代码
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const OrdersPage = lazy(() => import('./pages/OrdersPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 
 function App() {
   return (
-    <Suspense fallback={<div>加载页面...</div>}>
+    <Suspense fallback={<PageLoadingSpinner />}>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </Suspense>
   );
 }
-```
 
-### 2、数据获取
-
-```jsx
-import { Suspense, use } from 'react';
-
-// 缓存数据
-const cache = new Map();
-
-function fetchData(key) {
-  if (!cache.has(key)) {
-    cache.set(key, fetch(`/api/${key}`).then(r => r.json()));
-  }
-  return cache.get(key);
-}
-
-function UserProfile({ userId }) {
-  const user = use(fetchData(`users/${userId}`));
+// 加载指示器组件
+function PageLoadingSpinner() {
   return (
-    <div>
-      <h1>{user.name}</h1>
-      <p>{user.email}</p>
+    <div className="page-loading">
+      <div className="spinner" />
+      <p>页面加载中...</p>
     </div>
   );
+}
+```
+
+:::
+
+## 三、并发模式下的 Suspense
+
+在 React 18 的并发模式下，Suspense 有一个重要的行为变化：**Transition 期间不会立即切换到 fallback**。
+
+这解决了一个经典的 UI 闪烁问题——当用户快速切换内容时，旧内容会保持可见，直到新内容准备就绪，避免了内容频繁消失-出现的闪烁感。
+
+::: details 并发模式下 Suspense 的行为差异
+
+```jsx{8,14}
+// 场景：用户点击 Tab，切换到一个需要异步加载数据的 Tab
+
+// React 17 行为：
+// 1. 点击 Tab → 立即显示 Suspense fallback（loading 闪烁）
+// 2. 数据加载完成 → 显示新内容
+
+// React 18（并发模式）+ startTransition 行为：
+// 1. 点击 Tab → 旧 Tab 内容保持显示（不出现 loading）
+// 2. 数据加载完成 → 直接切换到新内容（无闪烁）
+
+function Tabs({ tabId }) {
+  const [isPending, startTransition] = useTransition();
+
+  const switchTab = (id) => {
+    // 标记为 transition，Suspense 不会立即显示 fallback
+    startTransition(() => setTabId(id));
+  };
+
+  return (
+    <div>
+      <TabBar onChange={switchTab} isPending={isPending} />
+      <Suspense fallback={<TabSkeleton />}>
+        {/* transition 期间，这里仍显示旧 Tab，不切换到 TabSkeleton */}
+        <TabContent tabId={tabId} />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+:::
+
+::: warning 关键行为说明
+只有在 `startTransition` 包裹的更新中，Suspense 才会保持旧内容。**普通的 setState 更新**仍会立即切换到 fallback。
+:::
+
+## 四、数据获取与 Suspense
+
+React 18 支持将数据获取与 Suspense 结合，但目前官方推荐通过框架（如 Next.js、Remix）或数据获取库（如 React Query、SWR）来实现，而非直接在组件中手写。
+
+### 1. 使用 React Query + Suspense
+
+React Query 5 原生支持 Suspense 模式：
+
+::: details React Query + Suspense 数据获取
+
+```jsx{2,7,15-17}
+// src/components/UserDashboard.jsx
+import { Suspense } from 'react';
+import { useSuspenseQuery } from '@tanstack/react-query';
+
+// 组件内直接使用数据，不需要处理 loading 状态
+function UserStats({ userId }) {
+  // useSuspenseQuery 会在数据未就绪时"挂起"组件
+  const { data: stats } = useSuspenseQuery({
+    queryKey: ['user-stats', userId],
+    queryFn: () => fetch(`/api/users/${userId}/stats`).then(r => r.json()),
+  });
+
+  return (
+    <div className="stats-grid">
+      <StatCard label="订单数" value={stats.orderCount} />
+      <StatCard label="收藏数" value={stats.favoriteCount} />
+      <StatCard label="积分" value={stats.points} />
+    </div>
+  );
+}
+
+// 父组件用 Suspense 包裹，处理加载状态
+function UserDashboard({ userId }) {
+  return (
+    <div>
+      <h1>用户中心</h1>
+      <Suspense fallback={<StatsSkeleton />}>
+        <UserStats userId={userId} />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+:::
+
+### 2. 手动实现 Suspense 兼容的数据获取（了解原理）
+
+::: details wrapPromise 工具函数原理
+
+```jsx{3-21}
+// 这是一种教学性的写法，了解 Suspense 的工作原理
+// 生产环境请使用 React Query / SWR 等成熟方案
+
+function wrapPromise(promise) {
+  let status = 'pending';
+  let result;
+
+  const suspender = promise.then(
+    (data) => { status = 'success'; result = data; },
+    (error) => { status = 'error'; result = error; }
+  );
+
+  return {
+    read() {
+      if (status === 'pending') throw suspender;  // 抛出 Promise，触发 Suspense
+      if (status === 'error') throw result;        // 抛出 Error，触发 ErrorBoundary
+      return result;                               // 返回数据
+    },
+  };
+}
+
+// 使用示例
+const userResource = wrapPromise(fetch('/api/user/1').then(r => r.json()));
+
+function UserCard() {
+  const user = userResource.read(); // 数据未就绪时会抛出 Promise
+  return <div>{user.name}</div>;
 }
 
 function App() {
   return (
     <Suspense fallback={<div>加载用户...</div>}>
-      <UserProfile userId={1} />
+      <UserCard />
     </Suspense>
   );
 }
 ```
 
-### 3、图片加载
+:::
 
-```jsx
-import { Suspense, use } from 'react';
+## 五、嵌套 Suspense 与渐进加载
 
-function Image({ src }) {
-  const image = use(
-    new Promise((resolve) => {
-      const img = new window.Image();
-      img.onload = () => resolve(img);
-      img.src = src;
-    })
-  );
-  
-  return <img src={src} alt="" />;
-}
+合理嵌套 Suspense 可以实现页面的渐进式加载体验——关键内容先显示，次要内容后加载：
 
-function App() {
+::: details 渐进式加载页面布局
+
+```jsx{8,13,18}
+// src/pages/ProductDetailPage.jsx
+function ProductDetailPage({ productId }) {
   return (
-    <Suspense fallback={<div>加载图片...</div>}>
-      <Image src="/large-image.jpg" />
-    </Suspense>
+    <div className="product-detail">
+      {/* 商品基本信息：最优先加载，单独一个 Suspense */}
+      <Suspense fallback={<ProductInfoSkeleton />}>
+        <ProductInfo productId={productId} />
+      </Suspense>
+
+      {/* 规格和库存：次优先 */}
+      <Suspense fallback={<SpecsSkeleton />}>
+        <ProductSpecs productId={productId} />
+      </Suspense>
+
+      {/* 评价列表：最后加载，不影响主内容显示 */}
+      <Suspense fallback={<ReviewsSkeleton count={3} />}>
+        <ProductReviews productId={productId} />
+      </Suspense>
+    </div>
   );
 }
 ```
 
-## 七、错误处理
+:::
 
-### 1、Error Boundary
+::: tip 嵌套 Suspense 的原则
+- 将**关键内容**和**次要内容**分开包裹
+- fallback 使用**骨架屏**而非 loading 文字，减少布局抖动
+- 不要过度嵌套，通常 2-3 层足够
+:::
 
-```jsx
+## 六、SuspenseList
+
+`SuspenseList` 是 React 18 提供的实验性组件，用于**协调多个并列 Suspense 组件的显示顺序**，避免内容在不同时间点随机"弹出"。
+
+::: details SuspenseList 使用示例
+
+```jsx{2,7-9}
+// 注意：SuspenseList 目前仍是实验性 API
+import { Suspense, SuspenseList } from 'react';
+
+function NewsFeed() {
+  return (
+    // revealOrder="forwards"：按顺序从上到下依次显示，不会乱序弹出
+    <SuspenseList revealOrder="forwards" tail="collapsed">
+      <Suspense fallback={<ArticleSkeleton />}>
+        <FeaturedArticle />
+      </Suspense>
+      <Suspense fallback={<ArticleSkeleton />}>
+        <LatestNews />
+      </Suspense>
+      <Suspense fallback={<ArticleSkeleton />}>
+        <TrendingTopics />
+      </Suspense>
+    </SuspenseList>
+  );
+}
+```
+
+**`revealOrder` 取值**：
+- `"forwards"` —— 从上到下按顺序显示，即使后面的先准备好，也等前面的先显示
+- `"backwards"` —— 从下到上按顺序显示
+- `"together"` —— 所有内容同时显示（等全部准备好才显示）
+
+**`tail` 取值**：
+- `"collapsed"` —— 只显示紧跟在上一个已显示内容后面的那一个 fallback
+- `"hidden"` —— 隐藏所有尚未开始加载的 fallback
+
+:::
+
+::: warning SuspenseList 状态
+`SuspenseList` 目前仍是实验性 API，在生产环境中谨慎使用，API 可能在未来版本中调整。
+:::
+
+## 七、Suspense 与错误处理
+
+Suspense 只处理"加载中"状态，加载**失败**的情况需要配合 `ErrorBoundary`：
+
+::: details Suspense + ErrorBoundary 完整组合
+
+```jsx{4,14-16}
+// src/components/AsyncSection.jsx
+import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
-    <div role="alert">
-      <h2>出错了</h2>
-      <pre>{error.message}</pre>
+    <div className="error-state">
+      <p>加载失败：{error.message}</p>
       <button onClick={resetErrorBoundary}>重试</button>
     </div>
   );
 }
 
-function App() {
+function AsyncSection({ children, skeleton }) {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <Suspense fallback={<div>加载中...</div>}>
-        <MyComponent />
+      <Suspense fallback={skeleton}>
+        {children}
       </Suspense>
     </ErrorBoundary>
   );
 }
+
+// 使用
+function ProductPage({ id }) {
+  return (
+    <div>
+      <AsyncSection skeleton={<ProductInfoSkeleton />}>
+        <ProductInfo id={id} />
+      </AsyncSection>
+      <AsyncSection skeleton={<ReviewsSkeleton />}>
+        <ProductReviews id={id} />
+      </AsyncSection>
+    </div>
+  );
+}
 ```
 
-## 八、服务器端 Suspense
+:::
 
-### 1、流式渲染
+## 八、服务端流式渲染
+
+React 18 的 `renderToPipeableStream` 支持 SSR 场景下的流式输出，Suspense 边界内的内容可以在服务端数据准备好后再流式发送给客户端：
+
+::: details 服务端流式渲染示例
 
 ```jsx
-// 服务器端
+// server.js
 import { renderToPipeableStream } from 'react-dom/server';
 
-function App() {
-  return (
-    <Suspense fallback={<div>加载中...</div>}>
-      <AsyncComponent />
-    </Suspense>
+app.get('/', (req, res) => {
+  const { pipe } = renderToPipeableStream(
+    <App />,
+    {
+      // 首屏 shell（含 Suspense fallback）准备好时开始发送 HTML
+      onShellReady() {
+        res.setHeader('Content-Type', 'text/html');
+        pipe(res);
+      },
+      onError(error) {
+        console.error(error);
+      },
+    }
   );
-}
-
-const stream = renderToPipeableStream(<App />);
-stream.pipe(response);
+});
 ```
 
-## 九、最佳实践
+流式渲染的工作流程：
+1. 服务端先发送 HTML shell（包含 Suspense 的 fallback 内容）
+2. 客户端开始显示 fallback，同时继续接收 HTML 流
+3. 当异步数据就绪后，服务端追加实际内容到流中
+4. 客户端接收到新内容，替换对应的 fallback
 
-### 1、提供有意义的 fallback
-
-```jsx
-// ✅ 好的做法
-<Suspense fallback={<UserSkeleton />}>
-  <UserProfile />
-</Suspense>
-
-// ❌ 不好的做法
-<Suspense fallback={<div>Loading...</div>}>
-  <UserProfile />
-</Suspense>
-```
-
-### 2、合理使用嵌套 Suspense
-
-```jsx
-// ✅ 好的做法：渐进式加载
-<Suspense fallback={<HeaderSkeleton />}>
-  <Header />
-</Suspense>
-<Suspense fallback={<ContentSkeleton />}>
-  <Content />
-</Suspense>
-```
-
-### 3、结合 Error Boundary
-
-```jsx
-<ErrorBoundary>
-  <Suspense fallback={<Loading />}>
-    <Component />
-  </Suspense>
-</ErrorBoundary>
-```
-
-## 十、性能优化
-
-### 1、预加载
-
-```jsx
-// 预加载组件
-const LazyComponent = lazy(() => import('./LazyComponent'));
-
-// 在需要时预加载
-function PreloadButton() {
-  const handleMouseEnter = () => {
-    import('./LazyComponent');
-  };
-  
-  return (
-    <button onMouseEnter={handleMouseEnter}>
-      Hover to preload
-    </button>
-  );
-}
-```
-
-### 2、缓存数据
-
-```jsx
-const cache = new Map();
-
-function fetchData(key) {
-  if (!cache.has(key)) {
-    cache.set(key, fetch(`/api/${key}`).then(r => r.json()));
-  }
-  return cache.get(key);
-}
-```
-
-## 总结
-
-Suspense 是 React 18 的重要特性，它通过暂停渲染和显示 fallback，提供了更好的加载体验。结合 use Hook 和并发渲染，Suspense 为 React 应用带来了更强大的异步处理能力。
+:::

@@ -424,7 +424,104 @@ const Child = React.memo(({ onClick }) => {
 });
 ```
 
-## 十、自定义 Hooks
+## 十、useRef
+
+### 1、访问 DOM 元素
+
+`useRef` 返回一个可变的 ref 对象，`.current` 属性初始值为传入的参数。它最常见的用途是直接访问 DOM 元素。
+
+```jsx
+import React, { useRef, useEffect } from 'react';
+
+function AutoFocusInput() {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    // 组件挂载后自动聚焦输入框
+    inputRef.current.focus();
+  }, []);
+
+  return <input ref={inputRef} placeholder="自动聚焦" />;
+}
+```
+
+### 2、保存可变值（不触发重新渲染）
+
+与 state 不同，修改 `ref.current` 不会触发组件重新渲染。这使得 ref 适合保存不需要驱动 UI 更新的值，如定时器 ID、上一次的值等。
+
+::: tip useRef vs useState
+- `useState`：值变化 → 触发重新渲染
+- `useRef`：`.current` 变化 → 不触发重新渲染，适合保存"幕后"数据
+:::
+
+::: details 查看典型用例：保存上一次的 props 值
+
+```jsx
+// src/hooks/usePrevious.js
+import { useRef, useEffect } from 'react';
+
+// 自定义 Hook：获取上一次渲染时的值
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value; // 每次渲染后更新 ref，但不触发额外渲染
+  });
+  return ref.current; // 返回的是更新前的值
+}
+
+// 使用示例
+function PriceTracker({ price }) {
+  const prevPrice = usePrevious(price);
+
+  return (
+    <div>
+      <p>当前价格：{price}</p>
+      {prevPrice !== undefined && (
+        <p style={{ color: price > prevPrice ? 'green' : 'red' }}>
+          上次价格：{prevPrice}（{price > prevPrice ? '↑' : '↓'}）
+        </p>
+      )}
+    </div>
+  );
+}
+```
+
+:::
+
+::: details 查看典型用例：在 useEffect 中安全访问最新值
+
+```jsx
+// src/components/StableCallback.jsx
+import React, { useState, useRef, useEffect } from 'react';
+
+// 问题：定时器中的回调因闭包捕获了旧的 count 值
+function Timer() {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(count);
+
+  // 每次 count 更新时，同步到 ref
+  countRef.current = count;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      // 通过 ref 访问始终是最新的 count
+      console.log('当前 count：', countRef.current);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []); // 依赖数组为空，定时器只创建一次
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(c => c + 1)}>+1</button>
+    </div>
+  );
+}
+```
+
+:::
+
+## 十一、自定义 Hooks
 
 ### 1、创建自定义 Hook
 
@@ -501,7 +598,7 @@ function UserProfile({ userId }) {
 
 :::
 
-## 十一、总结
+## 十二、总结
 
 ::: tip 学习建议
 Hooks 让函数组件具备了类组件的所有能力，同时代码更简洁、逻辑更易复用。掌握常用的 Hooks（useState、useEffect、useContext、useReducer、useMemo、useCallback）是学习 React 的关键。

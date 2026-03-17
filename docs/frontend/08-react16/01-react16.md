@@ -52,10 +52,42 @@ React 是由 Facebook（现 Meta）开发的一个用于构建用户界面的 Ja
 
 ### 1、Fiber 架构
 
-::: tip Fiber 架构优势
-- 全新的协调算法
-- 支持增量渲染
-- 更好的性能表现
+::: tip Fiber 架构简介
+Fiber 是 React 16 对核心协调算法（Reconciler）的完整重写。在 React 15 及以前，渲染过程是同步且不可中断的——一旦开始更新，就必须一口气完成，期间无法响应用户交互，在复杂场景下会导致页面卡顿。
+
+Fiber 架构将渲染工作分解为多个可中断的小单元（Fiber 节点），每个 Fiber 节点对应一个组件或 DOM 元素。React 可以在执行完一个单元后暂停，让浏览器处理其他任务（如用户输入），之后再恢复继续渲染，这就是**增量渲染（Incremental Rendering）**。
+:::
+
+**Fiber 架构的核心优势：**
+
+| 特性 | React 15（Stack） | React 16（Fiber） |
+|------|-------------------|-------------------|
+| 渲染方式 | 同步、不可中断 | 异步、可中断恢复 |
+| 优先级调度 | 不支持 | 支持任务优先级 |
+| 错误处理 | 异常导致应用崩溃 | 支持错误边界 |
+| 动画性能 | 容易掉帧 | 配合 requestIdleCallback 更流畅 |
+
+**Fiber 两个工作阶段：**
+
+- **Render 阶段（可中断）**：遍历 Fiber 树，计算出需要做哪些 DOM 变更，生成 effect 列表，此阶段可被高优先级任务打断。
+- **Commit 阶段（不可中断）**：将 effect 列表中的变更同步提交到真实 DOM，此阶段必须一次性完成。
+
+::: details 查看渲染流程图示
+
+```
+用户触发更新
+    ↓
+Render 阶段（可中断）
+  ├── beginWork：自顶向下处理每个 Fiber 节点
+  ├── completeWork：自底向上收集副作用
+  └── 生成 effectList
+    ↓
+Commit 阶段（不可中断）
+  ├── before mutation：执行 getSnapshotBeforeUpdate
+  ├── mutation：操作真实 DOM
+  └── layout：执行 componentDidMount/componentDidUpdate
+```
+
 :::
 
 ### 2、错误边界（Error Boundaries）
@@ -134,7 +166,76 @@ npm start
 
 :::
 
-## 五、第一个 React 组件
+## 五、React 渲染机制
+
+### 1、Virtual DOM 工作原理
+
+React 不直接操作真实 DOM，而是维护一棵内存中的虚拟 DOM 树。每次状态更新时，React 会：
+
+1. 根据新的 state/props 生成新的虚拟 DOM 树
+2. 与上一次的虚拟 DOM 树进行 **Diff 对比**
+3. 找出最小差异集合
+4. 将差异批量更新到真实 DOM
+
+::: tip 为什么需要 Virtual DOM？
+直接操作真实 DOM 的代价很高——每次修改都可能触发浏览器的重排（reflow）和重绘（repaint）。Virtual DOM 通过批量合并更新，将多次 DOM 操作合并为一次，从而减少性能开销。
+:::
+
+### 2、Diff 算法规则
+
+React 的 Diff 算法有三个核心策略：
+
+- **树级别对比**：只对比同层节点，不跨层移动，时间复杂度从 O(n³) 降至 O(n)
+- **组件类型对比**：类型不同的组件直接销毁重建，不复用
+- **key 属性**：列表渲染中使用 key 标识节点身份，帮助 React 判断节点是否可复用
+
+::: warning key 的正确使用
+列表中的 key 必须在兄弟节点中唯一，且稳定不变。不要使用数组 index 作为 key——当列表发生增删排序时，index 会变化，导致 React 错误地复用节点，引发渲染 bug。
+:::
+
+### 3、批量更新（Batch Update）
+
+在 React 合成事件和生命周期方法中，多次 `setState` 会被合并为一次更新，避免多次渲染：
+
+::: details 查看批量更新示例
+
+```jsx
+// src/components/BatchUpdateDemo.jsx
+class BatchUpdateDemo extends React.Component {
+  state = { count: 0 };
+
+  handleClick = () => {
+    // 在合成事件中，以下三次 setState 会被批量合并，只触发一次渲染
+    this.setState({ count: this.state.count + 1 });
+    this.setState({ count: this.state.count + 1 });
+    this.setState({ count: this.state.count + 1 });
+    // 最终 count 只加了 1，而非 3
+  };
+
+  handleAsyncClick = () => {
+    // 在异步回调中，批量更新失效，每次 setState 都会触发渲染
+    setTimeout(() => {
+      this.setState({ count: this.state.count + 1 });
+      this.setState({ count: this.state.count + 1 });
+      // count 加了 2
+    }, 0);
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.handleClick}>同步更新</button>
+        <button onClick={this.handleAsyncClick}>异步更新</button>
+      </div>
+    );
+  }
+}
+```
+
+:::
+
+## 六、第一个 React 组件
 
 ### 1、函数组件示例
 
@@ -160,7 +261,7 @@ class Welcome extends React.Component {
 <Welcome name="React" />
 ```
 
-## 六、React 开发工具
+## 七、React 开发工具
 
 ### 1、React Developer Tools
 
@@ -186,7 +287,7 @@ class Welcome extends React.Component {
 - 使用 `.eslintrc` 和 `.prettierrc` 配置
 :::
 
-## 七、学习路径
+## 八、学习路径
 
 ::: details 点击查看完整学习路径
 
@@ -207,7 +308,7 @@ class Welcome extends React.Component {
 
 :::
 
-## 八、总结
+## 九、总结
 
 ::: tip 学习建议
 React 16 是一个成熟的版本，引入了 Fiber 架构和错误边界等新特性，为 React 的后续发展奠定了基础。通过学习 React 16，你可以掌握现代前端开发的核心技能。

@@ -1,5 +1,5 @@
 export const nav = [
-  // { text: '首页', link: '/' },
+  { text: '首页', link: '/' },
   { text: '博客', link: '/blog-list/' },
   {
     text: '前端',
@@ -32,7 +32,7 @@ export const nav = [
       {
         text: '微前端',
         items: [
-          { text: 'Qiankun', link: '/microfrontend/01-qiankun/01-overview' },
+          { text: 'Qiankun', link: '/microfrontend/01-qiankun/index' },
         ],
       },
     ],

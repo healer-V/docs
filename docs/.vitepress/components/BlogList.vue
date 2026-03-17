@@ -305,7 +305,7 @@ const navigateToArticle = (path) => {
 .blog-page {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1.5rem 5rem;
+  padding: 1rem 1.5rem 5rem;
 }
 
 /* ── Header ── */
@@ -826,6 +826,7 @@ const navigateToArticle = (path) => {
 /* ── Search bar ── */
 .search-bar {
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;

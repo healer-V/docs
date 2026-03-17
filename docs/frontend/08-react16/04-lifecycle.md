@@ -242,7 +242,79 @@ class MyComponent extends React.Component {
 - 使用 `componentDidUpdate` 替代 `componentWillUpdate`
 :::
 
-## 八、实际应用示例
+## 八、新旧生命周期对比
+
+React 16.3 引入了新的生命周期方法，同时废弃了部分旧方法。下表列出新旧方法的对应关系：
+
+| 阶段 | 旧方法（已废弃） | 新方法 | 说明 |
+|------|----------------|--------|------|
+| 挂载前 | `componentWillMount` | `constructor` / `componentDidMount` | 副作用逻辑移至 `componentDidMount` |
+| Props 变化 | `componentWillReceiveProps` | `getDerivedStateFromProps` | 静态方法，不能访问 `this` |
+| 更新前 | `componentWillUpdate` | `getSnapshotBeforeUpdate` | 捕获更新前的 DOM 状态 |
+| 更新后 | — | `componentDidUpdate` | 处理更新完成后的逻辑 |
+| 卸载 | — | `componentWillUnmount` | 清理订阅、定时器 |
+
+::: warning 迁移建议
+旧的 `componentWillMount`、`componentWillReceiveProps`、`componentWillUpdate` 在 React 16.3 中被标记为 `UNSAFE_`，在 React 17+ 中需要加前缀 `UNSAFE_` 才能使用，并将在未来版本中彻底移除。新项目应直接使用新方法，存量代码应逐步迁移。
+:::
+
+::: details 迁移示例：componentWillReceiveProps → getDerivedStateFromProps
+
+```jsx
+// src/components/MigrateExample.jsx
+
+// ❌ 旧写法：componentWillReceiveProps（已废弃）
+class OldComponent extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.userId !== this.props.userId) {
+      this.setState({ loading: true });
+      this.fetchUserData(nextProps.userId);
+    }
+  }
+}
+
+// ✅ 新写法：getDerivedStateFromProps + componentDidUpdate
+class NewComponent extends React.Component {
+  state = {
+    loading: false,
+    prevUserId: null,
+  };
+
+  // 仅用于将 props 同步到 state，不能有副作用
+  static getDerivedStateFromProps(props, state) {
+    if (props.userId !== state.prevUserId) {
+      return {
+        loading: true,
+        prevUserId: props.userId,
+      };
+    }
+    return null;
+  }
+
+  // 副作用（数据请求）移到 componentDidUpdate
+  componentDidUpdate(prevProps) {
+    if (prevProps.userId !== this.props.userId) {
+      this.fetchUserData(this.props.userId);
+    }
+  }
+
+  fetchUserData = async (userId) => {
+    const response = await fetch(`/api/users/${userId}`);
+    const user = await response.json();
+    this.setState({ user, loading: false });
+  };
+
+  render() {
+    const { loading, user } = this.state;
+    if (loading) return <div>Loading...</div>;
+    return <div>{user?.name}</div>;
+  }
+}
+```
+
+:::
+
+## 九、实际应用示例
 
 ### 1、数据获取
 
@@ -341,7 +413,7 @@ class ChatRoom extends React.Component {
 
 :::
 
-## 九、总结
+## 十、总结
 
 ::: tip 学习建议
 生命周期方法让我们可以在组件的不同阶段执行特定操作。虽然 React 16.8+ 引入了 Hooks，但理解生命周期对于使用类组件和迁移到 Hooks 都很重要。

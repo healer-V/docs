@@ -33,7 +33,7 @@ excerpt: "模板字符串：使用反引号(`)创建的字符串，可以包含�
 const 模板字符串 = `字符串内容${变量或表达式}字符串内容`;
 ```
 
-#### 示例
+示例
 
 ::: details 点击查看模板字符串示例
 ```javascript
@@ -83,7 +83,7 @@ console.log(nested); // "outer inner"
 8. **trimEnd()**：移除字符串结尾的空白字符
 :::
 
-#### 示例
+示例
 
 ```javascript
 // includes()
@@ -124,7 +124,7 @@ console.log('  hello  '.trimEnd()); // "  hello"
 4. **normalize()**：Unicode标准化
 :::
 
-#### 示例
+示例
 
 ::: details 点击查看Unicode支持示例
 ```javascript
@@ -160,7 +160,7 @@ console.log(s1.normalize() === s2.normalize()); // true
 2. **模板标签函数**：可以作为模板字符串的标签函数
 :::
 
-#### 示例
+示例
 
 ```javascript
 // String.raw()
@@ -192,7 +192,7 @@ console.log(path); // "C:\\Users\\username\\Desktop"
 3. **转换**：可以使用Number()或parseInt()进行转换
 :::
 
-#### 示例
+示例
 
 ```javascript
 // 二进制字面量
@@ -216,7 +216,7 @@ console.log(parseInt('1010', 2)); // 10
 3. **用途**：提高大数字的可读性
 :::
 
-#### 示例
+示例
 
 ```javascript
 // 整数部分分隔
@@ -250,7 +250,7 @@ console.log(binaryWithSeparator); // 170
 9. **Number.isSafeInteger()**：检查是否为安全整数
 :::
 
-#### 示例
+示例
 
 ```javascript
 // Number.isFinite()
@@ -294,7 +294,7 @@ console.log(Number.isSafeInteger(9007199254740992)); // false
 10. **Math.log10()**：计算以10为底的对数
 :::
 
-#### 示例
+示例
 
 ::: details 点击查看Math扩展方法示例
 ```javascript
@@ -350,7 +350,7 @@ console.log(Math.log10(100)); // 2
 6. **后行断言**：支持先行断言和后行断言
 :::
 
-### 3.2 u修饰符（Unicode模式）
+### 3.2 `u`修饰符（Unicode模式）
 
 ::: info u修饰符特点
 1. **正确处理Unicode字符**：将码点大于0xFFFF的字符视为一个字符
@@ -358,7 +358,7 @@ console.log(Math.log10(100)); // 2
 3. **Unicode属性转义**：支持Unicode属性的正则匹配
 :::
 
-#### 示例
+示例
 
 ```javascript
 // u修饰符处理Unicode字符
@@ -378,7 +378,7 @@ console.log(regex4.test('a')); // true
 console.log(regex4.test('你')); // true
 ```
 
-### 3.3 y修饰符（粘性匹配）
+### 3.3 `y`修饰符（粘性匹配）
 
 ::: tip y修饰符特点
 1. **粘性匹配**：从目标字符串的当前位置开始匹配
@@ -386,7 +386,7 @@ console.log(regex4.test('你')); // true
 3. **严格匹配**：必须从lastIndex位置开始匹配成功
 :::
 
-#### 示例
+示例
 
 ```javascript
 // y修饰符粘性匹配
@@ -409,14 +409,14 @@ console.log(regex2.exec(text)); // ["aa"]
 console.log(regex2.lastIndex); // 6
 ```
 
-### 3.4 s修饰符（dotAll模式）
+### 3.4 `s`修饰符（dotAll模式）
 
 ::: info s修饰符特点
 1. **dotAll模式**：允许.匹配任何字符，包括换行符
 2. **s修饰符**：使正则表达式的.元字符能够匹配所有字符
 :::
 
-#### 示例
+示例
 
 ```javascript
 // s修饰符dotAll模式
@@ -436,7 +436,7 @@ console.log(regex2.test(text)); // true (s修饰符使.匹配换行符)
 3. **按字母排序**：返回的修饰符按字母顺序排列
 :::
 
-#### 示例
+示例
 
 ```javascript
 // flags属性
@@ -456,7 +456,7 @@ console.log(regex2.flags); // "suy" (按字母排序)
 4. **后行否定断言**：(?<!y)x，匹配x仅当x前面不是y
 :::
 
-#### 示例
+示例
 
 ::: details 点击查看断言示例
 ```javascript
@@ -510,7 +510,7 @@ console.log(prices); // ["100", "200"]
 4. **函数调用**：在函数调用时展开参数
 :::
 
-#### 示例
+示例
 
 ```javascript
 // 数组展开
@@ -554,7 +554,7 @@ console.log(mergedObj); // { a: 1, b: 3, c: 4 }
 4. **只能放在最后**：剩余参数必须是函数的最后一个参数
 :::
 
-#### 示例
+示例
 
 ```javascript
 // 基本用法
@@ -591,7 +591,7 @@ destructuring({ a: 1, b: 2, c: 3, d: 4 }); // 1 2 { c: 3, d: 4 }
 3. **与Math.pow()相同**：结果等同于Math.pow()
 :::
 
-#### 示例
+示例
 
 ```javascript
 // 基本用法
@@ -620,7 +620,7 @@ console.log(x); // 8
 4. **短路运算**：如果左侧不为null或undefined，右侧不会求值
 :::
 
-#### 示例
+示例
 
 ```javascript
 // 基本用法
@@ -659,7 +659,7 @@ processOptions({ timeout: 0 }); // 0 3 (0不会被替换为默认值)
 5. **支持数组索引**：可以安全地访问数组元素
 :::
 
-#### 示例
+示例
 
 ::: details 点击查看可选链运算符示例
 ```javascript
@@ -736,7 +736,7 @@ function getUserInfo(userId) {
 4. **简化代码**：替代常见的条件赋值模式
 :::
 
-#### 示例
+示例
 
 ```javascript
 // 逻辑或赋值 (||=)

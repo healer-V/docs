@@ -158,21 +158,21 @@ const sections = [
     icon: '🚀',
     title: '运维 & DevOps',
     items: [
-      { tag: 'Shell', title: 'Shell', desc: '脚本基础、流程控制、文本处理', link: '/docs/operation/01-shell/01-overview' },
-      { tag: 'Docker', title: 'Docker', desc: '镜像、容器、Compose', link: '/docs/operation/05-docker/01-overview' },
-      { tag: 'K8s', title: 'Kubernetes', desc: 'Pod、Service、Deployment', link: '/docs/operation/04-k8s/01-overview' },
-      { tag: 'Jenkins', title: 'Jenkins', desc: 'Pipeline、插件、集成 Git', link: '/docs/operation/02-jenkins/01-overview' },
-      { tag: 'CI/CD', title: 'CI/CD', desc: 'GitLab CI、GitHub Actions', link: '/docs/operation/03-cicd/01-overview' },
-      { tag: 'Nginx', title: 'Nginx', desc: '反向代理、负载均衡', link: '/docs/operation/06-nginx/01-overview' },
+      { tag: 'Shell', title: 'Shell', desc: '脚本基础、流程控制、文本处理', link: '/docs/operation/01-shell/index' },
+      { tag: 'Docker', title: 'Docker', desc: '镜像、容器、Compose', link: '/docs/operation/05-docker/index' },
+      { tag: 'K8s', title: 'Kubernetes', desc: 'Pod、Service、Deployment', link: '/docs/operation/04-k8s/index' },
+      { tag: 'Jenkins', title: 'Jenkins', desc: 'Pipeline、插件、集成 Git', link: '/docs/operation/02-jenkins/index' },
+      { tag: 'CI/CD', title: 'CI/CD', desc: 'GitLab CI、GitHub Actions', link: '/docs/operation/03-cicd/index' },
+      { tag: 'Nginx', title: 'Nginx', desc: '反向代理、负载均衡', link: '/docs/operation/06-nginx/' },
     ]
   },
   {
     icon: '⛓️',
     title: 'Web3',
     items: [
-      { tag: 'Web3.js', title: 'Web3.js', desc: '连接区块链、账户、合约交互', link: '/docs/web3/01-web3.0/01-overview' },
-      { tag: 'Solidity', title: 'Solidity', desc: '智能合约开发、数据类型、函数', link: '/docs/web3/02-solidity/01-overview' },
-      { tag: 'Ethereum', title: 'Ethereum', desc: '账户系统、交易、合约部署', link: '/docs/web3/03-ethereum/01-overview' },
+      { tag: 'Web3.js', title: 'Web3.js', desc: '连接区块链、账户、合约交互', link: '/docs/web3/03-web3js/01-getting-started' },
+      { tag: 'Solidity', title: 'Solidity', desc: '智能合约开发、数据类型、函数', link: '/docs/web3/02-solidity/01-environment' },
+      { tag: 'Ethereum', title: 'Ethereum', desc: '账户系统、交易、合约部署', link: '/docs/web3/01-blockchain/01-concepts' },
     ]
   },
 ]

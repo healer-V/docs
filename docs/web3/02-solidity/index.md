@@ -1,3 +1,15 @@
+---
+title: "Solidity 智能合约"
+category: "Web3 · Solidity"
+tags:
+  - Solidity
+  - 智能合约
+  - Web3
+  - 以太坊
+excerpt: "Solidity 是以太坊官方智能合约语言，语法类似 JavaScript，掌握它即可编写链上程序，支持 ERC-20 代币、NFT、DeFi 协议等主流区块链应用开发。"
+date: 2026-03-17
+---
+
 # Solidity 智能合约
 
 ## 核心优势

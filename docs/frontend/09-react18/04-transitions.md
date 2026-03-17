@@ -3,381 +3,285 @@ title: "Transitions"
 category: "前端 · React 18"
 tags:
   - React
-excerpt: "Transitions 是 React 18 的新特性，它允许你标记某些更新为\"非紧急\"的，让 React 保持 UI 的响应性，同时处理这些非紧急更新。 问题： 搜索时 UI 无响应 用户输入卡顿 体验差 优势： UI 保持响应 用户体验..."
+excerpt: "Transitions 是 React 18 区分「紧急更新」与「非紧急更新」的机制。通过 useTransition 和 startTransition，你可以告诉 React 某个状态更新优先级较低，让 React 在处理用户交互时不卡顿。"
+date: 2026-03-17
 ---
 
 # Transitions
 
-## 一、什么是 Transitions？
+## 一、为什么需要 Transitions
 
-::: tip Transitions 定义
-Transitions 是 React 18 的新特性，它允许你标记某些更新为"非紧急"的，让 React 保持 UI 的响应性，同时处理这些非紧急更新。
+在构建搜索、过滤、Tab 切换等功能时，你经常会遇到这样的问题：用户每次输入一个字符，都会触发一次昂贵的重新渲染（如过滤上万条数据），导致输入框卡顿、用户体验变差。
+
+根本原因在于，React 并不知道哪些更新是"用户正在等待立即反馈"的（如输入框显示字符），哪些是"可以稍后处理"的（如搜索结果更新）。Transitions 就是让你**显式区分这两类更新**的机制。
+
+::: tip 两类更新
+- **紧急更新（Urgent Update）**：用户直接交互，期望立即看到反馈。如输入框键入、按钮点击视觉反馈。
+- **Transition 更新（非紧急）**：UI 状态的切换，允许短暂延迟。如搜索结果列表、Tab 内容切换。
 :::
 
-## 二、为什么需要 Transitions？
+## 二、useTransition
 
-### 1、问题场景
+`useTransition` 是一个 Hook，返回 `[isPending, startTransition]` 元组：
+- `startTransition(callback)` —— 把 `callback` 中的状态更新标记为低优先级 transition
+- `isPending` —— 布尔值，当 transition 仍在处理中时为 `true`
 
-```jsx
-function SearchResults({ query }) {
-  const [results, setResults] = useState([]);
+### 1. 基本用法
 
-  useEffect(() => {
-    // 搜索会阻塞 UI
-    const filtered = expensiveSearch(query);
-    setResults(filtered);
-  }, [query]);
+::: details useTransition 基础示例
 
-  return <ResultsList results={results} />;
-}
-```
-
-**问题**：
-- 搜索时 UI 无响应
-- 用户输入卡顿
-- 体验差
-
-### 使用 Transitions 解决
-
-```jsx
-import { useTransition } from 'react';
-
-function SearchResults({ query }) {
-  const [isPending, startTransition] = useTransition();
-  const [results, setResults] = useState([]);
-
-  useEffect(() => {
-    // 标记为非紧急更新
-    startTransition(() => {
-      const filtered = expensiveSearch(query);
-      setResults(filtered);
-    });
-  }, [query]);
-
-  return (
-    <>
-      {isPending && <div>搜索中...</div>}
-      <ResultsList results={results} />
-    </>
-  );
-}
-```
-
-**优势**：
-- UI 保持响应
-- 用户体验好
-- 性能提升
-
-## useTransition Hook
-
-### 基本使用
-
-```jsx
-import { useTransition } from 'react';
-
-function App() {
-  const [isPending, startTransition] = useTransition();
-  const [count, setCount] = useState(0);
-
-  const handleClick = () => {
-    // 紧急更新：立即执行
-    setCount(c => c + 1);
-    
-    // 非紧急更新：可以中断
-    startTransition(() => {
-      setFilteredItems(expensiveFilter(items));
-    });
-  };
-
-  return (
-    <div>
-      {isPending && <div>处理中...</div>}
-      <button onClick={handleClick}>Click</button>
-    </div>
-  );
-}
-```
-
-### 2、参数说明
-
-- `isPending`：布尔值，表示是否有待处理的 transition
-- `startTransition`：函数，用于标记非紧急更新
-
-## 四、实际应用示例
-
-### 1、搜索功能
-
-```jsx
+```jsx{4,12,15-17}
+// src/components/CountryFilter.jsx
 import { useState, useTransition } from 'react';
 
-function SearchBox() {
+function CountryFilter({ countries }) {
   const [query, setQuery] = useState('');
   const [isPending, startTransition] = useTransition();
-  const [results, setResults] = useState([]);
+  const [filtered, setFiltered] = useState(countries);
 
   const handleChange = (e) => {
     const value = e.target.value;
-    
-    // 紧急更新：用户输入
+
+    // 紧急更新：输入框立即响应，用户看到自己键入的内容
     setQuery(value);
-    
-    // 非紧急更新：搜索结果
+
+    // Transition：过滤列表不紧急，可以被打断
     startTransition(() => {
-      const filtered = searchItems(value);
-      setResults(filtered);
+      setFiltered(
+        countries.filter(c =>
+          c.name.toLowerCase().includes(value.toLowerCase())
+        )
+      );
     });
   };
 
   return (
     <div>
-      <input
-        value={query}
-        onChange={handleChange}
-        placeholder="搜索..."
-      />
-      {isPending && <div>搜索中...</div>}
-      <ResultsList results={results} />
+      <input value={query} onChange={handleChange} placeholder="搜索国家..." />
+      {isPending ? (
+        <p>筛选中...</p>
+      ) : (
+        <ul>
+          {filtered.map(c => <li key={c.code}>{c.name}</li>)}
+        </ul>
+      )}
     </div>
   );
 }
 ```
 
-### 2、标签切换
+:::
 
-```jsx
-import { useState, useTransition } from 'react';
+### 2. Tab 切换场景
 
-function Tabs({ tabs }) {
+Tab 切换是 Transitions 最典型的使用场景：切换 Tab 本身需要立即响应（高亮激活状态），但加载 Tab 内容可以稍后完成。
+
+::: details Tab 切换完整实现
+
+```jsx{6,17-21,31-33}
+// src/components/ProductTabs.jsx
+import { useState, useTransition, memo } from 'react';
+
+const TABS = ['详情', '规格', '评价'];
+
+// 用 memo 包裹昂贵的 Tab 内容，减少无效渲染
+const ReviewsPanel = memo(function ReviewsPanel({ productId }) {
+  // 假设这里有复杂的计算和大量 DOM
+  const reviews = computeReviews(productId); // 耗时操作
+  return (
+    <ul>
+      {reviews.map(r => <li key={r.id}>{r.content}</li>)}
+    </ul>
+  );
+});
+
+function ProductTabs({ productId }) {
   const [activeTab, setActiveTab] = useState(0);
   const [isPending, startTransition] = useTransition();
 
-  const handleTabChange = (index) => {
-    // 紧急更新：立即切换标签
-    setActiveTab(index);
-    
-    // 非紧急更新：加载内容
+  const switchTab = (index) => {
     startTransition(() => {
-      loadTabContent(tabs[index]);
+      setActiveTab(index);
     });
   };
 
   return (
     <div>
-      <div className="tabs">
-        {tabs.map((tab, index) => (
+      <div role="tablist">
+        {TABS.map((tab, index) => (
           <button
-            key={index}
-            onClick={() => handleTabChange(index)}
-            className={activeTab === index ? 'active' : ''}
+            key={tab}
+            role="tab"
+            aria-selected={activeTab === index}
+            onClick={() => switchTab(index)}
+            // Tab 按钮样式立即切换，不受 isPending 影响
+            className={activeTab === index ? 'tab-active' : 'tab'}
           >
-            {tab.label}
+            {tab}
           </button>
         ))}
       </div>
-      {isPending && <div>加载中...</div>}
-      <div className="tab-content">
-        {tabs[activeTab].content}
+
+      {/* isPending 时降低不透明度，而非完全隐藏，避免闪烁 */}
+      <div style={{ opacity: isPending ? 0.6 : 1 }}>
+        {activeTab === 0 && <DetailsPanel productId={productId} />}
+        {activeTab === 1 && <SpecsPanel productId={productId} />}
+        {activeTab === 2 && <ReviewsPanel productId={productId} />}
       </div>
     </div>
   );
 }
 ```
 
-### 3、列表过滤
+:::
 
-```jsx
-import { useState, useTransition, useMemo } from 'react';
+## 三、startTransition（独立函数）
 
-function ProductList({ products }) {
-  const [filter, setFilter] = useState('');
-  const [isPending, startTransition] = useTransition();
-  const [filteredProducts, setFilteredProducts] = useState(products);
+如果你需要在**非组件代码**（如工具函数、路由回调）中标记 transition，可以直接导入 `startTransition` 函数使用，无需 `useTransition` Hook：
 
-  const handleFilterChange = (e) => {
-    const value = e.target.value;
-    
-    // 紧急更新：输入框
-    setFilter(value);
-    
-    // 非紧急更新：过滤列表
-    startTransition(() => {
-      const filtered = products.filter(product =>
-        product.name.toLowerCase().includes(value.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-    });
-  };
+::: details startTransition 在路由回调中的使用
 
-  return (
-    <div>
-      <input
-        value={filter}
-        onChange={handleFilterChange}
-        placeholder="过滤产品..."
-      />
-      {isPending && <div>过滤中...</div>}
-      <ul>
-        {filteredProducts.map(product => (
-          <li key={product.id}>{product.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-```
-
-## 五、startTransition API
-
-### 1、独立使用
-
-```jsx
+```jsx{2,11-13}
+// src/components/NavMenu.jsx
 import { startTransition } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Component() {
-  const [count, setCount] = useState(0);
-  const [items, setItems] = useState([]);
+function NavMenu() {
+  const navigate = useNavigate();
 
-  const handleClick = () => {
-    // 紧急更新
-    setCount(c => c + 1);
-    
-    // 非紧急更新
+  const goTo = (path) => {
+    // 路由跳转标记为非紧急，避免在加载新页面时卡住当前页面
     startTransition(() => {
-      setItems(generateLargeList());
+      navigate(path);
+    });
+  };
+
+  return (
+    <nav>
+      <button onClick={() => goTo('/products')}>商品列表</button>
+      <button onClick={() => goTo('/orders')}>我的订单</button>
+      <button onClick={() => goTo('/profile')}>个人中心</button>
+    </nav>
+  );
+}
+```
+
+:::
+
+::: warning startTransition 的限制
+`startTransition` 的回调必须是**同步**的。如果你在回调中使用了 `await`，`await` 之后的代码将不会被标记为 transition。
+:::
+
+## 四、isPending 加载状态的最佳实践
+
+`isPending` 为 `true` 时说明有 transition 正在进行。有几种展示策略：
+
+### 1. 降低透明度（推荐）
+
+在内容上叠加半透明效果，用户知道内容即将更新，但旧内容仍然可读：
+
+```jsx{5}
+<div style={{
+  opacity: isPending ? 0.6 : 1,
+  transition: 'opacity 0.2s',
+  pointerEvents: isPending ? 'none' : 'auto'
+}}>
+  {content}
+</div>
+```
+
+### 2. 显示独立的加载指示器
+
+适合内容区域较大，或切换内容差异明显的场景：
+
+```jsx{2,4}
+{isPending && (
+  <div className="transition-spinner">加载中...</div>
+)}
+<div>{content}</div>
+```
+
+### 3. 骨架屏
+
+结合 Suspense 使用，pending 期间展示骨架屏占位：
+
+::: details Transitions + Suspense 组合使用
+
+```jsx{5,15-19}
+// src/components/ArticleList.jsx
+import { useState, useTransition, Suspense } from 'react';
+
+function ArticleList({ allCategories }) {
+  const [category, setCategory] = useState('all');
+  const [isPending, startTransition] = useTransition();
+
+  const switchCategory = (cat) => {
+    startTransition(() => {
+      setCategory(cat);
     });
   };
 
   return (
     <div>
-      <button onClick={handleClick}>Click</button>
-      <p>Count: {count}</p>
-      <List items={items} />
+      <CategoryButtons
+        categories={allCategories}
+        active={category}
+        onChange={switchCategory}
+      />
+      {/* 当 transition 进行中时，Suspense 的 fallback 不会显示 */}
+      {/* 旧内容会保持显示，直到新内容就绪 */}
+      <Suspense fallback={<ArticleSkeleton />}>
+        <ArticleContent category={category} isPending={isPending} />
+      </Suspense>
     </div>
   );
 }
 ```
 
-## 六、与 useDeferredValue 的区别
+:::
 
-### 1、useTransition
+## 五、使用限制与注意事项
+
+### 1. 不适合标记为 transition 的更新
+
+::: warning 这些场景不应使用 startTransition
+- 用户直接输入（`input.value`、`textarea.value`）
+- 表单提交的验证反馈
+- 按钮点击后的视觉状态（如 active 样式）
+- 弹窗/Toast 的显示
+
+这些场景用户期望**立即响应**，标记为 transition 会导致明显的延迟感。
+:::
+
+### 2. 不能在 startTransition 中放异步操作
 
 ```jsx
-// 用于标记更新为 transition
-const [isPending, startTransition] = useTransition();
+// ❌ 错误：await 后的代码不在 transition 中
+startTransition(async () => {
+  const data = await fetchData();
+  setData(data); // 这里不是 transition 更新！
+});
 
+// ✅ 正确：先 await，再包裹更新
+const data = await fetchData();
 startTransition(() => {
-  setState(newValue);
+  setData(data); // 这里是 transition 更新 ✅
 });
 ```
 
-**适用场景**：
-- 需要控制何时开始 transition
-- 需要显示加载状态
+### 3. transition 的中断行为
 
-### 2、useDeferredValue
+如果用户在一个 transition 仍在进行中时触发了新的 transition，React 会丢弃旧的 transition，处理最新的更新。这对搜索场景非常有用：
 
 ```jsx
-// 用于延迟值
-const deferredValue = useDeferredValue(value);
+// 用户快速连续输入：React 会跳过中间的搜索，直接处理最新的输入
 ```
 
-**适用场景**：
-- 基于某个值进行延迟更新
-- 不需要手动控制
+## 六、与 useDeferredValue 的选择
 
-## 七、最佳实践
-
-### 1、区分紧急和非紧急更新
-
-```jsx
-// ✅ 好的做法
-function Component() {
-  const [input, setInput] = useState('');
-  const [isPending, startTransition] = useTransition();
-  const [results, setResults] = useState([]);
-
-  const handleChange = (e) => {
-    setInput(e.target.value); // 紧急
-    startTransition(() => {
-      setResults(search(e.target.value)); // 非紧急
-    });
-  };
-}
-
-// ❌ 不好的做法
-function Component() {
-  const [input, setInput] = useState('');
-  const [results, setResults] = useState([]);
-
-  const handleChange = (e) => {
-    setInput(e.target.value);
-    setResults(search(e.target.value)); // 阻塞 UI
-  };
-}
-```
-
-### 2、显示加载状态
-
-```jsx
-function Component() {
-  const [isPending, startTransition] = useTransition();
-
-  return (
-    <div>
-      {isPending && <div>处理中...</div>}
-      {/* 内容 */}
-    </div>
-  );
-}
-```
-
-### 3、合理使用
-
-```jsx
-// ✅ 适合使用 transition
-- 搜索过滤
-- 标签切换
-- 列表排序
-- 数据加载
-
-// ❌ 不适合使用 transition
-- 用户输入（紧急）
-- 按钮点击（紧急）
-- 表单提交（紧急）
-```
-
-## 八、性能优化
-
-### 1、减少不必要的 transition
-
-```jsx
-// ✅ 只在真正需要时使用
-if (items.length > 1000) {
-  startTransition(() => {
-    setFilteredItems(filter(items));
-  });
-} else {
-  setFilteredItems(filter(items));
-}
-```
-
-### 2、结合 Suspense
-
-```jsx
-import { Suspense, useTransition } from 'react';
-
-function Component() {
-  const [isPending, startTransition] = useTransition();
-
-  return (
-    <Suspense fallback={<div>加载中...</div>}>
-      {isPending && <div>处理中...</div>}
-      <AsyncContent />
-    </Suspense>
-  );
-}
-```
-
-## 总结
-
-Transitions 是 React 18 的重要特性，它通过标记非紧急更新，让 React 保持 UI 的响应性。合理使用 useTransition 可以显著提升用户体验，特别是在处理大量数据或复杂计算时。
+| 场景 | 推荐方案 |
+|------|----------|
+| 有状态更新的触发点（如 onChange） | `useTransition` |
+| 只有值，没有触发点（如从 props 接收） | `useDeferredValue` |
+| 需要展示加载状态（isPending） | `useTransition` |
+| 优化基于某值的昂贵计算 | `useDeferredValue` |

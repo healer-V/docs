@@ -140,8 +140,14 @@
     width: fit-content !important;
 }
 
-.content-body {
+/* 仅在无侧边栏页面（首页、博客等）居中导航内容 */
+.VPNavBar:not(.has-sidebar) .content-body {
     justify-content: center !important;
+}
+
+/* 文档页（has-sidebar）强制右对齐，避免搜索框与 VPNavBarTitle 重叠 */
+.VPNavBar.has-sidebar .content-body {
+    justify-content: flex-end !important;
 }
 
 .VPNavBarSearch {

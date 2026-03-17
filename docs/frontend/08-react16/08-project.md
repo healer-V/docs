@@ -440,7 +440,239 @@ export default App;
 }
 ```
 
-## 五、功能扩展
+## 五、错误边界（Error Boundaries）
+
+错误边界是 React 16 引入的类组件特性，用于捕获子组件树中的 JavaScript 错误，防止整个应用崩溃，并渲染降级 UI。
+
+::: warning 错误边界的限制
+错误边界**不能**捕获以下错误：
+- 事件处理函数中的错误（需用 try/catch）
+- 异步代码（setTimeout、Promise）
+- 服务端渲染
+- 错误边界组件自身的错误
+:::
+
+### 1、实现错误边界
+
+::: details 查看错误边界组件实现
+
+```jsx
+// src/components/ErrorBoundary.jsx
+import React from 'react';
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      error: null,
+      errorInfo: null,
+    };
+  }
+
+  // 在渲染出错后更新 state，显示降级 UI
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  // 记录错误详情，可上报到监控平台
+  componentDidCatch(error, errorInfo) {
+    this.setState({ errorInfo });
+    // 上报到错误监控服务（如 Sentry）
+    console.error('ErrorBoundary caught:', error, errorInfo);
+    // reportError(error, errorInfo);
+  }
+
+  handleReset = () => {
+    this.setState({ hasError: false, error: null, errorInfo: null });
+  };
+
+  render() {
+    if (this.state.hasError) {
+      // 自定义降级 UI
+      return (
+        <div className="error-boundary">
+          <h2>页面出现了一些问题</h2>
+          <p>{this.state.error?.message}</p>
+          <button onClick={this.handleReset}>重试</button>
+          {process.env.NODE_ENV === 'development' && (
+            <details>
+              <summary>错误详情（仅开发环境可见）</summary>
+              <pre>{this.state.errorInfo?.componentStack}</pre>
+            </details>
+          )}
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;
+```
+
+:::
+
+### 2、使用错误边界
+
+建议在应用中多层级部署错误边界，粒度越细，错误隔离效果越好：
+
+::: details 查看错误边界部署策略
+
+```jsx
+// src/App.jsx
+import React from 'react';
+import ErrorBoundary from './components/ErrorBoundary';
+import Sidebar from './components/Sidebar';
+import MainContent from './components/MainContent';
+import Widget from './components/Widget';
+
+function App() {
+  return (
+    // 顶层兜底：捕获所有未处理的组件错误
+    <ErrorBoundary>
+      <div className="layout">
+        {/* 侧边栏独立错误边界：侧边栏出错不影响主内容 */}
+        <ErrorBoundary>
+          <Sidebar />
+        </ErrorBoundary>
+
+        <main>
+          <MainContent />
+          {/* 小组件独立错误边界：某个 Widget 崩溃不影响整个 main */}
+          <ErrorBoundary>
+            <Widget />
+          </ErrorBoundary>
+        </main>
+      </div>
+    </ErrorBoundary>
+  );
+}
+
+export default App;
+```
+
+:::
+
+## 六、性能优化
+
+### 1、React.memo 避免无效渲染
+
+`React.memo` 是高阶组件，对函数组件进行浅比较，props 未变化时跳过渲染。
+
+::: details 查看 React.memo 使用示例
+
+```jsx
+// src/components/TodoItem.jsx
+import React, { memo, useCallback } from 'react';
+
+// 包裹后，只有 todo 或回调函数引用变化时才重新渲染
+const TodoItem = memo(function TodoItem({ todo, onToggle, onDelete }) {
+  console.log(`TodoItem ${todo.id} rendered`);
+
+  return (
+    <li className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+      <input
+        type="checkbox"
+        checked={todo.completed}
+        onChange={() => onToggle(todo.id)}
+      />
+      <span>{todo.text}</span>
+      <button onClick={() => onDelete(todo.id)}>删除</button>
+    </li>
+  );
+});
+
+export default TodoItem;
+
+// src/App.jsx
+function App() {
+  const [todos, setTodos] = useState([]);
+
+  // useCallback 保持函数引用稳定，配合 memo 防止子组件重渲染
+  const handleToggle = useCallback((id) => {
+    setTodos(prev =>
+      prev.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo)
+    );
+  }, []);
+
+  const handleDelete = useCallback((id) => {
+    setTodos(prev => prev.filter(todo => todo.id !== id));
+  }, []);
+
+  return (
+    <ul>
+      {todos.map(todo => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onToggle={handleToggle}
+          onDelete={handleDelete}
+        />
+      ))}
+    </ul>
+  );
+}
+```
+
+:::
+
+### 2、代码分割（Code Splitting）
+
+通过 `React.lazy` + `Suspense` 实现按需加载，减少首屏 JavaScript 体积。
+
+::: details 查看代码分割实现
+
+```jsx
+// src/App.jsx
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+// 路由级代码分割：每个页面单独打包为一个 chunk
+const Home = lazy(() => import('./pages/Home'));
+const ProductList = lazy(() => import('./pages/ProductList'));
+// 命名 chunk：便于在构建报告中识别
+const Dashboard = lazy(() =>
+  import(/* webpackChunkName: "dashboard" */ './pages/Dashboard')
+);
+
+// 自定义加载 UI
+function PageLoader() {
+  return (
+    <div className="page-loader">
+      <div className="spinner" />
+      <p>页面加载中...</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<PageLoader />}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/products" component={ProductList} />
+          <Route path="/dashboard" component={Dashboard} />
+        </Switch>
+      </Suspense>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+```
+
+:::
+
+::: tip 代码分割最佳实践
+- **路由级别**是最推荐的分割粒度，粒度过细会增加请求次数
+- 对首屏不需要立即呈现的重型组件（如富文本编辑器、图表库）也可以懒加载
+- 配合 `webpackPrefetch`/`webpackPreload` 注释可以预加载下一页资源
+:::
+
+## 七、功能扩展
 
 ### 1、编辑功能
 
@@ -469,7 +701,7 @@ npm install react-beautiful-dnd
 const [categories, setCategories] = useState(['工作', '生活', '学习']);
 ```
 
-## 六、部署
+## 八、部署
 
 ### 1、构建生产版本
 
@@ -484,7 +716,7 @@ npm install -g vercel
 vercel
 ```
 
-## 七、总结
+## 九、总结
 
 ::: tip 项目收获
 通过这个项目，我们实践了：
