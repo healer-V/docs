@@ -122,11 +122,12 @@ export const nav = [
     ],
   },
   {
-    text: '关于',
+    text: '更多',
     items: [
       { text: '学习文档', link: '/about/' },
       { text: '友情链接', link: '/links' },
       { text: '随记', link: '/diary/index' },
+      { text: '归档', link: '/archive/' },
     ],
   },
 ]

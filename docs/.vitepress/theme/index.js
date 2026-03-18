@@ -14,6 +14,7 @@ import GuideNav from '../components/GuideNav.vue'
 import HomeBento from '../components/HomeBento.vue'
 import AboutPage from '../components/AboutPage.vue'
 import ReadingProgress from '../components/ReadingProgress.vue'
+import ArchivePage from '../components/ArchivePage.vue'
 import { authManager } from '../utils/auth.js'
 import './style.css';
 import './style/index.css';
@@ -77,6 +78,7 @@ export default {
     app.component('GuideNav', GuideNav)
     app.component('HomeBento', HomeBento)
     app.component('AboutPage', AboutPage)
+    app.component('ArchivePage', ArchivePage)
 
     // 确保busuanzi在浏览器环境中可用
     if (inBrowser) {
