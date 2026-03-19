@@ -15,7 +15,8 @@
       <!-- Header -->
       <div class="portal-header">
         <div class="logo-ring">
-          <img src="../../public/logo_new.png" alt="Logo" />
+          <!-- <img src="../../public/logo_new.png" alt="Logo" /> -->
+          <img src="/logo_new.png" alt="Logo" />
         </div>
         <h1 class="portal-title">xianling Docs</h1>
         <p class="portal-sub">学习笔记 · 经验心得</p>

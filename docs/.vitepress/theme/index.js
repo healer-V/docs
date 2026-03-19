@@ -16,7 +16,7 @@ import AboutPage from '../components/AboutPage.vue'
 import ReadingProgress from '../components/ReadingProgress.vue'
 import ArchivePage from '../components/ArchivePage.vue'
 import { authManager } from '../utils/auth.js'
-import './style.css';
+// import './style.css';
 import './style/index.css';
 // import './custom.css';
 

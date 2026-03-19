@@ -94,7 +94,7 @@ const sections = [
     items: [
       { icon: 'Z', name: '粥里有糖', desc: 'VitePress 主题定制', link: 'https://sugarat.top/' },
       { icon: 'D', name: 'DK酱', desc: '个人技术博客', link: 'https://cccdk.github.io/blog/' },
-      { icon: 'O', name: 'onedayxyy', desc: 'Linux 运维知识', link: 'https://onedayxyy.cn/linux/linux-index#' },
+      { icon: 'O', name: 'onedayxyy', desc: 'Linux 运维知识', link: 'https://onedayxyy.cn/' },
     ]
   }
 ]

@@ -5,3 +5,9 @@
 @import './blur.css';
 @import './custom-block.css';
 @import './blockquote.css';
+/* 拆分 */
+@import './vars.css';
+@import './typography.css';
+@import './nav.css';
+@import './hero.css';
+@import './components.css';

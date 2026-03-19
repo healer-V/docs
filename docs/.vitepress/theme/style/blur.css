@@ -126,7 +126,7 @@
     }
 }
 
-@media (min-width: 960px) {
+/* @media (min-width: 960px) {
     .VPNavBar.has-sidebar .content {
         padding-left: var(--vp-sidebar-width) !important;
     }
@@ -134,7 +134,7 @@
 
 .VPNavBar.has-sidebar .content .title {
     width: fit-content !important;
-}
+} */
 
 .VPNavBarTitle {
     width: fit-content !important;

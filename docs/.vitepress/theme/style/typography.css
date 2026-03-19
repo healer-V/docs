@@ -1,0 +1,143 @@
+/* ============================================================
+   Typography — base + doc headings + body text
+   ============================================================ */
+
+body {
+  font-family: var(--vp-font-family-base);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html { scroll-behavior: smooth; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', 'Noto Sans SC', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+code, pre, table {
+  font-family: var(--vp-font-family-mono);
+}
+
+:not(pre) > code {
+  color: var(--accent) !important;
+  font-size: 0.85em !important;
+  background: var(--accent-soft) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--glow-border) !important;
+  font-weight: 500;
+}
+
+/* Doc headings */
+.vp-doc h1 {
+  font-size: 2.2rem !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.15 !important;
+  font-weight: 800 !important;
+  background: var(--aurora);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vp-doc h2 {
+  font-size: 1.45rem !important;
+  border-top: 1px solid var(--vp-c-divider) !important;
+  padding-top: 1.5rem !important;
+  margin-top: 2.5rem !important;
+  font-weight: 700 !important;
+  position: relative;
+}
+
+.vp-doc h2:hover::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: calc(50% + 0.75rem);
+  transform: translateY(-50%);
+  width: 3px;
+  height: 50%;
+  background: var(--aurora);
+  border-radius: 2px;
+  animation: barSlide 0.25s ease;
+}
+
+@keyframes barSlide {
+  from { opacity: 0; transform: translateY(-50%) scaleY(0); }
+  to   { opacity: 1; transform: translateY(-50%) scaleY(1); }
+}
+
+.vp-doc h3 {
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+}
+
+.vp-doc .header-anchor {
+  transition: opacity 0.2s ease, color 0.2s ease !important;
+}
+.vp-doc .header-anchor:hover { color: var(--accent) !important; }
+
+/* Body text */
+.vp-doc p,
+.vp-doc li,
+.vp-doc blockquote p {
+  font-family: 'Sora', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc li + li { margin-top: 0.35em; }
+.vp-doc p + p   { margin-top: 1.4em; }
+
+.vp-doc a {
+  color: var(--accent) !important;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+.vp-doc a:hover { border-bottom-color: var(--accent); }
+
+.vp-doc hr {
+  border: none !important;
+  height: 1px;
+  background: var(--aurora) !important;
+  opacity: 0.15;
+  margin: 2.5rem 0 !important;
+}
+
+/* Selection */
+::selection {
+  background: rgba(14, 165, 233, 0.25);
+  color: var(--vp-c-text-1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--vp-c-divider); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--vp-c-text-3); }
+
+/* Responsive */
+@media (max-width: 959px) {
+  .vp-doc h1 { font-size: 1.8rem !important; }
+  .vp-doc h2 { font-size: 1.25rem !important; }
+}
+
+@media (max-width: 640px) {
+  .vp-doc h1 { font-size: 1.5rem !important; line-height: 1.25 !important; }
+  .vp-doc h2 { font-size: 1.15rem !important; margin-top: 2rem !important; padding-top: 1.2rem !important; }
+  .vp-doc h2:hover::before { display: none; }
+  .vp-doc h3 { font-size: 1rem !important; }
+  .vp-doc p, .vp-doc li, .vp-doc blockquote p { font-size: 14px; line-height: 1.75; }
+}
+
+@media (max-width: 360px) {
+  .vp-doc h1 { font-size: 1.3rem !important; }
+}

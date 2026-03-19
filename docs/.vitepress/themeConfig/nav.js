@@ -112,10 +112,10 @@ export const nav = [
       { text: '本地部署', link: '/ai/07-local-deploy/index' },
     ],
   },
-  { text: '面试题', link: '/interview/index' },
   {
     text: '实践',
     items: [
+      { text: '面试题库', link: '/interview/index' },
       { text: '组件封装', link: '/skill/01-Vue组件封装' },
       { text: '项目实践', link: '/practices/index' },
       { text: '项目难点', link: '/project/index' },
@@ -124,8 +124,8 @@ export const nav = [
   {
     text: '更多',
     items: [
-      { text: '学习文档', link: '/about/' },
-      { text: '友情链接', link: '/links' },
+      { text: '收藏', link: '/about/' },
+      { text: '友链', link: '/links' },
       { text: '随记', link: '/diary/index' },
       { text: '归档', link: '/archive/' },
     ],

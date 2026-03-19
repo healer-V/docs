@@ -14,6 +14,21 @@ export default defineConfig({
   ],
     //启用深色模式
   appearance:'dark', 
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('busuanzi')) {
+              return 'vendor-busuanzi'
+            }
+            return 'vendor'
+          }
+        }
+      }
+    }
+  },
   themeConfig: {
     logo: '/logo_new.png',
     markdown: {
