@@ -127,7 +127,6 @@ export const nav = [
       { text: '收藏', link: '/about/' },
       { text: '友链', link: '/links' },
       { text: '随记', link: '/diary/index' },
-      { text: '归档', link: '/archive/' },
     ],
   },
 ]
