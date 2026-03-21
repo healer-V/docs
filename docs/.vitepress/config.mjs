@@ -15,13 +15,22 @@ export default defineConfig({
     //启用深色模式
   appearance:'dark', 
   build: {
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 1500,
+    // 降低 Rollup 并发，减少峰值内存（CI 环境关键配置）
     rollupOptions: {
+      maxParallelFileOps: 3,
       output: {
+        // 更细粒度的代码分割，避免单个 chunk 过大撑爆内存
         manualChunks(id) {
           if (id.includes('node_modules')) {
             if (id.includes('busuanzi')) {
               return 'vendor-busuanzi'
+            }
+            if (id.includes('@vue') || id.includes('vue-demi')) {
+              return 'vendor-vue'
+            }
+            if (id.includes('vitepress') || id.includes('@vitepress')) {
+              return 'vendor-vitepress'
             }
             return 'vendor'
           }
