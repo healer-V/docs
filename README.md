@@ -60,6 +60,26 @@ docs/
 - 文件命名：数字前缀 + 描述（`01-overview.md`）
 - 路由规范：`/frontend/01-html/01-overview`
 
+## 🔀 仓库关联
+
+本项目同时托管在 GitHub 和 Gitee 两个平台：
+
+| 平台 | 仓库地址 | Remote 名称 |
+|------|---------|------------|
+| GitHub | `https://github.com/healer-V/docs.git` | `origin` |
+| Gitee | `https://gitee.com/xianling-coding/portal-knowdocs-web.git` | `gitee` |
+
+```bash
+# 推送到 GitHub
+git push origin main
+
+# 推送到 Gitee
+git push gitee main
+
+# 同时推送到两个平台
+git push origin main && git push gitee main
+```
+
 ## 🔗 相关链接
 
 - [VitePress 官方文档](https://vitepress.dev/)
