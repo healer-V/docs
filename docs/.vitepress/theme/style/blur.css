@@ -180,7 +180,8 @@
 }
 
 .VPSidebar .group {
-    width: calc(var(--vp-sidebar-width) - 84px) !important;
+    /* width: calc(var(--vp-sidebar-width) - 84px) !important; */
+    width: calc(var(--vp-sidebar-width) - 70px) !important;
 }
 
 @media (min-width: 1440px) {

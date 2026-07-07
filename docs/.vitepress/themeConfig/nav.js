@@ -5,7 +5,7 @@ export const nav = [
       {
         text: '基础',
         items: [
-          { text: 'HTML', link: '/frontend/01-html/01-01-what-is-html' },
+          { text: 'HTML', link: '/frontend/01-html/01-overview.md' },
           { text: 'CSS', link: '/frontend/02-css/01-overview' },
           { text: 'JavaScript', link: '/frontend/03-javascript/01-dataType' },
           { text: 'ECMAScript', link: '/frontend/04-ecmascript/01-variable' },
@@ -44,7 +44,6 @@ export const nav = [
           { text: 'Node.js', link: '/backend/01-nodejs/01-nodejs' },
           { text: 'Java', link: '/backend/04-java/01-java' },
           { text: 'Python', link: '/backend/05-python/01-python' },
-          { text: 'Golang', link: '/backend/06-golang/01-golang' },
         ],
       },
       {

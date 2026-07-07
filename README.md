@@ -5,11 +5,11 @@
 ## 📚 技术栈覆盖
 
 - **前端基础**: HTML / CSS / JavaScript / TypeScript
-- **前端框架**: Vue 2/3 · React 16/18
-- **工程化**: Vite · Webpack · CI/CD
+- **前端框架**: Vue 2/3 · React 16/18 · 微前端
+- **工程化**: Vite · Webpack
 - **跨端开发**: React Native · Flutter · HarmonyOS · Electron
-- **后端开发**: Node.js · Express · NestJS
-- **运维部署**: Docker · Kubernetes · Jenkins · Nginx
+- **后端开发**: Node.js · Express · NestJS · Java · Python
+- **运维部署**: Docker · Kubernetes · Jenkins · Nginx · CI/CD
 - **Web3**: Solidity · Ethereum · Web3.js
 
 ## 🚀 快速开始
@@ -42,8 +42,6 @@ docs/
 ├── interview/      # 面试题库
 └── .vitepress/     # VitePress 配置
 ```
-
-详细结构说明请查看 [PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md)
 
 ## 🎯 特性
 

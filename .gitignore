@@ -1,6 +1,6 @@
-node_modules
-cache
-dist
-# 忽略.vitepress/cache目录
-.vitepress/cache/
+node_modules/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+docs/.vitepress/.temp/
 .agents/
+.vitepress/cache/

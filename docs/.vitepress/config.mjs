@@ -2,6 +2,9 @@ import { defineConfig } from 'vitepress'
 import { nav } from '../.vitepress/themeConfig/nav.js'
 import { sidebar } from '../.vitepress/themeConfig/sidebar.js'
 
+// 本地搜索会为全站 Markdown 生成索引；调试导航/主题时可关闭，避免 dev server 重启期间长时间不监听端口。
+const enableLocalSearch = process.env.VITEPRESS_LOCAL_SEARCH !== 'false'
+
 export default defineConfig({
   title: "xianling Docs",
   description: "学习笔记，经验心得",
@@ -38,6 +41,18 @@ export default defineConfig({
       }
     }
   },
+  vite: {
+    server: {
+      watch: {
+        // VitePress 生成目录频繁变化，忽略它们可以减少无意义重启和端口短暂断开。
+        ignored: [
+          '**/docs/.vitepress/cache/**',
+          '**/docs/.vitepress/dist/**',
+          '**/docs/.vitepress/.temp/**',
+        ],
+      },
+    },
+  },
   themeConfig: {
     logo: '/logo_new.png',
     markdown: {
@@ -46,7 +61,7 @@ export default defineConfig({
     i18nRouting: true,
     nav: nav,
     sidebar: sidebar,
-    search: {
+    search: enableLocalSearch ? {
       provider: 'local',
       options: {
         translations: {
@@ -64,7 +79,7 @@ export default defineConfig({
           },
         },
       },
-    },
+    } : undefined,
     // socialLinks: [
     //   { icon: 'github', link: 'https://github.com/healer-V/docs' }
     // ],

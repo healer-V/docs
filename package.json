@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vitepress dev docs",
-    "dev:large": "node --max-old-space-size=4096 ./node_modules/.bin/vitepress dev docs",
+    "dev": "vitepress dev docs --host 127.0.0.1 --port 5173 --strictPort",
+    "dev:fast": "set VITEPRESS_LOCAL_SEARCH=false&& vitepress dev docs --host 127.0.0.1 --port 5173 --strictPort",
+    "dev:large": "node --max-old-space-size=4096 ./node_modules/.bin/vitepress dev docs --host 127.0.0.1 --port 5173 --strictPort",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
