@@ -1,17 +1,7 @@
 <template>
-  <div class="bento-section" ref="sectionRef">
-
-    <!-- ── Stats banner with animated counters ── -->
-    <div class="stats-bar" ref="statsRef">
-      <div class="stat-item" v-for="(stat, i) in stats" :key="stat.label">
-        <span class="stat-num">{{ animatedValues[i] || stat.value }}</span>
-        <span class="stat-label">{{ stat.label }}</span>
-      </div>
-    </div>
-
+  <div class="bento-section">
     <!-- Section title -->
     <div class="bento-header">
-      <span class="bento-label">RESOURCES</span>
       <h2 class="bento-title">精选学习资源</h2>
       <p class="bento-desc">来自社区最优质的前端学习资料，助你系统化进阶</p>
     </div>
@@ -57,34 +47,12 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onUnmounted } from 'vue'
+import { reactive, onMounted, onUnmounted } from 'vue'
 
 const glowRefs = reactive({})
 const cardEls = reactive({})
 const visibleCards = reactive({})
-const sectionRef = ref(null)
-const statsRef = ref(null)
-const animatedValues = reactive({})
 let observer = null
-let statsObserver = null
-
-const animateCounter = (index, target, suffix = '') => {
-  const num = parseInt(target)
-  if (isNaN(num)) {
-    animatedValues[index] = target
-    return
-  }
-  let current = 0
-  const step = Math.ceil(num / 30)
-  const timer = setInterval(() => {
-    current += step
-    if (current >= num) {
-      current = num
-      clearInterval(timer)
-    }
-    animatedValues[index] = current + suffix
-  }, 40)
-}
 
 onMounted(() => {
   observer = new IntersectionObserver(
@@ -101,26 +69,10 @@ onMounted(() => {
   Object.values(cardEls).forEach((el) => {
     if (el) observer.observe(el)
   })
-
-  statsObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          stats.forEach((stat, i) => {
-            animateCounter(i, stat.target, stat.suffix)
-          })
-          statsObserver.disconnect()
-        }
-      })
-    },
-    { threshold: 0.5 }
-  )
-  if (statsRef.value) statsObserver.observe(statsRef.value)
 })
 
 onUnmounted(() => {
   if (observer) observer.disconnect()
-  if (statsObserver) statsObserver.disconnect()
 })
 
 const onMouseMove = (e, i) => {
@@ -138,13 +90,6 @@ const onMouseLeave = (i) => {
   if (!el) return
   el.style.opacity = '0'
 }
-
-const stats = [
-  { value: '7+', target: '7', suffix: '+', label: '技术方向' },
-  { value: '30+', target: '30', suffix: '+', label: '知识专题' },
-  { value: '200+', target: '200', suffix: '+', label: '篇幅文章' },
-  { value: '持续', target: '持续', suffix: '', label: '更新维护' },
-]
 
 const cards = [
   {
@@ -239,70 +184,9 @@ const cards = [
   z-index: 1;
 }
 
-/* ── Stats bar ── */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 1.5rem 0 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-}
-
-.stat-item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: -1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 30px;
-  background: linear-gradient(to bottom, transparent, var(--vp-c-divider), transparent);
-}
-
-.stat-num {
-  font-family: 'Sora', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  background: linear-gradient(135deg, #10b981, #06b6d4, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.2;
-}
-
-.stat-label {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--vp-c-text-3);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
 .bento-header {
   text-align: center;
   margin-bottom: 2rem;
-}
-
-.bento-label {
-  display: inline-block;
-  font-size: 0.65rem;
-  letter-spacing: 0.22em;
-  color: var(--accent, #0ea5e9);
-  font-weight: 600;
-  padding: 5px 16px;
-  background: var(--accent-soft);
-  border-radius: 20px;
-  border: 1px solid var(--glow-border, rgba(14, 165, 233, 0.15));
-  margin-bottom: 1rem;
 }
 
 .bento-title {
@@ -498,15 +382,10 @@ const cards = [
 @media (max-width: 960px) {
   .bento-grid { grid-template-columns: repeat(2, 1fr); }
   .bento-card.span-2 { grid-column: span 2; }
-  .stats-bar { gap: 2rem; }
 }
 
 @media (max-width: 640px) {
   .bento-section { padding: 1.5rem 1rem 3rem; }
-  .stats-bar { gap: 1rem; padding: 1.5rem 0 2rem; flex-wrap: wrap; justify-content: space-around; }
-  .stat-num { font-size: 1.4rem; }
-  .stat-item { min-width: 65px; }
-  .stat-item:not(:last-child)::after { display: none; }
   .bento-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .bento-card.span-2 { grid-column: span 2; }
   .card-content { padding: 1.1rem; }
@@ -526,8 +405,5 @@ const cards = [
 @media (max-width: 360px) {
   .bento-grid { grid-template-columns: 1fr; gap: 10px; }
   .bento-card.span-2 { grid-column: span 1; }
-  .stats-bar { gap: 0.75rem; }
-  .stat-num { font-size: 1.2rem; }
-  .stat-label { font-size: 0.65rem; }
 }
 </style>

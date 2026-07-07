@@ -9,8 +9,9 @@
         -webkit-backdrop-filter: blur(24px) saturate(180%);
     }
 
+    /* Keep the home navbar visually stable while VitePress toggles .top on scroll. */
     .VPNavBar.home.top {
-        background-color: rgba(255, 255, 255, 0) !important;
+        background-color: rgba(255, 255, 255, 0.75) !important;
     }
 
     .VPNavBar:not(.home) {
@@ -101,7 +102,7 @@
     }
 
     .VPNavBar.home.top {
-        background-color: rgba(11, 13, 20, 0) !important;
+        background-color: rgba(11, 13, 20, 0.82) !important;
     }
 
     .VPNavBar:not(.home) {

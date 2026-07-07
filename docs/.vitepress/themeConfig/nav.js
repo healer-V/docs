@@ -1,13 +1,11 @@
 export const nav = [
-  { text: '首页', link: '/' },
-  { text: '博客', link: '/blog-list/' },
   {
     text: '前端',
     items: [
       {
         text: '基础',
         items: [
-          { text: 'HTML', link: '/frontend/01-html/01-overview' },
+          { text: 'HTML', link: '/frontend/01-html/01-01-what-is-html' },
           { text: 'CSS', link: '/frontend/02-css/01-overview' },
           { text: 'JavaScript', link: '/frontend/03-javascript/01-dataType' },
           { text: 'ECMAScript', link: '/frontend/04-ecmascript/01-variable' },

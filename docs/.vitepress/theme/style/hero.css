@@ -121,15 +121,6 @@
 }
 
 .VPHome .vp-doc { position: relative; z-index: 1; }
-.VPHome .vp-doc::before {
-  content: '';
-  display: block;
-  width: 120px; height: 1px;
-  margin: 0 auto;
-  background: var(--aurora);
-  opacity: 0.2;
-  border-radius: 1px;
-}
 
 /* Responsive */
 @media (max-width: 959px) {
