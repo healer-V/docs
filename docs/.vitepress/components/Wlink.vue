@@ -80,12 +80,12 @@ const linksData = fm.value.links
 .hdr-orb--1 {
   width: 280px; height: 280px;
   top: -60px; left: 10%;
-  background: rgba(16, 185, 129, 0.07);
+  background: rgba(var(--color-success-rgb), 0.07);
 }
 .hdr-orb--2 {
   width: 200px; height: 200px;
   bottom: -30px; right: 15%;
-  background: rgba(139, 92, 246, 0.04);
+  background: rgba(var(--color-purple-rgb), 0.04);
 }
 
 .hdr-inner { position: relative; }
@@ -95,9 +95,9 @@ const linksData = fm.value.links
   font-size: 0.6rem;
   letter-spacing: 0.25em;
   font-weight: 700;
-  color: var(--accent, #10b981);
-  background: var(--accent-soft, rgba(16, 185, 129, 0.08));
-  border: 1px solid rgba(16, 185, 129, 0.15);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(var(--color-success-rgb), 0.15);
   padding: 3px 14px;
   border-radius: 20px;
   margin-bottom: 0.75rem;
@@ -109,7 +109,7 @@ const linksData = fm.value.links
   font-weight: 700;
   letter-spacing: -0.04em;
   margin: 0 0 0.4rem;
-  background: linear-gradient(135deg, var(--vp-c-text-1) 40%, var(--accent, #10b981));
+  background: linear-gradient(135deg, var(--vp-c-text-1) 40%, var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -132,7 +132,7 @@ const linksData = fm.value.links
   margin-bottom: 0.5rem;
 }
 
-.sec-icon { color: var(--accent, #10b981); flex-shrink: 0; }
+.sec-icon { color: var(--accent); flex-shrink: 0; }
 
 .sec-title {
   font-family: 'Outfit', sans-serif;
@@ -145,8 +145,8 @@ const linksData = fm.value.links
 .sec-count {
   font-size: 0.62rem;
   font-weight: 700;
-  color: var(--accent, #10b981);
-  background: var(--accent-soft, rgba(16, 185, 129, 0.1));
+  color: var(--accent);
+  background: var(--accent-soft);
   width: 20px;
   height: 20px;
   display: flex;
@@ -192,7 +192,7 @@ const linksData = fm.value.links
   right: -15%;
   width: 260px;
   height: 260px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--color-success-rgb), 0.1) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -206,7 +206,7 @@ const linksData = fm.value.links
   display: inline-block;
   font-size: 0.58rem;
   letter-spacing: 0.2em;
-  color: var(--accent, #10b981);
+  color: var(--accent);
   font-weight: 700;
   margin-bottom: 0.4rem;
   padding: 2px 10px;
@@ -249,7 +249,7 @@ const linksData = fm.value.links
 }
 
 .fmt-key {
-  color: var(--accent, #10b981);
+  color: var(--accent);
   font-weight: 600;
   flex-shrink: 0;
   min-width: 56px;

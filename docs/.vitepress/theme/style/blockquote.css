@@ -6,7 +6,7 @@
     position: relative;
     background-color: var(--vp-c-bg-soft);
     border-left: 4px solid;
-    border-image: var(--aurora, linear-gradient(135deg, #10b981, #06b6d4, #8b5cf6)) 1;
+    border-image: var(--aurora) 1;
 }
 
 .vp-doc h5 {

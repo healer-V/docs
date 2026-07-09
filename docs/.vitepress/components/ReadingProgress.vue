@@ -44,10 +44,10 @@ onUnmounted(() => {
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #10b981, #06b6d4, #8b5cf6);
+  background: var(--aurora-horizontal);
   z-index: 999;
   transition: width 0.1s linear;
   border-radius: 0 1px 1px 0;
-  box-shadow: 0 0 6px var(--accent-glow, rgba(16, 185, 129, 0.25));
+  box-shadow: 0 0 6px var(--accent-glow);
 }
 </style>

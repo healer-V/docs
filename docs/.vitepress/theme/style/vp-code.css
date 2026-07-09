@@ -5,21 +5,21 @@
    CSS Variable overrides
    ============================================================ */
 :root {
-    --vp-code-block-bg: #f6f8fa;
-    --vp-code-block-color: #24292f;
-    --vp-code-block-divider-color: rgba(0, 0, 0, 0.05);
-    --vp-code-line-highlight-color: rgba(14, 165, 233, 0.06);
-    --vp-code-line-number-color: #b0b8c4;
-    --vp-code-copy-code-border-color: rgba(0, 0, 0, 0.08);
-    --vp-code-copy-code-bg: rgba(0, 0, 0, 0.03);
-    --vp-code-copy-code-hover-bg: rgba(14, 165, 233, 0.08);
-    --vp-code-copy-code-hover-border-color: rgba(14, 165, 233, 0.25);
-    --vp-code-tab-bg: #f0f2f5;
-    --vp-code-tab-active-bar-color: var(--accent, #0ea5e9);
-    --code-header-bg: #f0f2f5;
-    --code-dot-red: #ff5f57;
-    --code-dot-yellow: #febc2e;
-    --code-dot-green: #28c840;
+    --vp-code-block-bg: var(--code-block-bg);
+    --vp-code-block-color: var(--code-block-color);
+    --vp-code-block-divider-color: rgba(var(--shadow-rgb), 0.05);
+    --vp-code-line-highlight-color: rgba(var(--color-brand-rgb), 0.06);
+    --vp-code-line-number-color: var(--code-line-number);
+    --vp-code-copy-code-border-color: rgba(var(--shadow-rgb), 0.08);
+    --vp-code-copy-code-bg: rgba(var(--shadow-rgb), 0.03);
+    --vp-code-copy-code-hover-bg: rgba(var(--color-brand-rgb), 0.08);
+    --vp-code-copy-code-hover-border-color: rgba(var(--color-brand-rgb), 0.25);
+    --vp-code-tab-bg: var(--color-neutral-100);
+    --vp-code-tab-active-bar-color: var(--accent);
+    --code-header-bg: var(--color-neutral-100);
+    --code-dot-red: var(--code-dot-red-base);
+    --code-dot-yellow: var(--code-dot-yellow-base);
+    --code-dot-green: var(--code-dot-green-base);
 
     /* Override copy icon with a visible stroke color */
     --vp-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgba(100,110,130,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3C/svg%3E");
@@ -27,20 +27,20 @@
 }
 
 .dark {
-    --vp-code-block-bg: #0c0e17;
-    --vp-code-block-color: #c9d1d9;
-    --vp-code-block-divider-color: rgba(255, 255, 255, 0.04);
-    --vp-code-line-highlight-color: rgba(34, 211, 238, 0.06);
-    --vp-code-line-number-color: #2e3348;
-    --vp-code-copy-code-border-color: rgba(255, 255, 255, 0.06);
-    --vp-code-copy-code-bg: rgba(255, 255, 255, 0.04);
-    --vp-code-copy-code-hover-bg: rgba(34, 211, 238, 0.08);
-    --vp-code-copy-code-hover-border-color: rgba(34, 211, 238, 0.25);
-    --vp-code-tab-bg: #0a0c14;
-    --code-header-bg: #10121e;
-    --code-dot-red: #ff5f5780;
-    --code-dot-yellow: #febc2e80;
-    --code-dot-green: #28c84080;
+    --vp-code-block-bg: var(--code-block-bg-dark);
+    --vp-code-block-color: var(--code-block-color-dark);
+    --vp-code-block-divider-color: rgba(var(--light-rgb), 0.04);
+    --vp-code-line-highlight-color: rgba(var(--color-brand-bright-rgb), 0.06);
+    --vp-code-line-number-color: var(--code-line-number-dark);
+    --vp-code-copy-code-border-color: rgba(var(--light-rgb), 0.06);
+    --vp-code-copy-code-bg: rgba(var(--light-rgb), 0.04);
+    --vp-code-copy-code-hover-bg: rgba(var(--color-brand-bright-rgb), 0.08);
+    --vp-code-copy-code-hover-border-color: rgba(var(--color-brand-bright-rgb), 0.25);
+    --vp-code-tab-bg: var(--code-tab-bg-dark);
+    --code-header-bg: var(--code-header-bg-dark);
+    --code-dot-red: var(--code-dot-red-muted);
+    --code-dot-yellow: var(--code-dot-yellow-muted);
+    --code-dot-green: var(--code-dot-green-muted);
 
     /* Bright icon for dark mode */
     --vp-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgba(180,190,210,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3C/svg%3E");
@@ -61,12 +61,12 @@
 }
 
 .vp-doc div[class*=language-]:hover {
-    border-color: var(--glow-border, rgba(14, 165, 233, 0.12));
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+    border-color: var(--glow-border, rgba(var(--color-brand-rgb), 0.12));
+    box-shadow: 0 2px 12px rgba(var(--shadow-rgb), 0.03);
 }
 
 .dark .vp-doc div[class*=language-]:hover {
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 16px rgba(var(--shadow-rgb), 0.25);
 }
 
 /* ============================================================
@@ -214,8 +214,8 @@ div[class*="language-"].vp-adaptive-theme.line-numbers-mode {
 }
 
 .vp-doc [class*='language-'] > button.copy.copied {
-    background-color: rgba(16, 185, 129, 0.08) !important;
-    border-color: rgba(16, 185, 129, 0.2) !important;
+    background-color: rgba(var(--color-success-rgb), 0.08) !important;
+    border-color: rgba(var(--color-success-rgb), 0.2) !important;
 }
 
 /* ============================================================
@@ -223,7 +223,7 @@ div[class*="language-"].vp-adaptive-theme.line-numbers-mode {
    ============================================================ */
 .vp-doc [class*='language-'] .has-highlighted-lines .line.highlighted {
     background-color: var(--vp-code-line-highlight-color);
-    border-left: 2px solid var(--accent, #0ea5e9);
+    border-left: 2px solid var(--accent);
     padding-left: 14px;
     margin-left: -16px;
     margin-right: -18px;
@@ -232,11 +232,11 @@ div[class*="language-"].vp-adaptive-theme.line-numbers-mode {
 
 /* Diff lines */
 .vp-doc [class*='language-'] .line.diff.add {
-    background-color: rgba(16, 185, 129, 0.08);
+    background-color: rgba(var(--color-success-rgb), 0.08);
 }
 
 .vp-doc [class*='language-'] .line.diff.remove {
-    background-color: rgba(239, 68, 68, 0.08);
+    background-color: rgba(var(--color-danger-rgb), 0.08);
 }
 
 /* ============================================================
@@ -279,8 +279,8 @@ div[class*="language-"].vp-adaptive-theme.line-numbers-mode {
 }
 
 .vp-code-group .tabs label.active {
-    color: var(--accent, #0ea5e9) !important;
-    border-bottom-color: var(--accent, #0ea5e9);
+    color: var(--accent) !important;
+    border-bottom-color: var(--accent);
 }
 
 .vp-code-group div[class*='language-'] {

@@ -13,12 +13,12 @@
 .VPNavBar:not(.home.top),
 .VPNavBar.home.top {
   box-shadow: 0 1px 0 0 var(--vp-c-divider),
-              0 4px 24px rgba(0, 0, 0, 0.06) !important;
+              0 4px 24px rgba(var(--shadow-rgb), 0.06) !important;
 }
 .dark .VPNavBar:not(.home.top),
 .dark .VPNavBar.home.top {
   box-shadow: 0 1px 0 0 var(--vp-c-divider),
-              0 4px 32px rgba(0, 0, 0, 0.3) !important;
+              0 4px 32px rgba(var(--shadow-rgb), 0.3) !important;
 }
 
 .VPNavBar .title {
@@ -80,13 +80,13 @@
 .VPFlyout .VPMenu {
   border-radius: 14px !important;
   border: 1px solid var(--glow-border) !important;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 16px 48px rgba(var(--shadow-rgb), 0.1) !important;
   backdrop-filter: blur(20px) saturate(180%);
   overflow: hidden;
   transform: translateZ(0);
 }
 .dark .VPFlyout .VPMenu {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 16px 48px rgba(var(--shadow-rgb), 0.4) !important;
   background: var(--vp-c-bg-soft) !important;
 }
 

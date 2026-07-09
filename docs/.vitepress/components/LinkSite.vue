@@ -44,12 +44,12 @@ const handleImageError = () => { imageFailed.value = true }
 
 .link-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(16, 185, 129, 0.25);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  border-color: rgba(var(--color-success-rgb), 0.25);
+  box-shadow: 0 6px 20px rgba(var(--shadow-rgb), 0.05);
 }
 
 .dark .link-card:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 6px 20px rgba(var(--shadow-rgb), 0.18);
 }
 
 .lk-avatar {
@@ -61,7 +61,7 @@ const handleImageError = () => { imageFailed.value = true }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent-soft, rgba(16, 185, 129, 0.06));
+  background: var(--accent-soft);
 }
 
 .lk-avatar img {
@@ -79,7 +79,7 @@ const handleImageError = () => { imageFailed.value = true }
 .lk-fallback {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--accent, #10b981);
+  color: var(--accent);
 }
 
 .lk-info {
@@ -100,7 +100,7 @@ const handleImageError = () => { imageFailed.value = true }
   transition: color 0.2s;
 }
 
-.link-card:hover .lk-name { color: var(--accent, #10b981); }
+.link-card:hover .lk-name { color: var(--accent); }
 
 .lk-desc {
   font-size: 0.72rem;
@@ -125,6 +125,6 @@ const handleImageError = () => { imageFailed.value = true }
 .link-card:hover .lk-arrow {
   opacity: 1;
   transform: translate(0, 0);
-  color: var(--accent, #10b981);
+  color: var(--accent);
 }
 </style>

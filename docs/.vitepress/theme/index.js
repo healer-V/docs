@@ -1,23 +1,15 @@
 // https://vitepress.dev/guide/custom-theme
-import { h, ref, defineComponent, provide, inject, onMounted } from 'vue'
+import { h, ref, defineComponent, provide, inject } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { inBrowser } from 'vitepress'
-import busuanzi from 'busuanzi.pure.js'
 import Login from '../components/Login.vue'
 import LogoutButton from '../components/LogoutButton.vue'
-import ImageViewer from '../components/ImageViewer.vue'
-import BlogList from '../components/BlogList.vue'
-import BusuanziStats from '../components/BusuanziStats.vue'
-import ArticleMeta from '../components/ArticleMeta.vue'
 import Wlink from '../components/Wlink.vue'
-import GuideNav from '../components/GuideNav.vue'
 import HomeBento from '../components/HomeBento.vue'
 import AboutPage from '../components/AboutPage.vue'
 import ReadingProgress from '../components/ReadingProgress.vue'
 import { authManager } from '../utils/auth.js'
-// import './style.css';
 import './style/index.css';
-// import './custom.css';
 
 // 共享的登录状态 — 使用 provide/inject 保持同步
 const AUTH_KEY = Symbol('auth')
@@ -67,27 +59,10 @@ const AuthLayout = defineComponent({
 export default {
   extends: DefaultTheme,
   Layout: AuthLayout,
-  enhanceApp({ app, router, siteData }) {
+  enhanceApp({ app }) {
     // 注册全局组件
-    app.component('BlogList', BlogList)
-    app.component('BusuanziStats', BusuanziStats)
-    app.component('ArticleMeta', ArticleMeta)
     app.component('Wlink', Wlink)
-    app.component('ImageViewer', ImageViewer)
-    app.component('GuideNav', GuideNav)
     app.component('HomeBento', HomeBento)
     app.component('AboutPage', AboutPage)
-
-    // 确保busuanzi在浏览器环境中可用
-    if (inBrowser) {
-      // 将busuanzi挂载到window对象
-      window.busuanzi = busuanzi
-
-      router.onAfterRouteChanged = () => {
-        if (window.busuanzi) {
-          window.busuanzi.fetch()
-        }
-      }
-    }
   }
 }

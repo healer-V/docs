@@ -1,43 +1,43 @@
 /* .vitepress/theme/style/custom-block.css */
 
 :root {
-    --custom-block-info-left: #9ca3af;
-    --custom-block-info-bg: #f8f9fa;
+    --custom-block-info-left: var(--color-gray);
+    --custom-block-info-bg: var(--color-neutral-50);
 
-    --custom-block-tip-left: #0ea5e9;
-    --custom-block-tip-bg: #f0f9ff;
+    --custom-block-tip-left: var(--color-brand);
+    --custom-block-tip-bg: var(--semantic-tip-bg);
 
-    --custom-block-warning-left: #f59e0b;
-    --custom-block-warning-bg: #fffbeb;
+    --custom-block-warning-left: var(--color-amber);
+    --custom-block-warning-bg: var(--semantic-warning-bg);
 
-    --custom-block-danger-left: #ef4444;
-    --custom-block-danger-bg: #fef2f2;
+    --custom-block-danger-left: var(--color-danger);
+    --custom-block-danger-bg: var(--semantic-danger-bg);
 
-    --custom-block-note-left: #3b82f6;
-    --custom-block-note-bg: #eff6ff;
+    --custom-block-note-left: var(--color-blue);
+    --custom-block-note-bg: var(--semantic-note-bg);
 
-    --custom-block-important-left: #8b5cf6;
-    --custom-block-important-bg: #f5f3ff;
+    --custom-block-important-left: var(--color-purple);
+    --custom-block-important-bg: var(--semantic-important-bg);
 }
 
 .dark {
-    --custom-block-info-left: #6b7280;
-    --custom-block-info-bg: rgba(107, 114, 128, 0.1);
+    --custom-block-info-left: var(--color-gray-strong);
+    --custom-block-info-bg: rgba(var(--color-gray-strong-rgb), 0.1);
 
-    --custom-block-tip-left: #22d3ee;
-    --custom-block-tip-bg: rgba(34, 211, 238, 0.08);
+    --custom-block-tip-left: var(--color-brand-bright);
+    --custom-block-tip-bg: rgba(var(--color-brand-bright-rgb), 0.08);
 
-    --custom-block-warning-left: #fbbf24;
-    --custom-block-warning-bg: rgba(251, 191, 36, 0.08);
+    --custom-block-warning-left: var(--color-yellow);
+    --custom-block-warning-bg: rgba(var(--color-yellow-rgb), 0.08);
 
-    --custom-block-danger-left: #f87171;
-    --custom-block-danger-bg: rgba(248, 113, 113, 0.08);
+    --custom-block-danger-left: var(--color-danger-soft);
+    --custom-block-danger-bg: rgba(var(--color-danger-soft-rgb), 0.08);
 
-    --custom-block-note-left: #60a5fa;
-    --custom-block-note-bg: rgba(96, 165, 250, 0.08);
+    --custom-block-note-left: var(--color-blue-soft);
+    --custom-block-note-bg: rgba(var(--color-blue-soft-rgb), 0.08);
 
-    --custom-block-important-left: #a78bfa;
-    --custom-block-important-bg: rgba(167, 139, 250, 0.08);
+    --custom-block-important-left: var(--color-purple-soft);
+    --custom-block-important-bg: rgba(var(--color-purple-soft-rgb), 0.08);
 }
 
 /* Shared block styles */
@@ -48,11 +48,11 @@
 }
 
 .custom-block:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 12px rgba(var(--shadow-rgb), 0.04);
 }
 
 .dark .custom-block:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 12px rgba(var(--shadow-rgb), 0.15);
 }
 
 .custom-block-title {

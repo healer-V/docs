@@ -26,9 +26,6 @@ export default defineConfig({
         // 更细粒度的代码分割，避免单个 chunk 过大撑爆内存
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('busuanzi')) {
-              return 'vendor-busuanzi'
-            }
             if (id.includes('@vue') || id.includes('vue-demi')) {
               return 'vendor-vue'
             }

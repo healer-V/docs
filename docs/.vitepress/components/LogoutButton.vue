@@ -41,8 +41,8 @@ const handleLogout = () => {
 }
 
 .logout-button:hover {
-  border-color: var(--accent, #0ea5e9);
-  color: var(--accent, #0ea5e9);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .logout-button:active {

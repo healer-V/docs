@@ -4,31 +4,31 @@
 :root {
 
     .VPNavBar {
-        background-color: rgba(255, 255, 255, 0.75) !important;
+        background-color: rgba(var(--light-rgb), 0.75) !important;
         backdrop-filter: blur(24px) saturate(180%);
         -webkit-backdrop-filter: blur(24px) saturate(180%);
     }
 
     /* Keep the home navbar visually stable while VitePress toggles .top on scroll. */
     .VPNavBar.home.top {
-        background-color: rgba(255, 255, 255, 0.75) !important;
+        background-color: rgba(var(--light-rgb), 0.75) !important;
     }
 
     .VPNavBar:not(.home) {
-        background-color: rgba(255, 255, 255, 0.75) !important;
+        background-color: rgba(var(--light-rgb), 0.75) !important;
         backdrop-filter: blur(24px) saturate(180%);
         -webkit-backdrop-filter: blur(24px) saturate(180%);
     }
 
     @media (min-width: 960px) {
         .VPNavBar:not(.home) {
-            background-color: rgba(255, 255, 255, 0.75) !important;
+            background-color: rgba(var(--light-rgb), 0.75) !important;
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
         }
 
         .VPNavBar:not(.has-sidebar):not(.home.top) {
-            background-color: rgba(255, 255, 255, 0.75) !important;
+            background-color: rgba(var(--light-rgb), 0.75) !important;
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
         }
@@ -36,21 +36,21 @@
 
     @media (min-width: 960px) {
         .VPNavBar:not(.home.top) .content-body {
-            background-color: rgba(255, 255, 255, 0) !important;
+            background-color: rgba(var(--light-rgb), 0) !important;
         }
 
         .VPNavBar:not(.has-sidebar):not(.home.top) .content-body {
-            background-color: rgba(255, 255, 255, 0) !important;
+            background-color: rgba(var(--light-rgb), 0) !important;
         }
     }
 
     @media (min-width: 960px) {
         .VPNavBar:not(.home.top) .divider-line {
-            background-color: rgba(255, 255, 255, 0) !important;
+            background-color: rgba(var(--light-rgb), 0) !important;
         }
 
         .VPNavBar:not(.has-sidebar):not(.home.top) .divider {
-            background-color: rgba(255, 255, 255, 0) !important;
+            background-color: rgba(var(--light-rgb), 0) !important;
         }
     }
     @media (max-width: 768px) {
@@ -75,7 +75,7 @@
     }
 
     .VPLocalNav {
-        background-color: rgba(255, 255, 255, 0.75) !important;
+        background-color: rgba(var(--light-rgb), 0.75) !important;
         backdrop-filter: blur(24px) saturate(180%);
         -webkit-backdrop-filter: blur(24px) saturate(180%);
         border-bottom: 0px;
@@ -83,7 +83,7 @@
 
     /* Mobile nav screen (hamburger menu overlay) */
     .VPNavScreen {
-        background-color: rgba(255, 255, 255, 0.92) !important;
+        background-color: rgba(var(--light-rgb), 0.92) !important;
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
     }
@@ -98,30 +98,30 @@
 /* Dark mode — deep midnight glass */
 .dark {
     .VPNavBar {
-        background-color: rgba(11, 13, 20, 0.82) !important;
+        background-color: rgba(var(--page-dark-rgb), 0.82) !important;
     }
 
     .VPNavBar.home.top {
-        background-color: rgba(11, 13, 20, 0.82) !important;
+        background-color: rgba(var(--page-dark-rgb), 0.82) !important;
     }
 
     .VPNavBar:not(.home) {
-        background-color: rgba(11, 13, 20, 0.82) !important;
+        background-color: rgba(var(--page-dark-rgb), 0.82) !important;
     }
 
     @media (min-width: 960px) {
         .VPNavBar:not(.home),
         .VPNavBar:not(.has-sidebar):not(.home.top) {
-            background-color: rgba(11, 13, 20, 0.82) !important;
+            background-color: rgba(var(--page-dark-rgb), 0.82) !important;
         }
     }
 
     .VPLocalNav {
-        background-color: rgba(11, 13, 20, 0.82) !important;
+        background-color: rgba(var(--page-dark-rgb), 0.82) !important;
     }
 
     .VPNavScreen {
-        background-color: rgba(11, 13, 20, 0.95) !important;
+        background-color: rgba(var(--page-dark-rgb), 0.95) !important;
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
     }
@@ -186,12 +186,12 @@
 
 @media (min-width: 1440px) {
     .VPSidebar {
-        width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px) !important;
+        width: max(var(--vp-sidebar-width), calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px)) !important;
     }
 }
 
 @media (min-width: 960px) {
     .VPSidebar {
-        width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px) !important;
+        width: max(var(--vp-sidebar-width), calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px)) !important;
     }
 }

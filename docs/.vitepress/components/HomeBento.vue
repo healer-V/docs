@@ -95,12 +95,12 @@ const cards = [
   {
     title: '前端官 · Vue3面试题',
     tag: 'Vue 3',
-    desc: '系统整理的 Vue3 面试题，覆盖响应式原理、Composition API、性能优化等核心考点',
+    desc: '系统整理的 Vue3 原理',
     link: 'https://vue3js.cn/interview/',
-    size: 'span-2',
-    color: '#10b981',
-    colorSoft: 'rgba(16, 185, 129, 0.10)',
-    icon: `<svg viewBox="0 0 32 32" width="28" height="28"><path d="M2 4l14 24L30 4h-5.5L16 18.5 7.5 4z" fill="#10b981"/><path d="M7.5 4L16 18.5 24.5 4h-5L16 10.5 12.5 4z" fill="#059669"/></svg>`
+    size: 'span-1',
+    color: 'var(--color-success)',
+    colorSoft: 'rgba(var(--color-success-rgb), 0.10)',
+    icon: `<svg viewBox="0 0 32 32" width="28" height="28"><path d="M2 4l14 24L30 4h-5.5L16 18.5 7.5 4z" fill="var(--color-success)"/><path d="M7.5 4L16 18.5 24.5 4h-5L16 10.5 12.5 4z" fill="var(--color-success-hover)"/></svg>`
   },
   {
     title: '小满 · React Docs',
@@ -108,19 +108,9 @@ const cards = [
     desc: '深度解读 React 文档，适合进阶学习',
     link: 'https://message163.github.io/react-docs/react/components/base.html',
     size: 'span-1',
-    color: '#38bdf8',
-    colorSoft: 'rgba(56, 189, 248, 0.10)',
-    icon: `<svg viewBox="0 0 32 32" width="28" height="28"><circle cx="16" cy="16" r="3" fill="#38bdf8"/><ellipse cx="16" cy="16" rx="14" ry="5.5" fill="none" stroke="#38bdf8" stroke-width="1.5"/><ellipse cx="16" cy="16" rx="14" ry="5.5" fill="none" stroke="#38bdf8" stroke-width="1.5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="14" ry="5.5" fill="none" stroke="#38bdf8" stroke-width="1.5" transform="rotate(120 16 16)"/></svg>`
-  },
-  {
-    title: 'GitHub · 前端知识笔记',
-    tag: 'HTML / CSS / JS',
-    desc: 'realgeoffrey 整理的前端知识体系',
-    link: 'https://github.com/realgeoffrey/knowledge',
-    size: 'span-1',
-    color: '#a78bfa',
-    colorSoft: 'rgba(167, 139, 250, 0.10)',
-    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`
+    color: 'var(--color-sky)',
+    colorSoft: 'rgba(var(--color-sky-rgb), 0.10)',
+    icon: `<svg viewBox="0 0 32 32" width="28" height="28"><circle cx="16" cy="16" r="3" fill="var(--color-sky)"/><ellipse cx="16" cy="16" rx="14" ry="5.5" fill="none" stroke="var(--color-sky)" stroke-width="1.5"/><ellipse cx="16" cy="16" rx="14" ry="5.5" fill="none" stroke="var(--color-sky)" stroke-width="1.5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="14" ry="5.5" fill="none" stroke="var(--color-sky)" stroke-width="1.5" transform="rotate(120 16 16)"/></svg>`
   },
   {
     title: '阮一峰 · ES6 标准入门',
@@ -128,9 +118,9 @@ const cards = [
     desc: '最权威的中文 ES6 教程，持续更新维护',
     link: 'https://es6.ruanyifeng.com/',
     size: 'span-1',
-    color: '#fbbf24',
-    colorSoft: 'rgba(251, 191, 36, 0.10)',
-    icon: `<svg viewBox="0 0 32 32" width="28" height="28"><rect x="2" y="2" width="28" height="28" rx="6" fill="rgba(251,191,36,0.15)"/><text x="16" y="23" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="15" fill="#fbbf24">ES</text></svg>`
+    color: 'var(--color-yellow)',
+    colorSoft: 'rgba(var(--color-yellow-rgb), 0.10)',
+    icon: `<svg viewBox="0 0 32 32" width="28" height="28"><rect x="2" y="2" width="28" height="28" rx="6" fill="rgba(var(--color-yellow-rgb), 0.15)"/><text x="16" y="23" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="15" fill="var(--color-yellow)">ES</text></svg>`
   },
   {
     title: '张鑫旭 · CSS世界',
@@ -138,29 +128,19 @@ const cards = [
     desc: '深入 CSS 细节与原理，国内 CSS 领域最具深度的博客',
     link: 'https://www.zhangxinxu.com/wordpress/',
     size: 'span-1',
-    color: '#f472b6',
-    colorSoft: 'rgba(244, 114, 182, 0.10)',
-    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f472b6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16l-1.5 15L12 21l-6.5-3z"/><path d="M8 8h8l-.5 5H12"/></svg>`
+    color: 'var(--color-pink)',
+    colorSoft: 'rgba(var(--color-pink-rgb), 0.10)',
+    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--color-pink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16l-1.5 15L12 21l-6.5-3z"/><path d="M8 8h8l-.5 5H12"/></svg>`
   },
   {
-    title: '冴羽 · JavaScript深入系列',
-    tag: 'JavaScript',
-    desc: '深入理解 JS 原型链、作用域、闭包、异步等核心概念，从底层彻底搞懂 JavaScript',
-    link: 'https://github.com/mqyqingfeng/Blog',
-    size: 'span-2',
-    color: '#22d3ee',
-    colorSoft: 'rgba(34, 211, 238, 0.10)',
-    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>`
-  },
-  {
-    title: '神三元 · 前端进阶',
+    title: '网道·文档',
     tag: '进阶',
-    desc: '系统梳理前端进阶知识，原理分析深入浅出',
-    link: 'https://sanyuan0704.top/blogs/',
+    desc: '系统梳理前端基础知识',
+    link: 'https://wangdoc.com/',
     size: 'span-1',
-    color: '#fb923c',
-    colorSoft: 'rgba(251, 146, 60, 0.10)',
-    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`
+    color: 'var(--color-orange)',
+    colorSoft: 'rgba(var(--color-orange-rgb), 0.10)',
+    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--color-orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`
   },
   {
     title: '掘金 · 前端专栏',
@@ -168,9 +148,39 @@ const cards = [
     desc: '国内最活跃的前端技术社区，优质文章持续更新',
     link: 'https://juejin.cn/frontend',
     size: 'span-1',
-    color: '#818cf8',
-    colorSoft: 'rgba(129, 140, 248, 0.10)',
-    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M10 3l-4 6 6 13 6-13-4-6"/></svg>`
+    color: 'var(--color-indigo)',
+    colorSoft: 'rgba(var(--color-indigo-rgb), 0.10)',
+    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--color-indigo)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M2 9h20"/><path d="M10 3l-4 6 6 13 6-13-4-6"/></svg>`
+  },
+  {
+    title: 'OpForge · 运维',
+    tag: '运维',
+    desc: '运维锻造，知识沉淀',
+    link: 'https://opforge.srebro.cn/',
+    size: 'span-1',
+    color: 'var(--color-indigo)',
+    colorSoft: 'rgba(var(--color-indigo-rgb), 0.10)',
+    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--color-brand-bright)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>`
+  },
+    {
+    title: 'Github · 冴羽 · JavaScript深入系列',
+    tag: 'JavaScript',
+    desc: '深入理解 JS 原型链、作用域、闭包、异步等核心概念，从底层彻底搞懂 JavaScript',
+    link: 'https://github.com/mqyqingfeng/Blog',
+    size: 'span-2',
+    color: 'var(--color-brand-bright)',
+    colorSoft: 'rgba(var(--color-brand-bright-rgb), 0.10)',
+    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--color-brand-bright)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>`
+  },
+    {
+    title: 'GitHub · 前端知识笔记',
+    tag: 'HTML / CSS / JS',
+    desc: 'realgeoffrey 整理的前端知识体系',
+    link: 'https://github.com/realgeoffrey/knowledge',
+    size: 'span-1',
+    color: 'var(--color-purple-soft)',
+    colorSoft: 'rgba(var(--color-purple-soft-rgb), 0.10)',
+    icon: `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--color-purple-soft)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`
   },
 ]
 </script>
@@ -264,12 +274,12 @@ const cards = [
 
 .bento-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 24px 64px -16px rgba(var(--shadow-rgb), 0.12);
   border-color: var(--card-accent);
 }
 
 .dark .bento-card:hover {
-  box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 24px 64px -16px rgba(var(--shadow-rgb), 0.4);
 }
 
 /* Top glow line */

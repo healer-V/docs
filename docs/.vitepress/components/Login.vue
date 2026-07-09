@@ -125,7 +125,7 @@ const handleLogin = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #060811;
+  background: var(--color-night);
   overflow: hidden;
   font-family: 'Sora', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -148,7 +148,7 @@ const handleLogin = async () => {
   height: 500px;
   top: -15%;
   left: -10%;
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(var(--color-success-rgb), 0.12);
   animation: orbFloat1 18s ease-in-out infinite alternate;
 }
 
@@ -157,7 +157,7 @@ const handleLogin = async () => {
   height: 400px;
   top: 20%;
   right: -8%;
-  background: rgba(6, 182, 212, 0.10);
+  background: rgba(var(--color-cyan-rgb), 0.10);
   animation: orbFloat2 22s ease-in-out infinite alternate;
 }
 
@@ -166,7 +166,7 @@ const handleLogin = async () => {
   height: 350px;
   bottom: -10%;
   left: 30%;
-  background: rgba(139, 92, 246, 0.08);
+  background: rgba(var(--color-purple-rgb), 0.08);
   animation: orbFloat3 20s ease-in-out infinite alternate;
 }
 
@@ -186,7 +186,7 @@ const handleLogin = async () => {
 .grid-overlay {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 0.5px, transparent 0.5px);
+  background-image: radial-gradient(circle, rgba(var(--light-rgb), 0.08) 0.5px, transparent 0.5px);
   background-size: 28px 28px;
   mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
@@ -199,8 +199,8 @@ const handleLogin = async () => {
   width: 92%;
   max-width: 380px;
   padding: 2.5rem 2rem 2rem;
-  background: rgba(17, 19, 32, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(var(--surface-dark-rgb), 0.65);
+  border: 1px solid rgba(var(--light-rgb), 0.06);
   border-radius: 20px;
   backdrop-filter: blur(40px) saturate(150%);
   -webkit-backdrop-filter: blur(40px) saturate(150%);
@@ -212,7 +212,7 @@ const handleLogin = async () => {
   position: absolute;
   inset: -1px;
   border-radius: 21px;
-  background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(6,182,212,0.15), rgba(139,92,246,0.2));
+  background: linear-gradient(135deg, rgba(var(--color-success-rgb), 0.25), rgba(var(--color-cyan-rgb), 0.15), rgba(var(--color-purple-rgb), 0.2));
   z-index: -1;
   opacity: 0.5;
   filter: blur(1px);
@@ -240,7 +240,7 @@ const handleLogin = async () => {
   margin: 0 auto 1rem;
   border-radius: 16px;
   padding: 2px;
-  background: linear-gradient(135deg, #10b981, #06b6d4, #8b5cf6);
+  background: var(--aurora);
   animation: ringShift 6s ease-in-out infinite alternate;
   transition: transform 0.3s ease;
 }
@@ -260,7 +260,7 @@ const handleLogin = async () => {
   border-radius: 14px;
   object-fit: cover;
   display: block;
-  background: var(--vp-c-bg, #fff);
+  background: var(--vp-c-bg, var(--color-white));
 }
 
 .portal-title {
@@ -269,7 +269,7 @@ const handleLogin = async () => {
   font-weight: 800;
   letter-spacing: -0.03em;
   margin: 0 0 0.35rem;
-  background: linear-gradient(135deg, #e8eaf0 30%, #22d3ee 70%, #8b5cf6);
+  background: linear-gradient(135deg, var(--color-neutral-300) 30%, var(--color-brand-bright) 70%, var(--color-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -279,7 +279,7 @@ const handleLogin = async () => {
 .portal-sub {
   font-size: 0.78rem;
   font-weight: 400;
-  color: #4e5268;
+  color: var(--color-neutral-700);
   margin: 0;
   letter-spacing: 0.08em;
 }
@@ -299,26 +299,26 @@ const handleLogin = async () => {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #4e5268;
+  color: var(--color-neutral-700);
   margin-bottom: 0.4rem;
 }
 
 .field label svg {
-  color: #3b3f54;
+  color: var(--color-neutral-800);
 }
 
 .input-wrap {
   position: relative;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(var(--light-rgb), 0.06);
+  background: rgba(var(--light-rgb), 0.03);
   transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .input-wrap.focused {
-  border-color: rgba(34, 211, 238, 0.3);
-  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.06), 0 0 20px rgba(34, 211, 238, 0.05);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(var(--color-brand-bright-rgb), 0.3);
+  box-shadow: 0 0 0 3px rgba(var(--color-brand-bright-rgb), 0.06), 0 0 20px rgba(var(--color-brand-bright-rgb), 0.05);
+  background: rgba(var(--light-rgb), 0.04);
 }
 
 .input-wrap input {
@@ -330,13 +330,13 @@ const handleLogin = async () => {
   border: none;
   border-radius: 10px;
   background: transparent;
-  color: #e8eaf0;
+  color: var(--color-neutral-300);
   outline: none;
   box-sizing: border-box;
 }
 
 .input-wrap input::placeholder {
-  color: #2e3148;
+  color: var(--color-neutral-900);
   font-weight: 300;
 }
 
@@ -346,15 +346,15 @@ const handleLogin = async () => {
   align-items: center;
   gap: 8px;
   padding: 10px 14px;
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.15);
+  background: rgba(var(--color-danger-rgb), 0.08);
+  border: 1px solid rgba(var(--color-danger-rgb), 0.15);
   border-radius: 10px;
   font-size: 0.8rem;
   font-weight: 500;
-  color: #f87171;
+  color: var(--color-danger-soft);
 }
 
-.error-toast svg { flex-shrink: 0; color: #ef4444; }
+.error-toast svg { flex-shrink: 0; color: var(--color-danger); }
 
 .err-enter-active { animation: errIn 0.35s ease; }
 .err-leave-active { animation: errIn 0.2s ease reverse; }
@@ -376,8 +376,8 @@ const handleLogin = async () => {
   font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: #fff;
-  background: linear-gradient(135deg, #10b981, #06b6d4, #8b5cf6);
+  color: var(--color-white);
+  background: var(--aurora);
   background-size: 200% 200%;
   border: none;
   border-radius: 12px;
@@ -401,7 +401,7 @@ const handleLogin = async () => {
   left: -120%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--light-rgb), 0.18), transparent);
   animation: shimmerSweep 3.5s ease-in-out infinite;
   pointer-events: none;
 }
@@ -413,7 +413,7 @@ const handleLogin = async () => {
 
 .submit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.25), 0 0 0 1px rgba(34, 211, 238, 0.15);
+  box-shadow: 0 8px 32px rgba(var(--color-cyan-rgb), 0.25), 0 0 0 1px rgba(var(--color-brand-bright-rgb), 0.15);
 }
 
 .submit-btn:active {
@@ -438,8 +438,8 @@ const handleLogin = async () => {
 .btn-spinner {
   width: 16px;
   height: 16px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-top-color: #fff;
+  border: 2px solid rgba(var(--light-rgb), 0.3);
+  border-top-color: var(--color-white);
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
 }
@@ -459,32 +459,32 @@ const handleLogin = async () => {
   width: 40px;
   height: 1px;
   margin: 0 auto 0.8rem;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--light-rgb), 0.08), transparent);
 }
 
 .portal-footer p {
   margin: 0;
   font-size: 0.65rem;
-  color: #2e3148;
+  color: var(--color-neutral-900);
   letter-spacing: 0.05em;
 }
 
 /* ── Light mode overrides ── */
 :root .login-portal {
-  background: #f0f2f8;
+  background: var(--color-neutral-200);
 }
 
-:root .aurora-orb--1 { background: rgba(16, 185, 129, 0.08); }
-:root .aurora-orb--2 { background: rgba(6, 182, 212, 0.06); }
-:root .aurora-orb--3 { background: rgba(139, 92, 246, 0.05); }
+:root .aurora-orb--1 { background: rgba(var(--color-success-rgb), 0.08); }
+:root .aurora-orb--2 { background: rgba(var(--color-cyan-rgb), 0.06); }
+:root .aurora-orb--3 { background: rgba(var(--color-purple-rgb), 0.05); }
 
 :root .grid-overlay {
-  background-image: radial-gradient(circle, rgba(0,0,0,0.04) 0.5px, transparent 0.5px);
+  background-image: radial-gradient(circle, rgba(var(--shadow-rgb), 0.04) 0.5px, transparent 0.5px);
 }
 
 :root .portal-card {
-  background: rgba(255, 255, 255, 0.75);
-  border-color: rgba(0, 0, 0, 0.06);
+  background: rgba(var(--light-rgb), 0.75);
+  border-color: rgba(var(--shadow-rgb), 0.06);
 }
 
 :root .card-glow {
@@ -492,40 +492,40 @@ const handleLogin = async () => {
 }
 
 :root .portal-title {
-  background: linear-gradient(135deg, #1a1a2e 30%, #0ea5e9 70%, #8b5cf6);
+  background: linear-gradient(135deg, var(--color-ink) 30%, var(--color-brand) 70%, var(--color-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-:root .portal-sub { color: #8b8fa5; }
+:root .portal-sub { color: var(--color-neutral-600); }
 
-:root .field label { color: #8b8fa5; }
-:root .field label svg { color: #b0b4c8; }
+:root .field label { color: var(--color-neutral-600); }
+:root .field label svg { color: var(--color-neutral-500); }
 
 :root .input-wrap {
-  border-color: rgba(0, 0, 0, 0.08);
-  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(var(--shadow-rgb), 0.08);
+  background: rgba(var(--shadow-rgb), 0.02);
 }
 
 :root .input-wrap.focused {
-  border-color: rgba(14, 165, 233, 0.35);
-  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.06), 0 0 20px rgba(14, 165, 233, 0.04);
-  background: #fff;
+  border-color: rgba(var(--color-brand-rgb), 0.35);
+  box-shadow: 0 0 0 3px rgba(var(--color-brand-rgb), 0.06), 0 0 20px rgba(var(--color-brand-rgb), 0.04);
+  background: var(--color-white);
 }
 
 :root .input-wrap input {
-  color: #1a1a2e;
+  color: var(--color-ink);
 }
 
 :root .input-wrap input::placeholder {
-  color: #c4c8d8;
+  color: var(--color-neutral-400);
 }
 
-:root .portal-footer p { color: #c4c8d8; }
+:root .portal-footer p { color: var(--color-neutral-400); }
 
 :root .footer-line {
-  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--shadow-rgb), 0.06), transparent);
 }
 
 /* ── Responsive ── */

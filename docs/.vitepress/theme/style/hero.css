@@ -10,20 +10,20 @@
   top: -20%; left: -15%;
   width: 130%; height: 90vh;
   background:
-    radial-gradient(600px circle at 20% 30%, rgba(16,185,129,0.12), transparent 50%),
-    radial-gradient(500px circle at 60% 20%, rgba(6,182,212,0.10), transparent 50%),
-    radial-gradient(550px circle at 80% 50%, rgba(139,92,246,0.08), transparent 50%),
-    radial-gradient(400px circle at 40% 60%, rgba(14,165,233,0.06), transparent 50%);
+    radial-gradient(600px circle at 20% 30%, rgba(var(--color-success-rgb), 0.12), transparent 50%),
+    radial-gradient(500px circle at 60% 20%, rgba(var(--color-cyan-rgb), 0.10), transparent 50%),
+    radial-gradient(550px circle at 80% 50%, rgba(var(--color-purple-rgb), 0.08), transparent 50%),
+    radial-gradient(400px circle at 40% 60%, rgba(var(--color-brand-rgb), 0.06), transparent 50%);
   pointer-events: none;
   z-index: 0;
   animation: auroraShift 25s ease-in-out infinite alternate;
 }
 .dark .VPHome::before {
   background:
-    radial-gradient(600px circle at 20% 30%, rgba(16,185,129,0.08), transparent 50%),
-    radial-gradient(500px circle at 60% 20%, rgba(6,182,212,0.06), transparent 50%),
-    radial-gradient(550px circle at 80% 50%, rgba(139,92,246,0.05), transparent 50%),
-    radial-gradient(400px circle at 40% 60%, rgba(14,165,233,0.04), transparent 50%);
+    radial-gradient(600px circle at 20% 30%, rgba(var(--color-success-rgb), 0.08), transparent 50%),
+    radial-gradient(500px circle at 60% 20%, rgba(var(--color-cyan-rgb), 0.06), transparent 50%),
+    radial-gradient(550px circle at 80% 50%, rgba(var(--color-purple-rgb), 0.05), transparent 50%),
+    radial-gradient(400px circle at 40% 60%, rgba(var(--color-brand-rgb), 0.04), transparent 50%);
 }
 
 @keyframes auroraShift {
@@ -48,10 +48,15 @@
 .dark .VPHome::after { opacity: 0.06; }
 
 .VPHero {
-  padding-top: 80px !important;
+  padding-top: 120px !important;
   padding-bottom: 32px !important;
   position: relative;
   z-index: 1;
+}
+
+.VPHero .container,
+.VPHero .main {
+  overflow: visible !important;
 }
 
 .VPHero .name {
@@ -60,6 +65,23 @@
   line-height: 1.05 !important;
   letter-spacing: -0.05em !important;
   font-weight: 800 !important;
+  /* 放宽渐变标题的绘制盒，避免 Sora 粗体字形右侧被默认 hero 宽度裁掉。 */
+  display: inline-block;
+  width: max-content;
+  max-width: none !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+.VPHero .name .clip {
+  /* VitePress 的渐变文字实际绘制在内部 .clip 上，安全区必须加在这里才会生效。 */
+  display: inline-block;
+  width: max-content;
+  max-width: none !important;
+  padding-right: 0.8em;
+  margin-right: -0.8em;
+  overflow: visible;
+  white-space: nowrap;
 }
 
 .VPHero .text {
@@ -72,9 +94,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
 .VPHero .tagline {
+  padding-top: 0.9rem !important;
   font-size: 1rem !important;
   font-weight: 400 !important;
   color: var(--vp-c-text-2) !important;
@@ -123,6 +148,17 @@
 .VPHome .vp-doc { position: relative; z-index: 1; }
 
 /* Responsive */
+@media (min-width: 960px) {
+  .VPHero .container {
+    max-width: 1240px !important;
+  }
+
+  .VPHero .main {
+    max-width: 720px !important;
+    flex-basis: min(720px, 60%) !important;
+  }
+}
+
 @media (max-width: 959px) {
   .VPHero { padding-top: 48px !important; padding-bottom: 24px !important; }
   .VPHero .name { font-size: clamp(2rem, 5vw, 3rem) !important; }
@@ -131,7 +167,17 @@
 }
 @media (max-width: 640px) {
   .VPHero { padding-top: 32px !important; padding-bottom: 16px !important; }
-  .VPHero .name { font-size: 1.8rem !important; letter-spacing: -0.03em !important; }
+  .VPHero .name {
+    width: max-content;
+    max-width: calc(100vw - 48px) !important;
+    font-size: 1.8rem !important;
+    letter-spacing: -0.03em !important;
+  }
+  .VPHero .name .clip {
+    max-width: calc(100vw - 48px) !important;
+    padding-right: 0.45em;
+    margin-right: -0.45em;
+  }
   .VPHero .text { font-size: 1.1rem !important; }
   .VPHero .tagline { font-size: 0.88rem !important; max-width: 320px; line-height: 1.6; }
   .VPHero .tagline::before { width: 28px; }

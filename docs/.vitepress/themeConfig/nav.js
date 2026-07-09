@@ -7,7 +7,7 @@ export const nav = [
         items: [
           { text: 'HTML', link: '/frontend/01-html/01-overview.md' },
           { text: 'CSS', link: '/frontend/02-css/01-overview' },
-          { text: 'JavaScript', link: '/frontend/03-javascript/01-dataType' },
+          { text: 'JavaScript', link: '/frontend/03-javascript/01-boundary' },
           { text: 'ECMAScript', link: '/frontend/04-ecmascript/01-variable' },
           { text: 'TypeScript', link: '/frontend/05-typescript/01-typescript' },
         ],
@@ -25,6 +25,7 @@ export const nav = [
         text: '工程化',
         items: [
           { text: 'Vite', link: '/engineering/02-vite/01-vite' },
+          { text: 'Webpack', link: '/engineering/01-webpack/01-webpack' },
         ],
       },
       {
@@ -100,13 +101,31 @@ export const nav = [
   {
     text: 'AI',
     items: [
-      { text: 'AI 基础', link: '/ai/01-fundamentals/index' },
-      { text: 'Prompt 工程', link: '/ai/02-prompt/index' },
-      { text: 'LangChain', link: '/ai/03-langchain/index' },
-      { text: 'LLM API', link: '/ai/04-llm-api/index' },
-      { text: 'AI Agent', link: '/ai/05-agent/index' },
-      { text: 'MCP', link: '/ai/06-mcp/index' },
-      { text: '本地部署', link: '/ai/07-local-deploy/index' },
+      {
+        text: '工程底座',
+        items: [
+          { text: 'AI 工程体系', link: '/ai/01-engineering/01-scheme/01-overview.md' },
+          { text: '模型网关', link: '/ai/02-model-gateway/01-gateway/01-overview.md' },
+          { text: '知识平台', link: '/ai/03-knowledge-platform/01-platform/01-overview.md' },
+        ],
+      },
+      {
+        text: '应用构建',
+        items: [
+          { text: '上下文工程', link: '/ai/04-context-engineering/01-prompt/01-overview.md' },
+          { text: 'RAG 应用工程', link: '/ai/05-rag-engineering/01-basics/01-overview.md' },
+          { text: 'Agent 工作流', link: '/ai/06-agent-workflow/01-agent/01-overview.md' },
+          { text: 'AI 应用架构', link: '/ai/07-application-architecture/01-application/01-overview.md' },
+        ],
+      },
+      {
+        text: '生产治理',
+        items: [
+          { text: 'LLMOps 质量工程', link: '/ai/08-llmops-quality/01-evaluation/01-overview.md' },
+          { text: '安全与合规治理', link: '/ai/09-security-governance/01-security/01-overview.md' },
+          { text: '成本与部署运营', link: '/ai/10-cost-deployment/01-cost/01-overview.md' },
+        ],
+      },
     ],
   },
   {
