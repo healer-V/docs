@@ -57,6 +57,12 @@ export const nav = [
         ],
       },
       {
+        text: '架构',
+        items: [
+          { text: '微服务架构', link: '/backend/06-microservices/01-foundation/01-overview.md' },
+        ],
+      },
+      {
         text: '数据库',
         items: [
           { text: 'MySQL', link: '/backend/09-mysql/01-mysql' },
