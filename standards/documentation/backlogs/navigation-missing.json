@@ -1,0 +1,3082 @@
+{
+  "schemaVersion": 1,
+  "summary": {
+    "references": 877,
+    "uniqueTargets": 833,
+    "missingTargets": 256
+  },
+  "targets": [
+    {
+      "source": "backend/01-nodejs/11-install-version.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第1章：Node.js 基础与运行时 > 1.2 安装与版本管理",
+          "link": "/backend/01-nodejs/11-install-version.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/12-runtime-architecture.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第1章：Node.js 基础与运行时 > 1.3 运行时架构",
+          "link": "/backend/01-nodejs/12-runtime-architecture.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/13-repl-script.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第1章：Node.js 基础与运行时 > 1.4 REPL 与脚本执行",
+          "link": "/backend/01-nodejs/13-repl-script.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/14-node-browser-difference.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第1章：Node.js 基础与运行时 > 1.5 Node.js 与浏览器 JS 差异",
+          "link": "/backend/01-nodejs/14-node-browser-difference.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/15-esm.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第2章：模块系统与包管理 > 2.2 ES Module",
+          "link": "/backend/01-nodejs/15-esm.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/16-module-resolution.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第2章：模块系统与包管理 > 2.3 模块解析机制",
+          "link": "/backend/01-nodejs/16-module-resolution.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/17-package-managers.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第2章：模块系统与包管理 > 2.4 npm / pnpm / yarn",
+          "link": "/backend/01-nodejs/17-package-managers.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/18-package-json-dependency.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第2章：模块系统与包管理 > 2.5 package.json 与依赖管理",
+          "link": "/backend/01-nodejs/18-package-json-dependency.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/19-path-url.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第3章：核心内置模块 > 3.2 Path 与 URL",
+          "link": "/backend/01-nodejs/19-path-url.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/20-events.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第3章：核心内置模块 > 3.3 Events",
+          "link": "/backend/01-nodejs/20-events.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/21-buffer.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第3章：核心内置模块 > 3.4 Buffer",
+          "link": "/backend/01-nodejs/21-buffer.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/22-promise-async-await.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第4章：异步模型与事件循环 > 4.3 Promise 与 async/await",
+          "link": "/backend/01-nodejs/22-promise-async-await.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/23-timer-task-queue.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第4章：异步模型与事件循环 > 4.4 Timer 与任务队列",
+          "link": "/backend/01-nodejs/23-timer-task-queue.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/24-worker-threads.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第4章：异步模型与事件循环 > 4.5 Worker Threads",
+          "link": "/backend/01-nodejs/24-worker-threads.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/25-http-server.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第5章：服务端应用开发 > 5.1 HTTP 服务",
+          "link": "/backend/01-nodejs/25-http-server.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/26-rest-api.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第5章：服务端应用开发 > 5.2 REST API",
+          "link": "/backend/01-nodejs/26-rest-api.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/27-middleware-model.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第5章：服务端应用开发 > 5.3 中间件模型",
+          "link": "/backend/01-nodejs/27-middleware-model.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/28-file-upload.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第5章：服务端应用开发 > 5.4 文件上传",
+          "link": "/backend/01-nodejs/28-file-upload.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/29-authentication.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第5章：服务端应用开发 > 5.5 身份认证",
+          "link": "/backend/01-nodejs/29-authentication.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/30-typescript.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第6章：工程化与质量 > 6.1 TypeScript 集成",
+          "link": "/backend/01-nodejs/30-typescript.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/31-configuration.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第6章：工程化与质量 > 6.2 配置管理",
+          "link": "/backend/01-nodejs/31-configuration.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/32-logging.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第6章：工程化与质量 > 6.3 日志系统",
+          "link": "/backend/01-nodejs/32-logging.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/33-error-handling.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第6章：工程化与质量 > 6.4 错误处理",
+          "link": "/backend/01-nodejs/33-error-handling.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/34-testing.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第6章：工程化与质量 > 6.5 单元测试",
+          "link": "/backend/01-nodejs/34-testing.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/35-debugging-diagnostics.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第6章：工程化与质量 > 6.6 调试与诊断",
+          "link": "/backend/01-nodejs/35-debugging-diagnostics.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/36-memory-profiling.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第7章：性能、安全与部署 > 7.2 内存分析",
+          "link": "/backend/01-nodejs/36-memory-profiling.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/37-security.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第7章：性能、安全与部署 > 7.3 安全实践",
+          "link": "/backend/01-nodejs/37-security.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/38-process-management.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第7章：性能、安全与部署 > 7.4 进程管理",
+          "link": "/backend/01-nodejs/38-process-management.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/01-nodejs/39-docker-deployment.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/01-nodejs/",
+          "labelPath": "Node.js 核心 > 第7章：性能、安全与部署 > 7.5 Docker 部署",
+          "link": "/backend/01-nodejs/39-docker-deployment.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/14-cli-project.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第1章：NestJS 基础与项目创建 > 1.2 CLI 与项目创建",
+          "link": "/backend/03-nestjs/14-cli-project.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/15-project-structure.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第1章：NestJS 基础与项目创建 > 1.3 项目结构",
+          "link": "/backend/03-nestjs/15-project-structure.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/16-bootstrap-lifecycle.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第1章：NestJS 基础与项目创建 > 1.4 启动流程",
+          "link": "/backend/03-nestjs/16-bootstrap-lifecycle.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/17-configuration.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第1章：NestJS 基础与项目创建 > 1.5 配置管理",
+          "link": "/backend/03-nestjs/17-configuration.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/18-custom-provider.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第2章：模块化与依赖注入 > 2.4 自定义 Provider",
+          "link": "/backend/03-nestjs/18-custom-provider.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/19-dynamic-module.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第2章：模块化与依赖注入 > 2.5 动态模块",
+          "link": "/backend/03-nestjs/19-dynamic-module.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/20-request-lifecycle.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第3章：请求生命周期与管道机制 > 3.6 请求生命周期",
+          "link": "/backend/03-nestjs/20-request-lifecycle.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/21-rest-api.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第4章：接口开发与 API 设计 > 4.1 REST API",
+          "link": "/backend/03-nestjs/21-rest-api.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/22-dto-validation.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第4章：接口开发与 API 设计 > 4.2 DTO 与参数校验",
+          "link": "/backend/03-nestjs/22-dto-validation.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/23-response-design.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第4章：接口开发与 API 设计 > 4.3 响应结构设计",
+          "link": "/backend/03-nestjs/23-response-design.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/24-file-upload.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第4章：接口开发与 API 设计 > 4.4 文件上传",
+          "link": "/backend/03-nestjs/24-file-upload.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/25-typeorm.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第5章：数据访问与事务 > 5.2 TypeORM",
+          "link": "/backend/03-nestjs/25-typeorm.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/26-prisma.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第5章：数据访问与事务 > 5.3 Prisma",
+          "link": "/backend/03-nestjs/26-prisma.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/27-repository-service.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第5章：数据访问与事务 > 5.4 Repository 与 Service 分层",
+          "link": "/backend/03-nestjs/27-repository-service.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/28-transaction.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第5章：数据访问与事务 > 5.5 事务处理",
+          "link": "/backend/03-nestjs/28-transaction.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/29-migration.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第5章：数据访问与事务 > 5.6 数据迁移",
+          "link": "/backend/03-nestjs/29-migration.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/30-jwt.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第6章：认证、授权与安全 > 6.2 JWT",
+          "link": "/backend/03-nestjs/30-jwt.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/31-passport.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第6章：认证、授权与安全 > 6.3 Passport",
+          "link": "/backend/03-nestjs/31-passport.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/32-rbac.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第6章：认证、授权与安全 > 6.4 RBAC 权限模型",
+          "link": "/backend/03-nestjs/32-rbac.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/33-security.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第6章：认证、授权与安全 > 6.5 安全实践",
+          "link": "/backend/03-nestjs/33-security.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/34-schedule.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第7章：集成能力与微服务接入 > 7.1 任务调度",
+          "link": "/backend/03-nestjs/34-schedule.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/35-cache.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第7章：集成能力与微服务接入 > 7.2 缓存集成",
+          "link": "/backend/03-nestjs/35-cache.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/36-message-queue.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第7章：集成能力与微服务接入 > 7.3 消息队列",
+          "link": "/backend/03-nestjs/36-message-queue.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/37-websocket.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第7章：集成能力与微服务接入 > 7.4 WebSocket",
+          "link": "/backend/03-nestjs/37-websocket.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/38-environment.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第8章：工程化、测试与部署 > 8.1 环境配置",
+          "link": "/backend/03-nestjs/38-environment.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/39-logging.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第8章：工程化、测试与部署 > 8.2 日志系统",
+          "link": "/backend/03-nestjs/39-logging.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/40-unit-testing.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第8章：工程化、测试与部署 > 8.3 单元测试",
+          "link": "/backend/03-nestjs/40-unit-testing.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/41-e2e-testing.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第8章：工程化、测试与部署 > 8.4 E2E 测试",
+          "link": "/backend/03-nestjs/41-e2e-testing.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/42-performance.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第8章：工程化、测试与部署 > 8.5 性能优化",
+          "link": "/backend/03-nestjs/42-performance.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/43-docker-deployment.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第8章：工程化、测试与部署 > 8.6 Docker 部署",
+          "link": "/backend/03-nestjs/43-docker-deployment.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/03-nestjs/44-production-ops.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/03-nestjs/",
+          "labelPath": "NestJS 核心 > 第8章：工程化、测试与部署 > 8.7 生产运维",
+          "link": "/backend/03-nestjs/44-production-ops.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/06-install-version.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第1章：Python 基础与运行环境 > 1.2 安装与版本管理",
+          "link": "/backend/05-python/06-install-version.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/07-interpreter-runtime.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第1章：Python 基础与运行环境 > 1.3 解释器与运行方式",
+          "link": "/backend/05-python/07-interpreter-runtime.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/08-pip-venv.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第1章：Python 基础与运行环境 > 1.4 pip 与虚拟环境",
+          "link": "/backend/05-python/08-pip-venv.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/09-project-structure.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第1章：Python 基础与运行环境 > 1.5 项目结构",
+          "link": "/backend/05-python/09-project-structure.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/10-data-types.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第2章：基础语法与数据模型 > 2.2 数据类型",
+          "link": "/backend/05-python/10-data-types.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/11-control-flow.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第2章：基础语法与数据模型 > 2.3 流程控制",
+          "link": "/backend/05-python/11-control-flow.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/12-function.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第2章：基础语法与数据模型 > 2.4 函数",
+          "link": "/backend/05-python/12-function.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/13-module-package.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第2章：基础语法与数据模型 > 2.5 模块与包",
+          "link": "/backend/05-python/13-module-package.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/14-class-instance.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第3章：面向对象与类型系统 > 3.2 类与实例",
+          "link": "/backend/05-python/14-class-instance.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/15-inheritance-polymorphism.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第3章：面向对象与类型系统 > 3.3 继承与多态",
+          "link": "/backend/05-python/15-inheritance-polymorphism.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/16-dataclass.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第3章：面向对象与类型系统 > 3.4 dataclass",
+          "link": "/backend/05-python/16-dataclass.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/17-type-hints.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第3章：面向对象与类型系统 > 3.5 类型注解",
+          "link": "/backend/05-python/17-type-hints.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/18-protocol-duck-typing.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第3章：面向对象与类型系统 > 3.6 协议与鸭子类型",
+          "link": "/backend/05-python/18-protocol-duck-typing.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/19-list-tuple.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第4章：内置数据结构与标准库 > 4.1 list / tuple",
+          "link": "/backend/05-python/19-list-tuple.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/20-dict-set.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第4章：内置数据结构与标准库 > 4.2 dict / set",
+          "link": "/backend/05-python/20-dict-set.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/21-string.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第4章：内置数据结构与标准库 > 4.3 字符串处理",
+          "link": "/backend/05-python/21-string.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/22-pathlib-file.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第4章：内置数据结构与标准库 > 4.4 pathlib 与文件操作",
+          "link": "/backend/05-python/22-pathlib-file.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/23-json-serialization.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第4章：内置数据结构与标准库 > 4.5 json 与序列化",
+          "link": "/backend/05-python/23-json-serialization.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/24-collections-itertools.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第4章：内置数据结构与标准库 > 4.6 collections / itertools",
+          "link": "/backend/05-python/24-collections-itertools.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/25-exception-handling.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第5章：异常、I/O 与并发 > 5.1 异常处理",
+          "link": "/backend/05-python/25-exception-handling.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/26-file-io.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第5章：异常、I/O 与并发 > 5.2 文件 I/O",
+          "link": "/backend/05-python/26-file-io.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/27-context-manager.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第5章：异常、I/O 与并发 > 5.3 上下文管理器",
+          "link": "/backend/05-python/27-context-manager.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/28-threading.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第5章：异常、I/O 与并发 > 5.4 多线程",
+          "link": "/backend/05-python/28-threading.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/29-multiprocessing.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第5章：异常、I/O 与并发 > 5.5 多进程",
+          "link": "/backend/05-python/29-multiprocessing.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/30-asyncio.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第5章：异常、I/O 与并发 > 5.6 asyncio",
+          "link": "/backend/05-python/30-asyncio.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/31-fastapi.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第6章：Web 后端与数据访问 > 6.2 FastAPI",
+          "link": "/backend/05-python/31-fastapi.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/32-rest-api.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第6章：Web 后端与数据访问 > 6.3 REST API",
+          "link": "/backend/05-python/32-rest-api.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/33-request-response.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第6章：Web 后端与数据访问 > 6.4 请求与响应",
+          "link": "/backend/05-python/33-request-response.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/34-orm-database.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第6章：Web 后端与数据访问 > 6.5 ORM 与数据库访问",
+          "link": "/backend/05-python/34-orm-database.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/35-authentication.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第6章：Web 后端与数据访问 > 6.6 身份认证",
+          "link": "/backend/05-python/35-authentication.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/36-configuration.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第7章：工程化、测试与部署 > 7.1 配置管理",
+          "link": "/backend/05-python/36-configuration.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/37-logging.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第7章：工程化、测试与部署 > 7.2 日志系统",
+          "link": "/backend/05-python/37-logging.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/38-testing.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第7章：工程化、测试与部署 > 7.3 单元测试",
+          "link": "/backend/05-python/38-testing.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/39-package-release.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第7章：工程化、测试与部署 > 7.4 包管理与发布",
+          "link": "/backend/05-python/39-package-release.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/40-performance.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第7章：工程化、测试与部署 > 7.5 性能优化",
+          "link": "/backend/05-python/40-performance.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/05-python/41-docker-deployment.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/05-python/",
+          "labelPath": "Python 核心 > 第7章：工程化、测试与部署 > 7.6 Docker 部署",
+          "link": "/backend/05-python/41-docker-deployment.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/07-initializr-project.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第1章：Spring Boot 基础与项目创建 > 1.2 Spring Initializr 与项目创建",
+          "link": "/backend/07-springboot/07-initializr-project.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/08-project-structure.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第1章：Spring Boot 基础与项目创建 > 1.3 项目结构",
+          "link": "/backend/07-springboot/08-project-structure.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/09-bootstrap-lifecycle.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第1章：Spring Boot 基础与项目创建 > 1.4 启动类与启动流程",
+          "link": "/backend/07-springboot/09-bootstrap-lifecycle.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/10-auto-configuration.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第1章：Spring Boot 基础与项目创建 > 1.5 自动配置概览",
+          "link": "/backend/07-springboot/10-auto-configuration.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/11-bean-lifecycle.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第2章：Spring 核心机制 > 2.2 Bean 生命周期",
+          "link": "/backend/07-springboot/11-bean-lifecycle.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/12-configuration-properties.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第2章：Spring 核心机制 > 2.3 配置属性绑定",
+          "link": "/backend/07-springboot/12-configuration-properties.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/13-profile-environment.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第2章：Spring 核心机制 > 2.4 Profile 多环境配置",
+          "link": "/backend/07-springboot/13-profile-environment.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/14-aop.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第2章：Spring 核心机制 > 2.5 AOP 面向切面编程",
+          "link": "/backend/07-springboot/14-aop.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/15-controller-request-mapping.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第3章：Web 开发与 REST API > 3.2 Controller 与请求映射",
+          "link": "/backend/07-springboot/15-controller-request-mapping.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/16-request-params-validation.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第3章：Web 开发与 REST API > 3.3 参数接收与校验",
+          "link": "/backend/07-springboot/16-request-params-validation.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/17-response-design.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第3章：Web 开发与 REST API > 3.4 统一响应结构",
+          "link": "/backend/07-springboot/17-response-design.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/18-global-exception.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第3章：Web 开发与 REST API > 3.5 全局异常处理",
+          "link": "/backend/07-springboot/18-global-exception.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/19-file-upload-download.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第3章：Web 开发与 REST API > 3.6 文件上传与下载",
+          "link": "/backend/07-springboot/19-file-upload-download.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/20-spring-jdbc.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第4章：数据访问与事务 > 4.2 Spring JDBC",
+          "link": "/backend/07-springboot/20-spring-jdbc.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/21-mybatis-integration.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第4章：数据访问与事务 > 4.3 MyBatis 集成",
+          "link": "/backend/07-springboot/21-mybatis-integration.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/22-jpa-integration.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第4章：数据访问与事务 > 4.4 JPA 集成",
+          "link": "/backend/07-springboot/22-jpa-integration.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/23-transaction-management.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第4章：数据访问与事务 > 4.5 事务管理",
+          "link": "/backend/07-springboot/23-transaction-management.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/24-datasource-pool.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第4章：数据访问与事务 > 4.6 数据库连接池",
+          "link": "/backend/07-springboot/24-datasource-pool.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/25-authentication-flow.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第5章：认证、授权与接口安全 > 5.2 登录认证流程",
+          "link": "/backend/07-springboot/25-authentication-flow.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/26-rbac.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第5章：认证、授权与接口安全 > 5.3 RBAC 权限模型",
+          "link": "/backend/07-springboot/26-rbac.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/27-api-authorization.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第5章：认证、授权与接口安全 > 5.4 接口鉴权",
+          "link": "/backend/07-springboot/27-api-authorization.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/28-cors-csrf.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第5章：认证、授权与接口安全 > 5.5 CORS 与 CSRF",
+          "link": "/backend/07-springboot/28-cors-csrf.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/29-security-practices.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第5章：认证、授权与接口安全 > 5.6 安全实践",
+          "link": "/backend/07-springboot/29-security-practices.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/30-cache-abstraction.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第6章：缓存、任务与消息集成 > 6.1 缓存抽象",
+          "link": "/backend/07-springboot/30-cache-abstraction.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/31-redis-integration.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第6章：缓存、任务与消息集成 > 6.2 Redis 集成",
+          "link": "/backend/07-springboot/31-redis-integration.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/32-scheduled-task.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第6章：缓存、任务与消息集成 > 6.3 定时任务",
+          "link": "/backend/07-springboot/32-scheduled-task.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/33-async-task.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第6章：缓存、任务与消息集成 > 6.4 异步任务",
+          "link": "/backend/07-springboot/33-async-task.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/34-message-queue.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第6章：缓存、任务与消息集成 > 6.5 消息队列集成",
+          "link": "/backend/07-springboot/34-message-queue.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/35-application-event.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第6章：缓存、任务与消息集成 > 6.6 事件发布与监听",
+          "link": "/backend/07-springboot/35-application-event.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/36-logging.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第7章：工程化、测试与可观测性 > 7.2 日志系统",
+          "link": "/backend/07-springboot/36-logging.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/37-actuator.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第7章：工程化、测试与可观测性 > 7.3 Actuator 监控",
+          "link": "/backend/07-springboot/37-actuator.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/38-unit-testing.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第7章：工程化、测试与可观测性 > 7.4 单元测试",
+          "link": "/backend/07-springboot/38-unit-testing.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/39-integration-testing.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第7章：工程化、测试与可观测性 > 7.5 集成测试",
+          "link": "/backend/07-springboot/39-integration-testing.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/40-api-docs.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第7章：工程化、测试与可观测性 > 7.6 API 文档",
+          "link": "/backend/07-springboot/40-api-docs.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/41-startup-performance.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第8章：性能优化与生产部署 > 8.1 启动性能优化",
+          "link": "/backend/07-springboot/41-startup-performance.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/42-api-performance.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第8章：性能优化与生产部署 > 8.2 接口性能优化",
+          "link": "/backend/07-springboot/42-api-performance.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/43-jvm-runtime-config.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第8章：性能优化与生产部署 > 8.3 JVM 参数与运行配置",
+          "link": "/backend/07-springboot/43-jvm-runtime-config.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/44-docker-deployment.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第8章：性能优化与生产部署 > 8.4 Docker 部署",
+          "link": "/backend/07-springboot/44-docker-deployment.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/45-production-troubleshooting.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第8章：性能优化与生产部署 > 8.5 生产问题排查",
+          "link": "/backend/07-springboot/45-production-troubleshooting.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/07-springboot/46-best-practices.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/backend/07-springboot/",
+          "labelPath": "Spring Boot 核心 > 第8章：性能优化与生产部署 > 8.6 最佳实践",
+          "link": "/backend/07-springboot/46-best-practices.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/12-message-queue/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 数据与中间件 > 消息队列",
+          "link": "/backend/12-message-queue/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/13-search-engine/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 数据与中间件 > 搜索引擎",
+          "link": "/backend/13-search-engine/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/14-object-storage/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 数据与中间件 > 对象存储",
+          "link": "/backend/14-object-storage/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/15-api-design/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 工程治理 > API 设计",
+          "link": "/backend/15-api-design/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/16-security-auth/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 工程治理 > 安全认证",
+          "link": "/backend/16-security-auth/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/17-testing-engineering/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 工程治理 > 测试工程",
+          "link": "/backend/17-testing-engineering/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/18-observability/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 工程治理 > 可观测性",
+          "link": "/backend/18-observability/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/19-reliability/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 工程治理 > 稳定性治理",
+          "link": "/backend/19-reliability/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/20-system-design/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 架构设计 > 系统设计",
+          "link": "/backend/20-system-design/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/21-ddd-architecture/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 架构设计 > DDD 与分层架构",
+          "link": "/backend/21-ddd-architecture/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "backend/22-distributed-systems/01-overview.md",
+      "unit": "backend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "后端 > 架构设计 > 分布式系统",
+          "link": "/backend/22-distributed-systems/01-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "engineering/01-webpack/01-webpack.md",
+      "unit": "ecosystem",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "nav",
+          "labelPath": "前端 > 工程化 > Webpack",
+          "link": "/engineering/01-webpack/01-webpack"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/13-document-structure.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第1章：HTML 基础 > 1.2 HTML 文档结构",
+          "link": "/frontend/01-html/13-document-structure.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/14-url.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第1章：HTML 基础 > 1.5 URL 与资源路径",
+          "link": "/frontend/01-html/14-url.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/15-encode.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第1章：HTML 基础 > 1.6 字符编码与字符实体",
+          "link": "/frontend/01-html/15-encode.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/16-head-meta.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第2章：Head 与资源声明 > 2.1 Head 元信息",
+          "link": "/frontend/01-html/16-head-meta.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/17-link-resource.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第2章：Head 与资源声明 > 2.2 HTML 资源声明",
+          "link": "/frontend/01-html/17-link-resource.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/18-script-noscript.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第2章：Head 与资源声明 > 2.3 HTML 脚本与 noscript",
+          "link": "/frontend/01-html/18-script-noscript.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/19-text.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第3章：文本与语义结构 > 3.1 HTML 文本标签",
+          "link": "/frontend/01-html/19-text.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/20-list.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第3章：文本与语义结构 > 3.2 HTML 列表标签",
+          "link": "/frontend/01-html/20-list.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/21-link.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第4章：链接、图片与嵌入 > 4.1 HTML 超链接",
+          "link": "/frontend/01-html/21-link.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/22-image.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第4章：链接、图片与嵌入 > 4.2 HTML 图像",
+          "link": "/frontend/01-html/22-image.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/23-iframe.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第4章：链接、图片与嵌入 > 4.4 HTML iframe",
+          "link": "/frontend/01-html/23-iframe.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/24-form-controls-validation.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第5章：表格与表单 > 5.3 表单控件与原生校验",
+          "link": "/frontend/01-html/24-form-controls-validation.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/25-form-submit-encoding.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第5章：表格与表单 > 5.4 表单提交与编码",
+          "link": "/frontend/01-html/25-form-submit-encoding.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/26-web-components.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第6章：HTML5 扩展能力 > 6.4 Web Components 简介",
+          "link": "/frontend/01-html/26-web-components.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/27-accessibility.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第7章：工程实践与规范参考 > 7.1 HTML 可访问性",
+          "link": "/frontend/01-html/27-accessibility.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/28-seo.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第7章：工程实践与规范参考 > 7.2 HTML SEO 基础",
+          "link": "/frontend/01-html/28-seo.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/29-security.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第7章：工程实践与规范参考 > 7.3 HTML 安全",
+          "link": "/frontend/01-html/29-security.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/30-performance.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第7章：工程实践与规范参考 > 7.4 HTML 性能实践",
+          "link": "/frontend/01-html/30-performance.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/01-html/31-elements-reference.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/01-html/",
+          "labelPath": "HTML 核心 > 第7章：工程实践与规范参考 > 7.6 HTML 常用标签参考",
+          "link": "/frontend/01-html/31-elements-reference.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/13-syntax-and-import.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第1章：CSS 基础机制 > 1.2 CSS 语法与引入方式",
+          "link": "/frontend/02-css/13-syntax-and-import.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/14-pseudo-classes-and-elements.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第1章：CSS 基础机制 > 1.4 CSS 伪类与伪元素",
+          "link": "/frontend/02-css/14-pseudo-classes-and-elements.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/15-cascade-inheritance-specificity.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第1章：CSS 基础机制 > 1.5 层叠、继承与优先级",
+          "link": "/frontend/02-css/15-cascade-inheritance-specificity.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/16-values-units-functions.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第1章：CSS 基础机制 > 1.6 CSS 值、单位与函数",
+          "link": "/frontend/02-css/16-values-units-functions.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/17-style-computation-cssom.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第1章：CSS 基础机制 > 1.7 CSS 样式计算与 CSSOM",
+          "link": "/frontend/02-css/17-style-computation-cssom.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/18-display-flow.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第2章：盒模型与格式化上下文 > 2.2 Display 与文档流",
+          "link": "/frontend/02-css/18-display-flow.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/19-formatting-context.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第2章：盒模型与格式化上下文 > 2.3 格式化上下文",
+          "link": "/frontend/02-css/19-formatting-context.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/20-float-clear.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第2章：盒模型与格式化上下文 > 2.4 浮动与清除浮动",
+          "link": "/frontend/02-css/20-float-clear.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/21-positioning-stacking-context.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第2章：盒模型与格式化上下文 > 2.5 定位与层叠上下文",
+          "link": "/frontend/02-css/21-positioning-stacking-context.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/22-overflow-scroll.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第2章：盒模型与格式化上下文 > 2.6 Overflow 与滚动",
+          "link": "/frontend/02-css/22-overflow-scroll.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/23-flex.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第3章：CSS 布局系统 > 3.2 Flex 布局",
+          "link": "/frontend/02-css/23-flex.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/24-grid.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第3章：CSS 布局系统 > 3.3 Grid 布局",
+          "link": "/frontend/02-css/24-grid.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/25-multicol-special-layout.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第3章：CSS 布局系统 > 3.4 多列与特殊布局",
+          "link": "/frontend/02-css/25-multicol-special-layout.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/26-media-query.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第3章：CSS 布局系统 > 3.6 媒体查询",
+          "link": "/frontend/02-css/26-media-query.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/27-container-query.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第3章：CSS 布局系统 > 3.7 容器查询",
+          "link": "/frontend/02-css/27-container-query.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/28-font-text.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第4章：视觉样式与排版 > 4.1 字体与文本排版",
+          "link": "/frontend/02-css/28-font-text.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/29-color-background.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第4章：视觉样式与排版 > 4.2 颜色与背景",
+          "link": "/frontend/02-css/29-color-background.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/30-transition.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第5章：动效与交互反馈 > 5.2 过渡 transition",
+          "link": "/frontend/02-css/30-transition.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/31-animation.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第5章：动效与交互反馈 > 5.3 动画 animation",
+          "link": "/frontend/02-css/31-animation.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/32-transform.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第5章：动效与交互反馈 > 5.4 变换 transform",
+          "link": "/frontend/02-css/32-transform.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/33-motion-performance.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第5章：动效与交互反馈 > 5.5 动效性能优化",
+          "link": "/frontend/02-css/33-motion-performance.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/34-motion-accessibility.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第5章：动效与交互反馈 > 5.6 动效可访问性",
+          "link": "/frontend/02-css/34-motion-accessibility.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/35-modern-selectors.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第6章：现代 CSS 能力 > 6.2 现代选择器",
+          "link": "/frontend/02-css/35-modern-selectors.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/36-cascade-layers-scope.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第6章：现代 CSS 能力 > 6.3 层叠层与作用域",
+          "link": "/frontend/02-css/36-cascade-layers-scope.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/37-css-nesting.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第6章：现代 CSS 能力 > 6.4 CSS 嵌套",
+          "link": "/frontend/02-css/37-css-nesting.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/38-logical-properties-writing-mode.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第6章：现代 CSS 能力 > 6.5 逻辑属性与书写模式",
+          "link": "/frontend/02-css/38-logical-properties-writing-mode.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/39-css-new-features.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第6章：现代 CSS 能力 > 6.6 CSS 新特性",
+          "link": "/frontend/02-css/39-css-new-features.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/40-naming-organization.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第7章：工程实践与规范参考 > 7.2 CSS 命名与组织",
+          "link": "/frontend/02-css/40-naming-organization.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/41-css-modules-scoped.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第7章：工程实践与规范参考 > 7.3 CSS Modules 与 Scoped CSS",
+          "link": "/frontend/02-css/41-css-modules-scoped.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/42-postcss-compatibility.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第7章：工程实践与规范参考 > 7.4 PostCSS 与兼容处理",
+          "link": "/frontend/02-css/42-postcss-compatibility.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/43-css-in-js.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第7章：工程实践与规范参考 > 7.5 CSS-in-JS",
+          "link": "/frontend/02-css/43-css-in-js.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/44-tailwind.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第7章：工程实践与规范参考 > 7.6 Tailwind CSS",
+          "link": "/frontend/02-css/44-tailwind.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/45-performance.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第7章：工程实践与规范参考 > 7.7 CSS 性能优化",
+          "link": "/frontend/02-css/45-performance.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/46-accessibility.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第7章：工程实践与规范参考 > 7.8 CSS 可访问性",
+          "link": "/frontend/02-css/46-accessibility.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/47-debugging.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第7章：工程实践与规范参考 > 7.9 CSS 调试与排错",
+          "link": "/frontend/02-css/47-debugging.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/02-css/48-properties-reference.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/02-css/",
+          "labelPath": "CSS 核心 > 第7章：工程实践与规范参考 > 7.11 CSS 常用属性参考",
+          "link": "/frontend/02-css/48-properties-reference.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/03-type-conversion-equality.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第2章：类型系统 > 2.2 类型转换与相等性",
+          "link": "/frontend/03-javascript/03-type-conversion-equality.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/04-type-checking.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第2章：类型系统 > 2.3 类型检测与数据识别",
+          "link": "/frontend/03-javascript/04-type-checking.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/05-builtins-data-structures.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第2章：类型系统 > 2.4 常用内置对象与数据结构",
+          "link": "/frontend/03-javascript/05-builtins-data-structures.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/06-scope-closure.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第3章：对象模型与函数机制 > 3.2 作用域、作用域链与闭包",
+          "link": "/frontend/03-javascript/06-scope-closure.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/07-this-call-apply-bind.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第3章：对象模型与函数机制 > 3.3 this、call、apply 与 bind",
+          "link": "/frontend/03-javascript/07-this-call-apply-bind.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/10-class-inheritance-composition.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第3章：对象模型与函数机制 > 3.5 class、继承与组合",
+          "link": "/frontend/03-javascript/10-class-inheritance-composition.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/11-execution-context-call-stack.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第4章：执行机制与异步模型 > 4.1 执行上下文与调用栈",
+          "link": "/frontend/03-javascript/11-execution-context-call-stack.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/12-promise-async-await.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第4章：执行机制与异步模型 > 4.4 Promise 与 async/await",
+          "link": "/frontend/03-javascript/12-promise-async-await.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/13-event-loop-task-queue.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第4章：执行机制与异步模型 > 4.5 事件循环与任务队列",
+          "link": "/frontend/03-javascript/13-event-loop-task-queue.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/18-timer-debounce-throttle.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第4章：执行机制与异步模型 > 4.6 定时器、防抖与节流",
+          "link": "/frontend/03-javascript/18-timer-debounce-throttle.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/19-network-request.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第5章：Web API > 5.4 网络请求与数据通信",
+          "link": "/frontend/03-javascript/19-network-request.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/20-browser-storage-cache.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第5章：Web API > 5.5 浏览器存储与缓存边界",
+          "link": "/frontend/03-javascript/20-browser-storage-cache.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/21-page-lifecycle-performance-observer.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第5章：Web API > 5.6 页面生命周期与性能观察",
+          "link": "/frontend/03-javascript/21-page-lifecycle-performance-observer.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/22-web-worker.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第5章：Web API > 5.7 Web Worker 与多线程模型",
+          "link": "/frontend/03-javascript/22-web-worker.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/23-commonjs-node-module.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第6章：模块化 > 6.2 CommonJS 与 Node.js 模块",
+          "link": "/frontend/03-javascript/23-commonjs-node-module.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/24-dynamic-import-module-loading.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第6章：模块化 > 6.4 动态导入与模块加载",
+          "link": "/frontend/03-javascript/24-dynamic-import-module-loading.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/25-module-boundary-side-effects.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第6章：模块化 > 6.5 模块边界、副作用与依赖组织",
+          "link": "/frontend/03-javascript/25-module-boundary-side-effects.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/26-error-handling-boundary.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第7章：工程质量与安全性能 > 7.1 错误处理与异常边界",
+          "link": "/frontend/03-javascript/26-error-handling-boundary.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/27-debugging-devtools.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第7章：工程质量与安全性能 > 7.2 调试与 DevTools",
+          "link": "/frontend/03-javascript/27-debugging-devtools.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/28-performance.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第7章：工程质量与安全性能 > 7.3 性能优化",
+          "link": "/frontend/03-javascript/28-performance.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/29-security.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第7章：工程质量与安全性能 > 7.4 JavaScript 安全",
+          "link": "/frontend/03-javascript/29-security.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/30-coding-style-maintainability.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第7章：工程质量与安全性能 > 7.5 编码规范与可维护性",
+          "link": "/frontend/03-javascript/30-coding-style-maintainability.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/31-api-reference.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第7章：工程质量与安全性能 > 7.6 常用 API 参考",
+          "link": "/frontend/03-javascript/31-api-reference.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/32-creational-patterns.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第8章：设计模式 > 8.2 创建型模式",
+          "link": "/frontend/03-javascript/32-creational-patterns.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/33-structural-patterns.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第8章：设计模式 > 8.3 结构型模式",
+          "link": "/frontend/03-javascript/33-structural-patterns.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/03-javascript/34-behavioral-patterns.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/03-javascript/",
+          "labelPath": "JS 核心 > 第8章：设计模式 > 8.4 行为型模式",
+          "link": "/frontend/03-javascript/34-behavioral-patterns.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/08-standard-overview.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第1章：ES 标准体系 > 1.1 ES 与 JavaScript 边界",
+          "link": "/frontend/04-ecmascript/08-standard-overview.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/09-ecma-262-structure.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第1章：ES 标准体系 > 1.2 ECMA-262 标准结构",
+          "link": "/frontend/04-ecmascript/09-ecma-262-structure.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/10-tc39-proposal-process.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第1章：ES 标准体系 > 1.3 TC39 与提案流程",
+          "link": "/frontend/04-ecmascript/10-tc39-proposal-process.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/11-release-cycle-esnext.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第1章：ES 标准体系 > 1.4 版本发布节奏与 ES.Next",
+          "link": "/frontend/04-ecmascript/11-release-cycle-esnext.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/12-compatibility-checking.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第1章：ES 标准体系 > 1.5 兼容性判断方法",
+          "link": "/frontend/04-ecmascript/12-compatibility-checking.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/13-destructuring-template-parameters.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第2章：ES2015 核心变革 > 2.2 解构、模板字符串与参数增强",
+          "link": "/frontend/04-ecmascript/13-destructuring-template-parameters.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/14-spread-rest-expression.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第2章：ES2015 核心变革 > 2.3 展开语法、剩余参数与表达式增强",
+          "link": "/frontend/04-ecmascript/14-spread-rest-expression.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/15-arrow-function-semantics.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第2章：ES2015 核心变革 > 2.4 箭头函数与函数语义变化",
+          "link": "/frontend/04-ecmascript/15-arrow-function-semantics.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/16-symbol-protocols.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第3章：内置对象与数据结构扩展 > 3.3 Symbol 与内置协议",
+          "link": "/frontend/04-ecmascript/16-symbol-protocols.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/17-map-set-weak.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第3章：内置对象与数据结构扩展 > 3.4 Map、Set 与 Weak 集合",
+          "link": "/frontend/04-ecmascript/17-map-set-weak.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/18-arraybuffer-typedarray.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第3章：内置对象与数据结构扩展 > 3.5 ArrayBuffer、TypedArray 与二进制数据",
+          "link": "/frontend/04-ecmascript/18-arraybuffer-typedarray.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/19-object-literal-property.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第4章：对象模型、模块与元编程 > 4.1 对象字面量与属性能力增强",
+          "link": "/frontend/04-ecmascript/19-object-literal-property.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/20-class-inheritance-semantics.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第4章：对象模型、模块与元编程 > 4.2 Class 与继承语义",
+          "link": "/frontend/04-ecmascript/20-class-inheritance-semantics.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/21-dynamic-import-import-meta.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第4章：对象模型、模块与元编程 > 4.4 动态 import 与 import.meta",
+          "link": "/frontend/04-ecmascript/21-dynamic-import-import-meta.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/22-proxy-reflect.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第4章：对象模型、模块与元编程 > 4.5 Proxy 与 Reflect",
+          "link": "/frontend/04-ecmascript/22-proxy-reflect.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/23-iterator-iterable-generator.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第5章：异步、迭代与并发 > 5.1 Iterator、Iterable 与 Generator",
+          "link": "/frontend/04-ecmascript/23-iterator-iterable-generator.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/24-async-await-async-iterator.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第5章：异步、迭代与并发 > 5.3 async/await 与异步迭代",
+          "link": "/frontend/04-ecmascript/24-async-await-async-iterator.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/25-job-queue.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第5章：异步、迭代与并发 > 5.4 Job Queue 与异步语义边界",
+          "link": "/frontend/04-ecmascript/25-job-queue.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/26-atomics-sharedarraybuffer.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第5章：异步、迭代与并发 > 5.5 Atomics 与 SharedArrayBuffer",
+          "link": "/frontend/04-ecmascript/26-atomics-sharedarraybuffer.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/27-es2024-to-2026.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第6章：版本演进与现代特性 > 6.3 ES2024-ES2026 新近标准能力",
+          "link": "/frontend/04-ecmascript/27-es2024-to-2026.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/28-esnext-stage-proposals.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第6章：版本演进与现代特性 > 6.4 ES.Next 与 Stage 3/4 提案观察",
+          "link": "/frontend/04-ecmascript/28-esnext-stage-proposals.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/29-babel-compile-strategy.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第7章：兼容、编译与特性 > 7.1 Babel 编译策略",
+          "link": "/frontend/04-ecmascript/29-babel-compile-strategy.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/30-core-js-polyfill.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第7章：兼容、编译与特性 > 7.2 core-js 与 Polyfill",
+          "link": "/frontend/04-ecmascript/30-core-js-polyfill.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/31-browserslist-targets.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第7章：兼容、编译与特性 > 7.3 Browserslist 与运行目标",
+          "link": "/frontend/04-ecmascript/31-browserslist-targets.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/32-feature-detection-progressive-enhancement.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第7章：兼容、编译与特性 > 7.4 特性检测与渐进增强",
+          "link": "/frontend/04-ecmascript/32-feature-detection-progressive-enhancement.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/33-feature-adoption-migration.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第7章：兼容、编译与特性 > 7.5 新特性采用与迁移策略",
+          "link": "/frontend/04-ecmascript/33-feature-adoption-migration.md"
+        }
+      ]
+    },
+    {
+      "source": "frontend/04-ecmascript/34-feature-reference.md",
+      "unit": "frontend",
+      "status": "planned",
+      "references": [
+        {
+          "surface": "sidebar:/frontend/04-ecmascript/",
+          "labelPath": "ECMAScript 核心 > 第7章：兼容、编译与特性 > 7.6 ECMAScript 特性速查",
+          "link": "/frontend/04-ecmascript/34-feature-reference.md"
+        }
+      ]
+    }
+  ]
+}

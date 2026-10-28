@@ -1,0 +1,197 @@
+/* .vitepress/theme/style/blur.css */
+/* ── Nav glass morphism — Midnight Aurora ── */
+
+:root {
+
+    .VPNavBar {
+        background-color: rgba(var(--light-rgb), 0.75) !important;
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+    }
+
+    /* Keep the home navbar visually stable while VitePress toggles .top on scroll. */
+    .VPNavBar.home.top {
+        background-color: rgba(var(--light-rgb), 0.75) !important;
+    }
+
+    .VPNavBar:not(.home) {
+        background-color: rgba(var(--light-rgb), 0.75) !important;
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+    }
+
+    @media (min-width: 960px) {
+        .VPNavBar:not(.home) {
+            background-color: rgba(var(--light-rgb), 0.75) !important;
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+        }
+
+        .VPNavBar:not(.has-sidebar):not(.home.top) {
+            background-color: rgba(var(--light-rgb), 0.75) !important;
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+        }
+    }
+
+    @media (min-width: 960px) {
+        .VPNavBar:not(.home.top) .content-body {
+            background-color: rgba(var(--light-rgb), 0) !important;
+        }
+
+        .VPNavBar:not(.has-sidebar):not(.home.top) .content-body {
+            background-color: rgba(var(--light-rgb), 0) !important;
+        }
+    }
+
+    @media (min-width: 960px) {
+        .VPNavBar:not(.home.top) .divider-line {
+            background-color: rgba(var(--light-rgb), 0) !important;
+        }
+
+        .VPNavBar:not(.has-sidebar):not(.home.top) .divider {
+            background-color: rgba(var(--light-rgb), 0) !important;
+        }
+    }
+    @media (max-width: 768px) {
+        .DocSearch-Button {
+            height: 40px !important;
+            width: 40px !important;
+        }
+    }
+
+    .DocSearch-Button {
+        background-color: var(--vp-c-bg-soft) !important;
+        border: 1px solid var(--glow-border, var(--vp-c-divider)) !important;
+        border-radius: 10px !important;
+        transition: all 0.2s ease;
+        /* height: 40px !important;
+        width: 40px !important; */
+    }
+
+    .DocSearch-Button:hover {
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 12px var(--accent-glow) !important;
+    }
+
+    .VPLocalNav {
+        background-color: rgba(var(--light-rgb), 0.75) !important;
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-bottom: 0px;
+    }
+
+    /* Mobile nav screen (hamburger menu overlay) */
+    .VPNavScreen {
+        background-color: rgba(var(--light-rgb), 0.92) !important;
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+
+    .VPNavScreenMenu .VPNavScreenMenuLink {
+        font-size: 0.95rem;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--vp-c-divider);
+    }
+}
+
+/* Dark mode — deep midnight glass */
+.dark {
+    .VPNavBar {
+        background-color: rgba(var(--page-dark-rgb), 0.82) !important;
+    }
+
+    .VPNavBar.home.top {
+        background-color: rgba(var(--page-dark-rgb), 0.82) !important;
+    }
+
+    .VPNavBar:not(.home) {
+        background-color: rgba(var(--page-dark-rgb), 0.82) !important;
+    }
+
+    @media (min-width: 960px) {
+        .VPNavBar:not(.home),
+        .VPNavBar:not(.has-sidebar):not(.home.top) {
+            background-color: rgba(var(--page-dark-rgb), 0.82) !important;
+        }
+    }
+
+    .VPLocalNav {
+        background-color: rgba(var(--page-dark-rgb), 0.82) !important;
+    }
+
+    .VPNavScreen {
+        background-color: rgba(var(--page-dark-rgb), 0.95) !important;
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+}
+
+/* @media (min-width: 960px) {
+    .VPNavBar.has-sidebar .content {
+        padding-left: var(--vp-sidebar-width) !important;
+    }
+}
+
+.VPNavBar.has-sidebar .content .title {
+    width: fit-content !important;
+} */
+
+.VPNavBarTitle {
+    width: fit-content !important;
+}
+
+/* 仅在无侧边栏页面（首页、博客等）居中导航内容 */
+.VPNavBar:not(.has-sidebar) .content-body {
+    justify-content: center !important;
+}
+
+/* 文档页（has-sidebar）强制右对齐，避免搜索框与 VPNavBarTitle 重叠 */
+.VPNavBar.has-sidebar .content-body {
+    justify-content: flex-end !important;
+}
+
+.VPNavBarSearch {
+    padding-left: 16px !important;
+    width: fit-content !important;
+    flex-shrink: 0;
+}
+
+/* Local search button */
+.VPNavBarSearch .local-search-btn {
+    border-radius: 10px !important;
+    border: 1px solid var(--glow-border, var(--vp-c-divider)) !important;
+    background: var(--vp-c-bg-soft) !important;
+    transition: all 0.25s ease !important;
+}
+
+.VPNavBarSearch .local-search-btn:hover {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 12px var(--accent-glow) !important;
+}
+
+.VPNavBarMenu {
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.VPSidebar {
+    padding-right: 0px !important;
+}
+
+.VPSidebar .group {
+    /* width: calc(var(--vp-sidebar-width) - 84px) !important; */
+    width: calc(var(--vp-sidebar-width) - 70px) !important;
+}
+
+@media (min-width: 1440px) {
+    .VPSidebar {
+        width: max(var(--vp-sidebar-width), calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px)) !important;
+    }
+}
+
+@media (min-width: 960px) {
+    .VPSidebar {
+        width: max(var(--vp-sidebar-width), calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 42px)) !important;
+    }
+}

@@ -1,6 +1,19 @@
 # Xianling Docs
 
-> 前端全栈学习笔记 - 系统化的技术文档
+帮助读者从 0 系统学习一门语言或技术的学习文档。
+
+## 文档定位
+
+围绕每门语言或技术建立循序渐进的知识体系，让读者从基础概念和基本用法起步，逐步理解运行机制、完成实际应用，并在已声明的模块范围内深入工程实践。文档同时支持学习后的复习查阅、长期积累与对外分享。
+
+| 维度 | 定位 |
+|------|------|
+| 目标读者 | 对目标语言或技术零基础的学习者；语言入门不默认已经掌握其他编程语言 |
+| 内容组织 | 按知识依赖由浅入深，先讲清必要概念与基本用法，再展开机制和进阶内容 |
+| 讲解与示例 | 解释概念、原因、用法和边界；操作类内容提供可复现步骤、预期结果和常见错误处理 |
+| 学习结果 | 能理解核心概念，独立完成基本任务，判断结果并处理常见错误 |
+
+框架和工具等技术所依赖的外部基础，应明确要求深度并提供学习入口。例如学习 React 可以要求 JavaScript、HTML 和 CSS 基础，React 自身的 JSX、组件和数据流仍需从基础讲起。
 
 ## 📚 技术栈覆盖
 
@@ -22,26 +35,30 @@ pnpm install
 pnpm dev
 
 # 构建生产版本
-pnpm build
+pnpm docs:build:all
+pnpm docs:assemble
+pnpm docs:search
 
 # 预览构建结果
-pnpm preview
+pnpm docs:preview:assembled
 ```
 
 ## 📁 项目结构
 
+```text
+├── .vitepress/      # 网站配置、主题和导航
+├── .claude/         # Claude Code 本地项目设置
+├── content/         # 网站 Markdown、文档图片和公共资源
+├── standards/       # 文档编写与验收规范
+├── superpowers/     # 设计、蓝图、评审记录和实施计划
+├── scripts/         # 构建、检查和维护脚本
+├── tests/           # 自动化测试
+├── .build/          # 自动生成的构建与验证产物
+├── .github/         # CI 工作流
+└── package.json     # 依赖和执行命令
 ```
-docs/
-├── frontend/        # 前端技术栈
-├── backend/         # 后端技术栈
-├── crossend/        # 跨端开发
-├── engineering/     # 前端工程化
-├── microfrontend/   # 微前端
-├── operation/       # 运维部署
-├── web3/           # Web3 技术
-├── interview/      # 面试题库
-└── .vitepress/     # VitePress 配置
-```
+
+`content/` 内保留前端、后端、运维、AI、Web3 等现有分类和章节层级。VitePress 从仓库根目录加载 `.vitepress/config.mjs`，通过 `srcDir: 'content'` 读取网站内容；`standards/` 与 `superpowers/` 不生成站点页面，也不进入站点搜索。文档图片随文章存放，公共静态资源位于 `content/public/`；网站访问路径仍使用 `/docs/`。
 
 ## 🎯 特性
 

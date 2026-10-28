@@ -1,0 +1,37 @@
+/* .vitepress/theme/style/marker.css */
+
+.marker-text {
+    text-decoration: underline;
+    text-decoration-thickness: 8px;
+    text-decoration-color: rgba(var(--color-brand-rgb), 0.2);
+    text-underline-offset: -3px;
+    text-decoration-skip-ink: none;
+}
+
+.marker-text-highlight {
+    border-radius: 4px;
+    background: transparent;
+    color: var(--vp-c-text-soft);
+    background: linear-gradient(104deg, rgba(var(--color-brand-rgb), 0) 0.9%, rgba(var(--color-brand-rgb), 0.25) 2.4%, rgba(var(--color-brand-rgb), 0.15) 5.8%, rgba(var(--color-brand-rgb), 0.05) 93%, rgba(var(--color-brand-rgb), 0.25) 96%, rgba(var(--color-brand-rgb), 0) 98%), linear-gradient(183deg, rgba(var(--color-brand-rgb), 0) 0%, rgba(var(--color-brand-rgb), 0.12) 7.9%, rgba(var(--color-brand-rgb), 0) 15%);
+}
+
+.marker-evy {
+    white-space: nowrap;
+    position: relative;
+}
+
+.marker-evy:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 66%;
+    left: 0em;
+    right: 0em;
+    bottom: 0;
+    transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
+    background-color: rgba(var(--color-brand-rgb), 0.25);
+}
+
+.marker-evy:hover:after {
+    top: 0%;
+}

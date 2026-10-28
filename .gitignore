@@ -1,6 +1,13 @@
 node_modules/
-docs/.vitepress/cache/
-docs/.vitepress/dist/
-docs/.vitepress/.temp/
 .agents/
 .vitepress/cache/
+.vitepress/dist/
+.vitepress/.temp/
+.claude/settings.local.json
+.build/
+tests/
+examples/**/target/
+examples/microservices-insurance/.lab-pids.json
+examples/microservices-insurance/logs/
+examples/microservices-insurance/.lab/
+examples/microservices-insurance/.security-lab-pids.json

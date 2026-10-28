@@ -5,16 +5,31 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vitepress dev docs --host 127.0.0.1 --port 5173 --strictPort",
-    "dev:fast": "set VITEPRESS_LOCAL_SEARCH=false&& vitepress dev docs --host 127.0.0.1 --port 5173 --strictPort",
-    "dev:large": "node --max-old-space-size=4096 ./node_modules/.bin/vitepress dev docs --host 127.0.0.1 --port 5173 --strictPort",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "dev": "vitepress dev --host 127.0.0.1 --port 5173 --strictPort",
+    "dev:fast": "set VITEPRESS_LOCAL_SEARCH=false&& vitepress dev --host 127.0.0.1 --port 5173 --strictPort",
+    "dev:large": "node --max-old-space-size=4096 ./node_modules/vitepress/bin/vitepress.js dev --host 127.0.0.1 --port 5173 --strictPort",
+    "docs:check:microservices": "node scripts/validate-microservices-docs.mjs",
+    "docs:check:microservices:strict": "node scripts/validate-microservices-docs.mjs --strict",
+    "docs:test": "node --test scripts/docs/__tests__/*.test.mjs",
+    "docs:build:unit": "node scripts/docs/build-unit.mjs",
+    "docs:build:all": "node scripts/docs/build-all-units.mjs",
+    "docs:assemble": "node scripts/docs/assemble-site.mjs",
+    "docs:search": "node scripts/docs/build-search.mjs",
+    "docs:e2e": "playwright test",
+    "docs:navigation:backlog": "node scripts/docs/export-navigation-backlog.mjs",
+    "docs:validate": "node scripts/docs/validate-site.mjs",
+    "docs:summary": "node scripts/docs/write-ci-summary.mjs",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview",
+    "docs:preview:assembled": "node scripts/docs/preview-site.mjs --site .build/assembled"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "cheerio": "1.2.0",
+    "pagefind": "1.5.2",
     "vitepress": "^1.3.4"
   }
 }

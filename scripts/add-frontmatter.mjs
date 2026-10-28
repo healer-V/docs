@@ -16,7 +16,7 @@ import { globSync } from 'fs'
 // Node 22+ 支持 fs.globSync，低版本用简易递归
 import { readdirSync, statSync } from 'fs'
 
-const DOCS_DIR = resolve(import.meta.dirname, '../docs')
+const DOCS_DIR = resolve(import.meta.dirname, '../content')
 
 // 递归查找所有 .md 文件
 function findMdFiles(dir) {
@@ -63,7 +63,6 @@ const CATEGORY_MAP = {
   'backend/12-postgresql': '后端 · PostgreSQL',
   'engineering/01-webpack': '工程化 · Webpack',
   'engineering/02-vite': '工程化 · Vite',
-  'operation/00-linux': '运维 · Linux',
   'operation/01-shell': '运维 · Shell',
   'operation/02-jenkins': '运维 · Jenkins',
   'operation/03-cicd': '运维 · CI/CD',

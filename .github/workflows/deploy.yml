@@ -1,53 +1,188 @@
 name: docs
 
 on:
-  # 每当 push 到 main 分支时触发部署
+  pull_request:
   push:
     branches: [main]
-  # 手动触发部署
   workflow_dispatch:
 
-jobs:
-  docs:
-    runs-on: ubuntu-latest
+concurrency:
+  group: docs-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    name: 配置与单元测试
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v6
         with:
-          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
           fetch-depth: 0
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v6
         with:
-          # 选择要使用的 pnpm 版本
-          version: 9.8.0
-          # 使用 pnpm 安装依赖
-          run_install: true
+          version: 10.21.0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          # 选择要使用的 node 版本
-          node-version: 20.17.0
-          # 缓存 pnpm 依赖
+          node-version: 22
           cache: pnpm
 
-      # 运行构建脚本
-      - name: Build VuePress site
-        run: pnpm docs:build
-        env:
-          NODE_OPTIONS: --max-old-space-size=8192
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      # 查看 workflow 的文档来获取更多信息
-      # @see https://github.com/crazy-max/ghaction-github-pages
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v4
+      - name: Run documentation tests
+        run: pnpm docs:test
+
+      - name: Verify navigation backlog
+        run: |
+          pnpm docs:navigation:backlog
+          git diff --exit-code -- standards/documentation/backlogs/navigation-missing.json
+
+  build:
+    name: 构建 ${{ matrix.unit }}
+    needs: preflight
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        unit: [portal, frontend, backend, operation, ai, web3, ecosystem]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
         with:
-          # 部署到 gh-pages 分支
-          target_branch: gh-pages
-          # 部署目录为 VitePress 的默认输出目录
-          build_dir: docs/.vitepress/dist
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.21.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build unit
+        run: pnpm docs:build:unit ${{ matrix.unit }}
         env:
-          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Upload unit artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: docs-unit-${{ matrix.unit }}
+          path: .build/units
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 7
+
+  assemble:
+    name: 合并与全站验收
+    needs: [preflight, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.21.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download unit artifacts
+        uses: actions/download-artifact@v8
+        with:
+          pattern: docs-unit-*
+          path: .build/units
+          merge-multiple: true
+
+      - name: Assemble deterministic site
+        run: pnpm docs:assemble
+
+      - name: Validate merged site
+        run: pnpm docs:validate
+
+      - name: Build unified search index
+        run: pnpm docs:search
+
+      - name: Validate search output
+        run: pnpm docs:validate -- --require-search
+
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run browser regression
+        run: pnpm docs:e2e
+
+      - name: Write build summary
+        run: pnpm docs:summary
+
+      - name: Upload verified site
+        uses: actions/upload-artifact@v7
+        with:
+          name: docs-site
+          path: .build/assembled
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 7
+
+  upload-pages:
+    name: 创建 Pages Artifact
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: assemble
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+    steps:
+      - name: Download verified site
+        uses: actions/download-artifact@v8
+        with:
+          name: docs-site
+          path: .build/assembled
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .build/assembled
+
+  deploy:
+    name: 部署 GitHub Pages
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: upload-pages
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

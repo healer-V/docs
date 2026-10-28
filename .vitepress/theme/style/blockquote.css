@@ -1,0 +1,64 @@
+/* .vitepress/theme/style/blockquote.css */
+
+.vp-doc blockquote {
+    border-radius: 12px;
+    padding: 18px 20px 20px 16px;
+    position: relative;
+    background-color: var(--vp-c-bg-soft);
+    border-left: 4px solid;
+    border-image: var(--aurora) 1;
+}
+
+.vp-doc h5 {
+    margin: 18px 0 10px 0;
+    font-size: 16px;
+}
+
+.aside-container {
+    box-sizing: border-box;
+}
+
+@media (min-width: 1280px) {
+    .VPDoc.has-sidebar {
+        --doc-outline-width: clamp(254px, calc(20vw - 32px), 320px);
+    }
+
+    /* VitePress 的右栏含 32px 左内边距，布局宽度需覆盖目录及这部分间距。 */
+    .VPDoc.has-sidebar .aside {
+        flex: 0 0 calc(var(--doc-outline-width) + 32px);
+        max-width: calc(var(--doc-outline-width) + 32px);
+    }
+
+    .VPDoc.has-sidebar .aside-container,
+    .VPDoc.has-sidebar .aside-curtain {
+        width: var(--doc-outline-width);
+    }
+}
+
+.VPDocAsideOutline {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.VPDocAsideOutline .VPDocOutlineItem.nested {
+    padding-right: 0;
+    padding-left: 12px;
+}
+
+.VPDocAsideOutline .outline-link {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    line-height: 1.5;
+    padding: 6px 8px;
+    margin: 2px 0;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.VPDocAsideOutline .outline-link:hover {
+    background: var(--accent-soft);
+}

@@ -1,0 +1,447 @@
+---
+title: "PreparedStatement 参数绑定"
+tags: [Java, JDBC, SQL]
+excerpt: "解释 SQL 结构与参数值的边界，掌握参数位置、明确类型和 SQL NULL，通过订单查询与注入反例验证绑定行为，并说明动态条件和 LIKE 的限制。"
+date: 2026-09-10
+---
+
+
+# PreparedStatement 参数绑定
+
+`PreparedStatement` 预先确定 SQL 结构，再通过参数位置传入值。驱动按类型处理这些值，输入中的引号或 SQL 关键字不会因此成为新的查询结构。
+
+
+## 一、结构与数据
+
+以下查询只允许改变订单编号的值，不能通过参数改变表名、比较运算或排序字段：
+
+```sql
+SELECT id, order_number, amount, created_at, reviewer_id
+FROM orders
+WHERE order_number = ?
+```
+
+参数绑定的正确性与安全性不依赖“每次一定更快”。是否在服务端准备语句、缓存执行计划或复用编译结果，取决于驱动、数据库和配置；不能把接口名直接当作性能承诺。
+
+::: warning 拼接后的 SQL 无法靠 prepareStatement 补救
+如果先把外部输入拼入字符串，再传给 `prepareStatement`，结构已经被输入改变。应在 SQL 中保留占位符，再调用 `setString` 等方法绑定值。
+:::
+
+
+## 二、位置与类型
+
+
+### 1. 参数索引
+
+JDBC 参数索引从 `1` 开始，与 Java 数组不同。SQL 增删条件时必须同步调整绑定顺序；绑定错位即使没有类型错误，也可能查询错误的业务范围。
+
+下方的 `JdbcOrders.find` 的局部查询逻辑如下，`connection` 由调用方管理，结果在方法内映射为快照：
+
+```java
+try (var statement = connection.prepareStatement(sql)) {
+    statement.setString(1, number);
+    statement.setQueryTimeout(2);
+    try (var rows = statement.executeQuery()) {
+        return rows.next() ? Optional.of(map(rows)) : Optional.empty();
+    }
+}
+```
+
+完整实现见下方的 `src/main/java/order/persistence/JdbcOrders.java`，其中 `sql` 使用上方的五列查询，`map` 的职责是类型转换。
+
+
+### 2. 明确类型与空值
+
+| SQL 值语义 | 常用绑定方法 | 需要核对的边界 |
+|------------|--------------|----------------|
+| 文本编号 | `setString` | 长度、编码与唯一性 |
+| 整数 | `setLong`、`setInt` | 范围、符号与溢出 |
+| 十进制金额 | `setBigDecimal` | 精度、小数位和舍入策略 |
+| 带偏移时间 | `setObject` 配合 `OffsetDateTime` | 列类型与驱动 JDBC 4.2 映射 |
+| SQL NULL | `setNull(index, Types.…)` | 必须选择目标列对应类型 |
+
+本例订单的审核人允许为空，绑定逻辑为：
+
+```java
+if (reviewerId == null) {
+    statement.setNull(4, Types.BIGINT);
+} else {
+    statement.setLong(4, reviewerId);
+}
+```
+
+SQL 中 `column = NULL` 不表示空值匹配，应使用 `IS NULL`。当可选参数为空时，需要先决定业务语义是“查询空值记录”“忽略条件”还是“拒绝输入”，再选择受控 SQL 结构。
+
+
+## 三、注入反例验证
+
+本篇示例固定 JDK 21、H2 2.4.240，表结构位于 `src/test/resources/schema.sql`，测试在独立内存数据库中插入 `ORD-1001` 与 `ORD-1002`。
+
+下面是 `boundInputCannotChangeSql` 中的核心对照。`connection` 已由测试获取，两条订单已准备；错误拼接仅用于隔离测试，不能接入实际请求。
+
+::: details 查看绑定与拼接的对照代码
+
+```java
+String input = "' OR '1'='1";
+assertTrue(JdbcOrders.find(connection, input).isEmpty());
+// 错误写法：固定攻击输入被拼接为 SQL 的一部分。
+try (var statement = connection.createStatement();
+     var rows = statement.executeQuery(
+             "SELECT COUNT(*) FROM orders WHERE order_number = '" + input + "'")) {
+    assertTrue(rows.next());
+    assertEquals(2, rows.getInt(1));
+}
+// 参数化查询没有把 input 解释成条件，因此找不到同名订单。
+// 拼接查询的 OR 条件成立，越过了原本的订单编号筛选。
+```
+
+:::
+
+在本篇新建的示例目录运行三个相关测试，预期全部通过；非法索引和错误行为由测试捕获并断言：
+
+先安装 JDK 21 和 Maven 3.9.11，在任意位置新建空目录作为本篇示例目录。按下方路径创建父目录和文件，编码使用 UTF-8；Maven 首次构建会下载声明的公开依赖。
+
+将以下内容保存为 `pom.xml`：
+
+::: details 查看 pom.xml 完整内容
+
+```xml [pom.xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>order</groupId>
+    <artifactId>order-jdbc</artifactId>
+    <version>1.0.0</version>
+    <properties>
+        <maven.compiler.release>21</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>6.1.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.4.240</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.4.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.4</version>
+                <configuration><failIfNoTests>true</failIfNoTests></configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+
+:::
+
+将以下内容保存为 `src/test/resources/schema.sql`：
+
+```sql [src/test/resources/schema.sql]
+CREATE TABLE orders (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    order_number VARCHAR(40) NOT NULL UNIQUE,
+    amount DECIMAL(19, 2) NOT NULL CHECK (amount >= 0),
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL,
+    reviewer_id BIGINT
+);
+```
+
+将以下内容保存为 `src/main/java/order/OrderRow.java`：
+
+::: details 查看 OrderRow.java 完整内容
+
+```java [src/main/java/order/OrderRow.java]
+package order;
+
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+
+/**
+ * 保存脱离 JDBC 游标的订单快照。
+ * @param id 数据库生成的正主键
+ * @param orderNumber 唯一业务编号，非空
+ * @param amount 金额，单位元，保留两位小数
+ * @param createdAt 订单创建时间，包含 UTC 偏移
+ * @param reviewerId 审核人编号，null 表示尚未分配
+ */
+public record OrderRow(long id, String orderNumber, BigDecimal amount,
+                       OffsetDateTime createdAt, Long reviewerId) { }
+```
+
+:::
+
+将以下内容保存为 `src/main/java/order/persistence/JdbcOrders.java`：
+
+::: details 查看 JdbcOrders.java 完整内容
+
+```java [src/main/java/order/persistence/JdbcOrders.java]
+package order.persistence;
+
+import order.OrderRow;
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
+import java.time.OffsetDateTime;
+import java.util.Objects;
+import java.util.Optional;
+
+/** 封装订单 SQL，借用连接的提交和关闭责任始终留给调用方。 */
+public final class JdbcOrders {
+    /** 禁止实例化无状态 SQL 工具。 */
+    private JdbcOrders() { }
+
+    /**
+     * 在借用的连接中插入订单并读取生成键，不自行提交。
+     * @param connection 当前有效连接，由调用方关闭
+     * @param number 非空唯一订单编号，不超过 40 字符
+     * @param amount 非负金额，单位元，数据库精度 DECIMAL(19,2)
+     * @param createdAt 非空创建时间，包含偏移
+     * @param reviewerId 可空审核人编号
+     * @return 数据库返回的订单主键
+     * @throws SQLException SQL、约束或生成键读取失败时抛出
+     */
+    public static long insert(Connection connection, String number, BigDecimal amount,
+                              OffsetDateTime createdAt, Long reviewerId) throws SQLException {
+        String sql = "INSERT INTO orders(order_number, amount, created_at, reviewer_id) VALUES (?, ?, ?, ?)";
+        try (var statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            statement.setString(1, Objects.requireNonNull(number));
+            statement.setBigDecimal(2, Objects.requireNonNull(amount));
+            statement.setObject(3, Objects.requireNonNull(createdAt));
+            if (reviewerId == null) {
+                statement.setNull(4, Types.BIGINT);
+            } else {
+                statement.setLong(4, reviewerId);
+            }
+            if (statement.executeUpdate() != 1) {
+                throw new SQLException("unexpected insert count");
+            }
+            try (var keys = statement.getGeneratedKeys()) {
+                if (!keys.next()) {
+                    throw new SQLException("missing generated key");
+                }
+                return keys.getLong(1);
+            }
+        }
+    }
+
+    /**
+     * 绑定编号查询，完成映射后关闭语句和游标，不关闭借用连接。
+     * @param connection 当前有效连接，不能被其他线程并发使用
+     * @param number 非空查询值；即使含 SQL 符号也只作为参数
+     * @return 找到的快照或正常缺失
+     * @throws SQLException 查询或映射失败时抛出
+     */
+    public static Optional<OrderRow> find(Connection connection, String number) throws SQLException {
+        String sql = "SELECT id, order_number, amount, created_at, reviewer_id FROM orders WHERE order_number = ?";
+        try (var statement = connection.prepareStatement(sql)) {
+            statement.setString(1, Objects.requireNonNull(number));
+            statement.setQueryTimeout(2);
+            try (var rows = statement.executeQuery()) {
+                return rows.next() ? Optional.of(map(rows)) : Optional.empty();
+            }
+        }
+    }
+
+    /**
+     * 映射已定位的当前行；wasNull 紧跟可空基本类型的读取。
+     * @param rows 有效且已定位的结果集，由调用方关闭
+     * @return 不持有 JDBC 资源的订单快照
+     * @throws SQLException 列不存在、游标无效或类型不支持时抛出
+     */
+    private static OrderRow map(ResultSet rows) throws SQLException {
+        long reviewerValue = rows.getLong("reviewer_id");
+        Long reviewerId = rows.wasNull() ? null : reviewerValue;
+        return new OrderRow(rows.getLong("id"), rows.getString("order_number"),
+                rows.getBigDecimal("amount"), rows.getObject("created_at", OffsetDateTime.class), reviewerId);
+    }
+}
+```
+
+:::
+
+将以下内容保存为 `src/test/java/order/persistence/JdbcContractTest.java`：
+
+::: details 查看 JdbcContractTest.java 完整内容
+
+```java [src/test/java/order/persistence/JdbcContractTest.java]
+package order.persistence;
+
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.InputStreamReader;
+import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.time.OffsetDateTime;
+import java.util.UUID;
+import org.h2.jdbcx.JdbcDataSource;
+import org.h2.tools.RunScript;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+
+/** 用独立 H2 数据库验证 JDBC 契约，不声称覆盖其他数据库方言。 */
+@Timeout(15)
+class JdbcContractTest {
+    private static final BigDecimal AMOUNT = new BigDecimal("49.70");
+    private static final OffsetDateTime CREATED = OffsetDateTime.parse("2026-09-10T10:00:00+08:00");
+    private JdbcDataSource dataSource;
+    private Connection keeper;
+
+    /** 保留一个连接使建表后的内存库持续存在；每次测试使用唯一名称。 */
+    @BeforeEach
+    void createDatabase() throws Exception {
+        dataSource = new JdbcDataSource();
+        dataSource.setURL("jdbc:h2:mem:orders_" + UUID.randomUUID());
+        dataSource.setUser("sa");
+        dataSource.setPassword("");
+        keeper = dataSource.getConnection();
+        try (var input = getClass().getResourceAsStream("/schema.sql")) {
+            assertNotNull(input);
+            try (var reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
+                RunScript.execute(keeper, reader);
+            }
+        }
+    }
+
+    /** 释放最后一个测试连接，使内存库消失，不影响其他测试。 */
+    @AfterEach
+    void closeDatabase() throws Exception {
+        if (keeper != null) {
+            keeper.close();
+        }
+    }
+
+    /** SQL 控制字符在参数化查询中不能改变查询结构。 */
+    @Test
+    void boundInputCannotChangeSql() throws Exception {
+        try (var connection = dataSource.getConnection()) {
+            insert(connection, "ORD-1001");
+            insert(connection, "ORD-1002");
+            String input = "' OR '1'='1";
+            assertTrue(JdbcOrders.find(connection, input).isEmpty());
+            // 仅在隔离数据库展示错误拼接，固定输入不能接入真实请求。
+            try (var statement = connection.createStatement();
+                 var rows = statement.executeQuery(
+                         "SELECT COUNT(*) FROM orders WHERE order_number = '" + input + "'")) {
+                assertTrue(rows.next());
+                assertEquals(2, rows.getInt(1));
+            }
+        }
+    }
+
+    /** 参数索引从 1 开始，0 是错误位置。 */
+    @Test
+    void parameterIndexStartsAtOne() throws Exception {
+        try (var connection = dataSource.getConnection();
+             var statement = connection.prepareStatement("SELECT id FROM orders WHERE order_number = ?")) {
+            assertThrows(SQLException.class,
+                    /* 固定非法索引用于证明 JDBC 参数位置边界。 */
+                    () -> statement.setString(0, "ORD-1001"));
+        }
+    }
+
+    /** 基本类型的零值需要用 wasNull 区分 SQL NULL 与真实零。 */
+    @Test
+    void sqlNullIsNotZero() throws Exception {
+        try (var connection = dataSource.getConnection()) {
+            JdbcOrders.insert(connection, "ORD-1001", AMOUNT, CREATED, null);
+            JdbcOrders.insert(connection, "ORD-1002", AMOUNT, CREATED, 0L);
+            try (var statement = connection.createStatement();
+                 var rows = statement.executeQuery("SELECT reviewer_id FROM orders ORDER BY order_number")) {
+                assertTrue(rows.next());
+                assertEquals(0, rows.getLong(1));
+                assertTrue(rows.wasNull());
+                assertTrue(rows.next());
+                assertEquals(0, rows.getLong(1));
+                assertFalse(rows.wasNull());
+            }
+        }
+    }
+
+    /**
+     * 以固定金额和时间插入测试订单，不管理连接事务。
+     * @param connection 由测试持有的有效连接
+     * @param number 本次测试内的订单编号
+     * @return 数据库生成的正主键
+     * @throws SQLException SQL 或约束失败时抛出
+     */
+    private static long insert(Connection connection, String number) throws SQLException {
+        return JdbcOrders.insert(connection, number, AMOUNT, CREATED, null);
+    }
+}
+```
+
+:::
+
+```powershell
+
+mvn -ntp -f pom.xml test "-Dtest=JdbcContractTest#boundInputCannotChangeSql+parameterIndexStartsAtOne+sqlNullIsNotZero"
+```
+
+| 场景 | 实际应观察的结果 |
+|------|------------------|
+| 同样输入作为参数 | 没有同名订单，返回空结果 |
+| 同样输入拼接到 SQL | 错误地查询到两条订单 |
+| 参数位置使用 `0` | 抛出 `SQLException` |
+| 审核人分别写入 NULL 与 0 | 可通过类型读取及 `wasNull` 区分 |
+
+
+## 四、动态查询边界
+
+
+### 1. 条件与标识符
+
+可选条件应由程序选择固定片段，值继续绑定。表名、列名、`ASC`/`DESC` 属于 SQL 结构，不能指望 `ORDER BY ?` 把参数当作列名；应使用内部枚举映射到允许的片段。
+
+`IN` 查询通常需要为每个值提供占位符，不能把 Java 集合直接交给一个问号就假设驱动会展开。必须定义空集合语义并限制集合规模，避免产生无效 SQL 或无界参数列表。
+
+
+### 2. LIKE 与更新结果
+
+绑定参数中的 `%`、`_` 仍有 LIKE 通配语义。这不是结构注入，但会改变匹配范围；业务要求字面匹配时，需按目标数据库规则转义并声明 `ESCAPE`。
+
+写入后读取 `executeUpdate()` 的影响行数。预期修改一行却得到零行，可能是记录不存在、版本冲突或条件错误，应按业务契约处理。参数化不会自动解决并发冲突、权限过宽或无界结果，相关限制见[数据访问安全与性能](./10-security-performance.md)。
+
+## 五、参考资料
+
+- [PreparedStatement API](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/PreparedStatement.html)
+- [JDBC 参数化语句教程](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
+
+以上资料说明参数位置、类型和结构分离；运行语义以本例固定版本的测试为依据。

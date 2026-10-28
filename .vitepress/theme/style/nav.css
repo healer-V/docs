@@ -1,0 +1,184 @@
+/* ============================================================
+   Nav — frosted glass + aurora glow
+   ============================================================ */
+
+.VPNav { border-bottom: none !important; }
+
+.VPNavBar {
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.VPNavBar:not(.home.top),
+.VPNavBar.home.top {
+  box-shadow: 0 1px 0 0 var(--vp-c-divider),
+              0 4px 24px rgba(var(--shadow-rgb), 0.06) !important;
+}
+.dark .VPNavBar:not(.home.top),
+.dark .VPNavBar.home.top {
+  box-shadow: 0 1px 0 0 var(--vp-c-divider),
+              0 4px 32px rgba(var(--shadow-rgb), 0.3) !important;
+}
+
+.VPNavBar .title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: var(--aurora);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  transition: color 0.16s ease !important;
+  position: relative;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink::after,
+.VPNavBarMenuGroup > .button::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink:hover,
+.VPNavBarMenu .VPNavBarMenuLink.active,
+.VPNavBarMenu .VPNavBarMenuLink:focus-visible,
+.VPNavBarMenuGroup:hover .text,
+.VPNavBarMenuGroup.active .text,
+.VPNavBarMenuGroup > .button:focus-visible .text,
+.VPNavBarMenuGroup > .button[aria-expanded="true"] .text {
+  color: var(--accent) !important;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink:hover::after,
+.VPNavBarMenu .VPNavBarMenuLink.active::after,
+.VPNavBarMenu .VPNavBarMenuLink:focus-visible::after,
+.VPNavBarMenuGroup:hover > .button::after,
+.VPNavBarMenuGroup.active > .button::after,
+.VPNavBarMenuGroup > .button:focus-visible::after,
+.VPNavBarMenuGroup > .button[aria-expanded="true"]::after {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
+}
+
+.VPNavBarMenuGroup .text {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  transition: color 0.16s ease !important;
+}
+
+.VPNavBarMenuGroup > .button {
+  position: relative;
+}
+
+.VPNavBarMenuGroup .text-icon {
+  transition: transform 0.16s ease !important;
+}
+
+.VPNavBarMenuGroup:hover .text-icon,
+.VPNavBarMenuGroup > .button[aria-expanded="true"] .text-icon {
+  transform: rotate(180deg);
+}
+
+.VPNavBarMenu .VPNavBarMenuLink:focus-visible,
+.VPNavBarMenuGroup > .button:focus-visible {
+  border-radius: 8px;
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.VPFlyout {
+  z-index: 30;
+}
+
+.VPFlyout > .menu {
+  z-index: 40;
+  right: auto !important;
+  left: 50% !important;
+  pointer-events: none;
+  transition: none !important;
+  transform: translateX(-50%) translateZ(0) !important;
+}
+
+.VPFlyout:hover > .menu,
+.VPFlyout > .button[aria-expanded="true"] + .menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto;
+}
+
+.VPFlyout .VPMenu {
+  border-radius: 14px !important;
+  border: 1px solid var(--glow-border) !important;
+  box-shadow: 0 16px 48px rgba(var(--shadow-rgb), 0.1) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  /* 后端等长菜单在小屏下需要在卡片内部滚动，避免下方菜单项被视口截断。 */
+  max-height: calc(100vh - var(--vp-nav-height) - 24px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  max-width: calc(100vw - 24px);
+  transform: translateZ(0);
+}
+.dark .VPFlyout .VPMenu {
+  box-shadow: 0 16px 48px rgba(var(--shadow-rgb), 0.4) !important;
+  background: var(--vp-c-bg-soft) !important;
+}
+
+.VPFlyout .VPMenuLink a {
+  transition: color 0.2s ease, background-color 0.2s ease !important;
+  border-radius: 8px !important;
+}
+.VPFlyout .VPMenuLink a:hover {
+  color: var(--accent) !important;
+  background-color: var(--accent-soft) !important;
+}
+
+.VPNavBarSocialLinks .VPSocialLink:hover {
+  color: var(--accent) !important;
+  transition: color 0.2s ease;
+}
+
+.VPNavBarHamburger .container .top,
+.VPNavBarHamburger .container .middle,
+.VPNavBarHamburger .container .bottom {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Mobile search */
+@media (max-width: 768px) {
+  .VPNavBarSearch .local-search-btn {
+    height: 32px !important;
+    padding: 0 10px !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .VPNavBarMenu .VPNavBarMenuLink { padding: 8px 12px !important; }
+}
+
+@media (max-width: 768px) {
+  .VPFlyout > .menu {
+    position: fixed !important;
+    top: calc(var(--vp-nav-height) + 8px) !important;
+    left: 50vw !important;
+    right: auto !important;
+    transform: translateX(-50%) translateZ(0) !important;
+  }
+}
