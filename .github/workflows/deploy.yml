@@ -128,7 +128,7 @@ jobs:
         run: pnpm docs:search
 
       - name: Validate search output
-        run: pnpm docs:validate -- --require-search
+        run: pnpm docs:validate --require-search
 
       - name: Install Chromium
         run: pnpm exec playwright install --with-deps chromium
