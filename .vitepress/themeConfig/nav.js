@@ -96,7 +96,7 @@ export const rawNav = [
     items: [
       { text: 'React Native', link: '/crossend/01-reactnative/index' },
       { text: 'Flutter', link: '/crossend/02-flutter/index' },
-      { text: 'HarmonyOS', link: '/crossend/03-harmonyOs/index' },
+      { text: 'HarmonyOS', link: '/crossend/03-harmonyos/index' },
       { text: 'Electron', link: '/crossend/04-electron/index' },
     ],
   },
