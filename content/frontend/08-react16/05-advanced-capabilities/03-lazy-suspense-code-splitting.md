@@ -83,6 +83,7 @@ export default function TaskReports() {
 
 只有具名导出时，可以创建中间模块重新导出默认值。也可以让动态导入 Promise 映射模块：
 
+::: details 查看默认导出要求的示例代码
 ```jsx
 const TaskReports = React.lazy(
   /**
@@ -101,6 +102,7 @@ const TaskReports = React.lazy(
   )
 );
 ```
+:::
 
 中间模块通常更利于构建工具静态分析导出关系。
 
@@ -156,6 +158,7 @@ Suspense 边界决定加载时被替换的界面范围：
 
 懒组件只有进入当前渲染树时才开始加载：
 
+::: details 查看条件加载的示例代码
 ```jsx
 /**
  * 按需打开任务报表。
@@ -187,6 +190,7 @@ function ReportsPanel() {
   );
 }
 ```
+:::
 
 单击前报表模块通常不会请求；单击后组件进入元素树，React 执行加载函数并显示 fallback。
 

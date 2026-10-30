@@ -22,6 +22,7 @@ JSX 变量名、组件函数参数和代码分支名称不会直接决定身份�
 
 ### 1. 同类型同位置
 
+::: details 查看同类型同位置的示例代码
 ```jsx
 /**
  * 根据模式显示任务编辑器。
@@ -38,6 +39,7 @@ function TaskArea({ compact }) {
   );
 }
 ```
+:::
 
 两种分支最终都在 `section` 的第一个子位置渲染 `TaskEditor`。React 保留同一个组件身份，因此编辑器 State 默认保留，只更新 `mode` Props。
 
@@ -194,6 +196,7 @@ return (
 
 ### 1. 嵌套定义创建新类型
 
+::: details 查看嵌套定义创建新类型的示例代码
 ```jsx
 function TaskPage() {
   /**
@@ -208,11 +211,13 @@ function TaskPage() {
   return <TaskEditor />;
 }
 ```
+:::
 
 外层每次执行都会产生新的 `TaskEditor` 函数引用，React 把它视为不同组件类型，内部 State 重置。
 
 组件应定义在模块顶层：
 
+::: details 查看嵌套定义创建新类型的示例代码
 ```jsx
 /**
  * 显示任务编辑器。
@@ -227,6 +232,7 @@ function TaskPage() {
   return <TaskEditor />;
 }
 ```
+:::
 
 ## 七、身份与资源
 

@@ -16,6 +16,7 @@ date: 2026-07-31
 
 自定义 Hook 是名称以 `use` 开头、可以调用其他 Hook 的 JavaScript 函数。它复用状态逻辑和外部同步方式，不复用组件界面。
 
+::: details 查看定义的示例代码
 ```jsx
 /**
  * 保存布尔值并提供切换函数。
@@ -43,9 +44,11 @@ function useToggle(initialValue) {
   return [value, toggle];
 }
 ```
+:::
 
 组件使用：
 
+::: details 查看定义的示例代码
 ```jsx
 /**
  * 显示可展开详情。
@@ -64,6 +67,7 @@ function TaskDetails() {
   );
 }
 ```
+:::
 
 ### 2. 名称必须以 use 开头
 
@@ -84,6 +88,7 @@ function toggleState() {
 
 自定义 Hook 不会创建全局共享 State。两个组件调用 `useToggle(false)` 时，React 为两个组件分别保存 Hook 状态。
 
+::: details 查看每次调用拥有独立状态的示例代码
 ```jsx
 // 使用 useToggle 保存第一块面板自己的展开状态。
 function FirstPanel() {
@@ -97,6 +102,7 @@ function SecondPanel() {
   // 第二份状态
 }
 ```
+:::
 
 共享的是实现逻辑，不是数据。
 
@@ -119,6 +125,7 @@ function SecondPanel() {
 
 这些步骤构成一个完整生命周期契约，适合封装为自定义 Hook：
 
+::: details 查看在线状态 Hook的示例代码
 ```jsx
 /**
  * 读取并订阅浏览器在线状态。
@@ -175,9 +182,11 @@ function useOnlineStatus() {
   return online;
 }
 ```
+:::
 
 两个组件可以用不同界面复用同一逻辑：
 
+::: details 查看在线状态 Hook的示例代码
 ```jsx
 /**
  * 显示网络状态徽标。
@@ -201,6 +210,7 @@ function SaveButton() {
   );
 }
 ```
+:::
 
 两个调用仍会分别建立监听。如果应用中大量组件都需要同一在线状态，可以在一个 Provider 中调用 Hook，再通过 Context 分发结果。
 
@@ -210,6 +220,7 @@ function SaveButton() {
 
 自定义 Hook 的参数应完整表达逻辑依赖：
 
+::: details 查看参数表达外部输入的示例代码
 ```jsx
 /**
  * 订阅指定任务的消息。
@@ -232,6 +243,7 @@ function useTaskMessages(channel, taskId) {
   return messages;
 }
 ```
+:::
 
 参数变化后 Hook 内部 Effect 会按依赖重新同步。不要把隐式模块变量当作输入，否则调用者无法判断 Hook 依赖。
 
@@ -265,6 +277,7 @@ const [open, toggleOpen] = useToggle(false);
 
 存在多个具名状态和操作时，返回对象更清晰：
 
+::: details 查看对象返回值的示例代码
 ```jsx
 /**
  * 管理任务请求状态。
@@ -286,6 +299,7 @@ function useTaskRequest(taskId) {
   };
 }
 ```
+:::
 
 返回值应隐藏不必要的内部 setter。调用者需要“重新加载”时暴露 `reload`，不直接暴露所有内部 State 更新函数。
 

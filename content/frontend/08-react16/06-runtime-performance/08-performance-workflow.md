@@ -68,6 +68,7 @@ React 16.8 可以在组件树中使用 `<React.Profiler>` 收集渲染测量：
 
 `onRender` 在被测子树提交时调用：
 
+::: details 查看React.Profiler的示例代码
 ```jsx
 /**
  * 记录任务列表渲染指标。
@@ -100,6 +101,7 @@ function handleProfilerRender(
   });
 }
 ```
+:::
 
 Profiler 本身有测量开销，不应无条件把详细日志发送到生产控制台。生产分析需要使用 React 提供的 profiling 构建，并控制采样和数据量。
 

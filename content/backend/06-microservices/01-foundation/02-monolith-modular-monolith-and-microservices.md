@@ -4,7 +4,7 @@ tags:
   - 微服务
   - 模块化单体
   - 架构决策
-excerpt: "以保险投保链路为案例，从部署单元、代码边界、数据所有权、故障模型和团队协作比较单体、模块化单体与微服务，并通过可执行模块边界测试说明如何在拆服务前建立可靠边界。"
+excerpt: "以保险投保链路为案例，从部署单元、代码边界、数据所有权、故障模型和团队协作比较单体、模块化单体与微服务，并通过模块边界测试说明如何在拆服务前建立可靠边界。"
 date: 2026-07-22
 ---
 
@@ -85,7 +85,7 @@ date: 2026-07-22
 
 模块化单体仍然只有一个部署单元，但代码按照业务能力组织。模块只公开稳定 API，内部实现、Repository 和实体不能被其他模块直接访问。
 
-配套案例位于 `examples/microservices-insurance/insurance-monolith/`，核心结构如下：
+以保险投保链路为例，单体应用中的产品模块和投保模块可以按以下包结构划分：
 
 ```text
 com.example.insurance
@@ -99,11 +99,10 @@ com.example.insurance
    └─ ApplicationEligibilityController.java
 ```
 
-投保模块只依赖产品模块公开的 `ProductCatalog`，不知道产品目录如何存储：
+投保模块只依赖产品模块公开的 `ProductCatalog`，不知道产品目录如何存储。下面只展示公开接口，`ProductView` 和 `internal` 中的实现类从略：
 
 ```java
-// examples/microservices-insurance/insurance-monolith/src/main/java/
-// com/example/insurance/product/ProductCatalog.java
+// src/main/java/com/example/insurance/product/ProductCatalog.java
 public interface ProductCatalog {
     /**
      * 查询指定产品的投保摘要。
@@ -115,11 +114,10 @@ public interface ProductCatalog {
 }
 ```
 
-模块的依赖方向不是靠约定维持，而是通过 Spring Modulith 声明和测试：
+模块的依赖方向不能只靠约定维持。Spring Modulith 默认把启动类所在包的每个直接子包视为一个应用模块，模块根包中的类型构成对外 API，`internal` 这类子包属于模块内部实现。边界规则可以写成一条测试：
 
 ```java
-// examples/microservices-insurance/insurance-monolith/src/test/java/
-// com/example/insurance/ModularityTest.java
+// src/test/java/com/example/insurance/ModularityTest.java
 class ModularityTest {
     /** 产品模块不得反向依赖投保模块，投保模块只能使用产品公开 API。 */
     @Test
@@ -129,20 +127,15 @@ class ModularityTest {
 }
 ```
 
-在示例工程目录执行：
+::: info 运行这条测试需要的上下文
+以上是局部代码，省略了 `InsuranceMonolithApplication` 启动类、`import` 语句，以及 `spring-modulith-starter-test` 测试依赖。依赖版本应由 Spring Modulith BOM 统一管理。
+:::
 
-```powershell
-.\mvnw.cmd -pl insurance-monolith test
-```
+`verify()` 检查两类问题：模块之间是否存在循环依赖，以及某个模块是否引用了其他模块的内部类型。如果 `ApplicationEligibilityService` 直接使用 `product.internal.InMemoryProductCatalog`，测试会失败，异常信息会列出违规的依赖路径；改为只依赖 `ProductCatalog` 后测试通过。
 
-本文实际验证得到的核心结果为：
-
-```text
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
-BUILD SUCCESS
-```
-
-这项测试证明当前代码没有模块循环，且投保模块没有访问产品模块的非公开类型。它不能证明业务边界一定正确；边界是否合理还需要用业务变化、数据所有权和团队责任验证。
+::: warning 测试通过不等于边界正确
+这项测试只能证明代码没有模块循环，投保模块也没有访问产品模块的非公开类型。业务边界是否合理，仍需要用业务变化、数据所有权和团队责任验证。
+:::
 
 ## 五、微服务改变的是运行模型
 

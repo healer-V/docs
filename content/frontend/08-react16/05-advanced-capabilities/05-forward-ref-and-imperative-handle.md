@@ -43,6 +43,7 @@ const Component = React.forwardRef(render);
 
 ### 3. 转发到 DOM
 
+::: details 查看转发到 DOM的示例代码
 ```jsx
 const TaskInput = React.forwardRef(
   /**
@@ -61,9 +62,11 @@ const TaskInput = React.forwardRef(
   }
 );
 ```
+:::
 
 父组件使用：
 
+::: details 查看转发到 DOM的示例代码
 ```jsx
 /**
  * 显示并聚焦任务标题输入框。
@@ -105,6 +108,7 @@ function TaskEditor() {
   );
 }
 ```
+:::
 
 此时 `inputRef.current` 是内部 `input` DOM 节点。
 
@@ -155,6 +159,7 @@ React.useImperativeHandle(ref, createHandle, dependencies?)
 
 ### 2. 暴露最小接口
 
+::: details 查看暴露最小接口的示例代码
 ```jsx
 const TaskInput = React.forwardRef(
   /**
@@ -214,6 +219,7 @@ const TaskInput = React.forwardRef(
   }
 );
 ```
+:::
 
 父组件：
 
@@ -244,6 +250,7 @@ function handleResetInput() {
 
 非 React 图表库通常需要一个 DOM 容器和一个命令式实例：
 
+::: details 查看DOM 容器与实例 Ref的示例代码
 ```jsx
 /**
  * 把任务统计同步到第三方图表。
@@ -290,6 +297,7 @@ function TaskChart({ data }) {
   return <div ref={containerRef} className="task-chart" />;
 }
 ```
+:::
 
 第一个 Effect 管理实例生命周期，第二个 Effect 管理数据同步。`chartRef` 不参与渲染，因此不使用 State。
 

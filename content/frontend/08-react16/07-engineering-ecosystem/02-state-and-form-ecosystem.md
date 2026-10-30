@@ -41,6 +41,7 @@ Context 负责把值提供给一棵组件子树，避免逐层透传 Props。它
 
 Context 本身不提供业务状态建模、异步流程、调试记录或细粒度订阅。Provider 的 `value` 引用变化时，读取该 Context 的消费者会重新渲染。因此，把整个应用的高频变化对象放入单个 Context，容易扩大更新范围。
 
+::: details 查看 src/auth/AuthContext.js 完整代码
 ```jsx
 // src/auth/AuthContext.js
 import React from 'react';
@@ -72,6 +73,7 @@ export function useAuth() {
   return context;
 }
 ```
+:::
 
 `useMemo` 在这里用于保持 Provider 值的引用稳定，前提是 `currentUser` 与 `onSignOut` 没有变化。若 `onSignOut` 在父组件每次渲染时重新创建，仍然需要由父组件使用 `useCallback` 保持引用。
 
@@ -99,6 +101,7 @@ Redux 的核心数据流是单向的：
 
 下面的 Reducer 管理任务筛选条件。Action 使用明确的 `type` 和载荷，Reducer 保持纯函数并返回新对象：
 
+::: details 查看 src/store/filterReducer.js 完整代码
 ```js
 // src/store/filterReducer.js
 const initialState = {
@@ -125,9 +128,11 @@ export function filterReducer(state = initialState, action) {
   }
 }
 ```
+:::
 
 Store 在应用外创建一次，再通过 `Provider` 注入组件树：
 
+::: details 查看 src/index.js 完整代码
 ```jsx
 // src/index.js
 import React from 'react';
@@ -147,9 +152,11 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+:::
 
 `useSelector` 订阅选中的状态，`useDispatch` 返回 Store 的派发函数：
 
+::: details 查看 src/features/tasks/TaskFilters.js 完整代码
 ```jsx
 // src/features/tasks/TaskFilters.js
 import React from 'react';
@@ -180,6 +187,7 @@ function TaskFilters() {
   );
 }
 ```
+:::
 
 `useSelector` 默认使用严格相等 `===` 比较前后结果。下面的选择器每次都创建新对象，即使字段没变也会触发渲染：
 
@@ -216,6 +224,7 @@ npm install zustand@3.7.2
 
 Store 同时定义状态和修改状态的动作：
 
+::: details 查看 src/store/useTaskDraftStore.js 完整代码
 ```js
 // src/store/useTaskDraftStore.js
 import create from 'zustand';
@@ -251,9 +260,11 @@ export const useTaskDraftStore = create((set) => ({
     })
 }));
 ```
+:::
 
 组件应选择自己需要的最小状态，避免订阅整个 Store：
 
+::: details 查看Zustand 的 Store的示例代码
 ```jsx
 import React from 'react';
 import { useTaskDraftStore } from '../../store/useTaskDraftStore';
@@ -276,6 +287,7 @@ function TaskTitleField() {
   );
 }
 ```
+:::
 
 Redux 与 Zustand 都不应自动承担请求缓存职责。把接口响应直接塞进 Store，还需要自行实现请求去重、新鲜度、重试、失效和竞态控制；这些需求更适合专门的服务端状态工具。
 
@@ -301,6 +313,7 @@ Formik 2.4.6 支持 React 16.8 及以上。`useFormik` 接收初始值、校验�
 npm install formik@2.4.6
 ```
 
+::: details 查看Formik 的表单模型的示例代码
 ```jsx
 import React from 'react';
 import { useFormik } from 'formik';
@@ -380,6 +393,7 @@ function TaskForm() {
   );
 }
 ```
+:::
 
 字段校验错误放在 `errors`，是否已经交互放在 `touched`，服务端提交错误可以放在 `status`。这样用户首次打开表单时不会立刻看到所有字段报错，提交失败也不会被误认为某个字段格式错误。
 
@@ -393,6 +407,7 @@ npm install react-hook-form@7.43.9
 
 `useForm` 返回 `register`、`handleSubmit`、`formState` 和其他表单控制能力：
 
+::: details 查看React Hook Form 的字段注册的示例代码
 ```jsx
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -459,6 +474,7 @@ function TaskForm() {
   );
 }
 ```
+:::
 
 自定义受控组件无法直接暴露原生输入 Ref 时，可以使用 `Controller` 适配其 `value`、`onChange` 和 `onBlur`。不要同时对同一字段使用 `register` 与 `Controller`，否则会形成重复注册。
 

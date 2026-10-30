@@ -16,6 +16,7 @@ date: 2026-07-31
 
 组件需要返回多个并列元素时，Fragment 可以把这些元素组成一个 React 返回结果，同时不创建额外 DOM 节点。
 
+::: details 查看Fragment 的作用的示例代码
 ```jsx
 /**
  * 显示任务标题和状态。
@@ -31,6 +32,7 @@ function TaskSummary({ title, status }) {
   );
 }
 ```
+:::
 
 浏览器 DOM 中只有 `h2` 和 `p`：
 
@@ -45,6 +47,7 @@ Fragment 存在于 React 元素树中，但不会对应一个浏览器元素。
 
 不需要设置 `key` 时，可以使用 `<>...</>`：
 
+::: details 查看短语法的示例代码
 ```jsx
 /**
  * 显示任务的两个描述字段。
@@ -59,6 +62,7 @@ function TaskMeta() {
   );
 }
 ```
+:::
 
 短语法不能接收属性。需要 `key` 时必须写显式的 `<React.Fragment>`。
 
@@ -75,6 +79,7 @@ React 16.8 的 Fragment 只支持 `key`，不能设置 `className`、事件或�
 
 数组中的每条数据需要生成多个并列节点时，Fragment 本身应作为列表项并接收 `key`。
 
+::: details 查看列表项包含多个并列节点的示例代码
 ```jsx
 const tasks = [
   { id: 17, title: "核对订单", owner: "林晨" },
@@ -103,6 +108,7 @@ function TaskDescriptionList() {
   return <dl>{tasks.map(renderTaskMeta)}</dl>;
 }
 ```
+:::
 
 `key` 放在数组直接返回的 Fragment 上，而不是分别放到 `dt` 和 `dd`。React 把一组标题和内容视为同一条任务对应的列表项。
 
@@ -130,6 +136,7 @@ tasks.map(
 
 React 组件树描述组件和 React 元素之间的关系；DOM 树只包含实际提交给浏览器的宿主元素与文本节点。
 
+::: details 查看两棵树不完全相同的完整输出
 ```text
 React 组件树
 TaskPage
@@ -143,6 +150,7 @@ main
 ├─ h2
 └─ p
 ```
+:::
 
 函数组件和 Fragment 都不会自动创建同名 DOM。只有小写宿主元素，如 `main`、`h2`、`p`，才会形成浏览器节点。
 
@@ -158,6 +166,7 @@ Fragment 没有 DOM 节点，因此不能承担以下职责：
 
 需要这些能力时，应使用真实且语义合适的元素：
 
+::: details 查看Fragment 不提供布局盒子的示例代码
 ```jsx
 /**
  * 使用真实容器建立工具栏布局。
@@ -172,6 +181,7 @@ function TaskToolbar() {
   );
 }
 ```
+:::
 
 如果改用 Fragment，两个按钮仍会渲染，但工具栏布局和语义都没有承载节点。
 
@@ -193,6 +203,7 @@ function TaskToolbar() {
 
 Fragment 可以避免为了包裹而生成破坏 HTML 结构的元素。例如表格行中必须直接包含单元格：
 
+::: details 查看避免无效 HTML 嵌套的示例代码
 ```jsx
 /**
  * 返回一行中的两个单元格。
@@ -214,6 +225,7 @@ const row = (
   </tr>
 );
 ```
+:::
 
 若 `TaskCells` 返回 `div`，浏览器会得到 `tr > div > td` 的无效表格结构。Fragment 让 `td` 保持为 `tr` 的直接子元素。
 

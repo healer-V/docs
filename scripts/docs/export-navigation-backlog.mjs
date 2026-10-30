@@ -11,7 +11,7 @@ import {
 import { loadSidebar } from '../../.vitepress/themeConfig/sidebar.js'
 import { writeJson } from './lib/files.mjs'
 
-const DEFAULT_OUTPUT = 'standards/documentation/backlogs/navigation-missing.json'
+const DEFAULT_OUTPUT = 'superpowers/backlogs/navigation-missing.json'
 
 /**
  * 递归提取导航树中的内部链接及其文本路径。

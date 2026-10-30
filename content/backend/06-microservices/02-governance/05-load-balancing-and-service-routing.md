@@ -35,6 +35,7 @@ OpenFeign 集成 LoadBalancer 时也需要确保该依赖存在。
 
 ### 2. 创建负载均衡 RestClient
 
+::: details 查看 application-service 的 HttpClientConfiguration.java 完整代码
 ```java
 // application-service/src/main/java/com/example/application/config/HttpClientConfiguration.java
 package com.example.application.config;
@@ -58,9 +59,11 @@ public class HttpClientConfiguration {
     }
 }
 ```
+:::
 
 ### 3. 使用服务名
 
+::: details 查看 application-service 的 ProductLookupClient.java 完整代码
 ```java
 // application-service/src/main/java/com/example/application/client/ProductLookupClient.java
 package com.example.application.client;
@@ -95,6 +98,7 @@ public class ProductLookupClient {
     }
 }
 ```
+:::
 
 `ProductSummary` 是调用契约类型，第三章将完整说明 DTO 与错误处理。
 

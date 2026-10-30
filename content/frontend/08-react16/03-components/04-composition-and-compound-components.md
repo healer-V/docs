@@ -18,6 +18,7 @@ date: 2026-07-31
 
 下面的筛选区由输入组件和状态选择组件组成：
 
+::: details 查看通过 Props 组合能力的示例代码
 ```jsx
 /**
  * 显示任务筛选区域。
@@ -69,6 +70,7 @@ function TaskFilters({
   );
 }
 ```
+:::
 
 这个组件不保存筛选 State，而是组合两个控件并统一事件接口。调用者决定状态位置和筛选逻辑。
 
@@ -76,6 +78,7 @@ function TaskFilters({
 
 容器需要允许调用者替换一整片结构时，可以接收具名 React 节点：
 
+::: details 查看通过 React 节点开放区域的示例代码
 ```jsx
 /**
  * 显示带操作区的工具栏。
@@ -102,6 +105,7 @@ const element = (
   />
 );
 ```
+:::
 
 调用者控制标题和操作区内容，`Toolbar` 控制稳定布局。只有在结构确实需要开放时才接收 React 节点；普通文本仍优先使用字符串 Props。
 
@@ -111,6 +115,7 @@ const element = (
 
 一组组件需要共享状态时，可以让上层组件保存状态，再把当前值和操作分别传给子组件。
 
+::: details 查看状态由组合者管理的示例代码
 ```jsx
 /**
  * 显示可切换的任务视图。
@@ -147,6 +152,7 @@ function TaskView() {
   );
 }
 ```
+:::
 
 共享状态范围较小时，显式 Props 最容易理解。只有多层嵌套导致大量中间组件被迫透传时，才需要 Context。
 
@@ -208,6 +214,7 @@ const TabsContext = React.createContext(null);
 
 ### 3. 实现 Tabs 容器
 
+::: details 查看实现 Tabs 容器的示例代码
 ```jsx
 /**
  * 为标签页子组件提供当前值和切换操作。
@@ -232,6 +239,7 @@ function Tabs({ defaultValue, children }) {
   );
 }
 ```
+:::
 
 `Provider` 的 `value` 同时包含当前值和更新函数。后代消费者会读取组件树中距离自己最近的 Provider。
 
@@ -239,6 +247,7 @@ function Tabs({ defaultValue, children }) {
 
 `Context.Consumer` 的子内容必须是一个函数。React 会把当前 Context 值作为参数传入该函数。
 
+::: details 查看实现 Tab的示例代码
 ```jsx
 /**
  * 渲染一个可以切换当前标签的按钮。
@@ -284,9 +293,11 @@ function Tab({ value, children }) {
   return <TabsContext.Consumer>{renderTab}</TabsContext.Consumer>;
 }
 ```
+:::
 
 ### 5. 实现 Panel
 
+::: details 查看实现 Panel的示例代码
 ```jsx
 /**
  * 仅在自身 value 为活动值时显示内容。
@@ -319,6 +330,7 @@ function TabPanel({ value, children }) {
 Tabs.Tab = Tab;
 Tabs.Panel = TabPanel;
 ```
+:::
 
 把子组件挂到 `Tabs` 静态属性上形成统一命名空间。这只是 JavaScript API 组织方式，不会改变组件之间的 React 父子关系。
 

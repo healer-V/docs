@@ -18,6 +18,7 @@ Props 负责接收外部输入，但组件还需要记住用户操作产生的�
 
 组件中的普通局部变量会在每次函数执行时重新创建。修改变量既不会通知 React，也不会让组件自动重新执行。
 
+::: details 查看普通变量不会驱动更新的示例代码
 ```jsx
 /**
  * 演示普通变量无法驱动界面更新。
@@ -39,6 +40,7 @@ function InvalidCounter() {
   );
 }
 ```
+:::
 
 点击后控制台中的数字会变化，但按钮仍显示“点击次数：0”。React 不知道 `count` 发生了变化。
 
@@ -92,6 +94,7 @@ const [taskCount, setTaskCount] = useState(0);
 
 `useState` 必须在函数组件顶层调用：
 
+::: details 查看在组件顶层调用的示例代码
 ```jsx
 import React, { useState } from "react";
 
@@ -105,6 +108,7 @@ function TaskStatus() {
   return <p>{completed ? "已完成" : "进行中"}</p>;
 }
 ```
+:::
 
 不要在 `if`、循环、事件处理函数或普通嵌套函数中调用。Hook 必须保持固定的顶层调用顺序。
 
@@ -114,6 +118,7 @@ function TaskStatus() {
 
 调用 `useState` 后，组件可以像读取普通变量一样在 JSX 中读取当前值：
 
+::: details 查看State 属于当前渲染的示例代码
 ```jsx
 /**
  * 根据 State 描述任务界面。
@@ -135,6 +140,7 @@ function TaskCard() {
   );
 }
 ```
+:::
 
 首次渲染时 `completed` 是 `false`，因此页面显示“进行中”，按钮可用并显示“标记完成”。
 
@@ -152,6 +158,7 @@ setState(nextState);
 
 更新通常发生在事件处理函数中：
 
+::: details 查看调用更新函数的示例代码
 ```jsx
 /**
  * 提供可以标记完成的任务。
@@ -180,6 +187,7 @@ function TaskCard() {
   );
 }
 ```
+:::
 
 首次页面显示“进行中”。点击按钮后，下一次渲染读取到 `completed === true`，文本和按钮同时变成“已完成”，按钮也被禁用。
 
@@ -242,6 +250,7 @@ setCompleted(true);
 
 同一个组件在树中使用两次，会创建两个独立实例，每个实例拥有自己的 State：
 
+::: details 查看每个组件实例独立保存 State的示例代码
 ```jsx
 /**
  * 保存独立点击次数。
@@ -270,6 +279,7 @@ const counters = (
   </div>
 );
 ```
+:::
 
 点击“待处理”不会改变“已完成”的数字。两个组件类型相同，但位于组件树中的两个位置，因此拥有独立状态。
 
@@ -289,6 +299,7 @@ Props 是外部输入，State 是组件记忆，局部变量用于本次计算�
 
 组件可以保存多个相互独立的状态：
 
+::: details 查看多次调用 `useState`的示例代码
 ```jsx
 /**
  * 保存任务完成状态和备注显示状态。
@@ -323,6 +334,7 @@ function TaskCard() {
   );
 }
 ```
+:::
 
 两个更新函数分别改变对应状态。状态应该拆开还是合并，将结合对象更新和状态职责在第 4 章继续讨论。
 
@@ -330,6 +342,7 @@ function TaskCard() {
 
 下面的片段组合 Props、State 和事件：
 
+::: details 查看完整示例代码
 ```jsx
 /**
  * 显示并更新单个任务状态。
@@ -370,6 +383,7 @@ function TaskPage() {
 
 ReactDOM.render(<TaskPage />, document.getElementById("root"));
 ```
+:::
 
 点击前：
 

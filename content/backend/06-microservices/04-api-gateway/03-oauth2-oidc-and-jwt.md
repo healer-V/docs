@@ -28,6 +28,7 @@ date: 2026-07-23
 
 本实验的参与者关系如下：
 
+::: details 查看 Device Authorization Flow 参与者时序图
 ```mermaid
 sequenceDiagram
     participant C as "PowerShell CLI"
@@ -52,6 +53,7 @@ sequenceDiagram
     A->>A: 独立执行同一组基础校验和最终授权
     A-->>C: 200 / 401 / 403 / 隐藏对象404
 ```
+:::
 
 浏览器把用户凭证提交给 Keycloak，CLI 只拿授权结果。Gateway 和业务服务都不接触密码。
 

@@ -99,6 +99,7 @@ Keycloak Realm 角色位于：
 
 Spring Security 默认更关注 `scope`/`scp`。本工程显式转换 Realm 角色：
 
+::: details 查看 KeycloakRealmRoleConverter.java 完整代码
 ```java
 // application/security/KeycloakRealmRoleConverter.java
 public final class KeycloakRealmRoleConverter
@@ -123,6 +124,7 @@ public final class KeycloakRealmRoleConverter
     }
 }
 ```
+:::
 
 格式异常时返回空权限，而不是尝试容错成更高权限。`realm_access.roles=[reviewer]` 最终得到 `ROLE_REVIEWER`。
 
@@ -130,6 +132,7 @@ public final class KeycloakRealmRoleConverter
 
 读取申请的核心逻辑：
 
+::: details 查看 ApplicationAccessService 可见性判断代码
 ```java
 // application/ApplicationAccessService.java
 public ApplicationView findVisible(
@@ -148,9 +151,11 @@ public ApplicationView findVisible(
     return toView(application);
 }
 ```
+:::
 
 对象判断同时支持所有者和审核区域：
 
+::: details 查看 canObserve 所有权判断代码
 ```java
 private boolean canObserve(
         InsuranceApplication application,
@@ -165,9 +170,11 @@ private boolean canObserve(
             && reviewRegions(authentication).contains(application.region());
 }
 ```
+:::
 
 审核操作先检查角色，再检查对象范围：
 
+::: details 查看 review 审核范围判断代码
 ```java
 public ApplicationView review(
         String applicationId,
@@ -181,6 +188,7 @@ public ApplicationView review(
     return toView(repository.updateStatus(application, "REVIEWED"));
 }
 ```
+:::
 
 顺序很重要：
 

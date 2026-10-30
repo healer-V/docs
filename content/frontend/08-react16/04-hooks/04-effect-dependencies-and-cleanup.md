@@ -16,6 +16,7 @@ date: 2026-07-31
 
 Effect setup 中读取的组件 Props、State、组件内函数和组件内变量，都属于当前渲染的响应式值。它们变化后，外部同步通常需要重新建立。
 
+::: details 查看依赖表示同步输入的示例代码
 ```jsx
 React.useEffect(
   /**
@@ -29,6 +30,7 @@ React.useEffect(
   [channel, taskId]
 );
 ```
+:::
 
 `channel` 和 `taskId` 都由组件渲染提供，因此都必须列入依赖。
 
@@ -62,6 +64,7 @@ React 按数组位置使用 `Object.is` 比较当前依赖与上一次依赖。
 
 下面的定时器一直读取首次渲染的 `count`：
 
+::: details 查看缺失依赖产生陈旧闭包的示例代码
 ```jsx
 // 展示依赖缺失时定时器持续读取旧状态的问题。
 function InvalidCounterLog() {
@@ -100,6 +103,7 @@ function InvalidCounterLog() {
   // 省略按钮代码
 }
 ```
+:::
 
 如果目标是每次 `count` 变化后重建定时器，应把 `count` 加入依赖。如果目标是定时器始终读取最新值且不重建，则可以用 Ref 保存最新值，但要明确 Ref 绕过了响应式更新。
 
@@ -118,6 +122,7 @@ function InvalidCounterLog() {
 
 ### 1. 组件内函数每次重建
 
+::: details 查看组件内函数每次重建的示例代码
 ```jsx
 // 根据任务 ID 创建连接配置并同步外部连接。
 function TaskConnection({ taskId }) {
@@ -155,6 +160,7 @@ function TaskConnection({ taskId }) {
   );
 }
 ```
+:::
 
 `createOptions` 每次渲染都是新函数，因此 Effect 每次都重启。
 
@@ -162,6 +168,7 @@ function TaskConnection({ taskId }) {
 
 函数只被 Effect 使用时，放入 setup 内部：
 
+::: details 查看把函数移入 Effect的示例代码
 ```jsx
 React.useEffect(
   /**
@@ -189,6 +196,7 @@ React.useEffect(
   [taskId]
 );
 ```
+:::
 
 Effect 的真实输入只剩 `taskId`。
 
@@ -202,6 +210,7 @@ Effect 的真实输入只剩 `taskId`。
 
 ### 1. 渲染中新建对象
 
+::: details 查看渲染中新建对象的示例代码
 ```jsx
 const options = {
   endpoint: "/task-channel",
@@ -224,6 +233,7 @@ React.useEffect(
   [options]
 );
 ```
+:::
 
 每次渲染都会创建新 `options`，导致 Effect 重启。优先把对象移入 Effect，并依赖组成对象的基本值。
 
@@ -231,6 +241,7 @@ React.useEffect(
 
 父组件传入的对象可能频繁改变引用。如果 Effect 只读取其中两个字段，应直接依赖字段：
 
+::: details 查看接收对象 Props的示例代码
 ```jsx
 const { endpoint, taskId } = connectionConfig;
 
@@ -250,6 +261,7 @@ React.useEffect(
   [endpoint, taskId]
 );
 ```
+:::
 
 不要用 `JSON.stringify(object)` 作为通用依赖修复。序列化有成本、忽略不可序列化值，也掩盖了 Effect 真正读取哪些字段。
 
@@ -270,6 +282,7 @@ React.useEffect(
 
 清理函数闭包读取的是对应 setup 那次渲染的值，因此能准确撤销旧订阅：
 
+::: details 查看依赖变化的示例代码
 ```jsx
 React.useEffect(
   /**
@@ -292,6 +305,7 @@ React.useEffect(
   [channel, taskId]
 );
 ```
+:::
 
 ### 2. 清理不是只在卸载时执行
 
@@ -309,6 +323,7 @@ React.useEffect(
 
 ### 2. AbortController
 
+::: details 查看AbortController的示例代码
 ```jsx
 React.useEffect(
   /**
@@ -359,6 +374,7 @@ React.useEffect(
   [taskId]
 );
 ```
+:::
 
 请求库不支持取消时，至少使用闭包标志忽略过期结果。取消网络传输和忽略结果解决的是两个层面的问题。
 
@@ -388,6 +404,7 @@ Render
 
 下面在绘制前测量提示元素高度：
 
+::: details 查看测量 DOM的示例代码
 ```jsx
 /**
  * 显示并测量提示内容。
@@ -418,6 +435,7 @@ function MeasuredNotice({ message }) {
   );
 }
 ```
+:::
 
 React 会在浏览器绘制前处理 `setHeight` 引起的同步更新，用户不会先看到未测量状态再看到修正状态。
 

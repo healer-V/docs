@@ -32,6 +32,7 @@ date: 2026-07-20
 
 ### 2. 暴露必要端点
 
+::: details 查看 product-service 的 Actuator 端点配置
 ```yaml
 
 # product-service/src/main/resources/application.yml
@@ -46,6 +47,7 @@ management:
         enabled: true
       show-details: never
 ```
+:::
 
 健康详情可能包含内部依赖信息，公网环境不能无条件设置为 `always`。
 
@@ -63,6 +65,7 @@ management:
 
 下面示例检查本地产品目录是否已经加载，不发起远程调用：
 
+::: details 查看 product-service 的 ProductCatalogHealthIndicator.java 完整代码
 ```java
 // product-service/src/main/java/com/example/product/health/ProductCatalogHealthIndicator.java
 package com.example.product.health;
@@ -97,6 +100,7 @@ public class ProductCatalogHealthIndicator implements HealthIndicator {
     }
 }
 ```
+:::
 
 `ProductCatalogState` 由产品模块提供，示例省略其直接的状态存取实现。
 

@@ -124,6 +124,7 @@ React 调用事件处理函数时，会把当前事件对象作为第一个参�
 
 处理函数不需要使用事件对象时可以省略形参；需要读取事件信息时再声明形参。
 
+::: details 查看接收事件对象的示例代码
 ```jsx
 /**
  * 输出当前点击事件的类型。
@@ -140,6 +141,7 @@ const detailButton = (
   </button>
 );
 ```
+:::
 
 单击按钮后，控制台输出：
 
@@ -161,6 +163,7 @@ click
 
 真正的处理函数可以同时接收业务参数和事件对象：
 
+::: details 查看传递自定义参数的示例代码
 ```jsx
 /**
  * 打开指定任务，并记录触发操作的元素。
@@ -185,6 +188,7 @@ const detailButton = (
   </button>
 );
 ```
+:::
 
 单击后，控制台依次输出：
 
@@ -195,6 +199,7 @@ task-104
 
 如果处理函数不需要事件对象，可以省略箭头函数的 `event` 参数：
 
+::: details 查看传递自定义参数的示例代码
 ```jsx
 /**
  * 记录被选择的任务。
@@ -215,6 +220,7 @@ const selectButton = (
   </button>
 );
 ```
+:::
 
 不要写成 `onClick={selectTask("task-104")}`，那仍然是在渲染阶段直接调用函数。
 
@@ -229,6 +235,7 @@ const selectButton = (
 
 下面两种按钮的点击结果相同：
 
+::: details 查看选择外部函数或内联函数的示例代码
 ```jsx
 // 记录固定的刷新操作。
 function handleRefresh() {
@@ -251,6 +258,7 @@ const controls = (
   </div>
 );
 ```
+:::
 
 这里的区别是代码组织方式，不是 React 事件能力差异。`useCallback` 解决的是组件重新渲染时的函数身份与缓存问题，不是事件能否绑定的问题。
 
@@ -271,6 +279,7 @@ React 传给处理函数的不是浏览器原生事件对象本身，而是 `Syn
 
 多数业务代码直接使用合成事件提供的成员即可。只有第三方库或浏览器专属能力确实要求原生事件时，才读取 `nativeEvent`。
 
+::: details 查看认识 `SyntheticEvent`的示例代码
 ```jsx
 /**
  * 读取 React 合成事件的常用信息。
@@ -289,6 +298,7 @@ const inspectButton = (
   </button>
 );
 ```
+:::
 
 在浏览器中单击后，控制台会输出类似结果：
 
@@ -302,6 +312,7 @@ true
 
 `target` 是事件最初发生的元素，`currentTarget` 是当前处理函数绑定的元素。事件从内部元素冒泡到外部元素时，两者可能不同。
 
+::: details 查看区分 `target` 与 `currentTarget`的示例代码
 ```jsx
 /**
  * 对比事件来源与当前绑定事件的元素。
@@ -319,6 +330,7 @@ const taskButton = (
   </button>
 );
 ```
+:::
 
 直接单击文字所在的 `span` 时，结果是：
 
@@ -329,6 +341,7 @@ currentTarget: BUTTON
 
 需要读取“用户实际点到哪个后代元素”时使用 `target`；需要读取“当前处理函数属于哪个元素”时使用 `currentTarget`。按钮的业务 ID 通常应从 `currentTarget.dataset` 读取，避免点击内部图标后目标发生变化。
 
+::: details 查看区分 `target` 与 `currentTarget`的示例代码
 ```jsx
 /**
  * 从绑定事件的按钮读取稳定的任务 ID。
@@ -349,6 +362,7 @@ const taskButton = (
   </button>
 );
 ```
+:::
 
 无论点击按钮文字还是内部 `span`，控制台都输出 `task-104`。
 
@@ -370,6 +384,7 @@ const taskButton = (
 
 因此，事件对象适合在当前处理函数中同步读取。把整个事件对象交给 `setTimeout`、Promise 或其他异步任务后再读，可能得到 `null`，并看到事件已被释放的警告。
 
+::: details 查看理解事件对象复用的示例代码
 ```jsx
 /**
  * 演示 React 16.8 中异步读取事件对象的问题。
@@ -391,6 +406,7 @@ const searchInput = (
   />
 );
 ```
+:::
 
 在 React 16.8 开发环境中，异步回调可能读取到 `null`，并出现类似警告：
 
@@ -402,6 +418,7 @@ This synthetic event is reused for performance reasons
 
 最直接的处理方式是在同步阶段把需要的普通值保存到局部变量。异步代码只读取这个值，不继续依赖事件对象。
 
+::: details 查看提前保存需要的值的示例代码
 ```jsx
 /**
  * 在同步阶段保存输入值，再交给异步任务使用。
@@ -425,6 +442,7 @@ const searchInput = (
   />
 );
 ```
+:::
 
 用户输入“订单”后，异步日志仍能稳定输出：
 
@@ -446,6 +464,7 @@ event.persist();
 
 `persist()` 没有参数，也不返回业务数据。它只改变当前合成事件的生命周期。
 
+::: details 查看使用 `event.persist()`的示例代码
 ```jsx
 /**
  * 保留当前合成事件，供异步任务继续读取。
@@ -470,6 +489,7 @@ const searchInput = (
   />
 );
 ```
+:::
 
 输入“订单”后，异步日志可以读取到 `change` 和 `订单`。
 
@@ -489,6 +509,7 @@ const searchInput = (
 
 处理函数调用 `event.preventDefault()` 可以阻止当前事件的默认行为。
 
+::: details 查看调用 `preventDefault()`的示例代码
 ```jsx
 /**
  * 阻止表单刷新页面，并读取表单中的查询词。
@@ -512,6 +533,7 @@ const searchForm = (
   </form>
 );
 ```
+:::
 
 输入“订单”并提交后，页面不会刷新，控制台输出：
 
@@ -525,6 +547,7 @@ const searchForm = (
 
 在部分传统 DOM 或 jQuery 代码中，处理函数返回 `false` 可能同时阻止默认行为和传播。React 事件不采用这条约定，返回 `false` 只是普通返回值。
 
+::: details 查看`return false` 不会阻止默认行为的示例代码
 ```jsx
 /**
  * 演示错误的默认行为处理方式。
@@ -542,9 +565,11 @@ const invalidLink = (
   </a>
 );
 ```
+:::
 
 单击后，浏览器仍会尝试跳转到 `/tasks`。正确写法必须显式调用 `preventDefault()`：
 
+::: details 查看`return false` 不会阻止默认行为的示例代码
 ```jsx
 /**
  * 阻止链接的默认跳转。
@@ -562,6 +587,7 @@ const taskLink = (
   </a>
 );
 ```
+:::
 
 单击后地址不会因该链接发生变化，控制台输出“由应用处理任务列表导航”。
 
@@ -579,6 +605,7 @@ const taskLink = (
 
 React 中普通的 `onClick` 处理函数在冒泡阶段执行；带 `Capture` 后缀的 `onClickCapture` 在捕获阶段执行。
 
+::: details 查看理解捕获与冒泡的示例代码
 ```jsx
 // 记录外层区域捕获阶段的点击。
 function handlePanelCapture() {
@@ -606,6 +633,7 @@ const taskPanel = (
   </section>
 );
 ```
+:::
 
 单击按钮后，控制台顺序是：
 
@@ -621,6 +649,7 @@ const taskPanel = (
 
 `event.stopPropagation()` 阻止事件继续向传播路径中的其他元素移动。它不阻止当前元素的浏览器默认行为。
 
+::: details 查看调用 `stopPropagation()`的示例代码
 ```jsx
 // 处理整个任务卡片的点击。
 function handleCardClick() {
@@ -646,6 +675,7 @@ const taskCard = (
   </article>
 );
 ```
+:::
 
 单击“归档”只输出：
 
@@ -668,6 +698,7 @@ const taskCard = (
 
 有些场景需要同时调用，但不能互相替代：
 
+::: details 查看分清默认行为与传播的示例代码
 ```jsx
 /**
  * 在卡片内处理链接，既不跳转，也不触发卡片点击。
@@ -693,6 +724,7 @@ const taskCard = (
   </article>
 );
 ```
+:::
 
 单击链接后不会跳转，也不会执行卡片点击，只输出“在当前区域打开任务摘要”。示例中外层内联回调只用于观察传播结果。
 

@@ -35,6 +35,7 @@ date: 2026-07-20
 
 ### 1. 产品目录
 
+::: details 查看 product-service 的 ProductCatalog.java 完整代码
 ```java
 // product-service/src/main/java/com/example/product/ProductCatalog.java
 package com.example.product;
@@ -65,9 +66,11 @@ public class ProductCatalog {
     }
 }
 ```
+:::
 
 ### 2. HTTP Controller
 
+::: details 查看 product-service 的 ProductQueryController.java 完整代码
 ```java
 // product-service/src/main/java/com/example/product/ProductQueryController.java
 package com.example.product;
@@ -104,6 +107,7 @@ public class ProductQueryController {
     }
 }
 ```
+:::
 
 `ProductNotFoundException` 与错误响应将在错误契约文档中实现。
 
@@ -111,6 +115,7 @@ public class ProductQueryController {
 
 ### 1. 使用服务名
 
+::: details 查看 application-service 的 ProductClient.java 完整代码
 ```java
 // application-service/src/main/java/com/example/application/client/ProductClient.java
 package com.example.application.client;
@@ -132,6 +137,7 @@ public interface ProductClient {
     ProductSummary findByCode(@PathVariable String code);
 }
 ```
+:::
 
 `name` 对应 Eureka 服务 ID。没有设置 `url` 时，Spring Cloud LoadBalancer 参与实例选择。
 
@@ -141,6 +147,7 @@ public interface ProductClient {
 
 ### 1. 启动类
 
+::: details 查看 application-service 的 ApplicationServiceApplication.java 完整代码
 ```java
 // application-service/src/main/java/com/example/application/ApplicationServiceApplication.java
 package com.example.application;
@@ -163,6 +170,7 @@ public class ApplicationServiceApplication {
     }
 }
 ```
+:::
 
 - **显式扫描范围**：大型项目优先使用 `clients` 或明确包范围，避免意外扫描测试接口和不应启用的客户端。
 
@@ -170,6 +178,7 @@ public class ApplicationServiceApplication {
 
 ### 1. 投保校验
 
+::: details 查看 application-service 的 ApplicationEligibilityService.java 完整代码
 ```java
 // application-service/src/main/java/com/example/application/ApplicationEligibilityService.java
 package com.example.application;
@@ -201,6 +210,7 @@ public class ApplicationEligibilityService {
     }
 }
 ```
+:::
 
 - **不隐藏远程成本**：调用方法所在类明确命名为 Client，业务服务知道该操作可能超时和失败。
 

@@ -34,6 +34,7 @@ date: 2026-07-31
 
 类组件：
 
+::: details 查看简单字段的示例代码
 ```jsx
 class TaskToggle extends React.Component {
   state = {
@@ -70,9 +71,11 @@ class TaskToggle extends React.Component {
   }
 }
 ```
+:::
 
 函数组件：
 
+::: details 查看简单字段的示例代码
 ```jsx
 /**
  * 显示可切换完成状态的按钮。
@@ -103,6 +106,7 @@ function TaskToggle() {
   );
 }
 ```
+:::
 
 函数组件不需要 `this` 和方法绑定。
 
@@ -160,6 +164,7 @@ componentDidMount() {
 
 函数组件应按三个外部系统拆成 Effect，而不是创建一个“挂载 Effect”：
 
+::: details 查看按同步目标拆分的示例代码
 ```jsx
 React.useEffect(
   /**
@@ -202,6 +207,7 @@ React.useEffect(
   [refresh]
 );
 ```
+:::
 
 每个 Effect 的依赖和清理都只对应一个同步目标。
 
@@ -223,6 +229,7 @@ React.useEffect(
 
 ### 1. 类组件
 
+::: details 查看类组件的示例代码
 ```jsx
 class TaskPresence extends React.Component {
   state = {
@@ -285,9 +292,11 @@ class TaskPresence extends React.Component {
   }
 }
 ```
+:::
 
 ### 2. 函数组件
 
+::: details 查看函数组件的示例代码
 ```jsx
 /**
  * 显示指定任务的在线状态。
@@ -320,6 +329,7 @@ function TaskPresence({ taskId, channel }) {
   return <span>{online ? "在线" : "离线"}</span>;
 }
 ```
+:::
 
 函数组件用一个 Effect 同时表达首次订阅、参数变化后的重订阅和卸载清理。
 

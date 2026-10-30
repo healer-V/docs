@@ -87,6 +87,7 @@ const MemoizedTaskCount = React.memo(TaskCount);
 
 ### 1. areEqual
 
+::: details 查看areEqual的示例代码
 ```jsx
 const MemoizedTaskRow = React.memo(
   TaskRow,
@@ -103,6 +104,7 @@ const MemoizedTaskRow = React.memo(
   )
 );
 ```
+:::
 
 `areEqual` 返回 `true` 表示 Props 相等、跳过渲染；这与类组件 `shouldComponentUpdate` 返回 `true` 表示继续更新相反。
 
@@ -133,6 +135,7 @@ const value = React.useMemo(calculateValue, dependencies);
 | `dependencies` | 计算读取的响应式值 |
 | 返回值 | 依赖未变时复用的结果 |
 
+::: details 查看调用形式的示例代码
 ```jsx
 const visibleTasks = React.useMemo(
   /**
@@ -146,6 +149,7 @@ const visibleTasks = React.useMemo(
   [tasks, filter]
 );
 ```
+:::
 
 只有 `tasks` 或 `filter` 变化时重新计算。
 
@@ -161,6 +165,7 @@ const visibleTasks = React.useMemo(
 
 `calculateValue` 在 Render 阶段执行，不能发请求、修改 DOM 或改变传入数据：
 
+::: details 查看保持计算纯粹的示例代码
 ```jsx
 // 错误：sort 直接修改 tasks。
 const sortedTasks = React.useMemo(
@@ -174,6 +179,7 @@ const sortedTasks = React.useMemo(
   [tasks]
 );
 ```
+:::
 
 ### 4. 不能依赖缓存保证正确性
 
@@ -191,6 +197,7 @@ const callback = React.useCallback(fn, dependencies);
 
 `useCallback` 返回传入的函数引用，依赖未变时复用旧函数。
 
+::: details 查看调用形式的示例代码
 ```jsx
 const handleSelectTask = React.useCallback(
   /**
@@ -204,6 +211,7 @@ const handleSelectTask = React.useCallback(
   []
 );
 ```
+:::
 
 State 更新函数引用稳定，因此依赖数组不需要包含 `setSelectedTaskId`。
 
@@ -211,6 +219,7 @@ State 更新函数引用稳定，因此依赖数组不需要包含 `setSelectedT
 
 以下两种写法概念上等价：
 
+::: details 查看useMemo 关系的示例代码
 ```jsx
 const handleSelect = React.useCallback(
   /**
@@ -238,6 +247,7 @@ const handleSelectWithMemo = React.useMemo(
   []
 );
 ```
+:::
 
 `useCallback` 只是缓存函数的专用写法，不会阻止函数在代码中被创建，也不会让调用结果自动缓存。
 
@@ -260,6 +270,7 @@ const handleSave = React.useCallback(
 
 父组件过滤列表并向记忆化子组件传操作：
 
+::: details 查看三者配合的示例代码
 ```jsx
 const visibleTasks = React.useMemo(
   /**
@@ -289,6 +300,7 @@ return (
   />
 );
 ```
+:::
 
 只有在 `MemoizedTaskList` 渲染昂贵且父组件经常因无关状态更新时，这套组合才有明显价值。
 

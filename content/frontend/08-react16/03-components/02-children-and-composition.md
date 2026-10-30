@@ -85,6 +85,7 @@ React 提供 `React.Children` 统一处理这些形态：
 
 下面为每个子节点增加列表包装：
 
+::: details 查看children 不是普通数组的示例代码
 ```jsx
 /**
  * 把一个子节点包装为列表项。
@@ -110,6 +111,7 @@ function NumberedList({ children }) {
   return <ol>{React.Children.map(children, wrapChild)}</ol>;
 }
 ```
+:::
 
 调用：
 
@@ -128,6 +130,7 @@ function NumberedList({ children }) {
 
 组合模式让容器负责外层结构，让调用者负责实际内容。容器不需要读取子组件内部数据。
 
+::: details 查看容器决定布局的示例代码
 ```jsx
 /**
  * 显示带标题和主体区域的卡片。
@@ -150,6 +153,7 @@ const element = (
   </Card>
 );
 ```
+:::
 
 `Card` 只定义标题和主体布局，不需要增加 `owner`、`deadline` 等业务 Props。调用者可以把任何合法 React 内容放入主体区域。
 
@@ -159,6 +163,7 @@ React 组件通常通过 Props 和 `children` 组合差异，不使用类继承�
 
 下面通过 Props 组合警告样式和内容：
 
+::: details 查看组合优于继承的示例代码
 ```jsx
 /**
  * 显示不同语气的消息区域。
@@ -179,6 +184,7 @@ const warning = (
   </Message>
 );
 ```
+:::
 
 这里不需要创建继承 `Message` 的 `WarningMessage` 类。差异通过 `tone` 和 `children` 清晰表达。
 
@@ -188,6 +194,7 @@ const warning = (
 
 一个组件需要多个可替换区域时，仅使用 `children` 无法区分每段内容的目标位置。可以使用值为 React 节点的具名 Props。
 
+::: details 查看多个内容位置的示例代码
 ```jsx
 /**
  * 显示包含标题、操作区和主体的页面区域。
@@ -219,6 +226,7 @@ const element = (
   </PageSection>
 );
 ```
+:::
 
 `heading`、`actions` 和 `children` 分别对应固定位置。调用者仍然控制各区域内部的元素结构。
 
@@ -280,6 +288,7 @@ function SingleChild({ children }) {
 
 下面统一给唯一按钮增加禁用状态：
 
+::: details 查看增强已有元素的示例代码
 ```jsx
 /**
  * 根据权限禁用唯一子按钮。
@@ -293,6 +302,7 @@ function PermissionGuard({ allowed, children }) {
   });
 }
 ```
+:::
 
 `cloneElement` 会让父组件了解子元素 Props，容易形成隐式协议。简单场景更适合直接使用明确 Props；只有包装器确实需要协调子元素时才使用元素克隆。
 

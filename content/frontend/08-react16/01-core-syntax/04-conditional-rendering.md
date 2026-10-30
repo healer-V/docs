@@ -54,6 +54,7 @@ const taskStatus = (
 
 下面两种状态只有文字和类名不同，保留共同结构更清晰：
 
+::: details 查看先确定变化范围的示例代码
 ```jsx
 const isCompleted = false;
 const statusText = isCompleted ? "已完成" : "进行中";
@@ -68,6 +69,7 @@ const taskElement = (
   </article>
 );
 ```
+:::
 
 页面显示“进行中”，并使用 `task-status task-status--pending` 类名。若两个分支的结构完全不同，应选择完整元素或提前返回，而不是在同一结构内布置大量零散条件。
 
@@ -91,6 +93,7 @@ if (condition) {
 
 结果可以是字符串、数字、React 元素或其他可渲染值。
 
+::: details 查看在 JSX 外计算结果的示例代码
 ```jsx
 const task = {
   title: "核对订单",
@@ -112,6 +115,7 @@ const taskElement = (
   </article>
 );
 ```
+:::
 
 页面显示任务标题和“进行中”。这里先完成分支选择，JSX 只负责使用最终结果。
 
@@ -119,6 +123,7 @@ const taskElement = (
 
 `if` 分支也可以为变量分配不同的 React 元素。适合两个分支结构不同，或每个分支需要多行内容的情况。
 
+::: details 查看选择不同 React 元素的示例代码
 ```jsx
 const requestState = "error";
 let resultElement;
@@ -143,6 +148,7 @@ const pageElement = (
   </main>
 );
 ```
+:::
 
 当前 `requestState` 为 `"error"`，页面显示“加载失败”和处理提示。`else if` 适合按优先级逐项检查多个互斥条件；命中一个分支后，后续分支不再执行。
 
@@ -166,6 +172,7 @@ condition ? valueWhenTrue : valueWhenFalse
 
 三元表达式适合清晰的二选一，不适合承载大量语句。
 
+::: details 查看在两个值之间选择的示例代码
 ```jsx
 const isCompleted = true;
 
@@ -179,6 +186,7 @@ const taskElement = (
   </article>
 );
 ```
+:::
 
 页面显示“已完成”，按钮文本是“无需处理”且处于禁用状态。文本和属性都由同一个布尔条件选择。
 
@@ -186,6 +194,7 @@ const taskElement = (
 
 三元表达式的两个结果可以是完整 React 元素：
 
+::: details 查看在两个元素之间选择的示例代码
 ```jsx
 const hasPermission = false;
 
@@ -199,6 +208,7 @@ const permissionResult = (
   </section>
 );
 ```
+:::
 
 当前页面显示权限提示，不生成导出按钮。多行 JSX 分支使用括号包裹，能清楚标识每个结果的边界。
 
@@ -219,6 +229,7 @@ const statusText = status === "loading"
 
 多于两个互斥状态时，优先使用 `if...else if` 或 `switch`：
 
+::: details 查看避免嵌套三元表达式的示例代码
 ```jsx
 const status = "error";
 let statusText;
@@ -233,6 +244,7 @@ if (status === "loading") {
 
 const statusElement = <p>{statusText}</p>;
 ```
+:::
 
 页面仍显示“加载失败”，但分支顺序和兜底结果更加明确。
 
@@ -250,6 +262,7 @@ condition && valueWhenTrue
 
 在 JSX 中，它适合表达“条件满足时增加一个元素，否则不显示”的单分支需求：
 
+::: details 查看按条件增加内容的示例代码
 ```jsx
 const hasValidationError = true;
 const errorMessage = "订单金额不能为空";
@@ -264,6 +277,7 @@ const formField = (
   </div>
 );
 ```
+:::
 
 左侧为 `true`，表达式返回右侧 `p` 元素，因此页面显示错误信息。左侧为 `false` 时，表达式结果是 `false`，React 不会为它生成可见内容。
 
@@ -312,6 +326,7 @@ const taskSummary = (
 
 React 接受 `null` 作为渲染结果，并且不为它生成 DOM。它是最明确的“这里不渲染内容”表达。
 
+::: details 查看使用 `null`的示例代码
 ```jsx
 const hasNotice = false;
 const noticeElement = hasNotice
@@ -325,11 +340,13 @@ const pageElement = (
   </main>
 );
 ```
+:::
 
 页面只显示“任务中心”，提示位置不生成元素。
 
 普通函数也可以通过返回 `null` 表示没有结果：
 
+::: details 查看使用 `null`的示例代码
 ```jsx
 /**
  * 根据开关生成任务提示。
@@ -351,6 +368,7 @@ const pageElement = (
   </main>
 );
 ```
+:::
 
 函数返回 `null` 后，React 同样不生成提示 DOM。组件也可以返回 `null`，表示本次渲染不输出任何界面节点。
 
@@ -368,6 +386,7 @@ const pageElement = (
 
 条件分支需要主动表达“不生成内容”时，优先返回 `null`。这能让读者区分“有意不渲染”和“变量意外没有值”。
 
+::: details 查看区分空值的语义的示例代码
 ```jsx
 const isReadonly = true;
 const editControl = isReadonly
@@ -381,6 +400,7 @@ const taskElement = (
   </article>
 );
 ```
+:::
 
 当前不会生成编辑按钮。`null` 清楚表明这是只读状态下的预期结果。
 
@@ -398,6 +418,7 @@ const taskElement = (
 → 所有检查通过后生成主内容
 ```
 
+::: details 查看在入口处处理前置状态的示例代码
 ```jsx
 /**
  * 根据任务页状态生成一整片界面。
@@ -430,6 +451,7 @@ const pageState = {
 
 const pageElement = buildTaskPage(pageState);
 ```
+:::
 
 函数在错误分支提前结束，因此不会继续生成正常内容，页面显示“加载失败：网络连接中断”。
 
@@ -447,6 +469,7 @@ const pageElement = buildTaskPage(pageState);
 
 如果多个布尔值可能同时为 `true`，顺序会隐式决定最终界面。更稳妥的方式是使用单一状态字段直接表示互斥阶段。
 
+::: details 查看安排判断顺序的示例代码
 ```jsx
 /**
  * 按明确优先级生成任务区域。
@@ -474,6 +497,7 @@ function buildTaskRegion(view) {
   return <p>共有 {view.taskCount} 个任务。</p>;
 }
 ```
+:::
 
 这段函数把权限、请求阶段、空数据和正常数据按依赖顺序排列。每次调用只会返回一个结果。
 
@@ -492,6 +516,7 @@ function buildTaskRegion(view) {
 
 “空数据”不是“加载失败”。只有请求成功后，才根据数据长度选择空状态或正常内容。
 
+::: details 查看区分请求状态与数据状态的示例代码
 ```jsx
 /**
  * 根据请求阶段和任务数组生成任务区域。
@@ -523,6 +548,7 @@ const view = {
 
 const resultElement = buildTaskResult(view);
 ```
+:::
 
 页面显示“待处理任务：核对订单、复核退款”。把 `tasks` 改为空数组后，页面显示明确的空状态，而不是错误信息。
 
@@ -550,6 +576,7 @@ idle | loading | error | success
 
 `switch` 适合把一个状态字段映射为多个互斥结果：
 
+::: details 查看使用单一状态字段的示例代码
 ```jsx
 /**
  * 使用单一状态字段生成请求提示。
@@ -573,6 +600,7 @@ function buildRequestNotice(status) {
 
 const noticeElement = buildRequestNotice("success");
 ```
+:::
 
 页面显示“加载完成”。`default` 分支让意外状态尽早暴露，而不是静默生成错误界面。
 
@@ -662,6 +690,7 @@ const taskDetails = isVisible
 
 下面的示例把不同写法放在各自适合的位置：
 
+::: details 查看完整选择示例的示例代码
 ```jsx
 /**
  * 生成任务摘要界面。
@@ -707,6 +736,7 @@ const view = {
 const pageElement = buildTaskSummary(view);
 ReactDOM.render(pageElement, document.getElementById("root"));
 ```
+:::
 
 浏览器页面显示：
 

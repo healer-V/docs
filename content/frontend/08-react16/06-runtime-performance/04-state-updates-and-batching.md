@@ -14,6 +14,7 @@ date: 2026-07-31
 
 调用 State 更新函数会创建一项更新并加入组件队列。当前事件函数仍使用创建它的那次渲染中的 State。
 
+::: details 查看更新不是立即赋值的示例代码
 ```jsx
 const [count, setCount] = React.useState(0);
 
@@ -27,6 +28,7 @@ function handleClick() {
   console.log(count); // 仍是 0
 }
 ```
+:::
 
 更新过程：
 
@@ -69,6 +71,7 @@ updater 接收队列中前一项计算结果，而不是固定读取事件闭包
 
 初始值为 `0`，同一事件依次提交：
 
+::: details 查看队列组合的示例代码
 ```jsx
 setCount(
   /**
@@ -88,6 +91,7 @@ setCount(
   (previousCount) => previousCount + 1
 );
 ```
+:::
 
 队列结果：
 
@@ -115,6 +119,7 @@ React 处理队列时把片段浅合并到当前 State。函数组件 Hook sette
 
 ### 2. 函数式 setState
 
+::: details 查看函数式 setState的示例代码
 ```jsx
 this.setState(
   /**
@@ -128,6 +133,7 @@ this.setState(
   })
 );
 ```
+:::
 
 返回片段仍会浅合并。返回 `null` 可以跳过该项更新。
 
@@ -160,6 +166,7 @@ function handleComplete() {
 
 React 16.8 默认不会把所有异步来源统一纳入自动批处理：
 
+::: details 查看定时器和 Promise的示例代码
 ```jsx
 window.setTimeout(
   /**
@@ -173,6 +180,7 @@ window.setTimeout(
   0
 );
 ```
+:::
 
 Promise 回调、原生事件监听和其他外部回调具有相同边界问题。React 18 扩展了自动批处理范围，不能用 React 18 结果解释 React 16.8。
 
@@ -190,6 +198,7 @@ Promise 回调、原生事件监听和其他外部回调具有相同边界问题
 
 ### 1. 原生事件
 
+::: details 查看原生事件的示例代码
 ```jsx
 React.useEffect(
   /**
@@ -221,6 +230,7 @@ React.useEffect(
   []
 );
 ```
+:::
 
 React 16.8 中原生监听回调的多项更新可能分别渲染。第三方状态库集成可使用 `ReactDOM.unstable_batchedUpdates` 包装通知，但该 API 名称明确表示不稳定，不应在普通业务事件中到处调用。
 

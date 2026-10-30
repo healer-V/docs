@@ -33,6 +33,7 @@ this.setState(stateChange[, callback])
 
 新状态与旧值无关时，可以传入对象：
 
+::: details 查看对象形式的示例代码
 ```jsx
 class TaskRequest extends React.Component {
   state = {
@@ -60,6 +61,7 @@ class TaskRequest extends React.Component {
   }
 }
 ```
+:::
 
 调用 `startLoading` 后，React 把更新加入队列，并在合适时机重新执行 `render()`。
 
@@ -103,6 +105,7 @@ this.setState({
 
 浅合并只发生在 State 第一层。更新嵌套对象时必须显式复制需要保留的字段：
 
+::: details 查看嵌套对象不会深合并的示例代码
 ```jsx
 class AssigneeEditor extends React.Component {
   state = {
@@ -135,6 +138,7 @@ class AssigneeEditor extends React.Component {
   }
 }
 ```
+:::
 
 如果只提交 `{ assignee: { name } }`，`id` 和 `department` 会丢失，因为整个 `assignee` 字段被新对象覆盖。
 
@@ -144,6 +148,7 @@ class AssigneeEditor extends React.Component {
 
 计数、切换布尔值、追加数组等操作依赖前一状态，应使用函数形式。
 
+::: details 查看依赖前一状态的示例代码
 ```jsx
 class RetryCounter extends React.Component {
   state = {
@@ -180,6 +185,7 @@ class RetryCounter extends React.Component {
   }
 }
 ```
+:::
 
 更新函数的完整签名为：
 
@@ -207,6 +213,7 @@ this.setState({ retryCount: this.state.retryCount + 1 });
 
 函数式更新会依次接收前一次计算结果：
 
+::: details 查看多项更新按队列计算的示例代码
 ```jsx
 /**
  * 根据前一状态增加重试次数。
@@ -223,6 +230,7 @@ this.setState(addRetry);
 this.setState(addRetry);
 this.setState(addRetry);
 ```
+:::
 
 如果初始值为 `0`，下一次提交结果为 `3`。
 
@@ -230,6 +238,7 @@ this.setState(addRetry);
 
 更新函数可以读取当前 Props：
 
+::: details 查看根据 Props 计算的示例代码
 ```jsx
 /**
  * 把当前页码向后移动，但不超过 totalPages。
@@ -249,6 +258,7 @@ goToNextPage = () => {
   );
 };
 ```
+:::
 
 不要把 Props 复制到 State 后再同步；能在更新时读取 Props，就不需要创建重复数据源。
 
@@ -276,6 +286,7 @@ State 表示某次已提交渲染的数据快照。不要根据 `setState` 后�
 
 某一次更新提交后必须执行命令式操作时，可以传入回调：
 
+::: details 查看提交后回调的示例代码
 ```jsx
 /**
  * 在打开编辑器后聚焦输入框。
@@ -294,6 +305,7 @@ openEditor = () => {
   );
 };
 ```
+:::
 
 回调不接收 State 参数，通过 `this.state` 读取已提交结果。需要对所有相关更新执行同步逻辑时，应使用 `componentDidUpdate` 并比较旧值。
 
@@ -309,6 +321,7 @@ React 16.8 主要对 React 管理的事件处理函数和生命周期中的更�
 
 不要使用 `push`、`splice` 或直接赋值修改 State 数组。使用 `map`、`filter` 和展开语法创建新数组。
 
+::: details 查看更新数组项的示例代码
 ```jsx
 /**
  * 把指定任务标记为已完成。
@@ -335,9 +348,11 @@ completeTask(taskId) {
   );
 }
 ```
+:::
 
 ### 2. 删除数组项
 
+::: details 查看删除数组项的示例代码
 ```jsx
 /**
  * 删除指定任务。
@@ -360,6 +375,7 @@ removeTask(taskId) {
   );
 }
 ```
+:::
 
 不可变更新让新旧引用能够表达“哪些数据发生了变化”，也避免其他持有旧对象的代码被意外修改。
 

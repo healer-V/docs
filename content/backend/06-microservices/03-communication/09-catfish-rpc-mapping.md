@@ -40,6 +40,7 @@ Catfish 是公司内部远程调用框架，已知其基于 Spring Cloud Feign �
 
 下面是伪代码结构，用于表示角色，不是可编译 Catfish 示例：
 
+::: details 查看 Catfish 概念调用链伪代码
 ```text
 // API 模块：定义稳定业务契约
 interface ProductFacade {
@@ -59,6 +60,7 @@ ProductFacade productFacade
 // 调用时由 Catfish/Feign 封装远程请求
 productFacade.findProduct("HEALTH-001")
 ```
+:::
 
 ## 五、与 OpenFeign 的共同机制
 

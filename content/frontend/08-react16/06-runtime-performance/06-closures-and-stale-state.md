@@ -14,6 +14,7 @@ date: 2026-07-31
 
 函数可以读取定义位置作用域中的变量，即使函数稍后才执行：
 
+::: details 查看JavaScript 闭包的示例代码
 ```js
 /**
  * 创建显示指定标题的函数。
@@ -35,6 +36,7 @@ function createTitleLogger(title) {
 const logger = createTitleLogger("核对订单");
 logger(); // 核对订单
 ```
+:::
 
 `logTitle` 捕获了这次 `createTitleLogger` 调用中的 `title`。
 
@@ -54,6 +56,7 @@ logger(); // 核对订单
 
 ### 2. 延迟读取
 
+::: details 查看延迟读取的示例代码
 ```jsx
 /**
  * 延迟显示单击时的计数。
@@ -103,6 +106,7 @@ function DelayedCounter() {
   );
 }
 ```
+:::
 
 在 `count=2` 时单击“延迟显示”，之后继续增加到 `5`，弹窗仍显示 `2`。回调读取的是单击那次渲染的快照。
 
@@ -112,6 +116,7 @@ function DelayedCounter() {
 
 异步回调要根据执行时的最新队列结果更新 State，使用函数式 updater：
 
+::: details 查看updater 解决状态计算的示例代码
 ```jsx
 window.setTimeout(
   /**
@@ -131,6 +136,7 @@ window.setTimeout(
   3000
 );
 ```
+:::
 
 updater 解决的是“如何从最新状态计算下一状态”，不是让回调中的所有变量自动变成最新值。
 
@@ -149,6 +155,7 @@ updater 解决的是“如何从最新状态计算下一状态”，不是让回
 
 ### 1. 缺失依赖
 
+::: details 查看缺失依赖的示例代码
 ```jsx
 function InvalidStatusLogger({ status }) {
   React.useEffect(
@@ -177,6 +184,7 @@ function InvalidStatusLogger({ status }) {
   );
 }
 ```
+:::
 
 Effect 使用了 `status`，依赖却为空。正确处理取决于同步目标：
 
@@ -222,6 +230,7 @@ const handleSave = React.useCallback(
 
 ### 2. 保存请求序号
 
+::: details 查看保存请求序号的示例代码
 ```jsx
 const requestIdRef = React.useRef(0);
 
@@ -240,6 +249,7 @@ async function loadTask(taskId) {
   }
 }
 ```
+:::
 
 每次请求捕获自己的 ID，完成时与 Ref 中最新 ID 比较。旧请求结果不会提交。
 
@@ -247,6 +257,7 @@ async function loadTask(taskId) {
 
 ### 1. Ref 模式
 
+::: details 查看Ref 模式的示例代码
 ```jsx
 const latestStatusRef = React.useRef(status);
 
@@ -261,6 +272,7 @@ React.useEffect(
   [status]
 );
 ```
+:::
 
 长期存在的回调读取 `latestStatusRef.current` 可以得到最新提交值。
 

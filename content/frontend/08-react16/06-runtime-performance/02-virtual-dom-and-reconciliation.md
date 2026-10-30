@@ -26,6 +26,7 @@ const element = (
 
 可以把结果简化理解为：
 
+::: details 查看React 元素是界面描述的示例代码
 ```js
 {
   type: "article",
@@ -40,6 +41,7 @@ const element = (
   }
 }
 ```
+:::
 
 React 每次渲染产生新的元素描述，再与上一次结果协调。
 

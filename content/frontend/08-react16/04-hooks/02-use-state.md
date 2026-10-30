@@ -27,6 +27,7 @@ const [state, setState] = React.useState(initialState);
 | `setState` | 提交下一状态并安排更新的函数 |
 | 返回值 | 长度为 2 的数组，通常使用数组解构 |
 
+::: details 查看调用形式的示例代码
 ```jsx
 /**
  * 显示任务标题编辑框。
@@ -47,6 +48,7 @@ function TaskTitleEditor() {
   return <input value={title} onChange={handleChange} />;
 }
 ```
+:::
 
 每个 `TaskTitleEditor` 实例拥有独立 `title`。更新函数名称可以自定义，惯例是 `set` 加状态名称。
 
@@ -69,6 +71,7 @@ function TaskEditor({ initialTitle }) {
 
 初始值计算昂贵时，可以向 `useState` 传入函数。React 只在组件首次挂载时调用它。
 
+::: details 查看初始化函数的示例代码
 ```jsx
 /**
  * 从本地存储读取初始筛选条件。
@@ -87,6 +90,7 @@ function TaskFilterState() {
   return <p>当前筛选：{filter}</p>;
 }
 ```
+:::
 
 注意传入函数本身，而不是立即调用：
 
@@ -104,6 +108,7 @@ React.useState(readInitialFilter);
 
 如果 State 本身要保存一个函数，需要使用包装函数，否则 React 会把传入函数当作初始化器：
 
+::: details 查看保存函数值的示例代码
 ```jsx
 /**
  * 默认任务格式化函数。
@@ -122,6 +127,7 @@ const [formatter, setFormatter] = React.useState(
   () => defaultFormatter
 );
 ```
+:::
 
 ## 三、更新 State
 
@@ -147,6 +153,7 @@ function handleComplete() {
 
 下一值依赖旧 State 时，传入 updater 函数：
 
+::: details 查看函数式更新的示例代码
 ```jsx
 const [retryCount, setRetryCount] = React.useState(0);
 
@@ -165,11 +172,13 @@ function handleRetry() {
   );
 }
 ```
+:::
 
 updater 的参数是更新队列中的前一结果，不一定等于当前事件闭包读取到的 State。
 
 连续提交三次函数式更新：
 
+::: details 查看函数式更新的示例代码
 ```jsx
 /**
  * 根据前一值增加计数。
@@ -184,6 +193,7 @@ setRetryCount(addOne);
 setRetryCount(addOne);
 setRetryCount(addOne);
 ```
+:::
 
 初始值为 `0` 时，下一次结果为 `3`。
 
@@ -204,6 +214,7 @@ setStatus("completed", handleAfterComplete);
 
 调用更新函数后，当前事件函数中的 State 仍是当前渲染快照：
 
+::: details 查看当前渲染仍读取旧值的示例代码
 ```jsx
 const [count, setCount] = React.useState(0);
 
@@ -217,6 +228,7 @@ function handleClick() {
   console.log(count); // 仍是 0
 }
 ```
+:::
 
 更新会让 React 创建新的渲染。新渲染中的 `count` 才是 `1`。
 
@@ -254,6 +266,7 @@ React 管理的事件中，多项 State 更新通常会在事件结束后统一�
 
 `useState` 更新函数不会像类组件 `setState` 那样浅合并对象。提交新对象时必须保留需要的字段。
 
+::: details 查看Hook 更新会替换整个值的示例代码
 ```jsx
 const [task, setTask] = React.useState({
   title: "核对订单",
@@ -282,6 +295,7 @@ function handleTitleChange(event) {
   );
 }
 ```
+:::
 
 若调用 `setTask({ title: nextTitle })`，`priority` 和 `completed` 不会自动保留。
 
@@ -304,6 +318,7 @@ const [error, setError] = React.useState(null);
 
 ### 1. 添加和删除
 
+::: details 查看添加和删除的示例代码
 ```jsx
 const [tasks, setTasks] = React.useState([]);
 
@@ -342,9 +357,11 @@ function removeTask(taskId) {
   );
 }
 ```
+:::
 
 ### 2. 更新数组项
 
+::: details 查看更新数组项的示例代码
 ```jsx
 /**
  * 把指定任务标记为已完成。
@@ -369,6 +386,7 @@ function completeTask(taskId) {
   );
 }
 ```
+:::
 
 不要对 State 数组直接调用 `push`、`splice`、`sort` 或 `reverse`。确实需要排序时先复制数组。
 
@@ -376,6 +394,7 @@ function completeTask(taskId) {
 
 ### 1. 显式恢复初始值
 
+::: details 查看显式恢复初始值的示例代码
 ```jsx
 const initialDraft = {
   title: "",
@@ -392,6 +411,7 @@ function resetDraft() {
   setDraft(initialDraft);
 }
 ```
+:::
 
 常量对象不能在其他位置被修改，否则重置值也会被污染。
 

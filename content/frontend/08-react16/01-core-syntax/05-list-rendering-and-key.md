@@ -33,6 +33,7 @@ date: 2026-07-30
 
 React 可以把元素数组作为子内容，并按数组顺序渲染：
 
+::: details 查看从数据数组到元素数组的示例代码
 ```jsx
 const taskElements = [
   <li key="task-104">核对订单</li>,
@@ -46,6 +47,7 @@ const taskList = (
   </ul>
 );
 ```
+:::
 
 浏览器 DOM 的主要结构是：
 
@@ -63,6 +65,7 @@ const taskList = (
 
 每项数据应只生成它对应的元素，不要在转换过程中修改原数据。这样可以从页面元素反向找到数据来源。
 
+::: details 查看保持数据与结构对应的示例代码
 ```jsx
 const tasks = [
   { id: "task-104", title: "核对订单" },
@@ -77,6 +80,7 @@ const taskElements = tasks.map((task) => (
 
 const taskList = <ul>{taskElements}</ul>;
 ```
+:::
 
 `tasks[0]` 对应第一个 `li`，后续项保持相同关系。页面结果与上一例相同，但现在只需修改数据数组，列表结构会随转换结果变化。
 
@@ -119,6 +123,7 @@ const taskList = <ul>{taskElements}</ul>;
 
 箭头函数使用圆括号包裹 JSX 时，会隐式返回该 JSX：
 
+::: details 查看返回 JSX的示例代码
 ```jsx
 const tasks = [
   { id: "task-104", title: "核对订单" },
@@ -132,9 +137,11 @@ const taskElements = tasks.map((task) => (
   </li>
 ));
 ```
+:::
 
 箭头函数使用花括号后，花括号表示函数体，必须显式写 `return`：
 
+::: details 查看返回 JSX的示例代码
 ```jsx
 const tasks = [
   { id: "task-104", title: "核对订单", completed: false },
@@ -152,6 +159,7 @@ const taskElements = tasks.map((task) => {
   );
 });
 ```
+:::
 
 忘记 `return` 时，每次回调结果都是 `undefined`：
 
@@ -172,6 +180,7 @@ const missingElements = tasks.map((task) => {
 
 元素数组可以先保存到变量，也可以直接在 JSX 大括号中调用 `map`。两种写法结果相同。
 
+::: details 查看直接在 JSX 中调用的示例代码
 ```jsx
 const tasks = [
   { id: "task-104", title: "核对订单" },
@@ -187,6 +196,7 @@ const taskList = (
   </ul>
 );
 ```
+:::
 
 直接调用适合转换很短、只使用一次的情况。转换包含筛选、排序或多步计算时，先保存中间结果更容易检查数据与渲染结果。
 
@@ -204,6 +214,7 @@ const taskList = (
 → map 转换为 React 元素
 ```
 
+::: details 查看先筛选，再转换的示例代码
 ```jsx
 const tasks = [
   { id: "task-104", title: "核对订单", completed: false },
@@ -226,11 +237,13 @@ const pendingTaskList = (
   </section>
 );
 ```
+:::
 
 页面只显示“核对订单”和“联系客户”。原始 `tasks` 数组仍然包含三项。
 
 两个步骤较短时可以链式调用：
 
+::: details 查看先筛选，再转换的示例代码
 ```jsx
 const pendingTaskList = (
   <ul>
@@ -248,6 +261,7 @@ const pendingTaskList = (
   </ul>
 );
 ```
+:::
 
 链式写法仍然先产生筛选后的数据数组，再产生元素数组，并不是 React 特有语法。
 
@@ -264,6 +278,7 @@ const sortedTasks = tasks.sort(compareTaskPriority);
 
 需要保留原顺序时，先复制数组，再排序：
 
+::: details 查看复制后排序的示例代码
 ```jsx
 const tasks = [
   { id: "task-104", title: "核对订单", priority: 2 },
@@ -292,6 +307,7 @@ const taskElements = sortedTasks.map((task) => (
 
 const taskList = <ol>{taskElements}</ol>;
 ```
+:::
 
 页面顺序是“复核退款”“核对订单”“联系客户”，原 `tasks` 数组仍保持初始顺序。React 只渲染最终数组顺序；复制数组是为了遵守后续 State 不可变更新所依赖的数据规则。
 
@@ -324,6 +340,7 @@ const taskList = <ul>{taskElements}</ul>;
 
 先检查数据长度，再在列表和空状态之间选择：
 
+::: details 查看明确显示空状态的示例代码
 ```jsx
 const tasks = [];
 
@@ -346,6 +363,7 @@ const taskSection = (
   </section>
 );
 ```
+:::
 
 页面显示“当前没有待处理任务”。列表渲染负责把每项数据变成元素，条件渲染负责在“有列表”和“没有数据”之间选择界面。
 
@@ -406,6 +424,7 @@ const taskElements = tasks.map((task) => (
 
 Key 只在当前兄弟集合中比较。不同列表可以重复使用相同 ID：
 
+::: details 查看同层唯一且跨次稳定的示例代码
 ```jsx
 const pendingTask = { id: "task-104", title: "核对订单" };
 const completedTask = { id: "task-104", title: "核对订单归档记录" };
@@ -428,6 +447,7 @@ const dashboard = (
   </main>
 );
 ```
+:::
 
 两个 `li` 属于不同 `ul` 的子元素，不在同一个兄弟集合中，因此 Key 可以相同。
 
@@ -475,6 +495,7 @@ const taskElements = tasks.map((task) => (
 
 单个字段无法唯一识别数据时，可以组合多个稳定字段。组合边界必须明确，避免不同数据生成同一字符串。
 
+::: details 查看组合多个稳定字段的示例代码
 ```jsx
 const orderLines = [
   { orderId: "order-7", lineId: "1", productName: "键盘" },
@@ -498,6 +519,7 @@ const lineElements = orderLines.map((line) => (
   </li>
 ));
 ```
+:::
 
 生成的 Key 分别是 `order-7:1` 和 `order-7:2`。组合字段必须都来自稳定业务数据，不能混入当前数组索引或每次变化的时间值。
 
@@ -505,6 +527,7 @@ const lineElements = orderLines.map((line) => (
 
 `map` 回调提供的 `index` 表示当前数组位置。把它作为 Key，等于告诉 React“第 0 个位置始终是同一个元素”。
 
+::: details 查看限制索引 Key 的使用的示例代码
 ```jsx
 const taskTitles = ["核对订单", "复核退款"];
 
@@ -520,6 +543,7 @@ function buildStaticItem(title, index) {
 
 const staticItems = taskTitles.map(buildStaticItem);
 ```
+:::
 
 只有同时满足以下条件时，索引 Key 才可接受：
 
@@ -563,6 +587,7 @@ React 会把所有列表项视为新元素，已有 DOM 或组件状态无法按
 
 Key 应放在 `map` 回调直接返回的最外层 React 元素上。React 比较的是这个元素数组中的兄弟项。
 
+::: details 查看写在数组直接返回的元素上的示例代码
 ```jsx
 const tasks = [
   { id: "task-104", title: "核对订单" },
@@ -576,6 +601,7 @@ const taskElements = tasks.map((task) => (
   </li>
 ));
 ```
+:::
 
 把 Key 放到内部元素不能标识外层兄弟项：
 
@@ -605,6 +631,7 @@ Key 属于 `TaskRow` 在当前数组中的身份，不应藏到 `TaskRow` 内部
 
 一项数据需要返回多个并列元素，又不希望增加额外 DOM 容器时，可以使用 Fragment。Fragment 简写 `<>...</>` 不能接收 Key，因此列表中必须使用显式 `React.Fragment`。
 
+::: details 查看Fragment 列表使用显式写法的示例代码
 ```jsx
 const tasks = [
   {
@@ -629,6 +656,7 @@ const taskRows = tasks.map((task) => (
 
 const taskDescriptions = <dl>{taskRows}</dl>;
 ```
+:::
 
 最终 DOM 中没有 Fragment 包装标签，只生成两组 `dt` 和 `dd`。下面的简写无法设置 Key，不适合当前数组：
 
@@ -648,6 +676,7 @@ const invalidRows = tasks.map((task) => (
 
 JSX 中的普通属性会进入 React 元素的 `props`，但 `key` 和 `ref` 由 React 单独处理，不属于普通 Props。
 
+::: details 查看Key 是 React 特殊字段的示例代码
 ```jsx
 const taskItem = (
   <li
@@ -664,6 +693,7 @@ console.log(taskItem.props.key);
 console.log(taskItem.props.title);
 console.log(taskItem.props["data-task-id"]);
 ```
+:::
 
 控制台结果是：
 
@@ -710,6 +740,7 @@ const taskElements = tasks.map((task) => (
 
 嵌套数据会产生多个兄弟集合。外层数组和每个内层数组都要在自己的直接返回元素上设置 Key。
 
+::: details 查看每一层分别设置 Key的示例代码
 ```jsx
 const taskGroups = [
   {
@@ -758,6 +789,7 @@ const groupedTaskList = (
   </main>
 );
 ```
+:::
 
 这里有两个 Key 作用域：
 
@@ -790,6 +822,7 @@ const groupedTaskList = (
 
 React 能判断两个元素仍然存在，只是顺序改变。
 
+::: details 查看稳定 Key 跟随数据的示例代码
 ```jsx
 const tasks = [
   { id: "task-104", title: "核对订单" },
@@ -828,6 +861,7 @@ function buildStableTaskList(taskList) {
 const root = document.getElementById("root");
 ReactDOM.render(buildStableTaskList(tasks), root);
 ```
+:::
 
 首次渲染后，分别在“核对订单”和“复核退款”的输入框中填写不同备注。保留当前页面，再在同一执行环境中运行下面两行：
 
@@ -844,6 +878,7 @@ ReactDOM.render(buildStableTaskList(reorderedTasks), root);
 
 下面使用同样的两项数据，但把数组索引作为 Key：
 
+::: details 查看索引 Key 跟随位置的示例代码
 ```jsx
 const indexedTasks = [
   { id: "task-104", title: "核对订单" },
@@ -881,6 +916,7 @@ function buildIndexedTaskList(taskList) {
 const indexedRoot = document.getElementById("root");
 ReactDOM.render(buildIndexedTaskList(indexedTasks), indexedRoot);
 ```
+:::
 
 同样先在两个输入框中填写不同备注，再运行：
 
@@ -910,6 +946,7 @@ ReactDOM.render(
 
 下面的示例先筛选待处理任务，再复制并排序，最后根据结果渲染空状态或列表，并为每一项使用稳定 ID。
 
+::: details 查看组合筛选、排序、空状态与 Key的示例代码
 ```jsx
 const tasks = [
   {
@@ -959,6 +996,7 @@ const taskSection = (
 
 ReactDOM.render(taskSection, document.getElementById("root"));
 ```
+:::
 
 `compareTaskPriority` 使用第三节已经定义的比较函数。页面显示：
 

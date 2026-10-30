@@ -18,6 +18,7 @@ date: 2026-07-30
 
 文本输入的 `value` 由 State 决定，`onChange` 负责同步输入：
 
+::: details 查看受控控件的示例代码
 ```jsx
 /**
  * 管理受控任务标题。
@@ -43,6 +44,7 @@ function TaskTitleField() {
   );
 }
 ```
+:::
 
 输入“核对订单”后，State 和页面文本都变成该值。
 
@@ -69,6 +71,7 @@ const uncontrolledInput = (
 
 两者都使用 `value` 和 `onChange`：
 
+::: details 查看`input` 与 `textarea`的示例代码
 ```jsx
 const [form, setForm] = useState({
   title: "",
@@ -95,6 +98,7 @@ function handleDescriptionChange(event) {
   setForm((previousForm) => ({ ...previousForm, description }));
 }
 ```
+:::
 
 `textarea` 在 JSX 中不使用标签子文本设置当前值，应使用 `value` 或 `defaultValue`。
 
@@ -102,6 +106,7 @@ function handleDescriptionChange(event) {
 
 受控 `select` 在元素自身设置 `value`：
 
+::: details 查看`select`的示例代码
 ```jsx
 const [priority, setPriority] = useState("normal");
 
@@ -122,6 +127,7 @@ const priorityField = (
   </select>
 );
 ```
+:::
 
 React 不需要在 `option` 上设置 `selected`，当前选项由 `select.value` 决定。
 
@@ -131,6 +137,7 @@ React 不需要在 `option` 上设置 `selected`，当前选项由 `select.value
 
 一组单选按钮共享一个 State，每个按钮比较自己的 `value`：
 
+::: details 查看单选按钮的示例代码
 ```jsx
 const [priority, setPriority] = useState("normal");
 
@@ -156,11 +163,13 @@ const highPriority = (
   </label>
 );
 ```
+:::
 
 ### 2. 复选框
 
 复选框读取 `checked`，不是 `value`：
 
+::: details 查看复选框的示例代码
 ```jsx
 const [urgent, setUrgent] = useState(false);
 
@@ -181,6 +190,7 @@ const urgentField = (
   />
 );
 ```
+:::
 
 ## 四、多个字段
 
@@ -188,6 +198,7 @@ const urgentField = (
 
 多个文本类字段可以使用 `name` 找到目标字段：
 
+::: details 查看根据字段名更新对象的示例代码
 ```jsx
 const initialForm = {
   title: "",
@@ -216,6 +227,7 @@ function handleFieldChange(event) {
   }));
 }
 ```
+:::
 
 动态字段名减少重复，但要求 `name` 与 State 字段严格对应。字段转换或业务规则复杂时，独立处理函数更清楚。
 
@@ -225,6 +237,7 @@ function handleFieldChange(event) {
 
 表单提交应绑定在 `form` 上，这样按钮和键盘回车都走同一入口：
 
+::: details 查看在 `onSubmit` 统一处理的示例代码
 ```jsx
 const [errorMessage, setErrorMessage] = useState("");
 
@@ -249,6 +262,7 @@ function handleSubmit(event) {
   });
 }
 ```
+:::
 
 校验失败时显示错误并停止提交；成功时再构造业务数据。不要把错误提示、提交中等展示状态直接混进接口模型。
 
@@ -286,6 +300,7 @@ const [title, setTitle] = useState("");
 
 ## 七、完整示例
 
+::: details 查看完整示例代码
 ```jsx
 /**
  * 管理任务创建表单。
@@ -367,6 +382,7 @@ function TaskForm() {
   );
 }
 ```
+:::
 
 空标题提交会显示错误；有效输入提交时控制台得到当前数据；重置后所有控件恢复初始值。
 

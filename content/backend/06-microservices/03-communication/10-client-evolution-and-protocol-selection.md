@@ -25,6 +25,7 @@ Spring Cloud OpenFeign 仍可用于稳定存量系统，但官方将其视为 fe
 
 Spring Framework 允许使用 `@HttpExchange`、`@GetExchange` 等注解定义接口，并由 `HttpServiceProxyFactory` 或 Spring Boot 自动配置创建代理。
 
+::: details 查看 application-service 的 ProductHttpService.java 完整代码
 ```java
 // application-service/src/main/java/com/example/application/client/ProductHttpService.java
 package com.example.application.client;
@@ -46,6 +47,7 @@ public interface ProductHttpService {
     ProductSummary findByCode(@PathVariable String code);
 }
 ```
+:::
 
 - **底层客户端**：HTTP Service 接口可以基于 `RestClient` 或 `WebClient`，分别覆盖阻塞和响应式场景。
 - **服务发现集成**：Spring Cloud LoadBalancer 5.0 支持 HTTP Service Client 组配置，可以根据服务 ID 完成负载均衡。

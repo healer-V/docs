@@ -10,3 +10,5 @@ examples/microservices-insurance/.lab-pids.json
 examples/microservices-insurance/logs/
 examples/microservices-insurance/.lab/
 examples/microservices-insurance/.security-lab-pids.json
+superpowers/
+work/

@@ -16,7 +16,7 @@ test('resolveClientBuildUnit maps public routes to build units', () => {
   assert.equal(resolveClientBuildUnit('/docs/web3/01-blockchain/01-introduction.html'), 'web3')
   assert.equal(resolveClientBuildUnit('/docs/practices/performance.html'), 'ecosystem')
   assert.equal(resolveClientBuildUnit('/docs/superpowers/specs/design.html'), null)
-  assert.equal(resolveClientBuildUnit('/docs/standards/documentation/'), null)
+  assert.equal(resolveClientBuildUnit('/docs/standards/'), null)
 })
 
 // 验证同一构建单元内仍使用 VitePress 客户端路由。

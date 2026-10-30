@@ -76,6 +76,7 @@ Portal 中的内容仍然是原组件的 React 后代，因此：
 - React 事件按 React 树向上冒泡；
 - State 仍属于原组件身份。
 
+::: details 查看Portal 只改变 DOM 位置的完整输出
 ```text
 React 树
 TaskPage
@@ -89,9 +90,11 @@ body
 └─ #overlay-root
    └─ DeleteConfirm DOM
 ```
+:::
 
 ### 2. 事件按 React 树冒泡
 
+::: details 查看事件按 React 树冒泡的示例代码
 ```jsx
 /**
  * 演示 Portal 事件仍向 React 父组件冒泡。
@@ -115,6 +118,7 @@ function EventDemo() {
   );
 }
 ```
+:::
 
 按钮 DOM 不在外层 `div` 内，但单击仍会触发 `handlePageClick`。如果浮层需要阻止上层 React 事件，应在合适位置调用 `event.stopPropagation()`。
 
@@ -137,6 +141,7 @@ function EventDemo() {
 
 下面示例假定页面已存在 `#overlay-root`：
 
+::: details 查看基本结构的示例代码
 ```jsx
 /**
  * 显示确认模态框。
@@ -232,6 +237,7 @@ function ConfirmDialog({
   );
 }
 ```
+:::
 
 显示后焦点进入确认按钮，按 Esc 或单击遮罩触发 `onClose`，单击对话框内部不会关闭。
 
@@ -239,6 +245,7 @@ function ConfirmDialog({
 
 打开模态框的组件应保存触发元素，关闭后把焦点返回原位置。最直接的方式是为打开按钮保存 Ref：
 
+::: details 查看恢复焦点的示例代码
 ```jsx
 const openButtonRef = React.useRef(null);
 
@@ -262,6 +269,7 @@ function handleCloseDialog() {
   );
 }
 ```
+:::
 
 复杂模态框还需要焦点圈定，使 Tab 不会移动到背景页面。生产项目通常使用经过无障碍验证的对话框库，而不是只实现视觉遮罩。
 
@@ -283,6 +291,7 @@ Portal 不会自动计算弹出位置。菜单、气泡和下拉框需要读取�
 
 模态框打开时可以在 Effect 中保存并修改 `document.body.style.overflow`：
 
+::: details 查看页面滚动锁定的示例代码
 ```jsx
 React.useEffect(
   /**
@@ -306,6 +315,7 @@ React.useEffect(
   []
 );
 ```
+:::
 
 直接恢复为空字符串可能覆盖页面原有行内样式，因此需要保存旧值。
 
@@ -313,6 +323,7 @@ React.useEffect(
 
 第三方页面无法预先提供容器时，可以让组件实例创建自己的 DOM 节点：
 
+::: details 查看动态容器的示例代码
 ```jsx
 /**
  * 创建并管理独立 Portal 容器。
@@ -351,6 +362,7 @@ function DynamicPortal({ children }) {
   return ReactDOM.createPortal(children, containerRef.current);
 }
 ```
+:::
 
 这里的 Ref 初始化具有可预测的一次性结果。容器追加和移除仍放在 Effect 中。
 

@@ -46,6 +46,7 @@ Predicate 是逻辑 AND，不是“写了多个备选条件”。需要 OR 时�
 
 父工程新增 `gateway-service` 模块。核心依赖如下：
 
+::: details 查看 gateway-service 的 pom.xml 核心依赖
 ```xml
 <!-- examples/microservices-insurance/gateway-service/pom.xml -->
 <dependency>
@@ -61,6 +62,7 @@ Predicate 是逻辑 AND，不是“写了多个备选条件”。需要 OR 时�
     <artifactId>spring-cloud-starter-loadbalancer</artifactId>
 </dependency>
 ```
+:::
 
 `spring-cloud-starter-gateway-server-webflux` 已经提供响应式服务器能力，不应再添加 `spring-boot-starter-web`。如果同一 Gateway 进程混入 MVC，自动配置选择和过滤器模型会变得难以判断。
 
@@ -81,6 +83,7 @@ public class GatewayServiceApplication {
 
 完整路由位于 `gateway-service/src/main/resources/application.yml`：
 
+::: details 查看 gateway-service 的 application.yml 完整路由配置
 ```yaml
 spring:
   cloud:
@@ -114,6 +117,7 @@ spring:
               filters:
                 - AddResponseHeader=X-Selected-Route, application-api
 ```
+:::
 
 匹配矩阵如下：
 

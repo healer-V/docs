@@ -29,6 +29,7 @@ date: 2026-07-20
 
 ### 1. 专用契约类型
 
+::: details 查看 insurance-contracts 的 ProductSummary.java 完整代码
 ```java
 // insurance-contracts/src/main/java/com/example/insurance/product/ProductSummary.java
 package com.example.insurance.product;
@@ -51,6 +52,7 @@ public record ProductSummary(
 ) {
 }
 ```
+:::
 
 - **不共享实体**：JPA 实体包含延迟加载、持久化注解和内部关系，不是稳定远程契约。
 - **不直接暴露内部枚举**：内部状态枚举扩展可能破坏旧消费者。契约应定义未知值策略或使用稳定编码。

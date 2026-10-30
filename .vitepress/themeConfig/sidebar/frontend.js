@@ -1,7 +1,7 @@
 export const frontendSidebar = {
   "/frontend/01-html/": [
     {
-      "text": "HTML 核心",
+      "text": "HTML",
       "items": [
         {
           "text": "第1章：HTML 基础",
@@ -9,163 +9,140 @@ export const frontendSidebar = {
           "items": [
             {
               "text": "1.1 HTML 概述",
-              "link": "/frontend/01-html/01-overview.md"
+              "link": "/frontend/01-html/01-foundation/01-overview.md"
             },
             {
               "text": "1.2 HTML 文档结构",
-              "link": "/frontend/01-html/13-document-structure.md"
+              "link": "/frontend/01-html/01-foundation/02-document-structure.md"
             },
             {
-              "text": "1.3 标签与元素模型",
-              "link": "/frontend/01-html/02-tag.md"
+              "text": "1.3 HTML 元素与标签"
             },
             {
-              "text": "1.4 元素属性与全局属性",
-              "link": "/frontend/01-html/03-attributes.md"
+              "text": "1.4 HTML 属性"
             },
             {
-              "text": "1.5 URL 与资源路径",
-              "link": "/frontend/01-html/14-url.md"
+              "text": "1.5 字符编码与字符引用"
             },
             {
-              "text": "1.6 字符编码与字符实体",
-              "link": "/frontend/01-html/15-encode.md"
+              "text": "1.6 URL 与资源路径"
             }
           ]
         },
         {
-          "text": "第2章：Head 与资源声明",
+          "text": "第2章：文本与页面结构",
           "collapsed": true,
           "items": [
             {
-              "text": "2.1 Head 元信息",
-              "link": "/frontend/01-html/16-head-meta.md"
+              "text": "2.1 标题与段落"
             },
             {
-              "text": "2.2 HTML 资源声明",
-              "link": "/frontend/01-html/17-link-resource.md"
+              "text": "2.2 文本语义与引用"
             },
             {
-              "text": "2.3 HTML 脚本与 noscript",
-              "link": "/frontend/01-html/18-script-noscript.md"
+              "text": "2.3 列表"
+            },
+            {
+              "text": "2.4 语义化页面结构"
             }
           ]
         },
         {
-          "text": "第3章：文本与语义结构",
+          "text": "第3章：链接与多媒体",
           "collapsed": true,
           "items": [
             {
-              "text": "3.1 HTML 文本标签",
-              "link": "/frontend/01-html/19-text.md"
+              "text": "3.1 超链接"
             },
             {
-              "text": "3.2 HTML 列表标签",
-              "link": "/frontend/01-html/20-list.md"
+              "text": "3.2 图像与替代文本"
             },
             {
-              "text": "3.3 HTML 语义结构",
-              "link": "/frontend/01-html/04-semanticElement.md"
+              "text": "3.3 响应式图片"
             },
             {
-              "text": "3.4 HTML 语义化实践",
-              "link": "/frontend/01-html/07-semantic.md"
+              "text": "3.4 音频、视频与字幕"
+            },
+            {
+              "text": "3.5 iframe 嵌入页面"
             }
           ]
         },
         {
-          "text": "第4章：链接、图片与嵌入",
+          "text": "第4章：表格与表单",
           "collapsed": true,
           "items": [
             {
-              "text": "4.1 HTML 超链接",
-              "link": "/frontend/01-html/21-link.md"
+              "text": "4.1 数据表格"
             },
             {
-              "text": "4.2 HTML 图像",
-              "link": "/frontend/01-html/22-image.md"
+              "text": "4.2 表单基础"
             },
             {
-              "text": "4.3 HTML 音视频",
-              "link": "/frontend/01-html/09-html5-multimedia.md"
+              "text": "4.3 input 输入控件"
             },
             {
-              "text": "4.4 HTML iframe",
-              "link": "/frontend/01-html/23-iframe.md"
+              "text": "4.4 选择控件与文本域"
+            },
+            {
+              "text": "4.5 表单校验"
+            },
+            {
+              "text": "4.6 表单提交与数据编码"
+            },
+            {
+              "text": "4.7 文件选择与上传"
             }
           ]
         },
         {
-          "text": "第5章：表格与表单",
+          "text": "第5章：文档头部与资源加载",
           "collapsed": true,
           "items": [
             {
-              "text": "5.1 HTML 表格",
-              "link": "/frontend/01-html/06-table.md"
+              "text": "5.1 head 与元数据"
             },
             {
-              "text": "5.2 HTML 表单基础",
-              "link": "/frontend/01-html/05-form.md"
+              "text": "5.2 样式表与资源声明"
             },
             {
-              "text": "5.3 表单控件与原生校验",
-              "link": "/frontend/01-html/24-form-controls-validation.md"
-            },
-            {
-              "text": "5.4 表单提交与编码",
-              "link": "/frontend/01-html/25-form-submit-encoding.md"
+              "text": "5.3 script 与脚本加载"
             }
           ]
         },
         {
-          "text": "第6章：HTML5 扩展能力",
+          "text": "第6章：原生交互与扩展元素",
           "collapsed": true,
           "items": [
             {
-              "text": "6.1 HTML5 核心新特性",
-              "link": "/frontend/01-html/08-html5-features.md"
+              "text": "6.1 details 与 summary"
             },
             {
-              "text": "6.2 HTML5 Canvas",
-              "link": "/frontend/01-html/10-html5-canvas.md"
+              "text": "6.2 dialog 对话框"
             },
             {
-              "text": "6.3 HTML5 Web Storage",
-              "link": "/frontend/01-html/11-html5-storage.md"
+              "text": "6.3 popover 弹出层"
             },
             {
-              "text": "6.4 Web Components 简介",
-              "link": "/frontend/01-html/26-web-components.md"
+              "text": "6.4 template 与 Web Components 基础"
+            },
+            {
+              "text": "6.5 SVG 与 Canvas 基础"
             }
           ]
         },
         {
-          "text": "第7章：工程实践与规范参考",
+          "text": "第7章：可访问性与排错",
           "collapsed": true,
           "items": [
             {
-              "text": "7.1 HTML 可访问性",
-              "link": "/frontend/01-html/27-accessibility.md"
+              "text": "7.1 HTML 可访问性"
             },
             {
-              "text": "7.2 HTML SEO 基础",
-              "link": "/frontend/01-html/28-seo.md"
+              "text": "7.2 HTML 校验与结构问题"
             },
             {
-              "text": "7.3 HTML 安全",
-              "link": "/frontend/01-html/29-security.md"
-            },
-            {
-              "text": "7.4 HTML 性能实践",
-              "link": "/frontend/01-html/30-performance.md"
-            },
-            {
-              "text": "7.5 HTML 与 HTML5 对比",
-              "link": "/frontend/01-html/12-html-vs-html5.md"
-            },
-            {
-              "text": "7.6 HTML 常用标签参考",
-              "link": "/frontend/01-html/31-elements-reference.md"
+              "text": "7.3 资源加载问题"
             }
           ]
         }

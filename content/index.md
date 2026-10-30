@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 🚀 开始学习
-      link: /frontend/01-html/01-overview
+      link: /frontend/01-html/01-foundation/01-overview
     - theme: alt
       text: 📋 面试题库
       link: /interview/

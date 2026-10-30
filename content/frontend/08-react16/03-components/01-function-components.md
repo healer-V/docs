@@ -91,6 +91,7 @@ React 16.8 函数组件可以返回 React 元素、Fragment、字符串、数字
 
 下面的组件在没有任务时返回 `null`：
 
+::: details 查看可返回的内容的示例代码
 ```jsx
 /**
  * 仅在存在错误时显示错误信息。
@@ -105,9 +106,11 @@ function ErrorMessage({ message }) {
   return <p role="alert">{message}</p>;
 }
 ```
+:::
 
 `return` 后如果需要换行书写 JSX，应使用括号包裹。否则 JavaScript 自动分号插入可能让函数提前返回 `undefined`。
 
+::: details 查看可返回的内容的示例代码
 ```jsx
 /**
  * 演示正确的多行 JSX 返回方式。
@@ -122,6 +125,7 @@ function TaskSummary() {
   );
 }
 ```
+:::
 
 ## 二、渲染函数
 
@@ -129,6 +133,7 @@ function TaskSummary() {
 
 父组件重新渲染、组件 State 更新或读取的 Context 变化时，函数组件会再次执行。函数体中的局部变量也会重新计算。
 
+::: details 查看每次渲染都会重新执行的示例代码
 ```jsx
 /**
  * 根据任务列表计算未完成数量。
@@ -144,6 +149,7 @@ function PendingCount({ tasks }) {
   return <p>待处理：{pendingCount}</p>;
 }
 ```
+:::
 
 `pendingCount` 可以直接根据 Props 计算，不需要放入 State。每次渲染重新计算能保证它始终与 `tasks` 一致。
 
@@ -160,6 +166,7 @@ function PendingCount({ tasks }) {
 
 下面的组件直接修改了 Props 中的数组，调用者持有的数据也会被改变：
 
+::: details 查看渲染必须保持纯粹的示例代码
 ```jsx
 /**
  * 错误示例：排序会直接修改传入的 tasks 数组。
@@ -180,9 +187,11 @@ function InvalidTaskList({ tasks }) {
   return <p>第一项任务编号：{tasks[0].id}</p>;
 }
 ```
+:::
 
 正确方式是复制数组后再排序：
 
+::: details 查看渲染必须保持纯粹的示例代码
 ```jsx
 /**
  * 在不修改 Props 的前提下取得最高优先级任务。
@@ -203,6 +212,7 @@ function HighestPriorityTask({ tasks }) {
   return <p>第一项任务编号：{sortedTasks[0].id}</p>;
 }
 ```
+:::
 
 ## 三、组件拆分
 
@@ -218,6 +228,7 @@ function HighestPriorityTask({ tasks }) {
 
 下面的 `TaskPanel` 同时包含标题、统计和列表。统计与列表都有清晰职责，因此可以提取：
 
+::: details 查看按独立职责拆分的示例代码
 ```jsx
 /**
  * 显示任务数量。
@@ -257,6 +268,7 @@ function TaskPanel({ tasks }) {
   );
 }
 ```
+:::
 
 `TaskPanel` 负责组织区域，`TaskCount` 负责统计展示，`TaskItem` 负责单项结构。三个组件通过明确 Props 连接，不共享隐藏的可变数据。
 
@@ -291,6 +303,7 @@ function TaskPanel({ tasks }) {
 
 在函数组件内部定义另一个组件时，外层组件每次渲染都会创建新的组件类型。React 会把新类型视为不同身份，导致其 State 被重置。
 
+::: details 查看不在组件内部定义组件的示例代码
 ```jsx
 /**
  * 错误示例：InnerEditor 会在每次渲染时变成新的组件类型。
@@ -319,6 +332,7 @@ function InvalidPanel() {
   return <InnerEditor />;
 }
 ```
+:::
 
 应把 `InnerEditor` 定义在模块顶层，再通过 Props 传入需要的数据。这样组件类型在多次渲染之间保持稳定。
 

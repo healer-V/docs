@@ -67,6 +67,7 @@ eureka:
 
 ### 2. Feign 超时
 
+::: details 查看 application-service 的 Feign 超时配置
 ```yaml
 
 # application-service/src/main/resources/application.yml
@@ -80,6 +81,7 @@ spring:
             readTimeout: 2000
             loggerLevel: basic
 ```
+:::
 
 `connectTimeout` 和 `readTimeout` 使用毫秒值，并应根据上游总预算和真实延迟分布设置。
 

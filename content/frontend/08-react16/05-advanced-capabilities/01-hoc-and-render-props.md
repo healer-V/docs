@@ -32,6 +32,7 @@ HOC 不是 React 专用语法，而是一种组件组合模式。React 只负责
 
 下面的 HOC 为任意组件增加权限判断：
 
+::: details 查看权限 HOC的示例代码
 ```jsx
 /**
  * 为组件增加权限检查。
@@ -58,9 +59,11 @@ function withPermission(WrappedComponent) {
   return WithPermission;
 }
 ```
+:::
 
 使用：
 
+::: details 查看权限 HOC的示例代码
 ```jsx
 /**
  * 显示删除任务按钮。
@@ -93,6 +96,7 @@ const element = (
   />
 );
 ```
+:::
 
 `allowed` 由 HOC 使用，其他 Props 通过 `restProps` 原样传给 `DeleteTaskButton`。
 
@@ -162,6 +166,7 @@ function InvalidPage() {
 
 需要把 Ref 转发到内部组件时，HOC 本身必须使用 `React.forwardRef` 并约定独立属性名：
 
+::: details 查看Ref 不会作为普通 Props 透传的示例代码
 ```jsx
 /**
  * 为组件增加日志并转发 Ref。
@@ -185,6 +190,7 @@ function withLog(WrappedComponent) {
   return WithLog;
 }
 ```
+:::
 
 原组件必须能够接收 Ref，例如类组件或另一个 `forwardRef` 组件。
 
@@ -233,6 +239,7 @@ Render Props 是把一个返回 React 内容的函数作为 Props，让逻辑组
 
 逻辑组件管理选中任务，不决定列表外观：
 
+::: details 查看任务选择示例的示例代码
 ```jsx
 /**
  * 管理选中任务并通过 render 暴露状态。
@@ -263,9 +270,11 @@ function TaskSelection({ initialTaskId = null, render }) {
   });
 }
 ```
+:::
 
 调用者决定界面：
 
+::: details 查看任务选择示例的示例代码
 ```jsx
 /**
  * 根据任务选择状态渲染按钮列表。
@@ -308,6 +317,7 @@ function renderTaskSelection(selection) {
 
 const element = <TaskSelection render={renderTaskSelection} />;
 ```
+:::
 
 ### 3. children 函数
 

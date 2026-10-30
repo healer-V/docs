@@ -28,6 +28,7 @@ React 组件最终会形成一棵组件树，但代码目录不应机械复制�
 
 下面的结构适合包含列表页、详情页和设置页的中小型应用：
 
+::: details 查看项目代码的职责边界的完整输出
 ```text
 src/
 ├─ index.js
@@ -48,6 +49,7 @@ src/
 └─ styles/
    └─ global.css
 ```
+:::
 
 当一个组件只在某个页面内使用时，可以先放在该页面附近。只有当它形成稳定职责，或确实被多个页面复用时，再移动到 `features` 或 `shared`。过早建立大量公共目录，会让查找代码需要跨越更多文件。
 
@@ -80,6 +82,7 @@ npm install react-router-dom@5.3.4
 
 入口文件负责将路由上下文提供给应用：
 
+::: details 查看 src/index.js 完整代码
 ```jsx
 // src/index.js
 import React from 'react';
@@ -95,6 +98,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+:::
 
 使用 `BrowserRouter` 时，直接访问 `/tasks/42` 会先到达 Web 服务器。服务器必须把无法命中静态文件的前端路径回退到 `index.html`，再由 React Router 完成页面匹配。若部署环境无法配置回退，可以评估 `HashRouter`，其地址形如 `/#/tasks/42`。
 
@@ -104,6 +108,7 @@ ReactDOM.render(
 
 `Switch` 按书写顺序检查子路由，并只渲染第一个匹配项。具体路径应放在宽泛路径之前，无路径的 404 路由放在最后。
 
+::: details 查看 src/App.js 完整代码
 ```jsx
 // src/App.js
 import React from 'react';
@@ -140,6 +145,7 @@ function App() {
 
 export default App;
 ```
+:::
 
 上例把 `/tasks/:taskId` 放在 `/tasks` 之前，即使后者忘记写 `exact`，详情页也不会先被列表路由截获。为宽泛路由明确添加 `exact`，仍然能让匹配意图更清楚。
 
@@ -161,6 +167,7 @@ export default App;
 
 动态片段以冒号开头，例如 `/tasks/:taskId`。`useParams()` 返回当前匹配到的参数对象。参数来自 URL，即使看起来是数字也仍然是字符串，使用前需要校验和转换。
 
+::: details 查看 src/pages/TaskDetailPage.js 完整代码
 ```jsx
 // src/pages/TaskDetailPage.js
 import React from 'react';
@@ -180,9 +187,11 @@ function TaskDetailPage() {
 
 export default TaskDetailPage;
 ```
+:::
 
 查询参数不属于 `useParams()`。例如 `/tasks?status=open&page=2` 中的 `status` 和 `page` 位于 `location.search`，可以交给浏览器的 `URLSearchParams` 解析：
 
+::: details 查看读取路径参数和查询参数的示例代码
 ```jsx
 import React from 'react';
 import { useLocation } from 'react-router-dom';
@@ -197,6 +206,7 @@ function TaskListPage() {
   return <TaskList status={status} page={page} />;
 }
 ```
+:::
 
 URL 中可分享、可刷新后恢复的状态，适合放在路径或查询参数中，例如详情对象 ID、筛选条件和分页位置。弹窗是否展开、输入框是否聚焦等短暂界面状态通常保留在组件 State 中。
 
@@ -216,6 +226,7 @@ function TaskLink({ task }) {
 
 命令式导航用于跳转时机取决于业务结果的情况，例如表单保存成功后进入详情页。`history.push()` 添加一条历史记录，用户可以返回；`history.replace()` 替换当前记录，适合登录完成后离开登录页。
 
+::: details 查看声明式导航与命令式导航的示例代码
 ```jsx
 import React from 'react';
 import { useHistory } from 'react-router-dom';
@@ -262,6 +273,7 @@ function CreateTaskForm() {
   );
 }
 ```
+:::
 
 ## 七、重定向与 404 页面
 
@@ -284,6 +296,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 404 路由不设置 `path`，因此只有前面的路由都未匹配时才会渲染：
 
+::: details 查看重定向与 404 页面的示例代码
 ```jsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -303,6 +316,7 @@ function NotFoundPage() {
   );
 }
 ```
+:::
 
 ## 八、样式的作用域与组织
 
@@ -329,6 +343,7 @@ CSS Modules 会把本地类名转换为构建后的唯一类名。组件通过�
 }
 ```
 
+::: details 查看 src/features/tasks/components/TaskCard.js 完整代码
 ```jsx
 // src/features/tasks/components/TaskCard.js
 import React from 'react';
@@ -346,6 +361,7 @@ function TaskCard({ task }) {
   return <article className={className}>{task.title}</article>;
 }
 ```
+:::
 
 运行时数值可以通过 `style` 传入对象。React 会将多数数字属性追加 `px`，但无单位属性如 `opacity`、`zIndex` 不会追加：
 

@@ -97,7 +97,7 @@ test('invalid units and unowned sources fail with actionable errors', () => {
   // 解析过程蓝图的归属以验证拒绝构建；回调预期抛出错误，无返回值。
   assert.throws(() => getBuildUnitForSource('superpowers/specs/design.md'), /没有构建单元负责/)
   // 解析编写规范的归属以验证拒绝构建；回调预期抛出错误，无返回值。
-  assert.throws(() => getBuildUnitForSource('standards/documentation/README.md'), /没有构建单元负责/)
+  assert.throws(() => getBuildUnitForSource('standards/README.md'), /没有构建单元负责/)
   assert.throws(() => getBuildUnitForSource('public/logo.png'), /只支持 Markdown/)
 })
 

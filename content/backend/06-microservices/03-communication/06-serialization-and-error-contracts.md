@@ -56,6 +56,7 @@ Feign 接口两端使用相同 Java 类型，不代表网络契约自然兼容�
 
 Spring MVC 可以使用 `ProblemDetail` 返回标准错误字段，并通过扩展属性提供稳定业务码。
 
+::: details 查看 product-service 的 ProductErrorHandler.java 完整代码
 ```java
 // product-service/src/main/java/com/example/product/ProductErrorHandler.java
 package com.example.product;
@@ -87,6 +88,7 @@ public class ProductErrorHandler {
     }
 }
 ```
+:::
 
 示例域名用于说明稳定错误类型格式，实际项目使用组织批准且可长期维护的标识。
 
@@ -99,6 +101,7 @@ public class ProductErrorHandler {
 
 下面的局部示例展示按 HTTP 状态分类；完整实现还需要安全读取并校验 ProblemDetail 响应体。
 
+::: details 查看 application-service 的 ProductErrorDecoder.java 完整代码
 ```java
 // application-service/src/main/java/com/example/application/client/ProductErrorDecoder.java
 package com.example.application.client;
@@ -125,6 +128,7 @@ public class ProductErrorDecoder implements ErrorDecoder {
     }
 }
 ```
+:::
 
 - **配置范围**：ErrorDecoder 可以按客户端配置，避免一个全局 Decoder 把不同服务的错误码混为一类。
 - **保留必要上下文**：异常记录目标服务、方法、HTTP 状态和追踪标识，不记录敏感请求体。

@@ -18,6 +18,7 @@ date: 2026-07-20
 
 Spring Cloud 组件应通过 Release Train BOM 管理，不为 Eureka、LoadBalancer 和 OpenFeign 分别拼接版本。
 
+::: details 查看父工程 pom.xml 的 BOM 配置
 ```xml
 <!-- pom.xml -->
 <properties>
@@ -37,6 +38,7 @@ Spring Cloud 组件应通过 Release Train BOM 管理，不为 Eureka、LoadBala
     </dependencies>
 </dependencyManagement>
 ```
+:::
 
 - **核对兼容矩阵**：Release Train 必须与 Spring Boot 版本匹配。升级时以 [Spring Cloud 官方兼容关系](https://spring.io/projects/spring-cloud/) 为准。
 
@@ -54,6 +56,7 @@ Spring Cloud 组件应通过 Release Train BOM 管理，不为 Eureka、LoadBala
 
 ### 2. 启用 Server
 
+::: details 查看 discovery-server 的 DiscoveryServerApplication.java 完整代码
 ```java
 // discovery-server/src/main/java/com/example/discovery/DiscoveryServerApplication.java
 package com.example.discovery;
@@ -75,9 +78,11 @@ public class DiscoveryServerApplication {
     }
 }
 ```
+:::
 
 ### 3. 本地单节点配置
 
+::: details 查看 discovery-server 的 application.yml 完整配置
 ```yaml
 
 # discovery-server/src/main/resources/application.yml
@@ -93,6 +98,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
 ```
+:::
 
 单节点关闭自注册和注册表拉取仅适用于本地学习，不是生产高可用方案。
 
@@ -110,6 +116,7 @@ eureka:
 
 ### 2. 配置身份与 Server
 
+::: details 查看 product-service 的 application.yml 完整配置
 ```yaml
 
 # product-service/src/main/resources/application.yml
@@ -125,11 +132,13 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 ```
+:::
 
 `defaultZone` 是区分大小写的 Map 键，不能随意改成其他拼写。
 
 ### 3. 启动应用
 
+::: details 查看 product-service 的 ProductServiceApplication.java 完整代码
 ```java
 // product-service/src/main/java/com/example/product/ProductServiceApplication.java
 package com.example.product;
@@ -149,6 +158,7 @@ public class ProductServiceApplication {
     }
 }
 ```
+:::
 
 当前 Spring Cloud 在发现客户端依赖存在时自动配置 DiscoveryClient，不需要机械添加 `@EnableDiscoveryClient`。
 
@@ -158,6 +168,7 @@ public class ProductServiceApplication {
 
 下面的内部诊断端点只展示实例查询，生产环境不应直接向公网暴露注册信息。
 
+::: details 查看 application-service 的 DiscoveryQueryController.java 完整代码
 ```java
 // application-service/src/main/java/com/example/application/support/DiscoveryQueryController.java
 package com.example.application.support;
@@ -192,6 +203,7 @@ public class DiscoveryQueryController {
     }
 }
 ```
+:::
 
 - **不直接缓存结果**：DiscoveryClient 自身已经管理注册表更新。业务代码不应再建立无失效策略的永久实例缓存。
 

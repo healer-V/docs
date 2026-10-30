@@ -18,6 +18,7 @@ date: 2026-07-30
 
 **基本形式：**
 
+::: details 查看基本形式：完整代码
 ```jsx
 /**
  * 描述一个静态任务卡片。
@@ -32,6 +33,7 @@ function TaskCard() {
   );
 }
 ```
+:::
 
 这里的 `TaskCard` 是组件定义，调用结果还没有进入页面。函数返回 JSX，JSX 再转换为 React 元素。
 
@@ -110,6 +112,7 @@ Props 对象由 React 提供，不需要开发者手动调用组件函数。
 
 Props 是普通对象，因此可以使用参数解构直接取得字段：
 
+::: details 查看解构 Props的示例代码
 ```jsx
 /**
  * 显示任务标题和状态。
@@ -125,6 +128,7 @@ function TaskSummary({ title, status }) {
   );
 }
 ```
+:::
 
 解构不会改变数据来源，只是省略重复的 `props.`。字段较少且名称明确时适合直接解构；需要把完整输入继续传递或区分同名变量时，可以保留 `props` 对象。
 
@@ -147,6 +151,7 @@ function TaskSummary({ title, status }) {
 
 下面的父组件准备数据并传给子组件：
 
+::: details 查看传递不同类型的值的示例代码
 ```jsx
 /**
  * 根据输入数据显示任务详情。
@@ -191,6 +196,7 @@ function TaskPage() {
   );
 }
 ```
+:::
 
 属性名决定子组件中的字段名。父组件写 `priority={task.priority}`，子组件就从 `props.priority` 读取。
 
@@ -198,6 +204,7 @@ function TaskPage() {
 
 函数也可以作为 Props。父组件提供回调，子组件在用户操作发生时调用它，用于把“用户做了什么”通知数据所有者。
 
+::: details 查看传递回调的示例代码
 ```jsx
 /**
  * 提供一个可选择的任务按钮。
@@ -234,6 +241,7 @@ const buttonElement = (
   />
 );
 ```
+:::
 
 点击后控制台输出 `选择任务：task-104`。回调仍然由父级定义，子组件只决定何时报告用户意图。状态提升将在 2.5 中完整展开。
 
@@ -256,6 +264,7 @@ React 组件树中的普通数据沿 Props 从上到下传递：
 
 组件不能修改 Props 对象或其中的数据：
 
+::: details 查看Props 是只读输入的示例代码
 ```jsx
 /**
  * 错误示例：尝试修改组件输入。
@@ -269,6 +278,7 @@ function InvalidTaskTitle(props) {
   return <h2>{props.title}</h2>;
 }
 ```
+:::
 
 直接赋值破坏了父组件对数据的所有权，也会让其他读取同一数据的组件得到不可预测结果。正确做法是让父组件更新自己拥有的数据，再通过新的 Props 重新渲染子组件。
 
@@ -280,6 +290,7 @@ function InvalidTaskTitle(props) {
 
 Props 缺失或值为 `undefined` 时，可以通过参数解构默认值提供回退内容：
 
+::: details 查看使用参数默认值的示例代码
 ```jsx
 /**
  * 显示任务状态，缺少 status 时使用“未开始”。
@@ -296,6 +307,7 @@ function TaskStatus({ title, status = "未开始" }) {
 
 const statusElement = <TaskStatus title="核对订单" />;
 ```
+:::
 
 页面显示“核对订单：未开始”。
 
@@ -312,6 +324,7 @@ const statusElement = <TaskStatus title="核对订单" />;
 
 React 16.8 也支持给函数组件设置 `defaultProps`：
 
+::: details 查看React 16.8 的 `defaultProps`的示例代码
 ```jsx
 /**
  * 显示任务优先级。
@@ -326,6 +339,7 @@ TaskPriority.defaultProps = {
   priority: "普通"
 };
 ```
+:::
 
 参数默认值更接近普通 JavaScript，单个函数组件中通常更直接；维护 React 16.8 历史代码时仍需要认识 `defaultProps`。
 
@@ -335,6 +349,7 @@ TaskPriority.defaultProps = {
 
 `PropTypes` 在开发环境运行时检查 Props，适合 JavaScript 项目发现传值类型错误。React 16.8 需要单独安装 `prop-types` 包。
 
+::: details 查看使用 `PropTypes`的示例代码
 ```jsx
 import PropTypes from "prop-types";
 
@@ -356,6 +371,7 @@ TaskSummary.propTypes = {
   priority: PropTypes.number
 };
 ```
+:::
 
 开发环境中传入 `priority="high"` 会产生控制台警告，但 `PropTypes` 不会自动转换数据，也不会在生产环境替代业务校验。
 
@@ -363,6 +379,7 @@ TaskSummary.propTypes = {
 
 TypeScript 在编译和编辑阶段检查 Props：
 
+::: details 查看使用 TypeScript 约束的示例代码
 ```tsx
 interface TaskSummaryProps {
   title: string;
@@ -381,6 +398,7 @@ function TaskSummary({
   return <p>{title}，优先级 {priority}</p>;
 }
 ```
+:::
 
 `PropTypes` 与 TypeScript 都用于描述输入契约，但都不会改变 Props 的单向流动和只读规则。接口返回的数据仍需要运行时校验，不能只依赖 TypeScript。
 
@@ -423,6 +441,7 @@ const summaryElement = <TaskSummary {...summaryProps} />;
 
 下面的片段形成完整 Props 数据流：
 
+::: details 查看完整示例代码
 ```jsx
 /**
  * 显示单个任务的只读摘要。
@@ -464,6 +483,7 @@ function TaskPage() {
 
 ReactDOM.render(<TaskPage />, document.getElementById("root"));
 ```
+:::
 
 页面显示：
 

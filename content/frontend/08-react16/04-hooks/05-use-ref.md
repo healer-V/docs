@@ -37,6 +37,7 @@ const ref = React.useRef(initialValue);
 
 下面使用 Ref 保存计时器 ID：
 
+::: details 查看调用形式的示例代码
 ```jsx
 /**
  * 提供启动和停止延迟任务的按钮。
@@ -82,6 +83,7 @@ function DelayedTask() {
   );
 }
 ```
+:::
 
 计时器 ID 不参与界面渲染，因此不需要 State。
 
@@ -96,6 +98,7 @@ function DelayedTask() {
 
 如果数据变化后页面应该更新，就使用 State。把可见计数放在 Ref 中，界面不会自动刷新：
 
+::: details 查看Ref 与 State的示例代码
 ```jsx
 function InvalidCounter() {
   const countRef = React.useRef(0);
@@ -111,6 +114,7 @@ function InvalidCounter() {
   return <button onClick={handleClick}>{countRef.current}</button>;
 }
 ```
+:::
 
 ## 二、DOM Ref
 
@@ -118,6 +122,7 @@ function InvalidCounter() {
 
 把 Ref 对象传给宿主元素的 `ref` 属性后，React 在提交阶段把 DOM 节点写入 `current`。卸载时会恢复为 `null`。
 
+::: details 查看获取宿主元素的示例代码
 ```jsx
 /**
  * 提供可以主动聚焦的任务标题输入框。
@@ -144,6 +149,7 @@ function TaskTitleInput() {
   );
 }
 ```
+:::
 
 首次渲染函数执行时 DOM 还没有提交，因此 `inputRef.current` 为 `null`。事件发生时节点已经挂载，可以调用 `focus()`。
 
@@ -167,6 +173,7 @@ function focusInput() {
 
 需要在提交后读取尺寸时，可以在事件、`useLayoutEffect` 或 `useEffect` 中访问 DOM：
 
+::: details 查看读取布局的示例代码
 ```jsx
 const panelRef = React.useRef(null);
 
@@ -182,6 +189,7 @@ React.useLayoutEffect(
   []
 );
 ```
+:::
 
 测量结果需要影响当前绘制布局时使用 `useLayoutEffect`；只记录指标时使用 `useEffect` 即可。
 
@@ -191,6 +199,7 @@ React.useLayoutEffect(
 
 Effect 在提交后把当前值写入 Ref，下一次渲染可以读取上一次提交值：
 
+::: details 查看保存前一次值的示例代码
 ```jsx
 /**
  * 显示当前状态和上一次状态。
@@ -218,6 +227,7 @@ function StatusHistory({ status }) {
   );
 }
 ```
+:::
 
 首次渲染没有上一次值，因此为 `undefined`。
 
@@ -225,6 +235,7 @@ function StatusHistory({ status }) {
 
 异步回调需要读取最新值、但不希望因值变化而重建外部资源时，可以用 Ref 保存最新值：
 
+::: details 查看保存最新值的示例代码
 ```jsx
 function LatestStatusLogger({ status }) {
   const latestStatusRef = React.useRef(status);
@@ -273,6 +284,7 @@ function LatestStatusLogger({ status }) {
   return null;
 }
 ```
+:::
 
 这种写法会绕过 Effect 的响应式依赖，只适合明确需要“读取最新值但不重建资源”的场景。缺失依赖不能默认用 Ref 掩盖。
 
@@ -282,6 +294,7 @@ function LatestStatusLogger({ status }) {
 
 对象 Ref 的 `current` 只保存一个值。需要维护多项 DOM 节点时，可以使用回调 Ref 和 Map：
 
+::: details 查看获取动态节点的示例代码
 ```jsx
 /**
  * 显示任务列表并允许按 ID 聚焦按钮。
@@ -341,6 +354,7 @@ function FocusableTaskList({ tasks }) {
   );
 }
 ```
+:::
 
 回调 Ref 在节点提交时接收 DOM 节点，在节点移除时接收 `null`。
 

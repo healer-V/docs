@@ -76,6 +76,7 @@ componentDidCatch(error, info)
 
 ### 1. 定义组件
 
+::: details 查看定义组件的示例代码
 ```jsx
 class ErrorBoundary extends React.Component {
   /**
@@ -151,6 +152,7 @@ class ErrorBoundary extends React.Component {
   }
 }
 ```
+:::
 
 使用：
 
@@ -227,6 +229,7 @@ class ErrorBoundary extends React.Component {
 
 日志上报函数本身必须捕获失败，不能因为日志服务错误再次破坏边界：
 
+::: details 查看防止日志循环的示例代码
 ```jsx
 /**
  * 安全上报渲染错误。
@@ -246,6 +249,7 @@ function reportRenderError(error, info) {
   }
 }
 ```
+:::
 
 ## 六、事件与请求错误
 
@@ -253,6 +257,7 @@ function reportRenderError(error, info) {
 
 事件处理函数中的错误不会被错误边界捕获：
 
+::: details 查看事件错误的示例代码
 ```jsx
 /**
  * 删除任务并显示业务错误。
@@ -266,6 +271,7 @@ async function handleDelete() {
   }
 }
 ```
+:::
 
 事件错误有明确触发点和恢复入口，应保存在对应业务 State 中。
 

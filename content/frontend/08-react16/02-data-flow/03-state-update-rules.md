@@ -89,6 +89,7 @@ const handleToggle = () => {
 
 `useState` 的更新函数会替换整个状态值，不会自动合并对象。更新一个字段时需要保留其他字段：
 
+::: details 查看创建新对象的示例代码
 ```jsx
 const [task, setTask] = useState({
   title: "核对订单",
@@ -104,6 +105,7 @@ const handleComplete = () => {
   }));
 };
 ```
+:::
 
 新对象的 `completed` 是 `true`，`title` 和 `priority` 保持不变。展开必须写在覆盖字段之前，否则旧值会覆盖新值。
 
@@ -118,6 +120,7 @@ setTask({ completed: true });
 
 只要某一层对象包含发生变化的后代，该层就需要创建新对象：
 
+::: details 查看嵌套对象逐层复制的示例代码
 ```jsx
 const [task, setTask] = useState({
   title: "核对订单",
@@ -138,6 +141,7 @@ const handleRename = () => {
   }));
 };
 ```
+:::
 
 未变化的字段可以复用，变化路径上的对象必须产生新引用。
 
@@ -147,6 +151,7 @@ const handleRename = () => {
 
 使用展开创建包含新项的新数组，使用 `filter` 创建删除后的新数组：
 
+::: details 查看新增和删除的示例代码
 ```jsx
 const [tasks, setTasks] = useState([
   { id: "task-104", title: "核对订单" }
@@ -172,6 +177,7 @@ function removeTask(taskId) {
   );
 }
 ```
+:::
 
 不要对 State 数组调用 `push`、`pop`、`splice`，这些方法会修改原数组。
 
@@ -179,6 +185,7 @@ function removeTask(taskId) {
 
 使用 `map` 保留未变化项，只替换目标对象：
 
+::: details 查看修改数组中的一项的示例代码
 ```jsx
 /**
  * 切换指定任务的完成状态。
@@ -196,6 +203,7 @@ function toggleTask(taskId) {
   );
 }
 ```
+:::
 
 新数组引用告诉 React 列表发生变化，新任务对象表示具体哪一项变化。
 
@@ -203,6 +211,7 @@ function toggleTask(taskId) {
 
 `sort` 会修改原数组，因此先复制：
 
+::: details 查看复制后排序的示例代码
 ```jsx
 // 复制数组后按标题排序。
 const handleSort = () => {
@@ -219,6 +228,7 @@ const handleSort = () => {
   ));
 };
 ```
+:::
 
 ## 五、直接修改为什么错误
 
@@ -263,6 +273,7 @@ const pendingCount = tasks.filter(
 
 ## 七、完整示例
 
+::: details 查看完整示例代码
 ```jsx
 /**
  * 管理任务的新增、切换和删除。
@@ -324,6 +335,7 @@ function TaskList() {
   );
 }
 ```
+:::
 
 新增会创建新数组，切换会同时创建新数组和目标任务对象，待处理数量始终从当前任务计算。
 

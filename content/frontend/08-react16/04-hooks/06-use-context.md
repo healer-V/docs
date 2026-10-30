@@ -48,6 +48,7 @@ const ThemeContext = React.createContext("light");
 
 `Context.Provider` 使用 `value` 属性向后代提供当前值：
 
+::: details 查看提供值的示例代码
 ```jsx
 /**
  * 为页面子树提供主题。
@@ -61,6 +62,7 @@ function Application() {
   );
 }
 ```
+:::
 
 `TaskPage` 以及其所有后代都可以读取 `"dark"`，除非中间存在另一个 `ThemeContext.Provider`。
 
@@ -92,6 +94,7 @@ const value = React.useContext(ContextObject);
 | `ContextObject` | `React.createContext` 返回的对象 |
 | 返回值 | 最近 Provider 的当前 `value`，没有 Provider 时为默认值 |
 
+::: details 查看调用形式的示例代码
 ```jsx
 /**
  * 根据当前主题显示任务面板。
@@ -107,6 +110,7 @@ function TaskPanel() {
   );
 }
 ```
+:::
 
 不要把 `Context.Provider`、`Context.Consumer` 或普通对象传给 `useContext`，参数必须是 Context 对象本身。
 
@@ -114,6 +118,7 @@ function TaskPanel() {
 
 Provider 的 `value` 变化时，读取该 Context 的后代会重新渲染。Context 更新不依赖中间组件是否转发 Props。
 
+::: details 查看Provider 变化触发渲染的示例代码
 ```jsx
 /**
  * 提供可切换主题。
@@ -150,6 +155,7 @@ function ThemeProvider({ children }) {
   );
 }
 ```
+:::
 
 单击按钮后，所有读取 `ThemeContext` 的后代使用新主题重新渲染。
 
@@ -159,6 +165,7 @@ function ThemeProvider({ children }) {
 
 Context 可以同时提供 State 和操作：
 
+::: details 查看提供对象值的示例代码
 ```jsx
 const TaskSelectionContext = React.createContext(null);
 
@@ -182,9 +189,11 @@ function TaskSelectionProvider({ children }) {
   );
 }
 ```
+:::
 
 消费者读取：
 
+::: details 查看提供对象值的示例代码
 ```jsx
 /**
  * 显示并选择任务。
@@ -217,6 +226,7 @@ function SelectTaskButton({ task }) {
   );
 }
 ```
+:::
 
 使用 `null` 默认值并主动报错，可以快速定位缺失 Provider。若默认值本身具有真实含义，则可以直接使用有效默认值。
 

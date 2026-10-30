@@ -25,6 +25,7 @@ JSX 使用一对大括号 `{}` 切换到 JavaScript 表达式。大括号中的�
 
 静态字符串属性直接使用引号，动态值才使用大括号：
 
+::: details 查看使用大括号的示例代码
 ```jsx
 const taskTitle = "核对订单";
 const isUrgent = true;
@@ -38,6 +39,7 @@ const taskElement = (
   </article>
 );
 ```
+:::
 
 上例中，`"dashboard"` 是固定字符串；`taskTitle` 和条件表达式会在 JavaScript 中求值。页面最终显示“核对订单”和“紧急”。
 
@@ -68,6 +70,7 @@ JSX 大括号接收的是表达式。表达式能够产生一个值，语句负�
 
 需要使用语句时，应先在 JSX 外计算结果，再把结果放入 JSX：
 
+::: details 查看区分表达式与语句的示例代码
 ```jsx
 const task = {
   title: "核对订单",
@@ -89,6 +92,7 @@ const taskElement = (
   </article>
 );
 ```
+:::
 
 这个示例先由 `if` 语句生成 `priorityText`，JSX 只接收最终字符串。
 
@@ -96,6 +100,7 @@ const taskElement = (
 
 表达式不只用于读取变量，还可以在渲染前完成轻量计算。适合直接写入 JSX 的计算应当短小、没有副作用，并且能从表达式本身看出结果。
 
+::: details 查看使用常见表达式的示例代码
 ```jsx
 const task = {
   title: "核对订单",
@@ -117,6 +122,7 @@ const taskElement = (
   </article>
 );
 ```
+:::
 
 页面会得到“负责人：林晓”“进度：3/5”“剩余：2 步”和“标签：订单、复核”。如果计算包含多层判断或修改数据，应移到 JSX 外，避免结构和业务逻辑混在一起。
 
@@ -138,6 +144,7 @@ const taskElement = (
 
 布尔值不显示，不等于它们没有用途。布尔表达式经常用于选择属性或控制某段 JSX 是否出现。
 
+::: details 查看不同值的渲染结果的示例代码
 ```jsx
 const heading = <h2>今日任务</h2>;
 const taskItems = [
@@ -155,6 +162,7 @@ const content = (
   </section>
 );
 ```
+:::
 
 页面会显示标题、“待处理：0”和两个列表项。`false` 与 `null` 对应的位置不会产生可见内容；元素数组会按数组顺序渲染。渲染数组时还需要为元素设置稳定的 `key`，用于标识列表项。
 
@@ -203,6 +211,7 @@ const assigneeElement = (
 
 JSX 属性用于描述最终 DOM 元素的属性和行为。固定字符串使用引号，变量、数字、布尔值、对象或其他表达式使用大括号。
 
+::: details 查看设置静态属性与动态属性的示例代码
 ```jsx
 const taskId = "task-104";
 const tabOrder = 0;
@@ -219,6 +228,7 @@ const taskLink = (
   </a>
 );
 ```
+:::
 
 属性名整体上接近 DOM 属性，但 React DOM 使用 JavaScript 风格命名。常见差异如下：
 
@@ -236,6 +246,7 @@ const taskLink = (
 
 `disabled`、`checked`、`readOnly` 等布尔属性应接收布尔值。值为 `true` 时启用该属性，值为 `false` 时不启用。
 
+::: details 查看使用布尔属性与自定义属性的示例代码
 ```jsx
 const isLocked = true;
 const isSelected = false;
@@ -252,6 +263,7 @@ const controls = (
   </section>
 );
 ```
+:::
 
 第一项按钮不可点击；复选框未选中并且为只读。不要写 `disabled="false"`，因为这是非空字符串，不是布尔值 `false`。
 
@@ -283,6 +295,7 @@ const taskRow = (
 
 属性按照从左到右的顺序处理，后出现的同名属性覆盖前面的值：
 
+::: details 查看展开属性的示例代码
 ```jsx
 const baseAttributes = {
   className: "task-link",
@@ -299,11 +312,13 @@ const taskLink = (
   </a>
 );
 ```
+:::
 
 最终 `className` 是 `"task-link task-link--active"`，其他两个属性来自 `baseAttributes`。如果把 `{...baseAttributes}` 放到显式 `className` 后面，展开对象中的类名就会覆盖显式值。
 
 不要为了省事把完整业务对象展开到 DOM：
 
+::: details 查看展开属性的示例代码
 ```jsx
 const task = {
   id: "task-104",
@@ -321,6 +336,7 @@ const validElement = (
   </article>
 );
 ```
+:::
 
 属性展开解决的是重复书写问题，不负责筛选数据。对象来源不明确时，显式列出属性更容易确认最终 DOM 和覆盖顺序。
 
@@ -390,6 +406,7 @@ JSX 中的 CSS 属性名使用 camelCase：
 
 数值属性会按 React 的规则处理。大多数长度属性的数字会自动补 `px`；部分无单位属性直接保留数字。
 
+::: details 查看使用 `style` 对象的示例代码
 ```jsx
 const progress = 60;
 const progressStyle = {
@@ -409,6 +426,7 @@ const progressElement = (
   />
 );
 ```
+:::
 
 最终宽度为 `60%`，高度为 `8px`，透明度为 `0.85`。百分比、`rem`、`vh` 等带单位的值必须写成字符串；`opacity`、`zIndex`、`lineHeight` 等属性可以使用无单位数字。
 
@@ -451,6 +469,7 @@ const taskProgress = (
 
 开始标签与结束标签之间的内容会成为 `children`。子内容可以是文本、React 元素、表达式结果，也可以混合出现。
 
+::: details 查看组合文本、元素与表达式的示例代码
 ```jsx
 const task = {
   title: "核对订单",
@@ -474,6 +493,7 @@ const taskElement = (
   </article>
 );
 ```
+:::
 
 页面会把文本、`strong`、`span` 和表达式结果按书写顺序组合。每一个 JSX 元素都是独立子节点，普通文本也会成为文本节点。
 

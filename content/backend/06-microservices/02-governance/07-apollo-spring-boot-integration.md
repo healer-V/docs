@@ -82,6 +82,7 @@ java `
 
 ### 1. 使用 ConfigurationProperties
 
+::: details 查看 product-service 的 ProductRuleProperties.java 完整代码
 ```java
 // product-service/src/main/java/com/example/product/config/ProductRuleProperties.java
 package com.example.product.config;
@@ -100,6 +101,7 @@ public record ProductRuleProperties(Duration queryTimeout, boolean saleEnabled) 
     }
 }
 ```
+:::
 
 ### 2. 启用绑定
 
@@ -122,6 +124,7 @@ public class ProductConfiguration {
 
 ### 1. 只监听相关前缀
 
+::: details 查看 product-service 的 ProductRuleChangeListener.java 完整代码
 ```java
 // product-service/src/main/java/com/example/product/config/ProductRuleChangeListener.java
 package com.example.product.config;
@@ -148,6 +151,7 @@ public class ProductRuleChangeListener {
     }
 }
 ```
+:::
 
 - **不在监听器执行重任务**：监听器不直接重建大型连接池、不调用远程服务，也不执行长事务。需要复杂处理时提交到受控执行器并设计幂等。
 - **绑定对象是否刷新要验证**：Spring Environment 更新不代表所有 Bean、第三方组件和缓存自动重建。每类动态属性都要通过集成测试证明生效方式。

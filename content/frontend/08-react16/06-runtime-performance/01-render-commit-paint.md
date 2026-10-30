@@ -48,6 +48,7 @@ ReactDOM.render(element, container[, callback])
 | `container` | 接收 React 子树的 DOM 容器 |
 | `callback` | 可选，提交完成后调用 |
 
+::: details 查看调用形式的示例代码
 ```jsx
 /**
  * 在根界面提交后记录结果。
@@ -63,6 +64,7 @@ ReactDOM.render(
   handleRootCommitted
 );
 ```
+:::
 
 首次调用会在容器中建立 React 根。对同一容器再次调用会更新现有根，而不是创建并列应用。
 

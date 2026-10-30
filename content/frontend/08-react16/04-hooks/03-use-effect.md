@@ -43,6 +43,7 @@ React.useEffect(setup, dependencies?)
 
 下面把任务数量同步到浏览器标题：
 
+::: details 查看Effect 的作用的示例代码
 ```jsx
 /**
  * 在浏览器标题中显示待处理任务数量。
@@ -64,6 +65,7 @@ function TaskPageTitle({ pendingCount }) {
   return <h1>任务中心</h1>;
 }
 ```
+:::
 
 首次提交后标题被设置；`pendingCount` 变化并再次提交后，Effect 使用新值重新设置标题。
 
@@ -105,6 +107,7 @@ React.useEffect(
 
 传入空依赖数组时，setup 在挂载提交后执行一次，清理函数在卸载时执行：
 
+::: details 查看空数组只关联挂载周期的示例代码
 ```jsx
 React.useEffect(
   /**
@@ -127,6 +130,7 @@ React.useEffect(
   []
 );
 ```
+:::
 
 空数组不是“关闭依赖检查”，而是声明 setup 不读取任何会随渲染变化的值。若实际读取 Props 或 State，空数组会把首次渲染值永久保留在闭包中。
 
@@ -170,6 +174,7 @@ Effect 应围绕一个同步目标组织。例如“同步任务订阅”与“�
 
 能够由 Props 和 State 计算的数据应在渲染期间直接计算：
 
+::: details 查看派生数据不需要 Effect的示例代码
 ```jsx
 // 错误：重复保存可见任务，并需要额外同步。
 const [visibleTasks, setVisibleTasks] = React.useState([]);
@@ -190,6 +195,7 @@ React.useEffect(
   [tasks, query]
 );
 ```
+:::
 
 正确方式：
 
@@ -206,6 +212,7 @@ const visibleTasks = tasks.filter(
 
 “单击保存后发送请求”由明确事件触发，应放在事件处理函数中：
 
+::: details 查看用户操作逻辑通常不需要 Effect的示例代码
 ```jsx
 /**
  * 提交当前任务表单。
@@ -226,6 +233,7 @@ async function handleSubmit(event) {
   }
 }
 ```
+:::
 
 如果先设置 `submitted=true`，再让 Effect 观察它并发请求，事件原因会被拆散，还需要处理重复触发和标志重置。
 
@@ -235,6 +243,7 @@ async function handleSubmit(event) {
 
 下面根据 `taskId` 订阅任务消息：
 
+::: details 查看建立和清理的示例代码
 ```jsx
 /**
  * 显示指定任务的在线状态。
@@ -277,6 +286,7 @@ function TaskPresence({ taskId, taskChannel }) {
   return <span>{online ? "在线" : "离线"}</span>;
 }
 ```
+:::
 
 `taskId` 变化时，React 先调用旧 Effect 的清理函数，再使用新 `taskId` 建立订阅。卸载时也会执行最后一次清理。
 
@@ -302,6 +312,7 @@ React.useEffect(async () => {
 
 可以在 Effect 内定义并调用异步函数：
 
+::: details 查看Effect 函数不能直接声明为 async的示例代码
 ```jsx
 /**
  * 加载并显示指定任务。
@@ -381,6 +392,7 @@ function TaskDetails({ taskId }) {
   return <h2>{request.task.title}</h2>;
 }
 ```
+:::
 
 `active` 让旧请求结果失效，但不会真正取消网络传输。请求 API 支持 `AbortController` 时应同时取消。
 
@@ -395,6 +407,7 @@ function TaskDetails({ taskId }) {
 
 应使用两个 Effect：
 
+::: details 查看一个 Effect 对应一个同步目标的示例代码
 ```jsx
 React.useEffect(
   /**
@@ -419,6 +432,7 @@ React.useEffect(
   [taskChannel, taskId]
 );
 ```
+:::
 
 把无关逻辑合并会让任一依赖变化都重启全部同步，也增加清理遗漏风险。
 

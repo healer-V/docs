@@ -29,6 +29,7 @@ Render 阶段的方法必须保持纯粹；Commit 阶段方法可以读取 DOM�
 
 `constructor(props)` 在实例创建时执行，适合初始化 State、创建实例字段和绑定方法。
 
+::: details 查看constructor的示例代码
 ```jsx
 class TaskTimer extends React.Component {
   /**
@@ -45,6 +46,7 @@ class TaskTimer extends React.Component {
   }
 }
 ```
+:::
 
 构造函数不能发请求、订阅事件或访问尚未挂载的 DOM。
 
@@ -74,6 +76,7 @@ render() {
 - 读取或操作已挂载 DOM；
 - 集成需要 DOM 容器的第三方库。
 
+::: details 查看componentDidMount的示例代码
 ```jsx
 class TaskTimer extends React.Component {
   state = {
@@ -125,6 +128,7 @@ class TaskTimer extends React.Component {
   }
 }
 ```
+:::
 
 资源的建立和清理必须成对出现。否则组件卸载后定时器仍会运行。
 
@@ -145,6 +149,7 @@ class TaskTimer extends React.Component {
 
 `shouldComponentUpdate(nextProps, nextState)` 在更新渲染前执行，返回 `false` 可以跳过当前组件及其后代的本次渲染。
 
+::: details 查看shouldComponentUpdate的示例代码
 ```jsx
 class TaskLabel extends React.Component {
   /**
@@ -173,6 +178,7 @@ class TaskLabel extends React.Component {
   }
 }
 ```
+:::
 
 它是性能优化入口，不是阻止业务逻辑执行的可靠机制。比较遗漏字段会让界面停留在旧值。普通场景优先保持正确渲染，确认性能问题后再优化。
 
@@ -182,6 +188,7 @@ class TaskLabel extends React.Component {
 
 必须比较旧值和当前值，再决定是否执行副作用：
 
+::: details 查看componentDidUpdate的示例代码
 ```jsx
 class TaskDetails extends React.Component {
   /**
@@ -206,6 +213,7 @@ class TaskDetails extends React.Component {
   }
 }
 ```
+:::
 
 如果不比较 `taskId`，每次更新都请求并再次 `setState`，可能形成无限更新循环。
 
@@ -215,6 +223,7 @@ class TaskDetails extends React.Component {
 
 它适合读取即将变化的 DOM 状态，例如在消息追加前记录滚动位置：
 
+::: details 查看getSnapshotBeforeUpdate的示例代码
 ```jsx
 class MessageList extends React.Component {
   listRef = React.createRef();
@@ -265,6 +274,7 @@ class MessageList extends React.Component {
   }
 }
 ```
+:::
 
 快照方法必须与 `componentDidUpdate` 配合。直接在 `render()` 读取 DOM 无法保证读取和提交之间的一致性。
 
@@ -286,6 +296,7 @@ class MessageList extends React.Component {
 
 ### 2. 对称清理
 
+::: details 查看对称清理的示例代码
 ```jsx
 class WindowWidth extends React.Component {
   state = {
@@ -327,6 +338,7 @@ class WindowWidth extends React.Component {
   }
 }
 ```
+:::
 
 如果监听时和移除时使用两个不同的箭头函数，浏览器不会移除原监听器。因此处理函数应保存为稳定实例方法。
 

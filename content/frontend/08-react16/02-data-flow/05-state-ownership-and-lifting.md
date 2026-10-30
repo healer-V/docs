@@ -57,6 +57,7 @@ State 的所有者负责保存数据、执行更新并把结果传给使用者�
 
 下面的组件只在首次渲染时使用 `initialTitle`：
 
+::: details 查看不复制 Props 到 State的示例代码
 ```jsx
 /**
  * 演示 Props 只用于初始化 State。
@@ -76,6 +77,7 @@ function TaskEditor({ initialTitle }) {
   } />;
 }
 ```
+:::
 
 父组件以后传入新的 `initialTitle`，现有 `title` 不会自动重置。`useState` 的初始值只用于建立状态。若子组件不需要独立编辑，应直接显示 Props；若确实需要草稿，应明确保存、取消和切换记录时的重置规则。
 
@@ -119,6 +121,7 @@ const visibleTasks = tasks.filter(
 2. 在最近共同祖先创建 State；
 3. 通过 Props 把值和业务回调传给子组件。
 
+::: details 查看提升到最近共同祖先的示例代码
 ```jsx
 /**
  * 显示受父组件控制的搜索框。
@@ -146,6 +149,7 @@ function TaskSearch({ query, onQueryChange }) {
   );
 }
 ```
+:::
 
 `TaskSearch` 不再拥有 `query`，它由父组件控制。
 
@@ -155,6 +159,7 @@ function TaskSearch({ query, onQueryChange }) {
 
 子组件通过回调报告业务意图，而不是取得父组件的更新函数后随意组织数据：
 
+::: details 查看子组件不修改父级数据的示例代码
 ```jsx
 /**
  * 提供完成任务的操作入口。
@@ -175,6 +180,7 @@ function CompleteButton({ taskId, onComplete }) {
   );
 }
 ```
+:::
 
 `onComplete(taskId)` 比直接传 `setTasks` 更稳定。父组件保留如何更新任务、是否校验和是否记录日志的决定权。
 
@@ -194,6 +200,7 @@ TaskPage 拥有 query
 
 ## 七、完整示例
 
+::: details 查看完整示例代码
 ```jsx
 /**
  * 显示任务数组。
@@ -254,6 +261,7 @@ function TaskPage() {
   );
 }
 ```
+:::
 
 输入“订单”后，`TaskSearch` 把新值交给 `TaskPage`，父组件更新 `query`、重新计算 `visibleTasks`，`TaskList` 最终只显示“核对订单”。查询词只有一份 State。
 

@@ -18,6 +18,7 @@ API 网关不是“统一转发 Controller”，也不是把认证、业务授�
 
 用户读取投保单 `APP-1001` 时，请求链路不是一次简单的 HTTP 转发：
 
+::: details 查看读取投保单的请求时序图
 ```mermaid
 sequenceDiagram
     participant U as "用户或 CLI"
@@ -44,6 +45,7 @@ sequenceDiagram
     A-->>G: 200 / 403 / 隐藏对象404
     G-->>U: 安全响应头、请求编号与响应
 ```
+:::
 
 这条链路至少有六种不同判断。把它们都叫“鉴权”，会让代码边界和失败语义迅速混乱。
 
@@ -112,6 +114,7 @@ Eureka 显示实例 `UP` 只证明控制面仍有记录，不能证明数据面�
 
 生产排障时应先确定失败平面：
 
+::: details 查看按失败平面定位问题的判断路径
 ```text
 拿不到 Token
   → 身份面
@@ -125,11 +128,13 @@ Gateway 返回 503
 业务服务返回隐藏对象 404
   → 身份已验证，最终对象授权失败
 ```
+:::
 
 ## 四、一次请求在Gateway中的真实生命周期
 
 本工程的关键顺序如下：
 
+::: details 查看 Gateway 处理请求的完整顺序
 ```text
 WebFilter：规范请求编号
   → WebFilter：CORS 与 Spring Security
@@ -143,6 +148,7 @@ WebFilter：规范请求编号
   → Netty 建立下游连接
   → 响应过滤、安全 Header 与审计收尾
 ```
+:::
 
 顺序直接影响安全结论：
 

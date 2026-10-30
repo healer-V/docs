@@ -9,7 +9,7 @@ export const rawNav = [
       {
         text: '基础',
         items: [
-          { text: 'HTML', link: '/frontend/01-html/01-overview.md' },
+          { text: 'HTML', link: '/frontend/01-html/01-foundation/01-overview.md' },
           { text: 'CSS', link: '/frontend/02-css/01-css-foundation/01-css-and-browser.md' },
           { text: 'JavaScript', link: '/frontend/03-javascript/01-boundary' },
           { text: 'ECMAScript', link: '/frontend/04-ecmascript/01-variable' },

@@ -215,6 +215,7 @@ DOM 中没有额外的 Fragment 标签。如果这里改用 `<header>`，DOM 中
 
 **示例：静态任务摘要**
 
+::: details 查看静态任务摘要完整代码
 ```jsx
 const taskSummary = (
   <main>
@@ -231,6 +232,7 @@ const taskSummary = (
   </main>
 );
 ```
+:::
 
 代码使用了：
 
@@ -413,6 +415,7 @@ TypeError: titleElement.focus is not a function
 
 **示例：使用 `createElement` 描述静态任务**
 
+::: details 查看使用 `createElement` 描述静态任务完整代码
 ```jsx
 const taskSummary = React.createElement(
   "main",
@@ -432,6 +435,7 @@ const taskSummary = React.createElement(
   )
 );
 ```
+:::
 
 这段代码同样产生一棵 React 元素树，但嵌套关系比 JSX 更难直接阅读。两种写法的对应关系如下：
 
@@ -658,6 +662,7 @@ React 元素在前
 
 **示例：分别准备元素和宿主节点**
 
+::: details 查看分别准备元素和宿主节点完整代码
 ```jsx
 const taskSummary = (
   <section>
@@ -674,6 +679,7 @@ if (!root) {
 
 ReactDOM.render(taskSummary, root);
 ```
+:::
 
 其中 `taskSummary` 是 React 元素，`root` 是真实 DOM 节点。ReactDOM 根据前者描述的结构，更新后者内部的内容。
 
@@ -721,6 +727,7 @@ JSX
 
 入口代码：
 
+::: details 查看 src/index.jsx 完整代码
 ```jsx
 // src/index.jsx
 import React from "react";
@@ -749,6 +756,7 @@ const taskPage = (
 
 ReactDOM.render(taskPage, root);
 ```
+:::
 
 页面显示：
 
@@ -762,6 +770,7 @@ ReactDOM.render(taskPage, root);
 
 浏览器中的主要 DOM 结构为：
 
+::: details 查看完整示例代码
 ```html
 <div id="root">
   <main>
@@ -777,6 +786,7 @@ ReactDOM.render(taskPage, root);
   </main>
 </div>
 ```
+:::
 
 示例中的执行关系为：
 

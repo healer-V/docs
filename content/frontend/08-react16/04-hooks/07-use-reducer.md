@@ -30,6 +30,7 @@ const [state, dispatch] = React.useReducer(reducer, initialArg, init?)
 
 Reducer 的基本形式：
 
+::: details 查看调用形式的示例代码
 ```jsx
 /**
  * 根据操作计算下一计数。
@@ -48,9 +49,11 @@ function counterReducer(state, action) {
   }
 }
 ```
+:::
 
 组件使用：
 
+::: details 查看调用形式的示例代码
 ```jsx
 /**
  * 显示可增加和减少的计数器。
@@ -84,6 +87,7 @@ function Counter() {
   );
 }
 ```
+:::
 
 `dispatch` 不直接描述下一 State，而是描述“发生了什么”。Reducer 决定这个操作如何转换状态。
 
@@ -179,6 +183,7 @@ Action 应描述事实或意图，不直接暴露“把整个 State 设置成某
 
 ### 2. 任务编辑 Reducer
 
+::: details 查看任务编辑 Reducer的示例代码
 ```jsx
 const initialEditorState = {
   title: "",
@@ -252,6 +257,7 @@ function taskEditorReducer(state, action) {
   }
 }
 ```
+:::
 
 所有转换集中后，可以脱离 React 直接用输入和输出测试 Reducer。
 
@@ -259,6 +265,7 @@ function taskEditorReducer(state, action) {
 
 ### 1. dispatch 用户操作
 
+::: details 查看dispatch 用户操作的示例代码
 ```jsx
 /**
  * 显示使用 Reducer 管理的任务编辑器。
@@ -342,6 +349,7 @@ function TaskEditor({ onSave }) {
   );
 }
 ```
+:::
 
 请求属于副作用，仍由事件函数执行；Reducer 只接收请求开始、成功和失败的结果。
 
@@ -355,6 +363,7 @@ function TaskEditor({ onSave }) {
 React.useReducer(reducer, initialArg, init)
 ```
 
+::: details 查看第三个参数的示例代码
 ```jsx
 /**
  * 根据任务创建编辑器初始状态。
@@ -376,6 +385,7 @@ const [state, dispatch] = React.useReducer(
   createEditorState
 );
 ```
+:::
 
 React 首次挂载时调用 `createEditorState(initialTask)`。后续 `initialTask` 变化不会自动重置 State。
 

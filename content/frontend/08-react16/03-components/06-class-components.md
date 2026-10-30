@@ -16,6 +16,7 @@ date: 2026-07-31
 
 类组件是继承 `React.Component` 并实现 `render()` 方法的 JavaScript 类。React 创建并保存类实例，在更新时再次调用同一实例的 `render()`。
 
+::: details 查看定义类组件的示例代码
 ```jsx
 class TaskCard extends React.Component {
   /**
@@ -29,6 +30,7 @@ class TaskCard extends React.Component {
 
 const element = <TaskCard title="核对订单" />;
 ```
+:::
 
 | 组成部分 | 含义 |
 |----------|------|
@@ -76,6 +78,7 @@ Props 仍然只读。类组件也不能给 `this.props.name` 重新赋值或修�
 
 `defaultProps` 为缺失或显式为 `undefined` 的属性提供默认值：
 
+::: details 查看默认 Props的示例代码
 ```jsx
 class TaskBadge extends React.Component {
   /**
@@ -91,6 +94,7 @@ TaskBadge.defaultProps = {
   tone: "normal"
 };
 ```
+:::
 
 `tone={null}` 不会使用默认值，因为 `null` 是调用者明确传入的值。
 
@@ -115,6 +119,7 @@ TaskBadge.propTypes = {
 
 需要根据 Props 初始化实例或绑定方法时，可以定义构造函数：
 
+::: details 查看在构造函数中初始化的示例代码
 ```jsx
 class TaskEditor extends React.Component {
   /**
@@ -146,6 +151,7 @@ class TaskEditor extends React.Component {
   }
 }
 ```
+:::
 
 `super(props)` 必须在访问 `this` 之前调用。它完成父类构造，并让构造函数中的 `this.props` 可用。
 
@@ -153,6 +159,7 @@ class TaskEditor extends React.Component {
 
 不需要访问构造参数时，也可以使用类字段：
 
+::: details 查看使用类字段初始化的示例代码
 ```jsx
 class TaskToggle extends React.Component {
   state = {
@@ -172,6 +179,7 @@ class TaskToggle extends React.Component {
   }
 }
 ```
+:::
 
 类字段语法需要项目构建工具支持。Create React App 的常见 React 16.8 项目通常已配置相应 Babel 转换。
 
@@ -179,6 +187,7 @@ class TaskToggle extends React.Component {
 
 State 只保存会影响渲染、并且需要触发更新的数据。不会参与渲染的可变值可以放在实例字段中。
 
+::: details 查看不把所有实例数据放入 State的示例代码
 ```jsx
 class SearchBox extends React.Component {
   state = {
@@ -196,6 +205,7 @@ class SearchBox extends React.Component {
   }
 }
 ```
+:::
 
 `query` 影响界面，因此放入 State；`requestController` 只用于取消请求，不需要触发渲染，因此保留为实例字段。
 
@@ -217,6 +227,7 @@ class SearchBox extends React.Component {
 
 类组件可返回 React 元素、Fragment、字符串、数字、数组或 `null`。下面根据权限选择空渲染：
 
+::: details 查看render 返回值的示例代码
 ```jsx
 class AdminActions extends React.Component {
   /**
@@ -232,6 +243,7 @@ class AdminActions extends React.Component {
   }
 }
 ```
+:::
 
 ## 五、方法与 this
 
@@ -239,6 +251,7 @@ class AdminActions extends React.Component {
 
 JavaScript 类方法不会自动绑定 `this`。把实例方法直接作为事件处理函数传入时，调用环境可能丢失实例：
 
+::: details 查看原型方法需要绑定的示例代码
 ```jsx
 class InvalidTaskToggle extends React.Component {
   state = {
@@ -263,9 +276,11 @@ class InvalidTaskToggle extends React.Component {
   }
 }
 ```
+:::
 
 可以在构造函数中绑定：
 
+::: details 查看原型方法需要绑定的示例代码
 ```jsx
 class BoundTaskToggle extends React.Component {
   /**
@@ -304,11 +319,13 @@ class BoundTaskToggle extends React.Component {
   }
 }
 ```
+:::
 
 ### 2. 类字段箭头函数
 
 类字段箭头函数会捕获实例 `this`，不需要在构造函数中绑定：
 
+::: details 查看类字段箭头函数的示例代码
 ```jsx
 class FieldTaskToggle extends React.Component {
   state = {
@@ -341,6 +358,7 @@ class FieldTaskToggle extends React.Component {
   }
 }
 ```
+:::
 
 不要在 `render()` 中使用 `onClick={this.handleToggle.bind(this)}` 或每次创建包装箭头函数作为默认写法，因为每次渲染都会生成新函数，也会让参数传递和调试更分散。
 

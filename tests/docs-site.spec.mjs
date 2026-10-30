@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-const FRONTEND_ROUTE = '/docs/frontend/01-html/01-overview.html'
+const FRONTEND_ROUTE = '/docs/frontend/01-html/01-foundation/01-overview.html'
 const BACKEND_ROUTE = '/docs/backend/04-java/01-language-foundation/01-overview.html'
 const OPERATION_ROUTE = '/docs/operation/01-linux/01-system-foundation/01-linux-distribution.html'
 const LEGACY_JAVA_ROUTE = '/docs/backend/04-java/01-java.html'

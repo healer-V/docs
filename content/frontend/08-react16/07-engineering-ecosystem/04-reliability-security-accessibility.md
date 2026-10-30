@@ -30,6 +30,7 @@ date: 2026-07-31
 
 错误信息需要回答发生了什么，以及用户接下来能做什么。字段错误紧跟字段，请求错误靠近依赖该请求的区域，页面级权限错误才占据整个页面。
 
+::: details 查看可预期错误的界面表达的示例代码
 ```jsx
 import React from 'react';
 import { updateTask } from './taskApi';
@@ -91,6 +92,7 @@ function TaskTitleForm({ task }) {
   );
 }
 ```
+:::
 
 提交失败后没有清空 `title`，用户可以修改或直接重试。`finally` 保证成功和失败都恢复按钮状态。错误内容通过 `role="alert"` 暴露给辅助技术，但频繁变化的提示不应滥用该角色。
 
@@ -111,6 +113,7 @@ React 16.8 的错误边界必须使用类组件实现。类通过 `getDerivedSta
 - 服务端渲染异常；
 - 错误边界自身抛出的异常。
 
+::: details 查看错误边界的捕获范围的示例代码
 ```jsx
 import React from 'react';
 
@@ -153,6 +156,7 @@ class TaskPanelErrorBoundary extends React.Component {
   }
 }
 ```
+:::
 
 边界应围绕能够独立降级的区域放置。只在应用根部放一个边界，任一局部错误都会替换整个应用；为每个小按钮都放边界，又会增加结构噪声和错误上报重复。
 
@@ -236,6 +240,7 @@ function Comment({ comment }) {
 
 `dangerouslySetInnerHTML` 接收 `{ __html: string }`，并把字符串作为真实 HTML 插入 DOM。它适用于后端富文本、Markdown 转换结果等明确需要 HTML 语义的内容，但输入必须经过可信清洗器处理。
 
+::: details 查看富文本与 dangerouslySetInnerHTML的示例代码
 ```jsx
 import React from 'react';
 import DOMPurify from 'dompurify';
@@ -255,6 +260,7 @@ function TaskDescription({ html }) {
   );
 }
 ```
+:::
 
 正则表达式无法可靠解析和清洗 HTML。允许标签、属性和 URL 协议应根据业务白名单配置；前端清洗也不能替代服务端存储、输出和内容安全策略。
 
@@ -266,6 +272,7 @@ function TaskDescription({ html }) {
 
 React 对文本转义不等于 URL 安全。攻击者可能提供 `javascript:` 等危险协议。把用户提供的地址用于 `href` 前，应只允许业务需要的协议。
 
+::: details 查看URL 与外部链接安全的示例代码
 ```js
 /**
  * 校验并规范化外部链接。
@@ -284,9 +291,11 @@ export function normalizeExternalUrl(rawUrl, baseUrl) {
   }
 }
 ```
+:::
 
 使用 `target="_blank"` 打开外部页面时添加 `rel="noopener noreferrer"`，避免新页面通过 `window.opener` 控制原页面，并减少来源信息泄露：
 
+::: details 查看URL 与外部链接安全的示例代码
 ```jsx
 /**
  * 只在链接通过协议校验后提供可点击入口。
@@ -307,6 +316,7 @@ function ExternalLink({ href, children }) {
   );
 }
 ```
+:::
 
 客户端环境变量会进入构建产物，不能保存数据库密码、私钥或永久访问令牌。真正的秘密必须保留在服务端。
 
@@ -339,6 +349,7 @@ function ExternalLink({ href, children }) {
 
 弹窗打开后，焦点应进入弹窗；关闭后，焦点应回到触发按钮。弹窗还需要阻止焦点离开其交互范围，并支持 Escape 关闭。下面展示焦点进入与恢复的关键部分：
 
+::: details 查看键盘操作与焦点管理的示例代码
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -396,6 +407,7 @@ function ConfirmDialog({ title, onConfirm, onCancel }) {
   );
 }
 ```
+:::
 
 上例只展示焦点进入、Escape 和恢复逻辑。完整模态框还必须实现焦点循环、背景不可交互、滚动锁定和多弹窗层级管理，生产项目应优先复用经过无障碍验证的对话框组件。
 

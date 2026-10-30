@@ -41,6 +41,7 @@ date: 2026-07-20
 
 ### 1. 按客户端设置
 
+::: details 查看 application-service 的按客户端超时配置
 ```yaml
 
 # application-service/src/main/resources/application.yml
@@ -56,6 +57,7 @@ spring:
             connectTimeout: 1000
             readTimeout: 1500
 ```
+:::
 
 数值单位为毫秒。示例值用于展示结构，真实值来自服务目标、延迟分布和故障演练。
 

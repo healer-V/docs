@@ -36,6 +36,7 @@ Hook 只能在 React 渲染函数组件或执行自定义 Hook 时发挥作用�
 
 `useState` 返回的状态不保存在函数局部变量里，也不保存在 Hook 函数本身。React 根据组件在树中的身份和 Hook 调用位置保存状态。
 
+::: details 查看Hook 状态属于组件实例的示例代码
 ```jsx
 /**
  * 显示独立计数器。
@@ -66,6 +67,7 @@ function Counter() {
   );
 }
 ```
+:::
 
 页面渲染两个 `<Counter />` 时，React 为它们保存两份独立 State：
 
@@ -109,6 +111,7 @@ Hook 没有传入显式名称，因此顺序必须在所有渲染之间保持一
 
 条件改变后，后续 Hook 的位置会偏移：
 
+::: details 查看不能放在条件中的示例代码
 ```jsx
 function InvalidTaskEditor({ canSetPriority }) {
   const [title, setTitle] = React.useState("");
@@ -122,11 +125,13 @@ function InvalidTaskEditor({ canSetPriority }) {
   // 省略渲染代码
 }
 ```
+:::
 
 第一次 `canSetPriority` 为 `true` 时，`inputRef` 是第 3 个 Hook；下一次为 `false` 时，它变成第 2 个。React 无法再把槽位与状态正确对应。
 
 正确方式是始终调用 Hook，把条件放到 Hook 结果的使用位置：
 
+::: details 查看不能放在条件中的示例代码
 ```jsx
 function TaskEditor({ canSetPriority }) {
   const [title, setTitle] = React.useState("");
@@ -141,11 +146,13 @@ function TaskEditor({ canSetPriority }) {
   );
 }
 ```
+:::
 
 ### 3. 不能放在循环和嵌套函数中
 
 数组长度、循环次数或回调执行时机都可能变化，因此以下位置不能调用 Hook：
 
+::: details 查看不能放在循环和嵌套函数中的示例代码
 ```jsx
 // 错误：循环次数由 tasks.length 决定。
 tasks.forEach(
@@ -160,9 +167,11 @@ function handleClick() {
   const [open, setOpen] = React.useState(false);
 }
 ```
+:::
 
 需要为每条任务保存独立状态时，应提取子组件，让每个子组件在自身顶层调用 Hook：
 
+::: details 查看不能放在循环和嵌套函数中的示例代码
 ```jsx
 /**
  * 为单条任务保存选中状态。
@@ -194,6 +203,7 @@ function SelectableTask({ task }) {
   );
 }
 ```
+:::
 
 ## 三、两条使用规则
 
@@ -218,6 +228,7 @@ Hook 必须位于函数组件或自定义 Hook 的顶层，不能放在：
 - 函数组件；
 - 自定义 Hook。
 
+::: details 查看只在 React 函数中调用的示例代码
 ```jsx
 /**
  * 自定义 Hook：保存布尔状态及切换操作。
@@ -245,6 +256,7 @@ function useToggle(initialValue) {
   return [value, toggle];
 }
 ```
+:::
 
 普通工具函数不能调用 Hook：
 
@@ -264,6 +276,7 @@ function formatStatus(status) {
 
 函数组件每次执行都会创建新的局部变量和事件函数。事件函数会捕获创建它的那次渲染中的 Props 和 State。
 
+::: details 查看每次渲染拥有自己的值的示例代码
 ```jsx
 /**
  * 在延迟后显示当前渲染的任务标题。
@@ -295,6 +308,7 @@ function DelayedTitle({ title }) {
   );
 }
 ```
+:::
 
 按钮单击后即使父组件更新了 `title`，已创建的定时器仍读取单击那次渲染的值。这不是 State 更新失败，而是 JavaScript 闭包行为。
 
@@ -302,6 +316,7 @@ function DelayedTitle({ title }) {
 
 局部变量在下一次渲染时会重新初始化：
 
+::: details 查看不通过修改局部变量保存状态的示例代码
 ```jsx
 function InvalidCounter() {
   let count = 0;
@@ -317,6 +332,7 @@ function InvalidCounter() {
   return <button onClick={handleClick}>{count}</button>;
 }
 ```
+:::
 
 需要影响界面的跨渲染数据使用 State；不影响渲染但需要跨渲染保存的值使用 Ref。
 

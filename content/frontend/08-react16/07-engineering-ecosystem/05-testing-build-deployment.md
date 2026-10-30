@@ -107,6 +107,7 @@ Testing Library 推荐按照用户和辅助技术识别页面的方式查询元�
 
 下面的组件接收初始标题和保存函数。测试不需要读取组件 State，只通过输入框、按钮和保存调用判断行为：
 
+::: details 查看 src/features/tasks/TaskTitleForm.js 完整代码
 ```jsx
 // src/features/tasks/TaskTitleForm.js
 import React from 'react';
@@ -156,9 +157,11 @@ export function TaskTitleForm({ initialTitle, onSave }) {
   );
 }
 ```
+:::
 
 组件测试模拟清空标题、提交和再次输入：
 
+::: details 查看 src/features/tasks/TaskTitleForm.test.js 完整代码
 ```jsx
 // src/features/tasks/TaskTitleForm.test.js
 import React from 'react';
@@ -195,6 +198,7 @@ test('校验并提交任务标题', () => {
   expect(handleSave).toHaveBeenCalledWith('更新发布说明');
 });
 ```
+:::
 
 该测试证明了用户可见校验与保存参数，不依赖 `useState` 的实现。以后将 State 改为 Reducer 或表单库，只要行为不变，测试无需跟着内部结构重写。
 
@@ -202,6 +206,7 @@ test('校验并提交任务标题', () => {
 
 异步测试需要控制请求结果，并等待 React 提交对应 DOM。`findBy` 适合等待某个元素出现，`waitFor` 适合等待断言最终成立。
 
+::: details 查看 src/features/tasks/TaskList.js 完整代码
 ```jsx
 // src/features/tasks/TaskList.js
 import React from 'react';
@@ -262,9 +267,11 @@ export function TaskList() {
   );
 }
 ```
+:::
 
 测试通过模块 Mock 控制成功和失败，不访问真实接口：
 
+::: details 查看 src/features/tasks/TaskList.test.js 完整代码
 ```jsx
 // src/features/tasks/TaskList.test.js
 import React from 'react';
@@ -305,6 +312,7 @@ test('请求失败后显示错误信息', async () => {
   expect(screen.queryByRole('list')).not.toBeInTheDocument();
 });
 ```
+:::
 
 Mock 应停留在网络或数据访问边界。把子组件全部 Mock 掉会削弱组件协作验证，也容易得到“测试通过但页面不能工作”的结果。
 
@@ -314,6 +322,7 @@ Mock 应停留在网络或数据访问边界。把子组件全部 Mock 掉会削
 
 直接控制定时器、调用外部订阅回调或使用底层 ReactDOM 测试工具时，可能需要显式 `act()`：
 
+::: details 查看act() 与更新提交的示例代码
 ```jsx
 import React from 'react';
 import { act, render, screen } from '@testing-library/react';
@@ -340,6 +349,7 @@ test('延迟结束后显示已保存', () => {
   expect(screen.getByText('已保存')).toBeInTheDocument();
 });
 ```
+:::
 
 出现 “not wrapped in act” 警告时，不应直接屏蔽控制台。它通常表示测试在 React 更新完成前结束，或者某个异步状态没有被等待。应找到触发更新的操作，使用 `findBy`、`waitFor` 或必要的 `act()` 等待真实结果。
 
@@ -347,6 +357,7 @@ test('延迟结束后显示已保存', () => {
 
 依赖 Router、Context、Redux 或 React Query 的组件，需要在测试中提供与运行时相同的上下文。测试路由通常使用 `MemoryRouter`，它在内存中管理历史记录，不依赖浏览器地址栏。
 
+::: details 查看路由与 Provider 测试的示例代码
 ```jsx
 import React from 'react';
 import { MemoryRouter, Route } from 'react-router-dom';
@@ -366,9 +377,11 @@ test('从路由中读取任务编号', () => {
   expect(screen.getByText('任务编号：42')).toBeInTheDocument();
 });
 ```
+:::
 
 可以建立 `renderWithProviders` 统一测试包装器，但它仍是一个新增多入参函数，需要清楚说明每个选项，并允许测试只启用真正依赖的 Provider：
 
+::: details 查看路由与 Provider 测试的示例代码
 ```jsx
 /**
  * 使用内存路由渲染组件。
@@ -384,6 +397,7 @@ function renderWithRouter(ui, { route = '/' } = {}) {
   );
 }
 ```
+:::
 
 不要让一个全能包装器默认挂载所有 Provider。上下文越多，测试初始化越慢，也越难看出组件真正依赖什么。
 

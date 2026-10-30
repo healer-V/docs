@@ -91,6 +91,7 @@ private Bucket newBucket() {
 
 限流键提取逻辑：
 
+::: details 查看 subjectKey 限流主体解析代码
 ```java
 private String subjectKey(
         Principal principal,
@@ -104,6 +105,7 @@ private String subjectKey(
             : "principal:" + principal.getName();
 }
 ```
+:::
 
 使用 `preferred_username` 会产生两个问题：
 
@@ -154,6 +156,7 @@ Problem Details 响应：
 
 这能证明失败请求也消耗额度：
 
+::: details 查看连续请求触发限流的测试代码
 ```java
 for (int requestNumber = 1; requestNumber <= 5; requestNumber++) {
     webTestClient.get()
@@ -173,6 +176,7 @@ webTestClient.get()
         .expectHeader().valueEquals("X-RateLimit-Remaining", "0")
         .expectHeader().exists("Retry-After");
 ```
+:::
 
 执行结果：
 

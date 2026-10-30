@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test scripts/docs/__tests__/*.test.mjs",
     "dev": "vitepress dev --host 127.0.0.1 --port 5173 --strictPort",
-    "dev:fast": "set VITEPRESS_LOCAL_SEARCH=false&& vitepress dev --host 127.0.0.1 --port 5173 --strictPort",
+    "dev:fast": "VITEPRESS_LOCAL_SEARCH=false vitepress dev --host 127.0.0.1 --port 5173 --strictPort",
     "dev:large": "node --max-old-space-size=4096 ./node_modules/vitepress/bin/vitepress.js dev --host 127.0.0.1 --port 5173 --strictPort",
     "docs:check:microservices": "node scripts/validate-microservices-docs.mjs",
     "docs:check:microservices:strict": "node scripts/validate-microservices-docs.mjs --strict",
@@ -21,7 +21,9 @@
     "docs:summary": "node scripts/docs/write-ci-summary.mjs",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview",
-    "docs:preview:assembled": "node scripts/docs/preview-site.mjs --site .build/assembled"
+    "docs:preview:assembled": "node scripts/docs/preview-site.mjs --site .build/assembled",
+    "docs:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/docs/check-content.mjs",
+    "docs:check:strict": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/docs/check-content.mjs --strict"
   },
   "keywords": [],
   "author": "",
