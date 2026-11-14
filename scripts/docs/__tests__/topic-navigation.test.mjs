@@ -351,7 +351,7 @@ test('published articles provide one readable entry with a clean footer title', 
       path: '/frontend/01-html',
       chapters: [{
         title: '基础',
-        articles: [{ title: 'HTML 概述', publishedLink: '/frontend/01-html/01-overview.md' }],
+        articles: [{ title: 'HTML 概述', publishedLink: '/frontend/01-html/01-foundation/01-overview.md' }],
       }],
     }],
   }
@@ -359,7 +359,7 @@ test('published articles provide one readable entry with a clean footer title', 
   const item = sidebar['/frontend/01-html/'][0].items[0].items[0]
   assert.deepEqual(item, {
     text: '1.1 HTML 概述',
-    link: '/frontend/01-html/01-overview.md',
+    link: '/frontend/01-html/01-foundation/01-overview.md',
     docFooterText: 'HTML 概述',
   })
 })
