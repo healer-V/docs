@@ -9,7 +9,7 @@ date: 2026-10-30
 
 # 正文生成指令
 
-以下指令配合[技术文章生成与验收规范](../article/article-generation.md)使用，方括号字段在实际任务中替换。
+以下指令配合[技术文章生成与验收规范](../article/article-generation.md)、[知识文档生成范式](../article/knowledge-document-paradigm.md)和[技术文章正文模板](../templates/article-template.md)使用，方括号字段在实际任务中替换。
 
 ## 一、生成或全文重写单篇文章
 

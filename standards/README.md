@@ -21,12 +21,13 @@ date: 2026-10-30
 | [writing/markdown-format.md](./writing/markdown-format.md) | 格式：Frontmatter、标题编号、代码块、表格、容器、代码组、长代码折叠、链接与图片 |
 | [writing/code-examples.md](./writing/code-examples.md) | 示例：示例类型、最小可复现链路、独立示例目录、验证状态、安全与注释 |
 | [article/article-generation.md](./article/article-generation.md) | 单篇与逐章生成的执行入口：职责契约、文章类型与证据、历史治理、交付验收 |
+| [article/knowledge-document-paradigm.md](./article/knowledge-document-paradigm.md) | 知识文档生成范式：生成前判断、整篇骨架、知识单元、示例证据、容器层次、章节节奏与交付判定 |
 | [knowledge/knowledge-system.md](./knowledge/knowledge-system.md) | 知识方向识别、各方向覆盖模型、版本基线与事实来源 |
 | [knowledge/directory-planning.md](./knowledge/directory-planning.md) | 目录规划的执行入口：模块蓝图、知识项、依赖、章节、职责卡、覆盖矩阵、编号与导航 |
 | [process/workflow.md](./process/workflow.md) | 建档、蓝图、样板、逐章生成、整体验收的阶段流程 |
 | [process/quality-gates.md](./process/quality-gates.md) | 各阶段硬性门禁、语义检查、机器检查和交付前检查清单 |
 | [prompts/](./prompts/article.md) | 可直接复用的[正文生成指令](./prompts/article.md)与[目录规划指令](./prompts/directory.md) |
-| [templates/](./templates/module-blueprint-template.md) | [模块蓝图](./templates/module-blueprint-template.md)、[文章职责卡](./templates/article-responsibility-card-template.md)、[样板评审](./templates/sample-review-template.md)模板 |
+| [templates/](./templates/article-template.md) | [技术文章正文](./templates/article-template.md)、[模块蓝图](./templates/module-blueprint-template.md)、[文章职责卡](./templates/article-responsibility-card-template.md)、[样板评审](./templates/sample-review-template.md)模板 |
 | `blueprints/<方向>/<模块>.md` | 已确认的模块蓝图，是对应模块生成和验收正文的依据 |
 | [engineering/site-build-runbook.md](./engineering/site-build-runbook.md) | 站点构建、产物、CI、发布与回退运行手册 |
 
@@ -54,7 +55,7 @@ date: 2026-10-30
 | 新建技术模块 | 知识体系、目录规划、阶段流程、文章生成、写作三件套、质量门禁 | 模块蓝图和样板文章均已确认 |
 | 全文重构技术模块 | 与新建技术模块相同，并审计现有目录、sidebar 和链接 | 迁移范围、模块蓝图和样板文章均已确认 |
 | 规划章节目录或逐篇大纲 | 知识体系、目录规划、阶段流程 | 知识项清单和依赖关系已经完成 |
-| 新建或全文重写单篇文章 | 当前模块蓝图、文章生成、写作三件套、质量门禁 | 文章职责卡已经确认或能从既有蓝图唯一确定 |
+| 新建或全文重写单篇文章 | 当前模块蓝图、知识文档生成范式、文章生成、写作三件套、质量门禁 | 文章职责卡已经确认或能从既有蓝图唯一确定 |
 | 局部修改历史文章 | 写作三件套中与修改内容相关的规则、质量门禁 | 修改范围明确，不借机治理无关内容 |
 | 批量质量治理 | 当前模块蓝图、质量门禁、文章生成中的历史文档治理 | 治理范围和迁移规则已经确认 |
 
@@ -83,6 +84,8 @@ date: 2026-10-30
 |------|----------|----------|
 | 模块蓝图 | [模块蓝图模板](./templates/module-blueprint-template.md) | 教学契约、方向分类、版本、来源、知识项、依赖、章节、职责卡、覆盖矩阵和验证方案 |
 | 单篇规划 | [文章职责卡模板](./templates/article-responsibility-card-template.md) | 唯一问题、类型、范围、深度、证据、验证和重复归属 |
+| 正文生成 | [技术文章正文模板](./templates/article-template.md) | 开篇、知识单元、参数状态表、最小示例、预期观察、失败边界与自检 |
+| 批量生成 | [知识文档生成范式](./article/knowledge-document-paradigm.md) | 文章形状、证据链、容器层次、章节节奏、不合格模式与交付判定 |
 | 样板校准 | [样板评审模板](./templates/sample-review-template.md) | 方向、深度、粒度、事实、示例、表达和可复制性结论 |
 | 最终验收 | [质量门禁](./process/quality-gates.md) | 内容覆盖、示例验证、工程验证、未验证项和变更范围 |
 

@@ -59,7 +59,7 @@ CSS（层叠样式表）通过属性声明控制文档的呈现。理解 CSS 行
 
 | 内容 | 要求或处理边界 | 学习入口或归属 |
 |------|----------------|----------------|
-| HTML 元素与属性 | 能识别标签、父子结构、`class`、`id` 和 `link`；示例附近仍解释必要结构 | [HTML 标签](../../../content/frontend/01-html/02-tag.md)、[HTML 属性](../../../content/frontend/01-html/03-attributes.md) |
+| HTML 元素与属性 | 能识别标签、父子结构、`class`、`id` 和 `link`；示例附近仍解释必要结构 | [HTML 标签](../../../content/frontend/01-html/01-foundation/02-tags-elements.md)、[HTML 属性](../../../content/frontend/01-html/01-foundation/03-attributes-values.md) |
 | JavaScript | 普通 CSS 文章不要求预先掌握；使用 `getComputedStyle()` 或对话框 API 时提供完整最小代码和说明 | [MDN JavaScript 首步](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/A_first_splash) |
 | 编程语言的通用控制流、类与线程 | 不适用 CSS 的语言模型，不设置凑数章节 | JavaScript 等编程语言模块 |
 | CSSOM 全量 API、DOM 事件体系 | 只保留样式测量、浮层触发与排错所需 API | 浏览器与 JavaScript 模块 |

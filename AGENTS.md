@@ -73,6 +73,7 @@ VitePress 从仓库根目录加载配置，使用 `srcDir: 'content'`，部署 U
 | 规划方向、模块蓝图、章节与逐篇大纲 | [技术方向知识目录生成规范](./standards/knowledge/directory-planning.md) |
 | 单篇新建、全文重写、逐章续写、局部修订 | [技术文章生成与验收规范](./standards/article/article-generation.md) |
 | 写正文时的组织、格式和示例 | [正文组织](./standards/writing/content-organization.md)、[Markdown 与 VitePress 格式](./standards/writing/markdown-format.md)、[示例与验证](./standards/writing/code-examples.md) |
+| 知识文档的生成节奏、文章形状与交付判定 | [知识文档生成范式](./standards/article/knowledge-document-paradigm.md) |
 | 阶段流程与验收 | [分阶段流程](./standards/process/workflow.md)、[质量门禁](./standards/process/quality-gates.md) |
 | 已确认的模块蓝图 | `standards/blueprints/<方向>/<模块>.md` |
 
