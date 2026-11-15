@@ -401,213 +401,265 @@ export const frontendSidebar = {
   ],
   "/frontend/03-javascript/": [
     {
-      "text": "JS 核心",
+      "text": "JavaScript",
       "items": [
         {
-          "text": "第1章：JavaScript 基础",
+          "text": "第1章：入门与运行环境",
           "collapsed": true,
           "items": [
             {
-              "text": "1.1 JS 语言边界",
-              "link": "/frontend/03-javascript/01-boundary.md"
+              "text": "1.1 JavaScript 的组成与运行位置",
+              "link": "/frontend/03-javascript/01-foundation/01-composition-and-runtime.md"
             },
             {
-              "text": "1.2 现代 JS 编码基线",
-              "link": "/frontend/03-javascript/02-baseline.md"
+              "text": "1.2 第一个程序与脚本引入",
+              "link": "/frontend/03-javascript/01-foundation/02-first-program.md"
+            },
+            {
+              "text": "1.3 变量、声明与命名",
+              "link": "/frontend/03-javascript/01-foundation/03-variables-declarations.md"
+            },
+            {
+              "text": "1.4 表达式与运算符",
+              "link": "/frontend/03-javascript/01-foundation/04-expressions-operators.md"
             }
           ]
         },
         {
-          "text": "第2章：类型系统",
+          "text": "第2章：类型与值",
           "collapsed": true,
           "items": [
             {
-              "text": "2.1 数据类型体系",
-              "link": "/frontend/03-javascript/01-dataType.md"
+              "text": "2.1 原始类型与 typeof",
+              "link": "/frontend/03-javascript/02-types/01-primitive-types-typeof.md"
             },
             {
-              "text": "2.2 类型转换与相等性",
-              "link": "/frontend/03-javascript/03-type-conversion-equality.md"
+              "text": "2.2 数字与精度",
+              "link": "/frontend/03-javascript/02-types/02-numbers.md"
             },
             {
-              "text": "2.3 类型检测与数据识别",
-              "link": "/frontend/03-javascript/04-type-checking.md"
+              "text": "2.3 字符串与模板字面量",
+              "link": "/frontend/03-javascript/02-types/03-strings-template-literals.md"
             },
             {
-              "text": "2.4 常用内置对象与数据结构",
-              "link": "/frontend/03-javascript/05-builtins-data-structures.md"
+              "text": "2.4 布尔、null、undefined 与真值判断",
+              "link": "/frontend/03-javascript/02-types/04-booleans-null-undefined-truthiness.md"
+            },
+            {
+              "text": "2.5 对象与数组的初步使用",
+              "link": "/frontend/03-javascript/02-types/05-objects-arrays-intro.md"
+            },
+            {
+              "text": "2.6 类型转换与相等性",
+              "link": "/frontend/03-javascript/02-types/06-type-conversion-equality.md"
             }
           ]
         },
         {
-          "text": "第3章：对象模型与函数机制",
+          "text": "第3章：控制流",
           "collapsed": true,
           "items": [
             {
-              "text": "3.1 函数与一等公民",
-              "link": "/frontend/03-javascript/08-function.md"
+              "text": "3.1 条件分支",
+              "link": "/frontend/03-javascript/03-control-flow/01-conditionals.md"
             },
             {
-              "text": "3.2 作用域、作用域链与闭包",
-              "link": "/frontend/03-javascript/06-scope-closure.md"
+              "text": "3.2 循环与迭代",
+              "link": "/frontend/03-javascript/03-control-flow/02-loops-iteration.md"
             },
             {
-              "text": "3.3 this、call、apply 与 bind",
-              "link": "/frontend/03-javascript/07-this-call-apply-bind.md"
-            },
-            {
-              "text": "3.4 对象、属性描述符与原型链",
-              "link": "/frontend/03-javascript/09-object.md"
-            },
-            {
-              "text": "3.5 class、继承与组合",
-              "link": "/frontend/03-javascript/10-class-inheritance-composition.md"
+              "text": "3.3 跳转与提前退出",
+              "link": "/frontend/03-javascript/03-control-flow/03-jumps-early-exit.md"
             }
           ]
         },
         {
-          "text": "第4章：执行机制与异步模型",
+          "text": "第4章：函数与作用域",
           "collapsed": true,
           "items": [
             {
-              "text": "4.1 执行上下文与调用栈",
-              "link": "/frontend/03-javascript/11-execution-context-call-stack.md"
+              "text": "4.1 函数声明、表达式与调用",
+              "link": "/frontend/03-javascript/04-functions-scope/01-function-forms-calls.md"
             },
             {
-              "text": "4.2 内存模型与垃圾回收",
-              "link": "/frontend/03-javascript/02-memory.md"
+              "text": "4.2 参数、默认值与返回值",
+              "link": "/frontend/03-javascript/04-functions-scope/02-parameters-returns.md"
             },
             {
-              "text": "4.3 异步编程模型",
-              "link": "/frontend/03-javascript/17-async.md"
+              "text": "4.3 作用域、提升与暂时性死区",
+              "link": "/frontend/03-javascript/04-functions-scope/03-scope-hoisting-tdz.md"
             },
             {
-              "text": "4.4 Promise 与 async/await",
-              "link": "/frontend/03-javascript/12-promise-async-await.md"
+              "text": "4.4 闭包",
+              "link": "/frontend/03-javascript/04-functions-scope/04-closures.md"
             },
             {
-              "text": "4.5 事件循环与任务队列",
-              "link": "/frontend/03-javascript/13-event-loop-task-queue.md"
-            },
-            {
-              "text": "4.6 定时器、防抖与节流",
-              "link": "/frontend/03-javascript/18-timer-debounce-throttle.md"
+              "text": "4.5 this、call/apply/bind 与箭头函数",
+              "link": "/frontend/03-javascript/04-functions-scope/05-this-arrow-functions.md"
             }
           ]
         },
         {
-          "text": "第5章：Web API",
+          "text": "第5章：对象、原型与类",
           "collapsed": true,
           "items": [
             {
-              "text": "5.1 DOM 与页面结构操作",
-              "link": "/frontend/03-javascript/14-dom.md"
+              "text": "5.1 对象字面量、属性访问与解构",
+              "link": "/frontend/03-javascript/05-objects-prototypes/01-object-literals-destructuring.md"
             },
             {
-              "text": "5.2 BOM 与浏览器环境",
-              "link": "/frontend/03-javascript/15-bom.md"
+              "text": "5.2 属性描述符、复制与不可变",
+              "link": "/frontend/03-javascript/05-objects-prototypes/02-property-descriptors-copying.md"
             },
             {
-              "text": "5.3 事件模型与事件委托",
-              "link": "/frontend/03-javascript/16-event.md"
+              "text": "5.3 原型链与继承",
+              "link": "/frontend/03-javascript/05-objects-prototypes/03-prototype-chain.md"
             },
             {
-              "text": "5.4 网络请求与数据通信",
-              "link": "/frontend/03-javascript/19-network-request.md"
+              "text": "5.4 class 与实例",
+              "link": "/frontend/03-javascript/05-objects-prototypes/04-class-inheritance.md"
             },
             {
-              "text": "5.5 浏览器存储与缓存边界",
-              "link": "/frontend/03-javascript/20-browser-storage-cache.md"
+              "text": "5.5 内置对象：JSON、Date 与 Math",
+              "link": "/frontend/03-javascript/05-objects-prototypes/05-builtins-json-date-math.md"
             },
             {
-              "text": "5.6 页面生命周期与性能观察",
-              "link": "/frontend/03-javascript/21-page-lifecycle-performance-observer.md"
-            },
-            {
-              "text": "5.7 Web Worker 与多线程模型",
-              "link": "/frontend/03-javascript/22-web-worker.md"
+              "text": "5.6 可选链、空值合并与展开",
+              "link": "/frontend/03-javascript/05-objects-prototypes/06-optional-chaining-spread.md"
             }
           ]
         },
         {
-          "text": "第6章：模块化",
+          "text": "第6章：数组、字符串与集合",
           "collapsed": true,
           "items": [
             {
-              "text": "6.1 模块化演进",
-              "link": "/frontend/03-javascript/18-module.md"
+              "text": "6.1 数组创建与增删改查",
+              "link": "/frontend/03-javascript/06-collections/01-arrays-basics.md"
             },
             {
-              "text": "6.2 CommonJS 与 Node.js 模块",
-              "link": "/frontend/03-javascript/23-commonjs-node-module.md"
+              "text": "6.2 数组迭代与高阶方法",
+              "link": "/frontend/03-javascript/06-collections/02-array-iteration-methods.md"
             },
             {
-              "text": "6.3 ES Module",
-              "link": "/frontend/03-javascript/20-module.md"
+              "text": "6.3 Map、Set 与 Weak 集合",
+              "link": "/frontend/03-javascript/06-collections/03-map-set-weak.md"
             },
             {
-              "text": "6.4 动态导入与模块加载",
-              "link": "/frontend/03-javascript/24-dynamic-import-module-loading.md"
+              "text": "6.4 字符串处理与正则表达式",
+              "link": "/frontend/03-javascript/06-collections/04-strings-regex.md"
             },
             {
-              "text": "6.5 模块边界、副作用与依赖组织",
-              "link": "/frontend/03-javascript/25-module-boundary-side-effects.md"
+              "text": "6.5 迭代器与生成器",
+              "link": "/frontend/03-javascript/06-collections/05-iterators-generators.md"
             }
           ]
         },
         {
-          "text": "第7章：工程质量与安全性能",
+          "text": "第7章：运行时与异步",
           "collapsed": true,
           "items": [
             {
-              "text": "7.1 错误处理与异常边界",
-              "link": "/frontend/03-javascript/26-error-handling-boundary.md"
+              "text": "7.1 执行上下文与调用栈",
+              "link": "/frontend/03-javascript/07-runtime-async/01-execution-context-call-stack.md"
             },
             {
-              "text": "7.2 调试与 DevTools",
-              "link": "/frontend/03-javascript/27-debugging-devtools.md"
+              "text": "7.2 内存模型与垃圾回收",
+              "link": "/frontend/03-javascript/07-runtime-async/02-memory-garbage-collection.md"
             },
             {
-              "text": "7.3 性能优化",
-              "link": "/frontend/03-javascript/28-performance.md"
+              "text": "7.3 事件循环、宏任务与微任务",
+              "link": "/frontend/03-javascript/07-runtime-async/03-event-loop-tasks.md"
             },
             {
-              "text": "7.4 JavaScript 安全",
-              "link": "/frontend/03-javascript/29-security.md"
+              "text": "7.4 回调与 Promise",
+              "link": "/frontend/03-javascript/07-runtime-async/04-callback-promise.md"
             },
             {
-              "text": "7.5 编码规范与可维护性",
-              "link": "/frontend/03-javascript/30-coding-style-maintainability.md"
+              "text": "7.5 async/await 与异步错误处理",
+              "link": "/frontend/03-javascript/07-runtime-async/05-async-await-errors.md"
             },
             {
-              "text": "7.6 常用 API 参考",
-              "link": "/frontend/03-javascript/31-api-reference.md"
+              "text": "7.6 定时器、防抖与节流",
+              "link": "/frontend/03-javascript/07-runtime-async/06-timers-debounce-throttle.md"
             }
           ]
         },
         {
-          "text": "第8章：设计模式",
+          "text": "第8章：模块与错误",
           "collapsed": true,
           "items": [
             {
-              "text": "8.1 设计模式基础",
-              "link": "/frontend/03-javascript/19-designpattern.md"
+              "text": "8.1 模块化演进",
+              "link": "/frontend/03-javascript/08-modules-errors/01-module-evolution.md"
             },
             {
-              "text": "8.2 创建型模式",
-              "link": "/frontend/03-javascript/32-creational-patterns.md"
+              "text": "8.2 ES Module",
+              "link": "/frontend/03-javascript/08-modules-errors/02-es-modules.md"
             },
             {
-              "text": "8.3 结构型模式",
-              "link": "/frontend/03-javascript/33-structural-patterns.md"
+              "text": "8.3 CommonJS 与 Node.js 模块",
+              "link": "/frontend/03-javascript/08-modules-errors/03-commonjs-node.md"
             },
             {
-              "text": "8.4 行为型模式",
-              "link": "/frontend/03-javascript/34-behavioral-patterns.md"
+              "text": "8.4 错误类型、抛出与捕获",
+              "link": "/frontend/03-javascript/08-modules-errors/04-errors-throw-catch.md"
+            }
+          ]
+        },
+        {
+          "text": "第9章：浏览器 API",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "9.1 DOM 查询与修改",
+              "link": "/frontend/03-javascript/09-browser-apis/01-dom-query-mutation.md"
             },
             {
-              "text": "8.5 前端业务场景中的模式应用",
-              "link": "/frontend/03-javascript/21-designpattern.md"
+              "text": "9.2 事件模型与事件委托",
+              "link": "/frontend/03-javascript/09-browser-apis/02-event-model-delegation.md"
+            },
+            {
+              "text": "9.3 BOM 与浏览器环境",
+              "link": "/frontend/03-javascript/09-browser-apis/03-bom-environment.md"
+            },
+            {
+              "text": "9.4 fetch 与网络请求",
+              "link": "/frontend/03-javascript/09-browser-apis/04-fetch-requests.md"
+            },
+            {
+              "text": "9.5 存储与缓存边界",
+              "link": "/frontend/03-javascript/09-browser-apis/05-storage-cache.md"
+            },
+            {
+              "text": "9.6 页面生命周期与性能观察",
+              "link": "/frontend/03-javascript/09-browser-apis/06-page-lifecycle-performance.md"
+            },
+            {
+              "text": "9.7 Web Worker 与主线程卸载",
+              "link": "/frontend/03-javascript/09-browser-apis/07-web-worker.md"
+            }
+          ]
+        },
+        {
+          "text": "第10章：调试、性能与安全",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "10.1 调试与 DevTools",
+              "link": "/frontend/03-javascript/10-quality/01-debugging-devtools.md"
+            },
+            {
+              "text": "10.2 性能分析与优化",
+              "link": "/frontend/03-javascript/10-quality/02-performance-analysis.md"
+            },
+            {
+              "text": "10.3 前端安全边界",
+              "link": "/frontend/03-javascript/10-quality/03-frontend-security.md"
+            },
+            {
+              "text": "10.4 兼容性与特性检测",
+              "link": "/frontend/03-javascript/10-quality/04-compatibility-feature-detection.md"
             }
           ]
         }

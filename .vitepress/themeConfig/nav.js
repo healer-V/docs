@@ -11,7 +11,7 @@ export const rawNav = [
         items: [
           { text: 'HTML', link: '/frontend/01-html/01-foundation/01-overview.md' },
           { text: 'CSS', link: '/frontend/02-css/01-css-foundation/01-css-and-browser.md' },
-          { text: 'JavaScript', link: '/frontend/03-javascript/01-boundary' },
+          { text: 'JavaScript', link: '/frontend/03-javascript/01-foundation/01-composition-and-runtime.md' },
           { text: 'ECMAScript', link: '/frontend/04-ecmascript/01-variable' },
           { text: 'TypeScript', link: '/frontend/05-typescript/01-typescript' },
         ],

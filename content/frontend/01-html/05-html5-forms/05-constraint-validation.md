@@ -163,7 +163,7 @@ date: 2026-11-14
 HTML 给出了标签、填写说明和错误文本的位置。`aria-describedby="code-hint code-error"` 把格式框关联到说明及错误文字，`role="alert"` 为动态错误提供通知语义；这些属性不替代 `required` 或 `pattern` 的实际校验。
 
 ::: info 程序化补充所需的 JavaScript 深度
-只需理解变量保存元素引用、`querySelector` 按选择器查找元素、方法调用，以及函数可以注册为按钮回调。`.validity` 等状态在对应操作处说明。本篇给齐脚本；系统学习入口是 [JavaScript 的语言边界](../../03-javascript/01-boundary.md)、[MDN：DOM 脚本入门](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting)和[事件入门](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events)。
+只需理解变量保存元素引用、`querySelector` 按选择器查找元素、方法调用，以及函数可以注册为按钮回调。`.validity` 等状态在对应操作处说明。本篇给齐脚本；系统学习入口是 [JavaScript 的组成与运行位置](../../03-javascript/01-foundation/01-composition-and-runtime.md)、[DOM 查询与修改](../../03-javascript/09-browser-apis/01-dom-query-mutation.md)、[MDN：DOM 脚本入门](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting)和[事件入门](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events)。
 :::
 
 ::: details 查看 validation.js 完整内容

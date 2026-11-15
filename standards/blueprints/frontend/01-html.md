@@ -105,7 +105,7 @@ date: 2026-11-14
 | 内容 | 要求深度与有效入口 | 本模块如何使用 |
 |------|--------------------|----------------|
 | CSS | 认识简单属性声明；[CSS 语法与引入](../../../content/frontend/02-css/01-css-foundation/02-syntax-and-stylesheets.md) | 当前文章给齐必要样式并解释观察条件，不要求先完成布局课程 |
-| JavaScript | 需要脚本的文章分别声明变量、函数、DOM、事件或回调的具体要求；[JavaScript 入门](../../../content/frontend/03-javascript/01-boundary.md)、[DOM](../../../content/frontend/03-javascript/14-dom.md)、[事件](../../../content/frontend/03-javascript/16-event.md) | 不是整个模块的统一前置；template、动态 output、Canvas 与第七章给齐最小脚本及就地说明，不重新系统讲解语言 |
+| JavaScript | 需要脚本的文章分别声明变量、函数、DOM、事件或回调的具体要求；[JavaScript 入门](../../../content/frontend/03-javascript/01-foundation/01-composition-and-runtime.md)、[DOM](../../../content/frontend/03-javascript/09-browser-apis/01-dom-query-mutation.md)、[事件](../../../content/frontend/03-javascript/09-browser-apis/02-event-model-delegation.md) | 不是整个模块的统一前置；template、动态 output、Canvas 与第七章给齐最小脚本及就地说明，不重新系统讲解语言 |
 | 本地服务 | 能按文中步骤检查工具、启动与停止服务即可；正文给出当前系统的准备方法 | HTTP 示例在当前篇提供全部材料；本地回显接收不要求读者掌握 Python 编程 |
 | 可访问性 | 不作为外部前置；相关知识由当前元素文章负责 | 在标题、链接、图片、表头、标签、键盘和状态附近解释；不把全部责任推到末尾检查单 |
 | 构建与框架 | 不要求 | 普通示例使用独立 HTML，必要时添加少量 CSS 或脚本，不引入组件框架与打包器 |
@@ -1172,7 +1172,7 @@ date: 2026-11-14
 | 类型与深度 | 语法与 API；辅助：无；目标：使用 |
 | 主讲知识项 | K05-03-01、K05-03-02 |
 | 前置与引用 | A01-09、A03-01、A03-02、A03-03 |
-| 外部前置 | output 动态演示只要求认识 JavaScript 数值转换、获取元素、监听 input 与写入 value；本篇就地解释并给齐代码，系统入口为 [JavaScript 入门](../../../content/frontend/03-javascript/01-boundary.md)。静态语义不要求先学 JavaScript。 |
+| 外部前置 | output 动态演示只要求认识 JavaScript 数值转换、获取元素、监听 input 与写入 value；本篇就地解释并给齐代码，系统入口为 [JavaScript 入门](../../../content/frontend/03-javascript/01-foundation/01-composition-and-runtime.md)。静态语义不要求先学 JavaScript。 |
 | 必须覆盖 | datalist、option、input list 与唯一 id；候选界面和支持因浏览器而异；候选建议不阻止列表外文本，不提供固定枚举约束；output、for、name、form 的必要意义；for 为关联说明，不自动执行计算；最小脚本根据两个数值更新 output；解释输出不作为普通提交字段发送，不能把显示结果视为后端可信结果 |
 | 不展开与重复归属 | select 完整语法交 A03-03；输入类型交 A05-01；校验交 A05-05；不实现自定义自动完成组件、搜索接口、框架状态管理或计算库 |
 | 后续依赖者 | 无必需的后续依赖者 |
@@ -1236,7 +1236,7 @@ date: 2026-11-14
 | 类型与深度 | 语法与 API；辅助：测试与排障；目标：使用 |
 | 主讲知识项 | K05-05-01、K05-05-02、K05-05-03 |
 | 前置与引用 | A03-01、A03-02、A03-05、A05-01、A05-02 |
-| 外部前置 | 程序化校验小节只需理解 DOM 元素引用、事件与方法调用；本篇给出最小完整脚本，系统入口为 [JavaScript 入门](../../../content/frontend/03-javascript/01-boundary.md)。主流程采用声明式约束，无须 JavaScript。 |
+| 外部前置 | 程序化校验小节只需理解 DOM 元素引用、事件与方法调用；本篇给出最小完整脚本，系统入口为 [JavaScript 入门](../../../content/frontend/03-javascript/01-foundation/01-composition-and-runtime.md)。主流程采用声明式约束，无须 JavaScript。 |
 | 必须覆盖 | required、minlength、maxlength、min、max、step、pattern 的适用对象和组合；pattern 使用简单可解释规则，按现行标准语义核对；空的非必填字段、只读/禁用和不参与约束的控件边界；不能机械认为所有字段都校验；提交触发、novalidate/formnovalidate；用户填写过程与提交前校验的区别；提示语言、文案和界面随浏览器变化；checkValidity、reportValidity、setCustomValidity 与 validity 只给理解当前行为所需的最小补充；清除自定义错误与 submit/requestSubmit 的校验差异作为边界说明，不展开完整表单事件体系；标签、填写说明与错误关联；前端通过不替代服务端的字段、权限和业务规则检查 |
 | 不展开与重复归属 | 输入类型和填写提示由 A05-01/A05-02 完整主讲，当前只引用其约束来源；不设计密码强度组件、复杂正则课程、跨字段业务引擎或统一错误提示框架；不把前端验证通过、HTTP 200 或邮件格式有效写为业务成功 |
 | 后续依赖者 | 无必需的后续依赖者 |
