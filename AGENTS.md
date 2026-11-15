@@ -128,7 +128,7 @@ VitePress 从仓库根目录加载配置，使用 `srcDir: 'content'`，部署 U
 | 示例从读者新建的空目录独立复现，不引用仓库示例目录（`example`、`examples`）及其内容入口 | [示例](./standards/writing/code-examples.md) |
 | 使用、接入、测试、排障、部署类文章提供最小可复现闭环和真实预期输出；未验证内容明确标注 | [示例](./standards/writing/code-examples.md) |
 | 新建或重构模块时，章节文件夹两位编号加英文主题，每章文件从 `01` 连续编号，参照 `content/backend/06-microservices/` | [目录规划](./standards/knowledge/directory-planning.md) |
-| sidebar 不添加指向不存在文件的链接；改名或移动时同步更新全部站内引用，旧地址和旧锚点直接作废，不建跳转 | [目录规划](./standards/knowledge/directory-planning.md) |
+| sidebar 不添加指向不存在文件的链接；文章标题、文件路径或导航文案变更时同步更新 sidebar、蓝图、引用、锚点和现有浏览器回归断言，并执行浏览器回归；旧地址和旧锚点直接作废，不建跳转 | [目录规划](./standards/knowledge/directory-planning.md)、[质量门禁](./standards/process/quality-gates.md) |
 | 图片放在文档同级 `images/`，使用相对路径和有意义的 `alt` | [格式](./standards/writing/markdown-format.md) |
 | 未经用户明确授权，不提交、推送、发布或部署 | [文章生成](./standards/article/article-generation.md) |
 
@@ -140,6 +140,7 @@ VitePress 从仓库根目录加载配置，使用 `srcDir: 'content'`，部署 U
 | `pnpm docs:check:strict <模块路径>` | 同上，存在错误时以 1 退出；模块完成重构的验收条件 |
 | `pnpm docs:build:unit <单元>` | 构建单个站点单元，如 `frontend`、`backend`；涉及配置、导航或扩展语法时必须执行 |
 | `pnpm docs:test` | 构建脚本的单元测试 |
+| `pnpm docs:e2e` | 浏览器回归；涉及标题、路由、导航或主题变更时，按[运行手册](./standards/engineering/site-build-runbook.md)完成构建与合并后执行 |
 
 脚本只能发现格式问题和语义候选。交付前仍须按[质量门禁](./standards/process/quality-gates.md)的交付前检查清单逐项确认内容、格式和工程三类检查。
 

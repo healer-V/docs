@@ -6,6 +6,7 @@
  * 路径前缀相对于 content/，例如 frontend/08-react16。
  * 未被 sidebar 或顶部导航引用的页面记为 orphan 警告，供旧稿清理时参考。
  * 连续三条以上“加粗关键词：短句”的列表项记为 filler-list 警告，提示人工判断是否为空话清单。
+ * 只使用“概述”“简介”等通用词的标题记为 generic-title 警告，提示补充技术名称。
  */
 import { readFileSync, readdirSync } from 'node:fs'
 import { extname, relative, resolve, sep, basename, dirname } from 'node:path'
@@ -26,6 +27,7 @@ const EXAMPLE_DIR = /(^|[\s(`'"]|\.\.?\/)examples?\//
 const FILLER_ITEM = /^\s*(?:\d+\.|[-*+])\s+\*\*([^*]+)\*\*\s*[：:]\s*(.*)$/
 const FILLER_MAX_CHARS = 18
 const FILLER_MIN_RUN = 3
+const GENERIC_TITLE = /^(?:概述|简介|介绍|前言|导言|总结|小结)$/
 
 const issues = []
 
@@ -172,6 +174,7 @@ function checkArticle(rel, source) {
   if (!isIndex) {
     if (h1.length !== 1) report('error', rel, 0, 'h1', `一级标题数量为 ${h1.length}，应为 1`)
     else if (title && h1[0].text !== title) report('error', rel, h1[0].lineNo, 'h1', 'Frontmatter title 与一级标题不一致')
+    if (title && GENERIC_TITLE.test(title.trim())) report('warning', rel, 1, 'generic-title', '标题脱离章节上下文后无法识别主题；概述类文章应保留技术名称')
   }
   checkSkeleton(rel, sections)
 }
