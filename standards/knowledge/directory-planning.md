@@ -21,7 +21,7 @@ date: 2026-10-30
 | 前置规范 | [知识体系与方向分类规范](./knowledge-system.md) |
 | 配套正文规范 | [技术文章生成与验收规范](../article/article-generation.md) |
 | 蓝图存放 | 已确认的蓝图放在 `standards/blueprints/<方向>/<模块>.md`；模板见[模块蓝图模板](../templates/module-blueprint-template.md) |
-| 可复用指令 | [目录规划指令](../prompts/directory.md) |
+| 执行阶段 | [分阶段流程](../process/workflow.md)；蓝图字段直接使用上述模板 |
 
 ## 一、任务范围与输入契约
 

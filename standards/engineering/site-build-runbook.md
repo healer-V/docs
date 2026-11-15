@@ -82,7 +82,7 @@ pnpm docs:build:all
 pnpm docs:assemble
 pnpm docs:validate
 pnpm docs:search
-pnpm docs:validate -- --require-search
+pnpm docs:validate --require-search
 pnpm docs:e2e
 pnpm docs:summary
 ```

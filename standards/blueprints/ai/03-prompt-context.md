@@ -494,7 +494,7 @@ PC-006 + PC-008 → PC-025 Prompt 代码化 → PC-026 样本回归
 | 修改 | `content/ai/04-rag/index.md` | AI03 第一篇正文 | 前置链接从旧首页迁移到正式入口 | RAG 模块页 |
 | 修改 | 其他指向 AI03 首页的页面 | AI03 第一篇正文 | 实施时用 `rg` 全量搜索并迁移 | AI05、AI09 等模块页 |
 | 修改 | `tests/docs-site.spec.mjs`、`scripts/docs/__tests__/topic-navigation.test.mjs` | 原路径 | 更新章节数、文章数、目录和无首页规则 | 文档测试 |
-| 修改 | `superpowers/specs/2026-09-28-ai-application-development-design.md` | 原路径 | 同步新目录、职责和统计 | 全局 AI 蓝图 |
+| 修改 | `standards/blueprints/ai/directory.md` | 原路径 | 同步新目录、职责和统计 | 全局 AI 蓝图 |
 
 正式导航不得指向尚未创建的正文。AI03 从 4 章 11 篇调整为 5 章 15 篇，属于结构性变更，实施时必须同时更新目录统计和链接测试。
 

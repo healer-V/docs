@@ -47,9 +47,8 @@ pnpm docs:preview:assembled
 
 ```text
 ├── .vitepress/      # 网站配置、主题和导航
-├── .claude/         # Claude Code 本地项目设置
 ├── content/         # 网站 Markdown、文档图片和公共资源
-├── standards/       # 文档规范、模板、生成指令和已确认的模块蓝图
+├── standards/       # 文档规范、必要模板和模块蓝图
 ├── superpowers/     # 本地过程记录（设计、计划、评审），不提交
 ├── work/            # 本地临时文件（一次性脚本、检查报告），不提交
 ├── scripts/         # 构建、检查和维护脚本

@@ -506,7 +506,7 @@ MI-001～MI-006 + MI-024 → MI-027 客户端封装 → MI-028 契约测试
 | 修改 | `.vitepress/themeConfig/catalogs/ai.js` | 原路径 | 使用确认后的六章十六篇名称和真实链接 | `tests/docs-site.spec.mjs`、导航测试 |
 | 修改 | `content/ai/03-prompt-context/index.md` | AI03 第一篇正文 | AI02 前置入口改为 `01-input-items-content-types.md` | AI03 正文链接 |
 | 修改 | 其他指向 AI02 首页的页面 | AI02 第一篇正文 | 实施时用 `rg` 全量搜索并迁移 | AI05、AI07 等模块页 |
-| 修改 | `superpowers/specs/2026-09-28-ai-application-development-design.md` | 原路径 | 同步章节名称、文章标题和入口规则 | 全局 AI 蓝图 |
+| 修改 | `standards/blueprints/ai/directory.md` | 原路径 | 同步章节名称、文章标题和入口规则 | 全局 AI 蓝图 |
 
 正式导航不得指向尚未创建的正文。AI02 文章数仍为 16，章节数仍为 6，但目录名、标题和职责均发生变化，测试不能只校验数量。
 

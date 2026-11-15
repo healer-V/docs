@@ -10,6 +10,12 @@ date: 2026-09-28
 
 # Agent 开发模块蓝图
 
+::: info 历史过程记录已清理
+
+2026-11-15 已按用户要求清空本地 `superpowers/`。下文历史设计、样板评审与交付记录名称仅说明当时依据，不再提供文件入口；后续维护以当前蓝图、正文和重新验证的结果为准。
+
+:::
+
 “Agent 开发”负责把模型的动作选择能力放入受控运行时：应用维护循环、工具、权限、状态、预算和终止条件，模型只在每一步提出下一动作或最终答复。本模块先讲不依赖框架的通用机制，再以 OpenAI Responses API 和 Python SDK 给出可运行证据；LangChain、LangGraph 和 Agents SDK 的框架封装不在本模块展开。
 
 本文件记录 AI05 当前七章十九篇目录草案及正文进度。用户于 2026-09-29 明确要求不要把 AI 生成的蓝图当作正确性依据，后续以实际知识依赖、可靠来源和可复现示例检查并调整规划。当前已完成前五章十四篇正文，其余五篇尚未生成；保留模块首页作为完整目录，导航默认由首篇正文承接入口。
@@ -245,7 +251,7 @@ AG-004 + AG-009 → AG-033 运行预算 → AG-034 终止
 | 保留 | `content/ai/05-agent-development/index.md` | 作为七章目录入口；正文通过后同步阅读链接，删除需另有明确授权 |
 | 新增 | `content/ai/05-agent-development/01-agent-model/` 至 `07-production-control/` | 逐章创建，不新建章节首页 |
 | 修改 | `.vitepress/themeConfig/catalogs/ai.js` | 只为通过验收的正文增加 `publishedLink` |
-| 修改 | `superpowers/specs/2026-09-28-ai-application-development-design.md` | 模块完成后同步入口与状态，不回写历史评审过程 |
+| 修改 | `standards/blueprints/ai/directory.md` | 模块完成后同步入口与状态，不回写历史评审过程 |
 | 检查 | 全仓指向 AI05 首页的链接 | 当前首页保留，目录与首篇正文入口均有效 |
 
 ## 十一、验证方案
@@ -271,12 +277,12 @@ AG-004 + AG-009 → AG-033 运行预算 → AG-034 终止
 | 证据 | 通过 | 每篇有状态、代码、测试、决策或故障证据 |
 | 样板 | 已获得续写授权 | 用户于 2026-09-29 要求继续生成 Agent 目录与正文，沿用已有蓝图和样板；本轮修订结果验收并补齐第一章 |
 
-本蓝图记录全局 AI 应用开发目录的当前细化结果。章节、文章名称与实现选择按可靠资料、知识依赖及运行证据持续复核，发现错误或遗漏时修订。第一章续写及验证记录见[首批生成检查](../../../superpowers/specs/2026-09-29-rag-agent-generation-review.md)。
+本蓝图记录全局 AI 应用开发目录的当前细化结果。章节、文章名称与实现选择按可靠资料、知识依赖及运行证据持续复核，发现错误或遗漏时修订。第一章续写及验证记录见首批生成检查。
 
-第二章工具执行的续写与实际验证见[RAG 知识边界与 Agent 工具执行验收](../../../superpowers/specs/2026-09-29-rag-boundary-agent-tools-review.md)。
+第二章工具执行的续写与实际验证见RAG 知识边界与 Agent 工具执行验收。
 
-第三章权限与隔离的续写与实际验证见[RAG 文档处理与 Agent 权限隔离验收](../../../superpowers/specs/2026-09-29-rag-processing-agent-permissions-review.md)。
+第三章权限与隔离的续写与实际验证见RAG 文档处理与 Agent 权限隔离验收。
 
-第四章状态与记忆的内容复核及实际验证见[RAG 嵌入索引与 Agent 状态记忆验收](../../../superpowers/specs/2026-09-29-rag-index-agent-state-review.md)。
+第四章状态与记忆的内容复核及实际验证见RAG 嵌入索引与 Agent 状态记忆验收。
 
-第五章流程与协作的内容复核及实际验证见[RAG 检索排序与 Agent 流程协作验收](../../../superpowers/specs/2026-09-29-rag-retrieval-agent-collaboration-review.md)。
+第五章流程与协作的内容复核及实际验证见RAG 检索排序与 Agent 流程协作验收。

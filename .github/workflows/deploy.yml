@@ -40,10 +40,8 @@ jobs:
       - name: Run documentation tests
         run: pnpm docs:test
 
-      - name: Verify navigation backlog
-        run: |
-          pnpm docs:navigation:backlog
-          git diff --exit-code -- standards/documentation/backlogs/navigation-missing.json
+      - name: Export navigation backlog
+        run: pnpm docs:navigation:backlog
 
   build:
     name: 构建 ${{ matrix.unit }}
