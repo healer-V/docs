@@ -8,7 +8,7 @@ export const frontendSidebar = {
           "collapsed": true,
           "items": [
             {
-              "text": "1.1 概述",
+              "text": "1.1 HTML 概述",
               "link": "/frontend/01-html/01-foundation/01-overview.md"
             },
             {
