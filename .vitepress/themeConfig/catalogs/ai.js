@@ -36,7 +36,7 @@ const aiModuleDefinitions = [
     navigationGroup: '基础与接入',
     description: '将 Prompt 作为输入契约，管理上下文来源、预算、对话状态和版本迭代。',
     chapters: [
-      { title: '指令契约', directory: '01-instruction-contract', responsibility: '定义任务、成功标准、指令权威和语义输出边界。', articles: [['任务与成功标准', '01-task-success-criteria.md'], ['指令层级', '02-instruction-hierarchy.md'], ['输出边界', '03-output-boundaries.md']] },
+      { title: '指令契约', directory: '01-instruction-contract', responsibility: '定义任务、成功标准、指令权威和语义输出边界。', articles: [['任务与成功标准', '01-task-success-criteria.md', '/ai/03-prompt-context/01-instruction-contract/01-task-success-criteria.md'], ['指令层级', '02-instruction-hierarchy.md', '/ai/03-prompt-context/01-instruction-contract/02-instruction-hierarchy.md'], ['输出边界', '03-output-boundaries.md', '/ai/03-prompt-context/01-instruction-contract/03-output-boundaries.md']] },
       { title: 'Prompt 构造', directory: '02-prompt-construction', responsibility: '分离指令与数据，安全渲染变量并设计少样本示例。', articles: [['指令与数据边界', '01-instructions-data-boundary.md', '/ai/03-prompt-context/02-prompt-construction/01-instructions-data-boundary.md'], ['动态变量与模板', '02-dynamic-variables-templates.md'], ['少样本示例', '03-few-shot-examples.md']] },
       { title: '上下文组装', directory: '03-context-assembly', responsibility: '依据来源、可信度、相关性、顺序和预算选择上下文。', articles: [['上下文来源与可信度', '01-context-sources-trust.md'], ['相关性与顺序', '02-relevance-ordering.md'], ['Token 预算与截断', '03-token-budget-truncation.md']] },
       { title: '会话状态', directory: '04-conversation-state', responsibility: '选择状态续接模式，分离应用状态并控制压缩损失。', articles: [['会话状态模式', '01-state-management-modes.md', '/ai/03-prompt-context/04-conversation-state/01-state-management-modes.md'], ['应用状态与模型上下文', '02-application-state-context.md'], ['压缩与连续性', '03-compaction-continuity.md']] },

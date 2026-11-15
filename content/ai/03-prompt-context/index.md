@@ -35,9 +35,9 @@ Prompt 是应用交给模型的任务契约，上下文是当前任务可以使�
 
 | 序号 | 文章 | 正文 |
 |-----:|------|------|
-| 1.1 | 任务与成功标准 | — |
-| 1.2 | 指令层级 | — |
-| 1.3 | 输出边界 | — |
+| 1.1 | 任务与成功标准 | [阅读正文](./01-instruction-contract/01-task-success-criteria.md) |
+| 1.2 | 指令层级 | [阅读正文](./01-instruction-contract/02-instruction-hierarchy.md) |
+| 1.3 | 输出边界 | [阅读正文](./01-instruction-contract/03-output-boundaries.md) |
 
 ### 2. Prompt 构造 {#02-prompt-construction}
 
