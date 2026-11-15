@@ -26,6 +26,7 @@ date: 2026-10-30
 | [knowledge/directory-planning.md](./knowledge/directory-planning.md) | 目录规划的执行入口：模块蓝图、知识项、依赖、章节、职责卡、覆盖矩阵、编号与导航 |
 | [process/workflow.md](./process/workflow.md) | 建档、蓝图、样板、逐章生成、整体验收的阶段流程 |
 | [process/quality-gates.md](./process/quality-gates.md) | 各阶段硬性门禁、语义检查、机器检查和交付前检查清单 |
+| [process/module-rebuild-retrospective.md](./process/module-rebuild-retrospective.md) | 模块重建复盘（HTML 案例）：设计取舍、样板选择、章节验收与复发偏差，不新增规则 |
 | [prompts/](./prompts/article.md) | 可直接复用的[正文生成指令](./prompts/article.md)与[目录规划指令](./prompts/directory.md) |
 | [templates/](./templates/article-template.md) | [技术文章正文](./templates/article-template.md)、[模块蓝图](./templates/module-blueprint-template.md)、[文章职责卡](./templates/article-responsibility-card-template.md)、[样板评审](./templates/sample-review-template.md)模板 |
 | `blueprints/<方向>/<模块>.md` | 已确认的模块蓝图，是对应模块生成和验收正文的依据 |
