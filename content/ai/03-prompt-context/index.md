@@ -46,7 +46,7 @@ Prompt 是应用交给模型的任务契约，上下文是当前任务可以使�
 | 序号 | 文章 | 正文 |
 |-----:|------|------|
 | 2.1 | 指令与数据边界 | [阅读正文](./02-prompt-construction/01-instructions-data-boundary.md) |
-| 2.2 | 动态变量与模板 | — |
+| 2.2 | 动态变量与模板 | [阅读正文](./02-prompt-construction/02-dynamic-variables-templates.md) |
 | 2.3 | 少样本示例 | — |
 
 ### 3. 上下文组装 {#03-context-assembly}

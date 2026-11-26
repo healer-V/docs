@@ -39,62 +39,52 @@ next: false
 | 1.2 | LangChain 与 LangGraph |
 | 1.3 | 依赖与版本 |
 
-### 2. LangChain 基础 {#02-langchain-foundation}
+### 2. LangChain 核心 {#02-langchain-core}
 
-使用 LangChain 统一模型、消息、工具、结构化结果和 Agent。
-
-| 序号 | 文章 |
-|-----:|------|
-| 2.1 | 模型与消息 |
-| 2.2 | 工具与结构化结果 |
-| 2.3 | Agent 构建 |
-
-### 3. LangChain 运行时 {#03-langchain-runtime}
-
-在运行时传递上下文、状态并通过 Middleware 控制行为。
+使用 LangChain 统一模型、消息、工具、结构化结果，并构建与控制 Agent 运行时。
 
 | 序号 | 文章 |
 |-----:|------|
-| 3.1 | 上下文与状态 |
-| 3.2 | Middleware 与动态控制 |
+| 2.1 | 模型、消息与工具 |
+| 2.2 | Agent 构建与运行时 |
 
-### 4. LangGraph 基础 {#04-langgraph-foundation}
+### 3. LangGraph 基础 {#03-langgraph-foundation}
 
 使用 State、节点、Reducer、路由和循环表达工作流。
 
 | 序号 | 文章 |
 |-----:|------|
-| 4.1 | State 与 Schema |
-| 4.2 | 节点与 Reducer |
-| 4.3 | 路由与循环 |
+| 3.1 | State 与 Schema |
+| 3.2 | 节点与 Reducer |
+| 3.3 | 路由与循环 |
 
-### 5. 持久执行 {#05-durable-execution}
+### 4. 持久执行 {#04-durable-execution}
 
 使用 Thread 和 Checkpoint 支持中断恢复，并控制重放副作用。
 
 | 序号 | 文章 |
 |-----:|------|
-| 5.1 | Thread 与 Checkpoint |
-| 5.2 | 人工中断与恢复 |
-| 5.3 | 副作用、重放与重试 |
+| 4.1 | Thread 与 Checkpoint |
+| 4.2 | 人工中断与恢复 |
+| 4.3 | 副作用、重放与重试 |
 
-### 6. 图组合 {#06-graph-composition}
+### 5. 图组合 {#05-graph-composition}
 
 组合并行、动态路由和子图，并选择合适的图 API。
 
 | 序号 | 文章 |
 |-----:|------|
-| 6.1 | 并行与动态路由 |
-| 6.2 | 子图与 API 选择 |
+| 5.1 | 并行与动态路由 |
+| 5.2 | 子图与 API 选择 |
 
-### 7. 测试与交付 {#07-testing-delivery}
+### 6. 测试与交付 {#06-testing-delivery}
 
 测试和诊断图执行，并处理服务部署中的状态兼容。
 
 | 序号 | 文章 |
 |-----:|------|
-| 7.1 | 图测试与诊断 |
-| 7.2 | 服务部署与状态兼容 |
+| 6.1 | 图测试与诊断 |
+| 6.2 | 服务部署与状态兼容 |
 
 ## 三、衔接关系
 

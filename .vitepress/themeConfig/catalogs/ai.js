@@ -37,7 +37,7 @@ const aiModuleDefinitions = [
     description: '将 Prompt 作为输入契约，管理上下文来源、预算、对话状态和版本迭代。',
     chapters: [
       { title: '指令契约', directory: '01-instruction-contract', responsibility: '定义任务、成功标准、指令权威和语义输出边界。', articles: [['任务与成功标准', '01-task-success-criteria.md', '/ai/03-prompt-context/01-instruction-contract/01-task-success-criteria.md'], ['指令层级', '02-instruction-hierarchy.md', '/ai/03-prompt-context/01-instruction-contract/02-instruction-hierarchy.md'], ['输出边界', '03-output-boundaries.md', '/ai/03-prompt-context/01-instruction-contract/03-output-boundaries.md']] },
-      { title: 'Prompt 构造', directory: '02-prompt-construction', responsibility: '分离指令与数据，安全渲染变量并设计少样本示例。', articles: [['指令与数据边界', '01-instructions-data-boundary.md', '/ai/03-prompt-context/02-prompt-construction/01-instructions-data-boundary.md'], ['动态变量与模板', '02-dynamic-variables-templates.md'], ['少样本示例', '03-few-shot-examples.md']] },
+      { title: 'Prompt 构造', directory: '02-prompt-construction', responsibility: '分离指令与数据，安全渲染变量并设计少样本示例。', articles: [['指令与数据边界', '01-instructions-data-boundary.md', '/ai/03-prompt-context/02-prompt-construction/01-instructions-data-boundary.md'], ['动态变量与模板', '02-dynamic-variables-templates.md', '/ai/03-prompt-context/02-prompt-construction/02-dynamic-variables-templates.md'], ['少样本示例', '03-few-shot-examples.md']] },
       { title: '上下文组装', directory: '03-context-assembly', responsibility: '依据来源、可信度、相关性、顺序和预算选择上下文。', articles: [['上下文来源与可信度', '01-context-sources-trust.md'], ['相关性与顺序', '02-relevance-ordering.md'], ['Token 预算与截断', '03-token-budget-truncation.md']] },
       { title: '会话状态', directory: '04-conversation-state', responsibility: '选择状态续接模式，分离应用状态并控制压缩损失。', articles: [['会话状态模式', '01-state-management-modes.md', '/ai/03-prompt-context/04-conversation-state/01-state-management-modes.md'], ['应用状态与模型上下文', '02-application-state-context.md'], ['压缩与连续性', '03-compaction-continuity.md']] },
       { title: 'Prompt 生命周期', directory: '05-prompt-lifecycle', responsibility: '以代码、样本、发布和诊断管理 Prompt 变更。', articles: [['Prompt 代码化', '01-code-managed-prompts.md'], ['样本与回归测试', '02-fixtures-regression.md'], ['发布与失效诊断', '03-rollout-failure-diagnosis.md']] },
@@ -83,12 +83,11 @@ const aiModuleDefinitions = [
     description: '在理解通用机制后，使用 LangChain 与 LangGraph 实现状态化、可恢复工作流。',
     chapters: [
       { title: '框架边界', directory: '01-framework-boundary', responsibility: '依据复杂度选择原生 SDK、LangChain 或 LangGraph，并控制版本。', articles: [['原生 SDK 与框架', '01-native-sdk-frameworks.md'], ['LangChain 与 LangGraph', '02-langchain-langgraph.md'], ['依赖与版本', '03-dependencies-versions.md']] },
-      { title: 'LangChain 基础', directory: '02-langchain-foundation', responsibility: '使用 LangChain 统一模型、消息、工具、结构化结果和 Agent。', articles: [['模型与消息', '01-models-messages.md'], ['工具与结构化结果', '02-tools-structured-results.md'], ['Agent 构建', '03-agent-construction.md']] },
-      { title: 'LangChain 运行时', directory: '03-langchain-runtime', responsibility: '在运行时传递上下文、状态并通过 Middleware 控制行为。', articles: [['上下文与状态', '01-context-state.md'], ['Middleware 与动态控制', '02-middleware-dynamic-control.md']] },
-      { title: 'LangGraph 基础', directory: '04-langgraph-foundation', responsibility: '使用 State、节点、Reducer、路由和循环表达工作流。', articles: [['State 与 Schema', '01-state-schema.md'], ['节点与 Reducer', '02-nodes-reducers.md'], ['路由与循环', '03-routing-loops.md']] },
-      { title: '持久执行', directory: '05-durable-execution', responsibility: '使用 Thread 和 Checkpoint 支持中断恢复，并控制重放副作用。', articles: [['Thread 与 Checkpoint', '01-threads-checkpoints.md'], ['人工中断与恢复', '02-human-interrupt-resume.md'], ['副作用、重放与重试', '03-side-effects-replay-retries.md']] },
-      { title: '图组合', directory: '06-graph-composition', responsibility: '组合并行、动态路由和子图，并选择合适的图 API。', articles: [['并行与动态路由', '01-parallel-dynamic-routing.md'], ['子图与 API 选择', '02-subgraphs-api-selection.md']] },
-      { title: '测试与交付', directory: '07-testing-delivery', responsibility: '测试和诊断图执行，并处理服务部署中的状态兼容。', articles: [['图测试与诊断', '01-graph-testing-diagnostics.md'], ['服务部署与状态兼容', '02-service-deployment-state-compatibility.md']] },
+      { title: 'LangChain 核心', directory: '02-langchain-core', responsibility: '使用 LangChain 统一模型、消息、工具、结构化结果，并构建与控制 Agent 运行时。', articles: [['模型、消息与工具', '01-models-messages-tools.md'], ['Agent 构建与运行时', '02-agent-runtime.md']] },
+      { title: 'LangGraph 基础', directory: '03-langgraph-foundation', responsibility: '使用 State、节点、Reducer、路由和循环表达工作流。', articles: [['State 与 Schema', '01-state-schema.md'], ['节点与 Reducer', '02-nodes-reducers.md'], ['路由与循环', '03-routing-loops.md']] },
+      { title: '持久执行', directory: '04-durable-execution', responsibility: '使用 Thread 和 Checkpoint 支持中断恢复，并控制重放副作用。', articles: [['Thread 与 Checkpoint', '01-threads-checkpoints.md'], ['人工中断与恢复', '02-human-interrupt-resume.md'], ['副作用、重放与重试', '03-side-effects-replay-retries.md']] },
+      { title: '图组合', directory: '05-graph-composition', responsibility: '组合并行、动态路由和子图，并选择合适的图 API。', articles: [['并行与动态路由', '01-parallel-dynamic-routing.md'], ['子图与 API 选择', '02-subgraphs-api-selection.md']] },
+      { title: '测试与交付', directory: '06-testing-delivery', responsibility: '测试和诊断图执行，并处理服务部署中的状态兼容。', articles: [['图测试与诊断', '01-graph-testing-diagnostics.md'], ['服务部署与状态兼容', '02-service-deployment-state-compatibility.md']] },
     ],
   },
   {

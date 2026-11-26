@@ -23,7 +23,7 @@ const expectedAiModules = [
   ['AI03', 'Prompt 与上下文', '/ai/03-prompt-context', 5, 15],
   ['AI04', 'RAG 应用', '/ai/04-rag', 7, 18],
   ['AI05', 'Agent 开发', '/ai/05-agent-development', 7, 19],
-  ['AI06', '框架与编排', '/ai/06-framework-orchestration', 7, 18],
+  ['AI06', '框架与编排', '/ai/06-framework-orchestration', 6, 15],
   ['AI07', '应用架构', '/ai/07-application-architecture', 6, 15],
   ['AI08', '评测与可观测性', '/ai/08-evaluation-observability', 6, 16],
   ['AI09', '安全与治理', '/ai/09-security-governance', 7, 18],
@@ -86,8 +86,8 @@ test('AI topics preserve the approved application development scope and order', 
     actual.push([module.id, module.title, module.path, module.chapters.length, moduleArticleCount])
   }
   assert.deepEqual(actual, expectedAiModules)
-  assert.equal(chapterCount, 61)
-  assert.equal(articleCount, 162)
+  assert.equal(chapterCount, 60)
+  assert.equal(articleCount, 159)
 
   const chapterTitles = new Map()
   for (const module of aiCatalog.modules) {
@@ -321,7 +321,7 @@ test('unwritten chapters remain visible without fake article links', function ke
   const groups = sidebar['/ai/06-framework-orchestration/']
   assert.equal(groups.length, 1)
   assert.equal(groups[0].text, '框架与编排')
-  assert.equal(groups[0].items.length, 7)
+  assert.equal(groups[0].items.length, 6)
   assert.deepEqual(collectLinks(groups), [])
   let planned = 0
   for (const chapter of groups[0].items) {
@@ -331,7 +331,7 @@ test('unwritten chapters remain visible without fake article links', function ke
       planned++
     }
   }
-  assert.equal(planned, 18)
+  assert.equal(planned, 15)
 })
 
 // 正文链接必须落到真实文件，避免过滤器静默掩盖错误配置。
