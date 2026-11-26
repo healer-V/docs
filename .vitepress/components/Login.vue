@@ -128,7 +128,7 @@ const handleLogin = async () => {
   justify-content: center;
   background: var(--color-night);
   overflow: hidden;
-  font-family: 'Sora', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Geist', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ── Aurora background ── */
@@ -265,7 +265,7 @@ const handleLogin = async () => {
 }
 
 .portal-title {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Geist', sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -326,7 +326,7 @@ const handleLogin = async () => {
   width: 100%;
   padding: 11px 14px;
   font-size: 0.9rem;
-  font-family: 'Sora', 'Noto Sans SC', sans-serif;
+  font-family: 'Geist', 'Noto Sans SC', sans-serif;
   font-weight: 400;
   border: none;
   border-radius: 10px;
@@ -373,7 +373,7 @@ const handleLogin = async () => {
   width: 100%;
   padding: 12px;
   margin-top: 0.3rem;
-  font-family: 'Sora', 'Noto Sans SC', sans-serif;
+  font-family: 'Geist', 'Noto Sans SC', sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.02em;

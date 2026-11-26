@@ -106,6 +106,47 @@ test('global Chinese search filters backend results', async ({ page, isMobile })
   expect(issues).toEqual([])
 })
 
+// 首页由构建时数据驱动：概览、最近更新与知识地图都要渲染，随机复习卡片可换一篇，知识地图可跨单元跳转。
+test('home page renders learning path, knowledge map and random review', async ({ page }) => {
+  const issues = collectBrowserIssues(page)
+  await page.goto('/docs/')
+
+  await expect(page.locator('.home-hero__title')).toHaveText('构建自身知识体系')
+  await expect(page.locator('.home-stats__total')).toHaveText(/^\d+$/)
+  await expect(page.locator('.home-post').first()).toBeVisible()
+  await expect(page.locator('.home-dir')).toHaveCount(8)
+  await expect(page.locator('.home-band__link')).toHaveAttribute('href', '/docs/about/')
+
+  const topCard = page.locator('.home-review__card[data-depth="0"]:not(.home-deck-leave-active)')
+  const reviewPick = topCard.locator('.home-review__open')
+  await expect(reviewPick).toHaveAttribute('href', /^\/docs\/.+/)
+  await expect(page.locator('.home-review__card')).toHaveCount(3)
+  await expect(page.locator('.home-review__chips a')).toHaveCount(3)
+  const firstPick = await reviewPick.getAttribute('href')
+  await topCard.getByRole('button', { name: '换一篇随机复习文章' }).click()
+  await expect(reviewPick).not.toHaveAttribute('href', firstPick)
+
+  // 拖动顶部卡片超过阈值会切换到下一张，且不会触发卡片内链接的跳转。
+  const secondPick = await reviewPick.getAttribute('href')
+  const box = await topCard.boundingBox()
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(box.x + box.width / 2 + 180, box.y + box.height / 2, { steps: 8 })
+  await page.mouse.up()
+  await expect(reviewPick).not.toHaveAttribute('href', secondPick)
+  await expect(page).toHaveURL(/\/docs\/$/)
+  await expect(page.locator('.home-review__card')).toHaveCount(3)
+
+  await page.getByRole('tab', { name: '后端' }).click()
+  await expect(page.getByRole('tab', { name: '后端' })).toHaveAttribute('aria-selected', 'true')
+  const backendPath = page.getByRole('tabpanel')
+  await expect(backendPath.locator('.home-station')).toHaveCount(6)
+  await backendPath.locator('.home-station__card').filter({ hasText: /^第 2 站\s*Java/ }).click()
+  await expect(page).toHaveURL(new RegExp(`${BACKEND_ROUTE.replaceAll('/', '\\/')}$`))
+  await expect(page.locator('.vp-doc h1')).toContainText('Java')
+  expect(issues).toEqual([])
+})
+
 // AI 正文和当前模块目录页都能按精准中文标题检索并跳转到实际入口。
 test('AI title search opens current articles and topic directories', async ({ page }) => {
   const issues = collectBrowserIssues(page)

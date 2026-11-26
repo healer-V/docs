@@ -5,35 +5,26 @@
 .VPNav { border-bottom: none !important; }
 
 .VPNavBar {
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .VPNavBar:not(.home.top),
 .VPNavBar.home.top {
-  box-shadow: 0 1px 0 0 var(--vp-c-divider),
-              0 4px 24px rgba(var(--shadow-rgb), 0.06) !important;
-}
-.dark .VPNavBar:not(.home.top),
-.dark .VPNavBar.home.top {
-  box-shadow: 0 1px 0 0 var(--vp-c-divider),
-              0 4px 32px rgba(var(--shadow-rgb), 0.3) !important;
+  box-shadow: 0 1px 0 0 var(--vp-c-divider) !important;
 }
 
 .VPNavBar .title {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Geist', 'Noto Sans SC', sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  background: var(--aurora);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: -0.01em;
+  color: var(--vp-c-text-1);
 }
 
 .VPNavBarMenu .VPNavBarMenuLink {
-  font-size: 0.875rem !important;
+  font-size: 0.95rem !important;
   font-weight: 500 !important;
   transition: color 0.16s ease !important;
   position: relative;
@@ -41,6 +32,7 @@
 
 .VPNavBarMenu .VPNavBarMenuLink::after,
 .VPNavBarMenuGroup > .button::after {
+  display: none; /* reading theme: active entry is shown by colour and weight only */
   content: '';
   position: absolute;
   bottom: -2px;
@@ -76,7 +68,7 @@
 }
 
 .VPNavBarMenuGroup .text {
-  font-size: 0.875rem !important;
+  font-size: 0.95rem !important;
   font-weight: 500 !important;
   transition: color 0.16s ease !important;
 }
@@ -181,4 +173,43 @@
     right: auto !important;
     transform: translateX(-50%) translateZ(0) !important;
   }
+}
+
+/* Active top-level entry: accent colour + semibold */
+.VPNavBarMenu .VPNavBarMenuLink.active,
+.VPNavBarMenuGroup.active .text {
+  font-weight: 600 !important;
+}
+
+/* Wide search field next to the logo (desktop), with a shortcut hint */
+@media (min-width: 960px) {
+  .VPNavBar.has-sidebar .global-search {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .VPNavBar .global-search .global-search__trigger {
+    width: min(320px, 26vw);
+    height: 42px;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 16px;
+    border-radius: 12px;
+    background: var(--vp-c-bg);
+    color: var(--vp-c-text-3);
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+
+  .VPNavBar .global-search .global-search__trigger::after {
+    content: '\2318K';
+    margin-left: auto;
+    font-size: 0.78rem;
+    color: var(--vp-c-text-3);
+  }
+}
+
+/* The full-width bar border is enough; no second underline below the logo block */
+.VPNavBarTitle.has-sidebar {
+  border-bottom-color: transparent !important;
 }

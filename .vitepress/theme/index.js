@@ -5,8 +5,10 @@ import { inBrowser } from 'vitepress'
 import Login from '../components/Login.vue'
 import LogoutButton from '../components/LogoutButton.vue'
 import Wlink from '../components/Wlink.vue'
-import HomeBento from '../components/HomeBento.vue'
 import AboutPage from '../components/AboutPage.vue'
+import HomePage from '../components/HomePage.vue'
+import DocBreadcrumb from '../components/DocBreadcrumb.vue'
+import DocMeta from '../components/DocMeta.vue'
 import GlobalSearch from '../components/GlobalSearch.vue'
 import OperationCatalog from '../components/OperationCatalog.vue'
 import ReadingProgress from '../components/ReadingProgress.vue'
@@ -105,8 +107,10 @@ export default {
   enhanceApp({ app, router }) {
     // 注册全局组件
     app.component('Wlink', Wlink)
-    app.component('HomeBento', HomeBento)
     app.component('AboutPage', AboutPage)
+    app.component('HomePage', HomePage)
+    app.component('DocBreadcrumb', DocBreadcrumb)
+    app.component('DocMeta', DocMeta)
     app.component('OperationCatalog', OperationCatalog)
     installUnitRouteGuard(router)
   }

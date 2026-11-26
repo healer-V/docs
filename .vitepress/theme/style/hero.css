@@ -60,12 +60,12 @@
 }
 
 .VPHero .name {
-  font-family: 'Sora', sans-serif !important;
+  font-family: 'Geist', sans-serif !important;
   font-size: clamp(2.8rem, 6vw, 4.5rem) !important;
   line-height: 1.05 !important;
   letter-spacing: -0.05em !important;
   font-weight: 800 !important;
-  /* 放宽渐变标题的绘制盒，避免 Sora 粗体字形右侧被默认 hero 宽度裁掉。 */
+  /* 放宽渐变标题的绘制盒，避免粗体字形右侧被默认 hero 宽度裁掉。 */
   display: inline-block;
   width: max-content;
   max-width: none !important;

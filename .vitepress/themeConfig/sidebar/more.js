@@ -40,10 +40,10 @@ export const moreSidebar = {
   ],
   "/about/": [
     {
-      "text": "🍒 关于",
+      "text": "🍒 资源",
       "items": [
         {
-          "text": "学习文档",
+          "text": "学习资源",
           "link": "/about/"
         }
       ]

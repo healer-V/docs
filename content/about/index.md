@@ -1,5 +1,5 @@
 ---
-title: 学习文档
+title: 学习资源
 ---
 
 <AboutPage />

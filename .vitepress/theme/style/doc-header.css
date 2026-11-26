@@ -1,0 +1,65 @@
+/* ============================================================
+   Doc header — breadcrumb above the title, excerpt/tags/date below it
+   ============================================================ */
+
+.doc-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.6rem;
+  margin: 0 0 0.9rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.doc-breadcrumb__sep { color: var(--vp-c-text-3); }
+
+.doc-meta {
+  margin: 0 0 2.4rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.doc-meta__excerpt {
+  margin: 0 0 1.4rem;
+  font-size: 1.2rem;
+  line-height: 1.75;
+  color: var(--vp-c-text-2);
+}
+
+.doc-meta__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-3);
+}
+
+.vp-doc .doc-meta__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vp-doc .doc-meta__tags .doc-meta__tag {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: var(--vp-c-text-2);
+}
+
+.doc-meta__tag span { color: var(--vp-c-text-3); }
+
+@media (max-width: 640px) {
+  .doc-breadcrumb { font-size: 0.85rem; }
+  .doc-meta { margin-bottom: 1.8rem; }
+  .doc-meta__excerpt { font-size: 1.05rem; line-height: 1.7; }
+}

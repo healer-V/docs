@@ -1,12 +1,18 @@
 /* .vitepress/theme/style/blockquote.css */
 
 .vp-doc blockquote {
-    border-radius: 12px;
-    padding: 18px 20px 20px 16px;
-    position: relative;
-    background-color: var(--vp-c-bg-soft);
-    border-left: 4px solid;
-    border-image: var(--aurora) 1;
+    margin: 1.5rem 0;
+    padding: 2px 0 2px 18px;
+    border: none;
+    border-left: 3px solid var(--vp-c-divider);
+    border-radius: 0;
+    background: transparent;
+    color: var(--vp-c-text-2);
+}
+
+.vp-doc blockquote p,
+.vp-doc blockquote li {
+    color: var(--vp-c-text-2);
 }
 
 .vp-doc h5 {

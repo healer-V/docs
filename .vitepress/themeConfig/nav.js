@@ -150,7 +150,7 @@ export const rawNav = [
   {
     text: '更多',
     items: [
-      { text: '收藏', link: '/about/' },
+      { text: '学习资源', link: '/about/' },
       { text: '友链', link: '/links' },
       {
         text: '随记',

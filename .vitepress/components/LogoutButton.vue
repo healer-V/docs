@@ -31,7 +31,7 @@ const handleLogout = () => {
   border-radius: 6px;
   color: var(--vp-c-text-2);
   font-size: 0.75rem;
-  font-family: 'Sora', 'Noto Sans SC', sans-serif;
+  font-family: 'Geist', 'Noto Sans SC', sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;

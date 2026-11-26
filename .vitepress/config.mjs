@@ -11,6 +11,33 @@ const buildUnit = resolveRequestedBuildUnit()
 const previewOutDir = process.env.DOCS_PREVIEW_OUT_DIR
 
 /**
+ * 在正文第一个一级标题前后插入面包屑和文章元信息组件。
+ *
+ * 组件自身根据 frontmatter 和侧栏配置决定是否渲染，缺少数据时输出为空。
+ *
+ * @param {import('markdown-it')} md VitePress 使用的 Markdown-It 实例。
+ * @returns {void} 直接注册核心规则。
+ */
+function injectDocHeader(md) {
+  md.core.ruler.push('doc_header', (state) => {
+    const tokens = state.tokens
+    const openIndex = tokens.findIndex((token) => token.type === 'heading_open' && token.tag === 'h1')
+    if (openIndex === -1 || tokens[openIndex + 2]?.type !== 'heading_close') return
+
+    const createHtmlBlock = (content) => {
+      const token = new state.Token('html_block', '', 0)
+      token.content = content
+      token.block = true
+      return token
+    }
+
+    // 先在 h1 之后插入，避免前面的插入改变 h1 的位置。
+    tokens.splice(openIndex + 3, 0, createHtmlBlock('<DocMeta />\n'))
+    // 面包屑已移除
+  })
+}
+
+/**
  * 配置表格滚动，并在单元构建时按真实文件处理跨单元正文链接。
  *
  * @param {import('markdown-it')} md VitePress 使用的 Markdown-It 实例。
@@ -20,6 +47,7 @@ function configureMarkdown(md) {
   // 避免在 Markdown 生成的表格包装器上添加 role 属性；Vue 3.5.4 静态模板提升会误丢 role 表格前的兄弟节点。
   md.renderer.rules.table_open = () => '<div class="table-scroll" tabindex="0"><table>\n'
   md.renderer.rules.table_close = () => '</table></div>\n'
+  injectDocHeader(md)
   if (buildUnit) {
     configureCrossUnitLinks(md, buildUnit.name, fileURLToPath(new URL('../content/', import.meta.url)))
   }
