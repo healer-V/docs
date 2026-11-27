@@ -12,7 +12,7 @@ excerpt: "围绕 Vue 响应式、组件与数据流、渲染更新、路由和�
 Vue 根据状态生成界面，并追踪响应式数据与渲染、计算或监听逻辑之间的依赖。回答 Vue 题目应区分数据追踪、组件数据流与 DOM（文档对象模型）更新，不能把它们都称为“双向绑定”。
 
 ::: info Vue 版本与前置知识
-本篇以 Vue 3.5 为主，Vue 2.7 仅用于历史项目与机制对比；涉及 Router 时以 Vue Router 4 为准。需要理解 JavaScript 的对象、函数、Promise 和模块，可参考 [JS题库](./03-javascript.md) 与 [ES6题库](./04-ES6.md)。
+本篇以 Vue 3.5 为主，Vue 2.7 仅用于历史项目与机制对比；涉及 Router 时以 Vue Router 4 为准。需要理解 JavaScript 的对象、函数、Promise 和模块，可参考 [JS题库](./03-javascript.md) 与 [ES6题库](./04-es6.md)。
 :::
 
 ## 一、框架模型与版本

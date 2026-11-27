@@ -21,7 +21,7 @@ const DIRECTIONS = [
   { key: 'web3', label: 'Web3', icon: 'cube', description: '区块链原理到合约开发与 DApp', roots: ['web3'], navGroup: 'Web3', modules: ['区块链基础', '以太坊与 EVM', 'Solidity', 'DApp 开发'] },
   { key: 'crossend', label: '跨端', icon: 'phone', description: '移动端与桌面端技术栈', roots: ['crossend'], navGroup: '跨端', modules: ['React Native', 'Flutter', 'HarmonyOS', 'Electron'] },
   { key: 'engineering', label: '工程化', icon: 'tool', description: '构建工具与微前端', roots: ['engineering', 'microfrontend'], navGroup: '前端', modules: ['Vite', 'Qiankun'] },
-  { key: 'practice', label: '实践', icon: 'check', description: '面试题库、组件封装与项目难点', roots: ['interview', 'practices', 'project', 'skill'], navGroup: '实践', modules: ['前端题库', '组件封装', '项目实践', '项目难点'] },
+  { key: 'practice', label: '实践', icon: 'check', description: '面试题库、组件封装与项目难点', roots: ['interview', 'practices', 'project', 'skill'], navGroup: '实践', modules: ['前端题库', 'Java题库', '全栈题库', 'Agent题库', '组件封装', '项目实践', '项目难点'] },
 ]
 
 /**
@@ -229,19 +229,37 @@ function groupRecentUpdates(updates, findDirection) {
   return groups.map(({ date, total, items }) => ({ date, total, items }))
 }
 
+// 首页复习面板逐篇展示的题库；其余题库只展示首篇入口。
+const EXPANDED_INTERVIEW_BANK = 'interview/frontend'
+
 /**
- * 读取面试题库各主题的标题和链接。
+ * 读取面试题库的复习入口：前端题库逐篇展示，其余题库按导航顺序各展示一个首篇入口；总览页 `interview/index.md` 不参与展示。
  *
- * @returns {{ label: string, link: string }[]} 按文件编号排序的题库主题，`index.md` 排在最前。
+ * @returns {{ label: string, link: string }[]} 前端题库按文件编号排序的主题，其后为各题库入口；题库入口使用导航中的题库名称，缺失时退回首篇标题。
  */
 function readInterviewTopics() {
-  const files = listMarkdownFiles(path.join(CONTENT_ROOT, 'interview'))
-  const indexFile = files.filter((sourcePath) => sourcePath.endsWith('/index.md'))
-  const topicFiles = files.filter((sourcePath) => !sourcePath.endsWith('/index.md')).sort()
-  return [...indexFile, ...topicFiles].map((sourcePath) => ({
-    label: readTitle(sourcePath).replace(/\s*面试题$/, '').trim(),
-    link: markdownPathToRoute(sourcePath, '/'),
+  const bankFiles = listMarkdownFiles(path.join(CONTENT_ROOT, 'interview'))
+    .filter((sourcePath) => sourcePath.split('/').length > 2)
+    .sort()
+  const topicLabel = (sourcePath) => readTitle(sourcePath).replace(/\s*面试题$/, '').trim()
+  const expandedTopics = bankFiles
+    .filter((sourcePath) => moduleKeyOf(sourcePath) === EXPANDED_INTERVIEW_BANK)
+    .map((sourcePath) => ({ label: topicLabel(sourcePath), link: markdownPathToRoute(sourcePath, '/') }))
+
+  const bankEntries = new Map()
+  for (const sourcePath of bankFiles) {
+    const bankKey = moduleKeyOf(sourcePath)
+    if (bankKey !== EXPANDED_INTERVIEW_BANK && !bankEntries.has(bankKey)) bankEntries.set(bankKey, sourcePath)
+  }
+  // 有导航入口的题库按导航顺序排列，其余题库按路径顺序追加在后。
+  const moduleLabels = createModuleLabels()
+  const navOrdered = [...moduleLabels.keys()].filter((bankKey) => bankEntries.has(bankKey))
+  const bankKeys = [...navOrdered, ...[...bankEntries.keys()].filter((bankKey) => !navOrdered.includes(bankKey))]
+  const bankTopics = bankKeys.map((bankKey) => ({
+    label: moduleLabels.get(bankKey) ?? topicLabel(bankEntries.get(bankKey)),
+    link: markdownPathToRoute(bankEntries.get(bankKey), '/'),
   }))
+  return [...expandedTopics, ...bankTopics]
 }
 
 /**

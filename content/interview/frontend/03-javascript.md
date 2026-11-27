@@ -729,7 +729,7 @@ console.log(Boolean(0n)); // false
 
 1. **取消边界：** Promise 只表示结果，不拥有网络请求等底层操作。取消请求需底层 API 支持，如 `AbortController`；`Promise.race` 仅提前确定组合结果，不会停止其他操作。资源清理与业务上的“取消成功”还需分别定义。
 
-2. 具体链式代码及组合规则见 [ES6 的 Promise 题目](./04-ES6.md)，两者的规则不能与“某个带 then 的对象就是内置 Promise 实例”混同。
+2. 具体链式代码及组合规则见 [ES6 的 Promise 题目](./04-es6.md)，两者的规则不能与“某个带 then 的对象就是内置 Promise 实例”混同。
 
 ::: info 取消等待与取消工作是两件事
 让调用方不再等待某个 Promise，不等于请求、计时器或服务端写入已停止。面试中应分别说明结果状态、底层取消机制和旧结果写回的防护。
@@ -893,7 +893,7 @@ console.log(Boolean(0n)); // false
 2. `class` 构造器要求通过 `new` 调用，不能像普通函数那样直接调用；箭头函数没有用于构造的 `prototype`，不能作构造函数。
 3. 原型上的方法被实例共享，构造函数里创建的数组等可变字段通常属于各实例。误把可变字段放在共享原型上，会导致实例之间互相影响。
 
-面试手写实现参见[手写 new 的核心规则](./11-Handwriting.md#十一、手写-new-时-返回对象与构造函数返回值如何取舍)。
+面试手写实现参见[手写 new 的核心规则](./11-handwriting.md#十一、手写-new-时-返回对象与构造函数返回值如何取舍)。
 
 参考：[MDN：new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)。
 

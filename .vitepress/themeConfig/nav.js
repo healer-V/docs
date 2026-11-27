@@ -129,9 +129,11 @@ export const rawNav = [
       {
         text: '题库',
         items: [
-          { text: '前端题库', link: '/interview/index' },
-          // { text: '前端题库', link: '/practice/01-frontend/index' },
-          // { text: 'Java题库', link: '/practice/02-java/index' }
+          { text: '题库总览', link: '/interview/index' },
+          { text: '前端题库', link: '/interview/frontend/01-html' },
+          { text: 'Java题库', link: '/interview/java/01-java-basics' },
+          { text: '全栈题库', link: '/interview/fullstack/01-nodejs' },
+          { text: 'Agent题库', link: '/interview/agent/01-llm-fundamentals' },
         ],
       },
       {  
